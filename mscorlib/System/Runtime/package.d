@@ -1,7 +1,10 @@
 module mscorlib.System.Runtime;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    SerializableAttribute,
+    __DotNet__Object,
     IDisposable,
     String;
 import mscorlib.System.Runtime.ConstrainedExecution :
@@ -10,15 +13,15 @@ import mscorlib.System.Runtime.ConstrainedExecution :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\GcSettings.cs'
 //
-// Ignored: // These settings are the same format as in clr\src\vm\gcpriv.h
-// Ignored: // make sure you change that file if you change this file!
-// Ignored: [Serializable]
+// These settings are the same format as in clr\src\vm\gcpriv.h
+// make sure you change that file if you change this file!
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum GCLargeObjectHeapCompactionMode
 {
     Default = 1,
     CompactOnce = 2,
 }
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum GCLatencyMode
 {
     Batch = 0,
@@ -27,7 +30,7 @@ public enum GCLatencyMode
     SustainedLowLatency = 3,
     NoGCRegion = 4,
 }
-public class GCSettings : DotNetObject
+public class GCSettings : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private enum SetLatencyModeStatus
@@ -66,9 +69,9 @@ public final class MemoryFailPoint : CriticalFinalizerObject, IDisposable
     //TODO: generate destructor
     //TODO: generate method Dispose
     //TODO: generate method Dispose
-    //#if _DEBUG
-//        [Serializable]
-    public static final class MemoryFailPointState : DotNetObject
+    // #if _DEBUG
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
+    public static final class MemoryFailPointState : __DotNet__Object
     {
         private ulong _segmentSize;
         private int _allocationSizeInMB;
@@ -89,7 +92,7 @@ public final class MemoryFailPoint : CriticalFinalizerObject, IDisposable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\ProfileOptimization.cs'
 //
-public class ProfileOptimization : DotNetObject
+public class ProfileOptimization : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method InternalSetProfileRoot

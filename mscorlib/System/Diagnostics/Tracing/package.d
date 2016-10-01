@@ -1,19 +1,25 @@
 module mscorlib.System.Diagnostics.Tracing;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Object,
     String,
     Guid,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    FlagsAttribute,
     IDisposable,
+    ThreadStaticAttribute,
     EventHandler1,
-    DotNetException,
+    __DotNet__Exception,
     Action1,
     WeakReference,
     EventArgs,
+    AttributeUsageAttribute,
     Attribute,
     Tuple2,
     WeakReference1,
     Type,
+    SerializableAttribute,
     Func2,
     IntPtr,
     UIntPtr,
@@ -24,6 +30,15 @@ import mscorlib.System :
     Func3;
 import mscorlib.System.Threading :
     AsyncLocal1;
+import mscorlib.System.Runtime.InteropServices :
+    StructLayoutAttribute,
+    FieldOffsetAttribute,
+    GCHandle;
+import mscorlib.System.Security.Permissions :
+    HostProtectionAttribute;
+import mscorlib.System.Security :
+    SecurityCriticalAttribute,
+    SecuritySafeCriticalAttribute;
 import mscorlib.Microsoft.Win32 :
     UnsafeNativeMethods;
 import mscorlib.System.Collections.Generic :
@@ -32,6 +47,8 @@ import mscorlib.System.Collections.Generic :
     IList1,
     IDictionary2,
     KeyValuePair2;
+import mscorlib.System.Diagnostics.CodeAnalysis :
+    SuppressMessageAttribute;
 import mscorlib.System.Reflection :
     ParameterInfo,
     PropertyInfo;
@@ -43,13 +60,13 @@ import mscorlib.System.Text :
     StringBuilder;
 import mscorlib.System.Resources :
     ResourceManager;
-import mscorlib.System.Runtime.InteropServices :
-    GCHandle;
+import mscorlib.System.Runtime.CompilerServices :
+    FriendAccessAllowedAttribute;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\ActivityTracker.cs'
 //
-public class ActivityTracker : DotNetObject
+public class ActivityTracker : __DotNet__Object
 {
     //TODO: generate method OnStart
     //TODO: generate method OnStop
@@ -58,7 +75,7 @@ public class ActivityTracker : DotNetObject
     //TODO: generate property 'CurrentActivityId'
     //TODO: generate method FindActiveActivity
     //TODO: generate method NormalizeActivityName
-    private static class ActivityInfo : DotNetObject
+    private static class ActivityInfo : __DotNet__Object
     {
         //TODO: generate constructor
         //TODO: generate property 'ActivityId'
@@ -73,6 +90,9 @@ public class ActivityTracker : DotNetObject
             End = 0x0,
             LastImmediateValue = 0xA,
             PrefixCode = 0xB,
+            // than this is a 'overflow' id.   Unlike the hierarchical IDs these are 
+            // allocated densely but don't tell you anything about nesting. we use 
+            // these when we run out of space in the GUID to store the path.
             MultiByte1 = 0xC,
         }
         //TODO: generate method AddIdToGuid
@@ -99,41 +119,53 @@ public class ActivityTracker : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\EventActivityOptions.cs'
 //
-// Ignored: /// <summary>
-// Ignored: /// EventActivityOptions flags allow to specify different activity related characteristics.
-// Ignored: /// </summary>
-// Ignored: [Flags]
+/// <summary>
+/// EventActivityOptions flags allow to specify different activity related characteristics.
+/// </summary>
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum EventActivityOptions
 {
+    /// <summary>
+    /// No special options are added to the event.
+    /// </summary>
     None = 0,
+    /// <summary>
+    /// Disable Implicit Activity Tracking
+    /// </summary>
     Disable = 0x2,
+    /// <summary>
+    /// Allow activity event to call itself (directly or indirectly)
+    /// </summary>
     Recursive = 0x4,
+    /// <summary>
+    /// Allows event activity to live beyond its parent.
+    /// </summary>
     Detachable = 0x8,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\EventDescriptor.cs'
 //
-//[StructLayout(LayoutKind.Explicit, Size = 16)]
-//[System.Security.Permissions.HostProtection(MayLeakOnAbort = true)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit, Size = 16*/)
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
 public struct EventDescriptor
 {
-    // Ignored: # region private
-    // Ignored: [FieldOffset(0)]
+    // # region private
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
     private int m_traceloggingId;
-    // Ignored: [FieldOffset(0)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
     private ushort m_id;
-    // Ignored: [FieldOffset(2)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 2*/)
     private ubyte m_version;
-    // Ignored: [FieldOffset(3)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 3*/)
     private ubyte m_channel;
-    // Ignored: [FieldOffset(4)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 4*/)
     private ubyte m_level;
-    // Ignored: [FieldOffset(5)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 5*/)
     private ubyte m_opcode;
-    // Ignored: [FieldOffset(6)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 6*/)
     private ushort m_task;
-    // Ignored: [FieldOffset(8)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 8*/)
     private long m_keywords;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -156,17 +188,19 @@ public struct EventDescriptor
 //
 public enum ControllerCommand
 {
+    // Strictly Positive numbers are for provider-specific commands, negative number are for 'shared' commands. 256
+    // The first 256 negative numbers are reserved for the framework.  
     Update = 0,
     SendManifest = -1,
     Enable = -2,
     Disable = -3,
 }
-///// <summary>
-//    /// Only here because System.Diagnostics.EventProvider needs one more extensibility hook (when it gets a 
-//    /// controller callback)
-//    /// </summary>
-//    [System.Security.Permissions.HostProtection(MayLeakOnAbort = true)]
-public class EventProvider : DotNetObject, IDisposable
+/// <summary>
+/// Only here because System.Diagnostics.EventProvider needs one more extensibility hook (when it gets a 
+/// controller callback)
+/// </summary>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
+public class EventProvider : __DotNet__Object, IDisposable
 {
     public static struct EventData
     {
@@ -181,7 +215,7 @@ public class EventProvider : DotNetObject, IDisposable
         //TODO: generate constructor
     }
     private static bool m_setInformationMissing;
-    // Ignored: [SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private UnsafeNativeMethods.ManifestEtw.EtwEnableCallback m_etwCallback;
     private long m_regHandle;
     private ubyte m_level;
@@ -191,7 +225,7 @@ public class EventProvider : DotNetObject, IDisposable
     private bool m_enabled;
     private Guid m_providerId;
     public bool m_disposed;
-    // Ignored: [ThreadStatic]
+    @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static WriteEventErrorCode s_returnCode;
     private enum int s_basicTypeAllocationBufferSize/*todo: implement initializer*/ = int();
     private enum int s_etwMaxNumberArguments/*todo: implement initializer*/ = int();
@@ -199,9 +233,10 @@ public class EventProvider : DotNetObject, IDisposable
     private enum int s_maxEventDataDescriptors/*todo: implement initializer*/ = int();
     private enum int s_traceEventMaximumSize/*todo: implement initializer*/ = int();
     private enum int s_traceEventMaximumStringSize/*todo: implement initializer*/ = int();
-    // Ignored: [SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
+    @__DotNet__Attribute!(SuppressMessageAttribute.stringof/*, "Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible"*/)
     public enum WriteEventErrorCode : int
     {
+        //check mapping to runtime codes
         NoError = 0,
         NoFreeBuffers = 1,
         EventTooBig = 2,
@@ -246,7 +281,7 @@ public class EventProvider : DotNetObject, IDisposable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\EventSource.cs'
 //
-public class EventSource : DotNetObject, IDisposable
+public class EventSource : __DotNet__Object, IDisposable
 {
     //TODO: generate property 'Name'
     //TODO: generate property 'Guid'
@@ -392,27 +427,27 @@ public class EventSource : DotNetObject, IDisposable
     private String m_name;
     public int m_id;
     private Guid m_guid;
-    public /*todo: volatile*/EventMetadata[] m_eventData;
-    private /*todo: volatile*/ubyte[] m_rawManifest;
+    public /*todo: volatile*/ EventMetadata[] m_eventData;
+    private /*todo: volatile*/ ubyte[] m_rawManifest;
     private EventHandler1!(EventCommandEventArgs) m_eventCommandExecuted;
     private EventSourceSettings m_config;
     private bool m_eventSourceDisposed;
     private bool m_eventSourceEnabled;
     public EventLevel m_level;
     public EventKeywords m_matchAnyKeyword;
-    public /*todo: volatile*/EventDispatcher m_Dispatchers;
-    private /*todo: volatile*/OverideEventProvider m_provider;
+    public /*todo: volatile*/ EventDispatcher m_Dispatchers;
+    private /*todo: volatile*/ OverideEventProvider m_provider;
     private bool m_completelyInited;
-    private DotNetException m_constructionException;
+    private __DotNet__Exception m_constructionException;
     private ubyte m_outOfBandMessageCount;
     private EventCommandEventArgs m_deferredCommands;
     private String[] m_traits;
     public static uint s_currentPid;
-    // Ignored: [ThreadStatic]
+    @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static ubyte m_EventSourceExceptionRecurenceCount/*todo: implement initializer*/ = ubyte();
-    // Ignored: [ThreadStatic]
+    @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static bool m_EventSourceInDecodeObject/*todo: implement initializer*/ = bool();
-    public /*todo: volatile*/ulong[] m_channelData;
+    public /*todo: volatile*/ ulong[] m_channelData;
     private SessionMask m_curLiveSessions;
     private EtwSession[] m_etwSessionIdMap;
     private List1!(EtwSession) m_legacySessions;
@@ -451,18 +486,36 @@ public class EventSource : DotNetObject, IDisposable
     //TODO: generate method HexDigit
     //TODO: generate method UpdateDescriptor
 }
-// Ignored: /// <summary>
-// Ignored: /// Enables specifying event source configuration options to be used in the EventSource constructor.
-// Ignored: /// </summary>
-// Ignored: [Flags]
+/// <summary>
+/// Enables specifying event source configuration options to be used in the EventSource constructor.
+/// </summary>
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum EventSourceSettings
 {
+    /// <summary>
+    /// This specifies none of the special configuration options should be enabled.
+    /// </summary>
     Default = 0,
+    /// <summary>
+    /// Normally an EventSource NEVER throws; setting this option will tell it to throw when it encounters errors.  
+    /// </summary>
     ThrowOnEventWriteErrors = 1,
+    /// <summary>
+    /// Setting this option is a directive to the ETW listener should use manifest-based format when
+    /// firing events. This is the default option when defining a type derived from EventSource 
+    /// (using the protected EventSource constructors).
+    /// Only one of EtwManifestEventFormat or EtwSelfDescribingEventFormat should be specified
+    /// </summary>
     EtwManifestEventFormat = 4,
+    /// <summary>
+    /// Setting this option is a directive to the ETW listener should use self-describing event format
+    /// when firing events. This is the default option when creating a new instance of the EventSource
+    /// type (using the public EventSource constructors).  
+    /// Only one of EtwManifestEventFormat or EtwSelfDescribingEventFormat should be specified
+    /// </summary>
     EtwSelfDescribingEventFormat = 8,
 }
-public class EventListener : DotNetObject, IDisposable
+public class EventListener : __DotNet__Object, IDisposable
 {
     //TODO: generate event field
     //TODO: generate event 'EventSourceCreated'
@@ -482,7 +535,7 @@ public class EventListener : DotNetObject, IDisposable
     //TODO: generate method Validate
     //TODO: generate property 'EventListenersLock'
     //TODO: generate method CallBackForExistingEventSources
-    public /*todo: volatile*/EventListener m_Next;
+    public /*todo: volatile*/ EventListener m_Next;
     public ActivityFilter m_activityFilter;
     public static EventListener s_Listeners;
     public static List1!(WeakReference) s_EventSources;
@@ -537,24 +590,24 @@ public class EventWrittenEventArgs : EventArgs
     public EventLevel m_level;
     public EventKeywords m_keywords;
 }
-///// <summary>
-//    /// Allows customizing defaults and specifying localization support for the event source class to which it is applied. 
-//    /// </summary>
-//    [AttributeUsage(AttributeTargets.Class)]
+/// <summary>
+/// Allows customizing defaults and specifying localization support for the event source class to which it is applied. 
+/// </summary>
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class*/)
 public final class EventSourceAttribute : Attribute
 {
     //TODO: generate property 'Name'
     //TODO: generate property 'Guid'
     //TODO: generate property 'LocalizationResources'
 }
-///// <summary>
-//    /// Any instance methods in a class that subclasses <see cref="EventSource"/> and that return void are
-//    /// assumed by default to be methods that generate an ETW event. Enough information can be deduced from the
-//    /// name of the method and its signature to generate basic schema information for the event. The
-//    /// <see cref="EventAttribute"/> class allows you to specify additional event schema information for an event if
-//    /// desired.
-//    /// </summary>
-//    [AttributeUsage(AttributeTargets.Method)]
+/// <summary>
+/// Any instance methods in a class that subclasses <see cref="EventSource"/> and that return void are
+/// assumed by default to be methods that generate an ETW event. Enough information can be deduced from the
+/// name of the method and its signature to generate basic schema information for the event. The
+/// <see cref="EventAttribute"/> class allows you to specify additional event schema information for an event if
+/// desired.
+/// </summary>
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method*/)
 public final class EventAttribute : Attribute
 {
     //TODO: generate constructor
@@ -572,33 +625,33 @@ public final class EventAttribute : Attribute
     private EventOpcode m_opcode;
     private bool m_opcodeSet;
 }
-///// <summary>
-//    /// By default all instance methods in a class that subclasses code:EventSource that and return
-//    /// void are assumed to be methods that generate an event. This default can be overridden by specifying
-//    /// the code:NonEventAttribute
-//    /// </summary>
-//    [AttributeUsage(AttributeTargets.Method)]
+/// <summary>
+/// By default all instance methods in a class that subclasses code:EventSource that and return
+/// void are assumed to be methods that generate an event. This default can be overridden by specifying
+/// the code:NonEventAttribute
+/// </summary>
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method*/)
 public final class NonEventAttribute : Attribute
 {
     //TODO: generate constructor
 }
-//// FUTURE we may want to expose this at some point once we have a partner that can help us validate the design.
-//#if FEATURE_MANAGED_ETW_CHANNELS
-//    /// <summary>
-//    /// EventChannelAttribute allows customizing channels supported by an EventSource. This attribute must be
-//    /// applied to an member of type EventChannel defined in a Channels class nested in the EventSource class:
-//    /// <code>
-//    ///     public static class Channels
-//    ///     {
-//    ///         [Channel(Enabled = true, EventChannelType = EventChannelType.Admin)]
-//    ///         public const EventChannel Admin = (EventChannel)16;
-//    ///     
-//    ///         [Channel(Enabled = false, EventChannelType = EventChannelType.Operational)]
-//    ///         public const EventChannel Operational = (EventChannel)17;
-//    ///     }
-//    /// </code>
-//    /// </summary>
-//    [AttributeUsage(AttributeTargets.Field)]
+// FUTURE we may want to expose this at some point once we have a partner that can help us validate the design.
+// #if FEATURE_MANAGED_ETW_CHANNELS
+/// <summary>
+/// EventChannelAttribute allows customizing channels supported by an EventSource. This attribute must be
+/// applied to an member of type EventChannel defined in a Channels class nested in the EventSource class:
+/// <code>
+///     public static class Channels
+///     {
+///         [Channel(Enabled = true, EventChannelType = EventChannelType.Admin)]
+///         public const EventChannel Admin = (EventChannel)16;
+///     
+///         [Channel(Enabled = false, EventChannelType = EventChannelType.Operational)]
+///         public const EventChannel Operational = (EventChannel)17;
+///     }
+/// </code>
+/// </summary>
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Field*/)
 private class EventChannelAttribute : Attribute
 {
     //TODO: generate property 'Enabled'
@@ -606,19 +659,35 @@ private class EventChannelAttribute : Attribute
 }
 private enum EventChannelType
 {
+    /// <summary>The admin channel</summary>
     Admin = 1,
+    /// <summary>The operational channel</summary>
     Operational,
+    /// <summary>The Analytic channel</summary>
     Analytic,
+    /// <summary>The debug channel</summary>
     Debug,
 }
 public enum EventCommand
 {
+    /// <summary>
+    /// Update EventSource state
+    /// </summary>
     Update = 0,
+    /// <summary>
+    /// Request EventSource to generate and send its manifest
+    /// </summary>
     SendManifest = -1,
+    /// <summary>
+    /// Enable event
+    /// </summary>
     Enable = -2,
+    /// <summary>
+    /// Disable event
+    /// </summary>
     Disable = -3,
 }
-public final class ActivityFilter : DotNetObject, IDisposable
+public final class ActivityFilter : __DotNet__Object, IDisposable
 {
     //TODO: generate method DisableFilter
     //TODO: generate method UpdateFilter
@@ -646,7 +715,7 @@ public final class ActivityFilter : DotNetObject, IDisposable
     private ActivityFilter m_next;
     private Action1!(Guid) m_myActivityDelegate;
 }
-public class EtwSession : DotNetObject
+public class EtwSession : __DotNet__Object
 {
     //TODO: generate method GetEtwSession
     //TODO: generate method RemoveEtwSession
@@ -678,7 +747,7 @@ public struct SessionMask
     public enum uint MASK/*todo: implement initializer*/ = uint();
     public enum uint MAX/*todo: implement initializer*/ = uint();
 }
-public class EventDispatcher : DotNetObject
+public class EventDispatcher : __DotNet__Object
 {
     //TODO: generate constructor
     public immutable EventListener m_Listener;
@@ -686,20 +755,38 @@ public class EventDispatcher : DotNetObject
     public bool m_activityFilteringEnabled;
     public EventDispatcher m_Next;
 }
-// Ignored: /// <summary>
-// Ignored: /// Flags that can be used with EventSource.GenerateManifest to control how the ETW manifest for the EventSource is
-// Ignored: /// generated.
-// Ignored: /// </summary>
-// Ignored: [Flags]
+/// <summary>
+/// Flags that can be used with EventSource.GenerateManifest to control how the ETW manifest for the EventSource is
+/// generated.
+/// </summary>
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum EventManifestOptions
 {
+    /// <summary>
+    /// Only the resources associated with current UI culture are included in the  manifest
+    /// </summary>
     None = 0x0,
+    /// <summary>
+    /// Throw exceptions for any inconsistency encountered
+    /// </summary>
     Strict = 0x1,
+    /// <summary>
+    /// Generate a "resources" node under "localization" for every satellite assembly provided
+    /// </summary>
     AllCultures = 0x2,
+    /// <summary>
+    /// Generate the manifest only if the event source needs to be registered on the machine,
+    /// otherwise return null (but still perform validation if Strict is specified)
+    /// </summary>
     OnlyIfNeededForRegistration = 0x4,
+    /// <summary>
+    /// When generating the manifest do *not* enforce the rule that the current EventSource class
+    /// must be the base class for the user-defined type passed in. This allows validation of .net
+    /// event sources using the new validation code
+    /// </summary>
     AllowEventSourceOverride = 0x8,
 }
-public class ManifestBuilder : DotNetObject
+public class ManifestBuilder : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method AddOpcode
@@ -730,7 +817,7 @@ public class ManifestBuilder : DotNetObject
     //TODO: generate method UpdateStringBuilder
     //TODO: generate method TranslateToManifestConvention
     //TODO: generate method TranslateIndexToManifestConvention
-    private static class ChannelInfo : DotNetObject
+    private static class ChannelInfo : __DotNet__Object
     {
         public String Name;
         public ulong Keywords;
@@ -776,7 +863,10 @@ public struct ManifestEnvelope
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\EventSource_CoreCLR.cs'
 //
-public class Resources : DotNetObject
+// partial class 'EventSource' moved
+// partial class 'ManifestBuilder' moved
+// partial class 'EventProvider' moved
+public class Resources : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetResourceString
@@ -785,12 +875,12 @@ public class Resources : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\EventSourceException.cs'
 //
-///// <summary>
-//    /// Exception that is thrown when an error occurs during EventSource operation.
-//    /// </summary>
-//#if (!ES_BUILD_PCL && !PROJECTN)
-//    [Serializable]
-public class EventSourceException : DotNetException
+/// <summary>
+/// Exception that is thrown when an error occurs during EventSource operation.
+/// </summary>
+// #if (!ES_BUILD_PCL && !PROJECTN)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class EventSourceException : __DotNet__Exception
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -802,21 +892,21 @@ public class EventSourceException : DotNetException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\FrameworkEventSource.cs'
 //
-//// To use the framework provider
-//    // 
-//    //     \\clrmain\tools\Perfmonitor /nokernel /noclr /provider:8E9F5090-2D75-4d03-8A81-E5AFBF85DAF1 start
-//    //     Run run your app
-//    //     \\clrmain\tools\Perfmonitor stop
-//    //     \\clrmain\tools\Perfmonitor print
-//    //
-//    // This will produce an XML file, where each event is pretty-printed with all its arguments nicely parsed.
-//    //
-//    [FriendAccessAllowed]
-//[EventSource(Guid = "8E9F5090-2D75-4d03-8A81-E5AFBF85DAF1", Name = "System.Diagnostics.Eventing.FrameworkEventSource")]
+// To use the framework provider
+// 
+//     \\clrmain\tools\Perfmonitor /nokernel /noclr /provider:8E9F5090-2D75-4d03-8A81-E5AFBF85DAF1 start
+//     Run run your app
+//     \\clrmain\tools\Perfmonitor stop
+//     \\clrmain\tools\Perfmonitor print
+//
+// This will produce an XML file, where each event is pretty-printed with all its arguments nicely parsed.
+//
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
+@__DotNet__Attribute!(EventSourceAttribute.stringof/*, Guid = "8E9F5090-2D75-4d03-8A81-E5AFBF85DAF1", Name = "System.Diagnostics.Eventing.FrameworkEventSource"*/)
 public final class FrameworkEventSource : EventSource
 {
     public static immutable FrameworkEventSource Log/*todo: implement initializer*/ = null;
-    public static class Keywords : DotNetObject
+    public static class Keywords : __DotNet__Object
     {
         private this() {} // prevent instantiation
         public enum EventKeywords Loader/*todo: implement initializer*/ = (cast(EventKeywords)0);
@@ -825,17 +915,17 @@ public final class FrameworkEventSource : EventSource
         public enum EventKeywords DynamicTypeUsage/*todo: implement initializer*/ = (cast(EventKeywords)0);
         public enum EventKeywords ThreadTransfer/*todo: implement initializer*/ = (cast(EventKeywords)0);
     }
-    ///// <summary>ETW tasks that have start/stop events.</summary>
-//        [FriendAccessAllowed]
-    public static class Tasks : DotNetObject
+    /// <summary>ETW tasks that have start/stop events.</summary>
+    @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
+    public static class Tasks : __DotNet__Object
     {
         private this() {} // prevent instantiation
         public enum EventTask GetResponse/*todo: implement initializer*/ = (cast(EventTask)0);
         public enum EventTask GetRequestStream/*todo: implement initializer*/ = (cast(EventTask)0);
         public enum EventTask ThreadTransfer/*todo: implement initializer*/ = (cast(EventTask)0);
     }
-    //[FriendAccessAllowed]
-    public static class Opcodes : DotNetObject
+    @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
+    public static class Opcodes : __DotNet__Object
     {
         private this() {} // prevent instantiation
         public enum EventOpcode ReceiveHandled/*todo: implement initializer*/ = (cast(EventOpcode)0);
@@ -938,7 +1028,7 @@ public struct ConcurrentSet2(KeyType,ItemType)
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\ConcurrentSetItem.cs'
 //
-public abstract class ConcurrentSetItem2(KeyType,ItemType) : DotNetObject/*where ItemType : ConcurrentSetItem<KeyType, ItemType>*/
+public abstract class ConcurrentSetItem2(KeyType,ItemType) : __DotNet__Object/*where ItemType : ConcurrentSetItem<KeyType, ItemType>*/
 {
     //TODO: generate method Compare
     //TODO: generate method Compare
@@ -947,19 +1037,19 @@ public abstract class ConcurrentSetItem2(KeyType,ItemType) : DotNetObject/*where
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\DataCollector.cs'
 //
-///// <summary>
-//    /// TraceLogging: This is the implementation of the DataCollector
-//    /// functionality. To enable safe access to the DataCollector from
-//    /// untrusted code, there is one thread-local instance of this structure
-//    /// per thread. The instance must be Enabled before any data is written to
-//    /// it. The instance must be Finished before the data is passed to
-//    /// EventWrite. The instance must be Disabled before the arrays referenced
-//    /// by the pointers are freed or unpinned.
-//    /// </summary>
-//    [SecurityCritical]
+/// <summary>
+/// TraceLogging: This is the implementation of the DataCollector
+/// functionality. To enable safe access to the DataCollector from
+/// untrusted code, there is one thread-local instance of this structure
+/// per thread. The instance must be Enabled before any data is written to
+/// it. The instance must be Finished before the data is passed to
+/// EventWrite. The instance must be Disabled before the arrays referenced
+/// by the pointers are freed or unpinned.
+/// </summary>
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public struct DataCollector
 {
-    // Ignored: [ThreadStatic]
+    @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     public static DataCollector ThreadInstance;
     private ubyte* scratchEnd;
     private EventSource.EventData* datasEnd;
@@ -1013,17 +1103,17 @@ public final class EnumerableTypeInfo : TraceLoggingTypeInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\EventDataAttribute.cs'
 //
-///// <summary>
-//    /// Used when authoring types that will be passed to EventSource.Write.
-//    /// EventSource.Write&lt;T> only works when T is either an anonymous type
-//    /// or a type with an [EventData] attribute. In addition, the properties
-//    /// of T must be supported property types. Supported property types include
-//    /// simple built-in types (int, string, Guid, DateTime, DateTimeOffset,
-//    /// KeyValuePair, etc.), anonymous types that only contain supported types,
-//    /// types with an [EventData] attribute, arrays of the above, and IEnumerable
-//    /// of the above.
-//    /// </summary>
-//    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, Inherited = false)]
+/// <summary>
+/// Used when authoring types that will be passed to EventSource.Write.
+/// EventSource.Write&lt;T> only works when T is either an anonymous type
+/// or a type with an [EventData] attribute. In addition, the properties
+/// of T must be supported property types. Supported property types include
+/// simple built-in types (int, string, Guid, DateTime, DateTimeOffset,
+/// KeyValuePair, etc.), anonymous types that only contain supported types,
+/// types with an [EventData] attribute, arrays of the above, and IEnumerable
+/// of the above.
+/// </summary>
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | AttributeTargets.Struct, Inherited = false*/)
 public class EventDataAttribute : Attribute
 {
     private EventLevel level/*todo: implement initializer*/ = (cast(EventLevel)0);
@@ -1038,28 +1128,31 @@ public class EventDataAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\EventFieldAttribute.cs'
 //
-// Ignored: /// <summary>
-// Ignored: /// Tags are flags that are not interpreted by EventSource but are passed along
-// Ignored: /// to the EventListener. The EventListener determines the semantics of the flags.
-// Ignored: /// </summary>
-// Ignored: [Flags]
+/// <summary>
+/// Tags are flags that are not interpreted by EventSource but are passed along
+/// to the EventListener. The EventListener determines the semantics of the flags.
+/// </summary>
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum EventFieldTags
 {
+    /// <summary>
+    /// No special traits are added to the field.
+    /// </summary>
     None = 0,
 }
-///// <summary>
-//    /// TraceLogging: used when authoring types that will be passed to EventSource.Write.
-//    /// Controls how a field or property is handled when it is written as a
-//    /// field in a TraceLogging event. Apply this attribute to a field or
-//    /// property if the default handling is not correct. (Apply the
-//    /// TraceLoggingIgnore attribute if the property should not be
-//    /// included as a field in the event.)
-//    /// The default for Name is null, which means that the name of the
-//    /// underlying field or property will be used as the event field's name.
-//    /// The default for PiiTag is 0, which means that the event field does not
-//    /// contain personally-identifiable information.
-//    /// </summary>
-//    [AttributeUsage(AttributeTargets.Property)]
+/// <summary>
+/// TraceLogging: used when authoring types that will be passed to EventSource.Write.
+/// Controls how a field or property is handled when it is written as a
+/// field in a TraceLogging event. Apply this attribute to a field or
+/// property if the default handling is not correct. (Apply the
+/// TraceLoggingIgnore attribute if the property should not be
+/// included as a field in the event.)
+/// The default for Name is null, which means that the name of the
+/// underlying field or property will be used as the event field's name.
+/// The default for PiiTag is 0, which means that the event field does not
+/// contain personally-identifiable information.
+/// </summary>
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Property*/)
 public class EventFieldAttribute : Attribute
 {
     //TODO: generate property 'Tags'
@@ -1072,26 +1165,103 @@ public class EventFieldAttribute : Attribute
 //
 public enum EventFieldFormat
 {
+    /// <summary>
+    /// Field receives default formatting based on the field's underlying type.
+    /// </summary>
     Default = 0,
+    // #if false 
+    /// <summary>
+    /// Field should not be displayed.
+    /// </summary>
+    // NoPrint = 1,
+    // #endif
+    /// <summary>
+    /// Field should be formatted as character or string data.
+    /// Typically applied to 8-bit or 16-bit integers.
+    /// This is the default format for String and Char types.
+    /// </summary>
     String = 2,
+    /// <summary>
+    /// Field should be formatted as boolean data. Typically applied to 8-bit
+    /// or 32-bit integers. This is the default format for the Boolean type.
+    /// </summary>
     Boolean = 3,
+    /// <summary>
+    /// Field should be formatted as hexadecimal data. Typically applied to
+    /// integer types.
+    /// </summary>
     Hexadecimal = 4,
+    // #if false 
+    /// <summary>
+    /// Field should be formatted as a process identifier. Typically applied to
+    /// 32-bit integer types.
+    /// </summary>
+    // ProcessId = 5,
+    /// <summary>
+    /// Field should be formatted as a thread identifier. Typically applied to
+    /// 32-bit integer types.
+    /// </summary>
+    // ThreadId = 6,
+    /// <summary>
+    /// Field should be formatted as an Internet port. Typically applied to 16-bit integer
+    /// types.
+    /// </summary>
+    // Port = 7,
+    /// <summary>
+    /// Field should be formatted as an Internet Protocol v4 address. Typically applied to
+    /// 32-bit integer types.
+    /// </summary>
+    // Ipv4Address = 8,
+    /// <summary>
+    /// Field should be formatted as an Internet Protocol v6 address. Typically applied to
+    /// byte[] types.
+    /// </summary>
+    // Ipv6Address = 9,
+    /// <summary>
+    /// Field should be formatted as a SOCKADDR. Typically applied to byte[] types.
+    /// </summary>
+    // SocketAddress = 10,
+    // #endif
+    /// <summary>
+    /// Field should be formatted as XML string data. Typically applied to
+    /// strings or arrays of 8-bit or 16-bit integers.
+    /// </summary>
     Xml = 11,
+    /// <summary>
+    /// Field should be formatted as JSON string data. Typically applied to
+    /// strings or arrays of 8-bit or 16-bit integers.
+    /// </summary>
     Json = 12,
+    // #if false 
+    /// <summary>
+    /// Field should be formatted as a Win32 error code. Typically applied to
+    /// 32-bit integer types.
+    /// </summary>
+    // Win32Error = 13,
+    /// <summary>
+    /// Field should be formatted as an NTSTATUS code. Typically applied to
+    /// 32-bit integer types.
+    /// </summary>
+    // NTStatus = 14,
+    // #endif
+    /// <summary>
+    /// Field should be formatted as an HRESULT code. Typically applied to
+    /// 32-bit integer types.
+    /// </summary>
     HResult = 15,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\EventIgnoreAttribute.cs'
 //
-///// <summary>
-//    /// Used when authoring types that will be passed to EventSource.Write.
-//    /// By default, EventSource.Write will write all of an object's public
-//    /// properties to the event payload. Apply [EventIgnore] to a public
-//    /// property to prevent EventSource.Write from including the property in
-//    /// the event.
-//    /// </summary>
-//    [AttributeUsage(AttributeTargets.Property)]
+/// <summary>
+/// Used when authoring types that will be passed to EventSource.Write.
+/// By default, EventSource.Write will write all of an object's public
+/// properties to the event payload. Apply [EventIgnore] to a public
+/// property to prevent EventSource.Write from including the property in
+/// the event.
+/// </summary>
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Property*/)
 public class EventIgnoreAttribute : Attribute
 {
 }
@@ -1099,7 +1269,7 @@ public class EventIgnoreAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\EventPayload.cs'
 //
-public class EventPayload : DotNetObject, IDictionary2!(String,DotNetObject)
+public class EventPayload : __DotNet__Object, IDictionary2!(String,__DotNet__Object)
 {
     //TODO: generate constructor
     //TODO: generate property 'Keys'
@@ -1119,13 +1289,13 @@ public class EventPayload : DotNetObject, IDictionary2!(String,DotNetObject)
     //TODO: generate method Remove
     //TODO: generate method TryGetValue
     private List1!(String) m_names;
-    private List1!(DotNetObject) m_values;
+    private List1!(__DotNet__Object) m_values;
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\EventSourceActivity.cs'
 //
-public final class EventSourceActivity : DotNetObject, IDisposable
+public final class EventSourceActivity : __DotNet__Object, IDisposable
 {
     //TODO: generate constructor
     //TODO: generate conversion operator
@@ -1188,7 +1358,7 @@ public struct EventSourceOptions
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\FieldMetadata.cs'
 //
-public class FieldMetadata : DotNetObject
+public class FieldMetadata : __DotNet__Object
 {
     private immutable String name;
     private immutable int nameSize;
@@ -1237,7 +1407,7 @@ public final class NameInfo : ConcurrentSetItem2!(KeyValuePair2!(String,EventTag
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\PropertyAnalysis.cs'
 //
-public final class PropertyAnalysis : DotNetObject
+public final class PropertyAnalysis : __DotNet__Object
 {
     public immutable String name;
     public immutable PropertyInfo propertyInfo;
@@ -1252,52 +1422,52 @@ public final class PropertyAnalysis : DotNetObject
 //
 public struct PropertyValue
 {
-    ///// <summary>
-//        /// Union of well-known value types, to avoid boxing those types.
-//        /// </summary>
-//        [StructLayout(LayoutKind.Explicit)]
+    /// <summary>
+    /// Union of well-known value types, to avoid boxing those types.
+    /// </summary>
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit*/)
     public static struct Scalar
     {
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public bool AsBoolean;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public ubyte AsByte;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public byte AsSByte;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public wchar AsChar;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public short AsInt16;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public ushort AsUInt16;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public int AsInt32;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public uint AsUInt32;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public long AsInt64;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public ulong AsUInt64;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr AsIntPtr;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public UIntPtr AsUIntPtr;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public float AsSingle;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public double AsDouble;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public Guid AsGuid;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public DateTime AsDateTime;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public DateTimeOffset AsDateTimeOffset;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public TimeSpan AsTimeSpan;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public Decimal AsDecimal;
     }
-    private immutable DotNetObject _reference;
+    private immutable __DotNet__Object _reference;
     private immutable Scalar _scalar;
     private immutable int _scalarLength;
     //TODO: generate constructor
@@ -1328,7 +1498,7 @@ public struct PropertyValue
     //TODO: generate method GetPropertyGetter
     //TODO: generate method GetBoxedValueTypePropertyGetter
     //TODO: generate method GetReferenceTypePropertyGetter
-    private static abstract class TypeHelper : DotNetObject
+    private static abstract class TypeHelper : __DotNet__Object
     {
         //TODO: generate method GetPropertyGetter
         //TODO: generate method GetGetMethod
@@ -1342,7 +1512,7 @@ public struct PropertyValue
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\SimpleEventTypes.cs'
 //
-public class SimpleEventTypes1(T) : DotNetObject
+public class SimpleEventTypes1(T) : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static TraceLoggingEventTypes instance;
@@ -1451,7 +1621,7 @@ public final class NullableTypeInfo : TraceLoggingTypeInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\Statics.cs'
 //
-public class Statics : DotNetObject
+public class Statics : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum ubyte DefaultLevel/*todo: implement initializer*/ = ubyte();
@@ -1500,18 +1670,18 @@ public class Statics : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\TraceLoggingDataCollector.cs'
 //
-///// <summary>
-//    /// TraceLogging: Used when implementing a custom TraceLoggingTypeInfo.
-//    /// The instance of this type is provided to the TypeInfo.WriteData method.
-//    /// All operations are forwarded to the current thread's DataCollector.
-//    /// Note that this abstraction would allow us to expose the custom
-//    /// serialization system to partially-trusted code. If we end up not
-//    /// making custom serialization public, or if we only expose it to
-//    /// full-trust code, this abstraction is unnecessary (though it probably
-//    /// doesn't hurt anything).
-//    /// </summary>
-//    [SecuritySafeCritical]
-public class TraceLoggingDataCollector : DotNetObject
+/// <summary>
+/// TraceLogging: Used when implementing a custom TraceLoggingTypeInfo.
+/// The instance of this type is provided to the TypeInfo.WriteData method.
+/// All operations are forwarded to the current thread's DataCollector.
+/// Note that this abstraction would allow us to expose the custom
+/// serialization system to partially-trusted code. If we end up not
+/// making custom serialization public, or if we only expose it to
+/// full-trust code, this abstraction is unnecessary (though it probably
+/// doesn't hurt anything).
+/// </summary>
+@__DotNet__Attribute!(SecuritySafeCriticalAttribute.stringof)
+public class TraceLoggingDataCollector : __DotNet__Object
 {
     public static immutable TraceLoggingDataCollector Instance/*todo: implement initializer*/ = null;
     //TODO: generate constructor
@@ -1530,66 +1700,313 @@ public class TraceLoggingDataCollector : DotNetObject
 //
 public enum TraceLoggingDataType
 {
+    /// <summary>
+    /// Core type.
+    /// Data type with no value (0-length payload).
+    /// NOTE: arrays of Nil are illegal.
+    /// NOTE: a fixed-length array of Nil is interpreted by the decoder as
+    /// a struct (obsolete but retained for backwards-compatibility).
+    /// </summary>
     Nil = 0,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes null-terminated Char16 string.
+    /// Decoding treats as UTF-16LE string.
+    /// </summary>
     Utf16String = 1,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes null-terminated Char8 string.
+    /// Decoding treats as MBCS string.
+    /// </summary>
     MbcsString = 2,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 8-bit value.
+    /// Decoding treats as signed integer.
+    /// </summary>
     Int8 = 3,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 8-bit value.
+    /// Decoding treats as unsigned integer.
+    /// </summary>
     UInt8 = 4,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 16-bit value.
+    /// Decoding treats as signed integer.
+    /// </summary>
     Int16 = 5,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 16-bit value.
+    /// Decoding treats as unsigned integer.
+    /// </summary>
     UInt16 = 6,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 32-bit value.
+    /// Decoding treats as signed integer.
+    /// </summary>
     Int32 = 7,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 32-bit value.
+    /// Decoding treats as unsigned integer.
+    /// </summary>
     UInt32 = 8,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 64-bit value.
+    /// Decoding treats as signed integer.
+    /// </summary>
     Int64 = 9,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 64-bit value.
+    /// Decoding treats as unsigned integer.
+    /// </summary>
     UInt64 = 10,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 32-bit value.
+    /// Decoding treats as Float.
+    /// </summary>
     Float = 11,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 64-bit value.
+    /// Decoding treats as Double.
+    /// </summary>
     Double = 12,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 32-bit value.
+    /// Decoding treats as Boolean.
+    /// </summary>
     Boolean32 = 13,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 16-bit bytecount followed by binary data.
+    /// Decoding treats as binary data.
+    /// </summary>
     Binary = 14,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 16-byte value.
+    /// Decoding treats as GUID.
+    /// </summary>
     Guid = 15,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 64-bit value.
+    /// Decoding treats as FILETIME.
+    /// </summary>
     FileTime = 17,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 16-byte value.
+    /// Decoding treats as SYSTEMTIME.
+    /// </summary>
     SystemTime = 18,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 32-bit value.
+    /// Decoding treats as hexadecimal unsigned integer.
+    /// </summary>
     HexInt32 = 20,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 64-bit value.
+    /// Decoding treats as hexadecimal unsigned integer.
+    /// </summary>
     HexInt64 = 21,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 16-bit bytecount followed by Char16 data.
+    /// Decoding treats as UTF-16LE string.
+    /// </summary>
     CountedUtf16String = 22,
+    /// <summary>
+    /// Core type.
+    /// Encoding assumes 16-bit bytecount followed by Char8 data.
+    /// Decoding treats as MBCS string.
+    /// </summary>
     CountedMbcsString = 23,
+    /// <summary>
+    /// Core type.
+    /// Special case: Struct indicates that this field plus the the
+    /// subsequent N logical fields are to be considered as one logical
+    /// field (i.e. a nested structure). The OutType is used to encode N.
+    /// The maximum value for N is 127. This field has no payload by
+    /// itself, but logically contains the payload of the following N
+    /// fields. It is legal to have an array of Struct.
+    /// </summary>
     Struct = 24,
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 16-bit value.
+    /// Decoding treats as UTF-16LE character.
+    /// </summary>
     Char16 = UInt16 + (/*MemberExpression:Type*/EventFieldFormat.String << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 8-bit value.
+    /// Decoding treats as character.
+    /// </summary>
     Char8 = UInt8 + (/*MemberExpression:Type*/EventFieldFormat.String << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 8-bit value.
+    /// Decoding treats as Boolean.
+    /// </summary>
     Boolean8 = UInt8 + (/*MemberExpression:Type*/EventFieldFormat.Boolean << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 8-bit value.
+    /// Decoding treats as hexadecimal unsigned integer.
+    /// </summary>
     HexInt8 = UInt8 + (/*MemberExpression:Type*/EventFieldFormat.Hexadecimal << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 16-bit value.
+    /// Decoding treats as hexadecimal unsigned integer.
+    /// </summary>
     HexInt16 = UInt16 + (/*MemberExpression:Type*/EventFieldFormat.Hexadecimal << 8),
+    // #if false 
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 32-bit value.
+    /// Decoding treats as process identifier.
+    /// </summary>
+    // ProcessId = UInt32 + (EventSourceFieldFormat.ProcessId << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 32-bit value.
+    /// Decoding treats as thread identifier.
+    /// </summary>
+    // ThreadId = UInt32 + (EventSourceFieldFormat.ThreadId << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 16-bit value.
+    /// Decoding treats as IP port.
+    /// </summary>
+    // Port = UInt16 + (EventSourceFieldFormat.Port << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 32-bit value.
+    /// Decoding treats as IPv4 address.
+    /// </summary>
+    // Ipv4Address = UInt32 + (EventSourceFieldFormat.Ipv4Address << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 16-bit bytecount followed by binary data.
+    /// Decoding treats as IPv6 address.
+    /// </summary>
+    // Ipv6Address = Binary + (EventSourceFieldFormat.Ipv6Address << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 16-bit bytecount followed by binary data.
+    /// Decoding treats as SOCKADDR.
+    /// </summary>
+    // SocketAddress = Binary + (EventSourceFieldFormat.SocketAddress << 8),
+    // #endif
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes null-terminated Char16 string.
+    /// Decoding treats as UTF-16LE XML string.
+    /// </summary>
     Utf16Xml = Utf16String + (/*MemberExpression:Type*/EventFieldFormat.Xml << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes null-terminated Char8 string.
+    /// Decoding treats as MBCS XML string.
+    /// </summary>
     MbcsXml = MbcsString + (/*MemberExpression:Type*/EventFieldFormat.Xml << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 16-bit bytecount followed by Char16 data.
+    /// Decoding treats as UTF-16LE XML.
+    /// </summary>
     CountedUtf16Xml = CountedUtf16String + (/*MemberExpression:Type*/EventFieldFormat.Xml << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 16-bit bytecount followed by Char8 data.
+    /// Decoding treats as MBCS XML.
+    /// </summary>
     CountedMbcsXml = CountedMbcsString + (/*MemberExpression:Type*/EventFieldFormat.Xml << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes null-terminated Char16 string.
+    /// Decoding treats as UTF-16LE JSON string.
+    /// </summary>
     Utf16Json = Utf16String + (/*MemberExpression:Type*/EventFieldFormat.Json << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes null-terminated Char8 string.
+    /// Decoding treats as MBCS JSON string.
+    /// </summary>
     MbcsJson = MbcsString + (/*MemberExpression:Type*/EventFieldFormat.Json << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 16-bit bytecount followed by Char16 data.
+    /// Decoding treats as UTF-16LE JSON.
+    /// </summary>
     CountedUtf16Json = CountedUtf16String + (/*MemberExpression:Type*/EventFieldFormat.Json << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 16-bit bytecount followed by Char8 data.
+    /// Decoding treats as MBCS JSON.
+    /// </summary>
     CountedMbcsJson = CountedMbcsString + (/*MemberExpression:Type*/EventFieldFormat.Json << 8),
+    // #if false 
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 32-bit value.
+    /// Decoding treats as Win32 error.
+    /// </summary>
+    // Win32Error = UInt32 + (EventSourceFieldFormat.Win32Error << 8),
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 32-bit value.
+    /// Decoding treats as NTSTATUS.
+    /// </summary>
+    // NTStatus = UInt32 + (EventSourceFieldFormat.NTStatus << 8),
+    // #endif
+    /// <summary>
+    /// Formatted type.
+    /// Encoding assumes 32-bit value.
+    /// Decoding treats as HRESULT.
+    /// </summary>
     HResult = Int32 + (/*MemberExpression:Type*/EventFieldFormat.HResult << 8),
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\TraceLoggingEventSource.cs'
 //
+// partial class 'EventSource' moved
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\TraceLoggingEventTraits.cs'
 //
-// Ignored: /// <summary>
-// Ignored: /// Tags are flags that are not interpreted by EventSource but are passed along
-// Ignored: /// to the EventListener. The EventListener determines the semantics of the flags.
-// Ignored: /// </summary>
-// Ignored: [Flags]
+/// <summary>
+/// Tags are flags that are not interpreted by EventSource but are passed along
+/// to the EventListener. The EventListener determines the semantics of the flags.
+/// </summary>
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum EventTags
 {
+    /// <summary>
+    /// No special traits are added to the event.
+    /// </summary>
     None = 0,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\TraceLoggingEventTypes.cs'
 //
-public class TraceLoggingEventTypes : DotNetObject
+public class TraceLoggingEventTypes : __DotNet__Object
 {
     public immutable TraceLoggingTypeInfo[] typeInfos;
     public immutable String name;
@@ -1620,7 +2037,7 @@ public class TraceLoggingEventTypes : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\TraceLoggingMetadataCollector.cs'
 //
-public class TraceLoggingMetadataCollector : DotNetObject
+public class TraceLoggingMetadataCollector : __DotNet__Object
 {
     private immutable Impl impl;
     private immutable FieldMetadata currentGroup;
@@ -1641,7 +2058,7 @@ public class TraceLoggingMetadataCollector : DotNetObject
     //TODO: generate method AddCustom
     //TODO: generate method GetMetadata
     //TODO: generate method AddField
-    private static class Impl : DotNetObject
+    private static class Impl : __DotNet__Object
     {
         public immutable List1!(FieldMetadata) fields/*todo: implement initializer*/ = null;
         public short scratchSize;
@@ -1660,7 +2077,7 @@ public class TraceLoggingMetadataCollector : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\TraceLoggingTypeInfo.cs'
 //
-public abstract class TraceLoggingTypeInfo : DotNetObject
+public abstract class TraceLoggingTypeInfo : __DotNet__Object
 {
     private immutable String name;
     private immutable EventKeywords keywords;
@@ -1668,7 +2085,7 @@ public abstract class TraceLoggingTypeInfo : DotNetObject
     private immutable EventOpcode opcode/*todo: implement initializer*/ = (cast(EventOpcode)0);
     private immutable EventTags tags;
     private immutable Type dataType;
-    private immutable Func2!(DotNetObject,PropertyValue) propertyValueFactory;
+    private immutable Func2!(__DotNet__Object,PropertyValue) propertyValueFactory;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'Name'
@@ -1681,7 +2098,7 @@ public abstract class TraceLoggingTypeInfo : DotNetObject
     //TODO: generate method WriteMetadata
     //TODO: generate method WriteData
     //TODO: generate method GetData
-    // Ignored: [ThreadStatic] // per-thread cache to avoid synchronization
+    @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static Dictionary2!(Type,TraceLoggingTypeInfo) threadCache;
     //TODO: generate method GetInstance
 }
@@ -1689,7 +2106,7 @@ public abstract class TraceLoggingTypeInfo : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\TypeAnalysis.cs'
 //
-public final class TypeAnalysis : DotNetObject
+public final class TypeAnalysis : __DotNet__Object
 {
     public immutable PropertyAnalysis[] properties;
     public immutable String name;
@@ -1705,70 +2122,163 @@ public final class TypeAnalysis : DotNetObject
 //
 public enum EventLevel
 {
+    /// <summary>
+    /// Log always
+    /// </summary>
     LogAlways = 0,
+    /// <summary>
+    /// Only critical errors
+    /// </summary>
     Critical,
+    /// <summary>
+    /// All errors, including previous levels
+    /// </summary>
     Error,
+    /// <summary>
+    /// All warnings, including previous levels
+    /// </summary>
     Warning,
+    /// <summary>
+    /// All informational events, including previous levels
+    /// </summary>
     Informational,
+    /// <summary>
+    /// All events, including previous levels 
+    /// </summary>
     Verbose,
 }
-// Ignored: /// <summary>
-// Ignored: /// WindowsEventTask. Custom values must be in the range from 1 through 65534
-// Ignored: /// </summary>
-// Ignored: #if (!ES_BUILD_STANDALONE && !PROJECTN)
-// Ignored: [System.Runtime.CompilerServices.FriendAccessAllowed]
+/// <summary>
+/// WindowsEventTask. Custom values must be in the range from 1 through 65534
+/// </summary>
+// #if (!ES_BUILD_STANDALONE && !PROJECTN)
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
 public enum EventTask
 {
+    /// <summary>
+    /// Undefined task
+    /// </summary>
     None = 0,
 }
-// Ignored: /// <summary>
-// Ignored: /// EventOpcode. Custom values must be in the range from 11 through 239
-// Ignored: /// </summary>
-// Ignored: #if (!ES_BUILD_STANDALONE && !PROJECTN)
-// Ignored: [System.Runtime.CompilerServices.FriendAccessAllowed]
+/// <summary>
+/// EventOpcode. Custom values must be in the range from 11 through 239
+/// </summary>
+// #if (!ES_BUILD_STANDALONE && !PROJECTN)
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
 public enum EventOpcode
 {
+    /// <summary>
+    /// An informational event
+    /// </summary>
     Info = 0,
+    /// <summary>
+    /// An activity start event
+    /// </summary>
     Start,
+    /// <summary>
+    /// An activity end event 
+    /// </summary>
     Stop,
+    /// <summary>
+    /// A trace collection start event
+    /// </summary>
     DataCollectionStart,
+    /// <summary>
+    /// A trace collection end event
+    /// </summary>
     DataCollectionStop,
+    /// <summary>
+    /// An extensional event
+    /// </summary>
     Extension,
+    /// <summary>
+    /// A reply event
+    /// </summary>
     Reply,
+    /// <summary>
+    /// An event representing the activity resuming from the suspension
+    /// </summary>
     Resume,
+    /// <summary>
+    /// An event representing the activity is suspended, pending another activity's completion
+    /// </summary>
     Suspend,
+    /// <summary>
+    /// An event representing the activity is transferred to another component, and can continue to work
+    /// </summary>
     Send,
+    /// <summary>
+    /// An event representing receiving an activity transfer from another component 
+    /// </summary>
     Receive = 240,
 }
-// Ignored: // Added for CLR V4
-// Ignored: /// <summary>
-// Ignored: /// EventChannel. Custom values must be in the range from 16 through 255. Currently only predefined values allowed.
-// Ignored: /// </summary>
-// Ignored: [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1028:EnumStorageShouldBeInt32", Justification = "Backwards compatibility")]
-// Ignored: #if (!ES_BUILD_STANDALONE && !PROJECTN)
-// Ignored: [System.Runtime.CompilerServices.FriendAccessAllowed]
+// Added for CLR V4
+/// <summary>
+/// EventChannel. Custom values must be in the range from 16 through 255. Currently only predefined values allowed.
+/// </summary>
+@__DotNet__Attribute!(SuppressMessageAttribute.stringof/*, "Microsoft.Design", "CA1028:EnumStorageShouldBeInt32", Justification = "Backwards compatibility"*/)
+// #if (!ES_BUILD_STANDALONE && !PROJECTN)
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
 public enum EventChannel : ubyte
 {
+    /// <summary>
+    /// No channel
+    /// </summary>
     None = 0,
+    // Channels 1 - 15 are reserved...
+    /// <summary>The admin channel</summary>
     Admin = 16,
+    /// <summary>The operational channel</summary>
     Operational = 17,
+    /// <summary>The analytic channel</summary>
     Analytic = 18,
+    /// <summary>The debug channel</summary>
     Debug = 19,
 }
-// Ignored: /// <summary>
-// Ignored: /// EventOpcode
-// Ignored: /// </summary>
-// Ignored: [Flags]
+/// <summary>
+/// EventOpcode
+/// </summary>
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum EventKeywords : long
 {
+    /// <summary>
+    /// No events. 
+    /// </summary>
     None = 0x0,
+    /// <summary>
+    /// All Events 
+    /// </summary>
     All = ~0,
+    /// <summary>
+    /// Telemetry events
+    /// </summary>
     MicrosoftTelemetry = 0x02000000000000,
+    /// <summary>
+    /// WDI context events
+    /// </summary>
     WdiContext = 0x02000000000000,
+    /// <summary>
+    /// WDI diagnostic events
+    /// </summary>
     WdiDiagnostic = 0x04000000000000,
+    /// <summary>
+    /// SQM events
+    /// </summary>
     Sqm = 0x08000000000000,
+    /// <summary>
+    /// Failed security audits
+    /// </summary>
     AuditFailure = 0x10000000000000,
+    /// <summary>
+    /// Successful security audits
+    /// </summary>
     AuditSuccess = 0x20000000000000,
+    /// <summary>
+    /// Transfer events where the related Activity ID is a computed value and not a GUID
+    /// N.B. The correct value for this field is 0x40000000000000.
+    /// </summary>
     CorrelationHint = 0x10000000000000,
+    /// <summary>
+    /// Events raised using classic eventlog API
+    /// </summary>
     EventLogClassic = 0x80000000000000,
 }

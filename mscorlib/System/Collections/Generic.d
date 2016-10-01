@@ -1,13 +1,19 @@
 module mscorlib.System.Collections.Generic;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Object,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    SerializableAttribute,
     Nullable1,
     Comparison1,
     String,
     IWellKnownStringEqualityComparer,
     IDisposable,
-    SystemException;
+    SystemException,
+    NonSerializedAttribute;
+import mscorlib.System.Runtime.CompilerServices :
+    TypeDependencyAttribute;
 import mscorlib.System.Collections :
     IComparer,
     IDictionary,
@@ -22,6 +28,13 @@ import mscorlib.System.Runtime.Serialization :
     IDeserializationCallback;
 import mscorlib.System.Collections.ObjectModel :
     KeyedCollection2;
+import mscorlib.System.Diagnostics :
+    DebuggerTypeProxyAttribute,
+    DebuggerDisplayAttribute;
+import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute;
+import mscorlib.System.Diagnostics.Contracts :
+    ContractPublicPropertyNameAttribute;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\ArraySortHelper.cs'
@@ -31,7 +44,7 @@ public interface IArraySortHelper1(TKey)
     //TODO: generate method Sort
     //TODO: generate method BinarySearch
 }
-public class IntrospectiveSortUtilities : DotNetObject
+public class IntrospectiveSortUtilities : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum int IntrosortSizeThreshold/*todo: implement initializer*/ = int();
@@ -39,10 +52,10 @@ public class IntrospectiveSortUtilities : DotNetObject
     //TODO: generate method FloorLog2
     //TODO: generate method ThrowOrIgnoreBadComparer
 }
-//[TypeDependencyAttribute("System.Collections.Generic.GenericArraySortHelper`1")]
-public class ArraySortHelper1(T) : DotNetObject, IArraySortHelper1!(T)
+@__DotNet__Attribute!(TypeDependencyAttribute.stringof/*, "System.Collections.Generic.GenericArraySortHelper`1"*/)
+public class ArraySortHelper1(T) : __DotNet__Object, IArraySortHelper1!(T)
 {
-    private static /*todo: volatile*/IArraySortHelper1!(T) defaultArraySortHelper;
+    private static /*todo: volatile*/ IArraySortHelper1!(T) defaultArraySortHelper;
     //TODO: generate property 'Default'
     //TODO: generate method CreateArraySortHelper
     //TODO: generate method Sort
@@ -58,8 +71,8 @@ public class ArraySortHelper1(T) : DotNetObject, IArraySortHelper1!(T)
     //TODO: generate method DownHeap
     //TODO: generate method InsertionSort
 }
-//[Serializable()]
-public class GenericArraySortHelper1(T) : DotNetObject, IArraySortHelper1!(T)/*where T : IComparable<T>*/
+@__DotNet__Attribute!(SerializableAttribute.stringof/**/)
+public class GenericArraySortHelper1(T) : __DotNet__Object, IArraySortHelper1!(T)/*where T : IComparable<T>*/
 {
     //TODO: generate method Sort
     //TODO: generate method BinarySearch
@@ -78,10 +91,10 @@ public interface IArraySortHelper2(TKey,TValue)
 {
     //TODO: generate method Sort
 }
-//[TypeDependencyAttribute("System.Collections.Generic.GenericArraySortHelper`2")]
-public class ArraySortHelper2(TKey,TValue) : DotNetObject, IArraySortHelper2!(TKey,TValue)
+@__DotNet__Attribute!(TypeDependencyAttribute.stringof/*, "System.Collections.Generic.GenericArraySortHelper`2"*/)
+public class ArraySortHelper2(TKey,TValue) : __DotNet__Object, IArraySortHelper2!(TKey,TValue)
 {
-    private static /*todo: volatile*/IArraySortHelper2!(TKey,TValue) defaultArraySortHelper;
+    private static /*todo: volatile*/ IArraySortHelper2!(TKey,TValue) defaultArraySortHelper;
     //TODO: generate property 'Default'
     //TODO: generate method CreateArraySortHelper
     //TODO: generate method Sort
@@ -95,7 +108,7 @@ public class ArraySortHelper2(TKey,TValue) : DotNetObject, IArraySortHelper2!(TK
     //TODO: generate method DownHeap
     //TODO: generate method InsertionSort
 }
-public class GenericArraySortHelper2(TKey,TValue) : DotNetObject, IArraySortHelper2!(TKey,TValue)/*where TKey : IComparable<TKey>*/
+public class GenericArraySortHelper2(TKey,TValue) : __DotNet__Object, IArraySortHelper2!(TKey,TValue)/*where TKey : IComparable<TKey>*/
 {
     //TODO: generate method Sort
     //TODO: generate method SwapIfGreaterWithItems
@@ -112,9 +125,9 @@ public class GenericArraySortHelper2(TKey,TValue) : DotNetObject, IArraySortHelp
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\Comparer.cs'
 //
-//[Serializable]
-//[TypeDependencyAttribute("System.Collections.Generic.ObjectComparer`1")]
-public abstract class Comparer1(T) : DotNetObject, IComparer, IComparer1!(T)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(TypeDependencyAttribute.stringof/*, "System.Collections.Generic.ObjectComparer`1"*/)
+public abstract class Comparer1(T) : __DotNet__Object, IComparer, IComparer1!(T)
 {
     private static immutable Comparer1!(T) defaultComparer/*todo: implement initializer*/ = null;
     //TODO: generate property 'Default'
@@ -123,47 +136,45 @@ public abstract class Comparer1(T) : DotNetObject, IComparer, IComparer1!(T)
     //TODO: generate method Compare
     //TODO: generate method Compare
 }
-//// Note: although there is a lot of shared code in the following
-//    // comparers, we do not incorporate it into a base class for perf
-//    // reasons. Adding another base class (even one with no fields)
-//    // means another generic instantiation, which can be costly esp.
-//    // for value types.
-//    
-//    [Serializable]
+// Note: although there is a lot of shared code in the following
+// comparers, we do not incorporate it into a base class for perf
+// reasons. Adding another base class (even one with no fields)
+// means another generic instantiation, which can be costly esp.
+// for value types.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class GenericComparer1(T) : Comparer1!(T)/*where T : IComparable<T>*/
 {
     //TODO: generate method Compare
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class NullableComparer1(T) : Comparer1!(Nullable1!(T))/*where T : struct, IComparable<T>*/
 {
     //TODO: generate method Compare
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class ObjectComparer1(T) : Comparer1!(T)
 {
     //TODO: generate method Compare
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class ComparisonComparer1(T) : Comparer1!(T)
 {
     private immutable Comparison1!(T) _comparison;
     //TODO: generate constructor
     //TODO: generate method Compare
 }
-//// Enum comparers (specialized to avoid boxing)
-//    // NOTE: Each of these needs to implement ISerializable
-//    // and have a SerializationInfo/StreamingContext ctor,
-//    // since we want to serialize as ObjectComparer for
-//    // back-compat reasons (see below).
-//
-//    [Serializable]
+// Enum comparers (specialized to avoid boxing)
+// NOTE: Each of these needs to implement ISerializable
+// and have a SerializationInfo/StreamingContext ctor,
+// since we want to serialize as ObjectComparer for
+// back-compat reasons (see below).
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class Int32EnumComparer1(T) : Comparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate constructor
@@ -173,7 +184,7 @@ public final class Int32EnumComparer1(T) : Comparer1!(T), ISerializable/*where T
     //TODO: generate method GetHashCode
     //TODO: generate method GetObjectData
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class UInt32EnumComparer1(T) : Comparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate constructor
@@ -183,7 +194,7 @@ public final class UInt32EnumComparer1(T) : Comparer1!(T), ISerializable/*where 
     //TODO: generate method GetHashCode
     //TODO: generate method GetObjectData
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class Int64EnumComparer1(T) : Comparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate constructor
@@ -193,7 +204,7 @@ public final class Int64EnumComparer1(T) : Comparer1!(T), ISerializable/*where T
     //TODO: generate method GetHashCode
     //TODO: generate method GetObjectData
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class UInt64EnumComparer1(T) : Comparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate constructor
@@ -207,31 +218,31 @@ public final class UInt64EnumComparer1(T) : Comparer1!(T), ISerializable/*where 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\DebugView.cs'
 //
-public final class Mscorlib_CollectionDebugView1(T) : DotNetObject
+public final class Mscorlib_CollectionDebugView1(T) : __DotNet__Object
 {
     private ICollection1!(T) collection;
     //TODO: generate constructor
     //TODO: generate property 'Items'
 }
-public final class Mscorlib_DictionaryKeyCollectionDebugView2(TKey,TValue) : DotNetObject
+public final class Mscorlib_DictionaryKeyCollectionDebugView2(TKey,TValue) : __DotNet__Object
 {
     private ICollection1!(TKey) collection;
     //TODO: generate constructor
     //TODO: generate property 'Items'
 }
-public final class Mscorlib_DictionaryValueCollectionDebugView2(TKey,TValue) : DotNetObject
+public final class Mscorlib_DictionaryValueCollectionDebugView2(TKey,TValue) : __DotNet__Object
 {
     private ICollection1!(TValue) collection;
     //TODO: generate constructor
     //TODO: generate property 'Items'
 }
-public final class Mscorlib_DictionaryDebugView2(K,V) : DotNetObject
+public final class Mscorlib_DictionaryDebugView2(K,V) : __DotNet__Object
 {
     private IDictionary2!(K,V) dict;
     //TODO: generate constructor
     //TODO: generate property 'Items'
 }
-public final class Mscorlib_KeyedCollectionDebugView2(K,T) : DotNetObject
+public final class Mscorlib_KeyedCollectionDebugView2(K,T) : __DotNet__Object
 {
     private KeyedCollection2!(K,T) kc;
     //TODO: generate constructor
@@ -241,11 +252,11 @@ public final class Mscorlib_KeyedCollectionDebugView2(K,T) : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\Dictionary.cs'
 //
-//[DebuggerTypeProxy(typeof(Mscorlib_DictionaryDebugView<,>))]
-//[DebuggerDisplay("Count = {Count}")]
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(false)]
-public class Dictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey,TValue), IDictionary, IReadOnlyDictionary2!(TKey,TValue), ISerializable, IDeserializationCallback
+@__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(Mscorlib_DictionaryDebugView<,>)*/)
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
+public class Dictionary2(TKey,TValue) : __DotNet__Object, IDictionary2!(TKey,TValue), IDictionary, IReadOnlyDictionary2!(TKey,TValue), ISerializable, IDeserializationCallback
 {
     private static struct Entry
     {
@@ -263,7 +274,7 @@ public class Dictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey,TValue)
     private IEqualityComparer1!(TKey) comparer;
     private KeyCollection keys;
     private ValueCollection values;
-    private DotNetObject _syncRoot;
+    private __DotNet__Object _syncRoot;
     private enum String VersionName/*todo: implement initializer*/ = null;
     private enum String HashSizeName/*todo: implement initializer*/ = null;
     private enum String KeyValuePairsName/*todo: implement initializer*/ = null;
@@ -320,7 +331,7 @@ public class Dictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey,TValue)
     //TODO: generate method Contains
     //TODO: generate method GetEnumerator
     //TODO: generate method Remove
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static struct Enumerator
     {
         private Dictionary2!(TKey,TValue) dictionary;
@@ -340,15 +351,15 @@ public class Dictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey,TValue)
         //TODO: generate property 'Key'
         //TODO: generate property 'Value'
     }
-    public static class __Boxed__Enumerator : DotNetObject, IEnumerator1!(KeyValuePair2!(TKey,TValue)), IDictionaryEnumerator
+    public static class __Boxed__Enumerator : __DotNet__Object, IEnumerator1!(KeyValuePair2!(TKey,TValue)), IDictionaryEnumerator
     {
         Enumerator value;
         alias value this;
     }
-    //[DebuggerTypeProxy(typeof(Mscorlib_DictionaryKeyCollectionDebugView<,>))]
-    //[DebuggerDisplay("Count = {Count}")]
-    //[Serializable]
-    public static final class KeyCollection : DotNetObject, ICollection1!(TKey), ICollection, IReadOnlyCollection1!(TKey)
+    @__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(Mscorlib_DictionaryKeyCollectionDebugView<,>)*/)
+    @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
+    public static final class KeyCollection : __DotNet__Object, ICollection1!(TKey), ICollection, IReadOnlyCollection1!(TKey)
     {
         private Dictionary2!(TKey,TValue) dictionary;
         //TODO: generate constructor
@@ -365,7 +376,7 @@ public class Dictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey,TValue)
         //TODO: generate method CopyTo
         //TODO: generate property 'IsSynchronized'
         //TODO: generate property 'SyncRoot'
-        //[Serializable]
+        @__DotNet__Attribute!(SerializableAttribute.stringof)
         public static struct Enumerator
         {
             private Dictionary2!(TKey,TValue) dictionary;
@@ -379,16 +390,16 @@ public class Dictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey,TValue)
             //TODO: generate property 'Current'
             //TODO: generate method Reset
         }
-        public static class __Boxed__Enumerator : DotNetObject, IEnumerator1!(TKey), IEnumerator
+        public static class __Boxed__Enumerator : __DotNet__Object, IEnumerator1!(TKey), IEnumerator
         {
             Enumerator value;
             alias value this;
         }
     }
-    //[DebuggerTypeProxy(typeof(Mscorlib_DictionaryValueCollectionDebugView<,>))]
-    //[DebuggerDisplay("Count = {Count}")]
-    //[Serializable]
-    public static final class ValueCollection : DotNetObject, ICollection1!(TValue), ICollection, IReadOnlyCollection1!(TValue)
+    @__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(Mscorlib_DictionaryValueCollectionDebugView<,>)*/)
+    @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
+    public static final class ValueCollection : __DotNet__Object, ICollection1!(TValue), ICollection, IReadOnlyCollection1!(TValue)
     {
         private Dictionary2!(TKey,TValue) dictionary;
         //TODO: generate constructor
@@ -405,7 +416,7 @@ public class Dictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey,TValue)
         //TODO: generate method CopyTo
         //TODO: generate property 'IsSynchronized'
         //TODO: generate property 'SyncRoot'
-        //[Serializable]
+        @__DotNet__Attribute!(SerializableAttribute.stringof)
         public static struct Enumerator
         {
             private Dictionary2!(TKey,TValue) dictionary;
@@ -419,7 +430,7 @@ public class Dictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey,TValue)
             //TODO: generate property 'Current'
             //TODO: generate method Reset
         }
-        public static class __Boxed__Enumerator : DotNetObject, IEnumerator1!(TValue), IEnumerator
+        public static class __Boxed__Enumerator : __DotNet__Object, IEnumerator1!(TValue), IEnumerator
         {
             Enumerator value;
             alias value this;
@@ -430,9 +441,9 @@ public class Dictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey,TValue)
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\EqualityComparer.cs'
 //
-//[Serializable]
-//[TypeDependencyAttribute("System.Collections.Generic.ObjectEqualityComparer`1")]
-public abstract class EqualityComparer1(T) : DotNetObject, IEqualityComparer, IEqualityComparer1!(T)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(TypeDependencyAttribute.stringof/*, "System.Collections.Generic.ObjectEqualityComparer`1"*/)
+public abstract class EqualityComparer1(T) : __DotNet__Object, IEqualityComparer, IEqualityComparer1!(T)
 {
     private static immutable EqualityComparer1!(T) defaultComparer/*todo: implement initializer*/ = null;
     //TODO: generate property 'Default'
@@ -444,9 +455,9 @@ public abstract class EqualityComparer1(T) : DotNetObject, IEqualityComparer, IE
     //TODO: generate method GetHashCode
     //TODO: generate method Equals
 }
-//// The methods in this class look identical to the inherited methods, but the calls
-//    // to Equal bind to IEquatable<T>.Equals(T) instead of Object.Equals(Object)
-//    [Serializable]
+// The methods in this class look identical to the inherited methods, but the calls
+// to Equal bind to IEquatable<T>.Equals(T) instead of Object.Equals(Object)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class GenericEqualityComparer1(T) : EqualityComparer1!(T)/*where T: IEquatable<T>*/
 {
     //TODO: generate method Equals
@@ -456,7 +467,7 @@ public class GenericEqualityComparer1(T) : EqualityComparer1!(T)/*where T: IEqua
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class NullableEqualityComparer1(T) : EqualityComparer1!(Nullable1!(T))/*where T : struct, IEquatable<T>*/
 {
     //TODO: generate method Equals
@@ -466,7 +477,7 @@ public class NullableEqualityComparer1(T) : EqualityComparer1!(Nullable1!(T))/*w
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class ObjectEqualityComparer1(T) : EqualityComparer1!(T)
 {
     //TODO: generate method Equals
@@ -482,11 +493,10 @@ public class NonRandomizedStringEqualityComparer : GenericEqualityComparer1!(Str
     //TODO: generate property 'Default'
     //TODO: generate method GetHashCode
 }
-//#endif // FEATURE_CORECLR
-//
-//    // Performance of IndexOf on byte array is very important for some scenarios.
-//    // We will call the C runtime function memchr, which is optimized.
-//    [Serializable]
+// #endif // FEATURE_CORECLR
+// Performance of IndexOf on byte array is very important for some scenarios.
+// We will call the C runtime function memchr, which is optimized.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class ByteEqualityComparer : EqualityComparer1!(ubyte)
 {
     //TODO: generate method Equals
@@ -496,7 +506,7 @@ public class ByteEqualityComparer : EqualityComparer1!(ubyte)
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class EnumEqualityComparer1(T) : EqualityComparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate method Equals
@@ -507,21 +517,21 @@ public class EnumEqualityComparer1(T) : EqualityComparer1!(T), ISerializable/*wh
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class SByteEnumEqualityComparer1(T) : EnumEqualityComparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate method GetHashCode
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class ShortEnumEqualityComparer1(T) : EnumEqualityComparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate method GetHashCode
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class LongEnumEqualityComparer1(T) : EqualityComparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate method Equals
@@ -532,7 +542,7 @@ public final class LongEnumEqualityComparer1(T) : EqualityComparer1!(T), ISerial
     //TODO: generate constructor
     //TODO: generate method GetObjectData
 }
-public final class RandomizedStringEqualityComparer : DotNetObject, IEqualityComparer1!(String), IEqualityComparer, IWellKnownStringEqualityComparer
+public final class RandomizedStringEqualityComparer : __DotNet__Object, IEqualityComparer1!(String), IEqualityComparer, IWellKnownStringEqualityComparer
 {
     private long _entropy;
     //TODO: generate constructor
@@ -545,7 +555,7 @@ public final class RandomizedStringEqualityComparer : DotNetObject, IEqualityCom
     //TODO: generate method GetRandomizedEqualityComparer
     //TODO: generate method GetEqualityComparerForSerialization
 }
-public final class RandomizedObjectEqualityComparer : DotNetObject, IEqualityComparer, IWellKnownStringEqualityComparer
+public final class RandomizedObjectEqualityComparer : __DotNet__Object, IEqualityComparer, IWellKnownStringEqualityComparer
 {
     private long _entropy;
     //TODO: generate constructor
@@ -560,15 +570,14 @@ public final class RandomizedObjectEqualityComparer : DotNetObject, IEqualityCom
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\ICollection.cs'
 //
-//// Base interface for all collections, defining enumerators, size, and 
-//    // synchronization methods.
-//
-//    // Note that T[] : IList<T>, and we want to ensure that if you use
-//    // IList<YourValueType>, we ensure a YourValueType[] can be used 
-//    // without jitting.  Hence the TypeDependencyAttribute on SZArrayHelper.
-//    // This is a special workaround internally though - see VM\compile.cpp.
-//    // The same attribute is on IEnumerable<T> and ICollection<T>.
-//    [TypeDependencyAttribute("System.SZArrayHelper")]
+// Base interface for all collections, defining enumerators, size, and 
+// synchronization methods.
+// Note that T[] : IList<T>, and we want to ensure that if you use
+// IList<YourValueType>, we ensure a YourValueType[] can be used 
+// without jitting.  Hence the TypeDependencyAttribute on SZArrayHelper.
+// This is a special workaround internally though - see VM\compile.cpp.
+// The same attribute is on IEnumerable<T> and ICollection<T>.
+@__DotNet__Attribute!(TypeDependencyAttribute.stringof/*, "System.SZArrayHelper"*/)
 public interface ICollection1(T) : IEnumerable1!(T)
 {
     //TODO: generate property 'Count'
@@ -605,14 +614,13 @@ public interface IDictionary2(TKey,TValue) : ICollection1!(KeyValuePair2!(TKey,T
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\IEnumerable.cs'
 //
-//// Implement this interface if you need to support foreach semantics.
-//
-//    // Note that T[] : IList<T>, and we want to ensure that if you use
-//    // IList<YourValueType>, we ensure a YourValueType[] can be used 
-//    // without jitting.  Hence the TypeDependencyAttribute on SZArrayHelper.
-//    // This is a special workaround internally though - see VM\compile.cpp.
-//    // The same attribute is on IList<T> and ICollection<T>.
-//    [TypeDependencyAttribute("System.SZArrayHelper")]
+// Implement this interface if you need to support foreach semantics.
+// Note that T[] : IList<T>, and we want to ensure that if you use
+// IList<YourValueType>, we ensure a YourValueType[] can be used 
+// without jitting.  Hence the TypeDependencyAttribute on SZArrayHelper.
+// This is a special workaround internally though - see VM\compile.cpp.
+// The same attribute is on IList<T> and ICollection<T>.
+@__DotNet__Attribute!(TypeDependencyAttribute.stringof/*, "System.SZArrayHelper"*/)
 public interface IEnumerable1(T) : IEnumerable
 {
     //TODO: generate method GetEnumerator
@@ -638,16 +646,15 @@ public interface IEqualityComparer1(T)
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\IList.cs'
 //
-//// An IList is an ordered collection of objects.  The exact ordering
-//    // is up to the implementation of the list, ranging from a sorted
-//    // order to insertion order.  
-//
-//    // Note that T[] : IList<T>, and we want to ensure that if you use
-//    // IList<YourValueType>, we ensure a YourValueType[] can be used 
-//    // without jitting.  Hence the TypeDependencyAttribute on SZArrayHelper.
-//    // This is a special workaround internally though - see VM\compile.cpp.
-//    // The same attribute is on IEnumerable<T> and ICollection<T>.
-//    [TypeDependencyAttribute("System.SZArrayHelper")]
+// An IList is an ordered collection of objects.  The exact ordering
+// is up to the implementation of the list, ranging from a sorted
+// order to insertion order.  
+// Note that T[] : IList<T>, and we want to ensure that if you use
+// IList<YourValueType>, we ensure a YourValueType[] can be used 
+// without jitting.  Hence the TypeDependencyAttribute on SZArrayHelper.
+// This is a special workaround internally though - see VM\compile.cpp.
+// The same attribute is on IEnumerable<T> and ICollection<T>.
+@__DotNet__Attribute!(TypeDependencyAttribute.stringof/*, "System.SZArrayHelper"*/)
 public interface IList1(T) : ICollection1!(T)
 {
     //TODO: generate indexer
@@ -659,14 +666,13 @@ public interface IList1(T) : ICollection1!(T)
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\IReadOnlyCollection.cs'
 //
-//// Provides a read-only, covariant view of a generic list.
-//
-//    // Note that T[] : IReadOnlyList<T>, and we want to ensure that if you use
-//    // IList<YourValueType>, we ensure a YourValueType[] can be used 
-//    // without jitting.  Hence the TypeDependencyAttribute on SZArrayHelper.
-//    // This is a special workaround internally though - see VM\compile.cpp.
-//    // The same attribute is on IList<T>, IEnumerable<T>, ICollection<T>, and IReadOnlyList<T>.
-//    [TypeDependencyAttribute("System.SZArrayHelper")]
+// Provides a read-only, covariant view of a generic list.
+// Note that T[] : IReadOnlyList<T>, and we want to ensure that if you use
+// IList<YourValueType>, we ensure a YourValueType[] can be used 
+// without jitting.  Hence the TypeDependencyAttribute on SZArrayHelper.
+// This is a special workaround internally though - see VM\compile.cpp.
+// The same attribute is on IList<T>, IEnumerable<T>, ICollection<T>, and IReadOnlyList<T>.
+@__DotNet__Attribute!(TypeDependencyAttribute.stringof/*, "System.SZArrayHelper"*/)
 public interface IReadOnlyCollection1(T) : IEnumerable1!(T)
 {
     //TODO: generate property 'Count'
@@ -687,14 +693,13 @@ public interface IReadOnlyDictionary2(TKey,TValue) : IReadOnlyCollection1!(KeyVa
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\IReadOnlyList.cs'
 //
-//// Provides a read-only, covariant view of a generic list.
-//
-//    // Note that T[] : IReadOnlyList<T>, and we want to ensure that if you use
-//    // IList<YourValueType>, we ensure a YourValueType[] can be used 
-//    // without jitting.  Hence the TypeDependencyAttribute on SZArrayHelper.
-//    // This is a special workaround internally though - see VM\compile.cpp.
-//    // The same attribute is on IList<T>, IEnumerable<T>, ICollection<T> and IReadOnlyCollection<T>.
-//    [TypeDependencyAttribute("System.SZArrayHelper")]
+// Provides a read-only, covariant view of a generic list.
+// Note that T[] : IReadOnlyList<T>, and we want to ensure that if you use
+// IList<YourValueType>, we ensure a YourValueType[] can be used 
+// without jitting.  Hence the TypeDependencyAttribute on SZArrayHelper.
+// This is a special workaround internally though - see VM\compile.cpp.
+// The same attribute is on IList<T>, IEnumerable<T>, ICollection<T> and IReadOnlyCollection<T>.
+@__DotNet__Attribute!(TypeDependencyAttribute.stringof/*, "System.SZArrayHelper"*/)
 public interface IReadOnlyList1(T) : IReadOnlyCollection1!(T)
 {
     //TODO: generate indexer
@@ -703,8 +708,8 @@ public interface IReadOnlyList1(T) : IReadOnlyCollection1!(T)
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\KeyNotFoundException.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class KeyNotFoundException : SystemException, ISerializable
 {
     //TODO: generate constructor
@@ -716,10 +721,10 @@ public class KeyNotFoundException : SystemException, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\KeyValuePair.cs'
 //
-//// A KeyValuePair holds a key and a value from a dictionary.
-//    // It is used by the IEnumerable<T> implementation for both IDictionary<TKey, TValue>
-//    // and IReadOnlyDictionary<TKey, TValue>.
-//    [Serializable]
+// A KeyValuePair holds a key and a value from a dictionary.
+// It is used by the IEnumerable<T> implementation for both IDictionary<TKey, TValue>
+// and IReadOnlyDictionary<TKey, TValue>.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public struct KeyValuePair2(TKey,TValue)
 {
     private TKey key;
@@ -733,24 +738,24 @@ public struct KeyValuePair2(TKey,TValue)
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\List.cs'
 //
-//// Implements a variable-size List that uses an array of objects to store the
-//    // elements. A List has a capacity, which is the allocated length
-//    // of the internal array. As elements are added to a List, the capacity
-//    // of the List is automatically increased as required by reallocating the
-//    // internal array.
-//    // 
-//    [DebuggerTypeProxy(typeof(Mscorlib_CollectionDebugView<>))]
-//[DebuggerDisplay("Count = {Count}")]
-//[Serializable]
-public class List1(T) : DotNetObject, IList1!(T), IList, IReadOnlyList1!(T)
+// Implements a variable-size List that uses an array of objects to store the
+// elements. A List has a capacity, which is the allocated length
+// of the internal array. As elements are added to a List, the capacity
+// of the List is automatically increased as required by reallocating the
+// internal array.
+// 
+@__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(Mscorlib_CollectionDebugView<>)*/)
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class List1(T) : __DotNet__Object, IList1!(T), IList, IReadOnlyList1!(T)
 {
     private enum int _defaultCapacity/*todo: implement initializer*/ = int();
     private T[] _items;
-    // Ignored: [ContractPublicPropertyName("Count")]
+    @__DotNet__Attribute!(ContractPublicPropertyNameAttribute.stringof/*, "Count"*/)
     private int _size;
     private int _version;
-    // Ignored: [NonSerialized]
-    private DotNetObject _syncRoot;
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
+    private __DotNet__Object _syncRoot;
     private static immutable T[] _emptyArray/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -820,7 +825,7 @@ public class List1(T) : DotNetObject, IList1!(T), IList, IReadOnlyList1!(T)
     //TODO: generate method ToArray
     //TODO: generate method TrimExcess
     //TODO: generate method TrueForAll
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static struct Enumerator
     {
         private List1!(T) list;
@@ -835,7 +840,7 @@ public class List1(T) : DotNetObject, IList1!(T), IList, IReadOnlyList1!(T)
         //TODO: generate property 'Current'
         //TODO: generate method Reset
     }
-    public static class __Boxed__Enumerator : DotNetObject, IEnumerator1!(T), IEnumerator
+    public static class __Boxed__Enumerator : __DotNet__Object, IEnumerator1!(T), IEnumerator
     {
         Enumerator value;
         alias value this;

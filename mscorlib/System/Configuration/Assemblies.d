@@ -1,20 +1,26 @@
 module mscorlib.System.Configuration.Assemblies;
 
 import mscorlib.System :
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    SerializableAttribute,
+    ObsoleteAttribute,
     ICloneable,
-    DotNetObject;
+    __DotNet__Object;
+import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Configuration\Assemblies\AssemblyHash.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Obsolete("The AssemblyHash class has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "The AssemblyHash class has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202"*/)
 public struct AssemblyHash
 {
     private AssemblyHashAlgorithm _Algorithm;
     private ubyte[] _Value;
-    // Ignored: [Obsolete("The AssemblyHash class has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
+    @__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "The AssemblyHash class has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202"*/)
     public static immutable AssemblyHash Empty/*todo: implement initializer*/ = AssemblyHash();
     //TODO: generate constructor
     //TODO: generate constructor
@@ -23,7 +29,7 @@ public struct AssemblyHash
     //TODO: generate method SetValue
     //TODO: generate method Clone
 }
-public class __Boxed__AssemblyHash : DotNetObject, ICloneable
+public class __Boxed__AssemblyHash : __DotNet__Object, ICloneable
 {
     AssemblyHash value;
     alias value this;
@@ -32,26 +38,23 @@ public class __Boxed__AssemblyHash : DotNetObject, ICloneable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Configuration\Assemblies\AssemblyHashAlgorithm.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum AssemblyHashAlgorithm
 {
     None = 0,
     MD5 = 0x8003,
     SHA1 = 0x8004,
-    // Ignored: [ComVisible(false)]
     SHA256 = 0x800c,
-    // Ignored: [ComVisible(false)]
     SHA384 = 0x800d,
-    // Ignored: [ComVisible(false)]
     SHA512 = 0x800e,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Configuration\Assemblies\AssemblyVersionCompatibility.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum AssemblyVersionCompatibility
 {
     SameMachine = 1,

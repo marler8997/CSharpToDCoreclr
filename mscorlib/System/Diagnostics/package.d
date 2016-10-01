@@ -1,25 +1,38 @@
 module mscorlib.System.Diagnostics;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Object,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    SerializableAttribute,
+    AttributeUsageAttribute,
     Attribute,
     String,
+    FlagsAttribute,
     Type,
     Void,
     IDisposable,
-    IntPtr;
+    NonSerializedAttribute,
+    IntPtr,
+    ThreadStaticAttribute;
+import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute;
+import mscorlib.System.Security.Permissions :
+    HostProtectionAttribute;
 import mscorlib.System.Collections :
     Hashtable;
 import mscorlib.System.Reflection :
     MethodBase,
     MethodInfo;
+import mscorlib.System.Runtime.Serialization :
+    OptionalFieldAttribute;
 import mscorlib.System.Threading :
     Thread;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Assert.cs'
 //
-public class Assert : DotNetObject
+public class Assert : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum int COR_E_FAILFAST/*todo: implement initializer*/ = int();
@@ -37,14 +50,13 @@ public class Assert : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\AssertFilter.cs'
 //
-//// A Filter is used to decide whether an assert failure 
-//   // should terminate the program (or invoke the debugger).  
-//   // Typically this is done by popping up a dialog & asking the user.
-//   // 
-//   // The default filter brings up a simple Win32 dialog with 3 buttons.
-//    
-//    [Serializable]
-public abstract class AssertFilter : DotNetObject
+// A Filter is used to decide whether an assert failure 
+// should terminate the program (or invoke the debugger).  
+// Typically this is done by popping up a dialog & asking the user.
+// 
+// The default filter brings up a simple Win32 dialog with 3 buttons.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public abstract class AssertFilter : __DotNet__Object
 {
     //TODO: generate method AssertFailure
 }
@@ -57,7 +69,7 @@ public class DefaultFilter : AssertFilter
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\AssertFilters.cs'
 //
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum AssertFilters
 {
     FailDebug = 0,
@@ -69,9 +81,9 @@ public enum AssertFilters
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\ConditionalAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple=true)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method | AttributeTargets.Class, AllowMultiple=true*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ConditionalAttribute : Attribute
 {
     //TODO: generate constructor
@@ -82,16 +94,16 @@ public final class ConditionalAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Debugger.cs'
 //
-//// No data, does not need to be marked with the serializable attribute
-//    [System.Runtime.InteropServices.ComVisible(true)]
-public final class Debugger : DotNetObject
+// No data, does not need to be marked with the serializable attribute
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class Debugger : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Break
     //TODO: generate method BreakCanThrow
     //TODO: generate method BreakInternal
     //TODO: generate method Launch
-    private static class CrossThreadDependencyNotification : DotNetObject, ICustomDebuggerNotification
+    private static class CrossThreadDependencyNotification : __DotNet__Object, ICustomDebuggerNotification
     {
         //TODO: generate constructor
     }
@@ -108,48 +120,48 @@ public final class Debugger : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\DebuggerAttributes.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Method | AttributeTargets.Constructor, Inherited = false)]
-//[ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Method | AttributeTargets.Constructor, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DebuggerStepThroughAttribute : Attribute
 {
     //TODO: generate constructor
 }
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor, Inherited = false)]
-//[ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method | AttributeTargets.Constructor, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DebuggerStepperBoundaryAttribute : Attribute
 {
     //TODO: generate constructor
 }
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Constructor, Inherited = false)]
-//[ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Constructor, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DebuggerHiddenAttribute : Attribute
 {
     //TODO: generate constructor
 }
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Constructor |AttributeTargets.Struct, Inherited = false)]
-//[ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Constructor |AttributeTargets.Struct, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DebuggerNonUserCodeAttribute : Attribute
 {
     //TODO: generate constructor
 }
-//// Attribute class used by the compiler to mark modules.  
-//    // If present, then debugging information for everything in the
-//    // assembly was generated by the compiler, and will be preserved
-//    // by the Runtime so that the debugger can provide full functionality
-//    // in the case of JIT attach. If not present, then the compiler may
-//    // or may not have included debugging information, and the Runtime
-//    // won't preserve the debugging info, which will make debugging after
-//    // a JIT attach difficult.
-//    [AttributeUsage(AttributeTargets.Assembly|AttributeTargets.Module, AllowMultiple = false)]
-//[ComVisible(true)]
+// Attribute class used by the compiler to mark modules.  
+// If present, then debugging information for everything in the
+// assembly was generated by the compiler, and will be preserved
+// by the Runtime so that the debugger can provide full functionality
+// in the case of JIT attach. If not present, then the compiler may
+// or may not have included debugging information, and the Runtime
+// won't preserve the debugging info, which will make debugging after
+// a JIT attach difficult.
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly|AttributeTargets.Module, AllowMultiple = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DebuggableAttribute : Attribute
 {
-    // Ignored: [Flags]
-    // Ignored: [ComVisible(true)]
+    @__DotNet__Attribute!(FlagsAttribute.stringof)
+    @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
     public enum DebuggingModes
     {
         None = 0x0,
@@ -165,35 +177,37 @@ public final class DebuggableAttribute : Attribute
     //TODO: generate property 'IsJITOptimizerDisabled'
     //TODO: generate property 'DebuggingFlags'
 }
-// Ignored: //  DebuggerBrowsableState states are defined as follows:
-// Ignored: //      Never       never show this element
-// Ignored: //      Expanded    expansion of the class is done, so that all visible internal members are shown
-// Ignored: //      Collapsed   expansion of the class is not performed. Internal visible members are hidden
-// Ignored: //      RootHidden  The target element itself should not be shown, but should instead be
-// Ignored: //                  automatically expanded to have its members displayed.
-// Ignored: //  Default value is collapsed
-// Ignored: //  Please also change the code which validates DebuggerBrowsableState variable (in this file)
-// Ignored: //  if you change this enum.
-// Ignored: [ComVisible(true)]
+//  DebuggerBrowsableState states are defined as follows:
+//      Never       never show this element
+//      Expanded    expansion of the class is done, so that all visible internal members are shown
+//      Collapsed   expansion of the class is not performed. Internal visible members are hidden
+//      RootHidden  The target element itself should not be shown, but should instead be 
+//                  automatically expanded to have its members displayed.
+//  Default value is collapsed
+//  Please also change the code which validates DebuggerBrowsableState variable (in this file)
+//  if you change this enum.
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum DebuggerBrowsableState
 {
     Never = 0,
+    //Expanded is not supported in this release
+    //Expanded = 1, 
     Collapsed = 2,
     RootHidden = 3,
 }
-//// the one currently supported with the csee.dat 
-//    // (mcee.dat, autoexp.dat) file. 
-//    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
-//[ComVisible(true)]
+// the one currently supported with the csee.dat 
+// (mcee.dat, autoexp.dat) file. 
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DebuggerBrowsableAttribute : Attribute
 {
     private DebuggerBrowsableState state;
     //TODO: generate constructor
     //TODO: generate property 'State'
 }
-//// DebuggerTypeProxyAttribute
-//    [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class | AttributeTargets.Assembly, AllowMultiple = true)]
-//[ComVisible(true)]
+// DebuggerTypeProxyAttribute
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Struct | AttributeTargets.Class | AttributeTargets.Assembly, AllowMultiple = true*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DebuggerTypeProxyAttribute : Attribute
 {
     private String typeName;
@@ -205,17 +219,17 @@ public final class DebuggerTypeProxyAttribute : Attribute
     //TODO: generate property 'Target'
     //TODO: generate property 'TargetTypeName'
 }
-//// This attribute is used to control what is displayed for the given class or field 
-//    // in the data windows in the debugger.  The single argument to this attribute is
-//    // the string that will be displayed in the value column for instances of the type.  
-//    // This string can include text between { and } which can be either a field, 
-//    // property or method (as will be documented in mscorlib).  In the C# case, 
-//    // a general expression will be allowed which only has implicit access to the this pointer 
-//    // for the current instance of the target type. The expression will be limited, 
-//    // however: there is no access to aliases, locals, or pointers. 
-//    // In addition, attributes on properties referenced in the expression are not processed.
-//    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Delegate | AttributeTargets.Enum | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Assembly, AllowMultiple = true)]
-//[ComVisible(true)]
+// This attribute is used to control what is displayed for the given class or field 
+// in the data windows in the debugger.  The single argument to this attribute is
+// the string that will be displayed in the value column for instances of the type.  
+// This string can include text between { and } which can be either a field, 
+// property or method (as will be documented in mscorlib).  In the C# case, 
+// a general expression will be allowed which only has implicit access to the this pointer 
+// for the current instance of the target type. The expression will be limited, 
+// however: there is no access to aliases, locals, or pointers. 
+// In addition, attributes on properties referenced in the expression are not processed.
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Delegate | AttributeTargets.Enum | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Assembly, AllowMultiple = true*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DebuggerDisplayAttribute : Attribute
 {
     private String name;
@@ -230,12 +244,12 @@ public final class DebuggerDisplayAttribute : Attribute
     //TODO: generate property 'Target'
     //TODO: generate property 'TargetTypeName'
 }
-///// <summary>
-//    /// Signifies that the attributed type has a visualizer which is pointed
-//    /// to by the parameter type name strings.
-//    /// </summary>
-//    [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class | AttributeTargets.Assembly, AllowMultiple = true)]
-//[ComVisible(true)]
+/// <summary>
+/// Signifies that the attributed type has a visualizer which is pointed
+/// to by the parameter type name strings.
+/// </summary>
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Struct | AttributeTargets.Class | AttributeTargets.Assembly, AllowMultiple = true*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DebuggerVisualizerAttribute : Attribute
 {
     private String visualizerObjectSourceName;
@@ -259,10 +273,10 @@ public final class DebuggerVisualizerAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\EditAndContinueHelper.cs'
 //
-//[Serializable]
-public final class EditAndContinueHelper : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class EditAndContinueHelper : __DotNet__Object
 {
-    private DotNetObject _objectReference;
+    private __DotNet__Object _objectReference;
 }
 
 //
@@ -275,30 +289,30 @@ public interface ICustomDebuggerNotification
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\log.cs'
 //
-//// LogMessageEventHandlers are triggered when a message is generated which is
-//   // "on" per its switch.
-//   // 
-//   // By default, the debugger (if attached) is the only event handler. 
-//   // There is also a "built-in" console device which can be enabled
-//   // programatically, by registry (specifics....) or environment
-//   // variables.
-//    [Serializable]
-//[HostProtection(Synchronization=true, ExternalThreading=true)]
+// LogMessageEventHandlers are triggered when a message is generated which is
+// "on" per its switch.
+// 
+// By default, the debugger (if attached) is the only event handler. 
+// There is also a "built-in" console device which can be enabled
+// programatically, by registry (specifics....) or environment
+// variables.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization=true, ExternalThreading=true*/)
 public alias LogMessageEventHandler = void delegate(LoggingLevels level, LogSwitch category, String message, StackTrace location);
-//// LogSwitchLevelHandlers are triggered when the level of a LogSwitch is modified
-//   // NOTE: These are NOT triggered when the log switch setting is changed from the 
-//   // attached debugger.
-//   // 
-//    [Serializable]
+// LogSwitchLevelHandlers are triggered when the level of a LogSwitch is modified
+// NOTE: These are NOT triggered when the log switch setting is changed from the 
+// attached debugger.
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public alias LogSwitchLevelHandler = void delegate(LogSwitch ls, LoggingLevels newLevel);
-public class Log : DotNetObject
+public class Log : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public static Hashtable m_Hashtable;
-    private static /*todo: volatile*/bool m_fConsoleDeviceEnabled;
+    private static /*todo: volatile*/ bool m_fConsoleDeviceEnabled;
     private static LogMessageEventHandler _LogMessageEventHandler;
-    private static /*todo: volatile*/LogSwitchLevelHandler _LogSwitchLevelHandler;
-    private static DotNetObject locker;
+    private static /*todo: volatile*/ LogSwitchLevelHandler _LogSwitchLevelHandler;
+    private static __DotNet__Object locker;
     public static immutable LogSwitch GlobalSwitch;
     //TODO: generate constructor
     //TODO: generate method AddOnLogMessage
@@ -329,21 +343,21 @@ public class Log : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\LoggingLevels.cs'
 //
-// Ignored: // Constants representing the importance level of messages to be logged.
-// Ignored: // This level can be used to organize messages, and also to filter which
-// Ignored: // messages are displayed.
-// Ignored: //
-// Ignored: // An attached debugger can enable or disable which messages will
-// Ignored: // actually be reported to the user through the COM+ debugger
-// Ignored: // services API.  This info is communicated to the runtime so only
-// Ignored: // desired events are actually reported to the debugger.
-// Ignored: // NOTE: The following constants mirror the constants
-// Ignored: // declared in the EE code (DebugDebugger.h). Any changes here will also
-// Ignored: // need to be made there.
-// Ignored: // Constants representing the importance level of messages to be logged.
-// Ignored: // This level can be used to organize messages, and also to filter which
-// Ignored: // messages are displayed.
-// Ignored: [Serializable]
+// Constants representing the importance level of messages to be logged.
+// This level can be used to organize messages, and also to filter which
+// messages are displayed.
+//
+// An attached debugger can enable or disable which messages will
+// actually be reported to the user through the COM+ debugger
+// services API.  This info is communicated to the runtime so only
+// desired events are actually reported to the debugger.  
+// NOTE: The following constants mirror the constants 
+// declared in the EE code (DebugDebugger.h). Any changes here will also
+// need to be made there.
+// Constants representing the importance level of messages to be logged.
+// This level can be used to organize messages, and also to filter which
+// messages are displayed.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum LoggingLevels
 {
     TraceLevel0 = 0,
@@ -364,14 +378,14 @@ public enum LoggingLevels
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\LogSwitch.cs'
 //
-//[Serializable]
-public class LogSwitch : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class LogSwitch : __DotNet__Object
 {
     public String strName;
     public String strDescription;
     private LogSwitch ParentSwitch;
-    public /*todo: volatile*/LoggingLevels iLevel;
-    public /*todo: volatile*/LoggingLevels iOldLevel;
+    public /*todo: volatile*/ LoggingLevels iLevel;
+    public /*todo: volatile*/ LoggingLevels iOldLevel;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -386,16 +400,16 @@ public class LogSwitch : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Stackframe.cs'
 //
-//// There is no good reason for the methods of this class to be virtual.  
-//    // In order to ensure trusted code can trust the data it gets from a 
-//    // StackTrace, we use an InheritanceDemand to prevent partially-trusted
-//    // subclasses.
-//#if !FEATURE_CORECLR
-//    [SecurityPermission(SecurityAction.InheritanceDemand, UnmanagedCode=true)]
-//#endif
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class StackFrame : DotNetObject
+// There is no good reason for the methods of this class to be virtual.  
+// In order to ensure trusted code can trust the data it gets from a 
+// StackTrace, we use an InheritanceDemand to prevent partially-trusted
+// subclasses.
+// #if !FEATURE_CORECLR
+// [SecurityPermission(SecurityAction.InheritanceDemand, UnmanagedCode=true)]
+// #endif
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class StackFrame : __DotNet__Object
 {
     private MethodBase method;
     private int offset;
@@ -403,8 +417,8 @@ public class StackFrame : DotNetObject
     private String strFileName;
     private int iLineNumber;
     private int iColumnNumber;
-    // Ignored: #if FEATURE_EXCEPTIONDISPATCHINFO
-    // Ignored: [System.Runtime.Serialization.OptionalField]
+    // #if FEATURE_EXCEPTIONDISPATCHINFO
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof)
     private bool fIsLastFrameFromForeignExceptionStackTrace;
     //TODO: generate method InitMembers
     //TODO: generate constructor
@@ -436,20 +450,20 @@ public class StackFrame : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Stacktrace.cs'
 //
-//// READ ME:
-//    // Modifying the order or fields of this object may require other changes 
-//    // to the unmanaged definition of the StackFrameHelper class, in 
-//    // VM\DebugDebugger.h. The binder will catch some of these layout problems.
-//    [Serializable]
-public class StackFrameHelper : DotNetObject, IDisposable
+// READ ME:
+// Modifying the order or fields of this object may require other changes 
+// to the unmanaged definition of the StackFrameHelper class, in 
+// VM\DebugDebugger.h. The binder will catch some of these layout problems.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class StackFrameHelper : __DotNet__Object, IDisposable
 {
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private Thread targetThread;
     private int[] rgiOffset;
     private int[] rgiILOffset;
     private MethodBase[] rgMethodBase;
-    private DotNetObject dynamicMethods;
-    // Ignored: [NonSerialized]
+    private __DotNet__Object dynamicMethods;
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private IntPtr[] rgMethodHandle;
     private String[] rgAssemblyPath;
     private IntPtr[] rgLoadedPeAddress;
@@ -460,15 +474,15 @@ public class StackFrameHelper : DotNetObject, IDisposable
     private String[] rgFilename;
     private int[] rgiLineNumber;
     private int[] rgiColumnNumber;
-    // Ignored: #if FEATURE_EXCEPTIONDISPATCHINFO
-    // Ignored: [OptionalField]
+    // #if FEATURE_EXCEPTIONDISPATCHINFO
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof)
     private bool[] rgiLastFrameFromForeignExceptionStackTrace;
     private GetSourceLineInfoDelegate getSourceLineInfo;
     private int iFrameCount;
     private alias GetSourceLineInfoDelegate = void delegate(String assemblyPath, IntPtr loadedPeAddress, int loadedPeSize, IntPtr inMemoryPdbAddress, int inMemoryPdbSize, int methodToken, int ilOffset, out String sourceFile, out int sourceLine, out int sourceColumn);
     private static Type s_symbolsType/*todo: implement initializer*/ = null;
     private static MethodInfo s_symbolsMethodInfo/*todo: implement initializer*/ = null;
-    // Ignored: [ThreadStatic]
+    @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static int t_reentrancy/*todo: implement initializer*/ = int();
     //TODO: generate constructor
     //TODO: generate method InitializeSourceInfo
@@ -486,17 +500,17 @@ public class StackFrameHelper : DotNetObject, IDisposable
     //TODO: generate method OnSerialized
     //TODO: generate method OnDeserialized
 }
-//// Class which represents a description of a stack trace
-//    // There is no good reason for the methods of this class to be virtual.  
-//    // In order to ensure trusted code can trust the data it gets from a 
-//    // StackTrace, we use an InheritanceDemand to prevent partially-trusted
-//    // subclasses.
-//#if !FEATURE_CORECLR
-//    [SecurityPermission(SecurityAction.InheritanceDemand, UnmanagedCode=true)]
-//#endif
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class StackTrace : DotNetObject
+// Class which represents a description of a stack trace
+// There is no good reason for the methods of this class to be virtual.  
+// In order to ensure trusted code can trust the data it gets from a 
+// StackTrace, we use an InheritanceDemand to prevent partially-trusted
+// subclasses.
+// #if !FEATURE_CORECLR
+// [SecurityPermission(SecurityAction.InheritanceDemand, UnmanagedCode=true)]
+// #endif
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class StackTrace : __DotNet__Object
 {
     private StackFrame[] frames;
     private int m_iNumOfFrames;

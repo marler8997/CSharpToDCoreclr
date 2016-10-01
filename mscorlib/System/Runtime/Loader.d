@@ -1,14 +1,18 @@
 module mscorlib.System.Runtime.Loader;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    __DotNet__Object,
     IntPtr;
+import mscorlib.System.Security :
+    SecuritySafeCriticalAttribute;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Loader\AssemblyLoadContext.cs'
 //
-//[System.Security.SecuritySafeCritical]
-public abstract class AssemblyLoadContext : DotNetObject
+@__DotNet__Attribute!(SecuritySafeCriticalAttribute.stringof)
+public abstract class AssemblyLoadContext : __DotNet__Object
 {
     //TODO: generate method OverrideDefaultAssemblyLoadContextForCurrentDomain
     //TODO: generate method CanUseAppPathAssemblyLoadContextInCurrentDomain
@@ -49,10 +53,10 @@ public abstract class AssemblyLoadContext : DotNetObject
     //TODO: generate event field
     //TODO: generate event field
     private IntPtr m_pNativeAssemblyLoadContext;
-    private static /*todo: volatile*/AssemblyLoadContext s_DefaultAssemblyLoadContext;
-    private static immutable DotNetObject s_initLock/*todo: implement initializer*/ = null;
+    private static /*todo: volatile*/ AssemblyLoadContext s_DefaultAssemblyLoadContext;
+    private static immutable __DotNet__Object s_initLock/*todo: implement initializer*/ = null;
 }
-//[System.Security.SecuritySafeCritical]
+@__DotNet__Attribute!(SecuritySafeCriticalAttribute.stringof)
 private class AppPathAssemblyLoadContext : AssemblyLoadContext
 {
     //TODO: generate constructor

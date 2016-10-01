@@ -1,14 +1,19 @@
 module mscorlib.System.Reflection;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    SerializableAttribute,
+    __DotNet__Object,
     SystemException,
     ResolveEventArgs,
     String,
     IntPtr,
+    AttributeUsageAttribute,
     Attribute,
     ICloneable,
     Version,
+    FlagsAttribute,
     MarshalByRefObject,
     IRuntimeMethodInfo,
     RuntimeType,
@@ -17,26 +22,37 @@ import mscorlib.System :
     FormatException,
     Void,
     IRuntimeFieldInfo,
-    DotNetException;
+    __DotNet__Exception,
+    NonSerializedAttribute,
+    CLSCompliantAttribute;
 import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute,
+    ClassInterfaceAttribute,
+    ComDefaultInterfaceAttribute,
     _Assembly,
     _AssemblyName,
     _ConstructorInfo,
+    StructLayoutAttribute,
     _EventInfo,
     _FieldInfo,
+    GuidAttribute,
     _MemberInfo,
     _MethodBase,
     _MethodInfo,
     _Module,
     _ParameterInfo,
     _PropertyInfo;
+import mscorlib.System.Security.Permissions :
+    PermissionSetAttribute;
 import mscorlib.System.Security :
-    IEvidenceFactory;
+    IEvidenceFactory,
+    SecurityCriticalAttribute;
 import mscorlib.System.Runtime.Serialization :
     ISerializable,
     IDeserializationCallback,
     SerializationInfo,
-    IObjectReference;
+    IObjectReference,
+    OptionalFieldAttribute;
 import mscorlib.System.Globalization :
     CultureInfo;
 import mscorlib.System.Configuration.Assemblies :
@@ -45,12 +61,14 @@ import mscorlib.System.Configuration.Assemblies :
 import mscorlib.System.Collections.Generic :
     IList1,
     Dictionary2;
+import mscorlib.System.Diagnostics.Contracts :
+    ContractPublicPropertyNameAttribute;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\__Filters.cs'
 //
-//[Serializable]
-public class __Filters : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class __Filters : __DotNet__Object
 {
     //TODO: generate method FilterTypeName
     //TODO: generate method FilterTypeNameIgnoreCase
@@ -59,8 +77,8 @@ public class __Filters : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\AmbiguousMatchException.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AmbiguousMatchException : SystemException
 {
     //TODO: generate constructor
@@ -72,16 +90,16 @@ public final class AmbiguousMatchException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Assembly.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public alias ModuleResolveEventHandler = Module delegate(DotNetObject sender, ResolveEventArgs e);
-//[Serializable]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_Assembly))]
-//[System.Runtime.InteropServices.ComVisible(true)]
-//#pragma warning disable 618
-//    [PermissionSetAttribute(SecurityAction.InheritanceDemand, Unrestricted = true)]
-public abstract class Assembly : DotNetObject, _Assembly, IEvidenceFactory, ICustomAttributeProvider, ISerializable
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public alias ModuleResolveEventHandler = Module delegate(__DotNet__Object sender, ResolveEventArgs e);
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_Assembly)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+// #pragma warning disable 618
+@__DotNet__Attribute!(PermissionSetAttribute.stringof/*, SecurityAction.InheritanceDemand, Unrestricted = true*/)
+public abstract class Assembly : __DotNet__Object, _Assembly, IEvidenceFactory, ICustomAttributeProvider, ISerializable
 {
     //TODO: generate constructor
     //TODO: generate method CreateQualifiedName
@@ -167,7 +185,7 @@ public enum LoadContext
     UNKNOWN,
     HOSTED,
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class RuntimeAssembly : Assembly
 {
     private enum ASSEMBLY_FLAGS : uint
@@ -182,7 +200,7 @@ public class RuntimeAssembly : Assembly
     //TODO: generate constructor
     //TODO: generate event field
     private String m_fullname;
-    private DotNetObject m_syncRoot;
+    private __DotNet__Object m_syncRoot;
     private IntPtr m_assembly;
     private ASSEMBLY_FLAGS m_flags;
     //TODO: generate property 'InvocableAttributeCtorToken'
@@ -300,120 +318,120 @@ public class RuntimeAssembly : Assembly
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\AssemblyAttributes.cs'
 //
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyCopyrightAttribute : Attribute
 {
     private String m_copyright;
     //TODO: generate constructor
     //TODO: generate property 'Copyright'
 }
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyTrademarkAttribute : Attribute
 {
     private String m_trademark;
     //TODO: generate constructor
     //TODO: generate property 'Trademark'
 }
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyProductAttribute : Attribute
 {
     private String m_product;
     //TODO: generate constructor
     //TODO: generate property 'Product'
 }
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyCompanyAttribute : Attribute
 {
     private String m_company;
     //TODO: generate constructor
     //TODO: generate property 'Company'
 }
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyDescriptionAttribute : Attribute
 {
     private String m_description;
     //TODO: generate constructor
     //TODO: generate property 'Description'
 }
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyTitleAttribute : Attribute
 {
     private String m_title;
     //TODO: generate constructor
     //TODO: generate property 'Title'
 }
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyConfigurationAttribute : Attribute
 {
     private String m_configuration;
     //TODO: generate constructor
     //TODO: generate property 'Configuration'
 }
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyDefaultAliasAttribute : Attribute
 {
     private String m_defaultAlias;
     //TODO: generate constructor
     //TODO: generate property 'DefaultAlias'
 }
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyInformationalVersionAttribute : Attribute
 {
     private String m_informationalVersion;
     //TODO: generate constructor
     //TODO: generate property 'InformationalVersion'
 }
-//[AttributeUsage(AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyFileVersionAttribute : Attribute
 {
     private String _version;
     //TODO: generate constructor
     //TODO: generate property 'Version'
 }
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyCultureAttribute : Attribute
 {
     private String m_culture;
     //TODO: generate constructor
     //TODO: generate property 'Culture'
 }
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyVersionAttribute : Attribute
 {
     private String m_version;
     //TODO: generate constructor
     //TODO: generate property 'Version'
 }
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyKeyFileAttribute : Attribute
 {
     private String m_keyFile;
     //TODO: generate constructor
     //TODO: generate property 'KeyFile'
 }
-//[AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyDelaySignAttribute : Attribute
 {
     private bool m_delaySign;
     //TODO: generate constructor
     //TODO: generate property 'DelaySign'
 }
-//[AttributeUsage(AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyAlgorithmIdAttribute : Attribute
 {
     private uint m_algId;
@@ -421,8 +439,8 @@ public final class AssemblyAlgorithmIdAttribute : Attribute
     //TODO: generate constructor
     //TODO: generate property 'AlgorithmId'
 }
-//[AttributeUsage(AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyFlagsAttribute : Attribute
 {
     private AssemblyNameFlags m_flags;
@@ -432,7 +450,7 @@ public final class AssemblyFlagsAttribute : Attribute
     //TODO: generate constructor
     //TODO: generate constructor
 }
-//[AttributeUsage(AttributeTargets.Assembly, AllowMultiple=true, Inherited=false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, AllowMultiple=true, Inherited=false*/)
 public final class AssemblyMetadataAttribute : Attribute
 {
     private String m_key;
@@ -441,8 +459,8 @@ public final class AssemblyMetadataAttribute : Attribute
     //TODO: generate property 'Key'
     //TODO: generate property 'Value'
 }
-//#if FEATURE_STRONGNAME_MIGRATION
-//    [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple=false)]
+// #if FEATURE_STRONGNAME_MIGRATION
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited = false, AllowMultiple=false*/)
 public final class AssemblySignatureKeyAttribute : Attribute
 {
     private String _publicKey;
@@ -451,10 +469,9 @@ public final class AssemblySignatureKeyAttribute : Attribute
     //TODO: generate property 'PublicKey'
     //TODO: generate property 'Countersignature'
 }
-//#endif
-//
-//    [AttributeUsage (AttributeTargets.Assembly, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// #endif
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyKeyNameAttribute : Attribute
 {
     private String m_keyName;
@@ -465,11 +482,11 @@ public final class AssemblyKeyNameAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\AssemblyName.cs'
 //
-//[Serializable]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_AssemblyName))]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class AssemblyName : DotNetObject, _AssemblyName, ICloneable, ISerializable, IDeserializationCallback
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_AssemblyName)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class AssemblyName : __DotNet__Object, _AssemblyName, ICloneable, ISerializable, IDeserializationCallback
 {
     private String _Name;
     private ubyte[] _PublicKey;
@@ -526,26 +543,30 @@ public final class AssemblyName : DotNetObject, _AssemblyName, ICloneable, ISeri
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\AssemblyNameFlags.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [FlagsAttribute()]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum AssemblyNameFlags
 {
     None = 0x0000,
+    // Flag used to indicate that an assembly ref contains the full public key, not the compressed token.
+    // Must match afPublicKey in CorHdr.h.
     PublicKey = 0x0001,
+    //ProcArchMask              = 0x00F0,     // Bits describing the processor architecture
+    // Accessible via AssemblyName.ProcessorArchitecture
     EnableJITcompileOptimizer = 0x4000,
     EnableJITcompileTracking = 0x8000,
     Retargetable = 0x0100,
 }
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(false)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
 public enum AssemblyContentType
 {
     Default = 0x0000,
     WindowsRuntime = 0x0001,
 }
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum ProcessorArchitecture
 {
     None = 0x0000,
@@ -559,7 +580,7 @@ public enum ProcessorArchitecture
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\AssemblyNameProxy.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class AssemblyNameProxy : MarshalByRefObject
 {
     //TODO: generate method GetAssemblyName
@@ -568,10 +589,10 @@ public class AssemblyNameProxy : MarshalByRefObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Associates.cs'
 //
-public class Associates : DotNetObject
+public class Associates : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    // Ignored: [Flags]
+    @__DotNet__Attribute!(FlagsAttribute.stringof)
     public enum Attributes
     {
         ComposedOfAllVirtualMethods = 0x1,
@@ -587,10 +608,10 @@ public class Associates : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Binder.cs'
 //
-//[Serializable]
-//[ClassInterface(ClassInterfaceType.AutoDual)]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public abstract class Binder : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.AutoDual*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public abstract class Binder : __DotNet__Object
 {
     //TODO: generate method BindToMethod
     //TODO: generate method BindToField
@@ -603,12 +624,16 @@ public abstract class Binder : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\BindingFlags.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum BindingFlags
 {
+    // NOTES: We have lookup masks defined in RuntimeType and Activator.  If we
+    //    change the lookup values then these masks may need to change also.
+    // a place holder for no flag specifed
     Default = 0x00,
+    // These flags indicate what to search for when binding
     IgnoreCase = 0x01,
     DeclaredOnly = 0x02,
     Instance = 0x04,
@@ -616,28 +641,38 @@ public enum BindingFlags
     Public = 0x10,
     NonPublic = 0x20,
     FlattenHierarchy = 0x40,
+    // These flags are used by InvokeMember to determine
+    // what type of member we are trying to Invoke.
+    // BindingAccess = 0xFF00;
     InvokeMethod = 0x0100,
     CreateInstance = 0x0200,
     GetField = 0x0400,
     SetField = 0x0800,
     GetProperty = 0x1000,
     SetProperty = 0x2000,
+    // These flags are also used by InvokeMember but they should only
+    // be used when calling InvokeMember on a COM object.
     PutDispProperty = 0x4000,
     PutRefDispProperty = 0x8000,
     ExactBinding = 0x010000,
     SuppressChangeType = 0x020000,
+    // DefaultValueBinding will return the set of methods having ArgCount or 
+    //    more parameters.  This is used for default values, etc.
     OptionalParamBinding = 0x040000,
+    // These are a couple of misc attributes used
     IgnoreReturn = 0x01000000,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\CallingConventions.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum CallingConventions
 {
+    //NOTE: If you change this please update COMMember.cpp.  These
+    //    are defined there.
     Standard = 0x0001,
     VarArgs = 0x0002,
     Any = Standard | VarArgs,
@@ -648,19 +683,19 @@ public enum CallingConventions
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\ConstructorInfo.cs'
 //
-//[Serializable]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_ConstructorInfo))]
-//#pragma warning disable 618
-//    [PermissionSetAttribute(SecurityAction.InheritanceDemand, Name = "FullTrust")]
-//#pragma warning restore 618
-//    [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_ConstructorInfo)*/)
+// #pragma warning disable 618
+@__DotNet__Attribute!(PermissionSetAttribute.stringof/*, SecurityAction.InheritanceDemand, Name = "FullTrust"*/)
+// #pragma warning restore 618
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public abstract class ConstructorInfo : MethodBase, _ConstructorInfo
 {
-    // Ignored: #region Static Members
-    // Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+    // #region Static Members
+    @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
     public static immutable String ConstructorName/*todo: implement initializer*/ = null;
-    // Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+    @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
     public static immutable String TypeConstructorName/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate operator
@@ -672,20 +707,20 @@ public abstract class ConstructorInfo : MethodBase, _ConstructorInfo
     //TODO: generate method Invoke
     //TODO: generate method Invoke
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class RuntimeConstructorInfo : ConstructorInfo, ISerializable, IRuntimeMethodInfo
 {
-    private /*todo: volatile*/RuntimeType m_declaringType;
+    private /*todo: volatile*/ RuntimeType m_declaringType;
     private RuntimeType.RuntimeTypeCache m_reflectedTypeCache;
     private String m_toString;
     private ParameterInfo[] m_parameters/*todo: implement initializer*/ = null;
-    private DotNetObject _empty1;
-    private DotNetObject _empty2;
-    private DotNetObject _empty3;
+    private __DotNet__Object _empty1;
+    private __DotNet__Object _empty2;
+    private __DotNet__Object _empty3;
     private IntPtr m_handle;
     private MethodAttributes m_methodAttributes;
     private BindingFlags m_bindingFlags;
-    private /*todo: volatile*/Signature m_signature;
+    private /*todo: volatile*/ Signature m_signature;
     private INVOCATION_FLAGS m_invocationFlags;
     //TODO: generate method IsNonW8PFrameworkAPI
     //TODO: generate property 'IsDynamicallyInvokable'
@@ -737,9 +772,9 @@ public final class RuntimeConstructorInfo : ConstructorInfo, ISerializable, IRun
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\CustomAttribute.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class CustomAttributeData : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class CustomAttributeData : __DotNet__Object
 {
     //TODO: generate method GetCustomAttributes
     //TODO: generate method GetCustomAttributes
@@ -782,8 +817,8 @@ public class CustomAttributeData : DotNetObject
     //TODO: generate property 'ConstructorArguments'
     //TODO: generate property 'NamedArguments'
 }
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct CustomAttributeNamedArgument
 {
     //TODO: generate operator
@@ -801,8 +836,8 @@ public struct CustomAttributeNamedArgument
     //TODO: generate property 'MemberName'
     //TODO: generate property 'IsField'
 }
-//[Serializable]
-//[ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct CustomAttributeTypedArgument
 {
     //TODO: generate operator
@@ -810,7 +845,7 @@ public struct CustomAttributeTypedArgument
     //TODO: generate method CustomAttributeEncodingToType
     //TODO: generate method EncodedValueToRawValue
     //TODO: generate method ResolveType
-    private DotNetObject m_value;
+    private __DotNet__Object m_value;
     private Type m_argumentType;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -823,13 +858,13 @@ public struct CustomAttributeTypedArgument
     //TODO: generate property 'ArgumentType'
     //TODO: generate property 'Value'
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public struct CustomAttributeRecord
 {
     public ConstArray blob;
     public MetadataToken tkCtor;
 }
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum CustomAttributeEncoding : int
 {
     Undefined = 0,
@@ -853,8 +888,8 @@ public enum CustomAttributeEncoding : int
     Property = 0x54,
     Enum = 0x55,
 }
-//[Serializable]
-//[StructLayout(LayoutKind.Auto)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Auto*/)
 public struct CustomAttributeEncodedArgument
 {
     //TODO: generate method ParseAttributeArguments
@@ -868,8 +903,8 @@ public struct CustomAttributeEncodedArgument
     //TODO: generate property 'ArrayValue'
     //TODO: generate property 'StringValue'
 }
-//[Serializable]
-//[StructLayout(LayoutKind.Auto)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Auto*/)
 public struct CustomAttributeNamedParameter
 {
     private String m_argumentName;
@@ -880,8 +915,8 @@ public struct CustomAttributeNamedParameter
     //TODO: generate constructor
     //TODO: generate property 'EncodedArgument'
 }
-//[Serializable]
-//[StructLayout(LayoutKind.Auto)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Auto*/)
 public struct CustomAttributeCtorParameter
 {
     private CustomAttributeType m_type;
@@ -889,9 +924,9 @@ public struct CustomAttributeCtorParameter
     //TODO: generate constructor
     //TODO: generate property 'CustomAttributeEncodedArgument'
 }
-//// Note: This is a managed representation of a frame type defined in vm\frames.h; please ensure the layout remains
-//    // synchronized.
-//    [StructLayout(LayoutKind.Sequential)]
+// Note: This is a managed representation of a frame type defined in vm\frames.h; please ensure the layout remains
+// synchronized.
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
 public struct SecurityContextFrame
 {
     private IntPtr m_GSCookie;
@@ -901,8 +936,8 @@ public struct SecurityContextFrame
     //TODO: generate method Push
     //TODO: generate method Pop
 }
-//[Serializable]
-//[StructLayout(LayoutKind.Auto)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Auto*/)
 public struct CustomAttributeType
 {
     private String m_enumName;
@@ -916,7 +951,7 @@ public struct CustomAttributeType
     //TODO: generate property 'EncodedArrayType'
     //TODO: generate property 'EnumName'
 }
-public class CustomAttribute : DotNetObject
+public class CustomAttribute : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static RuntimeType Type_RuntimeType/*todo: implement initializer*/ = null;
@@ -960,7 +995,7 @@ public class CustomAttribute : DotNetObject
     //TODO: generate method GetPropertyOrFieldData
     //TODO: generate method CreateAttributeArrayHelper
 }
-public class PseudoCustomAttribute : DotNetObject
+public class PseudoCustomAttribute : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static Dictionary2!(RuntimeType,RuntimeType) s_pca;
@@ -993,7 +1028,7 @@ public class PseudoCustomAttribute : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\CustomAttributeExtensions.cs'
 //
-public class CustomAttributeExtensions : DotNetObject
+public class CustomAttributeExtensions : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetCustomAttribute
@@ -1037,8 +1072,8 @@ public class CustomAttributeExtensions : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\CustomAttributeFormatException.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class CustomAttributeFormatException : FormatException
 {
     //TODO: generate constructor
@@ -1050,9 +1085,9 @@ public class CustomAttributeFormatException : FormatException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\DefaultMemberAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DefaultMemberAttribute : Attribute
 {
     private String m_memberName;
@@ -1063,13 +1098,15 @@ public final class DefaultMemberAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\EventAttributes.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum EventAttributes
 {
     None = 0x0000,
+    // This Enum matchs the CorEventAttr defined in CorHdr.h
     SpecialName = 0x0200,
+    // Reserved flags for Runtime use only.
     ReservedMask = 0x0400,
     RTSpecialName = 0x0400,
 }
@@ -1077,13 +1114,13 @@ public enum EventAttributes
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\EventInfo.cs'
 //
-//[Serializable]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_EventInfo))]
-//#pragma warning disable 618
-//    [PermissionSetAttribute(SecurityAction.InheritanceDemand, Name = "FullTrust")]
-//#pragma warning restore 618
-//    [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_EventInfo)*/)
+// #pragma warning disable 618
+@__DotNet__Attribute!(PermissionSetAttribute.stringof/*, SecurityAction.InheritanceDemand, Name = "FullTrust"*/)
+// #pragma warning restore 618
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public abstract class EventInfo : MemberInfo, _EventInfo
 {
     //TODO: generate constructor
@@ -1110,13 +1147,13 @@ public abstract class EventInfo : MemberInfo, _EventInfo
     //TODO: generate property 'IsSpecialName'
     //TODO: generate property 'IsMulticast'
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class RuntimeEventInfo : EventInfo, ISerializable
 {
     private int m_token;
     private EventAttributes m_flags;
     private String m_name;
-    // Ignored: [System.Security.SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private Void* m_utf8name;
     private RuntimeType.RuntimeTypeCache m_reflectedTypeCache;
     private RuntimeMethodInfo m_addMethod;
@@ -1153,12 +1190,13 @@ public final class RuntimeEventInfo : EventInfo, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\FieldAttributes.cs'
 //
-// Ignored: // This Enum matchs the CorFieldAttr defined in CorHdr.h
-// Ignored: [Serializable]
-// Ignored: [Flags()]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// This Enum matchs the CorFieldAttr defined in CorHdr.h
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum FieldAttributes
 {
+    // member access mask - Use this mask to retrieve accessibility information.
     FieldAccessMask = 0x0007,
     PrivateScope = 0x0000,
     Private = 0x0001,
@@ -1167,12 +1205,16 @@ public enum FieldAttributes
     Family = 0x0004,
     FamORAssem = 0x0005,
     Public = 0x0006,
+    // end member access mask
+    // field contract attributes.
     Static = 0x0010,
     InitOnly = 0x0020,
     Literal = 0x0040,
     NotSerialized = 0x0080,
     SpecialName = 0x0200,
+    // interop attributes
     PinvokeImpl = 0x2000,
+    // Reserved flags for runtime use only.
     ReservedMask = 0x9500,
     RTSpecialName = 0x0400,
     HasFieldMarshal = 0x1000,
@@ -1183,13 +1225,13 @@ public enum FieldAttributes
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\FieldInfo.cs'
 //
-//[Serializable]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_FieldInfo))]
-//#pragma warning disable 618
-//    [PermissionSetAttribute(SecurityAction.InheritanceDemand, Name = "FullTrust")]
-//#pragma warning restore 618
-//    [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_FieldInfo)*/)
+// #pragma warning disable 618
+@__DotNet__Attribute!(PermissionSetAttribute.stringof/*, SecurityAction.InheritanceDemand, Name = "FullTrust"*/)
+// #pragma warning restore 618
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public abstract class FieldInfo : MemberInfo, _FieldInfo
 {
     //TODO: generate method GetFieldFromHandle
@@ -1227,7 +1269,7 @@ public abstract class FieldInfo : MemberInfo, _FieldInfo
     //TODO: generate property 'IsSecuritySafeCritical'
     //TODO: generate property 'IsSecurityTransparent'
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public abstract class RuntimeFieldInfo : FieldInfo, ISerializable
 {
     private BindingFlags m_bindingFlags;
@@ -1251,7 +1293,7 @@ public abstract class RuntimeFieldInfo : FieldInfo, ISerializable
     //TODO: generate method GetCustomAttributesData
     //TODO: generate method GetObjectData
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class RtFieldInfo : RuntimeFieldInfo, IRuntimeFieldInfo
 {
     //TODO: generate method PerformVisibilityCheckOnField
@@ -1287,7 +1329,7 @@ public final class RtFieldInfo : RuntimeFieldInfo, IRuntimeFieldInfo
     //TODO: generate method GetRequiredCustomModifiers
     //TODO: generate method GetOptionalCustomModifiers
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class MdFieldInfo : RuntimeFieldInfo, ISerializable
 {
     private int m_tkField;
@@ -1318,7 +1360,7 @@ public final class MdFieldInfo : RuntimeFieldInfo, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\GenericParameterAttributes.cs'
 //
-// Ignored: [Flags()]
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum GenericParameterAttributes
 {
     None = 0x0000,
@@ -1334,8 +1376,8 @@ public enum GenericParameterAttributes
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\ICustomAttributeProvider.cs'
 //
-//// Interface does not need to be marked with the serializable attribute
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Interface does not need to be marked with the serializable attribute
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ICustomAttributeProvider
 {
     //TODO: generate method GetCustomAttributes
@@ -1346,23 +1388,23 @@ public interface ICustomAttributeProvider
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\InterfaceMapping.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct InterfaceMapping
 {
-    // Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+    @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
     public Type TargetType;
-    // Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+    @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
     public Type InterfaceType;
-    // Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+    @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
     public MethodInfo[] TargetMethods;
-    // Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+    @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
     public MethodInfo[] InterfaceMethods;
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\IntrospectionExtensions.cs'
 //
-public class IntrospectionExtensions : DotNetObject
+public class IntrospectionExtensions : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetTypeInfo
@@ -1371,9 +1413,9 @@ public class IntrospectionExtensions : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\InvalidFilterCriteriaException.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class InvalidFilterCriteriaException : DotNetException
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class InvalidFilterCriteriaException : __DotNet__Exception
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1384,9 +1426,9 @@ public class InvalidFilterCriteriaException : DotNetException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\IReflect.cs'
 //
-//// Interface does not need to be marked with the serializable attribute
-//    [Guid("AFBF15E5-C37C-11d2-B88E-00A0C9B471B8")]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Interface does not need to be marked with the serializable attribute
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "AFBF15E5-C37C-11d2-B88E-00A0C9B471B8"*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface IReflect
 {
     //TODO: generate method GetMethod
@@ -1414,17 +1456,17 @@ public interface IReflectableType
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\LoaderAllocator.cs'
 //
-public final class LoaderAllocatorScout : DotNetObject
+public final class LoaderAllocatorScout : __DotNet__Object
 {
     public IntPtr m_nativeLoaderAllocator;
     //TODO: generate method Destroy
     //TODO: generate destructor
 }
-public final class LoaderAllocator : DotNetObject
+public final class LoaderAllocator : __DotNet__Object
 {
     //TODO: generate constructor
     private LoaderAllocatorScout m_scout;
-    private DotNetObject[] m_slots;
+    private __DotNet__Object[] m_slots;
     public CerHashtable2!(RuntimeMethodInfo,RuntimeMethodInfo) m_methodInstantiations;
     private int m_slotsUsed;
 }
@@ -1432,8 +1474,8 @@ public final class LoaderAllocator : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\ManifestResourceInfo.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class ManifestResourceInfo : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class ManifestResourceInfo : __DotNet__Object
 {
     private Assembly _containingAssembly;
     private String _containingFileName;
@@ -1443,11 +1485,11 @@ public class ManifestResourceInfo : DotNetObject
     //TODO: generate property 'FileName'
     //TODO: generate property 'ResourceLocation'
 }
-// Ignored: // The ResourceLocation is a combination of these flags, set or not.
-// Ignored: // Linked means not Embedded.
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// The ResourceLocation is a combination of these flags, set or not.
+// Linked means not Embedded.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum ResourceLocation
 {
     Embedded = 0x1,
@@ -1458,7 +1500,7 @@ public enum ResourceLocation
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MdConstant.cs'
 //
-public class MdConstant : DotNetObject
+public class MdConstant : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetValue
@@ -1467,7 +1509,7 @@ public class MdConstant : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MdImport.cs'
 //
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum CorElementType : ubyte
 {
     End = 0x00,
@@ -1507,8 +1549,8 @@ public enum CorElementType : ubyte
     Sentinel = 0x41,
     Pinned = 0x45,
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum MdSigCallingConvention : ubyte
 {
     CallConvMask = 0x0f,
@@ -1527,8 +1569,8 @@ public enum MdSigCallingConvention : ubyte
     HasThis = 0x20,
     ExplicitThis = 0x40,
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum PInvokeAttributes
 {
     NoMangle = 0x0001,
@@ -1554,8 +1596,8 @@ public enum PInvokeAttributes
     CallConvFastcall = 0x0500,
     MaxValue = 0xFFFF,
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum MethodSemanticsAttributes
 {
     Setter = 0x0001,
@@ -1565,7 +1607,7 @@ public enum MethodSemanticsAttributes
     RemoveOn = 0x0010,
     Fire = 0x0020,
 }
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum MetadataTokenType
 {
     Module = 0x00000000,
@@ -1595,7 +1637,7 @@ public enum MetadataTokenType
     BaseType = 0x72000000,
     Invalid = 0x7FFFFFFF,
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public struct ConstArray
 {
     //TODO: generate property 'Signature'
@@ -1604,7 +1646,7 @@ public struct ConstArray
     public int m_length;
     public IntPtr m_constArray;
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public struct MetadataToken
 {
     //TODO: generate conversion operator
@@ -1636,14 +1678,14 @@ public struct MetadataEnumResult
 {
     private int[] largeResult;
     private int length;
-    private /*todo: fixed modifier*/int smallResult/*todo: implement field ArgumentList '[16]'*/;
+    private /*todo: fixed*/ int[16] smallResult;
     //TODO: generate property 'Length'
     //TODO: generate indexer
 }
 public struct MetadataImport
 {
     private IntPtr m_metadataImport2;
-    private DotNetObject m_keepalive;
+    private __DotNet__Object m_keepalive;
     public static immutable MetadataImport EmptyImport/*todo: implement initializer*/ = MetadataImport();
     //TODO: generate method GetHashCode
     //TODO: generate method Equals
@@ -1704,7 +1746,7 @@ public struct MetadataImport
     //TODO: generate method _IsValidToken
     //TODO: generate method IsValidToken
 }
-public class MetadataException : DotNetException
+public class MetadataException : __DotNet__Exception
 {
     private int m_hr;
     //TODO: generate constructor
@@ -1714,22 +1756,22 @@ public class MetadataException : DotNetException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MemberFilter.cs'
 //
-//// Define the delegate
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public alias MemberFilter = bool delegate(MemberInfo m, DotNetObject filterCriteria);
+// Define the delegate
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public alias MemberFilter = bool delegate(MemberInfo m, __DotNet__Object filterCriteria);
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MemberInfo.cs'
 //
-//[Serializable]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_MemberInfo))]
-//#pragma warning disable 618
-//    [PermissionSetAttribute(SecurityAction.InheritanceDemand, Name = "FullTrust")]
-//#pragma warning restore 618
-//    [System.Runtime.InteropServices.ComVisible(true)]
-public abstract class MemberInfo : DotNetObject, ICustomAttributeProvider, _MemberInfo
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_MemberInfo)*/)
+// #pragma warning disable 618
+@__DotNet__Attribute!(PermissionSetAttribute.stringof/*, SecurityAction.InheritanceDemand, Name = "FullTrust"*/)
+// #pragma warning restore 618
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public abstract class MemberInfo : __DotNet__Object, ICustomAttributeProvider, _MemberInfo
 {
     //TODO: generate constructor
     //TODO: generate method CacheEquals
@@ -1753,8 +1795,8 @@ public abstract class MemberInfo : DotNetObject, ICustomAttributeProvider, _Memb
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MemberInfoSerializationHolder.cs'
 //
-//[Serializable]
-public class MemberInfoSerializationHolder : DotNetObject, ISerializable, IObjectReference
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class MemberInfoSerializationHolder : __DotNet__Object, ISerializable, IObjectReference
 {
     //TODO: generate method GetSerializationInfo
     //TODO: generate method GetSerializationInfo
@@ -1772,12 +1814,13 @@ public class MemberInfoSerializationHolder : DotNetObject, ISerializable, IObjec
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MemberTypes.cs'
 //
-// Ignored: // This Enum matchs the CorTypeAttr defined in CorHdr.h
-// Ignored: [Serializable]
-// Ignored: [Flags()]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// This Enum matchs the CorTypeAttr defined in CorHdr.h
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum MemberTypes
 {
+    // The following are the known classes which extend MemberInfo
     Constructor = 0x01,
     Event = 0x02,
     Field = 0x04,
@@ -1792,11 +1835,13 @@ public enum MemberTypes
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MethodAttributes.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum MethodAttributes
 {
+    // NOTE: This Enum matchs the CorMethodAttr defined in CorHdr.h
+    // member access mask - Use this mask to retrieve accessibility information.
     MemberAccessMask = 0x0007,
     PrivateScope = 0x0000,
     Private = 0x0001,
@@ -1805,19 +1850,26 @@ public enum MethodAttributes
     Family = 0x0004,
     FamORAssem = 0x0005,
     Public = 0x0006,
+    // end member access mask
+    // method contract attributes.
     Static = 0x0010,
     Final = 0x0020,
     Virtual = 0x0040,
     HideBySig = 0x0080,
     CheckAccessOnOverride = 0x0200,
+    // vtable layout mask - Use this mask to retrieve vtable attributes.
     VtableLayoutMask = 0x0100,
     ReuseSlot = 0x0000,
     NewSlot = 0x0100,
+    // end vtable layout mask
+    // method implementation attributes.
     Abstract = 0x0400,
     SpecialName = 0x0800,
+    // interop attributes
     PinvokeImpl = 0x2000,
     UnmanagedExport = 0x0008,
     RTSpecialName = 0x1000,
+    // Reserved flags for runtime use only.
     ReservedMask = 0xd000,
     HasSecurity = 0x4000,
     RequireSecObject = 0x8000,
@@ -1826,34 +1878,43 @@ public enum MethodAttributes
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MethodBase.cs'
 //
-// Ignored: //
-// Ignored: // Invocation cached flags. Those are used in unmanaged code as well
-// Ignored: // so be careful if you change them
-// Ignored: //
-// Ignored: [Flags]
+//
+// Invocation cached flags. Those are used in unmanaged code as well
+// so be careful if you change them
+//
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum INVOCATION_FLAGS : uint
 {
     INVOCATION_FLAGS_UNKNOWN = 0x00000000,
     INVOCATION_FLAGS_INITIALIZED = 0x00000001,
+    // it's used for both method and field to signify that no access is allowed
     INVOCATION_FLAGS_NO_INVOKE = 0x00000002,
     INVOCATION_FLAGS_NEED_SECURITY = 0x00000004,
+    // Set for static ctors and ctors on abstract types, which
+    // can be invoked only if the "this" object is provided (even if it's null).
     INVOCATION_FLAGS_NO_CTOR_INVOKE = 0x00000008,
+    // because field and method are different we can reuse the same bits
+    // method
     INVOCATION_FLAGS_IS_CTOR = 0x00000010,
     INVOCATION_FLAGS_RISKY_METHOD = 0x00000020,
     INVOCATION_FLAGS_NON_W8P_FX_API = 0x00000040,
     INVOCATION_FLAGS_IS_DELEGATE_CTOR = 0x00000080,
     INVOCATION_FLAGS_CONTAINS_STACK_POINTERS = 0x00000100,
+    // field
     INVOCATION_FLAGS_SPECIAL_FIELD = 0x00000010,
     INVOCATION_FLAGS_FIELD_SPECIAL_CAST = 0x00000020,
+    // temporary flag used for flagging invocation of method vs ctor
+    // this flag never appears on the instance m_invocationFlag and is simply
+    // passed down from within ConstructorInfo.Invoke()
     INVOCATION_FLAGS_CONSTRUCTOR_INVOKE = 0x10000000,
 }
-//[Serializable]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_MethodBase))]
-//#pragma warning disable 618
-//    [PermissionSetAttribute(SecurityAction.InheritanceDemand, Name = "FullTrust")]
-//#pragma warning restore 618
-//    [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_MethodBase)*/)
+// #pragma warning disable 618
+@__DotNet__Attribute!(PermissionSetAttribute.stringof/*, SecurityAction.InheritanceDemand, Name = "FullTrust"*/)
+// #pragma warning restore 618
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public abstract class MethodBase : MemberInfo, _MethodBase
 {
     //TODO: generate method GetMethodFromHandle
@@ -1907,8 +1968,8 @@ public abstract class MethodBase : MemberInfo, _MethodBase
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MethodBody.cs'
 //
-// Ignored: [Flags()]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum ExceptionHandlingClauseOptions : int
 {
     Clause = 0x0,
@@ -1916,12 +1977,12 @@ public enum ExceptionHandlingClauseOptions : int
     Finally = 0x2,
     Fault = 0x4,
 }
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class ExceptionHandlingClause : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class ExceptionHandlingClause : __DotNet__Object
 {
     //TODO: generate constructor
     private MethodBody m_methodBody;
-    // Ignored: [ContractPublicPropertyName("Flags")]
+    @__DotNet__Attribute!(ContractPublicPropertyNameAttribute.stringof/*, "Flags"*/)
     private ExceptionHandlingClauseOptions m_flags;
     private int m_tryOffset;
     private int m_tryLength;
@@ -1938,8 +1999,8 @@ public class ExceptionHandlingClause : DotNetObject
     //TODO: generate property 'CatchType'
     //TODO: generate method ToString
 }
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class MethodBody : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class MethodBody : __DotNet__Object
 {
     //TODO: generate constructor
     private ubyte[] m_IL;
@@ -1956,8 +2017,8 @@ public class MethodBody : DotNetObject
     //TODO: generate method GetILAsByteArray
     //TODO: generate property 'ExceptionHandlingClauses'
 }
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class LocalVariableInfo : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class LocalVariableInfo : __DotNet__Object
 {
     private RuntimeType m_type;
     private int m_isPinned;
@@ -1972,25 +2033,30 @@ public class LocalVariableInfo : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MethodImplAttributes.cs'
 //
-// Ignored: // This Enum matchs the CorMethodImpl defined in CorHdr.h
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// This Enum matchs the CorMethodImpl defined in CorHdr.h
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum MethodImplAttributes
 {
+    // code impl mask
     CodeTypeMask = 0x0003,
     IL = 0x0000,
     Native = 0x0001,
+    /// <internalonly/>
     OPTIL = 0x0002,
     Runtime = 0x0003,
+    // end code impl mask
+    // managed mask
     ManagedMask = 0x0004,
     Unmanaged = 0x0004,
     Managed = 0x0000,
+    // end managed mask
+    // implementation info and interop
     ForwardRef = 0x0010,
     PreserveSig = 0x0080,
     InternalCall = 0x1000,
     Synchronized = 0x0020,
     NoInlining = 0x0008,
-    // Ignored: [System.Runtime.InteropServices.ComVisible(false)]
     AggressiveInlining = 0x0100,
     NoOptimization = 0x0040,
     MaxMethodImplVal = 0xFFFF,
@@ -1999,13 +2065,13 @@ public enum MethodImplAttributes
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MethodInfo.cs'
 //
-//[Serializable]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_MethodInfo))]
-//#pragma warning disable 618
-//    [PermissionSetAttribute(SecurityAction.InheritanceDemand, Name = "FullTrust")]
-//#pragma warning restore 618
-//    [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_MethodInfo)*/)
+// #pragma warning disable 618
+@__DotNet__Attribute!(PermissionSetAttribute.stringof/*, SecurityAction.InheritanceDemand, Name = "FullTrust"*/)
+// #pragma warning restore 618
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public abstract class MethodInfo : MethodBase, _MethodInfo
 {
     //TODO: generate constructor
@@ -2024,7 +2090,7 @@ public abstract class MethodInfo : MethodBase, _MethodInfo
     //TODO: generate method CreateDelegate
     //TODO: generate method CreateDelegate
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class RuntimeMethodInfo : MethodInfo, ISerializable, IRuntimeMethodInfo
 {
     private IntPtr m_handle;
@@ -2037,7 +2103,7 @@ public final class RuntimeMethodInfo : MethodInfo, ISerializable, IRuntimeMethod
     private MethodAttributes m_methodAttributes;
     private Signature m_signature;
     private RuntimeType m_declaringType;
-    private DotNetObject m_keepalive;
+    private __DotNet__Object m_keepalive;
     private INVOCATION_FLAGS m_invocationFlags;
     //TODO: generate method IsNonW8PFrameworkAPI
     //TODO: generate property 'IsDynamicallyInvokable'
@@ -2109,10 +2175,10 @@ public final class RuntimeMethodInfo : MethodInfo, ISerializable, IRuntimeMethod
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Missing.cs'
 //
-//// This is not serializable because it is a reflection command.
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class Missing : DotNetObject, ISerializable
+// This is not serializable because it is a reflection command.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class Missing : __DotNet__Object, ISerializable
 {
     public static immutable Missing Value/*todo: implement initializer*/ = null;
     //TODO: generate constructor
@@ -2122,9 +2188,9 @@ public final class Missing : DotNetObject, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Module.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum PortableExecutableKinds
 {
     NotAPortableExecutableImage = 0x0,
@@ -2132,11 +2198,10 @@ public enum PortableExecutableKinds
     Required32Bit = 0x2,
     PE32Plus = 0x4,
     Unmanaged32Bit = 0x8,
-    // Ignored: [ComVisible(false)]
     Preferred32Bit = 0x10,
 }
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum ImageFileMachine
 {
     I386 = 0x014c,
@@ -2144,13 +2209,13 @@ public enum ImageFileMachine
     AMD64 = 0x8664,
     ARM = 0x01c4,
 }
-//[Serializable]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_Module))]
-//[System.Runtime.InteropServices.ComVisible(true)]
-//#pragma warning disable 618
-//    [PermissionSetAttribute(SecurityAction.InheritanceDemand, Unrestricted = true)]
-public abstract class Module : DotNetObject, _Module, ISerializable, ICustomAttributeProvider
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_Module)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+// #pragma warning disable 618
+@__DotNet__Attribute!(PermissionSetAttribute.stringof/*, SecurityAction.InheritanceDemand, Unrestricted = true*/)
+public abstract class Module : __DotNet__Object, _Module, ISerializable, ICustomAttributeProvider
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -2205,7 +2270,7 @@ public abstract class Module : DotNetObject, _Module, ISerializable, ICustomAttr
     //TODO: generate property 'ModuleHandle'
     //TODO: generate method GetModuleHandle
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class RuntimeModule : Module
 {
     //TODO: generate constructor
@@ -2263,8 +2328,8 @@ public class RuntimeModule : Module
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\ObfuscateAssemblyAttribute.cs'
 //
-//[AttributeUsage (AttributeTargets.Assembly, AllowMultiple=false, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, AllowMultiple=false, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ObfuscateAssemblyAttribute : Attribute
 {
     private bool m_assemblyIsPrivate;
@@ -2277,9 +2342,8 @@ public final class ObfuscateAssemblyAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\ObfuscationAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Event | AttributeTargets.Interface | AttributeTargets.Enum | AttributeTargets.Delegate,
-//        AllowMultiple = true, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Event | AttributeTargets.Interface | AttributeTargets.Enum | AttributeTargets.Delegate, AllowMultiple = true, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ObfuscationAttribute : Attribute
 {
     private bool m_strip/*todo: implement initializer*/ = bool();
@@ -2296,10 +2360,10 @@ public final class ObfuscationAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\ParameterAttributes.cs'
 //
-// Ignored: // This Enum matchs the CorParamAttr defined in CorHdr.h
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// This Enum matchs the CorParamAttr defined in CorHdr.h
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum ParameterAttributes
 {
     None = 0x0000,
@@ -2308,6 +2372,7 @@ public enum ParameterAttributes
     Lcid = 0x0004,
     Retval = 0x0008,
     Optional = 0x0010,
+    // Reserved flags for Runtime use only.
     ReservedMask = 0xf000,
     HasDefault = 0x1000,
     HasFieldMarshal = 0x2000,
@@ -2318,29 +2383,29 @@ public enum ParameterAttributes
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\ParameterInfo.cs'
 //
-//[Serializable]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_ParameterInfo))]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class ParameterInfo : DotNetObject, _ParameterInfo, ICustomAttributeProvider, IObjectReference
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_ParameterInfo)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class ParameterInfo : __DotNet__Object, _ParameterInfo, ICustomAttributeProvider, IObjectReference
 {
     protected String NameImpl;
     protected Type ClassImpl;
     protected int PositionImpl;
     protected ParameterAttributes AttrsImpl;
-    protected DotNetObject DefaultValueImpl;
+    protected __DotNet__Object DefaultValueImpl;
     protected MemberInfo MemberImpl;
-    // Ignored: #endregion
-    // Ignored: #region Legacy Private Members
-    // Ignored: // These are here only for backwards compatibility -- they are not set
-    // Ignored: // until this instance is serialized, so don't rely on their values from
-    // Ignored: // arbitrary code.
-    // Ignored: #pragma warning disable 169
-    // Ignored: [OptionalField]
+    // #endregion
+    // #region Legacy Private Members
+    // These are here only for backwards compatibility -- they are not set
+    // until this instance is serialized, so don't rely on their values from
+    // arbitrary code.
+    // #pragma warning disable 169
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof)
     private IntPtr _importer;
-    // Ignored: [OptionalField]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof)
     private int _token;
-    // Ignored: [OptionalField]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof)
     private bool bExtraConstChecked;
     //TODO: generate constructor
     //TODO: generate method SetName
@@ -2369,7 +2434,7 @@ public class ParameterInfo : DotNetObject, _ParameterInfo, ICustomAttributeProvi
     //TODO: generate method GetCustomAttributesData
     //TODO: generate method GetRealObject
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class RuntimeParameterInfo : ParameterInfo, ISerializable
 {
     //TODO: generate method GetParameters
@@ -2377,22 +2442,22 @@ public final class RuntimeParameterInfo : ParameterInfo, ISerializable
     //TODO: generate method GetParameters
     private static immutable Type s_DecimalConstantAttributeType/*todo: implement initializer*/ = null;
     private static immutable Type s_CustomConstantAttributeType/*todo: implement initializer*/ = null;
-    // Ignored: #endregion
-    // Ignored: #region Private Data Members
-    // Ignored: // These are new in Whidbey, so we cannot serialize them directly or we break backwards compatibility.
-    // Ignored: [NonSerialized]
+    // #endregion
+    // #region Private Data Members
+    // These are new in Whidbey, so we cannot serialize them directly or we break backwards compatibility.
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private int m_tkParamDef;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private MetadataImport m_scope;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private Signature m_signature;
-    // Ignored: [NonSerialized]
-    private /*todo: volatile*/bool m_nameIsCached/*todo: implement initializer*/ = bool();
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
+    private /*todo: volatile*/ bool m_nameIsCached/*todo: implement initializer*/ = bool();
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private immutable bool m_noMetadata/*todo: implement initializer*/ = bool();
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private bool m_noDefaultValue/*todo: implement initializer*/ = bool();
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private MethodBase m_originalMember/*todo: implement initializer*/ = null;
     //TODO: generate property 'DefiningMethod'
     //TODO: generate method GetObjectData
@@ -2420,8 +2485,8 @@ public final class RuntimeParameterInfo : ParameterInfo, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\ParameterModifier.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct ParameterModifier
 {
     private bool[] _byRef;
@@ -2433,12 +2498,12 @@ public struct ParameterModifier
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Pointer.cs'
 //
-//[CLSCompliant(false)]
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class Pointer : DotNetObject, ISerializable
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class Pointer : __DotNet__Object, ISerializable
 {
-    // Ignored: [SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private Void* _ptr;
     private RuntimeType _ptrType;
     //TODO: generate constructor
@@ -2453,14 +2518,15 @@ public final class Pointer : DotNetObject, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\PropertyAttributes.cs'
 //
-// Ignored: // This Enum matchs the CorPropertyAttr defined in CorHdr.h
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// This Enum matchs the CorPropertyAttr defined in CorHdr.h
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum PropertyAttributes
 {
     None = 0x0000,
     SpecialName = 0x0200,
+    // Reserved flags for Runtime use only.
     ReservedMask = 0xf400,
     RTSpecialName = 0x0400,
     HasDefault = 0x1000,
@@ -2472,13 +2538,13 @@ public enum PropertyAttributes
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\PropertyInfo.cs'
 //
-//[Serializable]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_PropertyInfo))]
-//#pragma warning disable 618
-//    [PermissionSetAttribute(SecurityAction.InheritanceDemand, Name = "FullTrust")]
-//#pragma warning restore 618
-//    [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_PropertyInfo)*/)
+// #pragma warning disable 618
+@__DotNet__Attribute!(PermissionSetAttribute.stringof/*, SecurityAction.InheritanceDemand, Name = "FullTrust"*/)
+// #pragma warning restore 618
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public abstract class PropertyInfo : MemberInfo, _PropertyInfo
 {
     //TODO: generate constructor
@@ -2512,12 +2578,12 @@ public abstract class PropertyInfo : MemberInfo, _PropertyInfo
     //TODO: generate method GetSetMethod
     //TODO: generate property 'IsSpecialName'
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class RuntimePropertyInfo : PropertyInfo, ISerializable
 {
     private int m_token;
     private String m_name;
-    // Ignored: [System.Security.SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private Void* m_utf8name;
     private PropertyAttributes m_flags;
     private RuntimeType.RuntimeTypeCache m_reflectedTypeCache;
@@ -2572,7 +2638,7 @@ public final class RuntimePropertyInfo : PropertyInfo, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\ReflectionContext.cs'
 //
-public abstract class ReflectionContext : DotNetObject
+public abstract class ReflectionContext : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method MapAssembly
@@ -2583,12 +2649,12 @@ public abstract class ReflectionContext : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\ReflectionTypeLoadException.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ReflectionTypeLoadException : SystemException, ISerializable
 {
     private Type[] _classes;
-    private DotNetException[] _exceptions;
+    private __DotNet__Exception[] _exceptions;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -2602,9 +2668,9 @@ public final class ReflectionTypeLoadException : SystemException, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\ResourceAttributes.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum ResourceAttributes
 {
     Public = 0x0001,
@@ -2614,7 +2680,7 @@ public enum ResourceAttributes
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\RuntimeReflectionExtensions.cs'
 //
-public class RuntimeReflectionExtensions : DotNetObject
+public class RuntimeReflectionExtensions : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private enum BindingFlags everything/*todo: implement initializer*/ = (cast(BindingFlags)0);
@@ -2636,7 +2702,7 @@ public class RuntimeReflectionExtensions : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\StrongNameKeyPair.cs'
 //
-public class StrongNameKeyPair : DotNetObject
+public class StrongNameKeyPair : __DotNet__Object
 {
     //TODO: generate constructor
 }
@@ -2644,9 +2710,9 @@ public class StrongNameKeyPair : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\TargetException.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class TargetException : DotNetException
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class TargetException : __DotNet__Exception
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -2657,9 +2723,9 @@ public class TargetException : DotNetException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\TargetInvocationException.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class TargetInvocationException : DotNetException
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class TargetInvocationException : __DotNet__Exception
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -2671,9 +2737,9 @@ public final class TargetInvocationException : DotNetException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\TargetParameterCountException.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class TargetParameterCountException : DotNetException
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class TargetParameterCountException : __DotNet__Exception
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -2684,10 +2750,10 @@ public final class TargetParameterCountException : DotNetException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\TypeAttributes.cs'
 //
-// Ignored: // This Enum matchs the CorTypeAttr defined in CorHdr.h
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// This Enum matchs the CorTypeAttr defined in CorHdr.h
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum TypeAttributes
 {
     VisibilityMask = 0x00000007,
@@ -2699,27 +2765,35 @@ public enum TypeAttributes
     NestedAssembly = 0x00000005,
     NestedFamANDAssem = 0x00000006,
     NestedFamORAssem = 0x00000007,
+    // Use this mask to retrieve class layout informaiton
+    // 0 is AutoLayout, 0x2 is SequentialLayout, 4 is ExplicitLayout
     LayoutMask = 0x00000018,
     AutoLayout = 0x00000000,
     SequentialLayout = 0x00000008,
     ExplicitLayout = 0x00000010,
+    // end layout mask
+    // Use this mask to distinguish whether a type declaration is an interface.  (Class vs. ValueType done based on whether it subclasses S.ValueType)
     ClassSemanticsMask = 0x00000020,
     Class = 0x00000000,
     Interface = 0x00000020,
+    // Special semantics in addition to class semantics.
     Abstract = 0x00000080,
     Sealed = 0x00000100,
     SpecialName = 0x00000400,
+    // Implementation attributes.
     Import = 0x00001000,
     Serializable = 0x00002000,
-    // Ignored: [ComVisible(false)]
     WindowsRuntime = 0x00004000,
+    // Use tdStringFormatMask to retrieve string information for native interop
     StringFormatMask = 0x00030000,
     AnsiClass = 0x00000000,
     UnicodeClass = 0x00010000,
     AutoClass = 0x00020000,
     CustomFormatClass = 0x00030000,
     CustomFormatMask = 0x00C00000,
+    // end string format mask
     BeforeFieldInit = 0x00100000,
+    // Flags reserved for runtime use.
     ReservedMask = 0x00040800,
     RTSpecialName = 0x00000800,
     HasSecurity = 0x00040000,
@@ -2728,9 +2802,9 @@ public enum TypeAttributes
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\TypeDelegator.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class TypeDelegator : DotNetTypeInfo
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class TypeDelegator : __DotNet__TypeInfo
 {
     //TODO: generate method IsAssignableFrom
     protected Type typeImpl;
@@ -2784,19 +2858,19 @@ public class TypeDelegator : DotNetTypeInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\TypeFilter.cs'
 //
-//// Define the delegate
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public alias TypeFilter = bool delegate(Type m, DotNetObject filterCriteria);
+// Define the delegate
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public alias TypeFilter = bool delegate(Type m, __DotNet__Object filterCriteria);
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\TypeInfo.cs'
 //
-////all today's runtime Type derivations derive now from TypeInfo
-//    //we make TypeInfo implement IRCT - simplifies work
-//    [System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
-public abstract class DotNetTypeInfo : Type, IReflectableType
+//all today's runtime Type derivations derive now from TypeInfo
+//we make TypeInfo implement IRCT - simplifies work
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public abstract class __DotNet__TypeInfo : Type, IReflectableType
 {
     //TODO: generate constructor
     //TODO: generate method GetTypeInfo
@@ -2824,7 +2898,7 @@ public abstract class DotNetTypeInfo : Type, IReflectableType
 //
 public struct CerHashtable2(K,V)
 {
-    private static class Table : DotNetObject
+    private static class Table : __DotNet__Object
     {
         public K[] m_keys;
         public V[] m_values;

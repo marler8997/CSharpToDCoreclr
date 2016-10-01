@@ -1,5 +1,10 @@
 module mscorlib.Microsoft.Win32.SafeHandles;
 
+import mscorlib.System :
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct;
+import mscorlib.System.Security :
+    SecurityCriticalAttribute;
 import mscorlib.System.Runtime.InteropServices :
     SafeBuffer,
     SafeHandle,
@@ -8,7 +13,7 @@ import mscorlib.System.Runtime.InteropServices :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\SafeFileHandle.cs'
 //
-//[System.Security.SecurityCritical]  // auto-generated_required
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeFileHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
@@ -19,7 +24,7 @@ public final class SafeFileHandle : SafeHandleZeroOrMinusOneIsInvalid
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\SafeFileMappingHandle.cs'
 //
-//[System.Security.SecurityCritical]  // auto-generated
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeFileMappingHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
@@ -30,7 +35,7 @@ public final class SafeFileMappingHandle : SafeHandleZeroOrMinusOneIsInvalid
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\SafeFindHandle.cs'
 //
-//[System.Security.SecurityCritical]  // auto-generated
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeFindHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
@@ -40,7 +45,7 @@ public final class SafeFindHandle : SafeHandleZeroOrMinusOneIsInvalid
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\SafeLocalAllocHandle.cs'
 //
-//[System.Security.SecurityCritical]  // auto-generated
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeLocalAllocHandle : SafeBuffer
 {
     //TODO: generate constructor
@@ -52,7 +57,7 @@ public final class SafeLocalAllocHandle : SafeBuffer
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\SafeRegistryHandle.cs'
 //
-//[System.Security.SecurityCritical]
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeRegistryHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
@@ -64,7 +69,7 @@ public final class SafeRegistryHandle : SafeHandleZeroOrMinusOneIsInvalid
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\SafeViewOfFileHandle.cs'
 //
-//[System.Security.SecurityCritical]  // auto-generated
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeViewOfFileHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
@@ -75,7 +80,7 @@ public final class SafeViewOfFileHandle : SafeHandleZeroOrMinusOneIsInvalid
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\SafeWaitHandle.cs'
 //
-//[System.Security.SecurityCritical]  // auto-generated_required
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeWaitHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
@@ -86,31 +91,31 @@ public final class SafeWaitHandle : SafeHandleZeroOrMinusOneIsInvalid
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\Win32SafeHandles.cs'
 //
-//// Class of safe handle which uses 0 or -1 as an invalid handle.
-//    [System.Security.SecurityCritical]  // auto-generated_required
+// Class of safe handle which uses 0 or -1 as an invalid handle.
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public abstract class SafeHandleZeroOrMinusOneIsInvalid : SafeHandle
 {
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'IsInvalid'
 }
-//// Class of safe handle which uses only -1 as an invalid handle.
-//    [System.Security.SecurityCritical]  // auto-generated_required
+// Class of safe handle which uses only -1 as an invalid handle.
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public abstract class SafeHandleMinusOneIsInvalid : SafeHandle
 {
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'IsInvalid'
 }
-//// Class of critical handle which uses 0 or -1 as an invalid handle.
-//    [System.Security.SecurityCritical]  // auto-generated_required
+// Class of critical handle which uses 0 or -1 as an invalid handle.
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public abstract class CriticalHandleZeroOrMinusOneIsInvalid : CriticalHandle
 {
     //TODO: generate constructor
     //TODO: generate property 'IsInvalid'
 }
-//// Class of critical handle which uses only -1 as an invalid handle.
-//    [System.Security.SecurityCritical]  // auto-generated_required
+// Class of critical handle which uses only -1 as an invalid handle.
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public abstract class CriticalHandleMinusOneIsInvalid : CriticalHandle
 {
     //TODO: generate constructor
@@ -120,9 +125,9 @@ public abstract class CriticalHandleMinusOneIsInvalid : CriticalHandle
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\SafeSecurityHandles.cs'
 //
-//// Introduce this handle to replace internal SafeTokenHandle,
-//    // which is mainly used to hold Windows thread or process access token
-//    [SecurityCritical]
+// Introduce this handle to replace internal SafeTokenHandle,
+// which is mainly used to hold Windows thread or process access token
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeAccessTokenHandle : SafeHandle
 {
     //TODO: generate constructor
@@ -131,7 +136,7 @@ public final class SafeAccessTokenHandle : SafeHandle
     //TODO: generate property 'IsInvalid'
     //TODO: generate method ReleaseHandle
 }
-//[System.Security.SecurityCritical]  // auto-generated
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeLsaLogonProcessHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
@@ -139,7 +144,7 @@ public final class SafeLsaLogonProcessHandle : SafeHandleZeroOrMinusOneIsInvalid
     //TODO: generate property 'InvalidHandle'
     //TODO: generate method ReleaseHandle
 }
-//[System.Security.SecurityCritical]  // auto-generated
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeLsaMemoryHandle : SafeBuffer
 {
     //TODO: generate constructor
@@ -147,7 +152,7 @@ public final class SafeLsaMemoryHandle : SafeBuffer
     //TODO: generate property 'InvalidHandle'
     //TODO: generate method ReleaseHandle
 }
-//[System.Security.SecurityCritical]  // auto-generated
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeLsaPolicyHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
@@ -155,7 +160,7 @@ public final class SafeLsaPolicyHandle : SafeHandleZeroOrMinusOneIsInvalid
     //TODO: generate property 'InvalidHandle'
     //TODO: generate method ReleaseHandle
 }
-//[System.Security.SecurityCritical]  // auto-generated
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeLsaReturnBufferHandle : SafeBuffer
 {
     //TODO: generate constructor
@@ -163,7 +168,7 @@ public final class SafeLsaReturnBufferHandle : SafeBuffer
     //TODO: generate property 'InvalidHandle'
     //TODO: generate method ReleaseHandle
 }
-//[System.Security.SecurityCritical]  // auto-generated
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeProcessHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
@@ -171,7 +176,7 @@ public final class SafeProcessHandle : SafeHandleZeroOrMinusOneIsInvalid
     //TODO: generate property 'InvalidHandle'
     //TODO: generate method ReleaseHandle
 }
-//[System.Security.SecurityCritical]  // auto-generated
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeThreadHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor

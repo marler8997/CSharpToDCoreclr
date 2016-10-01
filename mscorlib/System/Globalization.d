@@ -1,21 +1,36 @@
 module mscorlib.System.Globalization;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    SerializableAttribute,
+    __DotNet__Object,
     ICloneable,
     String,
     DateTime,
+    FlagsAttribute,
+    NonSerializedAttribute,
     IntPtr,
     IFormatProvider,
+    ThreadStaticAttribute,
     ArgumentException,
     Nullable1,
     TokenType,
     TimeSpan,
     IEquatable1,
     Guid;
+import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute,
+    StructLayoutAttribute,
+    FieldOffsetAttribute;
 import mscorlib.System.Runtime.Serialization :
+    OptionalFieldAttribute,
     IDeserializationCallback,
     ISerializable;
+import mscorlib.System.Security :
+    SecurityCriticalAttribute;
+import mscorlib.System.Runtime.CompilerServices :
+    FriendAccessAllowedAttribute;
 import mscorlib.System.Collections.Generic :
     Dictionary2,
     List1;
@@ -28,7 +43,7 @@ import mscorlib.System.Resources :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\BidiCategory.cs'
 //
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum BidiCategory
 {
     LeftToRight = 0,
@@ -59,29 +74,28 @@ public enum BidiCategory
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\Calendar.cs'
 //
-//// This abstract class represents a calendar. A calendar reckons time in
-//    // divisions such as weeks, months and years. The number, length and start of
-//    // the divisions vary in each calendar.
-//    //
-//    // Any instant in time can be represented as an n-tuple of numeric values using
-//    // a particular calendar. For example, the next vernal equinox occurs at (0.0, 0
-//    // , 46, 8, 20, 3, 1999) in the Gregorian calendar. An  implementation of
-//    // Calendar can map any DateTime value to such an n-tuple and vice versa. The
-//    // DateTimeFormat class can map between such n-tuples and a textual
-//    // representation such as "8:46 AM March 20th 1999 AD".
-//    //
-//    // Most calendars identify a year which begins the current era. There may be any
-//    // number of previous eras. The Calendar class identifies the eras as enumerated
-//    // integers where the current era (CurrentEra) has the value zero.
-//    //
-//    // For consistency, the first unit in each interval, e.g. the first month, is
-//    // assigned the value one.
-//    // The calculation of hour/minute/second is moved to Calendar from GregorianCalendar,
-//    // since most of the calendars (or all?) have the same way of calcuating hour/minute/second.
+// This abstract class represents a calendar. A calendar reckons time in
+// divisions such as weeks, months and years. The number, length and start of
+// the divisions vary in each calendar.
 //
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public abstract class Calendar : DotNetObject, ICloneable
+// Any instant in time can be represented as an n-tuple of numeric values using
+// a particular calendar. For example, the next vernal equinox occurs at (0.0, 0
+// , 46, 8, 20, 3, 1999) in the Gregorian calendar. An  implementation of
+// Calendar can map any DateTime value to such an n-tuple and vice versa. The
+// DateTimeFormat class can map between such n-tuples and a textual
+// representation such as "8:46 AM March 20th 1999 AD".
+//
+// Most calendars identify a year which begins the current era. There may be any
+// number of previous eras. The Calendar class identifies the eras as enumerated
+// integers where the current era (CurrentEra) has the value zero.
+//
+// For consistency, the first unit in each interval, e.g. the first month, is
+// assigned the value one.
+// The calculation of hour/minute/second is moved to Calendar from GregorianCalendar,
+// since most of the calendars (or all?) have the same way of calcuating hour/minute/second.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public abstract class Calendar : __DotNet__Object, ICloneable
 {
     public enum long TicksPerMillisecond/*todo: implement initializer*/ = long();
     public enum long TicksPerSecond/*todo: implement initializer*/ = long();
@@ -122,7 +136,7 @@ public abstract class Calendar : DotNetObject, ICloneable
     public enum int CAL_PERSIAN/*todo: implement initializer*/ = int();
     public enum int CAL_UMALQURA/*todo: implement initializer*/ = int();
     public int m_currentEraValue/*todo: implement initializer*/ = int();
-    // Ignored: [System.Runtime.Serialization.OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_isReadOnly/*todo: implement initializer*/ = bool();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
@@ -193,19 +207,21 @@ public abstract class Calendar : DotNetObject, ICloneable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\CalendarAlgorithmType.cs'
 //
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum CalendarAlgorithmType
 {
     Unknown = 0,
     SolarCalendar = 1,
+    // Solar calendars are based on the solar year and seasons.
     LunarCalendar = 2,
+    // Lunar calendars are based on the path of the moon.  The seasons are not accurately represented.
     LunisolarCalendar = 3,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\CalendarData.cs'
 //
-public class CalendarData : DotNetObject
+public class CalendarData : __DotNet__Object
 {
     public enum int MAX_CALENDARS/*todo: implement initializer*/ = int();
     public String sNativeName;
@@ -245,8 +261,8 @@ public class CalendarData : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\CalendarWeekRule.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum CalendarWeekRule
 {
     FirstDay = 0,
@@ -257,7 +273,7 @@ public enum CalendarWeekRule
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\CalendricalCalculationsHelper.cs'
 //
-public class CalendricalCalculationsHelper : DotNetObject
+public class CalendricalCalculationsHelper : __DotNet__Object
 {
     private enum double FullCircleOfArc/*todo: implement initializer*/ = double();
     private enum int HalfCircleOfArc/*todo: implement initializer*/ = int();
@@ -340,7 +356,7 @@ public class CalendricalCalculationsHelper : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\CharUnicodeInfo.cs'
 //
-public class CharUnicodeInfo : DotNetObject
+public class CharUnicodeInfo : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum wchar HIGH_SURROGATE_START/*todo: implement initializer*/ = wchar();
@@ -350,54 +366,53 @@ public class CharUnicodeInfo : DotNetObject
     public enum int UNICODE_CATEGORY_OFFSET/*todo: implement initializer*/ = int();
     public enum int BIDI_CATEGORY_OFFSET/*todo: implement initializer*/ = int();
     private static bool s_initialized/*todo: implement initializer*/ = bool();
-    // Ignored: // The native pointer to the 12:4:4 index table of the Unicode cateogry data.
-    // Ignored: [SecurityCritical]
+    // The native pointer to the 12:4:4 index table of the Unicode cateogry data.
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static ushort* s_pCategoryLevel1Index;
-    // Ignored: [SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static ubyte* s_pCategoriesValue;
-    // Ignored: // The native pointer to the 12:4:4 index table of the Unicode numeric data.
-    // Ignored: // The value of this index table is an index into the real value table stored in s_pNumericValues.
-    // Ignored: [SecurityCritical]
+    // The native pointer to the 12:4:4 index table of the Unicode numeric data.
+    // The value of this index table is an index into the real value table stored in s_pNumericValues.
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static ushort* s_pNumericLevel1Index;
-    // Ignored: // The numeric value table, which is indexed by s_pNumericLevel1Index.
-    // Ignored: // Every item contains the value for numeric value.
-    // Ignored: // unsafe static double* s_pNumericValues;
-    // Ignored: // To get around the IA64 alignment issue.  Our double data is aligned in 8-byte boundary, but loader loads the embeded table starting
-    // Ignored: // at 4-byte boundary.  This cause a alignment issue since double is 8-byte.
-    // Ignored: [SecurityCritical]
+    // The numeric value table, which is indexed by s_pNumericLevel1Index.
+    // Every item contains the value for numeric value.
+    // unsafe static double* s_pNumericValues;
+    // To get around the IA64 alignment issue.  Our double data is aligned in 8-byte boundary, but loader loads the embeded table starting
+    // at 4-byte boundary.  This cause a alignment issue since double is 8-byte.
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static ubyte* s_pNumericValues;
-    // Ignored: // The digit value table, which is indexed by s_pNumericLevel1Index.  It shares the same indice as s_pNumericValues.
-    // Ignored: // Every item contains the value for decimal digit/digit value.
-    // Ignored: [SecurityCritical]
+    // The digit value table, which is indexed by s_pNumericLevel1Index.  It shares the same indice as s_pNumericValues.
+    // Every item contains the value for decimal digit/digit value.
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static DigitValues* s_pDigitValues;
     public enum String UNICODE_INFO_FILE_NAME/*todo: implement initializer*/ = null;
     public enum int UNICODE_PLANE01_START/*todo: implement initializer*/ = int();
-    ////
-//        // This is the header for the native data table that we load from UNICODE_INFO_FILE_NAME.
-//        //
-//        // Excplicit layout is used here since a syntax like char[16] can not be used in sequential layout.
-//        [StructLayout(LayoutKind.Explicit)]
+    //
+    // This is the header for the native data table that we load from UNICODE_INFO_FILE_NAME.
+    //
+    // Excplicit layout is used here since a syntax like char[16] can not be used in sequential layout.
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit*/)
     public static struct UnicodeDataHeader
     {
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public wchar TableName;
-        // Ignored: [FieldOffset(0x20)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0x20*/)
         public ushort version_;
-        // Ignored: [FieldOffset(0x28)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0x28*/)
         public uint OffsetToCategoriesIndex;
-        // Ignored: [FieldOffset(0x2c)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0x2c*/)
         public uint OffsetToCategoriesValue;
-        // Ignored: [FieldOffset(0x30)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0x30*/)
         public uint OffsetToNumbericIndex;
-        // Ignored: [FieldOffset(0x34)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0x34*/)
         public uint OffsetToDigitValue;
-        // Ignored: [FieldOffset(0x38)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0x38*/)
         public uint OffsetToNumbericValue;
     }
-    //// NOTE: It's important to specify pack size here, since the size of the structure is 2 bytes.  Otherwise,
-//        // the default pack size will be 4.
-//
-//        [StructLayout(LayoutKind.Sequential, Pack=2)]
+    // NOTE: It's important to specify pack size here, since the size of the structure is 2 bytes.  Otherwise,
+    // the default pack size will be 4.
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, Pack=2*/)
     public static struct DigitValues
     {
         public byte decimalDigit;
@@ -431,20 +446,19 @@ public class CharUnicodeInfo : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\ChineseLunisolarCalendar.cs'
 //
-//////////////////////////////////////////////////////////////////////////////
-//    //
-//    //  Notes about ChineseLunisolarCalendar
-//    //
-//    ////////////////////////////////////////////////////////////////////////////
-//     /*
-//     **  Calendar support range:
-//     **      Calendar               Minimum             Maximum
-//     **      ==========     ==========  ==========
-//     **      Gregorian              1901/02/19          2101/01/28
-//     **      ChineseLunisolar   1901/01/01          2100/12/29
-//     */
+////////////////////////////////////////////////////////////////////////////
 //
-//    [Serializable]
+//  Notes about ChineseLunisolarCalendar
+//
+////////////////////////////////////////////////////////////////////////////
+// 
+// **  Calendar support range:
+// **      Calendar               Minimum             Maximum
+// **      ==========     ==========  ==========
+// **      Gregorian              1901/02/19          2101/01/28
+// **      ChineseLunisolar   1901/01/01          2100/12/29
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class ChineseLunisolarCalendar : EastAsianLunisolarCalendar
 {
     public enum int ChineseEra/*todo: implement initializer*/ = int();
@@ -480,15 +494,15 @@ public class ChineseLunisolarCalendar : EastAsianLunisolarCalendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\CompareInfo.cs'
 //
-// Ignored: //
-// Ignored: //  Options can be used during string comparison.
-// Ignored: //
-// Ignored: //  Native implementation (COMNlsInfo.cpp & SortingTable.cpp) relies on the values of these,
-// Ignored: //  If you change the values below, be sure to change the values in native part as well.
-// Ignored: //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+//
+//  Options can be used during string comparison.
+//
+//  Native implementation (COMNlsInfo.cpp & SortingTable.cpp) relies on the values of these,
+//  If you change the values below, be sure to change the values in native part as well.
+//
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum CompareOptions
 {
     None = 0x00000000,
@@ -501,25 +515,25 @@ public enum CompareOptions
     StringSort = 0x20000000,
     Ordinal = 0x40000000,
 }
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class CompareInfo : DotNetObject, IDeserializationCallback
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class CompareInfo : __DotNet__Object, IDeserializationCallback
 {
     private enum CompareOptions ValidIndexMaskOffFlags/*todo: implement initializer*/ = (cast(CompareOptions)0);
     private enum CompareOptions ValidCompareMaskOffFlags/*todo: implement initializer*/ = (cast(CompareOptions)0);
     private enum CompareOptions ValidHashCodeOfStringMaskOffFlags/*todo: implement initializer*/ = (cast(CompareOptions)0);
-    // Ignored: //
-    // Ignored: // CompareInfos have an interesting identity.  They are attached to the locale that created them,
-    // Ignored: // ie: en-US would have an en-US sort.  For haw-US (custom), then we serialize it as haw-US.
-    // Ignored: // The interesting part is that since haw-US doesn't have its own sort, it has to point at another
-    // Ignored: // locale, which is what SCOMPAREINFO does.
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    //
+    // CompareInfos have an interesting identity.  They are attached to the locale that created them,
+    // ie: en-US would have an en-US sort.  For haw-US (custom), then we serialize it as haw-US.
+    // The interesting part is that since haw-US doesn't have its own sort, it has to point at another
+    // locale, which is what SCOMPAREINFO does.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private String m_name;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private String m_sortName;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private IntPtr m_dataHandle;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private IntPtr m_handleOrigin;
     //TODO: generate constructor
     //TODO: generate method GetCompareInfo
@@ -528,11 +542,11 @@ public class CompareInfo : DotNetObject, IDeserializationCallback
     //TODO: generate method GetCompareInfo
     //TODO: generate method IsSortable
     //TODO: generate method IsSortable
-    // Ignored: #region Serialization
-    // Ignored: // the following fields are defined to keep the compatibility with Whidbey.
-    // Ignored: // don't change/remove the names/types of these fields.
-    // Ignored: #if FEATURE_USE_LCID
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    // #region Serialization
+    // the following fields are defined to keep the compatibility with Whidbey.
+    // don't change/remove the names/types of these fields.
+    // #if FEATURE_USE_LCID
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     private int win32LCID;
     private int culture;
     //TODO: generate method OnDeserializing
@@ -609,49 +623,47 @@ public class CompareInfo : DotNetObject, IDeserializationCallback
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\CultureData.cs'
 //
-////
-//    // List of culture data
-//    // Note the we cache overrides.
-//    // Note that localized names (resource names) aren't available from here.
-//    //
 //
-//    //
-//    // Our names are a tad confusing.
-//    //
-//    // sWindowsName -- The name that windows thinks this culture is, ie:
-//    //                            en-US if you pass in en-US
-//    //                            de-DE_phoneb if you pass in de-DE_phoneb
-//    //                            fj-FJ if you pass in fj (neutral, on a pre-Windows 7 machine)
-//    //                            fj if you pass in fj (neutral, post-Windows 7 machine)
-//    //
-//    // sRealName -- The name you used to construct the culture, in pretty form
-//    //                       en-US if you pass in EN-us
-//    //                       en if you pass in en
-//    //                       de-DE_phoneb if you pass in de-DE_phoneb
-//    //
-//    // sSpecificCulture -- The specific culture for this culture
-//    //                             en-US for en-US
-//    //                             en-US for en
-//    //                             de-DE_phoneb for alt sort
-//    //                             fj-FJ for fj (neutral)
-//    //
-//    // sName -- The IETF name of this culture (ie: no sort info, could be neutral)
-//    //                en-US if you pass in en-US
-//    //                en if you pass in en
-//    //                de-DE if you pass in de-DE_phoneb
-//    //
+// List of culture data
+// Note the we cache overrides.
+// Note that localized names (resource names) aren't available from here.
 //
-//    // StructLayout is needed here otherwise compiler can re-arrange the fields.
-//    // We have to keep this in-sync with the definition in comnlsinfo.h
-//    //
-//    // WARNING WARNING WARNING
-//    //
-//    // WARNING: Anything changed here also needs to be updated on the native side (object.h see type CultureDataBaseObject)
-//    // WARNING: The type loader will rearrange class member offsets so the mscorwks!CultureDataBaseObject
-//    // WARNING: must be manually structured to match the true loaded class layout
-//    //
-//    [FriendAccessAllowed]
-public class CultureData : DotNetObject
+//
+// Our names are a tad confusing.
+//
+// sWindowsName -- The name that windows thinks this culture is, ie:
+//                            en-US if you pass in en-US
+//                            de-DE_phoneb if you pass in de-DE_phoneb
+//                            fj-FJ if you pass in fj (neutral, on a pre-Windows 7 machine)
+//                            fj if you pass in fj (neutral, post-Windows 7 machine)
+//
+// sRealName -- The name you used to construct the culture, in pretty form
+//                       en-US if you pass in EN-us
+//                       en if you pass in en
+//                       de-DE_phoneb if you pass in de-DE_phoneb
+//
+// sSpecificCulture -- The specific culture for this culture
+//                             en-US for en-US
+//                             en-US for en
+//                             de-DE_phoneb for alt sort
+//                             fj-FJ for fj (neutral)
+//
+// sName -- The IETF name of this culture (ie: no sort info, could be neutral)
+//                en-US if you pass in en-US
+//                en if you pass in en
+//                de-DE if you pass in de-DE_phoneb
+//
+// StructLayout is needed here otherwise compiler can re-arrange the fields.
+// We have to keep this in-sync with the definition in comnlsinfo.h
+//
+// WARNING WARNING WARNING
+//
+// WARNING: Anything changed here also needs to be updated on the native side (object.h see type CultureDataBaseObject)
+// WARNING: The type loader will rearrange class member offsets so the mscorwks!CultureDataBaseObject
+// WARNING: must be manually structured to match the true loaded class layout
+//
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
+public class CultureData : __DotNet__Object
 {
     private enum int undef/*todo: implement initializer*/ = int();
     private String sRealName;
@@ -704,12 +716,12 @@ public class CultureData : DotNetObject
     private String sAM1159;
     private String sPM2359;
     private String sTimeSeparator;
-    private /*todo: volatile*/String[] saLongTimes;
-    private /*todo: volatile*/String[] saShortTimes;
-    private /*todo: volatile*/String[] saDurationFormats;
+    private /*todo: volatile*/ String[] saLongTimes;
+    private /*todo: volatile*/ String[] saShortTimes;
+    private /*todo: volatile*/ String[] saDurationFormats;
     private int iFirstDayOfWeek/*todo: implement initializer*/ = int();
     private int iFirstWeekOfYear/*todo: implement initializer*/ = int();
-    private /*todo: volatile*/int[] waCalendars;
+    private /*todo: volatile*/ int[] waCalendars;
     private CalendarData[] calendars;
     private int iReadingLayout/*todo: implement initializer*/ = int();
     private String sTextInfo;
@@ -733,23 +745,23 @@ public class CultureData : DotNetObject
     private bool bWin32Installed;
     private bool bFramework;
     //TODO: generate property 'RegionNames'
-    private static /*todo: volatile*/Dictionary2!(String,String) s_RegionNames;
+    private static /*todo: volatile*/ Dictionary2!(String,String) s_RegionNames;
     //TODO: generate property 'Invariant'
-    private static /*todo: volatile*/CultureData s_Invariant;
-    private static /*todo: volatile*/Dictionary2!(String,CultureData) s_cachedCultures;
+    private static /*todo: volatile*/ CultureData s_Invariant;
+    private static /*todo: volatile*/ Dictionary2!(String,CultureData) s_cachedCultures;
     //TODO: generate method GetCultureData
     //TODO: generate method CreateCultureData
     //TODO: generate method InitCultureData
-    private static /*todo: volatile*/Dictionary2!(String,CultureData) s_cachedRegions;
+    private static /*todo: volatile*/ Dictionary2!(String,CultureData) s_cachedRegions;
     //TODO: generate method GetCultureDataForRegion
     //TODO: generate method LCIDToLocaleName
     //TODO: generate method GetCultureData
     //TODO: generate method ClearCachedData
     //TODO: generate method GetCultures
-    public static /*todo: volatile*/CultureInfo[] specificCultures;
+    public static /*todo: volatile*/ CultureInfo[] specificCultures;
     //TODO: generate property 'SpecificCultures'
     //TODO: generate property 'IsReplacementCulture'
-    public static /*todo: volatile*/String[] s_replacementCultureNames;
+    public static /*todo: volatile*/ String[] s_replacementCultureNames;
     //TODO: generate method IsReplacementCultureName
     //TODO: generate property 'CultureName'
     //TODO: generate property 'UseUserOverride'
@@ -1016,9 +1028,9 @@ public class CultureData : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\CultureInfo.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class CultureInfo : DotNetObject, ICloneable, IFormatProvider
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class CultureInfo : __DotNet__Object, ICloneable, IFormatProvider
 {
     public bool m_isReadOnly;
     public CompareInfo compareInfo;
@@ -1026,46 +1038,46 @@ public class CultureInfo : DotNetObject, ICloneable, IFormatProvider
     public NumberFormatInfo numInfo;
     public DateTimeFormatInfo dateTimeInfo;
     public Calendar calendar;
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public int m_dataItem;
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public int cultureID/*todo: implement initializer*/ = int();
-    // Ignored: //
-    // Ignored: // The CultureData instance that we are going to read data from.
-    // Ignored: // For supported culture, this will be the CultureData instance that read data from mscorlib assembly.
-    // Ignored: // For customized culture, this will be the CultureData instance that read data from user customized culture binary file.
-    // Ignored: //
-    // Ignored: [NonSerialized]
+    //
+    // The CultureData instance that we are going to read data from.
+    // For supported culture, this will be the CultureData instance that read data from mscorlib assembly.
+    // For customized culture, this will be the CultureData instance that read data from user customized culture binary file.
+    //
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public CultureData m_cultureData;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public bool m_isInherited;
     public String m_name;
-    // Ignored: // This will hold the non sorting name to be returned from CultureInfo.Name property.
-    // Ignored: // This has a de-DE style name even for de-DE_phoneb type cultures
-    // Ignored: [NonSerialized]
+    // This will hold the non sorting name to be returned from CultureInfo.Name property.
+    // This has a de-DE style name even for de-DE_phoneb type cultures
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private String m_nonSortName;
-    // Ignored: // This will hold the sorting name to be returned from CultureInfo.SortName property.
-    // Ignored: // This might be completely unrelated to the culture name if a custom culture.  Ie en-US for fj-FJ.
-    // Ignored: // Otherwise its the sort name, ie: de-DE or de-DE_phoneb
-    // Ignored: [NonSerialized]
+    // This will hold the sorting name to be returned from CultureInfo.SortName property.
+    // This might be completely unrelated to the culture name if a custom culture.  Ie en-US for fj-FJ.
+    // Otherwise its the sort name, ie: de-DE or de-DE_phoneb
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private String m_sortName;
-    private static /*todo: volatile*/CultureInfo s_userDefaultCulture;
-    private static /*todo: volatile*/CultureInfo s_InvariantCultureInfo;
-    private static /*todo: volatile*/CultureInfo s_userDefaultUICulture;
-    private static /*todo: volatile*/CultureInfo s_InstalledUICultureInfo;
-    private static /*todo: volatile*/CultureInfo s_DefaultThreadCurrentUICulture;
-    private static /*todo: volatile*/CultureInfo s_DefaultThreadCurrentCulture;
-    private static /*todo: volatile*/Hashtable s_LcidCachedCultures;
-    private static /*todo: volatile*/Hashtable s_NameCachedCultures;
-    // Ignored: #if FEATURE_APPX
-    // Ignored: // When running under AppX, we use this to get some information about the language list
-    // Ignored: [SecurityCritical]
-    private static /*todo: volatile*/WindowsRuntimeResourceManagerBase s_WindowsRuntimeResourceManager;
-    // Ignored: [ThreadStatic]
+    private static /*todo: volatile*/ CultureInfo s_userDefaultCulture;
+    private static /*todo: volatile*/ CultureInfo s_InvariantCultureInfo;
+    private static /*todo: volatile*/ CultureInfo s_userDefaultUICulture;
+    private static /*todo: volatile*/ CultureInfo s_InstalledUICultureInfo;
+    private static /*todo: volatile*/ CultureInfo s_DefaultThreadCurrentUICulture;
+    private static /*todo: volatile*/ CultureInfo s_DefaultThreadCurrentCulture;
+    private static /*todo: volatile*/ Hashtable s_LcidCachedCultures;
+    private static /*todo: volatile*/ Hashtable s_NameCachedCultures;
+    // #if FEATURE_APPX
+    // When running under AppX, we use this to get some information about the language list
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+    private static /*todo: volatile*/ WindowsRuntimeResourceManagerBase s_WindowsRuntimeResourceManager;
+    @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static bool ts_IsDoingAppXCultureInfoLookup;
-    // Ignored: #endif
-    // Ignored: //The parent culture.
-    // Ignored: [NonSerialized]
+    // #endif
+    //The parent culture.
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private CultureInfo m_parent;
     public enum int LOCALE_NEUTRAL/*todo: implement initializer*/ = int();
     private enum int LOCALE_USER_DEFAULT/*todo: implement initializer*/ = int();
@@ -1142,8 +1154,8 @@ public class CultureInfo : DotNetObject, ICloneable, IFormatProvider
     //TODO: generate method GetCultureInfo
     //TODO: generate method GetCultureInfo
     //TODO: generate method GetCultureInfoByIetfLanguageTag
-    private static /*todo: volatile*/bool s_isTaiwanSku;
-    private static /*todo: volatile*/bool s_haveIsTaiwanSku;
+    private static /*todo: volatile*/ bool s_isTaiwanSku;
+    private static /*todo: volatile*/ bool s_haveIsTaiwanSku;
     //TODO: generate property 'IsTaiwanSku'
     //TODO: generate method nativeGetLocaleInfoEx
     //TODO: generate method nativeGetLocaleInfoExInt
@@ -1160,8 +1172,8 @@ public class CultureInfo : DotNetObject, ICloneable, IFormatProvider
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\CultureNotFoundException.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class CultureNotFoundException : ArgumentException, ISerializable
 {
     private String m_invalidCultureName;
@@ -1186,9 +1198,9 @@ public class CultureNotFoundException : ArgumentException, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\CultureTypes.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum CultureTypes
 {
     NeutralCultures = 0x0001,
@@ -1197,38 +1209,36 @@ public enum CultureTypes
     AllCultures = NeutralCultures | SpecificCultures | InstalledWin32Cultures,
     UserCustomCulture = 0x0008,
     ReplacementCultures = 0x0010,
-    // Ignored: [Obsolete("This value has been deprecated.  Please use other values in CultureTypes.")]
     WindowsOnlyCultures = 0x0020,
-    // Ignored: [Obsolete("This value has been deprecated.  Please use other values in CultureTypes.")]
     FrameworkCultures = 0x0040,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\DateTimeFormatInfo.cs'
 //
-// Ignored: //
-// Ignored: // Flags used to indicate different styles of month names.
-// Ignored: // This is an internal flag used by internalGetMonthName().
-// Ignored: // Use flag here in case that we need to provide a combination of these styles
-// Ignored: // (such as month name of a leap year in genitive form.  Not likely for now,
-// Ignored: // but would like to keep the option open).
-// Ignored: //
-// Ignored: [Flags]
+//
+// Flags used to indicate different styles of month names.
+// This is an internal flag used by internalGetMonthName().
+// Use flag here in case that we need to provide a combination of these styles
+// (such as month name of a leap year in genitive form.  Not likely for now,
+// but would like to keep the option open).
+//
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum MonthNameStyles
 {
     Regular = 0x00000000,
     Genitive = 0x00000001,
     LeapYear = 0x00000002,
 }
-// Ignored: //
-// Ignored: // Flags used to indicate special rule used in parsing/formatting
-// Ignored: // for a specific DateTimeFormatInfo instance.
-// Ignored: // This is an internal flag.
-// Ignored: //
-// Ignored: // This flag is different from MonthNameStyles because this flag
-// Ignored: // can be expanded to accomodate parsing behaviors like CJK month names
-// Ignored: // or alternative month names, etc.
-// Ignored: [Flags]
+//
+// Flags used to indicate special rule used in parsing/formatting
+// for a specific DateTimeFormatInfo instance.
+// This is an internal flag.
+//
+// This flag is different from MonthNameStyles because this flag
+// can be expanded to accomodate parsing behaviors like CJK month names
+// or alternative month names, etc.
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum DateTimeFormatFlags
 {
     None = 0x00000000,
@@ -1240,38 +1250,38 @@ public enum DateTimeFormatFlags
     UseDigitPrefixInTokens = 0x00000020,
     NotInitialized = -1,
 }
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class DateTimeFormatInfo : DotNetObject, ICloneable, IFormatProvider
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class DateTimeFormatInfo : __DotNet__Object, ICloneable, IFormatProvider
 {
-    private static /*todo: volatile*/DateTimeFormatInfo invariantInfo;
-    // Ignored: // an index which points to a record in Culture Data Table.
-    // Ignored: [NonSerialized]
+    private static /*todo: volatile*/ DateTimeFormatInfo invariantInfo;
+    // an index which points to a record in Culture Data Table.
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private CultureData m_cultureData;
-    // Ignored: // The culture name used to create this DTFI.
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    // The culture name used to create this DTFI.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public String m_name/*todo: implement initializer*/ = null;
-    // Ignored: // The language name of the culture used to create this DTFI.
-    // Ignored: [NonSerialized]
+    // The language name of the culture used to create this DTFI.
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private String m_langName/*todo: implement initializer*/ = null;
-    // Ignored: // CompareInfo usually used by the parser.
-    // Ignored: [NonSerialized]
+    // CompareInfo usually used by the parser.
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private CompareInfo m_compareInfo/*todo: implement initializer*/ = null;
-    // Ignored: // Culture matches current DTFI. mainly used for string comparisons during parsing.
-    // Ignored: [NonSerialized]
+    // Culture matches current DTFI. mainly used for string comparisons during parsing.
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private CultureInfo m_cultureInfo/*todo: implement initializer*/ = null;
     public String amDesignator/*todo: implement initializer*/ = null;
     public String pmDesignator/*todo: implement initializer*/ = null;
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public String dateSeparator/*todo: implement initializer*/ = null;
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public String generalShortTimePattern/*todo: implement initializer*/ = null;
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public String generalLongTimePattern/*todo: implement initializer*/ = null;
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public String timeSeparator/*todo: implement initializer*/ = null;
     public String monthDayPattern/*todo: implement initializer*/ = null;
-    // Ignored: [OptionalField(VersionAdded = 2)]                   // added in .NET Framework Release {2.0SP1/3.0SP1/3.5RTM}
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public String dateTimeOffsetPattern/*todo: implement initializer*/ = null;
     public enum String rfc1123Pattern/*todo: implement initializer*/ = null;
     public enum String sortableDateTimePattern/*todo: implement initializer*/ = null;
@@ -1279,32 +1289,32 @@ public final class DateTimeFormatInfo : DotNetObject, ICloneable, IFormatProvide
     public Calendar calendar/*todo: implement initializer*/ = null;
     public int firstDayOfWeek/*todo: implement initializer*/ = int();
     public int calendarWeekRule/*todo: implement initializer*/ = int();
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public String fullDateTimePattern/*todo: implement initializer*/ = null;
     public String[] abbreviatedDayNames/*todo: implement initializer*/ = null;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public String[] m_superShortDayNames/*todo: implement initializer*/ = null;
     public String[] dayNames/*todo: implement initializer*/ = null;
     public String[] abbreviatedMonthNames/*todo: implement initializer*/ = null;
     public String[] monthNames/*todo: implement initializer*/ = null;
-    // Ignored: // Cache the genitive month names that we retrieve from the data table.
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    // Cache the genitive month names that we retrieve from the data table.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public String[] genitiveMonthNames/*todo: implement initializer*/ = null;
-    // Ignored: // Cache the abbreviated genitive month names that we retrieve from the data table.
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    // Cache the abbreviated genitive month names that we retrieve from the data table.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public String[] m_genitiveAbbreviatedMonthNames/*todo: implement initializer*/ = null;
-    // Ignored: // Cache the month names of a leap year that we retrieve from the data table.
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    // Cache the month names of a leap year that we retrieve from the data table.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public String[] leapYearMonthNames/*todo: implement initializer*/ = null;
     public String longDatePattern/*todo: implement initializer*/ = null;
     public String shortDatePattern/*todo: implement initializer*/ = null;
     public String yearMonthPattern/*todo: implement initializer*/ = null;
     public String longTimePattern/*todo: implement initializer*/ = null;
     public String shortTimePattern/*todo: implement initializer*/ = null;
-    // Ignored: // These are Whidbey-serialization compatable arrays (eg: default not included)
-    // Ignored: // "all" is a bit of a misnomer since the "default" pattern stored above isn't
-    // Ignored: // necessarily a member of the list
-    // Ignored: [OptionalField(VersionAdded = 3)]
+    // These are Whidbey-serialization compatable arrays (eg: default not included)
+    // "all" is a bit of a misnomer since the "default" pattern stored above isn't
+    // necessarily a member of the list
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 3*/)
     private String[] allYearMonthPatterns/*todo: implement initializer*/ = null;
     public String[] allShortDatePatterns/*todo: implement initializer*/ = null;
     public String[] allLongDatePatterns/*todo: implement initializer*/ = null;
@@ -1316,9 +1326,9 @@ public final class DateTimeFormatInfo : DotNetObject, ICloneable, IFormatProvide
     public int[] optionalCalendars/*todo: implement initializer*/ = null;
     private enum int DEFAULT_ALL_DATETIMES_SIZE/*todo: implement initializer*/ = int();
     public bool m_isReadOnly/*todo: implement initializer*/ = bool();
-    // Ignored: // This flag gives hints about if formatting/parsing should perform special code path for things like
-    // Ignored: // genitive form or leap year month names.
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    // This flag gives hints about if formatting/parsing should perform special code path for things like
+    // genitive form or leap year month names.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public DateTimeFormatFlags formatFlags/*todo: implement initializer*/ = (cast(DateTimeFormatFlags)0);
     public static bool preferExistingTokens/*todo: implement initializer*/ = bool();
     //TODO: generate method InitPreferExistingTokens
@@ -1333,23 +1343,23 @@ public final class DateTimeFormatInfo : DotNetObject, ICloneable, IFormatProvide
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate method InitializeOverridableProperties
-    // Ignored: #region Serialization
-    // Ignored: // The following fields are defined to keep the serialization compatibility with .NET V1.0/V1.1.
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    // #region Serialization
+    // The following fields are defined to keep the serialization compatibility with .NET V1.0/V1.1.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     private int CultureID;
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     private bool m_useUserOverride;
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     private bool bUseCalendarInfo;
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     private int nDataItem;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public bool m_isDefaultCalendar;
-    // Ignored: [OptionalField(VersionAdded = 2)]
-    private static /*todo: volatile*/Hashtable s_calendarNativeNames;
-    // Ignored: // This was synthesized by Whidbey so we knew what words might appear in the middle of a date string
-    // Ignored: // Now we always synthesize so its not helpful
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
+    private static /*todo: volatile*/ Hashtable s_calendarNativeNames;
+    // This was synthesized by Whidbey so we knew what words might appear in the middle of a date string
+    // Now we always synthesize so its not helpful
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public String[] m_dateWords/*todo: implement initializer*/ = null;
     //TODO: generate method OnDeserialized
     //TODO: generate method OnSerializing
@@ -1422,16 +1432,16 @@ public final class DateTimeFormatInfo : DotNetObject, ICloneable, IFormatProvide
     //TODO: generate method SetAllDateTimePatterns
     //TODO: generate property 'AbbreviatedMonthGenitiveNames'
     //TODO: generate property 'MonthGenitiveNames'
-    // Ignored: //
-    // Ignored: // Positive TimeSpan Pattern
-    // Ignored: //
-    // Ignored: [NonSerialized]
+    //
+    // Positive TimeSpan Pattern
+    //
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private String m_fullTimeSpanPositivePattern;
     //TODO: generate property 'FullTimeSpanPositivePattern'
-    // Ignored: //
-    // Ignored: // Negative TimeSpan Pattern
-    // Ignored: //
-    // Ignored: [NonSerialized]
+    //
+    // Negative TimeSpan Pattern
+    //
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private String m_fullTimeSpanNegativePattern;
     //TODO: generate property 'FullTimeSpanNegativePattern'
     //TODO: generate property 'CompareInfo'
@@ -1441,10 +1451,10 @@ public final class DateTimeFormatInfo : DotNetObject, ICloneable, IFormatProvide
     //TODO: generate property 'HasForceTwoDigitYears'
     //TODO: generate property 'HasYearMonthAdjustment'
     //TODO: generate method YearMonthAdjustment
-    // Ignored: //
-    // Ignored: // DateTimeFormatInfo tokenizer.  This is used by DateTime.Parse() to break input string into tokens.
-    // Ignored: //
-    // Ignored: [NonSerialized]
+    //
+    // DateTimeFormatInfo tokenizer.  This is used by DateTime.Parse() to break input string into tokens.
+    //
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private TokenHashValue[] m_dtfiTokenHash;
     private enum int TOKEN_HASH_SIZE/*todo: implement initializer*/ = int();
     private enum int SECOND_PRIME/*todo: implement initializer*/ = int();
@@ -1470,8 +1480,8 @@ public final class DateTimeFormatInfo : DotNetObject, ICloneable, IFormatProvide
     public enum String KoreanLangName/*todo: implement initializer*/ = null;
     public enum String JapaneseLangName/*todo: implement initializer*/ = null;
     public enum String EnglishLangName/*todo: implement initializer*/ = null;
-    private static /*todo: volatile*/DateTimeFormatInfo s_jajpDTFI;
-    private static /*todo: volatile*/DateTimeFormatInfo s_zhtwDTFI;
+    private static /*todo: volatile*/ DateTimeFormatInfo s_jajpDTFI;
+    private static /*todo: volatile*/ DateTimeFormatInfo s_zhtwDTFI;
     //TODO: generate method GetJapaneseCalendarDTFI
     //TODO: generate method GetTaiwanCalendarDTFI
     //TODO: generate method ClearTokenHashTable
@@ -1483,7 +1493,7 @@ public final class DateTimeFormatInfo : DotNetObject, ICloneable, IFormatProvide
     //TODO: generate method InsertAtCurrentHashNode
     //TODO: generate method InsertHash
 }
-public class TokenHashValue : DotNetObject
+public class TokenHashValue : __DotNet__Object
 {
     public String tokenString;
     public TokenType tokenType;
@@ -1509,6 +1519,7 @@ public enum CalendarId : ushort
     GREGORIAN = 1,
     GREGORIAN_US = 2,
     JAPAN = 3,
+    //  SSS_WARNINGS_OFF          
     TAIWAN = 4,
     KOREA = 5,
     HIJRI = 6,
@@ -1518,6 +1529,7 @@ public enum CalendarId : ushort
     GREGORIAN_ARABIC = 10,
     GREGORIAN_XLIT_ENGLISH = 11,
     GREGORIAN_XLIT_FRENCH = 12,
+    // Note that all calendars after this point are MANAGED ONLY for now.
     JULIAN = 13,
     JAPANESELUNISOLAR = 14,
     CHINESELUNISOLAR = 15,
@@ -1531,7 +1543,7 @@ public enum CalendarId : ushort
     UMALQURA = 23,
     LAST_CALENDAR = 23,
 }
-public class DateTimeFormatInfoScanner : DotNetObject
+public class DateTimeFormatInfoScanner : __DotNet__Object
 {
     public enum wchar MonthPostfixChar/*todo: implement initializer*/ = wchar();
     public enum wchar IgnorableSymbolChar/*todo: implement initializer*/ = wchar();
@@ -1549,7 +1561,7 @@ public class DateTimeFormatInfoScanner : DotNetObject
     public enum String CJKMinuteSuff/*todo: implement initializer*/ = null;
     public enum String CJKSecondSuff/*todo: implement initializer*/ = null;
     public List1!(String) m_dateWords/*todo: implement initializer*/ = null;
-    private static /*todo: volatile*/Dictionary2!(String,String) s_knownWords;
+    private static /*todo: volatile*/ Dictionary2!(String,String) s_knownWords;
     //TODO: generate property 'KnownWords'
     //TODO: generate method SkipWhiteSpacesAndNonLetter
     //TODO: generate method AddDateWordOrPostfix
@@ -1579,30 +1591,38 @@ public class DateTimeFormatInfoScanner : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\DateTimeStyles.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum DateTimeStyles
 {
+    // Bit flag indicating that leading whitespace is allowed. Character values
+    // 0x0009, 0x000A, 0x000B, 0x000C, 0x000D, and 0x0020 are considered to be
+    // whitespace.
     None = 0x00000000,
     AllowLeadingWhite = 0x00000001,
     AllowTrailingWhite = 0x00000002,
     AllowInnerWhite = 0x00000004,
     AllowWhiteSpaces = AllowLeadingWhite | AllowInnerWhite | AllowTrailingWhite,
+    // When parsing a date/time string, if all year/month/day are missing, set the default date
+    // to 0001/1/1, instead of the current year/month/day.
     NoCurrentDateDefault = 0x00000008,
+    // When parsing a date/time string, if a timezone specifier ("GMT","Z","+xxxx", "-xxxx" exists), we will
+    // ajdust the parsed time based to GMT.
     AdjustToUniversal = 0x00000010,
     AssumeLocal = 0x00000020,
     AssumeUniversal = 0x00000040,
+    // Attempt to preserve whether the input is unspecified, local or UTC
     RoundtripKind = 0x00000080,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\DaylightTime.cs'
 //
-//// This class represents a starting/ending time for a period of daylight saving time.
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class DaylightTime : DotNetObject
+// This class represents a starting/ending time for a period of daylight saving time.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class DaylightTime : __DotNet__Object
 {
     public DateTime m_start;
     public DateTime m_end;
@@ -1617,8 +1637,8 @@ public class DaylightTime : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\DigitShapes.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum DigitShapes : int
 {
     Context = 0x0000,
@@ -1629,15 +1649,13 @@ public enum DigitShapes : int
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\EastAsianLunisolarCalendar.cs'
 //
-//////////////////////////////////////////////////////////////////////////////
-//    //
-//    //  Notes about EastAsianLunisolarCalendar
-//    //
-//    ////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 //
+//  Notes about EastAsianLunisolarCalendar
 //
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+////////////////////////////////////////////////////////////////////////////
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public abstract class EastAsianLunisolarCalendar : Calendar
 {
     public enum int LeapMonth/*todo: implement initializer*/ = int();
@@ -1701,17 +1719,16 @@ public abstract class EastAsianLunisolarCalendar : Calendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\EncodingDataItem.cs'
 //
-////
-//    // Data item for EncodingTable.  Along with EncodingTable, they are used by 
-//    // System.Text.Encoding.
-//    // 
-//    // This class stores a pointer to the internal data and the index into that data
-//    // where our required information is found.  We load the code page, flags and uiFamilyCodePage
-//    // immediately because they don't require creating an object.  Creating any of the string
-//    // names is delayed until somebody actually asks for them and the names are then cached.
-//    
-//    [Serializable]
-public class CodePageDataItem : DotNetObject
+//
+// Data item for EncodingTable.  Along with EncodingTable, they are used by 
+// System.Text.Encoding.
+// 
+// This class stores a pointer to the internal data and the index into that data
+// where our required information is found.  We load the code page, flags and uiFamilyCodePage
+// immediately because they don't require creating an object.  Creating any of the string
+// names is delayed until somebody actually asks for them and the names are then cached.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class CodePageDataItem : __DotNet__Object
 {
     public int m_dataIndex;
     public int m_uiFamilyCodePage;
@@ -1731,21 +1748,21 @@ public class CodePageDataItem : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\EncodingTable.cs'
 //
-public class EncodingTable : DotNetObject
+public class EncodingTable : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static int lastEncodingItem/*todo: implement initializer*/ = int();
-    private static /*todo: volatile*/int lastCodePageItem;
-    // Ignored: //
-    // Ignored: // This points to a native data table which maps an encoding name to the correct code page.
-    // Ignored: //
-    // Ignored: [SecurityCritical]
+    private static /*todo: volatile*/ int lastCodePageItem;
+    //
+    // This points to a native data table which maps an encoding name to the correct code page.        
+    //
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     public static InternalEncodingDataItem* encodingDataPtr/*todo: implement initializer*/ = null;
-    // Ignored: //
-    // Ignored: // This points to a native data table which stores the properties for the code page, and
-    // Ignored: // the table is indexed by code page.
-    // Ignored: //
-    // Ignored: [SecurityCritical]
+    //
+    // This points to a native data table which stores the properties for the code page, and
+    // the table is indexed by code page.
+    //
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     public static InternalCodePageDataItem* codePageDataPtr/*todo: implement initializer*/ = null;
     private static Hashtable hashByName/*todo: implement initializer*/ = null;
     private static Hashtable hashByCodePage/*todo: implement initializer*/ = null;
@@ -1759,39 +1776,37 @@ public class EncodingTable : DotNetObject
     //TODO: generate method GetCodePageData
     //TODO: generate method nativeCreateOpenFileMapping
 }
-///*=================================InternalEncodingDataItem==========================
-//    **Action: This is used to map a encoding name to a correct code page number. By doing this,
-//    ** we can get the properties of this encoding via the InternalCodePageDataItem.
-//    **
-//    ** We use this structure to access native data exposed by the native side.
-//    ============================================================================*/
-//    
-//    [System.Runtime.InteropServices.StructLayout(LayoutKind.Sequential)]
+// =================================InternalEncodingDataItem==========================
+// **Action: This is used to map a encoding name to a correct code page number. By doing this,
+// ** we can get the properties of this encoding via the InternalCodePageDataItem.
+// **
+// ** We use this structure to access native data exposed by the native side.
+// ============================================================================
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
 public struct InternalEncodingDataItem
 {
-    // Ignored: [SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     public byte* webName;
     public ushort codePage;
 }
-///*=================================InternalCodePageDataItem==========================
-//    **Action: This is used to access the properties related to a code page.
-//    ** We use this structure to access native data exposed by the native side.
-//    ============================================================================*/
-//
-//    [System.Runtime.InteropServices.StructLayout(LayoutKind.Sequential)]
+// =================================InternalCodePageDataItem==========================
+// **Action: This is used to access the properties related to a code page.
+// ** We use this structure to access native data exposed by the native side.
+// ============================================================================
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
 public struct InternalCodePageDataItem
 {
     public ushort codePage;
     public ushort uiFamilyCodePage;
     public uint flags;
-    // Ignored: [SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     public byte* Names;
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\GlobalizationAssembly.cs'
 //
-public final class GlobalizationAssembly : DotNetObject
+public final class GlobalizationAssembly : __DotNet__Object
 {
     //TODO: generate method GetGlobalizationResourceBytePtr
 }
@@ -1799,12 +1814,11 @@ public final class GlobalizationAssembly : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\GregorianCalendar.cs'
 //
-//// This calendar recognizes two era values:
-//    // 0 CurrentEra (AD)
-//    // 1 BeforeCurrentEra (BC)
-//
-//    [System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+// This calendar recognizes two era values:
+// 0 CurrentEra (AD)
+// 1 BeforeCurrentEra (BC)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class GregorianCalendar : Calendar
 {
     public enum int ADEra/*todo: implement initializer*/ = int();
@@ -1816,7 +1830,7 @@ public class GregorianCalendar : Calendar
     public GregorianCalendarTypes m_type;
     public static immutable int[] DaysToMonth365/*todo: implement initializer*/ = null;
     public static immutable int[] DaysToMonth366/*todo: implement initializer*/ = null;
-    private static /*todo: volatile*/Calendar s_defaultInstance;
+    private static /*todo: volatile*/ Calendar s_defaultInstance;
     //TODO: generate method OnDeserialized
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
@@ -1855,31 +1869,31 @@ public class GregorianCalendar : Calendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\GregorianCalendarHelper.cs'
 //
-//// Gregorian Calendars use Era Info
-//    // Note: We shouldn't have to serialize this since the info doesn't change, but we have been. 
-//    // (We really only need the calendar #, and maybe culture)
-//    [Serializable]
-public class EraInfo : DotNetObject
+// Gregorian Calendars use Era Info
+// Note: We shouldn't have to serialize this since the info doesn't change, but we have been. 
+// (We really only need the calendar #, and maybe culture)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class EraInfo : __DotNet__Object
 {
     public int era;
     public long ticks;
     public int yearOffset;
     public int minEraYear;
     public int maxEraYear;
-    // Ignored: [OptionalField(VersionAdded = 4)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 4*/)
     public String eraName;
-    // Ignored: [OptionalField(VersionAdded = 4)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 4*/)
     public String abbrevEraName;
-    // Ignored: [OptionalField(VersionAdded = 4)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 4*/)
     public String englishEraName;
     //TODO: generate constructor
     //TODO: generate constructor
 }
-//// This calendar recognizes two era values:
-//    // 0 CurrentEra (AD) 
-//    // 1 BeforeCurrentEra (BC) 
-//    [Serializable]
-public class GregorianCalendarHelper : DotNetObject
+// This calendar recognizes two era values:
+// 0 CurrentEra (AD) 
+// 1 BeforeCurrentEra (BC) 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class GregorianCalendarHelper : __DotNet__Object
 {
     public enum long TicksPerMillisecond/*todo: implement initializer*/ = long();
     public enum long TicksPerSecond/*todo: implement initializer*/ = long();
@@ -1903,20 +1917,20 @@ public class GregorianCalendarHelper : DotNetObject
     //TODO: generate property 'MaxYear'
     public static immutable int[] DaysToMonth365/*todo: implement initializer*/ = null;
     public static immutable int[] DaysToMonth366/*todo: implement initializer*/ = null;
-    // Ignored: // Strictly these don't need serialized since they can be recreated from the calendar id
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    // Strictly these don't need serialized since they can be recreated from the calendar id
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public int m_maxYear/*todo: implement initializer*/ = int();
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public int m_minYear;
     public Calendar m_Cal;
-    // Ignored: // Era information doesn't need serialized, its constant for the same calendars (ie: we can recreate it from the calendar id)
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    // Era information doesn't need serialized, its constant for the same calendars (ie: we can recreate it from the calendar id)
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public EraInfo[] m_EraInfo;
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public int[] m_eras/*todo: implement initializer*/ = null;
-    // Ignored: // m_minDate is existing here just to keep the serialization compatibility.
-    // Ignored: // it has nothing to do with the code anymore.
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    // m_minDate is existing here just to keep the serialization compatibility. 
+    // it has nothing to do with the code anymore. 
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public DateTime m_minDate;
     //TODO: generate constructor
     //TODO: generate method GetGregorianYear
@@ -1951,8 +1965,8 @@ public class GregorianCalendarHelper : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\GregorianCalendarTypes.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum GregorianCalendarTypes
 {
     Localized = /*MemberExpression:Type*/Calendar.CAL_GREGORIAN,
@@ -1966,63 +1980,60 @@ public enum GregorianCalendarTypes
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\HebrewCalendar.cs'
 //
-//////////////////////////////////////////////////////////////////////////////
-//    //
-//    //  Rules for the Hebrew calendar:
-//    //    - The Hebrew calendar is both a Lunar (months) and Solar (years)
-//    //        calendar, but allows for a week of seven days.
-//    //    - Days begin at sunset.
-//    //    - Leap Years occur in the 3, 6, 8, 11, 14, 17, & 19th years of a
-//    //        19-year cycle.  Year = leap iff ((7y+1) mod 19 < 7).
-//    //    - There are 12 months in a common year and 13 months in a leap year.
-//    //    - In a common year, the 6th month, Adar, has 29 days.  In a leap
-//    //        year, the 6th month, Adar I, has 30 days and the leap month,
-//    //        Adar II, has 29 days.
-//    //    - Common years have 353-355 days.  Leap years have 383-385 days.
-//    //    - The Hebrew new year (Rosh HaShanah) begins on the 1st of Tishri,
-//    //        the 7th month in the list below.
-//    //        - The new year may not begin on Sunday, Wednesday, or Friday.
-//    //        - If the new year would fall on a Tuesday and the conjunction of
-//    //            the following year were at midday or later, the new year is
-//    //            delayed until Thursday.
-//    //        - If the new year would fall on a Monday after a leap year, the
-//    //            new year is delayed until Tuesday.
-//    //    - The length of the 8th and 9th months vary from year to year,
-//    //        depending on the overall length of the year.
-//    //        - The length of a year is determined by the dates of the new
-//    //            years (Tishri 1) preceding and following the year in question.
-//    //        - The 2th month is long (30 days) if the year has 355 or 385 days.
-//    //        - The 3th month is short (29 days) if the year has 353 or 383 days.
-//    //    - The Hebrew months are:
-//    //        1.  Tishri        (30 days)
-//    //        2.  Heshvan       (29 or 30 days)
-//    //        3.  Kislev        (29 or 30 days)
-//    //        4.  Teveth        (29 days)
-//    //        5.  Shevat        (30 days)
-//    //        6.  Adar I        (30 days)
-//    //        7.  Adar {II}     (29 days, this only exists if that year is a leap year)
-//    //        8.  Nisan         (30 days)
-//    //        9.  Iyyar         (29 days)
-//    //        10. Sivan         (30 days)
-//    //        11. Tammuz        (29 days)
-//    //        12. Av            (30 days)
-//    //        13. Elul          (29 days)
-//    //
-//    ////////////////////////////////////////////////////////////////////////////
-//     /*
-//     **  Calendar support range:
-//     **      Calendar    Minimum     Maximum
-//     **      ==========  ==========  ==========
-//     **      Gregorian   1583/01/01  2239/09/29
-//     **      Hebrew      5343/04/07  5999/13/29
-//     */
+////////////////////////////////////////////////////////////////////////////
 //
-//// Includes CHebrew implemetation;i.e All the code necessary for converting
-//// Gregorian to Hebrew Lunar from 1583 to 2239.
+//  Rules for the Hebrew calendar:
+//    - The Hebrew calendar is both a Lunar (months) and Solar (years)
+//        calendar, but allows for a week of seven days.
+//    - Days begin at sunset.
+//    - Leap Years occur in the 3, 6, 8, 11, 14, 17, & 19th years of a
+//        19-year cycle.  Year = leap iff ((7y+1) mod 19 < 7).
+//    - There are 12 months in a common year and 13 months in a leap year.
+//    - In a common year, the 6th month, Adar, has 29 days.  In a leap
+//        year, the 6th month, Adar I, has 30 days and the leap month,
+//        Adar II, has 29 days.
+//    - Common years have 353-355 days.  Leap years have 383-385 days.
+//    - The Hebrew new year (Rosh HaShanah) begins on the 1st of Tishri,
+//        the 7th month in the list below.
+//        - The new year may not begin on Sunday, Wednesday, or Friday.
+//        - If the new year would fall on a Tuesday and the conjunction of
+//            the following year were at midday or later, the new year is
+//            delayed until Thursday.
+//        - If the new year would fall on a Monday after a leap year, the
+//            new year is delayed until Tuesday.
+//    - The length of the 8th and 9th months vary from year to year,
+//        depending on the overall length of the year.
+//        - The length of a year is determined by the dates of the new
+//            years (Tishri 1) preceding and following the year in question.
+//        - The 2th month is long (30 days) if the year has 355 or 385 days.
+//        - The 3th month is short (29 days) if the year has 353 or 383 days.
+//    - The Hebrew months are:
+//        1.  Tishri        (30 days)
+//        2.  Heshvan       (29 or 30 days)
+//        3.  Kislev        (29 or 30 days)
+//        4.  Teveth        (29 days)
+//        5.  Shevat        (30 days)
+//        6.  Adar I        (30 days)
+//        7.  Adar {II}     (29 days, this only exists if that year is a leap year)
+//        8.  Nisan         (30 days)
+//        9.  Iyyar         (29 days)
+//        10. Sivan         (30 days)
+//        11. Tammuz        (29 days)
+//        12. Av            (30 days)
+//        13. Elul          (29 days)
 //
-//
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+////////////////////////////////////////////////////////////////////////////
+// 
+// **  Calendar support range:
+// **      Calendar    Minimum     Maximum
+// **      ==========  ==========  ==========
+// **      Gregorian   1583/01/01  2239/09/29
+// **      Hebrew      5343/04/07  5999/13/29
+// 
+// Includes CHebrew implemetation;i.e All the code necessary for converting
+// Gregorian to Hebrew Lunar from 1583 to 2239.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class HebrewCalendar : Calendar
 {
     public static immutable int HebrewEra/*todo: implement initializer*/ = int();
@@ -2077,7 +2088,7 @@ public class HebrewCalendar : Calendar
     private enum int DEFAULT_TWO_DIGIT_YEAR_MAX/*todo: implement initializer*/ = int();
     //TODO: generate property 'TwoDigitYearMax'
     //TODO: generate method ToFourDigitYear
-    public static class __DateBuffer : DotNetObject
+    public static class __DateBuffer : __DotNet__Object
     {
         public int year;
         public int month;
@@ -2101,7 +2112,7 @@ public enum HebrewNumberParsingState
     FoundEndOfHebrewNumber,
     ContinueParsing,
 }
-public class HebrewNumber : DotNetObject
+public class HebrewNumber : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method ToString
@@ -2119,7 +2130,7 @@ public class HebrewNumber : DotNetObject
         SingleQuote = 8,
         DoubleQuote = 9,
     }
-    private static class HebrewValue : DotNetObject
+    private static class HebrewValue : __DotNet__Object
     {
         public HebrewToken token;
         public int value;
@@ -2158,49 +2169,47 @@ public class HebrewNumber : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\HijriCalendar.cs'
 //
-//#if !FEATURE_WIN32_REGISTRY
-//    using System.Text;
-//    using Microsoft.Win32;
-//#endif // FEATURE_WIN32_REGISTRY
+// #if !FEATURE_WIN32_REGISTRY
+// using System.Text;
+// using Microsoft.Win32;
+// #endif // FEATURE_WIN32_REGISTRY
+////////////////////////////////////////////////////////////////////////////
 //
-//    ////////////////////////////////////////////////////////////////////////////
-//    //
-//    //  Rules for the Hijri calendar:
-//    //    - The Hijri calendar is a strictly Lunar calendar.
-//    //    - Days begin at sunset.
-//    //    - Islamic Year 1 (Muharram 1, 1 A.H.) is equivalent to absolute date
-//    //        227015 (Friday, July 16, 622 C.E. - Julian).
-//    //    - Leap Years occur in the 2, 5, 7, 10, 13, 16, 18, 21, 24, 26, & 29th
-//    //        years of a 30-year cycle.  Year = leap iff ((11y+14) mod 30 < 11).
-//    //    - There are 12 months which contain alternately 30 and 29 days.
-//    //    - The 12th month, Dhu al-Hijjah, contains 30 days instead of 29 days
-//    //        in a leap year.
-//    //    - Common years have 354 days.  Leap years have 355 days.
-//    //    - There are 10,631 days in a 30-year cycle.
-//    //    - The Islamic months are:
-//    //        1.  Muharram   (30 days)     7.  Rajab          (30 days)
-//    //        2.  Safar      (29 days)     8.  Sha'ban        (29 days)
-//    //        3.  Rabi I     (30 days)     9.  Ramadan        (30 days)
-//    //        4.  Rabi II    (29 days)     10. Shawwal        (29 days)
-//    //        5.  Jumada I   (30 days)     11. Dhu al-Qada    (30 days)
-//    //        6.  Jumada II  (29 days)     12. Dhu al-Hijjah  (29 days) {30}
-//    //
-//    //  NOTENOTE
-//    //      The calculation of the HijriCalendar is based on the absolute date.  And the
-//    //      absolute date means the number of days from January 1st, 1 A.D.
-//    //      Therefore, we do not support the days before the January 1st, 1 A.D.
-//    //
-//    ////////////////////////////////////////////////////////////////////////////
-//     /*
-//     **  Calendar support range:
-//     **      Calendar    Minimum     Maximum
-//     **      ==========  ==========  ==========
-//     **      Gregorian   0622/07/18   9999/12/31
-//     **      Hijri       0001/01/01   9666/04/03
-//     */
+//  Rules for the Hijri calendar:
+//    - The Hijri calendar is a strictly Lunar calendar.
+//    - Days begin at sunset.
+//    - Islamic Year 1 (Muharram 1, 1 A.H.) is equivalent to absolute date
+//        227015 (Friday, July 16, 622 C.E. - Julian).
+//    - Leap Years occur in the 2, 5, 7, 10, 13, 16, 18, 21, 24, 26, & 29th
+//        years of a 30-year cycle.  Year = leap iff ((11y+14) mod 30 < 11).
+//    - There are 12 months which contain alternately 30 and 29 days.
+//    - The 12th month, Dhu al-Hijjah, contains 30 days instead of 29 days
+//        in a leap year.
+//    - Common years have 354 days.  Leap years have 355 days.
+//    - There are 10,631 days in a 30-year cycle.
+//    - The Islamic months are:
+//        1.  Muharram   (30 days)     7.  Rajab          (30 days)
+//        2.  Safar      (29 days)     8.  Sha'ban        (29 days)
+//        3.  Rabi I     (30 days)     9.  Ramadan        (30 days)
+//        4.  Rabi II    (29 days)     10. Shawwal        (29 days)
+//        5.  Jumada I   (30 days)     11. Dhu al-Qada    (30 days)
+//        6.  Jumada II  (29 days)     12. Dhu al-Hijjah  (29 days) {30}
 //
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+//  NOTENOTE
+//      The calculation of the HijriCalendar is based on the absolute date.  And the
+//      absolute date means the number of days from January 1st, 1 A.D.
+//      Therefore, we do not support the days before the January 1st, 1 A.D.
+//
+////////////////////////////////////////////////////////////////////////////
+// 
+// **  Calendar support range:
+// **      Calendar    Minimum     Maximum
+// **      ==========  ==========  ==========
+// **      Gregorian   0622/07/18   9999/12/31
+// **      Hijri       0001/01/01   9666/04/03
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class HijriCalendar : Calendar
 {
     public static immutable int HijriEra/*todo: implement initializer*/ = int();
@@ -2259,7 +2268,7 @@ public class HijriCalendar : Calendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\IdnMapping.cs'
 //
-public final class IdnMapping : DotNetObject
+public final class IdnMapping : __DotNet__Object
 {
     private enum int M_labelLimit/*todo: implement initializer*/ = int();
     private enum int M_defaultNameLimit/*todo: implement initializer*/ = int();
@@ -2311,51 +2320,49 @@ public final class IdnMapping : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\JapaneseCalendar.cs'
 //
-///*=================================JapaneseCalendar==========================
-//    **
-//    ** JapaneseCalendar is based on Gregorian calendar.  The month and day values are the same as
-//    ** Gregorian calendar.  However, the year value is an offset to the Gregorian
-//    ** year based on the era.
-//    **
-//    ** This system is adopted by Emperor Meiji in 1868. The year value is counted based on the reign of an emperor,
-//    ** and the era begins on the day an emperor ascends the throne and continues until his death.
-//    ** The era changes at 12:00AM.
-//    **
-//    ** For example, the current era is Heisei.  It started on 1989/1/8 A.D.  Therefore, Gregorian year 1989 is also Heisei 1st.
-//    ** 1989/1/8 A.D. is also Heisei 1st 1/8.
-//    **
-//    ** Any date in the year during which era is changed can be reckoned in either era.  For example,
-//    ** 1989/1/1 can be 1/1 Heisei 1st year or 1/1 Showa 64th year.
-//    **
-//    ** Note:
-//    **  The DateTime can be represented by the JapaneseCalendar are limited to two factors:
-//    **      1. The min value and max value of DateTime class.
-//    **      2. The available era information.
-//    **
-//    **  Calendar support range:
-//    **      Calendar    Minimum     Maximum
-//    **      ==========  ==========  ==========
-//    **      Gregorian   1868/09/08  9999/12/31
-//    **      Japanese    Meiji 01/01 Heisei 8011/12/31
-//    ============================================================================*/
-//
-//
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// =================================JapaneseCalendar==========================
+// **
+// ** JapaneseCalendar is based on Gregorian calendar.  The month and day values are the same as
+// ** Gregorian calendar.  However, the year value is an offset to the Gregorian
+// ** year based on the era.
+// **
+// ** This system is adopted by Emperor Meiji in 1868. The year value is counted based on the reign of an emperor,
+// ** and the era begins on the day an emperor ascends the throne and continues until his death.
+// ** The era changes at 12:00AM.
+// **
+// ** For example, the current era is Heisei.  It started on 1989/1/8 A.D.  Therefore, Gregorian year 1989 is also Heisei 1st.
+// ** 1989/1/8 A.D. is also Heisei 1st 1/8.
+// **
+// ** Any date in the year during which era is changed can be reckoned in either era.  For example,
+// ** 1989/1/1 can be 1/1 Heisei 1st year or 1/1 Showa 64th year.
+// **
+// ** Note:
+// **  The DateTime can be represented by the JapaneseCalendar are limited to two factors:
+// **      1. The min value and max value of DateTime class.
+// **      2. The available era information.
+// **
+// **  Calendar support range:
+// **      Calendar    Minimum     Maximum
+// **      ==========  ==========  ==========
+// **      Gregorian   1868/09/08  9999/12/31
+// **      Japanese    Meiji 01/01 Heisei 8011/12/31
+// ============================================================================
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class JapaneseCalendar : Calendar
 {
     public static immutable DateTime calendarMinValue/*todo: implement initializer*/ = DateTime();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'AlgorithmType'
-    public static /*todo: volatile*/EraInfo[] japaneseEraInfo;
+    public static /*todo: volatile*/ EraInfo[] japaneseEraInfo;
     //TODO: generate method GetEraInfo
     private enum String c_japaneseErasHive/*todo: implement initializer*/ = null;
     private enum String c_japaneseErasHivePermissionList/*todo: implement initializer*/ = null;
     //TODO: generate method GetErasFromRegistry
     //TODO: generate method CompareEraRanges
     //TODO: generate method GetEraFromValue
-    public static /*todo: volatile*/Calendar s_defaultInstance;
+    public static /*todo: volatile*/ Calendar s_defaultInstance;
     public GregorianCalendarHelper helper;
     //TODO: generate method GetDefaultInstance
     //TODO: generate constructor
@@ -2390,20 +2397,19 @@ public class JapaneseCalendar : Calendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\JapaneseLunisolarCalendar.cs'
 //
-//////////////////////////////////////////////////////////////////////////////
-//    //
-//    //  Notes about JapaneseLunisolarCalendar
-//    //
-//    ////////////////////////////////////////////////////////////////////////////
-//     /*
-//     **  Calendar support range:
-//     **      Calendar               Minimum             Maximum
-//     **      ==========             ==========          ==========
-//     **      Gregorian              1960/01/28          2050/01/22
-//     **      JapaneseLunisolar      1960/01/01          2049/12/29
-//     */
+////////////////////////////////////////////////////////////////////////////
 //
-//    [Serializable]
+//  Notes about JapaneseLunisolarCalendar
+//
+////////////////////////////////////////////////////////////////////////////
+// 
+// **  Calendar support range:
+// **      Calendar               Minimum             Maximum
+// **      ==========             ==========          ==========
+// **      Gregorian              1960/01/28          2050/01/22
+// **      JapaneseLunisolar      1960/01/01          2049/12/29
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class JapaneseLunisolarCalendar : EastAsianLunisolarCalendar
 {
     public enum int JapaneseEra/*todo: implement initializer*/ = int();
@@ -2441,19 +2447,18 @@ public class JapaneseLunisolarCalendar : EastAsianLunisolarCalendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\JulianCalendar.cs'
 //
-////
-//    // This class implements the Julian calendar. In 48 B.C. Julius Caesar ordered a calendar reform, and this calendar
-//    // is called Julian calendar. It consisted of a solar year of twelve months and of 365 days with an extra day
-//    // every fourth year.
-//    //*
-//    //*  Calendar support range:
-//    //*      Calendar    Minimum     Maximum
-//    //*      ==========  ==========  ==========
-//    //*      Gregorian   0001/01/01   9999/12/31
-//    //*      Julia       0001/01/03   9999/10/19
 //
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// This class implements the Julian calendar. In 48 B.C. Julius Caesar ordered a calendar reform, and this calendar
+// is called Julian calendar. It consisted of a solar year of twelve months and of 365 days with an extra day
+// every fourth year.
+//*
+//*  Calendar support range:
+//*      Calendar    Minimum     Maximum
+//*      ==========  ==========  ==========
+//*      Gregorian   0001/01/01   9999/12/31
+//*      Julia       0001/01/03   9999/10/19
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class JulianCalendar : Calendar
 {
     public static immutable int JulianEra/*todo: implement initializer*/ = int();
@@ -2501,24 +2506,22 @@ public class JulianCalendar : Calendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\KoreanCalendar.cs'
 //
-///*=================================KoreanCalendar==========================
-//    **
-//    ** Korean calendar is based on the Gregorian calendar.  And the year is an offset to Gregorian calendar.
-//    ** That is,
-//    **      Korean year = Gregorian year + 2333.  So 2000/01/01 A.D. is Korean 4333/01/01
-//    **
-//    ** 0001/1/1 A.D. is Korean year 2334.
-//    **
-//    **  Calendar support range:
-//    **      Calendar    Minimum     Maximum
-//    **      ==========  ==========  ==========
-//    **      Gregorian   0001/01/01   9999/12/31
-//    **      Korean      2334/01/01  12332/12/31
-//    ============================================================================*/
-//
-//
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+// =================================KoreanCalendar==========================
+// **
+// ** Korean calendar is based on the Gregorian calendar.  And the year is an offset to Gregorian calendar.
+// ** That is,
+// **      Korean year = Gregorian year + 2333.  So 2000/01/01 A.D. is Korean 4333/01/01
+// **
+// ** 0001/1/1 A.D. is Korean year 2334.
+// **
+// **  Calendar support range:
+// **      Calendar    Minimum     Maximum
+// **      ==========  ==========  ==========
+// **      Gregorian   0001/01/01   9999/12/31
+// **      Korean      2334/01/01  12332/12/31
+// ============================================================================
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class KoreanCalendar : Calendar
 {
     public enum int KoreanEra/*todo: implement initializer*/ = int();
@@ -2555,20 +2558,19 @@ public class KoreanCalendar : Calendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\KoreanLunisolarCalendar.cs'
 //
-//////////////////////////////////////////////////////////////////////////////
-//    //
-//    //  Notes about KoreanLunisolarCalendar
-//    //
-//    ////////////////////////////////////////////////////////////////////////////
-//     /*
-//     **  Calendar support range:
-//     **      Calendar               Minimum             Maximum
-//     **      ==========     ==========  ==========
-//     **      Gregorian              918/02/14          2051/02/10
-//     **      KoreanLunisolar    918/01/01          2050/13/29
-//     */
+////////////////////////////////////////////////////////////////////////////
 //
-//    [Serializable]
+//  Notes about KoreanLunisolarCalendar
+//
+////////////////////////////////////////////////////////////////////////////
+// 
+// **  Calendar support range:
+// **      Calendar               Minimum             Maximum
+// **      ==========     ==========  ==========
+// **      Gregorian              918/02/14          2051/02/10
+// **      KoreanLunisolar    918/01/01          2050/13/29
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class KoreanLunisolarCalendar : EastAsianLunisolarCalendar
 {
     public enum int GregorianEra/*todo: implement initializer*/ = int();
@@ -2604,43 +2606,42 @@ public class KoreanLunisolarCalendar : EastAsianLunisolarCalendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\NumberFormatInfo.cs'
 //
-////
-//    // Property             Default Description
-//    // PositiveSign           '+'   Character used to indicate positive values.
-//    // NegativeSign           '-'   Character used to indicate negative values.
-//    // NumberDecimalSeparator '.'   The character used as the decimal separator.
-//    // NumberGroupSeparator   ','   The character used to separate groups of
-//    //                              digits to the left of the decimal point.
-//    // NumberDecimalDigits    2     The default number of decimal places.
-//    // NumberGroupSizes       3     The number of digits in each group to the
-//    //                              left of the decimal point.
-//    // NaNSymbol             "NaN"  The string used to represent NaN values.
-//    // PositiveInfinitySymbol"Infinity" The string used to represent positive
-//    //                              infinities.
-//    // NegativeInfinitySymbol"-Infinity" The string used to represent negative
-//    //                              infinities.
-//    //
-//    //
-//    //
-//    // Property                  Default  Description
-//    // CurrencyDecimalSeparator  '.'      The character used as the decimal
-//    //                                    separator.
-//    // CurrencyGroupSeparator    ','      The character used to separate groups
-//    //                                    of digits to the left of the decimal
-//    //                                    point.
-//    // CurrencyDecimalDigits     2        The default number of decimal places.
-//    // CurrencyGroupSizes        3        The number of digits in each group to
-//    //                                    the left of the decimal point.
-//    // CurrencyPositivePattern   0        The format of positive values.
-//    // CurrencyNegativePattern   0        The format of negative values.
-//    // CurrencySymbol            "$"      String used as local monetary symbol.
-//    //
 //
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class NumberFormatInfo : DotNetObject, ICloneable, IFormatProvider
+// Property             Default Description
+// PositiveSign           '+'   Character used to indicate positive values.
+// NegativeSign           '-'   Character used to indicate negative values.
+// NumberDecimalSeparator '.'   The character used as the decimal separator.
+// NumberGroupSeparator   ','   The character used to separate groups of
+//                              digits to the left of the decimal point.
+// NumberDecimalDigits    2     The default number of decimal places.
+// NumberGroupSizes       3     The number of digits in each group to the
+//                              left of the decimal point.
+// NaNSymbol             "NaN"  The string used to represent NaN values.
+// PositiveInfinitySymbol"Infinity" The string used to represent positive
+//                              infinities.
+// NegativeInfinitySymbol"-Infinity" The string used to represent negative
+//                              infinities.
+//
+//
+//
+// Property                  Default  Description
+// CurrencyDecimalSeparator  '.'      The character used as the decimal
+//                                    separator.
+// CurrencyGroupSeparator    ','      The character used to separate groups
+//                                    of digits to the left of the decimal
+//                                    point.
+// CurrencyDecimalDigits     2        The default number of decimal places.
+// CurrencyGroupSizes        3        The number of digits in each group to
+//                                    the left of the decimal point.
+// CurrencyPositivePattern   0        The format of positive values.
+// CurrencyNegativePattern   0        The format of negative values.
+// CurrencySymbol            "$"      String used as local monetary symbol.
+//
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class NumberFormatInfo : __DotNet__Object, ICloneable, IFormatProvider
 {
-    private static /*todo: volatile*/NumberFormatInfo invariantInfo;
+    private static /*todo: volatile*/ NumberFormatInfo invariantInfo;
     public int[] numberGroupSizes/*todo: implement initializer*/ = null;
     public int[] currencyGroupSizes/*todo: implement initializer*/ = null;
     public int[] percentGroupSizes/*todo: implement initializer*/ = null;
@@ -2659,12 +2660,12 @@ public final class NumberFormatInfo : DotNetObject, ICloneable, IFormatProvider
     public String percentGroupSeparator/*todo: implement initializer*/ = null;
     public String percentSymbol/*todo: implement initializer*/ = null;
     public String perMilleSymbol/*todo: implement initializer*/ = null;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public String[] nativeDigits/*todo: implement initializer*/ = null;
-    // Ignored: // an index which points to a record in Culture Data Table.
-    // Ignored: // We shouldn't be persisting dataItem (since its useless & we weren't using it),
-    // Ignored: // but since COMNumber.cpp uses it and since serialization isn't implimented, its stuck for now.
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    // an index which points to a record in Culture Data Table.
+    // We shouldn't be persisting dataItem (since its useless & we weren't using it),
+    // but since COMNumber.cpp uses it and since serialization isn't implimented, its stuck for now.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public int m_dataItem/*todo: implement initializer*/ = int();
     public int numberDecimalDigits/*todo: implement initializer*/ = int();
     public int currencyDecimalDigits/*todo: implement initializer*/ = int();
@@ -2674,24 +2675,24 @@ public final class NumberFormatInfo : DotNetObject, ICloneable, IFormatProvider
     public int percentPositivePattern/*todo: implement initializer*/ = int();
     public int percentNegativePattern/*todo: implement initializer*/ = int();
     public int percentDecimalDigits/*todo: implement initializer*/ = int();
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public int digitSubstitution/*todo: implement initializer*/ = int();
     public bool isReadOnly/*todo: implement initializer*/ = bool();
-    // Ignored: // We shouldn't be persisting m_useUserOverride (since its useless & we weren't using it),
-    // Ignored: // but since COMNumber.cpp uses it and since serialization isn't implimented, its stuck for now.
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    // We shouldn't be persisting m_useUserOverride (since its useless & we weren't using it),
+    // but since COMNumber.cpp uses it and since serialization isn't implimented, its stuck for now.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public bool m_useUserOverride/*todo: implement initializer*/ = bool();
-    // Ignored: // Is this NumberFormatInfo for invariant culture?
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    // Is this NumberFormatInfo for invariant culture?
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public bool m_isInvariant/*todo: implement initializer*/ = bool();
     //TODO: generate constructor
-    // Ignored: #region Serialization
-    // Ignored: // Check if NumberFormatInfo was not set up ambiguously for parsing as number and currency
-    // Ignored: // eg. if the NumberDecimalSeparator and the NumberGroupSeparator were the same. This check
-    // Ignored: // is solely for backwards compatibility / version tolerant serialization
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    // #region Serialization
+    // Check if NumberFormatInfo was not set up ambiguously for parsing as number and currency
+    // eg. if the NumberDecimalSeparator and the NumberGroupSeparator were the same. This check
+    // is solely for backwards compatibility / version tolerant serialization
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public bool validForParseAsNumber/*todo: implement initializer*/ = bool();
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public bool validForParseAsCurrency/*todo: implement initializer*/ = bool();
     //TODO: generate method OnSerializing
     //TODO: generate method OnDeserializing
@@ -2745,15 +2746,19 @@ public final class NumberFormatInfo : DotNetObject, ICloneable, IFormatProvider
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\NumberStyles.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum NumberStyles
 {
+    // Bit flag indicating that leading whitespace is allowed. Character values
+    // 0x0009, 0x000A, 0x000B, 0x000C, 0x000D, and 0x0020 are considered to be
+    // whitespace.
     None = 0x00000000,
     AllowLeadingWhite = 0x00000001,
     AllowTrailingWhite = 0x00000002,
     AllowLeadingSign = 0x00000004,
+    //Specified by NumberFormatInfo.PositiveSign and NumberFormatInfo.NegativeSign
     AllowTrailingSign = 0x00000008,
     AllowParentheses = 0x00000010,
     AllowDecimalPoint = 0x00000020,
@@ -2761,6 +2766,7 @@ public enum NumberStyles
     AllowExponent = 0x00000080,
     AllowCurrencySymbol = 0x00000100,
     AllowHexSpecifier = 0x00000200,
+    //Common uses.  These represent some of the most common combinations of these flags.
     Integer = AllowLeadingWhite | AllowTrailingWhite | AllowLeadingSign,
     HexNumber = AllowLeadingWhite | AllowTrailingWhite | AllowHexSpecifier,
     Number = AllowLeadingWhite | AllowTrailingWhite | AllowLeadingSign | AllowTrailingSign | AllowDecimalPoint | AllowThousands,
@@ -2772,24 +2778,22 @@ public enum NumberStyles
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\PersianCalendar.cs'
 //
-//////////////////////////////////////////////////////////////////////////////
-//    //
-//    //  Notes about PersianCalendar
-//    //
-//    ////////////////////////////////////////////////////////////////////////////
-//    // Modern Persian calendar is a solar observation based calendar. Each new year begins on the day when the vernal equinox occurs before noon.
-//    // The epoch is the date of the vernal equinox prior to the epoch of the Islamic calendar (March 19, 622 Julian or March 22, 622 Gregorian)
+////////////////////////////////////////////////////////////////////////////
 //
-//    // There is no Persian year 0. Ordinary years have 365 days. Leap years have 366 days with the last month (Esfand) gaining the extra day.
-//    /*
-//     **  Calendar support range:
-//     **      Calendar    Minimum     Maximum
-//     **      ==========  ==========  ==========
-//     **      Gregorian   0622/03/22   9999/12/31
-//     **      Persian     0001/01/01   9378/10/13
-//     */
+//  Notes about PersianCalendar
 //
-//    [Serializable]
+////////////////////////////////////////////////////////////////////////////
+// Modern Persian calendar is a solar observation based calendar. Each new year begins on the day when the vernal equinox occurs before noon.
+// The epoch is the date of the vernal equinox prior to the epoch of the Islamic calendar (March 19, 622 Julian or March 22, 622 Gregorian)
+// There is no Persian year 0. Ordinary years have 365 days. Leap years have 366 days with the last month (Esfand) gaining the extra day.
+// 
+// **  Calendar support range:
+// **      Calendar    Minimum     Maximum
+// **      ==========  ==========  ==========
+// **      Gregorian   0622/03/22   9999/12/31
+// **      Persian     0001/01/01   9378/10/13
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class PersianCalendar : Calendar
 {
     public static immutable int PersianEra/*todo: implement initializer*/ = int();
@@ -2845,31 +2849,31 @@ public class PersianCalendar : Calendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\RegionInfo.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class RegionInfo : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class RegionInfo : __DotNet__Object
 {
     public String m_name;
-    // Ignored: //
-    // Ignored: // The CultureData instance that we are going to read data from.
-    // Ignored: //
-    // Ignored: [NonSerialized]
+    //
+    // The CultureData instance that we are going to read data from.
+    //
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public CultureData m_cultureData;
-    public static /*todo: volatile*/RegionInfo s_currentRegionInfo;
+    public static /*todo: volatile*/ RegionInfo s_currentRegionInfo;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate method SetName
-    // Ignored: #region Serialization
-    // Ignored: //
-    // Ignored: //  m_cultureId is needed for serialization only to detect the case if the region info is created using the name or using the LCID.
-    // Ignored: //  in case m_cultureId is zero means that the RigionInfo is created using name. otherwise it is created using LCID.
-    // Ignored: //
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    // #region Serialization 
+    //
+    //  m_cultureId is needed for serialization only to detect the case if the region info is created using the name or using the LCID.
+    //  in case m_cultureId is zero means that the RigionInfo is created using name. otherwise it is created using LCID.
+    //
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private int m_cultureId;
-    // Ignored: // the following field is defined to keep the compatibility with Everett.
-    // Ignored: // don't change/remove the names/types of these field.
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    // the following field is defined to keep the compatibility with Everett.
+    // don't change/remove the names/types of these field.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public int m_dataItem/*todo: implement initializer*/ = int();
     //TODO: generate method OnDeserialized
     //TODO: generate method OnSerializing
@@ -2895,19 +2899,19 @@ public class RegionInfo : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\SortKey.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
-public class SortKey : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class SortKey : __DotNet__Object
 {
-    // Ignored: //--------------------------------------------------------------------//
-    // Ignored: //                        Internal Information                        //
-    // Ignored: //--------------------------------------------------------------------//
-    // Ignored: //
-    // Ignored: //  Variables.
-    // Ignored: //
-    // Ignored: [OptionalField(VersionAdded = 3)]
+    //--------------------------------------------------------------------//
+    //                        Internal Information                        //
+    //--------------------------------------------------------------------//
+    //
+    //  Variables.
+    //
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 3*/)
     public String localeName;
-    // Ignored: [OptionalField(VersionAdded = 1)] // LCID field so serialization is Whidbey compatible though we don't officially support it
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public int win32LCID;
     public CompareOptions options;
     public String m_String;
@@ -2926,8 +2930,8 @@ public class SortKey : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\SortVersion.cs'
 //
-//[Serializable]
-public final class SortVersion : DotNetObject, IEquatable1!(SortVersion)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class SortVersion : __DotNet__Object, IEquatable1!(SortVersion)
 {
     private int m_NlsVersion;
     private Guid m_SortId;
@@ -2945,15 +2949,15 @@ public final class SortVersion : DotNetObject, IEquatable1!(SortVersion)
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\StringInfo.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class StringInfo : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class StringInfo : __DotNet__Object
 {
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private String m_str;
-    // Ignored: // We allow this class to be serialized but there is no conceivable reason
-    // Ignored: // for them to do so. Thus, we do not serialize the instance variables.
-    // Ignored: [NonSerialized]
+    // We allow this class to be serialized but there is no conceivable reason
+    // for them to do so. Thus, we do not serialize the instance variables.
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private int[] m_indexes;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -2977,27 +2981,26 @@ public class StringInfo : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\TaiwanCalendar.cs'
 //
-///* SSS_DROP_BEGIN */ /* SSS_WARNINGS_OFF */
-//    /*=================================TaiwanCalendar==========================
-//    **
-//    ** Taiwan calendar is based on the Gregorian calendar.  And the year is an offset to Gregorian calendar.
-//    ** That is,
-//    **      Taiwan year = Gregorian year - 1911.  So 1912/01/01 A.D. is Taiwan 1/01/01
-//    **
-//    **  Calendar support range:
-//    **      Calendar    Minimum     Maximum
-//    **      ==========  ==========  ==========
-//    **      Gregorian   1912/01/01  9999/12/31
-//    **      Taiwan      01/01/01    8088/12/31
-//    ============================================================================*/
-//    /* SSS_WARNINGS_ON */ /* SSS_DROP_END */  
-//
-//    [System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+//  SSS_DROP_BEGIN   SSS_WARNINGS_OFF 
+// =================================TaiwanCalendar==========================
+// **
+// ** Taiwan calendar is based on the Gregorian calendar.  And the year is an offset to Gregorian calendar.
+// ** That is,
+// **      Taiwan year = Gregorian year - 1911.  So 1912/01/01 A.D. is Taiwan 1/01/01
+// **
+// **  Calendar support range:
+// **      Calendar    Minimum     Maximum
+// **      ==========  ==========  ==========
+// **      Gregorian   1912/01/01  9999/12/31
+// **      Taiwan      01/01/01    8088/12/31
+// ============================================================================
+//  SSS_WARNINGS_ON   SSS_DROP_END   
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class TaiwanCalendar : Calendar
 {
     public static EraInfo[] taiwanEraInfo/*todo: implement initializer*/ = null;
-    public static /*todo: volatile*/Calendar s_defaultInstance;
+    public static /*todo: volatile*/ Calendar s_defaultInstance;
     public GregorianCalendarHelper helper;
     //TODO: generate method GetDefaultInstance
     public static immutable DateTime calendarMinValue/*todo: implement initializer*/ = DateTime();
@@ -3032,20 +3035,19 @@ public class TaiwanCalendar : Calendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\TaiwanLunisolarCalendar.cs'
 //
-//////////////////////////////////////////////////////////////////////////////
-//    //
-//    //  Notes about TaiwanLunisolarCalendar
-//    //
-//    ////////////////////////////////////////////////////////////////////////////
-//     /*
-//     **  Calendar support range:
-//     **      Calendar               Minimum             Maximum
-//     **      ==========     ==========  ==========
-//     **      Gregorian              1912/02/18          2051/02/10
-//     **      TaiwanLunisolar     1912/01/01          2050/13/29
-//     */
+////////////////////////////////////////////////////////////////////////////
 //
-//    [Serializable]
+//  Notes about TaiwanLunisolarCalendar
+//
+////////////////////////////////////////////////////////////////////////////
+// 
+// **  Calendar support range:
+// **      Calendar               Minimum             Maximum
+// **      ==========     ==========  ==========
+// **      Gregorian              1912/02/18          2051/02/10
+// **      TaiwanLunisolar     1912/01/01          2050/13/29
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class TaiwanLunisolarCalendar : EastAsianLunisolarCalendar
 {
     public static EraInfo[] taiwanLunisolarEraInfo/*todo: implement initializer*/ = null;
@@ -3082,24 +3084,23 @@ public class TaiwanLunisolarCalendar : EastAsianLunisolarCalendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\TextElementEnumerator.cs'
 //
-////
-//    // This is public because GetTextElement() is public.
-//    //
 //
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class TextElementEnumerator : DotNetObject, IEnumerator
+// This is public because GetTextElement() is public.
+//
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class TextElementEnumerator : __DotNet__Object, IEnumerator
 {
     private String str;
     private int index;
     private int startIndex;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private int strLen;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private int currTextElementLen;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private UnicodeCategory uc;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private int charLen;
     //TODO: generate constructor
     private int endIndex;
@@ -3117,9 +3118,9 @@ public class TextElementEnumerator : DotNetObject, IEnumerator
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\TextInfo.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class TextInfo : DotNetObject, ICloneable, IDeserializationCallback
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class TextInfo : __DotNet__Object, ICloneable, IDeserializationCallback
 {
     private enum Tristate : ubyte
     {
@@ -3127,66 +3128,66 @@ public class TextInfo : DotNetObject, ICloneable, IDeserializationCallback
         True,
         False,
     }
-    // Ignored: //
-    // Ignored: //  Variables.
-    // Ignored: //
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    //
+    //  Variables.
+    //
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private String m_listSeparator;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_isReadOnly/*todo: implement initializer*/ = bool();
-    // Ignored: //
-    // Ignored: // In Whidbey we had several names:
-    // Ignored: //      m_win32LangID is the name of the culture, but only used for (de)serialization.
-    // Ignored: //      customCultureName is the name of the creating custom culture (if custom)  In combination with m_win32LangID
-    // Ignored: //              this is authoratative, ie when deserializing.
-    // Ignored: //      m_cultureTableRecord was the data record of the creating culture.  (could have different name if custom)
-    // Ignored: //      m_textInfoID is the LCID of the textinfo itself (no longer used)
-    // Ignored: //      m_name is the culture name (from cultureinfo.name)
-    // Ignored: //
-    // Ignored: // In Silverlight/Arrowhead this is slightly different:
-    // Ignored: //      m_cultureName is the name of the creating culture.  Note that we consider this authoratative,
-    // Ignored: //              if the culture's textinfo changes when deserializing, then behavior may change.
-    // Ignored: //              (ala Whidbey behavior).  This is the only string Arrowhead needs to serialize.
-    // Ignored: //      m_cultureData is the data that backs this class.
-    // Ignored: //      m_textInfoName  is the actual name of the textInfo (from cultureData.STEXTINFO)
-    // Ignored: //              m_textInfoName can be the same as m_cultureName on Silverlight since the OS knows
-    // Ignored: //              how to do the sorting. However in the desktop, when we call the sorting dll, it doesn't
-    // Ignored: //              know how to resolve custom locle names to sort ids so we have to have alredy resolved this.
-    // Ignored: //
-    // Ignored: [OptionalField(VersionAdded = 3)]
+    //
+    // In Whidbey we had several names:
+    //      m_win32LangID is the name of the culture, but only used for (de)serialization.
+    //      customCultureName is the name of the creating custom culture (if custom)  In combination with m_win32LangID
+    //              this is authoratative, ie when deserializing.
+    //      m_cultureTableRecord was the data record of the creating culture.  (could have different name if custom)
+    //      m_textInfoID is the LCID of the textinfo itself (no longer used)
+    //      m_name is the culture name (from cultureinfo.name)
+    //
+    // In Silverlight/Arrowhead this is slightly different:
+    //      m_cultureName is the name of the creating culture.  Note that we consider this authoratative,
+    //              if the culture's textinfo changes when deserializing, then behavior may change.
+    //              (ala Whidbey behavior).  This is the only string Arrowhead needs to serialize.
+    //      m_cultureData is the data that backs this class.
+    //      m_textInfoName  is the actual name of the textInfo (from cultureData.STEXTINFO)
+    //              m_textInfoName can be the same as m_cultureName on Silverlight since the OS knows
+    //              how to do the sorting. However in the desktop, when we call the sorting dll, it doesn't
+    //              know how to resolve custom locle names to sort ids so we have to have alredy resolved this.
+    //      
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 3*/)
     private String m_cultureName;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private CultureData m_cultureData;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private String m_textInfoName;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private IntPtr m_dataHandle;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private IntPtr m_handleOrigin;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private Tristate m_IsAsciiCasingSameAsInvariant/*todo: implement initializer*/ = (cast(Tristate)0);
     //TODO: generate property 'Invariant'
-    public static /*todo: volatile*/TextInfo s_Invariant;
+    public static /*todo: volatile*/ TextInfo s_Invariant;
     //TODO: generate constructor
-    // Ignored: ////////////////////////////////////////////////////////////////////////
-    // Ignored: //
-    // Ignored: //  Serialization / Deserialization
-    // Ignored: //
-    // Ignored: //  Note that we have to respect the Whidbey behavior for serialization compatibility
-    // Ignored: //
-    // Ignored: ////////////////////////////////////////////////////////////////////////
-    // Ignored: #region Serialization
-    // Ignored: // the following fields are defined to keep the compatibility with Whidbey.
-    // Ignored: // don't change/remove the names/types of these fields.
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    ////////////////////////////////////////////////////////////////////////
+    //
+    //  Serialization / Deserialization
+    //
+    //  Note that we have to respect the Whidbey behavior for serialization compatibility
+    //
+    ////////////////////////////////////////////////////////////////////////
+    // #region Serialization 
+    // the following fields are defined to keep the compatibility with Whidbey.
+    // don't change/remove the names/types of these fields.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private String customCultureName;
-    // Ignored: // the following fields are defined to keep compatibility with Everett.
-    // Ignored: // don't change/remove the names/types of these fields.
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    // the following fields are defined to keep compatibility with Everett.
+    // don't change/remove the names/types of these fields.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public int m_nDataItem;
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public bool m_useUserOverride;
-    // Ignored: [OptionalField(VersionAdded = 1)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     public int m_win32LangID;
     //TODO: generate method OnDeserializing
     //TODO: generate method OnDeserialized
@@ -3242,21 +3243,19 @@ public class TextInfo : DotNetObject, ICloneable, IDeserializationCallback
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\ThaiBuddhistCalendar.cs'
 //
-///*=================================ThaiBuddhistCalendar==========================
-//    **
-//    ** ThaiBuddhistCalendar is based on Gregorian calendar.  Its year value has
-//    ** an offset to the Gregorain calendar.
-//    **
-//    **  Calendar support range:
-//    **      Calendar    Minimum     Maximum
-//    **      ==========  ==========  ==========
-//    **      Gregorian   0001/01/01   9999/12/31
-//    **      Thai        0544/01/01  10542/12/31
-//    ============================================================================*/
-//
-//
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+// =================================ThaiBuddhistCalendar==========================
+// **
+// ** ThaiBuddhistCalendar is based on Gregorian calendar.  Its year value has
+// ** an offset to the Gregorain calendar.
+// **
+// **  Calendar support range:
+// **      Calendar    Minimum     Maximum
+// **      ==========  ==========  ==========
+// **      Gregorian   0001/01/01   9999/12/31
+// **      Thai        0544/01/01  10542/12/31
+// ============================================================================
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class ThaiBuddhistCalendar : Calendar
 {
     public static EraInfo[] thaiBuddhistEraInfo/*todo: implement initializer*/ = null;
@@ -3293,7 +3292,7 @@ public class ThaiBuddhistCalendar : Calendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\TimeSpanFormat.cs'
 //
-public class TimeSpanFormat : DotNetObject
+public class TimeSpanFormat : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method IntToString
@@ -3331,7 +3330,7 @@ public class TimeSpanFormat : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\TimeSpanParse.cs'
 //
-public class TimeSpanParse : DotNetObject
+public class TimeSpanParse : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ValidateStyles
@@ -3355,7 +3354,7 @@ public class TimeSpanParse : DotNetObject
         FormatWithParameter = 3,
         Overflow = 4,
     }
-    // Ignored: [Flags]
+    @__DotNet__Attribute!(FlagsAttribute.stringof)
     private enum TimeSpanStandardStyles
     {
         None = 0x00000000,
@@ -3436,7 +3435,7 @@ public class TimeSpanParse : DotNetObject
         public TimeSpanThrowStyle throwStyle;
         public ParseFailureKind m_failure;
         public String m_failureMessageID;
-        public DotNetObject m_failureMessageFormatArgument;
+        public __DotNet__Object m_failureMessageFormatArgument;
         public String m_failureArgumentName;
         //TODO: generate method Init
         //TODO: generate method SetFailure
@@ -3483,7 +3482,7 @@ public class TimeSpanParse : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\TimeSpanStyles.cs'
 //
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum TimeSpanStyles
 {
     None = 0x00000000,
@@ -3493,20 +3492,19 @@ public enum TimeSpanStyles
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\UmAlQuraCalendar.cs'
 //
-//////////////////////////////////////////////////////////////////////////////
-//    //
-//    //  Notes about UmAlQuraCalendar
-//    //
-//    ////////////////////////////////////////////////////////////////////////////
-//     /*
-//     **  Calendar support range:
-//     **      Calendar    Minimum     Maximum
-//     **      ==========  ==========  ==========
-//     **      Gregorian   1900/04/30   2077/11/17
-//     **      UmAlQura    1318/01/01   1500/12/30
-//     */
+////////////////////////////////////////////////////////////////////////////
 //
-//    [Serializable]
+//  Notes about UmAlQuraCalendar
+//
+////////////////////////////////////////////////////////////////////////////
+// 
+// **  Calendar support range:
+// **      Calendar    Minimum     Maximum
+// **      ==========  ==========  ==========
+// **      Gregorian   1900/04/30   2077/11/17
+// **      UmAlQura    1318/01/01   1500/12/30
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class UmAlQuraCalendar : Calendar
 {
     public enum int MinCalendarYear/*todo: implement initializer*/ = int();
@@ -3568,8 +3566,8 @@ public class UmAlQuraCalendar : Calendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\UnicodeCategory.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum UnicodeCategory
 {
     UppercaseLetter = 0,

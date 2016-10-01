@@ -1,20 +1,29 @@
 module mscorlib.System.Runtime.CompilerServices;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Object,
     EventHandler1,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    AttributeUsageAttribute,
     Attribute,
     String,
+    SerializableAttribute,
     Action,
+    FlagsAttribute,
     IntPtr,
     DateTime,
     Decimal,
     Type,
     FormattableString,
     Void,
-    DotNetException;
+    __DotNet__Exception;
 import mscorlib.System.Diagnostics.Contracts :
     ContractFailedEventArgs;
+import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute;
+import mscorlib.System.Security.Permissions :
+    HostProtectionAttribute;
 import mscorlib.System.Threading :
     SynchronizationContext,
     ExecutionContext,
@@ -25,21 +34,23 @@ import mscorlib.System.Threading.Tasks :
     Task,
     Task1,
     VoidTaskResult;
+import mscorlib.System.Security :
+    SecurityCriticalAttribute;
 import mscorlib.System.Reflection :
     MethodImplAttributes;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Contracts\Contracts.cs'
 //
-public class ContractHelper : DotNetObject
+public class ContractHelper : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method RaiseContractFailedEvent
     //TODO: generate method TriggerFailure
     //TODO: generate method RaiseContractFailedEventImplementation
     //TODO: generate method TriggerFailureImplementation
-    private static /*todo: volatile*/EventHandler1!(ContractFailedEventArgs) contractFailedEvent;
-    private static immutable DotNetObject lockObject/*todo: implement initializer*/ = null;
+    private static /*todo: volatile*/ EventHandler1!(ContractFailedEventArgs) contractFailedEvent;
+    private static immutable __DotNet__Object lockObject/*todo: implement initializer*/ = null;
     public enum int COR_E_CODECONTRACTFAILED/*todo: implement initializer*/ = int();
     //TODO: generate event 'InternalContractFailed'
     //TODO: generate method RaiseContractFailedEventImplementation
@@ -51,12 +62,13 @@ public class ContractHelper : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Contracts\ContractsBCL.cs'
 //
+// partial class 'ContractHelper' moved
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\AccessedThroughPropertyAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Field)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Field*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AccessedThroughPropertyAttribute : Attribute
 {
     private immutable String propertyName;
@@ -67,26 +79,26 @@ public final class AccessedThroughPropertyAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\AssemblyAttributesGoHere.cs'
 //
-//// NOTE TO DEVELOPERS:  These classes are used by ALink (the assembly linker).
-//    // They're used for metadata tokens for making multi-module assemblies.
-//    // Do not randomly touch these classes.
-//    [System.Runtime.CompilerServices.FriendAccessAllowed]
-public final class AssemblyAttributesGoHere : DotNetObject
+// NOTE TO DEVELOPERS:  These classes are used by ALink (the assembly linker).
+// They're used for metadata tokens for making multi-module assemblies.
+// Do not randomly touch these classes.
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
+public final class AssemblyAttributesGoHere : __DotNet__Object
 {
     //TODO: generate constructor
 }
-//[System.Runtime.CompilerServices.FriendAccessAllowed]
-public final class AssemblyAttributesGoHereS : DotNetObject
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
+public final class AssemblyAttributesGoHereS : __DotNet__Object
 {
     //TODO: generate constructor
 }
-//[System.Runtime.CompilerServices.FriendAccessAllowed]
-public final class AssemblyAttributesGoHereM : DotNetObject
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
+public final class AssemblyAttributesGoHereM : __DotNet__Object
 {
     //TODO: generate constructor
 }
-//[System.Runtime.CompilerServices.FriendAccessAllowed]
-public final class AssemblyAttributesGoHereSM : DotNetObject
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
+public final class AssemblyAttributesGoHereSM : __DotNet__Object
 {
     //TODO: generate constructor
 }
@@ -94,34 +106,34 @@ public final class AssemblyAttributesGoHereSM : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\AssemblySettingAttributes.cs'
 //
-// Ignored: /*
-// Ignored: NGenHint is not supported in Whidbey
-// Ignored: [Serializable]
-// Ignored: public enum NGenHint
-// Ignored: {
-// Ignored: Default             = 0x0000, // No preference specified
-// Ignored: Eager               = 0x0001, // NGen at install time
-// Ignored: Lazy                = 0x0002, // NGen after install time
-// Ignored: Never               = 0x0003, // Assembly should not be ngened
-// Ignored: }
-// Ignored: */
-// Ignored: [Serializable]
+// 
+// NGenHint is not supported in Whidbey     
+// [Serializable]
+// public enum NGenHint
+// {    
+// Default             = 0x0000, // No preference specified
+// Eager               = 0x0001, // NGen at install time
+// Lazy                = 0x0002, // NGen after install time
+// Never               = 0x0003, // Assembly should not be ngened      
+// }
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum LoadHint
 {
     Default = 0x0000,
     Always = 0x0001,
     Sometimes = 0x0002,
 }
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Assembly)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly*/)
 public final class DefaultDependencyAttribute : Attribute
 {
     private LoadHint loadHint;
     //TODO: generate constructor
     //TODO: generate property 'LoadHint'
 }
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, AllowMultiple = true*/)
 public final class DependencyAttribute : Attribute
 {
     private String dependentAssembly;
@@ -134,11 +146,11 @@ public final class DependencyAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\AsyncMethodBuilder.cs'
 //
-///// <summary>
-//    /// Provides a builder for asynchronous methods that return void.
-//    /// This type is intended for compiler use only.
-//    /// </summary>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
+/// <summary>
+/// Provides a builder for asynchronous methods that return void.
+/// This type is intended for compiler use only.
+/// </summary>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
 public struct AsyncVoidMethodBuilder
 {
     private SynchronizationContext m_synchronizationContext;
@@ -155,16 +167,16 @@ public struct AsyncVoidMethodBuilder
     //TODO: generate property 'Task'
     //TODO: generate property 'ObjectIdForDebugger'
 }
-///// <summary>
-//    /// Provides a builder for asynchronous methods that return <see cref="System.Threading.Tasks.Task"/>.
-//    /// This type is intended for compiler use only.
-//    /// </summary>
-//    /// <remarks>
-//    /// AsyncTaskMethodBuilder is a value type, and thus it is copied by value.
-//    /// Prior to being copied, one of its Task, SetResult, or SetException members must be accessed,
-//    /// or else the copies may end up building distinct Task instances.
-//    /// </remarks>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
+/// <summary>
+/// Provides a builder for asynchronous methods that return <see cref="System.Threading.Tasks.Task"/>.
+/// This type is intended for compiler use only.
+/// </summary>
+/// <remarks>
+/// AsyncTaskMethodBuilder is a value type, and thus it is copied by value.
+/// Prior to being copied, one of its Task, SetResult, or SetException members must be accessed,
+/// or else the copies may end up building distinct Task instances.
+/// </remarks>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
 public struct AsyncTaskMethodBuilder
 {
     private static immutable Task1!(VoidTaskResult) s_cachedCompleted/*todo: implement initializer*/ = null;
@@ -180,16 +192,16 @@ public struct AsyncTaskMethodBuilder
     //TODO: generate method SetNotificationForWaitCompletion
     //TODO: generate property 'ObjectIdForDebugger'
 }
-///// <summary>
-//    /// Provides a builder for asynchronous methods that return <see cref="System.Threading.Tasks.Task{TResult}"/>.
-//    /// This type is intended for compiler use only.
-//    /// </summary>
-//    /// <remarks>
-//    /// AsyncTaskMethodBuilder{TResult} is a value type, and thus it is copied by value.
-//    /// Prior to being copied, one of its Task, SetResult, or SetException members must be accessed,
-//    /// or else the copies may end up building distinct Task instances.
-//    /// </remarks>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
+/// <summary>
+/// Provides a builder for asynchronous methods that return <see cref="System.Threading.Tasks.Task{TResult}"/>.
+/// This type is intended for compiler use only.
+/// </summary>
+/// <remarks>
+/// AsyncTaskMethodBuilder{TResult} is a value type, and thus it is copied by value.
+/// Prior to being copied, one of its Task, SetResult, or SetException members must be accessed,
+/// or else the copies may end up building distinct Task instances.
+/// </remarks>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
 public struct AsyncTaskMethodBuilder1(TResult)
 {
     public static immutable Task1!(TResult) s_defaultResultTask/*todo: implement initializer*/ = null;
@@ -208,7 +220,7 @@ public struct AsyncTaskMethodBuilder1(TResult)
     //TODO: generate property 'ObjectIdForDebugger'
     //TODO: generate method GetTaskForResult
 }
-public class AsyncTaskCache : DotNetObject
+public class AsyncTaskCache : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public static immutable Task1!(bool) TrueTask/*todo: implement initializer*/ = null;
@@ -234,18 +246,18 @@ public struct AsyncMethodBuilderCore
         //TODO: generate constructor
         //TODO: generate method RunWithCapturedContext
     }
-    public static class MoveNextRunner : DotNetObject
+    public static class MoveNextRunner : __DotNet__Object
     {
         public IAsyncStateMachine m_stateMachine;
         //TODO: generate constructor
         //TODO: generate method RunWithDefaultContext
         //TODO: generate property 'InvokeMoveNextCallback'
-        // Ignored: /// <summary>Cached delegate used with ExecutionContext.Run.</summary>
-        // Ignored: [SecurityCritical]
+        /// <summary>Cached delegate used with ExecutionContext.Run.</summary>
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private static ContextCallback s_invokeMoveNext;
         //TODO: generate method InvokeMoveNext
     }
-    private static class ContinuationWrapper : DotNetObject
+    private static class ContinuationWrapper : __DotNet__Object
     {
         public immutable Action m_continuation;
         private immutable Action m_invokeAction;
@@ -261,7 +273,8 @@ public struct AsyncMethodBuilderCore
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\AsyncStateMachineAttribute.cs'
 //
-//[Serializable, AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited = false, AllowMultiple = false*/)
 public final class AsyncStateMachineAttribute : StateMachineAttribute
 {
     //TODO: generate constructor
@@ -270,7 +283,7 @@ public final class AsyncStateMachineAttribute : StateMachineAttribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\CallerFilePathAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Parameter, Inherited = false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Parameter, Inherited = false*/)
 public final class CallerFilePathAttribute : Attribute
 {
     //TODO: generate constructor
@@ -279,7 +292,7 @@ public final class CallerFilePathAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\CallerLineNumberAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Parameter, Inherited = false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Parameter, Inherited = false*/)
 public final class CallerLineNumberAttribute : Attribute
 {
     //TODO: generate constructor
@@ -288,7 +301,7 @@ public final class CallerLineNumberAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\CallerMemberNameAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Parameter, Inherited = false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Parameter, Inherited = false*/)
 public final class CallerMemberNameAttribute : Attribute
 {
     //TODO: generate constructor
@@ -297,17 +310,17 @@ public final class CallerMemberNameAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\CompilationRelaxations.cs'
 //
-// Ignored: /// IMPORTANT: Keep this in sync with corhdr.h
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+/// IMPORTANT: Keep this in sync with corhdr.h
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum CompilationRelaxations : int
 {
     NoStringInterning = 0x0008,
 }
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Module | AttributeTargets.Class | AttributeTargets.Method)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly | AttributeTargets.Module | AttributeTargets.Class | AttributeTargets.Method*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class CompilationRelaxationsAttribute : Attribute
 {
     private int m_relaxations;
@@ -319,8 +332,8 @@ public class CompilationRelaxationsAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\CompilerGeneratedAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.All, Inherited = true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.All, Inherited = true*/)
 public final class CompilerGeneratedAttribute : Attribute
 {
     //TODO: generate constructor
@@ -329,9 +342,9 @@ public final class CompilerGeneratedAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\CompilerGlobalScopeAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Class)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class CompilerGlobalScopeAttribute : Attribute
 {
     //TODO: generate constructor
@@ -340,7 +353,7 @@ public class CompilerGlobalScopeAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\CompilerMarshalOverride.cs'
 //
-public class CompilerMarshalOverride : DotNetObject
+public class CompilerMarshalOverride : __DotNet__Object
 {
     private this() {} // prevent instantiation
 }
@@ -348,9 +361,9 @@ public class CompilerMarshalOverride : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\ConditionalWeakTable.cs'
 //
-//#region ConditionalWeakTable
-//    [System.Runtime.InteropServices.ComVisible(false)]
-public final class ConditionalWeakTable2(TKey,TValue) : DotNetObject/*where TKey : class*//*where TValue : class*/
+// #region ConditionalWeakTable
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
+public final class ConditionalWeakTable2(TKey,TValue) : __DotNet__Object/*where TKey : class*//*where TValue : class*/
 {
     //TODO: generate constructor
     //TODO: generate method TryGetValue
@@ -379,40 +392,36 @@ public final class ConditionalWeakTable2(TKey,TValue) : DotNetObject/*where TKey
     private Entry[] _entries;
     private int _freeList;
     private enum int _initialCapacity/*todo: implement initializer*/ = int();
-    private immutable DotNetObject _lock;
+    private immutable __DotNet__Object _lock;
     private bool _invalid;
 }
-//#endregion
+// #endregion
+// #region DependentHandle
+//=========================================================================================
+// This struct collects all operations on native DependentHandles. The DependentHandle
+// merely wraps an IntPtr so this struct serves mainly as a "managed typedef."
 //
+// DependentHandles exist in one of two states:
 //
+//    IsAllocated == false
+//        No actual handle is allocated underneath. Illegal to call GetPrimary
+//        or GetPrimaryAndSecondary(). Ok to call Free().
 //
+//        Initializing a DependentHandle using the nullary ctor creates a DependentHandle
+//        that's in the !IsAllocated state.
+//        (! Right now, we get this guarantee for free because (IntPtr)0 == NULL unmanaged handle.
+//         ! If that assertion ever becomes false, we'll have to add an _isAllocated field
+//         ! to compensate.)
+//        
 //
-//    #region DependentHandle
-//    //=========================================================================================
-//    // This struct collects all operations on native DependentHandles. The DependentHandle
-//    // merely wraps an IntPtr so this struct serves mainly as a "managed typedef."
-//    //
-//    // DependentHandles exist in one of two states:
-//    //
-//    //    IsAllocated == false
-//    //        No actual handle is allocated underneath. Illegal to call GetPrimary
-//    //        or GetPrimaryAndSecondary(). Ok to call Free().
-//    //
-//    //        Initializing a DependentHandle using the nullary ctor creates a DependentHandle
-//    //        that's in the !IsAllocated state.
-//    //        (! Right now, we get this guarantee for free because (IntPtr)0 == NULL unmanaged handle.
-//    //         ! If that assertion ever becomes false, we'll have to add an _isAllocated field
-//    //         ! to compensate.)
-//    //        
-//    //
-//    //    IsAllocated == true
-//    //        There's a handle allocated underneath. You must call Free() on this eventually
-//    //        or you cause a native handle table leak.
-//    //
-//    // This struct intentionally does no self-synchronization. It's up to the caller to
-//    // to use DependentHandles in a thread-safe way.
-//    //=========================================================================================
-//    [ComVisible(false)]
+//    IsAllocated == true
+//        There's a handle allocated underneath. You must call Free() on this eventually
+//        or you cause a native handle table leak.
+//
+// This struct intentionally does no self-synchronization. It's up to the caller to
+// to use DependentHandles in a thread-safe way.
+//=========================================================================================
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
 private struct DependentHandle
 {
     //TODO: generate constructor
@@ -430,9 +439,9 @@ private struct DependentHandle
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\CustomConstantAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Field | AttributeTargets.Parameter, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Field | AttributeTargets.Parameter, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public abstract class CustomConstantAttribute : Attribute
 {
     //TODO: generate property 'Value'
@@ -442,9 +451,9 @@ public abstract class CustomConstantAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\DateTimeConstantAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Field | AttributeTargets.Parameter, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Field | AttributeTargets.Parameter, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DateTimeConstantAttribute : CustomConstantAttribute
 {
     //TODO: generate constructor
@@ -456,9 +465,9 @@ public final class DateTimeConstantAttribute : CustomConstantAttribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\DecimalConstantAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Field | AttributeTargets.Parameter, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Field | AttributeTargets.Parameter, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DecimalConstantAttribute : Attribute
 {
     //TODO: generate constructor
@@ -471,8 +480,8 @@ public final class DecimalConstantAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\DecoratedNameAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.All),
-//     ComVisible(false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.All*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
 public final class DecoratedNameAttribute : Attribute
 {
     //TODO: generate constructor
@@ -481,7 +490,7 @@ public final class DecoratedNameAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\DisablePrivateReflectionAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Assembly, AllowMultiple=false, Inherited=false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, AllowMultiple=false, Inherited=false*/)
 public final class DisablePrivateReflectionAttribute : Attribute
 {
     //TODO: generate constructor
@@ -490,8 +499,8 @@ public final class DisablePrivateReflectionAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\DiscardableAttribute.cs'
 //
-//// Custom attribute to indicating a TypeDef is a discardable attribute
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Custom attribute to indicating a TypeDef is a discardable attribute
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class DiscardableAttribute : Attribute
 {
     //TODO: generate constructor
@@ -500,10 +509,10 @@ public class DiscardableAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\ExtensionAttribute.cs'
 //
-///// <summary>
-//    /// Indicates that a method is an extension method, or that a class or assembly contains extension methods.
-//    /// </summary>
-//    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Assembly)]
+/// <summary>
+/// Indicates that a method is an extension method, or that a class or assembly contains extension methods.
+/// </summary>
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Assembly*/)
 public final class ExtensionAttribute : Attribute
 {
 }
@@ -511,8 +520,8 @@ public final class ExtensionAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\FixedAddressValueTypeAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Field)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Field*/)
 public final class FixedAddressValueTypeAttribute : Attribute
 {
 }
@@ -520,7 +529,7 @@ public final class FixedAddressValueTypeAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\FixedBufferAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Field, Inherited=false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Field, Inherited=false*/)
 public final class FixedBufferAttribute : Attribute
 {
     private Type elementType;
@@ -533,14 +542,14 @@ public final class FixedBufferAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\FormattableStringFactory.cs'
 //
-public class FormattableStringFactory : DotNetObject
+public class FormattableStringFactory : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method Create
     private static final class ConcreteFormattableString : FormattableString
     {
         private immutable String _format;
-        private immutable DotNetObject[] _arguments;
+        private immutable __DotNet__Object[] _arguments;
         //TODO: generate constructor
         //TODO: generate property 'Format'
         //TODO: generate method GetArguments
@@ -567,7 +576,7 @@ public interface ICastable
     //TODO: generate method IsInstanceOfInterface
     //TODO: generate method GetImplType
 }
-private class ICastableHelpers : DotNetObject
+private class ICastableHelpers : __DotNet__Object
 {
     //TODO: generate method IsInstanceOfInterface
     //TODO: generate method GetImplType
@@ -576,9 +585,9 @@ private class ICastableHelpers : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\IDispatchConstantAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Field | AttributeTargets.Parameter, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Field | AttributeTargets.Parameter, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class IDispatchConstantAttribute : CustomConstantAttribute
 {
     //TODO: generate constructor
@@ -588,9 +597,9 @@ public final class IDispatchConstantAttribute : CustomConstantAttribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\IndexerNameAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Property, Inherited = true)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Property, Inherited = true*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class IndexerNameAttribute : Attribute
 {
     //TODO: generate constructor
@@ -611,7 +620,7 @@ public interface ICriticalNotifyCompletion : INotifyCompletion
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\InternalsVisibleToAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Assembly, AllowMultiple=true, Inherited=false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, AllowMultiple=true, Inherited=false*/)
 public final class InternalsVisibleToAttribute : Attribute
 {
     private String _assemblyName;
@@ -620,22 +629,20 @@ public final class InternalsVisibleToAttribute : Attribute
     //TODO: generate property 'AssemblyName'
     //TODO: generate property 'AllInternalsVisible'
 }
-///// <summary>
-//    ///     If AllInternalsVisible is not true for a friend assembly, the FriendAccessAllowed attribute
-//    ///     indicates which internals are shared with that friend assembly.
-//    /// </summary>
-//    [AttributeUsage(AttributeTargets.Class |
-//                    AttributeTargets.Constructor |
-//                    AttributeTargets.Enum |
-//                    AttributeTargets.Event |
-//                    AttributeTargets.Field |
-//                    AttributeTargets.Interface |
-//                    AttributeTargets.Method |
-//                    AttributeTargets.Property |
-//                    AttributeTargets.Struct,
-//        AllowMultiple = false,
-//        Inherited = false)]
-//[FriendAccessAllowed]
+/// <summary>
+///     If AllInternalsVisible is not true for a friend assembly, the FriendAccessAllowed attribute
+///     indicates which internals are shared with that friend assembly.
+/// </summary>
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class |
+                    AttributeTargets.Constructor |
+                    AttributeTargets.Enum |
+                    AttributeTargets.Event |
+                    AttributeTargets.Field |
+                    AttributeTargets.Interface |
+                    AttributeTargets.Method |
+                    AttributeTargets.Property |
+                    AttributeTargets.Struct, AllowMultiple = false, Inherited = false*/)
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
 public final class FriendAccessAllowedAttribute : Attribute
 {
 }
@@ -643,8 +650,8 @@ public final class FriendAccessAllowedAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\IsVolatile.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class IsVolatile : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class IsVolatile : __DotNet__Object
 {
     private this() {} // prevent instantiation
 }
@@ -652,7 +659,8 @@ public class IsVolatile : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\IteratorStateMachineAttribute.cs'
 //
-//[Serializable, AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited = false, AllowMultiple = false*/)
 public final class IteratorStateMachineAttribute : StateMachineAttribute
 {
     //TODO: generate constructor
@@ -676,12 +684,12 @@ public struct StackCrawlMarkHandle
     private IntPtr m_ptr;
     //TODO: generate constructor
 }
-public class PinningHelper : DotNetObject
+public class PinningHelper : __DotNet__Object
 {
     public ubyte m_data;
 }
-//[FriendAccessAllowed]
-public class JitHelpers : DotNetObject
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
+public class JitHelpers : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum String QCall/*todo: implement initializer*/ = null;
@@ -704,11 +712,11 @@ public class JitHelpers : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\MethodImplAttribute.cs'
 //
-// Ignored: // This Enum matchs the miImpl flags defined in corhdr.h. It is used to specify
-// Ignored: // certain method properties.
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// This Enum matchs the miImpl flags defined in corhdr.h. It is used to specify 
+// certain method properties.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum MethodImplOptions
 {
     Unmanaged = /*MemberName:Type*/MethodImplAttributes.Unmanaged,
@@ -717,23 +725,23 @@ public enum MethodImplOptions
     InternalCall = /*MemberName:Type*/MethodImplAttributes.InternalCall,
     Synchronized = /*MemberName:Type*/MethodImplAttributes.Synchronized,
     NoInlining = /*MemberName:Type*/MethodImplAttributes.NoInlining,
-    // Ignored: [System.Runtime.InteropServices.ComVisible(false)]
     AggressiveInlining = /*MemberName:Type*/MethodImplAttributes.AggressiveInlining,
     NoOptimization = /*MemberName:Type*/MethodImplAttributes.NoOptimization,
 }
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum MethodCodeType
 {
     IL = /*MemberName:Type*/MethodImplAttributes.IL,
     Native = /*MemberName:Type*/MethodImplAttributes.Native,
+    /// <internalonly/>
     OPTIL = /*MemberName:Type*/MethodImplAttributes.OPTIL,
     Runtime = /*MemberName:Type*/MethodImplAttributes.Runtime,
 }
-//// Custom attribute to specify additional method properties.
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Custom attribute to specify additional method properties.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method | AttributeTargets.Constructor, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class MethodImplAttribute : Attribute
 {
     public MethodImplOptions _val;
@@ -748,8 +756,8 @@ public final class MethodImplAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\ReferenceAssemblyAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Assembly, AllowMultiple=false)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, AllowMultiple=false*/)
 public final class ReferenceAssemblyAttribute : Attribute
 {
     private String _description;
@@ -761,8 +769,8 @@ public final class ReferenceAssemblyAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\RuntimeCompatibilityAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Assembly, Inherited=false, AllowMultiple=false)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited=false, AllowMultiple=false*/)
 public final class RuntimeCompatibilityAttribute : Attribute
 {
     private bool m_wrapNonExceptionThrows;
@@ -773,7 +781,7 @@ public final class RuntimeCompatibilityAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\RuntimeHelpers.cs'
 //
-public class RuntimeHelpers : DotNetObject
+public class RuntimeHelpers : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetUninitializedObject
@@ -796,12 +804,12 @@ public class RuntimeHelpers : DotNetObject
     //TODO: generate method ProbeForSufficientStack
     //TODO: generate method PrepareConstrainedRegions
     //TODO: generate method PrepareConstrainedRegionsNoOP
-    //#if FEATURE_CORECLR
-//        [System.Security.SecurityCritical] // auto-generated
-    public alias TryCode = void delegate(DotNetObject userData);
-    //#if FEATURE_CORECLR
-//        [System.Security.SecurityCritical] // auto-generated
-    public alias CleanupCode = void delegate(DotNetObject userData, bool exceptionThrown);
+    // #if FEATURE_CORECLR
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+    public alias TryCode = void delegate(__DotNet__Object userData);
+    // #if FEATURE_CORECLR
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+    public alias CleanupCode = void delegate(__DotNet__Object userData, bool exceptionThrown);
     //TODO: generate method ExecuteCodeWithGuaranteedCleanup
     //TODO: generate method ExecuteBackoutCodeHelper
 }
@@ -809,12 +817,12 @@ public class RuntimeHelpers : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\RuntimeWrappedException.cs'
 //
-//[Serializable]
-public final class RuntimeWrappedException : DotNetException
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class RuntimeWrappedException : __DotNet__Exception
 {
     //TODO: generate constructor
     //TODO: generate property 'WrappedException'
-    private DotNetObject m_wrappedException;
+    private __DotNet__Object m_wrappedException;
     //TODO: generate method GetObjectData
     //TODO: generate constructor
 }
@@ -822,12 +830,12 @@ public final class RuntimeWrappedException : DotNetException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\SpecialNameAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Class | 
-//                    AttributeTargets.Method |
-//                    AttributeTargets.Property |
-//                    AttributeTargets.Field |
-//                    AttributeTargets.Event |
-//                    AttributeTargets.Struct)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | 
+                    AttributeTargets.Method |
+                    AttributeTargets.Property |
+                    AttributeTargets.Field |
+                    AttributeTargets.Event |
+                    AttributeTargets.Struct*/)
 public final class SpecialNameAttribute : Attribute
 {
     //TODO: generate constructor
@@ -836,7 +844,8 @@ public final class SpecialNameAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\StateMachineAttribute.cs'
 //
-//[Serializable, AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited = false, AllowMultiple = false*/)
 public class StateMachineAttribute : Attribute
 {
     //TODO: generate property 'StateMachineType'
@@ -846,7 +855,7 @@ public class StateMachineAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\SuppressIldasmAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Module)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly | AttributeTargets.Module*/)
 public final class SuppressIldasmAttribute : Attribute
 {
     //TODO: generate constructor
@@ -855,12 +864,12 @@ public final class SuppressIldasmAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\SuppressMergeCheckAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Class | 
-//                    AttributeTargets.Constructor | 
-//                    AttributeTargets.Method |
-//                    AttributeTargets.Field |
-//                    AttributeTargets.Event |
-//                    AttributeTargets.Property)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | 
+                    AttributeTargets.Constructor | 
+                    AttributeTargets.Method |
+                    AttributeTargets.Field |
+                    AttributeTargets.Event |
+                    AttributeTargets.Property*/)
 public final class SuppressMergeCheckAttribute : Attribute
 {
     //TODO: generate constructor
@@ -869,9 +878,9 @@ public final class SuppressMergeCheckAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\TaskAwaiter.cs'
 //
-///// <summary>Provides an awaiter for awaiting a <see cref="System.Threading.Tasks.Task"/>.</summary>
-//    /// <remarks>This type is intended for compiler use only.</remarks>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
+/// <summary>Provides an awaiter for awaiting a <see cref="System.Threading.Tasks.Task"/>.</summary>
+/// <remarks>This type is intended for compiler use only.</remarks>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
 public struct TaskAwaiter
 {
     private immutable Task m_task;
@@ -886,14 +895,14 @@ public struct TaskAwaiter
     //TODO: generate method OnCompletedInternal
     //TODO: generate method OutputWaitEtwEvents
 }
-public class __Boxed__TaskAwaiter : DotNetObject, ICriticalNotifyCompletion
+public class __Boxed__TaskAwaiter : __DotNet__Object, ICriticalNotifyCompletion
 {
     TaskAwaiter value;
     alias value this;
 }
-///// <summary>Provides an awaiter for awaiting a <see cref="System.Threading.Tasks.Task{TResult}"/>.</summary>
-//    /// <remarks>This type is intended for compiler use only.</remarks>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
+/// <summary>Provides an awaiter for awaiting a <see cref="System.Threading.Tasks.Task{TResult}"/>.</summary>
+/// <remarks>This type is intended for compiler use only.</remarks>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
 public struct TaskAwaiter1(TResult)
 {
     private immutable Task1!(TResult) m_task;
@@ -903,7 +912,7 @@ public struct TaskAwaiter1(TResult)
     //TODO: generate method UnsafeOnCompleted
     //TODO: generate method GetResult
 }
-public class __Boxed__TaskAwaiter1(TResult) : DotNetObject, ICriticalNotifyCompletion
+public class __Boxed__TaskAwaiter1(TResult) : __DotNet__Object, ICriticalNotifyCompletion
 {
     TaskAwaiter1!(TResult) value;
     alias value this;
@@ -913,9 +922,9 @@ public struct ConfiguredTaskAwaitable
     private immutable ConfiguredTaskAwaiter m_configuredTaskAwaiter;
     //TODO: generate constructor
     //TODO: generate method GetAwaiter
-    ///// <summary>Provides an awaiter for a <see cref="ConfiguredTaskAwaitable"/>.</summary>
-//        /// <remarks>This type is intended for compiler use only.</remarks>
-//        [HostProtection(Synchronization = true, ExternalThreading = true)]
+    /// <summary>Provides an awaiter for a <see cref="ConfiguredTaskAwaitable"/>.</summary>
+    /// <remarks>This type is intended for compiler use only.</remarks>
+    @__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
     public static struct ConfiguredTaskAwaiter
     {
         private immutable Task m_task;
@@ -926,7 +935,7 @@ public struct ConfiguredTaskAwaitable
         //TODO: generate method UnsafeOnCompleted
         //TODO: generate method GetResult
     }
-    public static class __Boxed__ConfiguredTaskAwaiter : DotNetObject, ICriticalNotifyCompletion
+    public static class __Boxed__ConfiguredTaskAwaiter : __DotNet__Object, ICriticalNotifyCompletion
     {
         ConfiguredTaskAwaiter value;
         alias value this;
@@ -937,9 +946,9 @@ public struct ConfiguredTaskAwaitable1(TResult)
     private immutable ConfiguredTaskAwaiter m_configuredTaskAwaiter;
     //TODO: generate constructor
     //TODO: generate method GetAwaiter
-    ///// <summary>Provides an awaiter for a <see cref="ConfiguredTaskAwaitable{TResult}"/>.</summary>
-//        /// <remarks>This type is intended for compiler use only.</remarks>
-//        [HostProtection(Synchronization = true, ExternalThreading = true)]
+    /// <summary>Provides an awaiter for a <see cref="ConfiguredTaskAwaitable{TResult}"/>.</summary>
+    /// <remarks>This type is intended for compiler use only.</remarks>
+    @__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
     public static struct ConfiguredTaskAwaiter
     {
         private immutable Task1!(TResult) m_task;
@@ -950,7 +959,7 @@ public struct ConfiguredTaskAwaitable1(TResult)
         //TODO: generate method UnsafeOnCompleted
         //TODO: generate method GetResult
     }
-    public static class __Boxed__ConfiguredTaskAwaiter : DotNetObject, ICriticalNotifyCompletion
+    public static class __Boxed__ConfiguredTaskAwaiter : __DotNet__Object, ICriticalNotifyCompletion
     {
         ConfiguredTaskAwaiter value;
         alias value this;
@@ -960,9 +969,9 @@ public struct ConfiguredTaskAwaitable1(TResult)
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\TypeDependencyAttribute.cs'
 //
-//// We might want to make this inherited someday.  But I suspect it shouldn't
-//    // be necessary.
-//    [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class | AttributeTargets.Interface, AllowMultiple = true, Inherited = false)]
+// We might want to make this inherited someday.  But I suspect it shouldn't
+// be necessary.
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Struct | AttributeTargets.Class | AttributeTargets.Interface, AllowMultiple = true, Inherited = false*/)
 public final class TypeDependencyAttribute : Attribute
 {
     private String typeName;
@@ -972,7 +981,7 @@ public final class TypeDependencyAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\TypeForwardedFromAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Delegate, Inherited = false, AllowMultiple = false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Delegate, Inherited = false, AllowMultiple = false*/)
 public final class TypeForwardedFromAttribute : Attribute
 {
     private String assemblyFullName;
@@ -984,7 +993,7 @@ public final class TypeForwardedFromAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\TypeForwardedToAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Assembly, AllowMultiple=true, Inherited=false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, AllowMultiple=true, Inherited=false*/)
 public final class TypeForwardedToAttribute : Attribute
 {
     private Type _destination;
@@ -996,8 +1005,8 @@ public final class TypeForwardedToAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\UnsafeValueTypeAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Struct)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Struct*/)
 public final class UnsafeValueTypeAttribute : Attribute
 {
 }
@@ -1008,9 +1017,9 @@ public final class UnsafeValueTypeAttribute : Attribute
 public struct YieldAwaitable
 {
     //TODO: generate method GetAwaiter
-    ///// <summary>Provides an awaiter that switches into a target environment.</summary>
-//        /// <remarks>This type is intended for compiler use only.</remarks>
-//        [HostProtection(Synchronization = true, ExternalThreading = true)]
+    /// <summary>Provides an awaiter that switches into a target environment.</summary>
+    /// <remarks>This type is intended for compiler use only.</remarks>
+    @__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
     public static struct YieldAwaiter
     {
         //TODO: generate property 'IsCompleted'
@@ -1023,7 +1032,7 @@ public struct YieldAwaitable
         //TODO: generate method RunAction
         //TODO: generate method GetResult
     }
-    public static class __Boxed__YieldAwaiter : DotNetObject, ICriticalNotifyCompletion
+    public static class __Boxed__YieldAwaiter : __DotNet__Object, ICriticalNotifyCompletion
     {
         YieldAwaiter value;
         alias value this;
@@ -1033,8 +1042,8 @@ public struct YieldAwaitable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\StringFreezingAttribute.cs'
 //
-//[Serializable]
-//[AttributeUsage(AttributeTargets.Assembly, Inherited = false)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited = false*/)
 public final class StringFreezingAttribute : Attribute
 {
     //TODO: generate constructor

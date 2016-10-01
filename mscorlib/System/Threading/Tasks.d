@@ -1,5 +1,33 @@
 module mscorlib.System.Threading.Tasks;
 
+import mscorlib.System :
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    __DotNet__Object,
+    Guid,
+    FlagsAttribute,
+    Action,
+    IAsyncResult,
+    AsyncCallback,
+    __DotNet__Exception,
+    Func2,
+    Func3,
+    Nullable1,
+    IDisposable,
+    ThreadStaticAttribute,
+    Action1,
+    Predicate1,
+    SerializableAttribute,
+    OperationCanceledException,
+    NonSerializedAttribute,
+    EventHandler,
+    EventHandler1,
+    EventArgs,
+    AggregateException;
+import mscorlib.System.Runtime.CompilerServices :
+    FriendAccessAllowedAttribute,
+    ICriticalNotifyCompletion,
+    ConditionalWeakTable2;
 /* NameConflict: CausalityTraceLevel*/
 /* NameConflict: AsyncCausalityStatus*/
 /* NameConflict: CausalityRelation*/
@@ -8,30 +36,17 @@ import mscorlib.Windows.Foundation.Diagnostics :
     CausalitySource,
     IAsyncCausalityTracerStatics;
 static import mscorlib.Windows.Foundation.Diagnostics;
-import mscorlib.System :
-    DotNetObject,
-    Guid,
-    Action,
-    IAsyncResult,
-    AsyncCallback,
-    DotNetException,
-    Func2,
-    Func3,
-    Nullable1,
-    IDisposable,
-    Action1,
-    Predicate1,
-    OperationCanceledException,
-    EventHandler,
-    EventHandler1,
-    EventArgs,
-    AggregateException;
-import mscorlib.System.Runtime.CompilerServices :
-    ICriticalNotifyCompletion,
-    ConditionalWeakTable2;
+import mscorlib.System.Security.Permissions :
+    HostProtectionAttribute,
+    PermissionSetAttribute;
+import mscorlib.System.Diagnostics :
+    DebuggerDisplayAttribute,
+    DebuggerTypeProxyAttribute;
 import mscorlib.System.Collections.Concurrent :
     ConcurrentDictionary2,
     ConcurrentQueue1;
+import mscorlib.System.Diagnostics.CodeAnalysis :
+    SuppressMessageAttribute;
 import mscorlib.System.Collections.Generic :
     List1,
     IEnumerable1,
@@ -48,9 +63,14 @@ import mscorlib.System.Threading :
     SendOrPostCallback,
     SynchronizationContext,
     ParameterizedThreadStart;
+import mscorlib.System.Runtime.InteropServices :
+    StructLayoutAttribute;
+import mscorlib.System.Security :
+    SecurityCriticalAttribute;
 import mscorlib.System.Runtime.ExceptionServices :
     ExceptionDispatchInfo;
 import mscorlib.System.Diagnostics.Tracing :
+    EventSourceAttribute,
     EventSource,
     EventTask,
     EventKeywords;
@@ -58,16 +78,18 @@ import mscorlib.System.Diagnostics.Tracing :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\AsyncCausalityTracer.cs'
 //
-// Ignored: [FriendAccessAllowed]
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
 public enum CausalityTraceLevel
 {
+    // #if FEATURE_COMINTEROP
     Required = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalityTraceLevel.Required,
     Important = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalityTraceLevel.Important,
     Verbose = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalityTraceLevel.Verbose,
 }
-// Ignored: [FriendAccessAllowed]
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
 public enum AsyncCausalityStatus
 {
+    // #if FEATURE_COMINTEROP
     Canceled = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.AsyncCausalityStatus.Canceled,
     Completed = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.AsyncCausalityStatus.Completed,
     Error = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.AsyncCausalityStatus.Error,
@@ -75,6 +97,7 @@ public enum AsyncCausalityStatus
 }
 public enum CausalityRelation
 {
+    // #if FEATURE_COMINTEROP
     AssignDelegate = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalityRelation.AssignDelegate,
     Join = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalityRelation.Join,
     Choice = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalityRelation.Choice,
@@ -83,12 +106,13 @@ public enum CausalityRelation
 }
 public enum CausalitySynchronousWork
 {
+    // #if FEATURE_COMINTEROP
     CompletionNotification = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalitySynchronousWork.CompletionNotification,
     ProgressNotification = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalitySynchronousWork.ProgressNotification,
     Execution = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalitySynchronousWork.Execution,
 }
-//[FriendAccessAllowed]
-public class AsyncCausalityTracer : DotNetObject
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
+public class AsyncCausalityTracer : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method EnableToETW
@@ -96,8 +120,8 @@ public class AsyncCausalityTracer : DotNetObject
     private static immutable Guid s_PlatformId/*todo: implement initializer*/ = Guid();
     private enum CausalitySource s_CausalitySource/*todo: implement initializer*/ = (cast(CausalitySource)0);
     private static IAsyncCausalityTracerStatics s_TracerFactory;
-    // Ignored: // The loggers that this Tracer knows about.
-    // Ignored: [Flags]
+    // The loggers that this Tracer knows about. 
+    @__DotNet__Attribute!(FlagsAttribute.stringof)
     private enum Loggers : ubyte
     {
         CausalityTracer = 1,
@@ -118,7 +142,7 @@ public class AsyncCausalityTracer : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\BeginEndAwaitableAdapter.cs'
 //
-public final class BeginEndAwaitableAdapter : DotNetObject, ICriticalNotifyCompletion
+public final class BeginEndAwaitableAdapter : __DotNet__Object, ICriticalNotifyCompletion
 {
     private static immutable Action CALLBACK_RAN/*todo: implement initializer*/ = null;
     private IAsyncResult _asyncResult;
@@ -134,14 +158,14 @@ public final class BeginEndAwaitableAdapter : DotNetObject, ICriticalNotifyCompl
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\ConcurrentExclusiveSchedulerPair.cs'
 //
-///// <summary>
-//    /// Provides concurrent and exclusive task schedulers that coordinate to execute
-//    /// tasks while ensuring that concurrent tasks may run concurrently and exclusive tasks never do.
-//    /// </summary>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
-//[DebuggerDisplay("Concurrent={ConcurrentTaskCountForDebugger}, Exclusive={ExclusiveTaskCountForDebugger}, Mode={ModeForDebugger}")]
-//[DebuggerTypeProxy(typeof(ConcurrentExclusiveSchedulerPair.DebugView))]
-public class ConcurrentExclusiveSchedulerPair : DotNetObject
+/// <summary>
+/// Provides concurrent and exclusive task schedulers that coordinate to execute
+/// tasks while ensuring that concurrent tasks may run concurrently and exclusive tasks never do.
+/// </summary>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Concurrent={ConcurrentTaskCountForDebugger}, Exclusive={ExclusiveTaskCountForDebugger}, Mode={ModeForDebugger}"*/)
+@__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(ConcurrentExclusiveSchedulerPair.DebugView)*/)
+public class ConcurrentExclusiveSchedulerPair : __DotNet__Object
 {
     private immutable ConcurrentDictionary2!(int,ProcessingMode) m_threadProcessingMapping/*todo: implement initializer*/ = null;
     private immutable ConcurrentExclusiveTaskScheduler m_concurrentTaskScheduler;
@@ -176,39 +200,38 @@ public class ConcurrentExclusiveSchedulerPair : DotNetObject
     //TODO: generate method ProcessAsyncIfNecessary
     //TODO: generate method ProcessExclusiveTasks
     //TODO: generate method ProcessConcurrentTasks
-    //#if PRENET45
-//        /// <summary>
-//        /// Type used with TaskCompletionSource(Of TResult) as the TResult
-//        /// to ensure that the resulting task can't be upcast to something
-//        /// that in the future could lead to compat problems.
-//        /// </summary>
-//        [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses")]
-//        [DebuggerNonUserCode]
-//        private struct VoidTaskResult { }
-//#endif
-//
-//        /// <summary>
-//        /// Holder for lazily-initialized state about the completion of a scheduler pair.
-//        /// Completion is only triggered either by rare exceptional conditions or by
-//        /// the user calling Complete, and as such we only lazily initialize this
-//        /// state in one of those conditions or if the user explicitly asks for
-//        /// the Completion.
-//        /// </summary>
-//        [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses")]
+    // #if PRENET45
+    /// <summary>
+    /// Type used with TaskCompletionSource(Of TResult) as the TResult
+    /// to ensure that the resulting task can't be upcast to something
+    /// that in the future could lead to compat problems.
+    /// </summary>
+    // [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses")]
+    // [DebuggerNonUserCode]
+    // private struct VoidTaskResult { }
+    // #endif
+    /// <summary>
+    /// Holder for lazily-initialized state about the completion of a scheduler pair.
+    /// Completion is only triggered either by rare exceptional conditions or by
+    /// the user calling Complete, and as such we only lazily initialize this
+    /// state in one of those conditions or if the user explicitly asks for
+    /// the Completion.
+    /// </summary>
+    @__DotNet__Attribute!(SuppressMessageAttribute.stringof/*, "Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses"*/)
     private static final class CompletionState : TaskCompletionSource1!(VoidTaskResult)
     {
         public bool m_completionRequested;
         public bool m_completionQueued;
-        public List1!(DotNetException) m_exceptions;
+        public List1!(__DotNet__Exception) m_exceptions;
     }
-    ///// <summary>
-//        /// A scheduler shim used to queue tasks to the pair and execute those tasks on request of the pair.
-//        /// </summary>
-//        [DebuggerDisplay("Count={CountForDebugger}, MaxConcurrencyLevel={m_maxConcurrencyLevel}, Id={Id}")]
-    //[DebuggerTypeProxy(typeof(ConcurrentExclusiveTaskScheduler.DebugView))]
+    /// <summary>
+    /// A scheduler shim used to queue tasks to the pair and execute those tasks on request of the pair.
+    /// </summary>
+    @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count={CountForDebugger}, MaxConcurrencyLevel={m_maxConcurrencyLevel}, Id={Id}"*/)
+    @__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(ConcurrentExclusiveTaskScheduler.DebugView)*/)
     private static final class ConcurrentExclusiveTaskScheduler : TaskScheduler
     {
-        private static immutable Func2!(DotNetObject,bool) s_tryExecuteTaskShim/*todo: implement initializer*/ = null;
+        private static immutable Func2!(__DotNet__Object,bool) s_tryExecuteTaskShim/*todo: implement initializer*/ = null;
         private immutable ConcurrentExclusiveSchedulerPair m_pair;
         private immutable int m_maxConcurrencyLevel;
         private immutable ProcessingMode m_processingMode;
@@ -222,7 +245,7 @@ public class ConcurrentExclusiveSchedulerPair : DotNetObject
         //TODO: generate method TryExecuteTaskShim
         //TODO: generate method GetScheduledTasks
         //TODO: generate property 'CountForDebugger'
-        private static final class DebugView : DotNetObject
+        private static final class DebugView : __DotNet__Object
         {
             private immutable ConcurrentExclusiveTaskScheduler m_taskScheduler;
             //TODO: generate constructor
@@ -231,7 +254,7 @@ public class ConcurrentExclusiveSchedulerPair : DotNetObject
             //TODO: generate property 'SchedulerPair'
         }
     }
-    private static final class DebugView : DotNetObject
+    private static final class DebugView : __DotNet__Object
     {
         private immutable ConcurrentExclusiveSchedulerPair m_pair;
         //TODO: generate constructor
@@ -244,14 +267,19 @@ public class ConcurrentExclusiveSchedulerPair : DotNetObject
     //TODO: generate property 'ModeForDebugger'
     //TODO: generate method ContractAssertMonitorStatus
     //TODO: generate method GetCreationOptionsForTask
-    // Ignored: /// <summary>Provides an enumeration that represents the current state of the scheduler pair.</summary>
-    // Ignored: [Flags]
+    /// <summary>Provides an enumeration that represents the current state of the scheduler pair.</summary>
+    @__DotNet__Attribute!(FlagsAttribute.stringof)
     private enum ProcessingMode : ubyte
     {
+        /// <summary>The scheduler pair is currently dormant, with no work scheduled.</summary>
         NotCurrentlyProcessing = 0x0,
+        /// <summary>The scheduler pair has queued processing for exclusive tasks.</summary>
         ProcessingExclusiveTask = 0x1,
+        /// <summary>The scheduler pair has queued processing for concurrent tasks.</summary>
         ProcessingConcurrentTasks = 0x2,
+        /// <summary>Completion has been requested.</summary>
         Completing = 0x4,
+        /// <summary>The scheduler pair is finished processing.</summary>
         Completed = 0x8,
     }
 }
@@ -259,48 +287,48 @@ public class ConcurrentExclusiveSchedulerPair : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\future.cs'
 //
-///// <summary>
-//    /// Represents an asynchronous operation that produces a result at some time in the future.
-//    /// </summary>
-//    /// <typeparam name="TResult">
-//    /// The type of the result produced by this <see cref="Task{TResult}"/>.
-//    /// </typeparam>
-//    /// <remarks>
-//    /// <para>
-//    /// <see cref="Task{TResult}"/> instances may be created in a variety of ways. The most common approach is by
-//    /// using the task's <see cref="Factory"/> property to retrieve a <see
-//    /// cref="System.Threading.Tasks.TaskFactory{TResult}"/> instance that can be used to create tasks for several
-//    /// purposes. For example, to create a <see cref="Task{TResult}"/> that runs a function, the factory's StartNew
-//    /// method may be used:
-//    /// <code>
-//    /// // C# 
-//    /// var t = Task&lt;int&gt;.Factory.StartNew(() => GenerateResult());
-//    /// - or -
-//    /// var t = Task.Factory.StartNew(() => GenerateResult());
-//    /// 
-//    /// ' Visual Basic 
-//    /// Dim t = Task&lt;int&gt;.Factory.StartNew(Function() GenerateResult())
-//    /// - or -
-//    /// Dim t = Task.Factory.StartNew(Function() GenerateResult())
-//    /// </code>
-//    /// </para>
-//    /// <para>
-//    /// The <see cref="Task{TResult}"/> class also provides constructors that initialize the task but that do not
-//    /// schedule it for execution. For performance reasons, the StartNew method should be the
-//    /// preferred mechanism for creating and scheduling computational tasks, but for scenarios where creation
-//    /// and scheduling must be separated, the constructors may be used, and the task's 
-//    /// <see cref="System.Threading.Tasks.Task.Start()">Start</see>
-//    /// method may then be used to schedule the task for execution at a later time.
-//    /// </para>
-//    /// <para>
-//    /// All members of <see cref="Task{TResult}"/>, except for 
-//    /// <see cref="System.Threading.Tasks.Task.Dispose()">Dispose</see>, are thread-safe
-//    /// and may be used from multiple threads concurrently.
-//    /// </para>
-//    /// </remarks>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
-//[DebuggerTypeProxy(typeof(SystemThreadingTasks_FutureDebugView<>))]
-//[DebuggerDisplay("Id = {Id}, Status = {Status}, Method = {DebuggerDisplayMethodDescription}, Result = {DebuggerDisplayResultDescription}")]
+/// <summary>
+/// Represents an asynchronous operation that produces a result at some time in the future.
+/// </summary>
+/// <typeparam name="TResult">
+/// The type of the result produced by this <see cref="Task{TResult}"/>.
+/// </typeparam>
+/// <remarks>
+/// <para>
+/// <see cref="Task{TResult}"/> instances may be created in a variety of ways. The most common approach is by
+/// using the task's <see cref="Factory"/> property to retrieve a <see
+/// cref="System.Threading.Tasks.TaskFactory{TResult}"/> instance that can be used to create tasks for several
+/// purposes. For example, to create a <see cref="Task{TResult}"/> that runs a function, the factory's StartNew
+/// method may be used:
+/// <code>
+/// // C# 
+/// var t = Task&lt;int&gt;.Factory.StartNew(() => GenerateResult());
+/// - or -
+/// var t = Task.Factory.StartNew(() => GenerateResult());
+/// 
+/// ' Visual Basic 
+/// Dim t = Task&lt;int&gt;.Factory.StartNew(Function() GenerateResult())
+/// - or -
+/// Dim t = Task.Factory.StartNew(Function() GenerateResult())
+/// </code>
+/// </para>
+/// <para>
+/// The <see cref="Task{TResult}"/> class also provides constructors that initialize the task but that do not
+/// schedule it for execution. For performance reasons, the StartNew method should be the
+/// preferred mechanism for creating and scheduling computational tasks, but for scenarios where creation
+/// and scheduling must be separated, the constructors may be used, and the task's 
+/// <see cref="System.Threading.Tasks.Task.Start()">Start</see>
+/// method may then be used to schedule the task for execution at a later time.
+/// </para>
+/// <para>
+/// All members of <see cref="Task{TResult}"/>, except for 
+/// <see cref="System.Threading.Tasks.Task.Dispose()">Dispose</see>, are thread-safe
+/// and may be used from multiple threads concurrently.
+/// </para>
+/// </remarks>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
+@__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(SystemThreadingTasks_FutureDebugView<>)*/)
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Id = {Id}, Status = {Status}, Method = {DebuggerDisplayMethodDescription}, Result = {DebuggerDisplayResultDescription}"*/)
 public class Task1(TResult) : Task
 {
     public TResult m_result;
@@ -363,7 +391,7 @@ public class Task1(TResult) : Task
     //TODO: generate method ContinueWith
     //TODO: generate method ContinueWith
 }
-public class SystemThreadingTasks_FutureDebugView1(TResult) : DotNetObject
+public class SystemThreadingTasks_FutureDebugView1(TResult) : __DotNet__Object
 {
     private Task1!(TResult) m_task;
     //TODO: generate constructor
@@ -379,26 +407,26 @@ public class SystemThreadingTasks_FutureDebugView1(TResult) : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\FutureFactory.cs'
 //
-///// <summary>
-//    /// Provides support for creating and scheduling
-//    /// <see cref="T:System.Threading.Tasks.Task{TResult}">Task{TResult}</see> objects.
-//    /// </summary>
-//    /// <typeparam name="TResult">The type of the results that are available though 
-//    /// the <see cref="T:System.Threading.Tasks.Task{TResult}">Task{TResult}</see> objects that are associated with 
-//    /// the methods in this class.</typeparam>
-//    /// <remarks>
-//    /// <para>
-//    /// There are many common patterns for which tasks are relevant. The <see cref="TaskFactory{TResult}"/>
-//    /// class encodes some of these patterns into methods that pick up default settings, which are
-//    /// configurable through its constructors.
-//    /// </para>
-//    /// <para>
-//    /// A default instance of <see cref="TaskFactory{TResult}"/> is available through the
-//    /// <see cref="System.Threading.Tasks.Task{TResult}.Factory">Task{TResult}.Factory</see> property.
-//    /// </para>
-//    /// </remarks>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
-public class TaskFactory1(TResult) : DotNetObject
+/// <summary>
+/// Provides support for creating and scheduling
+/// <see cref="T:System.Threading.Tasks.Task{TResult}">Task{TResult}</see> objects.
+/// </summary>
+/// <typeparam name="TResult">The type of the results that are available though 
+/// the <see cref="T:System.Threading.Tasks.Task{TResult}">Task{TResult}</see> objects that are associated with 
+/// the methods in this class.</typeparam>
+/// <remarks>
+/// <para>
+/// There are many common patterns for which tasks are relevant. The <see cref="TaskFactory{TResult}"/>
+/// class encodes some of these patterns into methods that pick up default settings, which are
+/// configurable through its constructors.
+/// </para>
+/// <para>
+/// A default instance of <see cref="TaskFactory{TResult}"/> is available through the
+/// <see cref="System.Threading.Tasks.Task{TResult}.Factory">Task{TResult}.Factory</see> property.
+/// </para>
+/// </remarks>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
+public class TaskFactory1(TResult) : __DotNet__Object
 {
     private CancellationToken m_defaultCancellationToken;
     private TaskScheduler m_defaultScheduler;
@@ -472,19 +500,19 @@ public class TaskFactory1(TResult) : DotNetObject
     //TODO: generate method ContinueWhenAnyImpl
     //TODO: generate method ContinueWhenAnyImpl
 }
-public class GenericDelegateCache2(TAntecedentResult,TResult) : DotNetObject
+public class GenericDelegateCache2(TAntecedentResult,TResult) : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public static Func3!(Task1!(Task),DotNetObject,TResult) CWAnyFuncDelegate/*todo: implement initializer*/ = null;
-    public static Func3!(Task1!(Task),DotNetObject,TResult) CWAnyActionDelegate/*todo: implement initializer*/ = null;
-    public static Func3!(Task1!(Task1!(TAntecedentResult)[]),DotNetObject,TResult) CWAllFuncDelegate/*todo: implement initializer*/ = null;
-    public static Func3!(Task1!(Task1!(TAntecedentResult)[]),DotNetObject,TResult) CWAllActionDelegate/*todo: implement initializer*/ = null;
+    public static Func3!(Task1!(Task),__DotNet__Object,TResult) CWAnyFuncDelegate/*todo: implement initializer*/ = null;
+    public static Func3!(Task1!(Task),__DotNet__Object,TResult) CWAnyActionDelegate/*todo: implement initializer*/ = null;
+    public static Func3!(Task1!(Task1!(TAntecedentResult)[]),__DotNet__Object,TResult) CWAllFuncDelegate/*todo: implement initializer*/ = null;
+    public static Func3!(Task1!(Task1!(TAntecedentResult)[]),__DotNet__Object,TResult) CWAllActionDelegate/*todo: implement initializer*/ = null;
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\Parallel.cs'
 //
-public class ParallelOptions : DotNetObject
+public class ParallelOptions : __DotNet__Object
 {
     private TaskScheduler m_scheduler;
     private int m_maxDegreeOfParallelism;
@@ -496,15 +524,15 @@ public class ParallelOptions : DotNetObject
     //TODO: generate property 'CancellationToken'
     //TODO: generate property 'EffectiveMaxConcurrencyLevel'
 }
-///// <summary>
-//    /// Provides support for parallel loops and regions.
-//    /// </summary>
-//    /// <remarks>
-//    /// The <see cref="T:System.Threading.Tasks.Parallel"/> class provides library-based data parallel replacements
-//    /// for common operations such as for loops, for each loops, and execution of a set of statements.
-//    /// </remarks>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
-public class Parallel : DotNetObject
+/// <summary>
+/// Provides support for parallel loops and regions.
+/// </summary>
+/// <remarks>
+/// The <see cref="T:System.Threading.Tasks.Parallel"/> class provides library-based data parallel replacements
+/// for common operations such as for loops, for each loops, and execution of a set of statements.
+/// </remarks>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
+public class Parallel : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public static int s_forkJoinContextID;
@@ -564,13 +592,13 @@ public class Parallel : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\ParallelLoopState.cs'
 //
-///// <summary>
-//    /// Enables iterations of <see cref="T:System.Threading.Tasks.Parallel"/> loops to interact with
-//    /// other iterations.
-//    /// </summary>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
-//[DebuggerDisplay("ShouldExitCurrentIteration = {ShouldExitCurrentIteration}")]
-public class ParallelLoopState : DotNetObject
+/// <summary>
+/// Enables iterations of <see cref="T:System.Threading.Tasks.Parallel"/> loops to interact with
+/// other iterations.
+/// </summary>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "ShouldExitCurrentIteration = {ShouldExitCurrentIteration}"*/)
+public class ParallelLoopState : __DotNet__Object
 {
     private ParallelLoopStateFlags m_flagsBase;
     //TODO: generate constructor
@@ -606,14 +634,14 @@ public class ParallelLoopState64 : ParallelLoopState
     //TODO: generate property 'InternalLowestBreakIteration'
     //TODO: generate method InternalBreak
 }
-public class ParallelLoopStateFlags : DotNetObject
+public class ParallelLoopStateFlags : __DotNet__Object
 {
     public static int PLS_NONE;
     public static int PLS_EXCEPTIONAL/*todo: implement initializer*/ = int();
     public static int PLS_BROKEN/*todo: implement initializer*/ = int();
     public static int PLS_STOPPED/*todo: implement initializer*/ = int();
     public static int PLS_CANCELED/*todo: implement initializer*/ = int();
-    private /*todo: volatile*/int m_LoopStateFlags/*todo: implement initializer*/ = int();
+    private /*todo: volatile*/ int m_LoopStateFlags/*todo: implement initializer*/ = int();
     //TODO: generate property 'LoopStateFlags'
     //TODO: generate method AtomicLoopStateUpdate
     //TODO: generate method AtomicLoopStateUpdate
@@ -623,7 +651,7 @@ public class ParallelLoopStateFlags : DotNetObject
 }
 public class ParallelLoopStateFlags32 : ParallelLoopStateFlags
 {
-    public /*todo: volatile*/int m_lowestBreakIteration/*todo: implement initializer*/ = int();
+    public /*todo: volatile*/ int m_lowestBreakIteration/*todo: implement initializer*/ = int();
     //TODO: generate property 'LowestBreakIteration'
     //TODO: generate property 'NullableLowestBreakIteration'
     //TODO: generate method ShouldExitLoop
@@ -652,7 +680,7 @@ public struct IndexRange
 {
     public long m_nFromInclusive;
     public long m_nToExclusive;
-    public /*todo: volatile*/Shared1!(long) m_nSharedCurrentIndexOffset;
+    public /*todo: volatile*/ Shared1!(long) m_nSharedCurrentIndexOffset;
     public int m_bRangeFinished;
 }
 public struct RangeWorker
@@ -666,7 +694,7 @@ public struct RangeWorker
     //TODO: generate method FindNewWork
     //TODO: generate method FindNewWork32
 }
-public class RangeManager : DotNetObject
+public class RangeManager : __DotNet__Object
 {
     public immutable IndexRange[] m_indexRanges;
     public int m_nCurrentIndexRangeToAssign;
@@ -686,11 +714,11 @@ public interface IProducerConsumerQueue1(T) : IEnumerable1!(T)
     //TODO: generate property 'Count'
     //TODO: generate method GetCountSafe
 }
-///// <summary>
-//    /// Provides a producer/consumer queue safe to be used by any number of producers and consumers concurrently.
-//    /// </summary>
-//    /// <typeparam name="T">Specifies the type of data contained in the queue.</typeparam>
-//    [DebuggerDisplay("Count = {Count}")]
+/// <summary>
+/// Provides a producer/consumer queue safe to be used by any number of producers and consumers concurrently.
+/// </summary>
+/// <typeparam name="T">Specifies the type of data contained in the queue.</typeparam>
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
 public final class MultiProducerMultiConsumerQueue1(T) : ConcurrentQueue1!(T), IProducerConsumerQueue1!(T)
 {
     //TODO: generate method Enqueue
@@ -699,18 +727,18 @@ public final class MultiProducerMultiConsumerQueue1(T) : ConcurrentQueue1!(T), I
     //TODO: generate property 'Count'
     //TODO: generate method GetCountSafe
 }
-///// <summary>
-//    /// Provides a producer/consumer queue safe to be used by only one producer and one consumer concurrently.
-//    /// </summary>
-//    /// <typeparam name="T">Specifies the type of data contained in the queue.</typeparam>
-//    [DebuggerDisplay("Count = {Count}")]
-//[DebuggerTypeProxy(typeof(SingleProducerSingleConsumerQueue<>.SingleProducerSingleConsumerQueue_DebugView))]
-public final class SingleProducerSingleConsumerQueue1(T) : DotNetObject, IProducerConsumerQueue1!(T)
+/// <summary>
+/// Provides a producer/consumer queue safe to be used by only one producer and one consumer concurrently.
+/// </summary>
+/// <typeparam name="T">Specifies the type of data contained in the queue.</typeparam>
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
+@__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(SingleProducerSingleConsumerQueue<>.SingleProducerSingleConsumerQueue_DebugView)*/)
+public final class SingleProducerSingleConsumerQueue1(T) : __DotNet__Object, IProducerConsumerQueue1!(T)
 {
     private enum int INIT_SEGMENT_SIZE/*todo: implement initializer*/ = int();
     private enum int MAX_SEGMENT_SIZE/*todo: implement initializer*/ = int();
-    private /*todo: volatile*/Segment m_head;
-    private /*todo: volatile*/Segment m_tail;
+    private /*todo: volatile*/ Segment m_head;
+    private /*todo: volatile*/ Segment m_tail;
     //TODO: generate constructor
     //TODO: generate method Enqueue
     //TODO: generate method EnqueueSlow
@@ -726,41 +754,41 @@ public final class SingleProducerSingleConsumerQueue1(T) : DotNetObject, IProduc
     //TODO: generate method GetEnumerator
     //TODO: generate property 'Count'
     //TODO: generate method GetCountSafe
-    ///// <summary>A segment in the queue containing one or more items.</summary>
-//        [StructLayout(LayoutKind.Sequential)]
-    private static final class Segment : DotNetObject
+    /// <summary>A segment in the queue containing one or more items.</summary>
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
+    private static final class Segment : __DotNet__Object
     {
         public Segment m_next;
         public immutable T[] m_array;
         public SegmentState m_state;
         //TODO: generate constructor
     }
-    ///// <summary>Stores information about a segment.</summary>
-//        [StructLayout(LayoutKind.Sequential)] // enforce layout so that padding reduces false sharing
+    /// <summary>Stores information about a segment.</summary>
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     private static struct SegmentState
     {
         public PaddingFor32 m_pad0;
-        public /*todo: volatile*/int m_first;
+        public /*todo: volatile*/ int m_first;
         public int m_lastCopy;
         public PaddingFor32 m_pad1;
         public int m_firstCopy;
-        public /*todo: volatile*/int m_last;
+        public /*todo: volatile*/ int m_last;
         public PaddingFor32 m_pad2;
     }
-    private static final class SingleProducerSingleConsumerQueue_DebugView : DotNetObject
+    private static final class SingleProducerSingleConsumerQueue_DebugView : __DotNet__Object
     {
         private immutable SingleProducerSingleConsumerQueue1!(T) m_queue;
         //TODO: generate constructor
         //TODO: generate property 'Items'
     }
 }
-private class PaddingHelpers : DotNetObject
+private class PaddingHelpers : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum int CACHE_LINE_SIZE/*todo: implement initializer*/ = int();
 }
-///// <summary>Padding structure used to minimize false sharing in SingleProducerSingleConsumerQueue{T}.</summary>
-//    [StructLayout(LayoutKind.Explicit, Size = PaddingHelpers.CACHE_LINE_SIZE - sizeof(Int32))] // Based on common case of 64-byte cache lines
+/// <summary>Padding structure used to minimize false sharing in SingleProducerSingleConsumerQueue{T}.</summary>
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit, Size = PaddingHelpers.CACHE_LINE_SIZE - sizeof(Int32)*/)
 private struct PaddingFor32
 {
 }
@@ -768,84 +796,115 @@ private struct PaddingFor32
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\Task.cs'
 //
-public class Shared1(T) : DotNetObject
+public class Shared1(T) : __DotNet__Object
 {
     public T Value;
     //TODO: generate constructor
 }
 public enum TaskStatus
 {
+    /// <summary> 
+    /// The task has been initialized but has not yet been scheduled.
+    /// </summary>
     Created,
+    /// <summary> 
+    /// The task is waiting to be activated and scheduled internally by the .NET Framework infrastructure.
+    /// </summary>
     WaitingForActivation,
+    /// <summary>
+    /// The task has been scheduled for execution but has not yet begun executing.
+    /// </summary>
     WaitingToRun,
+    /// <summary>
+    /// The task is running but has not yet completed.
+    /// </summary>
     Running,
+    // /// <summary>
+    // /// The task is currently blocked in a wait state.
+    // /// </summary>
+    // Blocked,
+    /// <summary>
+    /// The task has finished executing and is implicitly waiting for
+    /// attached child tasks to complete.
+    /// </summary>
     WaitingForChildrenToComplete,
+    /// <summary>
+    /// The task completed execution successfully.
+    /// </summary>
     RanToCompletion,
+    /// <summary>
+    /// The task acknowledged cancellation by throwing an OperationCanceledException with its own CancellationToken
+    /// while the token was in signaled state, or the task's CancellationToken was already signaled before the
+    /// task started executing.
+    /// </summary>
     Canceled,
+    /// <summary>
+    /// The task completed due to an unhandled exception.
+    /// </summary>
     Faulted,
 }
-///// <summary>
-//    /// Represents an asynchronous operation.
-//    /// </summary>
-//    /// <remarks>
-//    /// <para>
-//    /// <see cref="Task"/> instances may be created in a variety of ways. The most common approach is by
-//    /// using the Task type's <see cref="Factory"/> property to retrieve a <see
-//    /// cref="System.Threading.Tasks.TaskFactory"/> instance that can be used to create tasks for several
-//    /// purposes. For example, to create a <see cref="Task"/> that runs an action, the factory's StartNew
-//    /// method may be used:
-//    /// <code>
-//    /// // C# 
-//    /// var t = Task.Factory.StartNew(() => DoAction());
-//    /// 
-//    /// ' Visual Basic 
-//    /// Dim t = Task.Factory.StartNew(Function() DoAction())
-//    /// </code>
-//    /// </para>
-//    /// <para>
-//    /// The <see cref="Task"/> class also provides constructors that initialize the Task but that do not
-//    /// schedule it for execution. For performance reasons, TaskFactory's StartNew method should be the
-//    /// preferred mechanism for creating and scheduling computational tasks, but for scenarios where creation
-//    /// and scheduling must be separated, the constructors may be used, and the task's <see cref="Start()"/>
-//    /// method may then be used to schedule the task for execution at a later time.
-//    /// </para>
-//    /// <para>
-//    /// All members of <see cref="Task"/>, except for <see cref="Dispose()"/>, are thread-safe
-//    /// and may be used from multiple threads concurrently.
-//    /// </para>
-//    /// <para>
-//    /// For operations that return values, the <see cref="System.Threading.Tasks.Task{TResult}"/> class
-//    /// should be used.
-//    /// </para>
-//    /// <para>
-//    /// For developers implementing custom debuggers, several internal and private members of Task may be
-//    /// useful (these may change from release to release). The Int32 m_taskId field serves as the backing
-//    /// store for the <see cref="Id"/> property, however accessing this field directly from a debugger may be
-//    /// more efficient than accessing the same value through the property's getter method (the
-//    /// s_taskIdCounter Int32 counter is used to retrieve the next available ID for a Task). Similarly, the
-//    /// Int32 m_stateFlags field stores information about the current lifecycle stage of the Task,
-//    /// information also accessible through the <see cref="Status"/> property. The m_action System.Object
-//    /// field stores a reference to the Task's delegate, and the m_stateObject System.Object field stores the
-//    /// async state passed to the Task by the developer. Finally, for debuggers that parse stack frames, the
-//    /// InternalWait method serves a potential marker for when a Task is entering a wait operation.
-//    /// </para>
-//    /// </remarks>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
-//[DebuggerTypeProxy(typeof(SystemThreadingTasks_TaskDebugView))]
-//[DebuggerDisplay("Id = {Id}, Status = {Status}, Method = {DebuggerDisplayMethodDescription}")]
-public class Task : DotNetObject, IThreadPoolWorkItem, IAsyncResult, IDisposable
+/// <summary>
+/// Represents an asynchronous operation.
+/// </summary>
+/// <remarks>
+/// <para>
+/// <see cref="Task"/> instances may be created in a variety of ways. The most common approach is by
+/// using the Task type's <see cref="Factory"/> property to retrieve a <see
+/// cref="System.Threading.Tasks.TaskFactory"/> instance that can be used to create tasks for several
+/// purposes. For example, to create a <see cref="Task"/> that runs an action, the factory's StartNew
+/// method may be used:
+/// <code>
+/// // C# 
+/// var t = Task.Factory.StartNew(() => DoAction());
+/// 
+/// ' Visual Basic 
+/// Dim t = Task.Factory.StartNew(Function() DoAction())
+/// </code>
+/// </para>
+/// <para>
+/// The <see cref="Task"/> class also provides constructors that initialize the Task but that do not
+/// schedule it for execution. For performance reasons, TaskFactory's StartNew method should be the
+/// preferred mechanism for creating and scheduling computational tasks, but for scenarios where creation
+/// and scheduling must be separated, the constructors may be used, and the task's <see cref="Start()"/>
+/// method may then be used to schedule the task for execution at a later time.
+/// </para>
+/// <para>
+/// All members of <see cref="Task"/>, except for <see cref="Dispose()"/>, are thread-safe
+/// and may be used from multiple threads concurrently.
+/// </para>
+/// <para>
+/// For operations that return values, the <see cref="System.Threading.Tasks.Task{TResult}"/> class
+/// should be used.
+/// </para>
+/// <para>
+/// For developers implementing custom debuggers, several internal and private members of Task may be
+/// useful (these may change from release to release). The Int32 m_taskId field serves as the backing
+/// store for the <see cref="Id"/> property, however accessing this field directly from a debugger may be
+/// more efficient than accessing the same value through the property's getter method (the
+/// s_taskIdCounter Int32 counter is used to retrieve the next available ID for a Task). Similarly, the
+/// Int32 m_stateFlags field stores information about the current lifecycle stage of the Task,
+/// information also accessible through the <see cref="Status"/> property. The m_action System.Object
+/// field stores a reference to the Task's delegate, and the m_stateObject System.Object field stores the
+/// async state passed to the Task by the developer. Finally, for debuggers that parse stack frames, the
+/// InternalWait method serves a potential marker for when a Task is entering a wait operation.
+/// </para>
+/// </remarks>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
+@__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(SystemThreadingTasks_TaskDebugView)*/)
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Id = {Id}, Status = {Status}, Method = {DebuggerDisplayMethodDescription}"*/)
+public class Task : __DotNet__Object, IThreadPoolWorkItem, IAsyncResult, IDisposable
 {
-    // Ignored: [ThreadStatic]
+    @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     public static Task t_currentTask;
-    // Ignored: [ThreadStatic]
+    @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static StackGuard t_stackGuard;
     public static int s_taskIdCounter;
     private static immutable TaskFactory s_factory/*todo: implement initializer*/ = null;
-    private /*todo: volatile*/int m_taskId;
-    public DotNetObject m_action;
-    public DotNetObject m_stateObject;
+    private /*todo: volatile*/ int m_taskId;
+    public __DotNet__Object m_action;
+    public __DotNet__Object m_stateObject;
     public TaskScheduler m_taskScheduler;
-    public /*todo: volatile*/int m_stateFlags;
+    public /*todo: volatile*/ int m_stateFlags;
     //TODO: generate property 'ParentForDebugger'
     //TODO: generate property 'StateFlagsForDebugger'
     private enum int OptionsMask/*todo: implement initializer*/ = int();
@@ -866,26 +925,26 @@ public class Task : DotNetObject, IThreadPoolWorkItem, IAsyncResult, IDisposable
     public enum int TASK_STATE_TASKSCHEDULED_WAS_FIRED/*todo: implement initializer*/ = int();
     private enum int TASK_STATE_COMPLETED_MASK/*todo: implement initializer*/ = int();
     private enum int CANCELLATION_REQUESTED/*todo: implement initializer*/ = int();
-    private /*todo: volatile*/DotNetObject m_continuationObject/*todo: implement initializer*/ = null;
-    private static immutable DotNetObject s_taskCompletionSentinel/*todo: implement initializer*/ = null;
-    // Ignored: // A private flag that would be set (only) by the debugger
-    // Ignored: // When true the Async Causality logging trace is enabled as well as a dictionary to relate operation ids with Tasks
-    // Ignored: [FriendAccessAllowed]
+    private /*todo: volatile*/ __DotNet__Object m_continuationObject/*todo: implement initializer*/ = null;
+    private static immutable __DotNet__Object s_taskCompletionSentinel/*todo: implement initializer*/ = null;
+    // A private flag that would be set (only) by the debugger
+    // When true the Async Causality logging trace is enabled as well as a dictionary to relate operation ids with Tasks
+    @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
     public static bool s_asyncDebuggingEnabled;
     private static immutable Dictionary2!(int,Task) s_currentActiveTasks/*todo: implement initializer*/ = null;
-    private static immutable DotNetObject s_activeTasksLock/*todo: implement initializer*/ = null;
+    private static immutable __DotNet__Object s_activeTasksLock/*todo: implement initializer*/ = null;
     //TODO: generate method AddToActiveTasks
     //TODO: generate method RemoveFromActiveTasks
-    public static class ContingentProperties : DotNetObject
+    public static class ContingentProperties : __DotNet__Object
     {
         public ExecutionContext m_capturedContext;
-        public /*todo: volatile*/ManualResetEventSlim m_completionEvent;
-        public /*todo: volatile*/TaskExceptionHolder m_exceptionsHolder;
+        public /*todo: volatile*/ ManualResetEventSlim m_completionEvent;
+        public /*todo: volatile*/ TaskExceptionHolder m_exceptionsHolder;
         public CancellationToken m_cancellationToken;
         public Shared1!(CancellationTokenRegistration) m_cancellationRegistration;
-        public /*todo: volatile*/int m_internalCancellationRequested;
-        public /*todo: volatile*/int m_completionCountdown/*todo: implement initializer*/ = int();
-        public /*todo: volatile*/List1!(Task) m_exceptionalChildren;
+        public /*todo: volatile*/ int m_internalCancellationRequested;
+        public /*todo: volatile*/ int m_completionCountdown/*todo: implement initializer*/ = int();
+        public /*todo: volatile*/ List1!(Task) m_exceptionalChildren;
         public Task m_parent;
         //TODO: generate method SetCompleted
         //TODO: generate method DeregisterCancellationCallback
@@ -906,7 +965,7 @@ public class Task : DotNetObject, IThreadPoolWorkItem, IAsyncResult, IDisposable
     //TODO: generate constructor
     //TODO: generate method TaskConstructorCore
     //TODO: generate method AssignCancellationToken
-    private static immutable Action1!(DotNetObject) s_taskCancelCallback/*todo: implement initializer*/ = null;
+    private static immutable Action1!(__DotNet__Object) s_taskCancelCallback/*todo: implement initializer*/ = null;
     //TODO: generate method TaskCancelCallback
     //TODO: generate property 'DebuggerDisplayMethodDescription'
     //TODO: generate method PossiblyCaptureContext
@@ -995,8 +1054,8 @@ public class Task : DotNetObject, IThreadPoolWorkItem, IAsyncResult, IDisposable
     //TODO: generate method MarkAborted
     //TODO: generate method ExecuteEntry
     //TODO: generate method ExecuteWithThreadLocal
-    // Ignored: // Cached callback delegate that's lazily initialized due to ContextCallback being SecurityCritical
-    // Ignored: [SecurityCritical]
+    // Cached callback delegate that's lazily initialized due to ContextCallback being SecurityCritical
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static ContextCallback s_ecCallback;
     //TODO: generate method ExecutionContextCallback
     //TODO: generate method InnerInvoke
@@ -1060,7 +1119,7 @@ public class Task : DotNetObject, IThreadPoolWorkItem, IAsyncResult, IDisposable
     //TODO: generate method AddTaskContinuationComplex
     //TODO: generate method AddTaskContinuation
     //TODO: generate method RemoveContinuation
-    private static immutable Predicate1!(DotNetObject) s_IsTaskContinuationNullPredicate/*todo: implement initializer*/ = null;
+    private static immutable Predicate1!(__DotNet__Object) s_IsTaskContinuationNullPredicate/*todo: implement initializer*/ = null;
     //TODO: generate method WaitAll
     //TODO: generate method WaitAll
     //TODO: generate method WaitAll
@@ -1144,7 +1203,7 @@ public class Task : DotNetObject, IThreadPoolWorkItem, IAsyncResult, IDisposable
     //TODO: generate method GetActiveTaskFromId
     //TODO: generate method GetActiveTasks
 }
-public final class CompletionActionInvoker : DotNetObject, IThreadPoolWorkItem
+public final class CompletionActionInvoker : __DotNet__Object, IThreadPoolWorkItem
 {
     private immutable ITaskCompletionAction m_action;
     private immutable Task m_completingTask;
@@ -1152,7 +1211,7 @@ public final class CompletionActionInvoker : DotNetObject, IThreadPoolWorkItem
     //TODO: generate method ExecuteWorkItem
     //TODO: generate method MarkAborted
 }
-public class SystemThreadingTasks_TaskDebugView : DotNetObject
+public class SystemThreadingTasks_TaskDebugView : __DotNet__Object
 {
     private Task m_task;
     //TODO: generate constructor
@@ -1172,72 +1231,173 @@ public class ParallelForReplicatingTask : Task
 }
 public class ParallelForReplicaTask : Task
 {
-    public DotNetObject m_stateForNextReplica;
-    public DotNetObject m_stateFromPreviousReplica;
+    public __DotNet__Object m_stateForNextReplica;
+    public __DotNet__Object m_stateFromPreviousReplica;
     public Task m_handedOverChildReplica;
     //TODO: generate constructor
     //TODO: generate property 'SavedStateForNextReplica'
     //TODO: generate property 'SavedStateFromPreviousReplica'
     //TODO: generate property 'HandedOverChildReplica'
 }
-// Ignored: /// <summary>
-// Ignored: /// Specifies flags that control optional behavior for the creation and execution of tasks.
-// Ignored: /// </summary>
-// Ignored: // NOTE: These options are a subset of TaskContinuationsOptions, thus before adding a flag check it is
-// Ignored: // not already in use.
-// Ignored: [Flags]
-// Ignored: [Serializable]
+/// <summary>
+/// Specifies flags that control optional behavior for the creation and execution of tasks.
+/// </summary>
+// NOTE: These options are a subset of TaskContinuationsOptions, thus before adding a flag check it is
+// not already in use.
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum TaskCreationOptions
 {
+    /// <summary>
+    /// Specifies that the default behavior should be used.
+    /// </summary>
     None = 0x0,
+    /// <summary>
+    /// A hint to a <see cref="System.Threading.Tasks.TaskScheduler">TaskScheduler</see> to schedule a
+    /// task in as fair a manner as possible, meaning that tasks scheduled sooner will be more likely to
+    /// be run sooner, and tasks scheduled later will be more likely to be run later.
+    /// </summary>
     PreferFairness = 0x01,
+    /// <summary>
+    /// Specifies that a task will be a long-running, course-grained operation. It provides a hint to the
+    /// <see cref="System.Threading.Tasks.TaskScheduler">TaskScheduler</see> that oversubscription may be
+    /// warranted. 
+    /// </summary>
     LongRunning = 0x02,
+    /// <summary>
+    /// Specifies that a task is attached to a parent in the task hierarchy.
+    /// </summary>
     AttachedToParent = 0x04,
+    /// <summary>
+    /// Specifies that an InvalidOperationException will be thrown if an attempt is made to attach a child task to the created task.
+    /// </summary>
     DenyChildAttach = 0x08,
+    /// <summary>
+    /// Prevents the ambient scheduler from being seen as the current scheduler in the created task.  This means that operations
+    /// like StartNew or ContinueWith that are performed in the created task will see TaskScheduler.Default as the current scheduler.
+    /// </summary>
     HideScheduler = 0x10,
+    // 0x20 is already being used in TaskContinuationOptions
+    /// <summary>
+    /// Forces continuations added to the current task to be executed asynchronously.
+    /// This option has precedence over TaskContinuationOptions.ExecuteSynchronously
+    /// </summary>
     RunContinuationsAsynchronously = 0x40,
 }
-// Ignored: /// <summary>
-// Ignored: /// Task creation flags which are only used internally.
-// Ignored: /// </summary>
-// Ignored: [Flags]
-// Ignored: [Serializable]
+/// <summary>
+/// Task creation flags which are only used internally.
+/// </summary>
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum InternalTaskOptions
 {
+    /// <summary> Specifies "No internal task options" </summary>
     None,
+    /// <summary>Used to filter out internal vs. public task creation options.</summary>
     InternalOptionsMask = 0x0000FF00,
     ChildReplica = 0x0100,
     ContinuationTask = 0x0200,
     PromiseTask = 0x0400,
     SelfReplicating = 0x0800,
+    /// <summary>
+    /// Store the presence of TaskContinuationOptions.LazyCancellation, since it does not directly
+    /// translate into any TaskCreationOptions.
+    /// </summary>
     LazyCancellation = 0x1000,
+    /// <summary>Specifies that the task will be queued by the runtime before handing it over to the user. 
+    /// This flag will be used to skip the cancellationtoken registration step, which is only meant for unstarted tasks.</summary>
     QueuedByRuntime = 0x2000,
+    /// <summary>
+    /// Denotes that Dispose should be a complete nop for a Task.  Used when constructing tasks that are meant to be cached/reused.
+    /// </summary>
     DoNotDispose = 0x4000,
 }
-// Ignored: /// <summary>
-// Ignored: /// Specifies flags that control optional behavior for the creation and execution of continuation tasks.
-// Ignored: /// </summary>
-// Ignored: [Flags]
-// Ignored: [Serializable]
+/// <summary>
+/// Specifies flags that control optional behavior for the creation and execution of continuation tasks.
+/// </summary>
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum TaskContinuationOptions
 {
+    /// <summary>
+    /// Default = "Continue on any, no task options, run asynchronously"
+    /// Specifies that the default behavior should be used.  Continuations, by default, will
+    /// be scheduled when the antecedent task completes, regardless of the task's final <see
+    /// cref="System.Threading.Tasks.TaskStatus">TaskStatus</see>.
+    /// </summary>
     None = 0,
+    // These are identical to their meanings and values in TaskCreationOptions
+    /// <summary>
+    /// A hint to a <see cref="System.Threading.Tasks.TaskScheduler">TaskScheduler</see> to schedule a
+    /// task in as fair a manner as possible, meaning that tasks scheduled sooner will be more likely to
+    /// be run sooner, and tasks scheduled later will be more likely to be run later.
+    /// </summary>
     PreferFairness = 0x01,
+    /// <summary>
+    /// Specifies that a task will be a long-running, course-grained operation.  It provides
+    /// a hint to the <see cref="System.Threading.Tasks.TaskScheduler">TaskScheduler</see> that
+    /// oversubscription may be warranted.
+    /// </summary>
     LongRunning = 0x02,
+    /// <summary>
+    /// Specifies that a task is attached to a parent in the task hierarchy.
+    /// </summary>
     AttachedToParent = 0x04,
+    /// <summary>
+    /// Specifies that an InvalidOperationException will be thrown if an attempt is made to attach a child task to the created task.
+    /// </summary>
     DenyChildAttach = 0x08,
+    /// <summary>
+    /// Prevents the ambient scheduler from being seen as the current scheduler in the created task.  This means that operations
+    /// like StartNew or ContinueWith that are performed in the created task will see TaskScheduler.Default as the current scheduler.
+    /// </summary>
     HideScheduler = 0x10,
+    /// <summary>
+    /// In the case of continuation cancellation, prevents completion of the continuation until the antecedent has completed.
+    /// </summary>
     LazyCancellation = 0x20,
     RunContinuationsAsynchronously = 0x40,
+    // These are specific to continuations
+    /// <summary>
+    /// Specifies that the continuation task should not be scheduled if its antecedent ran to completion.
+    /// This option is not valid for multi-task continuations.
+    /// </summary>
     NotOnRanToCompletion = 0x10000,
+    /// <summary>
+    /// Specifies that the continuation task should not be scheduled if its antecedent threw an unhandled
+    /// exception. This option is not valid for multi-task continuations.
+    /// </summary>
     NotOnFaulted = 0x20000,
+    /// <summary>
+    /// Specifies that the continuation task should not be scheduled if its antecedent was canceled. This
+    /// option is not valid for multi-task continuations.
+    /// </summary>
     NotOnCanceled = 0x40000,
+    /// <summary>
+    /// Specifies that the continuation task should be scheduled only if its antecedent ran to
+    /// completion. This option is not valid for multi-task continuations.
+    /// </summary>
     OnlyOnRanToCompletion = NotOnFaulted | NotOnCanceled,
+    /// <summary>
+    /// Specifies that the continuation task should be scheduled only if its antecedent threw an
+    /// unhandled exception. This option is not valid for multi-task continuations.
+    /// </summary>
     OnlyOnFaulted = NotOnRanToCompletion | NotOnCanceled,
+    /// <summary>
+    /// Specifies that the continuation task should be scheduled only if its antecedent was canceled.
+    /// This option is not valid for multi-task continuations.
+    /// </summary>
     OnlyOnCanceled = NotOnRanToCompletion | NotOnFaulted,
+    /// <summary>
+    /// Specifies that the continuation task should be executed synchronously. With this option
+    /// specified, the continuation will be run on the same thread that causes the antecedent task to
+    /// transition into its final state. If the antecedent is already complete when the continuation is
+    /// created, the continuation will run on the thread creating the continuation.  Only very
+    /// short-running continuations should be executed synchronously.
+    /// </summary>
     ExecuteSynchronously = 0x80000,
 }
-public class StackGuard : DotNetObject
+public class StackGuard : __DotNet__Object
 {
     private int m_inliningDepth/*todo: implement initializer*/ = int();
     private enum int MAX_UNCHECKED_INLINING_DEPTH/*todo: implement initializer*/ = int();
@@ -1273,13 +1433,13 @@ public final class UnwrapPromise1(TResult) : Task1!(TResult), ITaskCompletionAct
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\TaskCanceledException.cs'
 //
-///// <summary>
-//    /// Represents an exception used to communicate task cancellation.
-//    /// </summary>
-//    [Serializable]
+/// <summary>
+/// Represents an exception used to communicate task cancellation.
+/// </summary>
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class TaskCanceledException : OperationCanceledException
 {
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private Task m_canceledTask;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1292,31 +1452,31 @@ public class TaskCanceledException : OperationCanceledException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\TaskCompletionSource.cs'
 //
-///// <summary>
-//    /// Represents the producer side of a <see cref="T:System.Threading.Tasks.Task{TResult}"/> unbound to a
-//    /// delegate, providing access to the consumer side through the <see cref="Task"/> property.
-//    /// </summary>
-//    /// <remarks>
-//    /// <para>
-//    /// It is often the case that a <see cref="T:System.Threading.Tasks.Task{TResult}"/> is desired to
-//    /// represent another asynchronous operation.
-//    /// <see cref="TaskCompletionSource{TResult}">TaskCompletionSource</see> is provided for this purpose. It enables
-//    /// the creation of a task that can be handed out to consumers, and those consumers can use the members
-//    /// of the task as they would any other. However, unlike most tasks, the state of a task created by a
-//    /// TaskCompletionSource is controlled explicitly by the methods on TaskCompletionSource. This enables the
-//    /// completion of the external asynchronous operation to be propagated to the underlying Task. The
-//    /// separation also ensures that consumers are not able to transition the state without access to the
-//    /// corresponding TaskCompletionSource.
-//    /// </para>
-//    /// <para>
-//    /// All members of <see cref="TaskCompletionSource{TResult}"/> are thread-safe
-//    /// and may be used from multiple threads concurrently.
-//    /// </para>
-//    /// </remarks>
-//    /// <typeparam name="TResult">The type of the result value assocatied with this <see
-//    /// cref="TaskCompletionSource{TResult}"/>.</typeparam>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
-public class TaskCompletionSource1(TResult) : DotNetObject
+/// <summary>
+/// Represents the producer side of a <see cref="T:System.Threading.Tasks.Task{TResult}"/> unbound to a
+/// delegate, providing access to the consumer side through the <see cref="Task"/> property.
+/// </summary>
+/// <remarks>
+/// <para>
+/// It is often the case that a <see cref="T:System.Threading.Tasks.Task{TResult}"/> is desired to
+/// represent another asynchronous operation.
+/// <see cref="TaskCompletionSource{TResult}">TaskCompletionSource</see> is provided for this purpose. It enables
+/// the creation of a task that can be handed out to consumers, and those consumers can use the members
+/// of the task as they would any other. However, unlike most tasks, the state of a task created by a
+/// TaskCompletionSource is controlled explicitly by the methods on TaskCompletionSource. This enables the
+/// completion of the external asynchronous operation to be propagated to the underlying Task. The
+/// separation also ensures that consumers are not able to transition the state without access to the
+/// corresponding TaskCompletionSource.
+/// </para>
+/// <para>
+/// All members of <see cref="TaskCompletionSource{TResult}"/> are thread-safe
+/// and may be used from multiple threads concurrently.
+/// </para>
+/// </remarks>
+/// <typeparam name="TResult">The type of the result value assocatied with this <see
+/// cref="TaskCompletionSource{TResult}"/>.</typeparam>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
+public class TaskCompletionSource1(TResult) : __DotNet__Object
 {
     private immutable Task1!(TResult) m_task;
     //TODO: generate constructor
@@ -1364,7 +1524,7 @@ public final class ContinuationResultTaskFromResultTask2(TAntecedentResult,TResu
     //TODO: generate constructor
     //TODO: generate method InnerInvoke
 }
-public abstract class TaskContinuation : DotNetObject
+public abstract class TaskContinuation : __DotNet__Object
 {
     //TODO: generate method Run
     //TODO: generate method InlineIfPossibleOrElseQueue
@@ -1382,8 +1542,8 @@ public class StandardTaskContinuation : TaskContinuation
 public final class SynchronizationContextAwaitTaskContinuation : AwaitTaskContinuation
 {
     private static immutable SendOrPostCallback s_postCallback/*todo: implement initializer*/ = null;
-    // Ignored: /// <summary>Cached delegate for PostAction</summary>
-    // Ignored: [SecurityCritical]
+    /// <summary>Cached delegate for PostAction</summary>
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static ContextCallback s_postActionCallback;
     private immutable SynchronizationContext m_syncContext;
     //TODO: generate constructor
@@ -1411,8 +1571,8 @@ public class AwaitTaskContinuation : TaskContinuation, IThreadPoolWorkItem
     //TODO: generate method ExecuteWorkItemHelper
     //TODO: generate method ExecuteWorkItem
     //TODO: generate method MarkAborted
-    // Ignored: /// <summary>Cached delegate that invokes an Action passed as an object parameter.</summary>
-    // Ignored: [SecurityCritical]
+    /// <summary>Cached delegate that invokes an Action passed as an object parameter.</summary>
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static ContextCallback s_invokeActionCallback;
     //TODO: generate method InvokeAction
     //TODO: generate method GetInvokeActionCallback
@@ -1426,15 +1586,15 @@ public class AwaitTaskContinuation : TaskContinuation, IThreadPoolWorkItem
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\TaskExceptionHolder.cs'
 //
-public class TaskExceptionHolder : DotNetObject
+public class TaskExceptionHolder : __DotNet__Object
 {
     private static immutable bool s_failFastOnUnobservedException/*todo: implement initializer*/ = bool();
-    private static /*todo: volatile*/bool s_domainUnloadStarted;
-    private static /*todo: volatile*/EventHandler s_adUnloadEventHandler;
+    private static /*todo: volatile*/ bool s_domainUnloadStarted;
+    private static /*todo: volatile*/ EventHandler s_adUnloadEventHandler;
     private immutable Task m_task;
-    private /*todo: volatile*/List1!(ExceptionDispatchInfo) m_faultExceptions;
+    private /*todo: volatile*/ List1!(ExceptionDispatchInfo) m_faultExceptions;
     private ExceptionDispatchInfo m_cancellationException;
-    private /*todo: volatile*/bool m_isHandled;
+    private /*todo: volatile*/ bool m_isHandled;
     //TODO: generate constructor
     //TODO: generate method ShouldFailFastOnUnobservedException
     //TODO: generate method EnsureADUnloadCallbackRegistered
@@ -1455,23 +1615,23 @@ public class TaskExceptionHolder : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\TaskFactory.cs'
 //
-///// <summary>
-//    /// Provides support for creating and scheduling
-//    /// <see cref="T:System.Threading.Tasks.Task">Tasks</see>.
-//    /// </summary>
-//    /// <remarks>
-//    /// <para>
-//    /// There are many common patterns for which tasks are relevant. The <see cref="TaskFactory"/>
-//    /// class encodes some of these patterns into methods that pick up default settings, which are
-//    /// configurable through its constructors.
-//    /// </para>
-//    /// <para>
-//    /// A default instance of <see cref="TaskFactory"/> is available through the
-//    /// <see cref="System.Threading.Tasks.Task.Factory">Task.Factory</see> property.
-//    /// </para>
-//    /// </remarks>
-//    [HostProtection(Synchronization = true, ExternalThreading = true)]
-public class TaskFactory : DotNetObject
+/// <summary>
+/// Provides support for creating and scheduling
+/// <see cref="T:System.Threading.Tasks.Task">Tasks</see>.
+/// </summary>
+/// <remarks>
+/// <para>
+/// There are many common patterns for which tasks are relevant. The <see cref="TaskFactory"/>
+/// class encodes some of these patterns into methods that pick up default settings, which are
+/// configurable through its constructors.
+/// </para>
+/// <para>
+/// A default instance of <see cref="TaskFactory"/> is available through the
+/// <see cref="System.Threading.Tasks.Task.Factory">Task.Factory</see> property.
+/// </para>
+/// </remarks>
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
+public class TaskFactory : __DotNet__Object
 {
     private CancellationToken m_defaultCancellationToken;
     private TaskScheduler m_defaultScheduler;
@@ -1599,26 +1759,26 @@ public class TaskFactory : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\TaskScheduler.cs'
 //
-///// <summary>
-//    /// Represents an abstract scheduler for tasks.
-//    /// </summary>
-//    /// <remarks>
-//    /// <para>
-//    /// <see cref="System.Threading.Tasks.TaskScheduler">TaskScheduler</see> acts as the extension point for all 
-//    /// pluggable scheduling logic.  This includes mechanisms such as how to schedule a task for execution, and
-//    /// how scheduled tasks should be exposed to debuggers.
-//    /// </para>
-//    /// <para>
-//    /// All members of the abstract <see cref="TaskScheduler"/> type are thread-safe
-//    /// and may be used from multiple threads concurrently.
-//    /// </para>
-//    /// </remarks>
-//    [DebuggerDisplay("Id={Id}")]
-//[DebuggerTypeProxy(typeof(SystemThreadingTasks_TaskSchedulerDebugView))]
-//[HostProtection(Synchronization = true, ExternalThreading = true)]
-//#pragma warning disable 618
-//    [PermissionSet(SecurityAction.InheritanceDemand, Unrestricted = true)]
-public abstract class TaskScheduler : DotNetObject
+/// <summary>
+/// Represents an abstract scheduler for tasks.
+/// </summary>
+/// <remarks>
+/// <para>
+/// <see cref="System.Threading.Tasks.TaskScheduler">TaskScheduler</see> acts as the extension point for all 
+/// pluggable scheduling logic.  This includes mechanisms such as how to schedule a task for execution, and
+/// how scheduled tasks should be exposed to debuggers.
+/// </para>
+/// <para>
+/// All members of the abstract <see cref="TaskScheduler"/> type are thread-safe
+/// and may be used from multiple threads concurrently.
+/// </para>
+/// </remarks>
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Id={Id}"*/)
+@__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(SystemThreadingTasks_TaskSchedulerDebugView)*/)
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
+// #pragma warning disable 618
+@__DotNet__Attribute!(PermissionSetAttribute.stringof/*, SecurityAction.InheritanceDemand, Unrestricted = true*/)
+public abstract class TaskScheduler : __DotNet__Object
 {
     //TODO: generate method QueueTask
     //TODO: generate method TryExecuteTaskInline
@@ -1629,10 +1789,10 @@ public abstract class TaskScheduler : DotNetObject
     //TODO: generate method NotifyWorkItemProgress
     //TODO: generate property 'RequiresAtomicStartTransition'
     //TODO: generate method InternalQueueTask
-    private static ConditionalWeakTable2!(TaskScheduler,DotNetObject) s_activeTaskSchedulers;
+    private static ConditionalWeakTable2!(TaskScheduler,__DotNet__Object) s_activeTaskSchedulers;
     private static immutable TaskScheduler s_defaultTaskScheduler/*todo: implement initializer*/ = null;
     public static int s_taskSchedulerIdCounter;
-    private /*todo: volatile*/int m_taskSchedulerId;
+    private /*todo: volatile*/ int m_taskSchedulerId;
     //TODO: generate constructor
     //TODO: generate method AddToActiveTaskSchedulers
     //TODO: generate property 'Default'
@@ -1642,12 +1802,12 @@ public abstract class TaskScheduler : DotNetObject
     //TODO: generate property 'Id'
     //TODO: generate method TryExecuteTask
     private static EventHandler1!(UnobservedTaskExceptionEventArgs) _unobservedTaskException;
-    private static immutable DotNetObject _unobservedTaskExceptionLockObject/*todo: implement initializer*/ = null;
+    private static immutable __DotNet__Object _unobservedTaskExceptionLockObject/*todo: implement initializer*/ = null;
     //TODO: generate event 'UnobservedTaskException'
     //TODO: generate method PublishUnobservedTaskException
     //TODO: generate method GetScheduledTasksForDebugger
     //TODO: generate method GetTaskSchedulersForDebugger
-    public static final class SystemThreadingTasks_TaskSchedulerDebugView : DotNetObject
+    public static final class SystemThreadingTasks_TaskSchedulerDebugView : __DotNet__Object
     {
         private immutable TaskScheduler m_taskScheduler;
         //TODO: generate constructor
@@ -1679,12 +1839,12 @@ public class UnobservedTaskExceptionEventArgs : EventArgs
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\TaskSchedulerException.cs'
 //
-///// <summary>
-//    /// Represents an exception used to communicate an invalid operation by a
-//    /// <see cref="T:System.Threading.Tasks.TaskScheduler"/>.
-//    /// </summary>
-//    [Serializable]
-public class TaskSchedulerException : DotNetException
+/// <summary>
+/// Represents an exception used to communicate an invalid operation by a
+/// <see cref="T:System.Threading.Tasks.TaskScheduler"/>.
+/// </summary>
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class TaskSchedulerException : __DotNet__Exception
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1696,17 +1856,17 @@ public class TaskSchedulerException : DotNetException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\TaskToApm.cs'
 //
-public class TaskToApm : DotNetObject
+public class TaskToApm : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method Begin
     //TODO: generate method End
     //TODO: generate method End
     //TODO: generate method InvokeCallbackWhenTaskCompletes
-    private static final class TaskWrapperAsyncResult : DotNetObject, IAsyncResult
+    private static final class TaskWrapperAsyncResult : __DotNet__Object, IAsyncResult
     {
         public immutable Task Task_;
-        private immutable DotNetObject m_state;
+        private immutable __DotNet__Object m_state;
         private immutable bool m_completedSynchronously;
         //TODO: generate constructor
         //TODO: generate property 'AsyncState'
@@ -1736,11 +1896,8 @@ public final class ThreadPoolTaskScheduler : TaskScheduler
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\TPLETWProvider.cs'
 //
-///// <summary>Provides an event source for tracing TPL information.</summary>
-//    [EventSource(
-//        Name = "System.Threading.Tasks.TplEventSource",
-//        Guid = "2e5dba47-a3d2-4d16-8ee0-6671ffdcd7b5", 
-//        LocalizationResources = System.CoreLib.Name)]
+/// <summary>Provides an event source for tracing TPL information.</summary>
+@__DotNet__Attribute!(EventSourceAttribute.stringof/*, Name = "System.Threading.Tasks.TplEventSource", Guid = "2e5dba47-a3d2-4d16-8ee0-6671ffdcd7b5", LocalizationResources = System.CoreLib.Name*/)
 public final class TplEtwProvider : EventSource
 {
     public bool TasksSetActivityIds;
@@ -1751,16 +1908,21 @@ public final class TplEtwProvider : EventSource
     //TODO: generate constructor
     public enum ForkJoinOperationType
     {
+        /// <summary>Parallel.Invoke.</summary>
         ParallelInvoke = 1,
+        /// <summary>Parallel.For.</summary>
         ParallelFor = 2,
+        /// <summary>Parallel.ForEach.</summary>
         ParallelForEach = 3,
     }
     public enum TaskWaitBehavior : int
     {
+        /// <summary>A synchronous wait.</summary>
         Synchronous = 1,
+        /// <summary>An asynchronous await.</summary>
         Asynchronous = 2,
     }
-    public static class Tasks : DotNetObject
+    public static class Tasks : __DotNet__Object
     {
         public enum EventTask Loop/*todo: implement initializer*/ = (cast(EventTask)0);
         public enum EventTask Invoke/*todo: implement initializer*/ = (cast(EventTask)0);
@@ -1772,7 +1934,7 @@ public final class TplEtwProvider : EventSource
         public enum EventTask TraceOperation/*todo: implement initializer*/ = (cast(EventTask)0);
         public enum EventTask TraceSynchronousWork/*todo: implement initializer*/ = (cast(EventTask)0);
     }
-    public static class Keywords : DotNetObject
+    public static class Keywords : __DotNet__Object
     {
         public enum EventKeywords TaskTransfer/*todo: implement initializer*/ = (cast(EventKeywords)0);
         public enum EventKeywords Tasks/*todo: implement initializer*/ = (cast(EventKeywords)0);

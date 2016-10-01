@@ -1,17 +1,25 @@
 module mscorlib.System.Security.Util;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    SerializableAttribute,
+    FlagsAttribute,
+    __DotNet__Object,
     String;
 import mscorlib.System.Collections :
     ArrayList;
+import mscorlib.System.Security :
+    SecurityCriticalAttribute;
+import mscorlib.System.Runtime.Serialization :
+    OptionalFieldAttribute;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\Config.cs'
 //
-// Ignored: // Duplicated in vm\COMSecurityConfig.h
-// Ignored: [Serializable]
-// Ignored: [Flags]
+// Duplicated in vm\COMSecurityConfig.h
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum QuickCacheEntryType
 {
     FullTrustZoneMyComputer = 0x1000000,
@@ -21,11 +29,11 @@ public enum QuickCacheEntryType
     FullTrustZoneUntrusted = 0x10000000,
     FullTrustAll = 0x20000000,
 }
-public class Config : DotNetObject
+public class Config : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    private static /*todo: volatile*/String m_machineConfig;
-    private static /*todo: volatile*/String m_userConfig;
+    private static /*todo: volatile*/ String m_machineConfig;
+    private static /*todo: volatile*/ String m_userConfig;
     //TODO: generate method GetFileLocales
     //TODO: generate property 'MachineDirectory'
     //TODO: generate property 'UserDirectory'
@@ -37,7 +45,7 @@ public class Config : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\Hex.cs'
 //
-public class Hex : DotNetObject
+public class Hex : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method HexDigit
@@ -50,8 +58,8 @@ public class Hex : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\sitestring.cs'
 //
-//[Serializable]
-public class SiteString : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class SiteString : __DotNet__Object
 {
     protected String m_site;
     protected ArrayList m_separatedSite;
@@ -77,24 +85,24 @@ public class SiteString : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\StringExpressionSet.cs'
 //
-//[Serializable]
-public class StringExpressionSet : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class StringExpressionSet : __DotNet__Object
 {
-    // Ignored: // This field, as well as the expressions fields below are critical since they may contain
-    // Ignored: // canonicalized full path data potentially built out of relative data passed as input to the
-    // Ignored: // StringExpressionSet.  Full trust code using the string expression set needs to ensure that before
-    // Ignored: // exposing this data out to partial trust, they protect against this.  Possibilities include:
-    // Ignored: //
-    // Ignored: //  1. Using the throwOnRelative flag
-    // Ignored: //  2. Ensuring that the partial trust code has permission to see full path data
-    // Ignored: //  3. Not using this set for paths (eg EnvironmentStringExpressionSet)
-    // Ignored: //
-    // Ignored: [SecurityCritical]
+    // This field, as well as the expressions fields below are critical since they may contain
+    // canonicalized full path data potentially built out of relative data passed as input to the
+    // StringExpressionSet.  Full trust code using the string expression set needs to ensure that before
+    // exposing this data out to partial trust, they protect against this.  Possibilities include:
+    //
+    //  1. Using the throwOnRelative flag
+    //  2. Ensuring that the partial trust code has permission to see full path data
+    //  3. Not using this set for paths (eg EnvironmentStringExpressionSet)
+    //
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     protected ArrayList m_list;
     protected bool m_ignoreCase;
-    // Ignored: [SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     protected String m_expressions;
-    // Ignored: [SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     protected String[] m_expressionsArray;
     protected bool m_throwOnRelative;
     protected static immutable wchar[] m_separators/*todo: implement initializer*/ = null;
@@ -141,18 +149,18 @@ public class StringExpressionSet : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\TokenBasedSet.cs'
 //
-public class TokenBasedSet : DotNetObject
+public class TokenBasedSet : __DotNet__Object
 {
     private int m_initSize/*todo: implement initializer*/ = int();
     private int m_increment/*todo: implement initializer*/ = int();
-    private DotNetObject[] m_objSet;
-    // Ignored: //  END -> Serialization only fields
-    // Ignored: [OptionalField(VersionAdded = 2)]
-    private /*todo: volatile*/DotNetObject m_Obj;
-    // Ignored: [OptionalField(VersionAdded = 2)]
-    private /*todo: volatile*/DotNetObject[] m_Set;
+    private __DotNet__Object[] m_objSet;
+    //  END -> Serialization only fields
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
+    private /*todo: volatile*/ __DotNet__Object m_Obj;
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
+    private /*todo: volatile*/ __DotNet__Object[] m_Set;
     private int m_cElt;
-    private /*todo: volatile*/int m_maxIndex;
+    private /*todo: volatile*/ int m_maxIndex;
     //TODO: generate method OnDeserialized
     //TODO: generate method OnDeserializedInternal
     //TODO: generate method OnSerializing
@@ -178,7 +186,7 @@ public class TokenBasedSet : DotNetObject
 //
 public struct TokenBasedSetEnumerator
 {
-    public DotNetObject Current;
+    public __DotNet__Object Current;
     public int Index;
     private TokenBasedSet _tb;
     //TODO: generate method MoveNext
@@ -192,20 +200,20 @@ public struct TokenBasedSetEnumerator
 public final class URLString : SiteString
 {
     private String m_protocol;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private String m_userpass;
     private SiteString m_siteString;
     private int m_port;
     private LocalSiteString m_localSite;
     private DirectoryString m_directory;
     private enum String m_defaultProtocol/*todo: implement initializer*/ = null;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_parseDeferred;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private String m_urlOriginal;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_parsedOriginal;
-    // Ignored: [OptionalField(VersionAdded = 3)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 3*/)
     private bool m_isUncShare;
     private String m_fullurl;
     //TODO: generate method OnDeserialized
@@ -247,11 +255,11 @@ public final class URLString : SiteString
     //TODO: generate method SpecialNormalizeUrl
     //TODO: generate method GetDeviceName
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class DirectoryString : SiteString
 {
     private bool m_checkForIllegalChars;
-    private static /*todo: new modifier*/wchar[] m_separators/*todo: implement initializer*/ = null;
+    private static /*todo: new modifier*/ wchar[] m_separators/*todo: implement initializer*/ = null;
     protected static wchar[] m_illegalDirectoryCharacters/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -259,11 +267,11 @@ public class DirectoryString : SiteString
     //TODO: generate method IsSubsetOf
     //TODO: generate method IsSubsetOf
 }
-//#if !PLATFORM_UNIX
-//    [Serializable]
+// #if !PLATFORM_UNIX
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class LocalSiteString : SiteString
 {
-    private static /*todo: new modifier*/wchar[] m_separators/*todo: implement initializer*/ = null;
+    private static /*todo: new modifier*/ wchar[] m_separators/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate method CreateSeparatedString
     //TODO: generate method IsSubsetOf
@@ -273,7 +281,7 @@ public class LocalSiteString : SiteString
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\XMLUtil.cs'
 //
-public class XMLUtil : DotNetObject
+public class XMLUtil : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private enum String BuiltInPermission/*todo: implement initializer*/ = null;

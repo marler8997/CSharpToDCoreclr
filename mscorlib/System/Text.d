@@ -1,32 +1,41 @@
 module mscorlib.System.Text;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    SerializableAttribute,
+    __DotNet__Object,
+    NonSerializedAttribute,
     ArgumentException,
     String,
-    ICloneable;
+    ICloneable,
+    ThreadStaticAttribute;
+import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute;
 import mscorlib.System.Runtime.Serialization :
     IObjectReference,
-    ISerializable;
+    ISerializable,
+    OptionalFieldAttribute;
+import mscorlib.System.Security :
+    SecurityCriticalAttribute;
 import mscorlib.System.Globalization :
     CodePageDataItem;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\ASCIIEncoding.cs'
 //
-//// ASCIIEncoding
-//    //
-//    // Note that ASCIIEncoding is optomized with no best fit and ? for fallback.
-//    // It doesn't come in other flavors.
-//    //
-//    // Note: ASCIIEncoding is the only encoding that doesn't do best fit (windows has best fit).
-//    //
-//    // Note: IsAlwaysNormalized remains false because 1/2 the code points are unassigned, so they'd
-//    //       use fallbacks, and we cannot guarantee that fallbacks are normalized.
-//    //
+// ASCIIEncoding
 //
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Note that ASCIIEncoding is optomized with no best fit and ? for fallback.
+// It doesn't come in other flavors.
+//
+// Note: ASCIIEncoding is the only encoding that doesn't do best fit (windows has best fit).
+//
+// Note: IsAlwaysNormalized remains false because 1/2 the code points are unassigned, so they'd
+//       use fallbacks, and we cannot guarantee that fallbacks are normalized.
+//
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class ASCIIEncoding : Encoding
 {
     public static immutable ASCIIEncoding s_default/*todo: implement initializer*/ = null;
@@ -57,39 +66,38 @@ public class ASCIIEncoding : Encoding
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\CodePageEncoding.cs'
 //
-///*=================================CodePageEncoding==================================
-//    ** This class is here only to deserialize the Code Page classes from Everett (V1.1) into
-//    ** Appropriate Whidbey (V2.0) objects.  We also serialize the Whidbey classes
-//    ** using this proxy since we pretty much need one anyway and that solves Whidbey
-//    ** to Everett compatibility as well.
-//    ==============================================================================*/
-//
-//    [Serializable]
-public final class CodePageEncoding : DotNetObject, IObjectReference, ISerializable
+// =================================CodePageEncoding==================================
+// ** This class is here only to deserialize the Code Page classes from Everett (V1.1) into
+// ** Appropriate Whidbey (V2.0) objects.  We also serialize the Whidbey classes
+// ** using this proxy since we pretty much need one anyway and that solves Whidbey
+// ** to Everett compatibility as well.
+// ==============================================================================
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class CodePageEncoding : __DotNet__Object, IObjectReference, ISerializable
 {
-    // Ignored: // Temp stuff
-    // Ignored: [NonSerialized]
+    // Temp stuff
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private int m_codePage;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private bool m_isReadOnly;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private bool m_deserializedFromEverett/*todo: implement initializer*/ = bool();
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private EncoderFallback encoderFallback/*todo: implement initializer*/ = null;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private DecoderFallback decoderFallback/*todo: implement initializer*/ = null;
-    // Ignored: // Might need this when GetRealObjecting
-    // Ignored: [NonSerialized]
+    // Might need this when GetRealObjecting
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private Encoding realEncoding/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate method GetRealObject
     //TODO: generate method GetObjectData
-    //// Same problem with the Decoder, this only happens with Everett Decoders
-//        [Serializable]
-    public static final class Decoder : DotNetObject, IObjectReference, ISerializable
+    // Same problem with the Decoder, this only happens with Everett Decoders
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
+    public static final class Decoder : __DotNet__Object, IObjectReference, ISerializable
     {
-        // Ignored: // Might need this when GetRealObjecting
-        // Ignored: [NonSerialized]
+        // Might need this when GetRealObjecting
+        @__DotNet__Attribute!(NonSerializedAttribute.stringof)
         private Encoding realEncoding/*todo: implement initializer*/ = null;
         //TODO: generate constructor
         //TODO: generate method GetRealObject
@@ -100,23 +108,23 @@ public final class CodePageEncoding : DotNetObject, IObjectReference, ISerializa
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\Decoder.cs'
 //
-//// A Decoder is used to decode a sequence of blocks of bytes into a
-//    // sequence of blocks of characters. Following instantiation of a decoder,
-//    // sequential blocks of bytes are converted into blocks of characters through
-//    // calls to the GetChars method. The decoder maintains state between the
-//    // conversions, allowing it to correctly decode byte sequences that span
-//    // adjacent blocks.
-//    //
-//    // Instances of specific implementations of the Decoder abstract base
-//    // class are typically obtained through calls to the GetDecoder method
-//    // of Encoding objects.
-//    //
-//    [System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
-public abstract class Decoder : DotNetObject
+// A Decoder is used to decode a sequence of blocks of bytes into a
+// sequence of blocks of characters. Following instantiation of a decoder,
+// sequential blocks of bytes are converted into blocks of characters through
+// calls to the GetChars method. The decoder maintains state between the
+// conversions, allowing it to correctly decode byte sequences that span
+// adjacent blocks.
+//
+// Instances of specific implementations of the Decoder abstract base
+// class are typically obtained through calls to the GetDecoder method
+// of Encoding objects.
+//
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public abstract class Decoder : __DotNet__Object
 {
     public DecoderFallback m_fallback/*todo: implement initializer*/ = null;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public DecoderFallbackBuffer m_fallbackBuffer/*todo: implement initializer*/ = null;
     //TODO: generate method SerializeDecoder
     //TODO: generate constructor
@@ -137,7 +145,7 @@ public abstract class Decoder : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\DecoderBestFitFallback.cs'
 //
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class InternalDecoderBestFitFallback : DecoderFallback
 {
     public Encoding encoding/*todo: implement initializer*/ = null;
@@ -155,7 +163,7 @@ public final class InternalDecoderBestFitFallbackBuffer : DecoderFallbackBuffer
     public int iCount/*todo: implement initializer*/ = int();
     public int iSize;
     private InternalDecoderBestFitFallback oFallback;
-    private static DotNetObject s_InternalSyncObject;
+    private static __DotNet__Object s_InternalSyncObject;
     //TODO: generate property 'InternalSyncObject'
     //TODO: generate constructor
     //TODO: generate method Fallback
@@ -170,7 +178,7 @@ public final class InternalDecoderBestFitFallbackBuffer : DecoderFallbackBuffer
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\DecoderExceptionFallback.cs'
 //
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class DecoderExceptionFallback : DecoderFallback
 {
     //TODO: generate constructor
@@ -187,8 +195,8 @@ public final class DecoderExceptionFallbackBuffer : DecoderFallbackBuffer
     //TODO: generate property 'Remaining'
     //TODO: generate method Throw
 }
-//// Exception for decoding unknown byte sequences.
-//    [Serializable]
+// Exception for decoding unknown byte sequences.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class DecoderFallbackException : ArgumentException
 {
     private ubyte[] bytesUnknown/*todo: implement initializer*/ = null;
@@ -205,13 +213,13 @@ public final class DecoderFallbackException : ArgumentException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\DecoderFallback.cs'
 //
-//[Serializable]
-public abstract class DecoderFallback : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public abstract class DecoderFallback : __DotNet__Object
 {
     public bool bIsMicrosoftBestFitFallback/*todo: implement initializer*/ = bool();
-    private static /*todo: volatile*/DecoderFallback replacementFallback;
-    private static /*todo: volatile*/DecoderFallback exceptionFallback;
-    private static DotNetObject s_InternalSyncObject;
+    private static /*todo: volatile*/ DecoderFallback replacementFallback;
+    private static /*todo: volatile*/ DecoderFallback exceptionFallback;
+    private static __DotNet__Object s_InternalSyncObject;
     //TODO: generate property 'InternalSyncObject'
     //TODO: generate property 'ReplacementFallback'
     //TODO: generate property 'ExceptionFallback'
@@ -219,18 +227,18 @@ public abstract class DecoderFallback : DotNetObject
     //TODO: generate property 'MaxCharCount'
     //TODO: generate property 'IsMicrosoftBestFitFallback'
 }
-public abstract class DecoderFallbackBuffer : DotNetObject
+public abstract class DecoderFallbackBuffer : __DotNet__Object
 {
     //TODO: generate method Fallback
     //TODO: generate method GetNextChar
     //TODO: generate method MovePrevious
     //TODO: generate property 'Remaining'
     //TODO: generate method Reset
-    // Ignored: // Internal items to help us figure out what we're doing as far as error messages, etc.
-    // Ignored: // These help us with our performance and messages internally
-    // Ignored: [SecurityCritical]
+    // Internal items to help us figure out what we're doing as far as error messages, etc.
+    // These help us with our performance and messages internally
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     public ubyte* byteStart;
-    // Ignored: [SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     public wchar* charEnd;
     //TODO: generate method InternalReset
     //TODO: generate method InternalInitialize
@@ -242,27 +250,26 @@ public abstract class DecoderFallbackBuffer : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\DecoderNLS.cs'
 //
-//// A Decoder is used to decode a sequence of blocks of bytes into a
-//    // sequence of blocks of characters. Following instantiation of a decoder,
-//    // sequential blocks of bytes are converted into blocks of characters through
-//    // calls to the GetChars method. The decoder maintains state between the
-//    // conversions, allowing it to correctly decode byte sequences that span
-//    // adjacent blocks.
-//    //
-//    // Instances of specific implementations of the Decoder abstract base
-//    // class are typically obtained through calls to the GetDecoder method
-//    // of Encoding objects.
-//    //
+// A Decoder is used to decode a sequence of blocks of bytes into a
+// sequence of blocks of characters. Following instantiation of a decoder,
+// sequential blocks of bytes are converted into blocks of characters through
+// calls to the GetChars method. The decoder maintains state between the
+// conversions, allowing it to correctly decode byte sequences that span
+// adjacent blocks.
 //
-//    [Serializable]
+// Instances of specific implementations of the Decoder abstract base
+// class are typically obtained through calls to the GetDecoder method
+// of Encoding objects.
+//
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class DecoderNLS : mscorlib.System.Text.Decoder, ISerializable
 {
     protected Encoding m_encoding;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     protected bool m_mustFlush;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public bool m_throwOnOverflow;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public int m_bytesUsed;
     //TODO: generate constructor
     //TODO: generate method GetObjectData
@@ -285,7 +292,7 @@ public class DecoderNLS : mscorlib.System.Text.Decoder, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\DecoderReplacementFallback.cs'
 //
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class DecoderReplacementFallback : DecoderFallback
 {
     private String strDefault;
@@ -314,23 +321,23 @@ public final class DecoderReplacementFallbackBuffer : DecoderFallbackBuffer
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\Encoder.cs'
 //
-//// An Encoder is used to encode a sequence of blocks of characters into
-//    // a sequence of blocks of bytes. Following instantiation of an encoder,
-//    // sequential blocks of characters are converted into blocks of bytes through
-//    // calls to the GetBytes method. The encoder maintains state between the
-//    // conversions, allowing it to correctly encode character sequences that span
-//    // adjacent blocks.
-//    //
-//    // Instances of specific implementations of the Encoder abstract base
-//    // class are typically obtained through calls to the GetEncoder method
-//    // of Encoding objects.
-//    //
-//    [System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
-public abstract class Encoder : DotNetObject
+// An Encoder is used to encode a sequence of blocks of characters into
+// a sequence of blocks of bytes. Following instantiation of an encoder,
+// sequential blocks of characters are converted into blocks of bytes through
+// calls to the GetBytes method. The encoder maintains state between the
+// conversions, allowing it to correctly encode character sequences that span
+// adjacent blocks.
+//
+// Instances of specific implementations of the Encoder abstract base
+// class are typically obtained through calls to the GetEncoder method
+// of Encoding objects.
+//
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public abstract class Encoder : __DotNet__Object
 {
     public EncoderFallback m_fallback/*todo: implement initializer*/ = null;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public EncoderFallbackBuffer m_fallbackBuffer/*todo: implement initializer*/ = null;
     //TODO: generate method SerializeEncoder
     //TODO: generate constructor
@@ -349,7 +356,7 @@ public abstract class Encoder : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\EncoderBestFitFallback.cs'
 //
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class InternalEncoderBestFitFallback : EncoderFallback
 {
     public Encoding encoding/*todo: implement initializer*/ = null;
@@ -366,7 +373,7 @@ public final class InternalEncoderBestFitFallbackBuffer : EncoderFallbackBuffer
     private InternalEncoderBestFitFallback oFallback;
     private int iCount/*todo: implement initializer*/ = int();
     private int iSize;
-    private static DotNetObject s_InternalSyncObject;
+    private static __DotNet__Object s_InternalSyncObject;
     //TODO: generate property 'InternalSyncObject'
     //TODO: generate constructor
     //TODO: generate method Fallback
@@ -381,7 +388,7 @@ public final class InternalEncoderBestFitFallbackBuffer : EncoderFallbackBuffer
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\EncoderExceptionFallback.cs'
 //
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class EncoderExceptionFallback : EncoderFallback
 {
     //TODO: generate constructor
@@ -399,7 +406,7 @@ public final class EncoderExceptionFallbackBuffer : EncoderFallbackBuffer
     //TODO: generate method MovePrevious
     //TODO: generate property 'Remaining'
 }
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class EncoderFallbackException : ArgumentException
 {
     private wchar charUnknown;
@@ -422,20 +429,20 @@ public final class EncoderFallbackException : ArgumentException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\EncoderFallback.cs'
 //
-//[Serializable]
-public abstract class EncoderFallback : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public abstract class EncoderFallback : __DotNet__Object
 {
     public bool bIsMicrosoftBestFitFallback/*todo: implement initializer*/ = bool();
-    private static /*todo: volatile*/EncoderFallback replacementFallback;
-    private static /*todo: volatile*/EncoderFallback exceptionFallback;
-    private static DotNetObject s_InternalSyncObject;
+    private static /*todo: volatile*/ EncoderFallback replacementFallback;
+    private static /*todo: volatile*/ EncoderFallback exceptionFallback;
+    private static __DotNet__Object s_InternalSyncObject;
     //TODO: generate property 'InternalSyncObject'
     //TODO: generate property 'ReplacementFallback'
     //TODO: generate property 'ExceptionFallback'
     //TODO: generate method CreateFallbackBuffer
     //TODO: generate property 'MaxCharCount'
 }
-public abstract class EncoderFallbackBuffer : DotNetObject
+public abstract class EncoderFallbackBuffer : __DotNet__Object
 {
     //TODO: generate method Fallback
     //TODO: generate method Fallback
@@ -443,11 +450,11 @@ public abstract class EncoderFallbackBuffer : DotNetObject
     //TODO: generate method MovePrevious
     //TODO: generate property 'Remaining'
     //TODO: generate method Reset
-    // Ignored: // Internal items to help us figure out what we're doing as far as error messages, etc.
-    // Ignored: // These help us with our performance and messages internally
-    // Ignored: [SecurityCritical]
+    // Internal items to help us figure out what we're doing as far as error messages, etc.
+    // These help us with our performance and messages internally
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     public wchar* charStart;
-    // Ignored: [SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     public wchar* charEnd;
     public EncoderNLS encoder;
     public bool setEncoder;
@@ -465,28 +472,27 @@ public abstract class EncoderFallbackBuffer : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\EncoderNLS.cs'
 //
-//// An Encoder is used to encode a sequence of blocks of characters into
-//    // a sequence of blocks of bytes. Following instantiation of an encoder,
-//    // sequential blocks of characters are converted into blocks of bytes through
-//    // calls to the GetBytes method. The encoder maintains state between the
-//    // conversions, allowing it to correctly encode character sequences that span
-//    // adjacent blocks.
-//    //
-//    // Instances of specific implementations of the Encoder abstract base
-//    // class are typically obtained through calls to the GetEncoder method
-//    // of Encoding objects.
-//    //
+// An Encoder is used to encode a sequence of blocks of characters into
+// a sequence of blocks of bytes. Following instantiation of an encoder,
+// sequential blocks of characters are converted into blocks of bytes through
+// calls to the GetBytes method. The encoder maintains state between the
+// conversions, allowing it to correctly encode character sequences that span
+// adjacent blocks.
 //
-//    [Serializable]
+// Instances of specific implementations of the Encoder abstract base
+// class are typically obtained through calls to the GetEncoder method
+// of Encoding objects.
+//
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class EncoderNLS : mscorlib.System.Text.Encoder, ISerializable
 {
     public wchar charLeftOver;
     protected Encoding m_encoding;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     protected bool m_mustFlush;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public bool m_throwOnOverflow;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public int m_charsUsed;
     //TODO: generate constructor
     //TODO: generate method GetObjectData
@@ -508,7 +514,7 @@ public class EncoderNLS : mscorlib.System.Text.Encoder, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\EncoderReplacementFallback.cs'
 //
-//[Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class EncoderReplacementFallback : EncoderFallback
 {
     private String strDefault;
@@ -537,72 +543,71 @@ public final class EncoderReplacementFallbackBuffer : EncoderFallbackBuffer
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\Encoding.cs'
 //
-//// This abstract base class represents a character encoding. The class provides
-//    // methods to convert arrays and strings of Unicode characters to and from
-//    // arrays of bytes. A number of Encoding implementations are provided in
-//    // the System.Text package, including:
-//    //
-//    // ASCIIEncoding, which encodes Unicode characters as single 7-bit
-//    // ASCII characters. This encoding only supports character values between 0x00
-//    //     and 0x7F.
-//    // BaseCodePageEncoding, which encapsulates a Windows code page. Any
-//    //     installed code page can be accessed through this encoding, and conversions
-//    //     are performed using the WideCharToMultiByte and
-//    //     MultiByteToWideChar Windows API functions.
-//    // UnicodeEncoding, which encodes each Unicode character as two
-//    //    consecutive bytes. Both little-endian (code page 1200) and big-endian (code
-//    //    page 1201) encodings are recognized.
-//    // UTF7Encoding, which encodes Unicode characters using the UTF-7
-//    //     encoding (UTF-7 stands for UCS Transformation Format, 7-bit form). This
-//    //     encoding supports all Unicode character values, and can also be accessed
-//    //     as code page 65000.
-//    // UTF8Encoding, which encodes Unicode characters using the UTF-8
-//    //     encoding (UTF-8 stands for UCS Transformation Format, 8-bit form). This
-//    //     encoding supports all Unicode character values, and can also be accessed
-//    //     as code page 65001.
-//    // UTF32Encoding, both 12000 (little endian) & 12001 (big endian)
-//    //
-//    // In addition to directly instantiating Encoding objects, an
-//    // application can use the ForCodePage, GetASCII,
-//    // GetDefault, GetUnicode, GetUTF7, and GetUTF8
-//    // methods in this class to obtain encodings.
-//    //
-//    // Through an encoding, the GetBytes method is used to convert arrays
-//    // of characters to arrays of bytes, and the GetChars method is used to
-//    // convert arrays of bytes to arrays of characters. The GetBytes and
-//    // GetChars methods maintain no state between conversions, and are
-//    // generally intended for conversions of complete blocks of bytes and
-//    // characters in one operation. When the data to be converted is only available
-//    // in sequential blocks (such as data read from a stream) or when the amount of
-//    // data is so large that it needs to be divided into smaller blocks, an
-//    // application may choose to use a Decoder or an Encoder to
-//    // perform the conversion. Decoders and encoders allow sequential blocks of
-//    // data to be converted and they maintain the state required to support
-//    // conversions of data that spans adjacent blocks. Decoders and encoders are
-//    // obtained using the GetDecoder and GetEncoder methods.
-//    //
-//    // The core GetBytes and GetChars methods require the caller
-//    // to provide the destination buffer and ensure that the buffer is large enough
-//    // to hold the entire result of the conversion. When using these methods,
-//    // either directly on an Encoding object or on an associated
-//    // Decoder or Encoder, an application can use one of two methods
-//    // to allocate destination buffers.
-//    //
-//    // The GetByteCount and GetCharCount methods can be used to
-//    // compute the exact size of the result of a particular conversion, and an
-//    // appropriately sized buffer for that conversion can then be allocated.
-//    // The GetMaxByteCount and GetMaxCharCount methods can be
-//    // be used to compute the maximum possible size of a conversion of a given
-//    // number of bytes or characters, and a buffer of that size can then be reused
-//    // for multiple conversions.
-//    //
-//    // The first method generally uses less memory, whereas the second method
-//    // generally executes faster.
-//    //
+// This abstract base class represents a character encoding. The class provides
+// methods to convert arrays and strings of Unicode characters to and from
+// arrays of bytes. A number of Encoding implementations are provided in
+// the System.Text package, including:
 //
-//    [System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
-public abstract class Encoding : DotNetObject, ICloneable
+// ASCIIEncoding, which encodes Unicode characters as single 7-bit
+// ASCII characters. This encoding only supports character values between 0x00
+//     and 0x7F.
+// BaseCodePageEncoding, which encapsulates a Windows code page. Any
+//     installed code page can be accessed through this encoding, and conversions
+//     are performed using the WideCharToMultiByte and
+//     MultiByteToWideChar Windows API functions.
+// UnicodeEncoding, which encodes each Unicode character as two
+//    consecutive bytes. Both little-endian (code page 1200) and big-endian (code
+//    page 1201) encodings are recognized.
+// UTF7Encoding, which encodes Unicode characters using the UTF-7
+//     encoding (UTF-7 stands for UCS Transformation Format, 7-bit form). This
+//     encoding supports all Unicode character values, and can also be accessed
+//     as code page 65000.
+// UTF8Encoding, which encodes Unicode characters using the UTF-8
+//     encoding (UTF-8 stands for UCS Transformation Format, 8-bit form). This
+//     encoding supports all Unicode character values, and can also be accessed
+//     as code page 65001.
+// UTF32Encoding, both 12000 (little endian) & 12001 (big endian)
+//
+// In addition to directly instantiating Encoding objects, an
+// application can use the ForCodePage, GetASCII,
+// GetDefault, GetUnicode, GetUTF7, and GetUTF8
+// methods in this class to obtain encodings.
+//
+// Through an encoding, the GetBytes method is used to convert arrays
+// of characters to arrays of bytes, and the GetChars method is used to
+// convert arrays of bytes to arrays of characters. The GetBytes and
+// GetChars methods maintain no state between conversions, and are
+// generally intended for conversions of complete blocks of bytes and
+// characters in one operation. When the data to be converted is only available
+// in sequential blocks (such as data read from a stream) or when the amount of
+// data is so large that it needs to be divided into smaller blocks, an
+// application may choose to use a Decoder or an Encoder to
+// perform the conversion. Decoders and encoders allow sequential blocks of
+// data to be converted and they maintain the state required to support
+// conversions of data that spans adjacent blocks. Decoders and encoders are
+// obtained using the GetDecoder and GetEncoder methods.
+//
+// The core GetBytes and GetChars methods require the caller
+// to provide the destination buffer and ensure that the buffer is large enough
+// to hold the entire result of the conversion. When using these methods,
+// either directly on an Encoding object or on an associated
+// Decoder or Encoder, an application can use one of two methods
+// to allocate destination buffers.
+//
+// The GetByteCount and GetCharCount methods can be used to
+// compute the exact size of the result of a particular conversion, and an
+// appropriately sized buffer for that conversion can then be allocated.
+// The GetMaxByteCount and GetMaxCharCount methods can be
+// be used to compute the maximum possible size of a conversion of a given
+// number of bytes or characters, and a buffer of that size can then be reused
+// for multiple conversions.
+//
+// The first method generally uses less memory, whereas the second method
+// generally executes faster.
+//
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public abstract class Encoding : __DotNet__Object, ICloneable
 {
     private static Encoding defaultEncoding;
     public enum int MIMECONTF_MAILNEWS/*todo: implement initializer*/ = int();
@@ -653,15 +658,15 @@ public abstract class Encoding : DotNetObject, ICloneable
     private enum int CodePageUTF32BE/*todo: implement initializer*/ = int();
     public int m_codePage/*todo: implement initializer*/ = int();
     public CodePageDataItem dataItem/*todo: implement initializer*/ = null;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public bool m_deserializedFromEverett/*todo: implement initializer*/ = bool();
-    // Ignored: // Because of encoders we may be read only
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    // Because of encoders we may be read only
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_isReadOnly/*todo: implement initializer*/ = bool();
-    // Ignored: // Encoding (encoder) fallback
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    // Encoding (encoder) fallback
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public EncoderFallback encoderFallback/*todo: implement initializer*/ = null;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public DecoderFallback decoderFallback/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -747,13 +752,13 @@ public abstract class Encoding : DotNetObject, ICloneable
     //TODO: generate method ThrowBytesOverflow
     //TODO: generate method ThrowCharsOverflow
     //TODO: generate method ThrowCharsOverflow
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static class DefaultEncoder : mscorlib.System.Text.Encoder, IObjectReference, ISerializable
     {
         private Encoding m_encoding;
-        // Ignored: [NonSerialized]
+        @__DotNet__Attribute!(NonSerializedAttribute.stringof)
         private bool m_hasInitializedEncoding;
-        // Ignored: [NonSerialized]
+        @__DotNet__Attribute!(NonSerializedAttribute.stringof)
         public wchar charLeftOver;
         //TODO: generate constructor
         //TODO: generate constructor
@@ -764,11 +769,11 @@ public abstract class Encoding : DotNetObject, ICloneable
         //TODO: generate method GetBytes
         //TODO: generate method GetBytes
     }
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static class DefaultDecoder : mscorlib.System.Text.Decoder, IObjectReference, ISerializable
     {
         private Encoding m_encoding;
-        // Ignored: [NonSerialized]
+        @__DotNet__Attribute!(NonSerializedAttribute.stringof)
         private bool m_hasInitializedEncoding;
         //TODO: generate constructor
         //TODO: generate constructor
@@ -781,22 +786,22 @@ public abstract class Encoding : DotNetObject, ICloneable
         //TODO: generate method GetChars
         //TODO: generate method GetChars
     }
-    public static class EncodingCharBuffer : DotNetObject
+    public static class EncodingCharBuffer : __DotNet__Object
     {
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private wchar* chars;
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private wchar* charStart;
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private wchar* charEnd;
         private int charCountResult/*todo: implement initializer*/ = int();
         private Encoding enc;
         private DecoderNLS decoder;
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private ubyte* byteStart;
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private ubyte* byteEnd;
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private ubyte* bytes;
         private DecoderFallbackBuffer fallbackBuffer;
         //TODO: generate constructor
@@ -814,19 +819,19 @@ public abstract class Encoding : DotNetObject, ICloneable
         //TODO: generate method Fallback
         //TODO: generate property 'Count'
     }
-    public static class EncodingByteBuffer : DotNetObject
+    public static class EncodingByteBuffer : __DotNet__Object
     {
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private ubyte* bytes;
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private ubyte* byteStart;
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private ubyte* byteEnd;
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private wchar* chars;
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private wchar* charStart;
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private wchar* charEnd;
         private int byteCountResult/*todo: implement initializer*/ = int();
         private Encoding enc;
@@ -852,7 +857,7 @@ public abstract class Encoding : DotNetObject, ICloneable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\EncodingForwarder.cs'
 //
-public class EncodingForwarder : DotNetObject
+public class EncodingForwarder : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetByteCount
@@ -871,8 +876,8 @@ public class EncodingForwarder : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\EncodingInfo.cs'
 //
-//[Serializable]
-public final class EncodingInfo : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class EncodingInfo : __DotNet__Object
 {
     private int iCodePage;
     private String strEncodingName;
@@ -889,10 +894,9 @@ public final class EncodingInfo : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\EncodingNLS.cs'
 //
-//// This class overrides Encoding with the things we need for our NLS Encodings
-//    
-//    [System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+// This class overrides Encoding with the things we need for our NLS Encodings
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public abstract class EncodingNLS : Encoding
 {
     //TODO: generate constructor
@@ -914,8 +918,8 @@ public abstract class EncodingNLS : Encoding
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\EncodingProvider.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public abstract class EncodingProvider : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public abstract class EncodingProvider : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method GetEncoding
@@ -927,28 +931,27 @@ public abstract class EncodingProvider : DotNetObject
     //TODO: generate method GetEncodingFromProvider
     //TODO: generate method GetEncodingFromProvider
     //TODO: generate method GetEncodingFromProvider
-    private static DotNetObject s_InternalSyncObject/*todo: implement initializer*/ = null;
-    private static /*todo: volatile*/EncodingProvider[] s_providers;
+    private static __DotNet__Object s_InternalSyncObject/*todo: implement initializer*/ = null;
+    private static /*todo: volatile*/ EncodingProvider[] s_providers;
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\ISCIIEncoding.cs'
 //
-//// Encodes text into and out of the ISCII encodings.
-//    // ISCII contains characters to encode indic scripts by mapping indic scripts
-//    // to the same code page.  This works because they are all related scripts.
-//    // ISCII provides a "font" selection method to switch between the appropriate
-//    // fonts to display the other scripts.  All ISCII characters are above the
-//    // ASCII range to provide ASCII compatibility.
-//    //
-//    // IsAlwaysNormalized() isn't overridden
-//    // We don't override IsAlwaysNormalized() because it is false for all forms (like base implimentation)
-//    //      Forms C & KC have things like 0933 + 093C == composed 0934, so they aren't normalized
-//    //      Forms D & KD have things like 0934, which decomposes to 0933 + 093C, so not normal.
-//    //      Form IDNA has the above problems plus case mapping, so false (like most encodings)
-//    //
+// Encodes text into and out of the ISCII encodings.
+// ISCII contains characters to encode indic scripts by mapping indic scripts
+// to the same code page.  This works because they are all related scripts.
+// ISCII provides a "font" selection method to switch between the appropriate
+// fonts to display the other scripts.  All ISCII characters are above the
+// ASCII range to provide ASCII compatibility.
 //
-//    [Serializable]
+// IsAlwaysNormalized() isn't overridden
+// We don't override IsAlwaysNormalized() because it is false for all forms (like base implimentation)
+//      Forms C & KC have things like 0933 + 093C == composed 0934, so they aren't normalized
+//      Forms D & KD have things like 0934, which decomposes to 0933 + 093C, so not normal.
+//      Form IDNA has the above problems plus case mapping, so false (like most encodings)
+//
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class ISCIIEncoding : EncodingNLS, ISerializable
 {
     private enum int CodeDefault/*todo: implement initializer*/ = int();
@@ -986,7 +989,7 @@ public class ISCIIEncoding : EncodingNLS, ISerializable
     //TODO: generate method GetDecoder
     //TODO: generate method GetEncoder
     //TODO: generate method GetHashCode
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static class ISCIIEncoder : EncoderNLS
     {
         public int defaultCodePage/*todo: implement initializer*/ = int();
@@ -996,7 +999,7 @@ public class ISCIIEncoding : EncodingNLS, ISerializable
         //TODO: generate method Reset
         //TODO: generate property 'HasState'
     }
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static class ISCIIDecoder : DecoderNLS
     {
         public int currentCodePage/*todo: implement initializer*/ = int();
@@ -1018,11 +1021,11 @@ public class ISCIIEncoding : EncodingNLS, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\Latin1Encoding.cs'
 //
-////
-//    // Latin1Encoding is a simple override to optimize the GetString version of Latin1Encoding.
-//    // because of the best fit cases we can't do this when encoding the string, only when decoding
-//    //
-//    [Serializable]
+//
+// Latin1Encoding is a simple override to optimize the GetString version of Latin1Encoding.
+// because of the best fit cases we can't do this when encoding the string, only when decoding
+//
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class Latin1Encoding : EncodingNLS, ISerializable
 {
     public static immutable Latin1Encoding s_default/*todo: implement initializer*/ = null;
@@ -1044,50 +1047,49 @@ public class Latin1Encoding : EncodingNLS, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\MLangCodePageEncoding.cs'
 //
-///*=================================MLangCodePageEncoding==================================
-//    ** This class is here only to deserialize the MLang classes from Everett (V1.1) into
-//    ** Appropriate Whidbey (V2.0) objects.  We also serialize the Whidbey classes
-//    ** using this proxy since we pretty much need one anyway and that solves Whidbey
-//    ** to Everett compatibility as well.
-//    ==============================================================================*/
-//
-//    [Serializable]
-public final class MLangCodePageEncoding : DotNetObject, IObjectReference, ISerializable
+// =================================MLangCodePageEncoding==================================
+// ** This class is here only to deserialize the MLang classes from Everett (V1.1) into
+// ** Appropriate Whidbey (V2.0) objects.  We also serialize the Whidbey classes
+// ** using this proxy since we pretty much need one anyway and that solves Whidbey
+// ** to Everett compatibility as well.
+// ==============================================================================
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class MLangCodePageEncoding : __DotNet__Object, IObjectReference, ISerializable
 {
-    // Ignored: // Temp stuff
-    // Ignored: [NonSerialized]
+    // Temp stuff
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private int m_codePage;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private bool m_isReadOnly;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private bool m_deserializedFromEverett/*todo: implement initializer*/ = bool();
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private EncoderFallback encoderFallback/*todo: implement initializer*/ = null;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private DecoderFallback decoderFallback/*todo: implement initializer*/ = null;
-    // Ignored: // Might need this when GetRealObjecting
-    // Ignored: [NonSerialized]
+    // Might need this when GetRealObjecting
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private Encoding realEncoding/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate method GetRealObject
     //TODO: generate method GetObjectData
-    //// Same problem with the Encoder, this only happens with Everett Encoders
-//        [Serializable]
-    public static final class MLangEncoder : DotNetObject, IObjectReference, ISerializable
+    // Same problem with the Encoder, this only happens with Everett Encoders
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
+    public static final class MLangEncoder : __DotNet__Object, IObjectReference, ISerializable
     {
-        // Ignored: // Might need this when GetRealObjecting
-        // Ignored: [NonSerialized]
+        // Might need this when GetRealObjecting
+        @__DotNet__Attribute!(NonSerializedAttribute.stringof)
         private Encoding realEncoding/*todo: implement initializer*/ = null;
         //TODO: generate constructor
         //TODO: generate method GetRealObject
         //TODO: generate method GetObjectData
     }
-    //// Same problem with the Decoder, this only happens with Everett Decoders
-//        [Serializable]
-    public static final class MLangDecoder : DotNetObject, IObjectReference, ISerializable
+    // Same problem with the Decoder, this only happens with Everett Decoders
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
+    public static final class MLangDecoder : __DotNet__Object, IObjectReference, ISerializable
     {
-        // Ignored: // Might need this when GetRealObjecting
-        // Ignored: [NonSerialized]
+        // Might need this when GetRealObjecting
+        @__DotNet__Attribute!(NonSerializedAttribute.stringof)
         private Encoding realEncoding/*todo: implement initializer*/ = null;
         //TODO: generate constructor
         //TODO: generate method GetRealObject
@@ -1098,10 +1100,11 @@ public final class MLangCodePageEncoding : DotNetObject, IObjectReference, ISeri
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\Normalization.cs'
 //
-// Ignored: // This is the enumeration for Normalization Forms
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// This is the enumeration for Normalization Forms
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum NormalizationForm
 {
+    // #if !FEATURE_NORM_IDNA_ONLY     
     FormC = 1,
     FormD = 2,
     FormKC = 5,
@@ -1109,30 +1112,34 @@ public enum NormalizationForm
 }
 public enum ExtendedNormalizationForms
 {
+    // #if !FEATURE_NORM_IDNA_ONLY     
     FormC = 1,
     FormD = 2,
     FormKC = 5,
     FormKD = 6,
+    // #endif // !FEATURE_NORM_IDNA_ONLY        
     FormIdna = 0xd,
+    // #if !FEATURE_NORM_IDNA_ONLY
     FormCDisallowUnassigned = 0x101,
     FormDDisallowUnassigned = 0x102,
     FormKCDisallowUnassigned = 0x105,
     FormKDDisallowUnassigned = 0x106,
+    // #endif // !FEATURE_NORM_IDNA_ONLY        
     FormIdnaDisallowUnassigned = 0x10d,
 }
-public class Normalization : DotNetObject
+public class Normalization : __DotNet__Object
 {
-    private static /*todo: volatile*/bool NFC;
-    private static /*todo: volatile*/bool NFD;
-    private static /*todo: volatile*/bool NFKC;
-    private static /*todo: volatile*/bool NFKD;
-    private static /*todo: volatile*/bool IDNA;
-    private static /*todo: volatile*/bool NFCDisallowUnassigned;
-    private static /*todo: volatile*/bool NFDDisallowUnassigned;
-    private static /*todo: volatile*/bool NFKCDisallowUnassigned;
-    private static /*todo: volatile*/bool NFKDDisallowUnassigned;
-    private static /*todo: volatile*/bool IDNADisallowUnassigned;
-    private static /*todo: volatile*/bool Other;
+    private static /*todo: volatile*/ bool NFC;
+    private static /*todo: volatile*/ bool NFD;
+    private static /*todo: volatile*/ bool NFKC;
+    private static /*todo: volatile*/ bool NFKD;
+    private static /*todo: volatile*/ bool IDNA;
+    private static /*todo: volatile*/ bool NFCDisallowUnassigned;
+    private static /*todo: volatile*/ bool NFDDisallowUnassigned;
+    private static /*todo: volatile*/ bool NFKCDisallowUnassigned;
+    private static /*todo: volatile*/ bool NFKDDisallowUnassigned;
+    private static /*todo: volatile*/ bool IDNADisallowUnassigned;
+    private static /*todo: volatile*/ bool Other;
     private enum int ERROR_SUCCESS/*todo: implement initializer*/ = int();
     private enum int ERROR_NOT_ENOUGH_MEMORY/*todo: implement initializer*/ = int();
     private enum int ERROR_INVALID_PARAMETER/*todo: implement initializer*/ = int();
@@ -1150,26 +1157,26 @@ public class Normalization : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\StringBuilder.cs'
 //
-//// This class represents a mutable string.  It is convenient for situations in
-//    // which it is desirable to modify a string, perhaps by removing, replacing, or 
-//    // inserting characters, without creating a new String subsequent to
-//    // each modification. 
-//    // 
-//    // The methods contained within this class do not return a new StringBuilder
-//    // object unless specified otherwise.  This class may be used in conjunction with the String
-//    // class to carry out modifications upon strings.
-//    // 
-//    // When passing null into a constructor in VJ and VC, the null
-//    // should be explicitly type cast.
-//    // For Example:
-//    // StringBuilder sb1 = new StringBuilder((StringBuilder)null);
-//    // StringBuilder sb2 = new StringBuilder((String)null);
-//    // Console.WriteLine(sb1);
-//    // Console.WriteLine(sb2);
-//    // 
-//    [System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
-public final class StringBuilder : DotNetObject, ISerializable
+// This class represents a mutable string.  It is convenient for situations in
+// which it is desirable to modify a string, perhaps by removing, replacing, or 
+// inserting characters, without creating a new String subsequent to
+// each modification. 
+// 
+// The methods contained within this class do not return a new StringBuilder
+// object unless specified otherwise.  This class may be used in conjunction with the String
+// class to carry out modifications upon strings.
+// 
+// When passing null into a constructor in VJ and VC, the null
+// should be explicitly type cast.
+// For Example:
+// StringBuilder sb1 = new StringBuilder((StringBuilder)null);
+// StringBuilder sb2 = new StringBuilder((String)null);
+// Console.WriteLine(sb1);
+// Console.WriteLine(sb2);
+// 
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class StringBuilder : __DotNet__Object, ISerializable
 {
     public wchar[] m_ChunkChars;
     public StringBuilder m_ChunkPrevious;
@@ -1281,11 +1288,11 @@ public final class StringBuilder : DotNetObject, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\StringBuilderCache.cs'
 //
-public class StringBuilderCache : DotNetObject
+public class StringBuilderCache : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private enum int MAX_BUILDER_SIZE/*todo: implement initializer*/ = int();
-    // Ignored: [ThreadStatic]
+    @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static StringBuilder CachedInstance;
     //TODO: generate method Acquire
     //TODO: generate method Release
@@ -1295,16 +1302,15 @@ public class StringBuilderCache : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\SurrogateEncoder.cs'
 //
-///*=================================SurrogateEncoder==================================
-//    ** This class is here only to deserialize the SurrogateEncoder class from Everett (V1.1) into
-//    ** Appropriate Whidbey (V2.0) objects.
-//    ==============================================================================*/
-//
-//    [Serializable]
-public final class SurrogateEncoder : DotNetObject, IObjectReference, ISerializable
+// =================================SurrogateEncoder==================================
+// ** This class is here only to deserialize the SurrogateEncoder class from Everett (V1.1) into
+// ** Appropriate Whidbey (V2.0) objects.
+// ==============================================================================
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class SurrogateEncoder : __DotNet__Object, IObjectReference, ISerializable
 {
-    // Ignored: // Might need this when GetRealObjecting
-    // Ignored: [NonSerialized]
+    // Might need this when GetRealObjecting
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private Encoding realEncoding/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate method GetRealObject
@@ -1314,13 +1320,13 @@ public final class SurrogateEncoder : DotNetObject, IObjectReference, ISerializa
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\UnicodeEncoding.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class UnicodeEncoding : Encoding
 {
     public static immutable UnicodeEncoding s_bigEndianDefault/*todo: implement initializer*/ = null;
     public static immutable UnicodeEncoding s_littleEndianDefault/*todo: implement initializer*/ = null;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public bool isThrowException/*todo: implement initializer*/ = bool();
     public bool bigEndian/*todo: implement initializer*/ = bool();
     public bool byteOrderMark/*todo: implement initializer*/ = bool();
@@ -1352,7 +1358,7 @@ public class UnicodeEncoding : Encoding
     //TODO: generate method GetMaxCharCount
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     private static class Decoder : DecoderNLS, ISerializable
     {
         public int lastByte/*todo: implement initializer*/ = int();
@@ -1368,15 +1374,14 @@ public class UnicodeEncoding : Encoding
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\UTF32Encoding.cs'
 //
-//// Encodes text into and out of UTF-32.  UTF-32 is a way of writing
-//    // Unicode characters with a single storage unit (32 bits) per character,
-//    //
-//    // The UTF-32 byte order mark is simply the Unicode byte order mark
-//    // (0x00FEFF) written in UTF-32 (0x0000FEFF or 0xFFFE0000).  The byte order
-//    // mark is used mostly to distinguish UTF-32 text from other encodings, and doesn't
-//    // switch the byte orderings.
+// Encodes text into and out of UTF-32.  UTF-32 is a way of writing
+// Unicode characters with a single storage unit (32 bits) per character,
 //
-//    [Serializable]
+// The UTF-32 byte order mark is simply the Unicode byte order mark
+// (0x00FEFF) written in UTF-32 (0x0000FEFF or 0xFFFE0000).  The byte order
+// mark is used mostly to distinguish UTF-32 text from other encodings, and doesn't
+// switch the byte orderings.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class UTF32Encoding : Encoding
 {
     public static immutable UTF32Encoding s_default/*todo: implement initializer*/ = null;
@@ -1413,7 +1418,7 @@ public final class UTF32Encoding : Encoding
     //TODO: generate method GetPreamble
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static class UTF32Decoder : DecoderNLS
     {
         public int iChar/*todo: implement initializer*/ = int();
@@ -1427,8 +1432,8 @@ public final class UTF32Encoding : Encoding
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\UTF7Encoding.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class UTF7Encoding : Encoding
 {
     private enum String base64Chars/*todo: implement initializer*/ = null;
@@ -1438,7 +1443,7 @@ public class UTF7Encoding : Encoding
     private ubyte[] base64Bytes;
     private byte[] base64Values;
     private bool[] directEncode;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_allowOptionals;
     private enum int UTF7_CODEPAGE/*todo: implement initializer*/ = int();
     //TODO: generate constructor
@@ -1468,7 +1473,7 @@ public class UTF7Encoding : Encoding
     //TODO: generate method GetEncoder
     //TODO: generate method GetMaxByteCount
     //TODO: generate method GetMaxCharCount
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     private static class Decoder : DecoderNLS, ISerializable
     {
         public int bits;
@@ -1480,7 +1485,7 @@ public class UTF7Encoding : Encoding
         //TODO: generate method Reset
         //TODO: generate property 'HasState'
     }
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     private static class Encoder : EncoderNLS, ISerializable
     {
         public int bits;
@@ -1491,9 +1496,9 @@ public class UTF7Encoding : Encoding
         //TODO: generate method Reset
         //TODO: generate property 'HasState'
     }
-    //// Preexisting UTF7 behavior for bad bytes was just to spit out the byte as the next char
-//        // and turn off base64 mode if it was in that mode.  We still exit the mode, but now we fallback.
-//        [Serializable]
+    // Preexisting UTF7 behavior for bad bytes was just to spit out the byte as the next char
+    // and turn off base64 mode if it was in that mode.  We still exit the mode, but now we fallback.
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static final class DecoderUTF7Fallback : DecoderFallback
     {
         //TODO: generate constructor
@@ -1520,20 +1525,19 @@ public class UTF7Encoding : Encoding
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\UTF8Encoding.cs'
 //
-//// Encodes text into and out of UTF-8.  UTF-8 is a way of writing
-//    // Unicode characters with variable numbers of bytes per character,
-//    // optimized for the lower 127 ASCII characters.  It's an efficient way
-//    // of encoding US English in an internationalizable way.
-//    //
-//    // Don't override IsAlwaysNormalized because it is just a Unicode Transformation and could be confused.
-//    //
-//    // The UTF-8 byte order mark is simply the Unicode byte order mark
-//    // (0xFEFF) written in UTF-8 (0xEF 0xBB 0xBF).  The byte order mark is
-//    // used mostly to distinguish UTF-8 text from other encodings, and doesn't
-//    // switch the byte orderings.
+// Encodes text into and out of UTF-8.  UTF-8 is a way of writing
+// Unicode characters with variable numbers of bytes per character,
+// optimized for the lower 127 ASCII characters.  It's an efficient way
+// of encoding US English in an internationalizable way.
 //
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Don't override IsAlwaysNormalized because it is just a Unicode Transformation and could be confused.
+//
+// The UTF-8 byte order mark is simply the Unicode byte order mark
+// (0xFEFF) written in UTF-8 (0xEF 0xBB 0xBF).  The byte order mark is
+// used mostly to distinguish UTF-8 text from other encodings, and doesn't
+// switch the byte orderings.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class UTF8Encoding : Encoding
 {
     private enum int UTF8_CODEPAGE/*todo: implement initializer*/ = int();
@@ -1575,7 +1579,7 @@ public class UTF8Encoding : Encoding
     //TODO: generate method GetPreamble
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static class UTF8Encoder : EncoderNLS, ISerializable
     {
         public int surrogateChar;
@@ -1585,7 +1589,7 @@ public class UTF8Encoding : Encoding
         //TODO: generate method Reset
         //TODO: generate property 'HasState'
     }
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static class UTF8Decoder : DecoderNLS, ISerializable
     {
         public int bits;

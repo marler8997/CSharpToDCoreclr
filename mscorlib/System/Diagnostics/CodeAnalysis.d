@@ -1,19 +1,19 @@
 module mscorlib.System.Diagnostics.CodeAnalysis;
 
 import mscorlib.System :
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    AttributeUsageAttribute,
     Attribute,
     String;
+import mscorlib.System.Diagnostics :
+    ConditionalAttribute;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\CodeAnalysis\SuppressMessageAttribute.cs'
 //
-//[AttributeUsage(
-//     AttributeTargets.All,
-//     Inherited = false,
-//     AllowMultiple = true
-//     )
-//    ]
-//[Conditional("CODE_ANALYSIS")]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.All, Inherited = false, AllowMultiple = true*/)
+@__DotNet__Attribute!(ConditionalAttribute.stringof/*, "CODE_ANALYSIS"*/)
 public final class SuppressMessageAttribute : Attribute
 {
     private String category;

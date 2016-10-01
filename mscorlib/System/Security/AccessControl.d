@@ -1,33 +1,36 @@
 module mscorlib.System.Security.AccessControl;
 
 import mscorlib.System :
-    DotNetObject;
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    FlagsAttribute,
+    __DotNet__Object;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\AccessControl\Enums.cs'
 //
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum InheritanceFlags
 {
     None = 0x00,
     ContainerInherit = 0x01,
     ObjectInherit = 0x02,
 }
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum PropagationFlags
 {
     None = 0x00,
     NoPropagateInherit = 0x01,
     InheritOnly = 0x02,
 }
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum AuditFlags
 {
     None = 0x00,
     Success = 0x01,
     Failure = 0x02,
 }
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum SecurityInfos
 {
     Owner = 0x00000001,
@@ -51,7 +54,7 @@ public enum ResourceType
     WmiGuidObject = 0x0B,
     RegistryWow6432Key = 0x0C,
 }
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum AccessControlSections
 {
     None = 0,
@@ -61,16 +64,21 @@ public enum AccessControlSections
     Group = 0x8,
     All = 0xF,
 }
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum AccessControlActions
 {
+    // #if FEATURE_MACL
+    // None = 0,
+    // View = 1,
+    // Change = 2
+    // #else
     None = 0,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\EventWaitHandle.cs'
 //
-public class EventWaitHandleSecurity : DotNetObject
+public class EventWaitHandleSecurity : __DotNet__Object
 {
 }
 public enum EventWaitHandleRights{__no_values__}

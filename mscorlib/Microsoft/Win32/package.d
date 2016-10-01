@@ -1,23 +1,38 @@
 module mscorlib.Microsoft.Win32;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Object,
     Type,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    SerializableAttribute,
     IDisposable,
     IntPtr,
     String,
+    FlagsAttribute,
     Void,
     Guid,
     UIntPtr,
     Version;
+import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute,
+    StructLayoutAttribute,
+    MarshalAsAttribute,
+    BestFitMappingAttribute,
+    FieldOffsetAttribute;
+import mscorlib.System.Security :
+    SecurityCriticalAttribute,
+    SuppressUnmanagedCodeSecurityAttribute;
 import mscorlib.Microsoft.Win32.SafeHandles :
     SafeRegistryHandle,
     SafeHandleZeroOrMinusOneIsInvalid;
+import mscorlib.System.Security.Permissions :
+    HostProtectionAttribute;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\OAVariantLib.cs'
 //
-public class OAVariantLib : DotNetObject
+public class OAVariantLib : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum int NoValueProp/*todo: implement initializer*/ = int();
@@ -35,15 +50,15 @@ public class OAVariantLib : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\Registry.cs'
 //
-///**
-//     * Registry encapsulation. Contains members representing all top level system
-//     * keys.
-//     *
-//     * @security(checkClassLinking=on)
-//     */
-//    //This class contains only static members and does not need to be serializable.
-//    [ComVisible(true)]
-public class Registry : DotNetObject
+// *
+// * Registry encapsulation. Contains members representing all top level system
+// * keys.
+// *
+// * @security(checkClassLinking=on)
+// 
+//This class contains only static members and does not need to be serializable.
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class Registry : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate constructor
@@ -62,11 +77,11 @@ public class Registry : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\RegistryKey.cs'
 //
-// Ignored: /**
-// Ignored: * Registry hive values.  Useful only for GetRemoteBaseKey
-// Ignored: */
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// *
+// * Registry hive values.  Useful only for GetRemoteBaseKey
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum RegistryHive
 {
     ClassesRoot = cast(int)0x80000000,
@@ -76,20 +91,20 @@ public enum RegistryHive
     PerformanceData = cast(int)0x80000004,
     CurrentConfig = cast(int)0x80000005,
 }
-///**
-//     * Registry encapsulation. To get an instance of a RegistryKey use the
-//     * Registry class's static members then call OpenSubKey.
-//     *
-//     * @see Registry
-//     * @security(checkDllCalls=off)
-//     * @security(checkClassLinking=on)
-//     */
-//#if FEATURE_REMOTING
-//    [ComVisible(true)]
-//    public sealed class RegistryKey : MarshalByRefObject, IDisposable 
-//#else
-//    [ComVisible(true)]
-public final class RegistryKey : DotNetObject, IDisposable
+// *
+// * Registry encapsulation. To get an instance of a RegistryKey use the
+// * Registry class's static members then call OpenSubKey.
+// *
+// * @see Registry
+// * @security(checkDllCalls=off)
+// * @security(checkClassLinking=on)
+// 
+// #if FEATURE_REMOTING
+// [ComVisible(true)]
+// public sealed class RegistryKey : MarshalByRefObject, IDisposable 
+// #else
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class RegistryKey : __DotNet__Object, IDisposable
 {
     public static immutable IntPtr HKEY_CLASSES_ROOT/*todo: implement initializer*/ = IntPtr();
     public static immutable IntPtr HKEY_CURRENT_USER/*todo: implement initializer*/ = IntPtr();
@@ -104,13 +119,13 @@ public final class RegistryKey : DotNetObject, IDisposable
     private static immutable String[] hkeyNames/*todo: implement initializer*/ = null;
     private enum int MaxKeyLength/*todo: implement initializer*/ = int();
     private enum int MaxValueLength/*todo: implement initializer*/ = int();
-    // Ignored: [System.Security.SecurityCritical] // auto-generated
-    private /*todo: volatile*/SafeRegistryHandle hkey/*todo: implement initializer*/ = null;
-    private /*todo: volatile*/int state/*todo: implement initializer*/ = int();
-    private /*todo: volatile*/String keyName;
-    private /*todo: volatile*/bool remoteKey/*todo: implement initializer*/ = bool();
-    private /*todo: volatile*/RegistryKeyPermissionCheck checkMode;
-    private /*todo: volatile*/RegistryView regView/*todo: implement initializer*/ = (cast(RegistryView)0);
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+    private /*todo: volatile*/ SafeRegistryHandle hkey/*todo: implement initializer*/ = null;
+    private /*todo: volatile*/ int state/*todo: implement initializer*/ = int();
+    private /*todo: volatile*/ String keyName;
+    private /*todo: volatile*/ bool remoteKey/*todo: implement initializer*/ = bool();
+    private /*todo: volatile*/ RegistryKeyPermissionCheck checkMode;
+    private /*todo: volatile*/ RegistryView regView/*todo: implement initializer*/ = (cast(RegistryView)0);
     private enum RegistryInternalCheck
     {
         CheckSubKeyWritePermission = 0,
@@ -207,7 +222,7 @@ public final class RegistryKey : DotNetObject, IDisposable
     private enum int FORMAT_MESSAGE_FROM_SYSTEM/*todo: implement initializer*/ = int();
     private enum int FORMAT_MESSAGE_ARGUMENT_ARRAY/*todo: implement initializer*/ = int();
 }
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum RegistryValueOptions
 {
     None = 0,
@@ -223,7 +238,7 @@ public enum RegistryKeyPermissionCheck
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\RegistryOptions.cs'
 //
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum RegistryOptions
 {
     None = /*MemberExpression:Type*/Win32Native.REG_OPTION_NON_VOLATILE,
@@ -233,7 +248,7 @@ public enum RegistryOptions
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\RegistryValueKind.cs'
 //
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum RegistryValueKind
 {
     String = /*MemberExpression:Type*/Win32Native.REG_SZ,
@@ -243,7 +258,6 @@ public enum RegistryValueKind
     MultiString = /*MemberExpression:Type*/Win32Native.REG_MULTI_SZ,
     QWord = /*MemberExpression:Type*/Win32Native.REG_QWORD,
     Unknown = 0,
-    // Ignored: [System.Runtime.InteropServices.ComVisible(false)]
     None = cast(int)0xFFFFFFFF,
 }
 
@@ -260,8 +274,8 @@ public enum RegistryView
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\SafeLibraryHandle.cs'
 //
-//[System.Security.SecurityCritical]  // auto-generated
-//[HostProtectionAttribute(MayLeakOnAbort = true)]
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
 public final class SafeLibraryHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
@@ -271,9 +285,9 @@ public final class SafeLibraryHandle : SafeHandleZeroOrMinusOneIsInvalid
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\UnsafeNativeMethods.cs'
 //
-//[System.Security.SecurityCritical]  // auto-generated
-//[SuppressUnmanagedCodeSecurityAttribute()]
-public class UnsafeNativeMethods : DotNetObject
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+@__DotNet__Attribute!(SuppressUnmanagedCodeSecurityAttribute.stringof/**/)
+public class UnsafeNativeMethods : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetTimeZoneInformation
@@ -282,9 +296,9 @@ public class UnsafeNativeMethods : DotNetObject
     //TODO: generate method LoadString
     //TODO: generate method LoadLibraryEx
     //TODO: generate method FreeLibrary
-    //[SecurityCritical]
-    //[SuppressUnmanagedCodeSecurityAttribute()]
-    public static class ManifestEtw : DotNetObject
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+    @__DotNet__Attribute!(SuppressUnmanagedCodeSecurityAttribute.stringof/**/)
+    public static class ManifestEtw : __DotNet__Object
     {
         private this() {} // prevent instantiation
         public enum int ERROR_ARITHMETIC_OVERFLOW/*todo: implement initializer*/ = int();
@@ -295,16 +309,16 @@ public class UnsafeNativeMethods : DotNetObject
         public enum int EVENT_CONTROL_CODE_DISABLE_PROVIDER/*todo: implement initializer*/ = int();
         public enum int EVENT_CONTROL_CODE_ENABLE_PROVIDER/*todo: implement initializer*/ = int();
         public enum int EVENT_CONTROL_CODE_CAPTURE_STATE/*todo: implement initializer*/ = int();
-        ////
-//            // Callback
-//            //
-//            [SecurityCritical]
-        public alias EtwEnableCallback = void delegate(/*[In]*/ref Guid sourceId, /*[In]*/int isEnabled, /*[In]*/ubyte level, /*[In]*/long matchAnyKeywords, /*[In]*/long matchAllKeywords, /*[In]*/EVENT_FILTER_DESCRIPTOR* filterData, /*[In]*/Void* callbackContext);
+        //
+        // Callback
+        //
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+        public alias EtwEnableCallback = void delegate(/*todo: param attributes*/ref Guid sourceId, /*todo: param attributes*/int isEnabled, /*todo: param attributes*/ubyte level, /*todo: param attributes*/long matchAnyKeywords, /*todo: param attributes*/long matchAllKeywords, /*todo: param attributes*/EVENT_FILTER_DESCRIPTOR* filterData, /*todo: param attributes*/Void* callbackContext);
         //TODO: generate method EventRegister
         //TODO: generate method EventUnregister
         //TODO: generate method EventWrite
         //TODO: generate method EventWriteString
-        //[StructLayout(LayoutKind.Sequential)]
+        @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
         public static struct EVENT_FILTER_DESCRIPTOR
         {
             public long Ptr;
@@ -368,15 +382,14 @@ public class UnsafeNativeMethods : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\Win32Native.cs'
 //
-///**
-//     * Win32 encapsulation for MSCORLIB.
-//     */
-//    // Remove the default demands for all P/Invoke methods with this
-//    // global declaration on the class.
-//
-//    [System.Security.SecurityCritical]
-//[SuppressUnmanagedCodeSecurityAttribute()]
-public class Win32Native : DotNetObject
+// *
+// * Win32 encapsulation for MSCORLIB.
+// 
+// Remove the default demands for all P/Invoke methods with this
+// global declaration on the class.
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+@__DotNet__Attribute!(SuppressUnmanagedCodeSecurityAttribute.stringof/**/)
+public class Win32Native : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum int KEY_QUERY_VALUE/*todo: implement initializer*/ = int();
@@ -448,71 +461,71 @@ public class Win32Native : DotNetObject
     public enum int MUI_NON_LANG_NEUTRAL_FILE/*todo: implement initializer*/ = int();
     public enum int LOAD_LIBRARY_AS_DATAFILE/*todo: implement initializer*/ = int();
     public enum int LOAD_STRING_MAX_LENGTH/*todo: implement initializer*/ = int();
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct SystemTime
     {
-        // Ignored: [MarshalAs(UnmanagedType.U2)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.U2*/)
         public short Year;
-        // Ignored: [MarshalAs(UnmanagedType.U2)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.U2*/)
         public short Month;
-        // Ignored: [MarshalAs(UnmanagedType.U2)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.U2*/)
         public short DayOfWeek;
-        // Ignored: [MarshalAs(UnmanagedType.U2)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.U2*/)
         public short Day;
-        // Ignored: [MarshalAs(UnmanagedType.U2)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.U2*/)
         public short Hour;
-        // Ignored: [MarshalAs(UnmanagedType.U2)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.U2*/)
         public short Minute;
-        // Ignored: [MarshalAs(UnmanagedType.U2)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.U2*/)
         public short Second;
-        // Ignored: [MarshalAs(UnmanagedType.U2)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.U2*/)
         public short Milliseconds;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet = CharSet.Unicode*/)
     public static struct TimeZoneInformation
     {
-        // Ignored: [MarshalAs(UnmanagedType.I4)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.I4*/)
         public int Bias;
-        // Ignored: [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.ByValTStr, SizeConst = 32*/)
         public String StandardName;
         public SystemTime StandardDate;
-        // Ignored: [MarshalAs(UnmanagedType.I4)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.I4*/)
         public int StandardBias;
-        // Ignored: [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.ByValTStr, SizeConst = 32*/)
         public String DaylightName;
         public SystemTime DaylightDate;
-        // Ignored: [MarshalAs(UnmanagedType.I4)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.I4*/)
         public int DaylightBias;
         //TODO: generate constructor
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet = CharSet.Unicode*/)
     public static struct DynamicTimeZoneInformation
     {
-        // Ignored: [MarshalAs(UnmanagedType.I4)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.I4*/)
         public int Bias;
-        // Ignored: [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.ByValTStr, SizeConst = 32*/)
         public String StandardName;
         public SystemTime StandardDate;
-        // Ignored: [MarshalAs(UnmanagedType.I4)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.I4*/)
         public int StandardBias;
-        // Ignored: [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.ByValTStr, SizeConst = 32*/)
         public String DaylightName;
         public SystemTime DaylightDate;
-        // Ignored: [MarshalAs(UnmanagedType.I4)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.I4*/)
         public int DaylightBias;
-        // Ignored: [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.ByValTStr, SizeConst = 128*/)
         public String TimeZoneKeyName;
-        // Ignored: [MarshalAs(UnmanagedType.Bool)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.Bool*/)
         public bool DynamicDaylightTimeDisabled;
     }
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct RegistryTimeZoneInformation
     {
-        // Ignored: [MarshalAs(UnmanagedType.I4)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.I4*/)
         public int Bias;
-        // Ignored: [MarshalAs(UnmanagedType.I4)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.I4*/)
         public int StandardBias;
-        // Ignored: [MarshalAs(UnmanagedType.I4)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.I4*/)
         public int DaylightBias;
         public SystemTime StandardDate;
         public SystemTime DaylightDate;
@@ -530,8 +543,8 @@ public class Win32Native : DotNetObject
     public enum int LMEM_FIXED/*todo: implement initializer*/ = int();
     public enum int LMEM_ZEROINIT/*todo: implement initializer*/ = int();
     public enum int LPTR/*todo: implement initializer*/ = int();
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Auto)]
-    public static class OSVERSIONINFO : DotNetObject
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Auto*/)
+    public static class OSVERSIONINFO : __DotNet__Object
     {
         //TODO: generate constructor
         public int OSVersionInfoSize/*todo: implement initializer*/ = int();
@@ -539,11 +552,11 @@ public class Win32Native : DotNetObject
         public int MinorVersion/*todo: implement initializer*/ = int();
         public int BuildNumber/*todo: implement initializer*/ = int();
         public int PlatformId/*todo: implement initializer*/ = int();
-        // Ignored: [MarshalAs(UnmanagedType.ByValTStr, SizeConst=128)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.ByValTStr, SizeConst=128*/)
         public String CSDVersion/*todo: implement initializer*/ = null;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Auto)]
-    public static class OSVERSIONINFOEX : DotNetObject
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Auto*/)
+    public static class OSVERSIONINFOEX : __DotNet__Object
     {
         //TODO: generate constructor
         public int OSVersionInfoSize/*todo: implement initializer*/ = int();
@@ -551,7 +564,7 @@ public class Win32Native : DotNetObject
         public int MinorVersion/*todo: implement initializer*/ = int();
         public int BuildNumber/*todo: implement initializer*/ = int();
         public int PlatformId/*todo: implement initializer*/ = int();
-        // Ignored: [MarshalAs(UnmanagedType.ByValTStr, SizeConst=128)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.ByValTStr, SizeConst=128*/)
         public String CSDVersion/*todo: implement initializer*/ = null;
         public ushort ServicePackMajor/*todo: implement initializer*/ = ushort();
         public ushort ServicePackMinor/*todo: implement initializer*/ = ushort();
@@ -559,7 +572,7 @@ public class Win32Native : DotNetObject
         public ubyte ProductType/*todo: implement initializer*/ = ubyte();
         public ubyte Reserved/*todo: implement initializer*/ = ubyte();
     }
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct SYSTEM_INFO
     {
         public int dwOemId;
@@ -573,15 +586,15 @@ public class Win32Native : DotNetObject
         public short wProcessorLevel;
         public short wProcessorRevision;
     }
-    //[StructLayout(LayoutKind.Sequential)]
-    public static class SECURITY_ATTRIBUTES : DotNetObject
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
+    public static class SECURITY_ATTRIBUTES : __DotNet__Object
     {
         public int nLength/*todo: implement initializer*/ = int();
         public ubyte* pSecurityDescriptor/*todo: implement initializer*/ = null;
         public int bInheritHandle/*todo: implement initializer*/ = int();
     }
-    //[Serializable]
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct WIN32_FILE_ATTRIBUTE_DATA
     {
         public int fileAttributes;
@@ -595,7 +608,7 @@ public class Win32Native : DotNetObject
         public int fileSizeLow;
         //TODO: generate method PopulateFrom
     }
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct FILE_TIME
     {
         //TODO: generate constructor
@@ -603,7 +616,7 @@ public class Win32Native : DotNetObject
         public uint ftTimeLow;
         public uint ftTimeHigh;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct KERB_S4U_LOGON
     {
         public uint MessageType;
@@ -611,7 +624,7 @@ public class Win32Native : DotNetObject
         public UNICODE_INTPTR_STRING ClientUpn;
         public UNICODE_INTPTR_STRING ClientRealm;
     }
-    //[StructLayoutAttribute(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct LSA_OBJECT_ATTRIBUTES
     {
         public int Length;
@@ -621,15 +634,15 @@ public class Win32Native : DotNetObject
         public IntPtr SecurityDescriptor;
         public IntPtr SecurityQualityOfService;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct UNICODE_STRING
     {
         public ushort Length;
         public ushort MaximumLength;
-        // Ignored: [MarshalAs(UnmanagedType.LPWStr)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.LPWStr*/)
         public String Buffer;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct UNICODE_INTPTR_STRING
     {
         //TODO: generate constructor
@@ -638,21 +651,21 @@ public class Win32Native : DotNetObject
         public ushort MaxLength;
         public IntPtr Buffer;
     }
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct LSA_TRANSLATED_NAME
     {
         public int Use;
         public UNICODE_INTPTR_STRING Name;
         public int DomainIndex;
     }
-    //[StructLayoutAttribute(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct LSA_TRANSLATED_SID
     {
         public int Use;
         public uint Rid;
         public int DomainIndex;
     }
-    //[StructLayoutAttribute(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct LSA_TRANSLATED_SID2
     {
         public int Use;
@@ -660,31 +673,31 @@ public class Win32Native : DotNetObject
         public int DomainIndex;
         private uint Flags;
     }
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct LSA_TRUST_INFORMATION
     {
         public UNICODE_INTPTR_STRING Name;
         public IntPtr Sid;
     }
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct LSA_REFERENCED_DOMAIN_LIST
     {
         public int Entries;
         public IntPtr Domains;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct LUID
     {
         public uint LowPart;
         public uint HighPart;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct LUID_AND_ATTRIBUTES
     {
         public LUID Luid;
         public uint Attributes;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct QUOTA_LIMITS
     {
         public IntPtr PagedPoolLimit;
@@ -694,7 +707,7 @@ public class Win32Native : DotNetObject
         public IntPtr PagefileLimit;
         public IntPtr TimeLimit;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct SECURITY_LOGON_SESSION_DATA
     {
         public uint Size;
@@ -707,39 +720,39 @@ public class Win32Native : DotNetObject
         public IntPtr Sid;
         public long LogonTime;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct SID_AND_ATTRIBUTES
     {
         public IntPtr Sid;
         public uint Attributes;
         public static immutable long SizeOf/*todo: implement initializer*/ = long();
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct TOKEN_GROUPS
     {
         public uint GroupCount;
         public SID_AND_ATTRIBUTES Groups;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet = CharSet.Unicode*/)
     public static struct TOKEN_PRIMARY_GROUP
     {
         public IntPtr PrimaryGroup;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct TOKEN_PRIVILEGE
     {
         public uint PrivilegeCount;
         public LUID_AND_ATTRIBUTES Privilege;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct TOKEN_SOURCE
     {
         private enum int TOKEN_SOURCE_LENGTH/*todo: implement initializer*/ = int();
-        // Ignored: [MarshalAs(UnmanagedType.ByValArray, SizeConst=TOKEN_SOURCE_LENGTH)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.ByValArray, SizeConst=TOKEN_SOURCE_LENGTH*/)
         public wchar[] Name;
         public LUID SourceIdentifier;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct TOKEN_STATISTICS
     {
         public LUID TokenId;
@@ -753,12 +766,12 @@ public class Win32Native : DotNetObject
         public uint PrivilegeCount;
         public LUID ModifiedId;
     }
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
     public static struct TOKEN_USER
     {
         public SID_AND_ATTRIBUTES User;
     }
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct MEMORYSTATUSEX
     {
         public int length;
@@ -771,7 +784,7 @@ public class Win32Native : DotNetObject
         public ulong availVirtual;
         public ulong availExtendedVirtual;
     }
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct MEMORY_BASIC_INFORMATION
     {
         public Void* BaseAddress;
@@ -956,11 +969,11 @@ public class Win32Native : DotNetObject
     public enum int INVALID_FILE_SIZE/*todo: implement initializer*/ = int();
     public enum int STATUS_ACCOUNT_RESTRICTION/*todo: implement initializer*/ = int();
     //TODO: generate method MakeHRFromErrorCode
-    //// Win32 Structs in N/Direct style
-//        [Serializable]
-    //[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Auto)]
-    //[BestFitMapping(false)]
-    public static class WIN32_FIND_DATA : DotNetObject
+    // Win32 Structs in N/Direct style
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Auto*/)
+    @__DotNet__Attribute!(BestFitMappingAttribute.stringof/*, false*/)
+    public static class WIN32_FIND_DATA : __DotNet__Object
     {
         public int dwFileAttributes/*todo: implement initializer*/ = int();
         public uint ftCreationTime_dwLowDateTime/*todo: implement initializer*/ = uint();
@@ -973,9 +986,9 @@ public class Win32Native : DotNetObject
         public int nFileSizeLow/*todo: implement initializer*/ = int();
         public int dwReserved0/*todo: implement initializer*/ = int();
         public int dwReserved1/*todo: implement initializer*/ = int();
-        // Ignored: [MarshalAs(UnmanagedType.ByValTStr, SizeConst=260)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.ByValTStr, SizeConst=260*/)
         public String cFileName/*todo: implement initializer*/ = null;
-        // Ignored: [MarshalAs(UnmanagedType.ByValTStr, SizeConst=14)]
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.ByValTStr, SizeConst=14*/)
         public String cAlternateFileName/*todo: implement initializer*/ = null;
     }
     //TODO: generate method CopyFileEx
@@ -1018,13 +1031,13 @@ public class Win32Native : DotNetObject
     //TODO: generate method CoTaskMemAlloc
     //TODO: generate method CoTaskMemFree
     //TODO: generate method CoTaskMemRealloc
-    //[StructLayoutAttribute(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct COORD
     {
         public short X;
         public short Y;
     }
-    //[StructLayoutAttribute(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct SMALL_RECT
     {
         public short Left;
@@ -1032,7 +1045,7 @@ public class Win32Native : DotNetObject
         public short Right;
         public short Bottom;
     }
-    //[StructLayoutAttribute(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct CONSOLE_SCREEN_BUFFER_INFO
     {
         public COORD dwSize;
@@ -1041,14 +1054,14 @@ public class Win32Native : DotNetObject
         public SMALL_RECT srWindow;
         public COORD dwMaximumWindowSize;
     }
-    //[StructLayoutAttribute(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct CONSOLE_CURSOR_INFO
     {
         public int dwSize;
         public bool bVisible;
     }
-    //// Win32's KEY_EVENT_RECORD
-//        [StructLayout(LayoutKind.Sequential, CharSet=CharSet.Auto)]
+    // Win32's KEY_EVENT_RECORD
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Auto*/)
     public static struct KeyEventRecord
     {
         public bool keyDown;
@@ -1058,15 +1071,15 @@ public class Win32Native : DotNetObject
         public wchar uChar;
         public int controlKeyState;
     }
-    //// Really, this is a union of KeyEventRecords and other types.
-//        [StructLayout(LayoutKind.Sequential, CharSet=CharSet.Auto)]
+    // Really, this is a union of KeyEventRecords and other types.
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Auto*/)
     public static struct InputRecord
     {
         public short eventType;
         public KeyEventRecord keyEvent;
     }
-    // Ignored: [Serializable]
-    // Ignored: [Flags]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
+    @__DotNet__Attribute!(FlagsAttribute.stringof)
     public enum Color : short
     {
         Black = 0,
@@ -1084,7 +1097,7 @@ public class Win32Native : DotNetObject
         BackgroundMask = 0xf0,
         ColorMask = 0xff,
     }
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct CHAR_INFO
     {
         private ushort charData;
@@ -1198,8 +1211,8 @@ public class Win32Native : DotNetObject
     //TODO: generate method GetProcessWindowStation
     //TODO: generate method GetUserObjectInformation
     //TODO: generate method SendMessageTimeout
-    //[StructLayout(LayoutKind.Sequential)]
-    public static class USEROBJECTFLAGS : DotNetObject
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
+    public static class USEROBJECTFLAGS : __DotNet__Object
     {
         public int fInherit/*todo: implement initializer*/ = int();
         public int fReserved/*todo: implement initializer*/ = int();
@@ -1248,14 +1261,14 @@ public class Win32Native : DotNetObject
     public enum int CLAIM_SECURITY_ATTRIBUTE_DISABLED/*todo: implement initializer*/ = int();
     public enum int CLAIM_SECURITY_ATTRIBUTE_MANDATORY/*todo: implement initializer*/ = int();
     public enum int CLAIM_SECURITY_ATTRIBUTE_VALID_FLAGS/*todo: implement initializer*/ = int();
-    //[StructLayoutAttribute( LayoutKind.Explicit )]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit*/)
     public static struct CLAIM_SECURITY_ATTRIBUTE_INFORMATION_V1
     {
-        // Ignored: // defined as union in CLAIM_SECURITY_ATTRIBUTES_INFORMATION
-        // Ignored: [FieldOffsetAttribute( 0 )]
+        // defined as union in CLAIM_SECURITY_ATTRIBUTES_INFORMATION
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr pAttributeV1;
     }
-    //[StructLayoutAttribute( LayoutKind.Sequential )]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     public static struct CLAIM_SECURITY_ATTRIBUTES_INFORMATION
     {
         public ushort Version;
@@ -1263,47 +1276,47 @@ public class Win32Native : DotNetObject
         public uint AttributeCount;
         public CLAIM_SECURITY_ATTRIBUTE_INFORMATION_V1 Attribute;
     }
-    ////
-//        //  Fully-qualified binary name.
-//        //
-//        [StructLayoutAttribute( LayoutKind.Sequential, CharSet = CharSet.Unicode )]
+    //
+    //  Fully-qualified binary name.
+    //
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet = CharSet.Unicode*/)
     public static struct CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE
     {
         public ulong Version;
-        // Ignored: // PWSTR->WCHAR*
-        // Ignored: [MarshalAsAttribute( UnmanagedType.LPWStr )]
+        // PWSTR->WCHAR*
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.LPWStr*/)
         public String Name;
     }
-    //[StructLayoutAttribute( LayoutKind.Sequential, CharSet = CharSet.Unicode )]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet = CharSet.Unicode*/)
     public static struct CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE
     {
         public IntPtr pValue;
         public uint ValueLength;
     }
-    //[StructLayoutAttribute( LayoutKind.Explicit, CharSet = CharSet.Unicode )]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit, CharSet = CharSet.Unicode*/)
     public static struct CLAIM_VALUES_ATTRIBUTE_V1
     {
-        // Ignored: // PLONG64->__int64*
-        // Ignored: [FieldOffsetAttribute( 0 )]
+        // PLONG64->__int64*
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr pInt64;
-        // Ignored: // PDWORD64->unsigned __int64*
-        // Ignored: [FieldOffsetAttribute( 0 )]
+        // PDWORD64->unsigned __int64*
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr pUint64;
-        // Ignored: // PWSTR*
-        // Ignored: [FieldOffsetAttribute( 0 )]
+        // PWSTR*
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr ppString;
-        // Ignored: // PCLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE->_CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE*
-        // Ignored: [FieldOffsetAttribute( 0 )]
+        // PCLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE->_CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE*
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr pFqbn;
-        // Ignored: // PCLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE->_CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE*
-        // Ignored: [FieldOffsetAttribute( 0 )]
+        // PCLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE->_CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE*
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr pOctetString;
     }
-    //[StructLayoutAttribute( LayoutKind.Sequential, CharSet = CharSet.Unicode )]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet = CharSet.Unicode*/)
     public static struct CLAIM_SECURITY_ATTRIBUTE_V1
     {
-        // Ignored: // PWSTR->WCHAR*
-        // Ignored: [MarshalAsAttribute( UnmanagedType.LPWStr )]
+        // PWSTR->WCHAR*
+        @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.LPWStr*/)
         public String Name;
         public ushort ValueType;
         public ushort Reserved;

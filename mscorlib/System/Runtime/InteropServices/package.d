@@ -1,10 +1,17 @@
 module mscorlib.System.Runtime.InteropServices;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    CLSCompliantAttribute,
+    SerializableAttribute,
+    __DotNet__Object,
+    AttributeUsageAttribute,
     Attribute,
     String,
     Type,
+    ObsoleteAttribute,
+    FlagsAttribute,
     Delegate,
     Guid,
     IDisposable,
@@ -12,21 +19,26 @@ import mscorlib.System :
     Decimal,
     SystemException,
     UIntPtr;
+import mscorlib.System.Security :
+    SecurityCriticalAttribute,
+    SuppressUnmanagedCodeSecurityAttribute;
 import mscorlib.System.Runtime.InteropServices.ComTypes :
     IConnectionPoint;
 import mscorlib.System.Runtime.ConstrainedExecution :
     CriticalFinalizerObject;
 import mscorlib.Microsoft.Win32.SafeHandles :
     SafeHandleZeroOrMinusOneIsInvalid;
+import mscorlib.System.Diagnostics.CodeAnalysis :
+    SuppressMessageAttribute;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\cominterfaces.cs'
 //
-//[GuidAttribute("03973551-57A1-3900-A2B5-9083E3FF2943")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Activator))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "03973551-57A1-3900-A2B5-9083E3FF2943"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Activator)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _Activator
 {
     //TODO: generate method GetTypeInfoCount
@@ -34,19 +46,19 @@ public interface _Activator
     //TODO: generate method GetIDsOfNames
     //TODO: generate method Invoke
 }
-//[GuidAttribute("917B14D0-2D9E-38B8-92A9-381ACF52F7C0")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Attribute))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "917B14D0-2D9E-38B8-92A9-381ACF52F7C0"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Attribute)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _Attribute
 {
 }
-//[GuidAttribute("C281C7F1-4AA9-3517-961A-463CFED57E75")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Threading.Thread))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "C281C7F1-4AA9-3517-961A-463CFED57E75"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Threading.Thread)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _Thread
 {
 }
@@ -54,99 +66,99 @@ public interface _Thread
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\ComInterfaces.cs'
 //
-//[GuidAttribute("BCA8B44D-AAD6-3A86-8AB7-03349F4F2DA2")]
-//[CLSCompliant(false)]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[TypeLibImportClassAttribute(typeof(System.Type))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "BCA8B44D-AAD6-3A86-8AB7-03349F4F2DA2"*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Type)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _Type
 {
 }
-//[GuidAttribute("17156360-2f1a-384a-bc52-fde93c215c5b")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsDual)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Assembly))]
-//[CLSCompliant(false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "17156360-2f1a-384a-bc52-fde93c215c5b"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsDual*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Assembly)*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _Assembly
 {
 }
-//[GuidAttribute("f7102fa9-cabb-3a74-a6da-b4567ef1b079")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.MemberInfo))]
-//[CLSCompliant(false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "f7102fa9-cabb-3a74-a6da-b4567ef1b079"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.MemberInfo)*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _MemberInfo
 {
 }
-//[GuidAttribute("6240837A-707F-3181-8E98-A36AE086766B")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.MethodBase))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "6240837A-707F-3181-8E98-A36AE086766B"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.MethodBase)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _MethodBase
 {
 }
-//[GuidAttribute("FFCC1B5D-ECB8-38DD-9B01-3DC8ABC2AA5F")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.MethodInfo))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "FFCC1B5D-ECB8-38DD-9B01-3DC8ABC2AA5F"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.MethodInfo)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _MethodInfo
 {
 }
-//[GuidAttribute("E9A19478-9646-3679-9B10-8411AE1FD57D")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.ConstructorInfo))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "E9A19478-9646-3679-9B10-8411AE1FD57D"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.ConstructorInfo)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _ConstructorInfo
 {
 }
-//[GuidAttribute("8A7C1442-A9FB-366B-80D8-4939FFA6DBE0")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.FieldInfo))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "8A7C1442-A9FB-366B-80D8-4939FFA6DBE0"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.FieldInfo)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _FieldInfo
 {
 }
-//[GuidAttribute("F59ED4E4-E68F-3218-BD77-061AA82824BF")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.PropertyInfo))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "F59ED4E4-E68F-3218-BD77-061AA82824BF"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.PropertyInfo)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _PropertyInfo
 {
 }
-//[GuidAttribute("9DE59C64-D889-35A1-B897-587D74469E5B")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.EventInfo))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "9DE59C64-D889-35A1-B897-587D74469E5B"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.EventInfo)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _EventInfo
 {
 }
-//[GuidAttribute("993634C4-E47A-32CC-BE08-85F567DC27D6")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.ParameterInfo))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "993634C4-E47A-32CC-BE08-85F567DC27D6"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.ParameterInfo)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _ParameterInfo
 {
 }
-//[GuidAttribute("D002E9BA-D9E3-3749-B1D3-D565A08B13E7")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Module))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "D002E9BA-D9E3-3749-B1D3-D565A08B13E7"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Module)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _Module
 {
 }
-//[GuidAttribute("B42B6AAC-317E-34D5-9FA9-093BB4160C50")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.AssemblyName))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "B42B6AAC-317E-34D5-9FA9-093BB4160C50"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.AssemblyName)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _AssemblyName
 {
 }
@@ -154,135 +166,131 @@ public interface _AssemblyName
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\ComInterfaces.cs'
 //
-//[GuidAttribute("BEBB2505-8B54-3443-AEAD-142A16DD9CC7")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.AssemblyBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "BEBB2505-8B54-3443-AEAD-142A16DD9CC7"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.AssemblyBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _AssemblyBuilder
 {
 }
-//[GuidAttribute("ED3E4384-D7E2-3FA7-8FFD-8940D330519A")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.ConstructorBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "ED3E4384-D7E2-3FA7-8FFD-8940D330519A"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.ConstructorBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _ConstructorBuilder
 {
 }
-//[GuidAttribute("BE9ACCE8-AAFF-3B91-81AE-8211663F5CAD")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.CustomAttributeBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "BE9ACCE8-AAFF-3B91-81AE-8211663F5CAD"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.CustomAttributeBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _CustomAttributeBuilder
 {
 }
-//[GuidAttribute("C7BD73DE-9F85-3290-88EE-090B8BDFE2DF")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.EnumBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "C7BD73DE-9F85-3290-88EE-090B8BDFE2DF"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.EnumBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _EnumBuilder
 {
 }
-//[GuidAttribute("AADABA99-895D-3D65-9760-B1F12621FAE8")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.EventBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "AADABA99-895D-3D65-9760-B1F12621FAE8"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.EventBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _EventBuilder
 {
 }
-//[GuidAttribute("CE1A3BF5-975E-30CC-97C9-1EF70F8F3993")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.FieldBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "CE1A3BF5-975E-30CC-97C9-1EF70F8F3993"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.FieldBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _FieldBuilder
 {
 }
-//[GuidAttribute("A4924B27-6E3B-37F7-9B83-A4501955E6A7")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.ILGenerator))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "A4924B27-6E3B-37F7-9B83-A4501955E6A7"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.ILGenerator)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _ILGenerator
 {
 }
-//[GuidAttribute("4E6350D1-A08B-3DEC-9A3E-C465F9AEEC0C")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.LocalBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "4E6350D1-A08B-3DEC-9A3E-C465F9AEEC0C"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.LocalBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _LocalBuilder
 {
 }
-//[GuidAttribute("007D8A14-FDF3-363E-9A0B-FEC0618260A2")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.MethodBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "007D8A14-FDF3-363E-9A0B-FEC0618260A2"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.MethodBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _MethodBuilder
 {
 }
-//#if FEATURE_METHOD_RENTAL
-//    [GuidAttribute("C2323C25-F57F-3880-8A4D-12EBEA7A5852")]
-//    [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//    [CLSCompliant(false)]
-//    [TypeLibImportClassAttribute(typeof(System.Reflection.Emit.MethodRental))]
-//[System.Runtime.InteropServices.ComVisible(true)]
-//    public interface _MethodRental
-//    {
-//#if !FEATURE_CORECLR
-//        void GetTypeInfoCount(out uint pcTInfo);
-//
-//        void GetTypeInfo(uint iTInfo, uint lcid, IntPtr ppTInfo);
-//
-//        void GetIDsOfNames([In] ref Guid riid, IntPtr rgszNames, uint cNames, uint lcid, IntPtr rgDispId);
-//
-//        void Invoke(uint dispIdMember, [In] ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
-//#endif
-//    }
-//#endif
-//
-//    [GuidAttribute("D05FFA9A-04AF-3519-8EE1-8D93AD73430B")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.ModuleBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// #if FEATURE_METHOD_RENTAL
+// [GuidAttribute("C2323C25-F57F-3880-8A4D-12EBEA7A5852")]
+// [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
+// [CLSCompliant(false)]
+// [TypeLibImportClassAttribute(typeof(System.Reflection.Emit.MethodRental))]
+// [System.Runtime.InteropServices.ComVisible(true)]
+// public interface _MethodRental
+// {
+// #if !FEATURE_CORECLR
+// void GetTypeInfoCount(out uint pcTInfo);
+// void GetTypeInfo(uint iTInfo, uint lcid, IntPtr ppTInfo);
+// void GetIDsOfNames([In] ref Guid riid, IntPtr rgszNames, uint cNames, uint lcid, IntPtr rgDispId);
+// void Invoke(uint dispIdMember, [In] ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
+// #endif
+// }
+// #endif
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "D05FFA9A-04AF-3519-8EE1-8D93AD73430B"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.ModuleBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _ModuleBuilder
 {
 }
-//[GuidAttribute("36329EBA-F97A-3565-BC07-0ED5C6EF19FC")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.ParameterBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "36329EBA-F97A-3565-BC07-0ED5C6EF19FC"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.ParameterBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _ParameterBuilder
 {
 }
-//[GuidAttribute("15F9A479-9397-3A63-ACBD-F51977FB0F02")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.PropertyBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "15F9A479-9397-3A63-ACBD-F51977FB0F02"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.PropertyBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _PropertyBuilder
 {
 }
-//[GuidAttribute("7D13DD37-5A04-393C-BBCA-A5FEA802893D")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.SignatureHelper))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "7D13DD37-5A04-393C-BBCA-A5FEA802893D"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.SignatureHelper)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _SignatureHelper
 {
 }
-//[GuidAttribute("7E5678EE-48B3-3F83-B076-C58543498A58")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[CLSCompliant(false)]
-//[TypeLibImportClassAttribute(typeof(System.Reflection.Emit.TypeBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "7E5678EE-48B3-3F83-B076-C58543498A58"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(TypeLibImportClassAttribute.stringof/*, typeof(System.Reflection.Emit.TypeBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _TypeBuilder
 {
 }
@@ -290,8 +298,8 @@ public interface _TypeBuilder
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ArrayWithOffset.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct ArrayWithOffset
 {
     //TODO: generate constructor
@@ -303,7 +311,7 @@ public struct ArrayWithOffset
     //TODO: generate operator
     //TODO: generate operator
     //TODO: generate method CalculateCount
-    private DotNetObject m_array;
+    private __DotNet__Object m_array;
     private int m_offset;
     private int m_count;
 }
@@ -311,8 +319,8 @@ public struct ArrayWithOffset
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\Attributes.cs'
 //
-//[AttributeUsage(AttributeTargets.Delegate, AllowMultiple = false, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Delegate, AllowMultiple = false, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class UnmanagedFunctionPointerAttribute : Attribute
 {
     private CallingConvention m_callingConvention;
@@ -323,8 +331,8 @@ public final class UnmanagedFunctionPointerAttribute : Attribute
     public bool ThrowOnUnmappableChar;
     public bool SetLastError;
 }
-//[AttributeUsage(AttributeTargets.Interface | AttributeTargets.Enum | AttributeTargets.Struct | AttributeTargets.Delegate, AllowMultiple = false, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Interface | AttributeTargets.Enum | AttributeTargets.Struct | AttributeTargets.Delegate, AllowMultiple = false, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
 public final class TypeIdentifierAttribute : Attribute
 {
     //TODO: generate constructor
@@ -334,33 +342,32 @@ public final class TypeIdentifierAttribute : Attribute
     public String Scope_;
     public String Identifier_;
 }
-//// To be used on methods that sink reverse P/Invoke calls.
-//    // This attribute is a CoreCLR-only security measure, currently ignored by the desktop CLR.
-//    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
+// To be used on methods that sink reverse P/Invoke calls.
+// This attribute is a CoreCLR-only security measure, currently ignored by the desktop CLR.
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, AllowMultiple = false, Inherited = false*/)
 public final class AllowReversePInvokeCallsAttribute : Attribute
 {
     //TODO: generate constructor
 }
-//[AttributeUsage(AttributeTargets.Method | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Event, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Event, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DispIdAttribute : Attribute
 {
     public int _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum ComInterfaceType
 {
     InterfaceIsDual = 0,
     InterfaceIsIUnknown = 1,
     InterfaceIsIDispatch = 2,
-    // Ignored: [System.Runtime.InteropServices.ComVisible(false)]
     InterfaceIsIInspectable = 3,
 }
-//[AttributeUsage(AttributeTargets.Interface, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Interface, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class InterfaceTypeAttribute : Attribute
 {
     public ComInterfaceType _val;
@@ -368,24 +375,24 @@ public final class InterfaceTypeAttribute : Attribute
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Class, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComDefaultInterfaceAttribute : Attribute
 {
     public Type _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum ClassInterfaceType
 {
     None = 0,
     AutoDispatch = 1,
     AutoDual = 2,
 }
-//[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly | AttributeTargets.Class, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ClassInterfaceAttribute : Attribute
 {
     public ClassInterfaceType _val;
@@ -393,70 +400,70 @@ public final class ClassInterfaceAttribute : Attribute
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Delegate | AttributeTargets.Enum | AttributeTargets.Field | AttributeTargets.Method | AttributeTargets.Property, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly | AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Delegate | AttributeTargets.Enum | AttributeTargets.Field | AttributeTargets.Method | AttributeTargets.Property, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComVisibleAttribute : Attribute
 {
     public bool _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Interface, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Interface, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class TypeLibImportClassAttribute : Attribute
 {
     public String _importClassName;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Method, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class LCIDConversionAttribute : Attribute
 {
     public int _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Method, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComRegisterFunctionAttribute : Attribute
 {
     //TODO: generate constructor
 }
-//[AttributeUsage(AttributeTargets.Method, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComUnregisterFunctionAttribute : Attribute
 {
     //TODO: generate constructor
 }
-//[AttributeUsage(AttributeTargets.Class, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ProgIdAttribute : Attribute
 {
     public String _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Assembly, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ImportedFromTypeLibAttribute : Attribute
 {
     public String _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-// Ignored: [Obsolete("The IDispatchImplAttribute is deprecated.", false)]
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "The IDispatchImplAttribute is deprecated.", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum IDispatchImplType
 {
     SystemDefinedImpl = 0,
     InternalImpl = 1,
     CompatibleImpl = 2,
 }
-//[AttributeUsage(AttributeTargets.Class | AttributeTargets.Assembly, Inherited = false)]
-//[Obsolete("This attribute is deprecated and will be removed in a future version.", false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | AttributeTargets.Assembly, Inherited = false*/)
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "This attribute is deprecated and will be removed in a future version.", false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class IDispatchImplAttribute : Attribute
 {
     public IDispatchImplType _val;
@@ -464,8 +471,8 @@ public final class IDispatchImplAttribute : Attribute
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Class, Inherited = true)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class, Inherited = true*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComSourceInterfacesAttribute : Attribute
 {
     public String _val;
@@ -476,15 +483,15 @@ public final class ComSourceInterfacesAttribute : Attribute
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.All, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.All, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComConversionLossAttribute : Attribute
 {
     //TODO: generate constructor
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum TypeLibTypeFlags
 {
     FAppObject = 0x0001,
@@ -502,9 +509,9 @@ public enum TypeLibTypeFlags
     FDispatchable = 0x1000,
     FReverseBind = 0x2000,
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum TypeLibFuncFlags
 {
     FRestricted = 0x0001,
@@ -521,9 +528,9 @@ public enum TypeLibFuncFlags
     FReplaceable = 0x0800,
     FImmediateBind = 0x1000,
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum TypeLibVarFlags
 {
     FReadOnly = 0x0001,
@@ -540,8 +547,8 @@ public enum TypeLibVarFlags
     FReplaceable = 0x0800,
     FImmediateBind = 0x1000,
 }
-//[AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Enum | AttributeTargets.Struct, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Enum | AttributeTargets.Struct, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class TypeLibTypeAttribute : Attribute
 {
     public TypeLibTypeFlags _val;
@@ -549,8 +556,8 @@ public final class TypeLibTypeAttribute : Attribute
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Method, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class TypeLibFuncAttribute : Attribute
 {
     public TypeLibFuncFlags _val;
@@ -558,8 +565,8 @@ public final class TypeLibFuncAttribute : Attribute
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Field, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Field, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class TypeLibVarAttribute : Attribute
 {
     public TypeLibVarFlags _val;
@@ -567,8 +574,8 @@ public final class TypeLibVarAttribute : Attribute
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum VarEnum
 {
     VT_EMPTY = 0,
@@ -616,8 +623,8 @@ public enum VarEnum
     VT_ARRAY = 0x2000,
     VT_BYREF = 0x4000,
 }
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum UnmanagedType
 {
     Bool = 0x2,
@@ -655,15 +662,12 @@ public enum UnmanagedType
     LPStruct = 0x2b,
     CustomMarshaler = 0x2c,
     Error = 0x2d,
-    // Ignored: [System.Runtime.InteropServices.ComVisible(false)]
     IInspectable = 0x2e,
-    // Ignored: [System.Runtime.InteropServices.ComVisible(false)]
     HString = 0x2f,
-    // Ignored: [System.Runtime.InteropServices.ComVisible(false)]
     LPUTF8Str = 0x30,
 }
-//[AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.ReturnValue, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.ReturnValue, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class MarshalAsAttribute : Attribute
 {
     //TODO: generate method GetCustomAttribute
@@ -682,62 +686,62 @@ public final class MarshalAsAttribute : Attribute
     public UnmanagedType ArraySubType;
     public short SizeParamIndex;
     public int SizeConst;
-    // Ignored: // Fields used with SubType = CustomMarshaler
-    // Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+    // Fields used with SubType = CustomMarshaler
+    @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
     public String MarshalType;
-    // Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+    @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
     public Type MarshalTypeRef;
     public String MarshalCookie;
 }
-//[AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | AttributeTargets.Interface, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComImportAttribute : Attribute
 {
     //TODO: generate method GetCustomAttribute
     //TODO: generate method IsDefined
     //TODO: generate constructor
 }
-//[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Enum | AttributeTargets.Struct | AttributeTargets.Delegate, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly | AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Enum | AttributeTargets.Struct | AttributeTargets.Delegate, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class GuidAttribute : Attribute
 {
     public String _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Method, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class PreserveSigAttribute : Attribute
 {
     //TODO: generate method GetCustomAttribute
     //TODO: generate method IsDefined
     //TODO: generate constructor
 }
-//[AttributeUsage(AttributeTargets.Parameter, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Parameter, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class InAttribute : Attribute
 {
     //TODO: generate method GetCustomAttribute
     //TODO: generate method IsDefined
     //TODO: generate constructor
 }
-//[AttributeUsage(AttributeTargets.Parameter, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Parameter, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class OutAttribute : Attribute
 {
     //TODO: generate method GetCustomAttribute
     //TODO: generate method IsDefined
     //TODO: generate constructor
 }
-//[AttributeUsage(AttributeTargets.Parameter, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Parameter, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class OptionalAttribute : Attribute
 {
     //TODO: generate method GetCustomAttribute
     //TODO: generate method IsDefined
     //TODO: generate constructor
 }
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum DllImportSearchPath
 {
     UseDllDirectoryForDependencies = 0x100,
@@ -748,16 +752,16 @@ public enum DllImportSearchPath
     AssemblyDirectory = 0x2,
     LegacyBehavior = 0x0,
 }
-//[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Method, AllowMultiple = false)]
-//[System.Runtime.InteropServices.ComVisible(false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly | AttributeTargets.Method, AllowMultiple = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
 public final class DefaultDllImportSearchPathsAttribute : Attribute
 {
     public DllImportSearchPath _paths;
     //TODO: generate constructor
     //TODO: generate property 'Paths'
 }
-//[AttributeUsage(AttributeTargets.Method, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DllImportAttribute : Attribute
 {
     //TODO: generate method GetCustomAttribute
@@ -775,8 +779,8 @@ public final class DllImportAttribute : Attribute
     public bool BestFitMapping;
     public bool ThrowOnUnmappableChar;
 }
-//[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | AttributeTargets.Struct, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class StructLayoutAttribute : Attribute
 {
     private enum int DEFAULT_PACKING_SIZE/*todo: implement initializer*/ = int();
@@ -791,8 +795,8 @@ public final class StructLayoutAttribute : Attribute
     public int Size;
     public CharSet CharSet_;
 }
-//[AttributeUsage(AttributeTargets.Field, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Field, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class FieldOffsetAttribute : Attribute
 {
     //TODO: generate method GetCustomAttribute
@@ -801,24 +805,24 @@ public final class FieldOffsetAttribute : Attribute
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.ReturnValue, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.ReturnValue, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComAliasNameAttribute : Attribute
 {
     public String _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Interface, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Interface, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AutomationProxyAttribute : Attribute
 {
     public bool _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
-//[AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited = false, AllowMultiple = true*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class PrimaryInteropAssemblyAttribute : Attribute
 {
     public int _major;
@@ -827,16 +831,16 @@ public final class PrimaryInteropAssemblyAttribute : Attribute
     //TODO: generate property 'MajorVersion'
     //TODO: generate property 'MinorVersion'
 }
-//[AttributeUsage(AttributeTargets.Interface, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Interface, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class CoClassAttribute : Attribute
 {
     public Type _CoClass;
     //TODO: generate constructor
     //TODO: generate property 'CoClass'
 }
-//[AttributeUsage(AttributeTargets.Interface, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Interface, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComEventInterfaceAttribute : Attribute
 {
     public Type _SourceInterface;
@@ -845,8 +849,8 @@ public final class ComEventInterfaceAttribute : Attribute
     //TODO: generate property 'SourceInterface'
     //TODO: generate property 'EventProvider'
 }
-//[AttributeUsage(AttributeTargets.Assembly, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class TypeLibVersionAttribute : Attribute
 {
     public int _major;
@@ -855,8 +859,8 @@ public final class TypeLibVersionAttribute : Attribute
     //TODO: generate property 'MajorVersion'
     //TODO: generate property 'MinorVersion'
 }
-//[AttributeUsage(AttributeTargets.Assembly, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComCompatibleVersionAttribute : Attribute
 {
     public int _major;
@@ -869,8 +873,8 @@ public final class ComCompatibleVersionAttribute : Attribute
     //TODO: generate property 'BuildNumber'
     //TODO: generate property 'RevisionNumber'
 }
-//[AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Struct, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly | AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Struct, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class BestFitMappingAttribute : Attribute
 {
     public bool _bestFitMapping;
@@ -878,23 +882,23 @@ public final class BestFitMappingAttribute : Attribute
     //TODO: generate property 'BestFitMapping'
     public bool ThrowOnUnmappableChar;
 }
-//[AttributeUsage(AttributeTargets.Module, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Module, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DefaultCharSetAttribute : Attribute
 {
     public CharSet _CharSet;
     //TODO: generate constructor
     //TODO: generate property 'CharSet'
 }
-//[Obsolete("This attribute has been deprecated.  Application Domains no longer respect Activation Context boundaries in IDispatch calls.", false)]
-//[AttributeUsage(AttributeTargets.Assembly, Inherited = false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "This attribute has been deprecated.  Application Domains no longer respect Activation Context boundaries in IDispatch calls.", false*/)
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class SetWin32ContextInIDispatchAttribute : Attribute
 {
     //TODO: generate constructor
 }
-//[AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
-//[System.Runtime.InteropServices.ComVisible(false)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited = false, AllowMultiple = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
 public final class ManagedToNativeComInteropStubAttribute : Attribute
 {
     public Type _classType;
@@ -907,9 +911,9 @@ public final class ManagedToNativeComInteropStubAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\BStrWrapper.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class BStrWrapper : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class BStrWrapper : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -920,9 +924,9 @@ public final class BStrWrapper : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\CallingConvention.cs'
 //
-// Ignored: // Used for the CallingConvention named argument to the DllImport attribute
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// Used for the CallingConvention named argument to the DllImport attribute
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum CallingConvention
 {
     Winapi = 1,
@@ -935,14 +939,14 @@ public enum CallingConvention
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\CharSet.cs'
 //
-// Ignored: // Use this in P/Direct function prototypes to specify
-// Ignored: // which character set to use when marshalling Strings.
-// Ignored: // Using Ansi will marshal the strings as 1 byte char*'s.
-// Ignored: // Using Unicode will marshal the strings as 2 byte wchar*'s.
-// Ignored: // Generally you probably want to use Auto, which does the
-// Ignored: // right thing 99% of the time.
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// Use this in P/Direct function prototypes to specify 
+// which character set to use when marshalling Strings.
+// Using Ansi will marshal the strings as 1 byte char*'s.
+// Using Unicode will marshal the strings as 2 byte wchar*'s.
+// Generally you probably want to use Auto, which does the
+// right thing 99% of the time.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum CharSet
 {
     None = 1,
@@ -954,7 +958,7 @@ public enum CharSet
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComEventsHelper.cs'
 //
-public class ComEventsHelper : DotNetObject
+public class ComEventsHelper : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method Combine
@@ -965,12 +969,12 @@ public class ComEventsHelper : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComEventsInfo.cs'
 //
-//// see code:ComEventsHelper#ComEventsArchitecture
-//    [System.Security.SecurityCritical]
-public class ComEventsInfo : DotNetObject
+// see code:ComEventsHelper#ComEventsArchitecture
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+public class ComEventsInfo : __DotNet__Object
 {
     private ComEventsSink _sinks;
-    private DotNetObject _rcw;
+    private __DotNet__Object _rcw;
     //TODO: generate constructor
     //TODO: generate destructor
     //TODO: generate method Find
@@ -983,9 +987,9 @@ public class ComEventsInfo : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComEventsMethod.cs'
 //
-public class ComEventsMethod : DotNetObject
+public class ComEventsMethod : __DotNet__Object
 {
-    public static class DelegateWrapper : DotNetObject
+    public static class DelegateWrapper : __DotNet__Object
     {
         private Delegate _d;
         private bool _once/*todo: implement initializer*/ = bool();
@@ -1013,9 +1017,9 @@ public class ComEventsMethod : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComEventsSink.cs'
 //
-//// see code:ComEventsHelper#ComEventsArchitecture
-//    [System.Security.SecurityCritical]
-public class ComEventsSink : DotNetObject, NativeMethods.IDispatch, ICustomQueryInterface
+// see code:ComEventsHelper#ComEventsArchitecture
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+public class ComEventsSink : __DotNet__Object, NativeMethods.IDispatch, ICustomQueryInterface
 {
     private Guid _iidSourceItf;
     private IConnectionPoint _connectionPoint;
@@ -1047,10 +1051,10 @@ public class ComEventsSink : DotNetObject, NativeMethods.IDispatch, ICustomQuery
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\COMException.cs'
 //
-//// Exception for COM Interop errors where we don't recognize the HResult.
-//    // 
-//    [ComVisible(true)]
-//[Serializable]
+// Exception for COM Interop errors where we don't recognize the HResult.
+// 
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class COMException : ExternalException
 {
     //TODO: generate constructor
@@ -1066,8 +1070,8 @@ public class COMException : ExternalException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComMemberType.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum ComMemberType
 {
     Method = 0,
@@ -1078,14 +1082,14 @@ public enum ComMemberType
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\CriticalHandle.cs'
 //
-//// This class should not be serializable - it's a handle.  We require unmanaged
-//// code permission to subclass CriticalHandle to prevent people from writing a 
-//// subclass and suddenly being able to run arbitrary native code with the
-//// same signature as CloseHandle.  This is technically a little redundant, but
-//// we'll do this to ensure we've cut off all attack vectors.  Similarly, all
-//// methods have a link demand to ensure untrusted code cannot directly edit
-//// or alter a handle.
-//[System.Security.SecurityCritical]  // auto-generated_required
+// This class should not be serializable - it's a handle.  We require unmanaged
+// code permission to subclass CriticalHandle to prevent people from writing a 
+// subclass and suddenly being able to run arbitrary native code with the
+// same signature as CloseHandle.  This is technically a little redundant, but
+// we'll do this to ensure we've cut off all attack vectors.  Similarly, all
+// methods have a link demand to ensure untrusted code cannot directly edit
+// or alter a handle.
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public abstract class CriticalHandle : CriticalFinalizerObject, IDisposable
 {
     private String _stackTrace;
@@ -1109,9 +1113,9 @@ public abstract class CriticalHandle : CriticalFinalizerObject, IDisposable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\CurrencyWrapper.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class CurrencyWrapper : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class CurrencyWrapper : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1122,21 +1126,21 @@ public final class CurrencyWrapper : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\DispatchWrapper.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class DispatchWrapper : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class DispatchWrapper : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate property 'WrappedObject'
-    private DotNetObject m_WrappedObject;
+    private __DotNet__Object m_WrappedObject;
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ErrorWrapper.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class ErrorWrapper : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class ErrorWrapper : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1148,8 +1152,8 @@ public final class ErrorWrapper : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ExtensibleClassFactory.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class ExtensibleClassFactory : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class ExtensibleClassFactory : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method RegisterObjectCreationCallback
@@ -1158,11 +1162,11 @@ public final class ExtensibleClassFactory : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ExternalException.cs'
 //
-//// Base exception for COM Interop errors &; Structured Exception Handler
-//    // exceptions.
-//    // 
-//    [System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+// Base exception for COM Interop errors &; Structured Exception Handler
+// exceptions.
+// 
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class ExternalException : SystemException
 {
     //TODO: generate constructor
@@ -1176,12 +1180,12 @@ public class ExternalException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\GcHandle.cs'
 //
-// Ignored: // These are the types of handles used by the EE.
-// Ignored: // IMPORTANT: These must match the definitions in ObjectHandle.h in the EE.
-// Ignored: // IMPORTANT: If new values are added to the enum the GCHandle::MaxHandleType
-// Ignored: //            constant must be updated.
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// These are the types of handles used by the EE.  
+// IMPORTANT: These must match the definitions in ObjectHandle.h in the EE. 
+// IMPORTANT: If new values are added to the enum the GCHandle::MaxHandleType
+//            constant must be updated.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum GCHandleType
 {
     Weak = 0,
@@ -1189,22 +1193,21 @@ public enum GCHandleType
     Normal = 2,
     Pinned = 3,
 }
-//// This class allows you to create an opaque, GC handle to any 
-//    // COM+ object. A GC handle is used when an object reference must be
-//    // reachable from unmanaged memory.  There are 3 kinds of roots:
-//    // Normal - keeps the object from being collected.
-//    // Weak - allows object to be collected and handle contents will be zeroed.
-//    //          Weak references are zeroed before the finalizer runs, so if the
-//    //          object is resurrected in the finalizer the weak reference is
-//    //          still zeroed.
-//    // WeakTrackResurrection - Same as weak, but stays until after object is
-//    //          really gone.
-//    // Pinned - same as normal, but allows the address of the actual object
-//    //          to be taken.
-//    //
+// This class allows you to create an opaque, GC handle to any 
+// COM+ object. A GC handle is used when an object reference must be
+// reachable from unmanaged memory.  There are 3 kinds of roots:
+// Normal - keeps the object from being collected.
+// Weak - allows object to be collected and handle contents will be zeroed.
+//          Weak references are zeroed before the finalizer runs, so if the
+//          object is resurrected in the finalizer the weak reference is
+//          still zeroed.
+// WeakTrackResurrection - Same as weak, but stays until after object is
+//          really gone.
+// Pinned - same as normal, but allows the address of the actual object
+//          to be taken.
 //
-//    [StructLayout(LayoutKind.Sequential)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct GCHandle
 {
     private enum GCHandleType MaxHandleType/*todo: implement initializer*/ = (cast(GCHandleType)0);
@@ -1241,10 +1244,10 @@ public struct GCHandle
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\HandleRef.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct HandleRef
 {
-    public DotNetObject m_wrapper;
+    public __DotNet__Object m_wrapper;
     public IntPtr m_handle;
     //TODO: generate constructor
     //TODO: generate property 'Wrapper'
@@ -1256,7 +1259,7 @@ public struct HandleRef
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ICustomAdapter.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ICustomAdapter
 {
     //TODO: generate method GetUnderlyingObject
@@ -1265,7 +1268,7 @@ public interface ICustomAdapter
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ICustomFactory.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ICustomFactory
 {
     //TODO: generate method CreateInstance
@@ -1274,7 +1277,7 @@ public interface ICustomFactory
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ICustomMarshaler.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ICustomMarshaler
 {
     //TODO: generate method MarshalNativeToManaged
@@ -1287,21 +1290,21 @@ public interface ICustomMarshaler
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ICustomQueryInterface.cs'
 //
-// Ignored: //====================================================================
-// Ignored: // The enum of the return value of IQuerable.GetInterface
-// Ignored: //====================================================================
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(false)]
+//====================================================================
+// The enum of the return value of IQuerable.GetInterface
+//====================================================================
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
 public enum CustomQueryInterfaceResult
 {
     Handled = 0,
     NotHandled = 1,
     Failed = 2,
 }
-////====================================================================
-//    // The interface for customizing IQueryInterface
-//    //====================================================================
-//    [System.Runtime.InteropServices.ComVisible(false)]
+//====================================================================
+// The interface for customizing IQueryInterface
+//====================================================================
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
 public interface ICustomQueryInterface
 {
     //TODO: generate method GetInterface
@@ -1310,10 +1313,10 @@ public interface ICustomQueryInterface
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\IException.cs'
 //
-//[GuidAttribute("b36b5c63-42ef-38bc-a07e-0b34c98f164a")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsDual)]
-//[CLSCompliant(false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "b36b5c63-42ef-38bc-a07e-0b34c98f164a"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsDual*/)
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface _Exception
 {
     //TODO: generate property 'InnerException'
@@ -1322,8 +1325,8 @@ public interface _Exception
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\InvalidComObjectException.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class InvalidComObjectException : SystemException
 {
     //TODO: generate constructor
@@ -1335,8 +1338,8 @@ public class InvalidComObjectException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\InvalidOleVariantTypeException.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class InvalidOleVariantTypeException : SystemException
 {
     //TODO: generate constructor
@@ -1348,15 +1351,15 @@ public class InvalidOleVariantTypeException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\IRegistrationServices.cs'
 //
-// Ignored: [Flags()]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum AssemblyRegistrationFlags
 {
     None = 0x00000000,
     SetCodeBase = 0x00000001,
 }
-//[Guid("CCBD682C-73A5-4568-B8B0-C7007E11ABA2")]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "CCBD682C-73A5-4568-B8B0-C7007E11ABA2"*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface IRegistrationServices
 {
     //TODO: generate method RegisterAssembly
@@ -1372,9 +1375,9 @@ public interface IRegistrationServices
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ITypeLibConverter.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [Flags()]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum TypeLibImporterFlags
 {
     None = 0x00000000,
@@ -1392,9 +1395,9 @@ public enum TypeLibImporterFlags
     NoDefineVersionResource = 0x00002000,
     ImportAsArm = 0x00004000,
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum TypeLibExporterFlags
 {
     None = 0x00000000,
@@ -1404,41 +1407,41 @@ public enum TypeLibExporterFlags
     ExportAs32Bit = 0x00000010,
     ExportAs64Bit = 0x00000020,
 }
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum ImporterEventKind
 {
     NOTIF_TYPECONVERTED = 0,
     NOTIF_CONVERTWARNING = 1,
     ERROR_REFTOINVALIDTYPELIB = 2,
 }
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum ExporterEventKind
 {
     NOTIF_TYPECONVERTED = 0,
     NOTIF_CONVERTWARNING = 1,
     ERROR_REFTOINVALIDASSEMBLY = 2,
 }
-//[GuidAttribute("F1C3BF76-C3E4-11d3-88E7-00902754C43A")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "F1C3BF76-C3E4-11d3-88E7-00902754C43A"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ITypeLibImporterNotifySink
 {
     //TODO: generate method ReportEvent
     //TODO: generate method ResolveRef
 }
-//[GuidAttribute("F1C3BF77-C3E4-11d3-88E7-00902754C43A")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "F1C3BF77-C3E4-11d3-88E7-00902754C43A"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ITypeLibExporterNotifySink
 {
     //TODO: generate method ReportEvent
     //TODO: generate method ResolveRef
 }
-//[GuidAttribute("F1C3BF78-C3E4-11d3-88E7-00902754C43A")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "F1C3BF78-C3E4-11d3-88E7-00902754C43A"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ITypeLibConverter
 {
     //TODO: generate method ConvertTypeLibToAssembly
@@ -1446,9 +1449,9 @@ public interface ITypeLibConverter
     //TODO: generate method GetPrimaryInteropAssembly
     //TODO: generate method ConvertTypeLibToAssembly
 }
-//[GuidAttribute("FA1F3615-ACB9-486d-9EAC-1BEF87E36B09")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "FA1F3615-ACB9-486d-9EAC-1BEF87E36B09"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ITypeLibExporterNameProvider
 {
     //TODO: generate method GetNames
@@ -1457,9 +1460,9 @@ public interface ITypeLibExporterNameProvider
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\LayoutKind.cs'
 //
-// Ignored: // Used in the StructLayoutAttribute class
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
-// Ignored: [Serializable]
+// Used in the StructLayoutAttribute class
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum LayoutKind
 {
     Sequential = 0,
@@ -1470,21 +1473,20 @@ public enum LayoutKind
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\Marshal.cs'
 //
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum CustomQueryInterfaceMode
 {
     Ignore = 0,
     Allow = 1,
 }
-////========================================================================
-//    // All public methods, including PInvoke, are protected with linkchecks.  
-//    // Remove the default demands for all PInvoke methods with this global 
-//    // declaration on the class.
-//    //========================================================================
-//
-//    #if FEATURE_CORECLR
-//    [System.Security.SecurityCritical] // auto-generated
-public class Marshal : DotNetObject
+//========================================================================
+// All public methods, including PInvoke, are protected with linkchecks.  
+// Remove the default demands for all PInvoke methods with this global 
+// declaration on the class.
+//========================================================================
+// #if FEATURE_CORECLR
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+public class Marshal : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private enum int LMEM_FIXED/*todo: implement initializer*/ = int();
@@ -1732,8 +1734,8 @@ public class Marshal : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\MarshalDirectiveException.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class MarshalDirectiveException : SystemException
 {
     //TODO: generate constructor
@@ -1745,11 +1747,11 @@ public class MarshalDirectiveException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\NativeBuffer.cs'
 //
-public class NativeBuffer : DotNetObject, IDisposable
+public class NativeBuffer : __DotNet__Object, IDisposable
 {
-    // Ignored: [System.Security.SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static immutable SafeHandle s_emptyHandle;
-    // Ignored: [System.Security.SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private SafeHeapHandle _handle;
     private ulong _capacity;
     //TODO: generate constructor
@@ -1764,7 +1766,7 @@ public class NativeBuffer : DotNetObject, IDisposable
     //TODO: generate method ReleaseHandle
     //TODO: generate method Free
     //TODO: generate method Dispose
-    //[System.Security.SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static final class EmptySafeHandle : SafeHandle
     {
         //TODO: generate constructor
@@ -1776,7 +1778,7 @@ public class NativeBuffer : DotNetObject, IDisposable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\NativeCallableAttribute.cs'
 //
-//[AttributeUsage(AttributeTargets.Method)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method*/)
 public final class NativeCallableAttribute : Attribute
 {
     //TODO: generate constructor
@@ -1787,16 +1789,14 @@ public final class NativeCallableAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\NativeMethods.cs'
 //
-public class NativeMethods : DotNetObject
+public class NativeMethods : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method VariantClear
-    //[
-//        System.Security.SuppressUnmanagedCodeSecurity,
-//        ComImport,
-//        InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-//        Guid("00020400-0000-0000-C000-000000000046")
-//        ]
+    @__DotNet__Attribute!(SuppressUnmanagedCodeSecurityAttribute.stringof)
+    @__DotNet__Attribute!(ComImportAttribute.stringof)
+    @__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+    @__DotNet__Attribute!(GuidAttribute.stringof/*, "00020400-0000-0000-C000-000000000046"*/)
     public static interface IDispatch
     {
         //TODO: generate method GetTypeInfoCount
@@ -1809,18 +1809,18 @@ public class NativeMethods : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ObjectCreationDelegate.cs'
 //
-//// Delegate called when a managed object wishes to instantiate its unmanaged
-//    // portion. The IUnknown of the managed object (the aggregator) is passed as a
-//    // parameter and the delegate should return the IUnknown of the unmanaged object
-//    // (the aggregatee). Both are passed as int's to avoid any marshalling.
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Delegate called when a managed object wishes to instantiate its unmanaged
+// portion. The IUnknown of the managed object (the aggregator) is passed as a
+// parameter and the delegate should return the IUnknown of the unmanaged object
+// (the aggregatee). Both are passed as int's to avoid any marshalling.
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public alias ObjectCreationDelegate = IntPtr delegate(IntPtr aggregator);
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\PInvokeMap.cs'
 //
-// Ignored: // This Enum matchs the CorPinvokeMap defined in CorHdr.h
-// Ignored: [Serializable]
+// This Enum matchs the CorPinvokeMap defined in CorHdr.h
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum PInvokeMap
 {
     NoMangle = 0x0001,
@@ -1839,6 +1839,7 @@ public enum PInvokeMap
     ThrowOnUnmappableCharEnabled = 0x1000,
     ThrowOnUnmappableCharDisabled = 0x2000,
     ThrowOnUnmappableCharUseAsm = 0x3000,
+    // None of the calling convention flags is relevant for fields.
     CallConvMask = 0x0700,
     CallConvWinapi = 0x0100,
     CallConvCdecl = 0x0200,
@@ -1850,7 +1851,7 @@ public enum PInvokeMap
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\RegistrationServices.cs'
 //
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum RegistrationClassContext
 {
     InProcessServer = 0x1,
@@ -1872,7 +1873,7 @@ public enum RegistrationClassContext
     EnableActivateAsActivator = 0x10000,
     FromDefaultContext = 0x20000,
 }
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum RegistrationConnectionType
 {
     SingleUse = 0,
@@ -1881,10 +1882,10 @@ public enum RegistrationConnectionType
     Suspended = 4,
     Surrogate = 8,
 }
-//[Guid("475E398F-8AFA-43a7-A3BE-F4EF8D6787C9")]
-//[ClassInterface(ClassInterfaceType.None)]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class RegistrationServices : DotNetObject, IRegistrationServices
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "475E398F-8AFA-43a7-A3BE-F4EF8D6787C9"*/)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class RegistrationServices : __DotNet__Object, IRegistrationServices
 {
     private enum String strManagedCategoryGuid/*todo: implement initializer*/ = null;
     private enum String strDocStringPrefix/*todo: implement initializer*/ = null;
@@ -1927,8 +1928,8 @@ public class RegistrationServices : DotNetObject, IRegistrationServices
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\RuntimeEnvironment.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class RuntimeEnvironment : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class RuntimeEnvironment : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetModuleFileName
@@ -1947,8 +1948,8 @@ public class RuntimeEnvironment : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\SafeArrayRankMismatchException.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class SafeArrayRankMismatchException : SystemException
 {
     //TODO: generate constructor
@@ -1960,8 +1961,8 @@ public class SafeArrayRankMismatchException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\SafeArrayTypeMismatchException.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class SafeArrayTypeMismatchException : SystemException
 {
     //TODO: generate constructor
@@ -1973,7 +1974,7 @@ public class SafeArrayTypeMismatchException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\SafeBuffer.cs'
 //
-//[System.Security.SecurityCritical]
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public abstract class SafeBuffer : SafeHandleZeroOrMinusOneIsInvalid
 {
     private static immutable UIntPtr Uninitialized/*todo: implement initializer*/ = UIntPtr();
@@ -2001,123 +2002,106 @@ public abstract class SafeBuffer : SafeHandleZeroOrMinusOneIsInvalid
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\SafeHandle.cs'
 //
-///*
-//  Problems addressed by the SafeHandle class:
-//  1) Critical finalization - ensure we never leak OS resources in SQL.  Done
-//     without running truly arbitrary & unbounded amounts of managed code.
-//  2) Reduced graph promotion - during finalization, keep object graph small
-//  3) GC.KeepAlive behavior - P/Invoke vs. finalizer thread race conditions (HandleRef)
-//  4) Elimination of security race conditions w/ explicit calls to Close (HandleProtector)
-//  5) Enforcement of the above via the type system - Don't use IntPtr anymore.
-//  6) Allows the handle lifetime to be controlled externally via a boolean.
-//
-//  Subclasses of SafeHandle will implement the ReleaseHandle abstract method
-//  used to execute any code required to free the handle. This method will be
-//  prepared as a constrained execution region at instance construction time
-//  (along with all the methods in its statically determinable call graph). This
-//  implies that we won't get any inconvenient jit allocation errors or rude
-//  thread abort interrupts while releasing the handle but the user must still
-//  write careful code to avoid injecting fault paths of their own (see the CER
-//  spec for more details). In particular, any sub-methods you call should be
-//  decorated with a reliability contract of the appropriate level. In most cases
-//  this should be:
-//    ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)
-//  Also, any P/Invoke methods should use the SuppressUnmanagedCodeSecurity
-//  attribute to avoid a runtime security check that can also inject failures
-//  (even if the check is guaranteed to pass).
-//
-//  The GC will run ReleaseHandle methods after any normal finalizers have been
-//  run for objects that were collected at the same time. This ensures classes
-//  like FileStream can run a normal finalizer to flush out existing buffered
-//  data. This is key - it means adding this class to a class like FileStream does
-//  not alter our current semantics w.r.t. finalization today.
-//
-//  Subclasses must also implement the IsInvalid property so that the
-//  infrastructure can tell when critical finalization is actually required.
-//  Again, this method is prepared ahead of time. It's envisioned that direct
-//  subclasses of SafeHandle will provide an IsInvalid implementation that suits
-//  the general type of handle they support (null is invalid, -1 is invalid etc.)
-//  and then these classes will be further derived for specific safe handle types.
-//
-//  Most classes using SafeHandle should not provide a finalizer.  If they do
-//  need to do so (ie, for flushing out file buffers, needing to write some data
-//  back into memory, etc), then they can provide a finalizer that will be 
-//  guaranteed to run before the SafeHandle's critical finalizer.  
-//
-//  Note that SafeHandle's ReleaseHandle is called from a constrained execution 
-//  region, and is eagerly prepared before we create your class.  This means you
-//  should only call methods with an appropriate reliability contract from your
-//  ReleaseHandle method.
-//
-//  Subclasses are expected to be written as follows (note that
-//  SuppressUnmanagedCodeSecurity should always be used on any P/Invoke methods
-//  invoked as part of ReleaseHandle, in order to switch the security check from
-//  runtime to jit time and thus remove a possible failure path from the
-//  invocation of the method):
-//
-//  internal sealed MySafeHandleSubclass : SafeHandle {
-//      // Called by P/Invoke when returning SafeHandles
-//      private MySafeHandleSubclass() : base(IntPtr.Zero, true)
-//      {
-//      }
-//
-//      // If & only if you need to support user-supplied handles
-//      internal MySafeHandleSubclass(IntPtr preexistingHandle, bool ownsHandle) : base(IntPtr.Zero, ownsHandle)
-//      {
-//          SetHandle(preexistingHandle);
-//      }
-//
-//      // Do not provide a finalizer - SafeHandle's critical finalizer will
-//      // call ReleaseHandle for you.
-//
-//      public override bool IsInvalid {
-//          get { return handle == IntPtr.Zero; }
-//      }
-//
-//      override protected bool ReleaseHandle()
-//      {
-//          return MyNativeMethods.CloseHandle(handle);
-//      }
-//  }
-//
-//  Then elsewhere to create one of these SafeHandles, define a method
-//  with the following type of signature (CreateFile follows this model).
-//  Note that when returning a SafeHandle like this, P/Invoke will call your
-//  class's default constructor.  Also, you probably want to define CloseHandle
-//  somewhere, and remember to apply a reliability contract to it.
-//
-//  [SuppressUnmanagedCodeSecurity]
-//  internal static class MyNativeMethods {
-//      [DllImport("kernel32")]
-//      private static extern MySafeHandleSubclass CreateHandle(int someState);
-//
-//      [DllImport("kernel32", SetLastError=true), ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
-//      private static extern bool CloseHandle(IntPtr handle);
-//  }
-//
-//  Drawbacks with this implementation:
-//  1) Requires some magic to run the critical finalizer.
-//  2) Requires more memory than just an IntPtr.
-//  3) If you use DangerousAddRef and forget to call DangerousRelease, you can leak a SafeHandle.  Use CER's & don't do that.
-// */
-//
-//
-//// This class should not be serializable - it's a handle.  We require unmanaged
-//// code permission to subclass SafeHandle to prevent people from writing a 
-//// subclass and suddenly being able to run arbitrary native code with the
-//// same signature as CloseHandle.  This is technically a little redundant, but
-//// we'll do this to ensure we've cut off all attack vectors.  Similarly, all
-//// methods have a link demand to ensure untrusted code cannot directly edit
-//// or alter a handle.
-//[System.Security.SecurityCritical]  // auto-generated_required
+// 
+// Problems addressed by the SafeHandle class:
+// 1) Critical finalization - ensure we never leak OS resources in SQL.  Done
+// without running truly arbitrary & unbounded amounts of managed code.
+// 2) Reduced graph promotion - during finalization, keep object graph small
+// 3) GC.KeepAlive behavior - P/Invoke vs. finalizer thread race conditions (HandleRef)
+// 4) Elimination of security race conditions w/ explicit calls to Close (HandleProtector)
+// 5) Enforcement of the above via the type system - Don't use IntPtr anymore.
+// 6) Allows the handle lifetime to be controlled externally via a boolean.
+// Subclasses of SafeHandle will implement the ReleaseHandle abstract method
+// used to execute any code required to free the handle. This method will be
+// prepared as a constrained execution region at instance construction time
+// (along with all the methods in its statically determinable call graph). This
+// implies that we won't get any inconvenient jit allocation errors or rude
+// thread abort interrupts while releasing the handle but the user must still
+// write careful code to avoid injecting fault paths of their own (see the CER
+// spec for more details). In particular, any sub-methods you call should be
+// decorated with a reliability contract of the appropriate level. In most cases
+// this should be:
+// ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)
+// Also, any P/Invoke methods should use the SuppressUnmanagedCodeSecurity
+// attribute to avoid a runtime security check that can also inject failures
+// (even if the check is guaranteed to pass).
+// The GC will run ReleaseHandle methods after any normal finalizers have been
+// run for objects that were collected at the same time. This ensures classes
+// like FileStream can run a normal finalizer to flush out existing buffered
+// data. This is key - it means adding this class to a class like FileStream does
+// not alter our current semantics w.r.t. finalization today.
+// Subclasses must also implement the IsInvalid property so that the
+// infrastructure can tell when critical finalization is actually required.
+// Again, this method is prepared ahead of time. It's envisioned that direct
+// subclasses of SafeHandle will provide an IsInvalid implementation that suits
+// the general type of handle they support (null is invalid, -1 is invalid etc.)
+// and then these classes will be further derived for specific safe handle types.
+// Most classes using SafeHandle should not provide a finalizer.  If they do
+// need to do so (ie, for flushing out file buffers, needing to write some data
+// back into memory, etc), then they can provide a finalizer that will be 
+// guaranteed to run before the SafeHandle's critical finalizer.  
+// Note that SafeHandle's ReleaseHandle is called from a constrained execution 
+// region, and is eagerly prepared before we create your class.  This means you
+// should only call methods with an appropriate reliability contract from your
+// ReleaseHandle method.
+// Subclasses are expected to be written as follows (note that
+// SuppressUnmanagedCodeSecurity should always be used on any P/Invoke methods
+// invoked as part of ReleaseHandle, in order to switch the security check from
+// runtime to jit time and thus remove a possible failure path from the
+// invocation of the method):
+// internal sealed MySafeHandleSubclass : SafeHandle {
+// Called by P/Invoke when returning SafeHandles
+// private MySafeHandleSubclass() : base(IntPtr.Zero, true)
+// {
+// }
+// If & only if you need to support user-supplied handles
+// internal MySafeHandleSubclass(IntPtr preexistingHandle, bool ownsHandle) : base(IntPtr.Zero, ownsHandle)
+// {
+// SetHandle(preexistingHandle);
+// }
+// Do not provide a finalizer - SafeHandle's critical finalizer will
+// call ReleaseHandle for you.
+// public override bool IsInvalid {
+// get { return handle == IntPtr.Zero; }
+// }
+// override protected bool ReleaseHandle()
+// {
+// return MyNativeMethods.CloseHandle(handle);
+// }
+// }
+// Then elsewhere to create one of these SafeHandles, define a method
+// with the following type of signature (CreateFile follows this model).
+// Note that when returning a SafeHandle like this, P/Invoke will call your
+// class's default constructor.  Also, you probably want to define CloseHandle
+// somewhere, and remember to apply a reliability contract to it.
+// [SuppressUnmanagedCodeSecurity]
+// internal static class MyNativeMethods {
+// [DllImport("kernel32")]
+// private static extern MySafeHandleSubclass CreateHandle(int someState);
+// [DllImport("kernel32", SetLastError=true), ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
+// private static extern bool CloseHandle(IntPtr handle);
+// }
+// Drawbacks with this implementation:
+// 1) Requires some magic to run the critical finalizer.
+// 2) Requires more memory than just an IntPtr.
+// 3) If you use DangerousAddRef and forget to call DangerousRelease, you can leak a SafeHandle.  Use CER's & don't do that.
+// 
+// This class should not be serializable - it's a handle.  We require unmanaged
+// code permission to subclass SafeHandle to prevent people from writing a 
+// subclass and suddenly being able to run arbitrary native code with the
+// same signature as CloseHandle.  This is technically a little redundant, but
+// we'll do this to ensure we've cut off all attack vectors.  Similarly, all
+// methods have a link demand to ensure untrusted code cannot directly edit
+// or alter a handle.
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public abstract class SafeHandle : CriticalFinalizerObject, IDisposable
 {
-    // Ignored: // ! Do not add or rearrange fields as the EE depends on this layout.
-    // Ignored: //------------------------------------------------------------------
-    // Ignored: #if DEBUG
-    // Ignored: // FxCop thinks this field is marshaled and so it raises a CA2101 error unless
-    // Ignored: // we specify this.  In practice this is never presented to Win32.
-    // Ignored: [MarshalAs(UnmanagedType.LPWStr)]
+    // ! Do not add or rearrange fields as the EE depends on this layout.
+    //------------------------------------------------------------------
+    // #if DEBUG
+    // FxCop thinks this field is marshaled and so it raises a CA2101 error unless 
+    // we specify this.  In practice this is never presented to Win32.
+    @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.LPWStr*/)
     private String _stackTrace;
     protected IntPtr handle;
     private int _state;
@@ -2144,10 +2128,10 @@ public abstract class SafeHandle : CriticalFinalizerObject, IDisposable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\SafeHeapHandle.cs'
 //
-///// <summary>
-//    /// Handle for heap memory that allows tracking of capacity and reallocating.
-//    /// </summary>
-//    [System.Security.SecurityCritical]
+/// <summary>
+/// Handle for heap memory that allows tracking of capacity and reallocating.
+/// </summary>
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public final class SafeHeapHandle : SafeBuffer
 {
     //TODO: generate constructor
@@ -2160,10 +2144,10 @@ public final class SafeHeapHandle : SafeBuffer
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\SEHException.cs'
 //
-//// Exception for Structured Exception Handler exceptions.
-//    // 
-//    [System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+// Exception for Structured Exception Handler exceptions.
+// 
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class SEHException : ExternalException
 {
     //TODO: generate constructor
@@ -2205,8 +2189,8 @@ public class StringBuffer : NativeBuffer
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIBindCtx.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.BIND_OPTS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.BIND_OPTS instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
 public struct BIND_OPTS
 {
     public int cbStruct;
@@ -2214,10 +2198,10 @@ public struct BIND_OPTS
     public int grfMode;
     public int dwTickCountDeadline;
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IBindCtx instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("0000000e-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IBindCtx instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "0000000e-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMIBindCtx
 {
     //TODO: generate method RegisterObjectBound
@@ -2235,10 +2219,10 @@ public interface UCOMIBindCtx
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIConnectionPoint.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IConnectionPoint instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("B196B286-BAB4-101A-B69C-00AA00341D07")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IConnectionPoint instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "B196B286-BAB4-101A-B69C-00AA00341D07"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMIConnectionPoint
 {
     //TODO: generate method GetConnectionInterface
@@ -2251,10 +2235,10 @@ public interface UCOMIConnectionPoint
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIConnectionPointContainer.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IConnectionPointContainer instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("B196B284-BAB4-101A-B69C-00AA00341D07")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IConnectionPointContainer instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "B196B284-BAB4-101A-B69C-00AA00341D07"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMIConnectionPointContainer
 {
     //TODO: generate method EnumConnectionPoints
@@ -2264,10 +2248,10 @@ public interface UCOMIConnectionPointContainer
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIEnumConnectionPoints.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IEnumConnectionPoints instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("B196B285-BAB4-101A-B69C-00AA00341D07")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IEnumConnectionPoints instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "B196B285-BAB4-101A-B69C-00AA00341D07"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMIEnumConnectionPoints
 {
     //TODO: generate method Next
@@ -2279,18 +2263,18 @@ public interface UCOMIEnumConnectionPoints
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIEnumConnections.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.CONNECTDATA instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.CONNECTDATA instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct CONNECTDATA
 {
-    // Ignored: [MarshalAs(UnmanagedType.Interface)]
-    public DotNetObject pUnk;
+    @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.Interface*/)
+    public __DotNet__Object pUnk;
     public int dwCookie;
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IEnumConnections instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("B196B287-BAB4-101A-B69C-00AA00341D07")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IEnumConnections instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "B196B287-BAB4-101A-B69C-00AA00341D07"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMIEnumConnections
 {
     //TODO: generate method Next
@@ -2302,8 +2286,8 @@ public interface UCOMIEnumConnections
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIEnumerable.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IEnumerable instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("496B0ABE-CDEE-11d3-88E8-00902754C43A")]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IEnumerable instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "496B0ABE-CDEE-11d3-88E8-00902754C43A"*/)
 public interface UCOMIEnumerable
 {
     //TODO: generate method GetEnumerator
@@ -2312,8 +2296,8 @@ public interface UCOMIEnumerable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIEnumerator.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IEnumerator instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("496B0ABF-CDEE-11d3-88E8-00902754C43A")]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IEnumerator instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "496B0ABF-CDEE-11d3-88E8-00902754C43A"*/)
 public interface UCOMIEnumerator
 {
     //TODO: generate method MoveNext
@@ -2324,10 +2308,10 @@ public interface UCOMIEnumerator
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIEnumMoniker.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IEnumMoniker instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("00000102-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IEnumMoniker instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00000102-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMIEnumMoniker
 {
     //TODO: generate method Next
@@ -2339,10 +2323,10 @@ public interface UCOMIEnumMoniker
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIEnumString.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IEnumString instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("00000101-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IEnumString instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00000101-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMIEnumString
 {
     //TODO: generate method Next
@@ -2354,10 +2338,10 @@ public interface UCOMIEnumString
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIEnumVARIANT.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IEnumVARIANT instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("00020404-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IEnumVARIANT instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00020404-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMIEnumVARIANT
 {
     //TODO: generate method Next
@@ -2369,8 +2353,8 @@ public interface UCOMIEnumVARIANT
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIExpando.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IExpando instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("AFBF15E6-C37C-11d2-B88E-00A0C9B471B8")]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IExpando instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "AFBF15E6-C37C-11d2-B88E-00A0C9B471B8"*/)
 public interface UCOMIExpando : UCOMIReflect
 {
     //TODO: generate method AddField
@@ -2382,17 +2366,17 @@ public interface UCOMIExpando : UCOMIReflect
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIMoniker.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.FILETIME instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.FILETIME instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
 public struct FILETIME
 {
     public int dwLowDateTime;
     public int dwHighDateTime;
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IMoniker instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("0000000f-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IMoniker instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "0000000f-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMIMoniker
 {
     //TODO: generate method GetClassID
@@ -2420,10 +2404,10 @@ public interface UCOMIMoniker
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIPersistFile.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IPersistFile instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("0000010b-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IPersistFile instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "0000010b-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMIPersistFile
 {
     //TODO: generate method GetClassID
@@ -2437,8 +2421,8 @@ public interface UCOMIPersistFile
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIReflect.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IReflect instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("AFBF15E5-C37C-11d2-B88E-00A0C9B471B8")]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IReflect instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "AFBF15E5-C37C-11d2-B88E-00A0C9B471B8"*/)
 public interface UCOMIReflect
 {
     //TODO: generate method GetMethod
@@ -2458,10 +2442,10 @@ public interface UCOMIReflect
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIRunningObjectTable.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IRunningObjectTable instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("00000010-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IRunningObjectTable instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00000010-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMIRunningObjectTable
 {
     //TODO: generate method Register
@@ -2476,8 +2460,8 @@ public interface UCOMIRunningObjectTable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMIStream.cs'
 //
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.STATSTG instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.STATSTG instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct STATSTG
 {
     public String pwcsName;
@@ -2492,10 +2476,10 @@ public struct STATSTG
     public int grfStateBits;
     public int reserved;
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IStream instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("0000000c-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IStream instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "0000000c-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMIStream
 {
     //TODO: generate method Read
@@ -2514,8 +2498,8 @@ public interface UCOMIStream
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMITypeComp.cs'
 //
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.DESCKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.DESCKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum DESCKIND
 {
     DESCKIND_NONE = 0,
@@ -2525,21 +2509,21 @@ public enum DESCKIND
     DESCKIND_IMPLICITAPPOBJ = DESCKIND_TYPECOMP + 1,
     DESCKIND_MAX = DESCKIND_IMPLICITAPPOBJ + 1,
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.BINDPTR instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Explicit, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.BINDPTR instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit, CharSet=CharSet.Unicode*/)
 public struct BINDPTR
 {
-    // Ignored: [FieldOffset(0)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
     public IntPtr lpfuncdesc;
-    // Ignored: [FieldOffset(0)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
     public IntPtr lpvardesc;
-    // Ignored: [FieldOffset(0)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
     public IntPtr lptcomp;
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.ITypeComp instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("00020403-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.ITypeComp instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00020403-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMITypeComp
 {
     //TODO: generate method Bind
@@ -2549,8 +2533,8 @@ public interface UCOMITypeComp
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMITypeInfo.cs'
 //
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.TYPEKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.TYPEKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum TYPEKIND
 {
     TKIND_ENUM = 0,
@@ -2563,9 +2547,9 @@ public enum TYPEKIND
     TKIND_UNION = TKIND_ALIAS + 1,
     TKIND_MAX = TKIND_UNION + 1,
 }
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.TYPEFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.TYPEFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum TYPEFLAGS : short
 {
     TYPEFLAG_FAPPOBJECT = 0x1,
@@ -2584,9 +2568,9 @@ public enum TYPEFLAGS : short
     TYPEFLAG_FREVERSEBIND = 0x2000,
     TYPEFLAG_FPROXY = 0x4000,
 }
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.IMPLTYPEFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IMPLTYPEFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum IMPLTYPEFLAGS
 {
     IMPLTYPEFLAG_FDEFAULT = 0x1,
@@ -2594,8 +2578,8 @@ public enum IMPLTYPEFLAGS
     IMPLTYPEFLAG_FRESTRICTED = 0x4,
     IMPLTYPEFLAG_FDEFAULTVTABLE = 0x8,
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.TYPEATTR instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.TYPEATTR instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct TYPEATTR
 {
     public enum int MEMBER_ID_NIL/*todo: implement initializer*/ = int();
@@ -2618,8 +2602,8 @@ public struct TYPEATTR
     public TYPEDESC tdescAlias;
     public IDLDESC idldescType;
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.FUNCDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.FUNCDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
 public struct FUNCDESC
 {
     public int memid;
@@ -2635,9 +2619,9 @@ public struct FUNCDESC
     public ELEMDESC elemdescFunc;
     public short wFuncFlags;
 }
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.IDLFLAG instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IDLFLAG instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum IDLFLAG : short
 {
     IDLFLAG_NONE = /*MemberExpression:Type*/PARAMFLAG.PARAMFLAG_NONE,
@@ -2646,16 +2630,16 @@ public enum IDLFLAG : short
     IDLFLAG_FLCID = /*MemberExpression:Type*/PARAMFLAG.PARAMFLAG_FLCID,
     IDLFLAG_FRETVAL = /*MemberExpression:Type*/PARAMFLAG.PARAMFLAG_FRETVAL,
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.IDLDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IDLDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct IDLDESC
 {
     public int dwReserved;
     public IDLFLAG wIDLFlags;
 }
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.PARAMFLAG instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.PARAMFLAG instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum PARAMFLAG : short
 {
     PARAMFLAG_NONE = 0,
@@ -2667,57 +2651,57 @@ public enum PARAMFLAG : short
     PARAMFLAG_FHASDEFAULT = 0x20,
     PARAMFLAG_FHASCUSTDATA = 0x40,
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.PARAMDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.PARAMDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct PARAMDESC
 {
     public IntPtr lpVarValue;
     public PARAMFLAG wParamFlags;
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.TYPEDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.TYPEDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct TYPEDESC
 {
     public IntPtr lpValue;
     public short vt;
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.ELEMDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.ELEMDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct ELEMDESC
 {
     public TYPEDESC tdesc;
-    //[System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit, CharSet=CharSet.Unicode)]
-    //[ComVisible(false)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit, CharSet=CharSet.Unicode*/)
+    @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
     public static struct DESCUNION
     {
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IDLDESC idldesc;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public PARAMDESC paramdesc;
     }
     public DESCUNION desc;
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.VARDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.VARDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct VARDESC
 {
     public int memid;
     public String lpstrSchema;
-    //[System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit, CharSet=CharSet.Unicode)]
-    //[ComVisible(false)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit, CharSet=CharSet.Unicode*/)
+    @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
     public static struct DESCUNION
     {
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public int oInst;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr lpvarValue;
     }
     public ELEMDESC elemdescVar;
     public short wVarFlags;
     public VarEnum varkind;
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.DISPPARAMS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.DISPPARAMS instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct DISPPARAMS
 {
     public IntPtr rgvarg;
@@ -2725,24 +2709,24 @@ public struct DISPPARAMS
     public int cArgs;
     public int cNamedArgs;
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.EXCEPINFO instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.EXCEPINFO instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct EXCEPINFO
 {
     public short wCode;
     public short wReserved;
-    // Ignored: [MarshalAs(UnmanagedType.BStr)]
+    @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.BStr*/)
     public String bstrSource;
-    // Ignored: [MarshalAs(UnmanagedType.BStr)]
+    @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.BStr*/)
     public String bstrDescription;
-    // Ignored: [MarshalAs(UnmanagedType.BStr)]
+    @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.BStr*/)
     public String bstrHelpFile;
     public int dwHelpContext;
     public IntPtr pvReserved;
     public IntPtr pfnDeferredFillIn;
 }
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.FUNCKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.FUNCKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum FUNCKIND : int
 {
     FUNC_VIRTUAL = 0,
@@ -2751,8 +2735,8 @@ public enum FUNCKIND : int
     FUNC_STATIC = 3,
     FUNC_DISPATCH = 4,
 }
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.INVOKEKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.INVOKEKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum INVOKEKIND : int
 {
     INVOKE_FUNC = 0x1,
@@ -2760,8 +2744,8 @@ public enum INVOKEKIND : int
     INVOKE_PROPERTYPUT = 0x4,
     INVOKE_PROPERTYPUTREF = 0x8,
 }
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.CALLCONV instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.CALLCONV instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum CALLCONV : int
 {
     CC_CDECL = 1,
@@ -2775,9 +2759,9 @@ public enum CALLCONV : int
     CC_MPWPASCAL = 8,
     CC_MAX = 9,
 }
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.FUNCFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.FUNCFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum FUNCFLAGS : short
 {
     FUNCFLAG_FRESTRICTED = 0x1,
@@ -2794,9 +2778,9 @@ public enum FUNCFLAGS : short
     FUNCFLAG_FREPLACEABLE = 0x800,
     FUNCFLAG_FIMMEDIATEBIND = 0x1000,
 }
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.VARFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.VARFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum VARFLAGS : short
 {
     VARFLAG_FREADONLY = 0x1,
@@ -2813,10 +2797,10 @@ public enum VARFLAGS : short
     VARFLAG_FREPLACEABLE = 0x800,
     VARFLAG_FIMMEDIATEBIND = 0x1000,
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.ITypeInfo instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("00020401-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.ITypeInfo instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00020401-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMITypeInfo
 {
     //TODO: generate method GetTypeAttr
@@ -2843,17 +2827,17 @@ public interface UCOMITypeInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UCOMITypeLib.cs'
 //
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.SYSKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.SYSKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum SYSKIND
 {
     SYS_WIN16 = 0,
     SYS_WIN32 = SYS_WIN16 + 1,
     SYS_MAC = SYS_WIN32 + 1,
 }
-// Ignored: [Obsolete("Use System.Runtime.InteropServices.ComTypes.LIBFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.LIBFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum LIBFLAGS : short
 {
     LIBFLAG_FRESTRICTED = 0x1,
@@ -2861,9 +2845,9 @@ public enum LIBFLAGS : short
     LIBFLAG_FHIDDEN = 0x4,
     LIBFLAG_FHASDISKIMAGE = 0x8,
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.TYPELIBATTR instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
-//[Serializable]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.TYPELIBATTR instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public struct TYPELIBATTR
 {
     public Guid guid;
@@ -2873,10 +2857,10 @@ public struct TYPELIBATTR
     public short wMinorVerNum;
     public LIBFLAGS wLibFlags;
 }
-//[Obsolete("Use System.Runtime.InteropServices.ComTypes.ITypeLib instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
-//[Guid("00020402-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.ITypeLib instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00020402-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface UCOMITypeLib
 {
     //TODO: generate method GetTypeInfoCount
@@ -2894,38 +2878,38 @@ public interface UCOMITypeLib
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\UnknownWrapper.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class UnknownWrapper : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class UnknownWrapper : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate property 'WrappedObject'
-    private DotNetObject m_WrappedObject;
+    private __DotNet__Object m_WrappedObject;
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\Variant.cs'
 //
-///// <summary>
-//    /// Variant is the basic COM type for late-binding. It can contain any other COM data type.
-//    /// This type definition precisely matches the unmanaged data layout so that the struct can be passed
-//    /// to and from COM calls.
-//    /// </summary>
-//    [StructLayout(LayoutKind.Explicit)]
-//[System.Security.SecurityCritical]
+/// <summary>
+/// Variant is the basic COM type for late-binding. It can contain any other COM data type.
+/// This type definition precisely matches the unmanaged data layout so that the struct can be passed
+/// to and from COM calls.
+/// </summary>
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit*/)
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 public struct Variant
 {
     //TODO: generate constructor
-    // Ignored: #endif
-    // Ignored: // Most of the data types in the Variant are carried in _typeUnion
-    // Ignored: [FieldOffset(0)]
+    // #endif
+    // Most of the data types in the Variant are carried in _typeUnion
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
     private TypeUnion _typeUnion;
-    // Ignored: // Decimal is the largest data type and it needs to use the space that is normally unused in TypeUnion._wReserved1, etc.
-    // Ignored: // Hence, it is declared to completely overlap with TypeUnion. A Decimal does not use the first two bytes, and so
-    // Ignored: // TypeUnion._vt can still be used to encode the type.
-    // Ignored: [FieldOffset(0)]
+    // Decimal is the largest data type and it needs to use the space that is normally unused in TypeUnion._wReserved1, etc.
+    // Hence, it is declared to completely overlap with TypeUnion. A Decimal does not use the first two bytes, and so
+    // TypeUnion._vt can still be used to encode the type.
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
     private Decimal _decimal;
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     private static struct TypeUnion
     {
         public ushort _vt;
@@ -2934,67 +2918,67 @@ public struct Variant
         public ushort _wReserved3;
         public UnionTypes _unionTypes;
     }
-    //[StructLayout(LayoutKind.Sequential)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     private static struct Record
     {
         private IntPtr _record;
         private IntPtr _recordInfo;
     }
-    //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1049:TypesThatOwnNativeResourcesShouldBeDisposable")]
-    //[StructLayout(LayoutKind.Explicit)]
+    @__DotNet__Attribute!(SuppressMessageAttribute.stringof/*, "Microsoft.Design", "CA1049:TypesThatOwnNativeResourcesShouldBeDisposable"*/)
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit*/)
     private static struct UnionTypes
     {
-        // Ignored: #region Generated Variant union types
-        // Ignored: // *** BEGIN GENERATED CODE ***
-        // Ignored: // generated by function: gen_UnionTypes from: generate_comdispatch.py
-        // Ignored: [FieldOffset(0)]
+        // #region Generated Variant union types
+        // *** BEGIN GENERATED CODE ***
+        // generated by function: gen_UnionTypes from: generate_comdispatch.py
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public byte _i1;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public short _i2;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public int _i4;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public long _i8;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public ubyte _ui1;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public ushort _ui2;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public uint _ui4;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public ulong _ui8;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public int _int;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public uint _uint;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public short _bool;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public int _error;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public float _r4;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public double _r8;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public long _cy;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public double _date;
-        // Ignored: [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources")]
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(SuppressMessageAttribute.stringof/*, "Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources"*/)
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr _bstr;
-        // Ignored: [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources")]
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(SuppressMessageAttribute.stringof/*, "Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources"*/)
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr _unknown;
-        // Ignored: [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources")]
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(SuppressMessageAttribute.stringof/*, "Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources"*/)
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr _dispatch;
-        // Ignored: // *** END GENERATED CODE ***
-        // Ignored: #endregion
-        // Ignored: [FieldOffset(0)]
+        // *** END GENERATED CODE ***
+        // #endregion
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr _pvarVal;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr _byref;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public Record _record;
     }
     //TODO: generate method IsPrimitiveType
@@ -3031,10 +3015,10 @@ public struct Variant
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\VariantWrapper.cs'
 //
-//[Serializable]
-public final class VariantWrapper : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class VariantWrapper : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate property 'WrappedObject'
-    private DotNetObject m_WrappedObject;
+    private __DotNet__Object m_WrappedObject;
 }

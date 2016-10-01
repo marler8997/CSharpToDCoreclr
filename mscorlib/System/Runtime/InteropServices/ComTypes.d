@@ -1,15 +1,26 @@
 module mscorlib.System.Runtime.InteropServices.ComTypes;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    __DotNet__Object,
     String,
     Guid,
-    IntPtr;
+    SerializableAttribute,
+    IntPtr,
+    FlagsAttribute;
+import mscorlib.System.Runtime.InteropServices :
+    StructLayoutAttribute,
+    GuidAttribute,
+    InterfaceTypeAttribute,
+    ComImportAttribute,
+    MarshalAsAttribute,
+    FieldOffsetAttribute;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IBindCtx.cs'
 //
-//[StructLayout(LayoutKind.Sequential)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
 public struct BIND_OPTS
 {
     public int cbStruct;
@@ -17,9 +28,9 @@ public struct BIND_OPTS
     public int grfMode;
     public int dwTickCountDeadline;
 }
-//[Guid("0000000e-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "0000000e-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface IBindCtx
 {
     //TODO: generate method RegisterObjectBound
@@ -37,9 +48,9 @@ public interface IBindCtx
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IConnectionPoint.cs'
 //
-//[Guid("B196B286-BAB4-101A-B69C-00AA00341D07")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "B196B286-BAB4-101A-B69C-00AA00341D07"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface IConnectionPoint
 {
     //TODO: generate method GetConnectionInterface
@@ -52,9 +63,9 @@ public interface IConnectionPoint
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IConnectionPointContainer.cs'
 //
-//[Guid("B196B284-BAB4-101A-B69C-00AA00341D07")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "B196B284-BAB4-101A-B69C-00AA00341D07"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface IConnectionPointContainer
 {
     //TODO: generate method EnumConnectionPoints
@@ -64,9 +75,9 @@ public interface IConnectionPointContainer
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IEnumConnectionPoints.cs'
 //
-//[Guid("B196B285-BAB4-101A-B69C-00AA00341D07")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "B196B285-BAB4-101A-B69C-00AA00341D07"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface IEnumConnectionPoints
 {
     //TODO: generate method Next
@@ -78,16 +89,16 @@ public interface IEnumConnectionPoints
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IEnumConnections.cs'
 //
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct CONNECTDATA
 {
-    // Ignored: [MarshalAs(UnmanagedType.Interface)]
-    public DotNetObject pUnk;
+    @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.Interface*/)
+    public __DotNet__Object pUnk;
     public int dwCookie;
 }
-//[Guid("B196B287-BAB4-101A-B69C-00AA00341D07")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "B196B287-BAB4-101A-B69C-00AA00341D07"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface IEnumConnections
 {
     //TODO: generate method Next
@@ -99,7 +110,7 @@ public interface IEnumConnections
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IEnumerable.cs'
 //
-//[Guid("496B0ABE-CDEE-11d3-88E8-00902754C43A")]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "496B0ABE-CDEE-11d3-88E8-00902754C43A"*/)
 public interface IEnumerable
 {
     //TODO: generate method GetEnumerator
@@ -108,7 +119,7 @@ public interface IEnumerable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IEnumerator.cs'
 //
-//[Guid("496B0ABF-CDEE-11d3-88E8-00902754C43A")]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "496B0ABF-CDEE-11d3-88E8-00902754C43A"*/)
 public interface IEnumerator
 {
     //TODO: generate method MoveNext
@@ -119,9 +130,9 @@ public interface IEnumerator
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IEnumMoniker.cs'
 //
-//[Guid("00000102-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00000102-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface IEnumMoniker
 {
     //TODO: generate method Next
@@ -133,9 +144,9 @@ public interface IEnumMoniker
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IEnumString.cs'
 //
-//[Guid("00000101-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00000101-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface IEnumString
 {
     //TODO: generate method Next
@@ -147,9 +158,9 @@ public interface IEnumString
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IEnumVARIANT.cs'
 //
-//[Guid("00020404-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00020404-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface IEnumVARIANT
 {
     //TODO: generate method Next
@@ -161,7 +172,7 @@ public interface IEnumVARIANT
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IExpando.cs'
 //
-//[Guid("AFBF15E6-C37C-11d2-B88E-00A0C9B471B8")]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "AFBF15E6-C37C-11d2-B88E-00A0C9B471B8"*/)
 public interface IExpando : IReflect
 {
     //TODO: generate method AddField
@@ -173,15 +184,15 @@ public interface IExpando : IReflect
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IMoniker.cs'
 //
-//[StructLayout(LayoutKind.Sequential)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
 public struct FILETIME
 {
     public int dwLowDateTime;
     public int dwHighDateTime;
 }
-//[Guid("0000000f-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "0000000f-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface IMoniker
 {
     //TODO: generate method GetClassID
@@ -209,9 +220,9 @@ public interface IMoniker
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IPersistFile.cs'
 //
-//[Guid("0000010b-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "0000010b-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface IPersistFile
 {
     //TODO: generate method GetClassID
@@ -225,7 +236,7 @@ public interface IPersistFile
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IReflect.cs'
 //
-//[Guid("AFBF15E5-C37C-11d2-B88E-00A0C9B471B8")]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "AFBF15E5-C37C-11d2-B88E-00A0C9B471B8"*/)
 public interface IReflect
 {
     //TODO: generate method GetMethod
@@ -245,9 +256,9 @@ public interface IReflect
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IRunningObjectTable.cs'
 //
-//[Guid("00000010-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00000010-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface IRunningObjectTable
 {
     //TODO: generate method Register
@@ -262,7 +273,7 @@ public interface IRunningObjectTable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IStream.cs'
 //
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct STATSTG
 {
     public String pwcsName;
@@ -277,9 +288,9 @@ public struct STATSTG
     public int grfStateBits;
     public int reserved;
 }
-//[Guid("0000000c-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "0000000c-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface IStream
 {
     //TODO: generate method Read
@@ -298,7 +309,7 @@ public interface IStream
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\ITypeComp.cs'
 //
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum DESCKIND
 {
     DESCKIND_NONE = 0,
@@ -308,19 +319,19 @@ public enum DESCKIND
     DESCKIND_IMPLICITAPPOBJ = DESCKIND_TYPECOMP + 1,
     DESCKIND_MAX = DESCKIND_IMPLICITAPPOBJ + 1,
 }
-//[StructLayout(LayoutKind.Explicit, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit, CharSet=CharSet.Unicode*/)
 public struct BINDPTR
 {
-    // Ignored: [FieldOffset(0)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
     public IntPtr lpfuncdesc;
-    // Ignored: [FieldOffset(0)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
     public IntPtr lpvardesc;
-    // Ignored: [FieldOffset(0)]
+    @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
     public IntPtr lptcomp;
 }
-//[Guid("00020403-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00020403-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface ITypeComp
 {
     //TODO: generate method Bind
@@ -330,7 +341,7 @@ public interface ITypeComp
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\ITypeInfo.cs'
 //
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum TYPEKIND
 {
     TKIND_ENUM = 0,
@@ -343,8 +354,8 @@ public enum TYPEKIND
     TKIND_UNION = TKIND_ALIAS + 1,
     TKIND_MAX = TKIND_UNION + 1,
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum TYPEFLAGS : short
 {
     TYPEFLAG_FAPPOBJECT = 0x1,
@@ -363,8 +374,8 @@ public enum TYPEFLAGS : short
     TYPEFLAG_FREVERSEBIND = 0x2000,
     TYPEFLAG_FPROXY = 0x4000,
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum IMPLTYPEFLAGS
 {
     IMPLTYPEFLAG_FDEFAULT = 0x1,
@@ -372,7 +383,7 @@ public enum IMPLTYPEFLAGS
     IMPLTYPEFLAG_FRESTRICTED = 0x4,
     IMPLTYPEFLAG_FDEFAULTVTABLE = 0x8,
 }
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct TYPEATTR
 {
     public enum int MEMBER_ID_NIL/*todo: implement initializer*/ = int();
@@ -395,7 +406,7 @@ public struct TYPEATTR
     public TYPEDESC tdescAlias;
     public IDLDESC idldescType;
 }
-//[StructLayout(LayoutKind.Sequential)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
 public struct FUNCDESC
 {
     public int memid;
@@ -411,8 +422,8 @@ public struct FUNCDESC
     public ELEMDESC elemdescFunc;
     public short wFuncFlags;
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum IDLFLAG : short
 {
     IDLFLAG_NONE = /*MemberExpression:Type*/PARAMFLAG.PARAMFLAG_NONE,
@@ -421,14 +432,14 @@ public enum IDLFLAG : short
     IDLFLAG_FLCID = /*MemberExpression:Type*/PARAMFLAG.PARAMFLAG_FLCID,
     IDLFLAG_FRETVAL = /*MemberExpression:Type*/PARAMFLAG.PARAMFLAG_FRETVAL,
 }
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct IDLDESC
 {
     public IntPtr dwReserved;
     public IDLFLAG wIDLFlags;
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum PARAMFLAG : short
 {
     PARAMFLAG_NONE = 0,
@@ -440,33 +451,33 @@ public enum PARAMFLAG : short
     PARAMFLAG_FHASDEFAULT = 0x20,
     PARAMFLAG_FHASCUSTDATA = 0x40,
 }
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct PARAMDESC
 {
     public IntPtr lpVarValue;
     public PARAMFLAG wParamFlags;
 }
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct TYPEDESC
 {
     public IntPtr lpValue;
     public short vt;
 }
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct ELEMDESC
 {
     public TYPEDESC tdesc;
-    //[System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit, CharSet=CharSet.Unicode*/)
     public static struct DESCUNION
     {
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IDLDESC idldesc;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public PARAMDESC paramdesc;
     }
     public DESCUNION desc;
 }
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum VARKIND : int
 {
     VAR_PERINSTANCE = 0x0,
@@ -474,17 +485,17 @@ public enum VARKIND : int
     VAR_CONST = 0x2,
     VAR_DISPATCH = 0x3,
 }
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct VARDESC
 {
     public int memid;
     public String lpstrSchema;
-    //[System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit, CharSet=CharSet.Unicode)]
+    @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit, CharSet=CharSet.Unicode*/)
     public static struct DESCUNION
     {
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public int oInst;
-        // Ignored: [FieldOffset(0)]
+        @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
         public IntPtr lpvarValue;
     }
     public DESCUNION desc;
@@ -492,7 +503,7 @@ public struct VARDESC
     public short wVarFlags;
     public VARKIND varkind;
 }
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct DISPPARAMS
 {
     public IntPtr rgvarg;
@@ -500,23 +511,23 @@ public struct DISPPARAMS
     public int cArgs;
     public int cNamedArgs;
 }
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
 public struct EXCEPINFO
 {
     public short wCode;
     public short wReserved;
-    // Ignored: [MarshalAs(UnmanagedType.BStr)]
+    @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.BStr*/)
     public String bstrSource;
-    // Ignored: [MarshalAs(UnmanagedType.BStr)]
+    @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.BStr*/)
     public String bstrDescription;
-    // Ignored: [MarshalAs(UnmanagedType.BStr)]
+    @__DotNet__Attribute!(MarshalAsAttribute.stringof/*, UnmanagedType.BStr*/)
     public String bstrHelpFile;
     public int dwHelpContext;
     public IntPtr pvReserved;
     public IntPtr pfnDeferredFillIn;
     public int scode;
 }
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum FUNCKIND : int
 {
     FUNC_VIRTUAL = 0,
@@ -525,8 +536,8 @@ public enum FUNCKIND : int
     FUNC_STATIC = 3,
     FUNC_DISPATCH = 4,
 }
-// Ignored: [Serializable]
-// Ignored: [Flags]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum INVOKEKIND : int
 {
     INVOKE_FUNC = 0x1,
@@ -534,7 +545,7 @@ public enum INVOKEKIND : int
     INVOKE_PROPERTYPUT = 0x4,
     INVOKE_PROPERTYPUTREF = 0x8,
 }
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum CALLCONV : int
 {
     CC_CDECL = 1,
@@ -548,8 +559,8 @@ public enum CALLCONV : int
     CC_MPWPASCAL = 8,
     CC_MAX = 9,
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum FUNCFLAGS : short
 {
     FUNCFLAG_FRESTRICTED = 0x1,
@@ -566,8 +577,8 @@ public enum FUNCFLAGS : short
     FUNCFLAG_FREPLACEABLE = 0x800,
     FUNCFLAG_FIMMEDIATEBIND = 0x1000,
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum VARFLAGS : short
 {
     VARFLAG_FREADONLY = 0x1,
@@ -584,9 +595,9 @@ public enum VARFLAGS : short
     VARFLAG_FREPLACEABLE = 0x800,
     VARFLAG_FIMMEDIATEBIND = 0x1000,
 }
-//[Guid("00020401-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00020401-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface ITypeInfo
 {
     //TODO: generate method GetTypeAttr
@@ -613,9 +624,9 @@ public interface ITypeInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\ITypeInfo2.cs'
 //
-//[Guid("00020412-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00020412-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface ITypeInfo2 : ITypeInfo
 {
     //TODO: generate method GetTypeAttr
@@ -657,7 +668,7 @@ public interface ITypeInfo2 : ITypeInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\ITypeLib.cs'
 //
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum SYSKIND
 {
     SYS_WIN16 = 0,
@@ -665,8 +676,8 @@ public enum SYSKIND
     SYS_MAC = SYS_WIN32 + 1,
     SYS_WIN64 = SYS_MAC + 1,
 }
-// Ignored: [Serializable]
-// Ignored: [Flags()]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof/**/)
 public enum LIBFLAGS : short
 {
     LIBFLAG_FRESTRICTED = 0x1,
@@ -674,8 +685,8 @@ public enum LIBFLAGS : short
     LIBFLAG_FHIDDEN = 0x4,
     LIBFLAG_FHASDISKIMAGE = 0x8,
 }
-//[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
-//[Serializable]
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, CharSet=CharSet.Unicode*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public struct TYPELIBATTR
 {
     public Guid guid;
@@ -685,9 +696,9 @@ public struct TYPELIBATTR
     public short wMinorVerNum;
     public LIBFLAGS wLibFlags;
 }
-//[Guid("00020402-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00020402-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface ITypeLib
 {
     //TODO: generate method GetTypeInfoCount
@@ -705,9 +716,9 @@ public interface ITypeLib
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\ITypeLib2.cs'
 //
-//[Guid("00020411-0000-0000-C000-000000000046")]
-//[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-//[ComImport]
+@__DotNet__Attribute!(GuidAttribute.stringof/*, "00020411-0000-0000-C000-000000000046"*/)
+@__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
+@__DotNet__Attribute!(ComImportAttribute.stringof)
 public interface ITypeLib2 : ITypeLib
 {
     //TODO: generate method GetTypeInfoCount

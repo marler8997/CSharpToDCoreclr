@@ -1,12 +1,12 @@
 module mscorlib.Microsoft.Reflection;
 
 import mscorlib.System :
-    DotNetObject;
+    __DotNet__Object;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\StubEnvironment.cs'
 //
-private class ReflectionExtensions : DotNetObject
+private class ReflectionExtensions : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method IsEnum

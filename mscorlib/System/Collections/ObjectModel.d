@@ -1,7 +1,16 @@
 module mscorlib.System.Collections.ObjectModel;
 
 import mscorlib.System :
-    DotNetObject;
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    SerializableAttribute,
+    __DotNet__Object,
+    NonSerializedAttribute;
+import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute;
+import mscorlib.System.Diagnostics :
+    DebuggerTypeProxyAttribute,
+    DebuggerDisplayAttribute;
 import mscorlib.System.Collections.Generic :
     IList1,
     IReadOnlyList1,
@@ -22,15 +31,15 @@ import mscorlib.System.Collections :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\ObjectModel\Collection.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(false)]
-//[DebuggerTypeProxy(typeof(Mscorlib_CollectionDebugView<>))]
-//[DebuggerDisplay("Count = {Count}")]
-public class Collection1(T) : DotNetObject, IList1!(T), IList, IReadOnlyList1!(T)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(Mscorlib_CollectionDebugView<>)*/)
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
+public class Collection1(T) : __DotNet__Object, IList1!(T), IList, IReadOnlyList1!(T)
 {
     private IList1!(T) items;
-    // Ignored: [NonSerialized]
-    private DotNetObject _syncRoot;
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
+    private __DotNet__Object _syncRoot;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'Count'
@@ -68,10 +77,10 @@ public class Collection1(T) : DotNetObject, IList1!(T), IList, IReadOnlyList1!(T
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\ObjectModel\KeyedCollection.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(false)]
-//[DebuggerTypeProxy(typeof(Mscorlib_KeyedCollectionDebugView<,>))]
-//[DebuggerDisplay("Count = {Count}")]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(Mscorlib_KeyedCollectionDebugView<,>)*/)
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
 public abstract class KeyedCollection2(TKey,TItem) : Collection1!(TItem)
 {
     private enum int defaultThreshold/*todo: implement initializer*/ = int();
@@ -103,15 +112,15 @@ public abstract class KeyedCollection2(TKey,TItem) : Collection1!(TItem)
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\ObjectModel\ReadOnlyCollection.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(false)]
-//[DebuggerTypeProxy(typeof(Mscorlib_CollectionDebugView<>))]
-//[DebuggerDisplay("Count = {Count}")]
-public class ReadOnlyCollection1(T) : DotNetObject, IList1!(T), IList, IReadOnlyList1!(T)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(Mscorlib_CollectionDebugView<>)*/)
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
+public class ReadOnlyCollection1(T) : __DotNet__Object, IList1!(T), IList, IReadOnlyList1!(T)
 {
     private IList1!(T) list;
-    // Ignored: [NonSerialized]
-    private DotNetObject _syncRoot;
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
+    private __DotNet__Object _syncRoot;
     //TODO: generate constructor
     //TODO: generate property 'Count'
     //TODO: generate indexer
@@ -147,17 +156,17 @@ public class ReadOnlyCollection1(T) : DotNetObject, IList1!(T), IList, IReadOnly
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\ObjectModel\ReadOnlyDictionary.cs'
 //
-//[Serializable]
-//[DebuggerTypeProxy(typeof(Mscorlib_DictionaryDebugView<,>))]
-//[DebuggerDisplay("Count = {Count}")]
-public class ReadOnlyDictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey,TValue), IDictionary, IReadOnlyDictionary2!(TKey,TValue)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(Mscorlib_DictionaryDebugView<,>)*/)
+@__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
+public class ReadOnlyDictionary2(TKey,TValue) : __DotNet__Object, IDictionary2!(TKey,TValue), IDictionary, IReadOnlyDictionary2!(TKey,TValue)
 {
     private immutable IDictionary2!(TKey,TValue) m_dictionary;
-    // Ignored: [NonSerialized]
-    private DotNetObject m_syncRoot;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
+    private __DotNet__Object m_syncRoot;
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private KeyCollection m_keys;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private ValueCollection m_values;
     //TODO: generate constructor
     //TODO: generate property 'Dictionary'
@@ -194,7 +203,7 @@ public class ReadOnlyDictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey
     //TODO: generate method CopyTo
     //TODO: generate property 'IsSynchronized'
     //TODO: generate property 'SyncRoot'
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     private static struct DictionaryEnumerator
     {
         private immutable IDictionary2!(TKey,TValue) m_dictionary;
@@ -207,23 +216,22 @@ public class ReadOnlyDictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey
         //TODO: generate method MoveNext
         //TODO: generate method Reset
     }
-    private static class __Boxed__DictionaryEnumerator : DotNetObject, IDictionaryEnumerator
+    private static class __Boxed__DictionaryEnumerator : __DotNet__Object, IDictionaryEnumerator
     {
         DictionaryEnumerator value;
         alias value this;
     }
     //TODO: generate property 'Keys'
     //TODO: generate property 'Values'
-    //#endregion IReadOnlyDictionary members
-//
-//        [DebuggerTypeProxy(typeof(Mscorlib_CollectionDebugView<>))]
-    //[DebuggerDisplay("Count = {Count}")]
-    //[Serializable]
-    public static final class KeyCollection : DotNetObject, ICollection1!(TKey), ICollection, IReadOnlyCollection1!(TKey)
+    // #endregion IReadOnlyDictionary members
+    @__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(Mscorlib_CollectionDebugView<>)*/)
+    @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
+    public static final class KeyCollection : __DotNet__Object, ICollection1!(TKey), ICollection, IReadOnlyCollection1!(TKey)
     {
         private immutable ICollection1!(TKey) m_collection;
-        // Ignored: [NonSerialized]
-        private DotNetObject m_syncRoot;
+        @__DotNet__Attribute!(NonSerializedAttribute.stringof)
+        private __DotNet__Object m_syncRoot;
         //TODO: generate constructor
         //TODO: generate method Add
         //TODO: generate method Clear
@@ -238,14 +246,14 @@ public class ReadOnlyDictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey
         //TODO: generate property 'IsSynchronized'
         //TODO: generate property 'SyncRoot'
     }
-    //[DebuggerTypeProxy(typeof(Mscorlib_CollectionDebugView<>))]
-    //[DebuggerDisplay("Count = {Count}")]
-    //[Serializable]
-    public static final class ValueCollection : DotNetObject, ICollection1!(TValue), ICollection, IReadOnlyCollection1!(TValue)
+    @__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(Mscorlib_CollectionDebugView<>)*/)
+    @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
+    public static final class ValueCollection : __DotNet__Object, ICollection1!(TValue), ICollection, IReadOnlyCollection1!(TValue)
     {
         private immutable ICollection1!(TValue) m_collection;
-        // Ignored: [NonSerialized]
-        private DotNetObject m_syncRoot;
+        @__DotNet__Attribute!(NonSerializedAttribute.stringof)
+        private __DotNet__Object m_syncRoot;
         //TODO: generate constructor
         //TODO: generate method Add
         //TODO: generate method Clear
@@ -261,7 +269,7 @@ public class ReadOnlyDictionary2(TKey,TValue) : DotNetObject, IDictionary2!(TKey
         //TODO: generate property 'SyncRoot'
     }
 }
-public class ReadOnlyDictionaryHelpers : DotNetObject
+public class ReadOnlyDictionaryHelpers : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method CopyToNonGenericICollectionHelper

@@ -1,14 +1,24 @@
 module mscorlib.System.Security;
 
 import mscorlib.System :
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    AttributeUsageAttribute,
     Attribute,
-    DotNetObject,
+    ObsoleteAttribute,
+    __DotNet__Object,
     String,
+    SerializableAttribute,
+    NonSerializedAttribute,
     SystemException,
+    FlagsAttribute,
     Void;
+import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute;
 import mscorlib.System.Security.Permissions :
     SecurityPermission,
-    HostProtectionResource;
+    HostProtectionResource,
+    PermissionSetAttribute;
 import mscorlib.Microsoft.Win32.SafeHandles :
     SafeAccessTokenHandle;
 import mscorlib.System.Collections :
@@ -18,6 +28,8 @@ import mscorlib.System.Collections :
     IEqualityComparer,
     Comparer,
     Hashtable;
+import mscorlib.System.Runtime.Serialization :
+    OptionalFieldAttribute;
 import mscorlib.System.Security.Util :
     TokenBasedSet,
     TokenBasedSetEnumerator;
@@ -27,36 +39,36 @@ import mscorlib.System.Globalization :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Attributes.cs'
 //
-//// DynamicSecurityMethodAttribute:
-//    //  Indicates that calling the target method requires space for a security
-//    //  object to be allocated on the callers stack. This attribute is only ever
-//    //  set on certain security methods defined within mscorlib.
-//    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = false )]
+// DynamicSecurityMethodAttribute:
+//  Indicates that calling the target method requires space for a security
+//  object to be allocated on the callers stack. This attribute is only ever
+//  set on certain security methods defined within mscorlib.
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, AllowMultiple = true, Inherited = false*/)
 public final class DynamicSecurityMethodAttribute : Attribute
 {
 }
-//// SuppressUnmanagedCodeSecurityAttribute:
-//    //  Indicates that the target P/Invoke method(s) should skip the per-call
-//    //  security checked for unmanaged code permission.
-//    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Delegate, AllowMultiple = true, Inherited = false )]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// SuppressUnmanagedCodeSecurityAttribute:
+//  Indicates that the target P/Invoke method(s) should skip the per-call
+//  security checked for unmanaged code permission.
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Delegate, AllowMultiple = true, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class SuppressUnmanagedCodeSecurityAttribute : Attribute
 {
 }
-//// UnverifiableCodeAttribute:
-//    //  Indicates that the target module contains unverifiable code.
-//    [AttributeUsage(AttributeTargets.Module, AllowMultiple = true, Inherited = false )]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// UnverifiableCodeAttribute:
+//  Indicates that the target module contains unverifiable code.
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Module, AllowMultiple = true, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class UnverifiableCodeAttribute : Attribute
 {
 }
-//// AllowPartiallyTrustedCallersAttribute:
-//    //  Indicates that the Assembly is secure and can be used by untrusted
-//    //  and semitrusted clients
-//    //  For v.1, this is valid only on Assemblies, but could be expanded to 
-//    //  include Module, Method, class
-//    [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false )]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// AllowPartiallyTrustedCallersAttribute:
+//  Indicates that the Assembly is secure and can be used by untrusted
+//  and semitrusted clients
+//  For v.1, this is valid only on Assemblies, but could be expanded to 
+//  include Module, Method, class
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, AllowMultiple = false, Inherited = false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AllowPartiallyTrustedCallersAttribute : Attribute
 {
     private PartialTrustVisibilityLevel _visibilityLevel;
@@ -68,87 +80,77 @@ public enum PartialTrustVisibilityLevel
     VisibleToAllHosts = 0,
     NotVisibleByDefault = 1,
 }
-//#if !FEATURE_CORECLR
-//    [Obsolete("SecurityCriticalScope is only used for .NET 2.0 transparency compatibility.")]
-//    public enum SecurityCriticalScope
-//    {
-//        Explicit = 0,
-//        Everything = 0x1
-//    }
-//#endif // FEATURE_CORECLR
-//
-//    // SecurityCriticalAttribute
-//    //  Indicates that the decorated code or assembly performs security critical operations (e.g. Assert, "unsafe", LinkDemand, etc.)
-//    //  The attribute can be placed on most targets, except on arguments/return values.
-//    [AttributeUsage(AttributeTargets.Assembly | 
-//                    AttributeTargets.Class |
-//                    AttributeTargets.Struct |
-//                    AttributeTargets.Enum |
-//                    AttributeTargets.Constructor |
-//                    AttributeTargets.Method |
-//                    AttributeTargets.Field |
-//                    AttributeTargets.Interface  |
-//                    AttributeTargets.Delegate,
-//        AllowMultiple = false,
-//        Inherited = false )]
+// #if !FEATURE_CORECLR
+// [Obsolete("SecurityCriticalScope is only used for .NET 2.0 transparency compatibility.")]
+// public enum SecurityCriticalScope
+// {
+// Explicit = 0,
+// Everything = 0x1
+// }
+// #endif // FEATURE_CORECLR
+// SecurityCriticalAttribute
+//  Indicates that the decorated code or assembly performs security critical operations (e.g. Assert, "unsafe", LinkDemand, etc.)
+//  The attribute can be placed on most targets, except on arguments/return values.
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly | 
+                    AttributeTargets.Class |
+                    AttributeTargets.Struct |
+                    AttributeTargets.Enum |
+                    AttributeTargets.Constructor |
+                    AttributeTargets.Method |
+                    AttributeTargets.Field |
+                    AttributeTargets.Interface  |
+                    AttributeTargets.Delegate, AllowMultiple = false, Inherited = false*/)
 public final class SecurityCriticalAttribute : Attribute
 {
     //TODO: generate constructor
 }
-//// SecurityTreatAsSafeAttribute:
-//    // Indicates that the code may contain violations to the security critical rules (e.g. transitions from
-//    //      critical to non-public transparent, transparent to non-public critical, etc.), has been audited for
-//    //      security concerns and is considered security clean.
-//    // At assembly-scope, all rule checks will be suppressed within the assembly and for calls made against the assembly.
-//    // At type-scope, all rule checks will be suppressed for members within the type and for calls made against the type.
-//    // At member level (e.g. field and method) the code will be treated as public - i.e. no rule checks for the members.
-//
-//    [AttributeUsage(AttributeTargets.Assembly |
-//                    AttributeTargets.Class |
-//                    AttributeTargets.Struct |
-//                    AttributeTargets.Enum |
-//                    AttributeTargets.Constructor |
-//                    AttributeTargets.Method |
-//                    AttributeTargets.Field |
-//                    AttributeTargets.Interface |
-//                    AttributeTargets.Delegate,
-//        AllowMultiple = false,
-//        Inherited = false )]
-//[Obsolete("SecurityTreatAsSafe is only used for .NET 2.0 transparency compatibility.  Please use the SecuritySafeCriticalAttribute instead.")]
+// SecurityTreatAsSafeAttribute:
+// Indicates that the code may contain violations to the security critical rules (e.g. transitions from
+//      critical to non-public transparent, transparent to non-public critical, etc.), has been audited for
+//      security concerns and is considered security clean.
+// At assembly-scope, all rule checks will be suppressed within the assembly and for calls made against the assembly.
+// At type-scope, all rule checks will be suppressed for members within the type and for calls made against the type.
+// At member level (e.g. field and method) the code will be treated as public - i.e. no rule checks for the members.
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly |
+                    AttributeTargets.Class |
+                    AttributeTargets.Struct |
+                    AttributeTargets.Enum |
+                    AttributeTargets.Constructor |
+                    AttributeTargets.Method |
+                    AttributeTargets.Field |
+                    AttributeTargets.Interface |
+                    AttributeTargets.Delegate, AllowMultiple = false, Inherited = false*/)
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "SecurityTreatAsSafe is only used for .NET 2.0 transparency compatibility.  Please use the SecuritySafeCriticalAttribute instead."*/)
 public final class SecurityTreatAsSafeAttribute : Attribute
 {
     //TODO: generate constructor
 }
-//// SecuritySafeCriticalAttribute: 
-//    // Indicates that the code may contain violations to the security critical rules (e.g. transitions from
-//    //      critical to non-public transparent, transparent to non-public critical, etc.), has been audited for
-//    //      security concerns and is considered security clean. Also indicates that the code is considered SecurityCritical.
-//    // The effect of this attribute is as if the code was marked [SecurityCritical][SecurityTreatAsSafe].
-//    // At assembly-scope, all rule checks will be suppressed within the assembly and for calls made against the assembly.
-//    // At type-scope, all rule checks will be suppressed for members within the type and for calls made against the type.
-//    // At member level (e.g. field and method) the code will be treated as public - i.e. no rule checks for the members.
-//
-//    [AttributeUsage(AttributeTargets.Class |
-//                    AttributeTargets.Struct |
-//                    AttributeTargets.Enum |
-//                    AttributeTargets.Constructor |
-//                    AttributeTargets.Method |
-//                    AttributeTargets.Field |
-//                    AttributeTargets.Interface |
-//                    AttributeTargets.Delegate,
-//        AllowMultiple = false,
-//        Inherited = false )]
+// SecuritySafeCriticalAttribute: 
+// Indicates that the code may contain violations to the security critical rules (e.g. transitions from
+//      critical to non-public transparent, transparent to non-public critical, etc.), has been audited for
+//      security concerns and is considered security clean. Also indicates that the code is considered SecurityCritical.
+// The effect of this attribute is as if the code was marked [SecurityCritical][SecurityTreatAsSafe].
+// At assembly-scope, all rule checks will be suppressed within the assembly and for calls made against the assembly.
+// At type-scope, all rule checks will be suppressed for members within the type and for calls made against the type.
+// At member level (e.g. field and method) the code will be treated as public - i.e. no rule checks for the members.
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class |
+                    AttributeTargets.Struct |
+                    AttributeTargets.Enum |
+                    AttributeTargets.Constructor |
+                    AttributeTargets.Method |
+                    AttributeTargets.Field |
+                    AttributeTargets.Interface |
+                    AttributeTargets.Delegate, AllowMultiple = false, Inherited = false*/)
 public final class SecuritySafeCriticalAttribute : Attribute
 {
     //TODO: generate constructor
 }
-//// SecurityTransparentAttribute:
-//    // Indicates the assembly contains only transparent code.
-//    // Security critical actions will be restricted or converted into less critical actions. For example,
-//    // Assert will be restricted, SuppressUnmanagedCode, LinkDemand, unsafe, and unverifiable code will be converted
-//    // into Full-Demands.
-//
-//    [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false )]
+// SecurityTransparentAttribute:
+// Indicates the assembly contains only transparent code.
+// Security critical actions will be restricted or converted into less critical actions. For example,
+// Assert will be restricted, SuppressUnmanagedCode, LinkDemand, unsafe, and unverifiable code will be converted
+// into Full-Demands.
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Assembly, AllowMultiple = false, Inherited = false*/)
 public final class SecurityTransparentAttribute : Attribute
 {
     //TODO: generate constructor
@@ -157,7 +159,7 @@ public final class SecurityTransparentAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\BuiltInPermissionSets.cs'
 //
-public class BuiltInPermissionSets : DotNetObject
+public class BuiltInPermissionSets : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static immutable String s_everythingXml/*todo: implement initializer*/ = null;
@@ -188,12 +190,12 @@ public class BuiltInPermissionSets : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\CodeAccessPermission.cs'
 //
-//[Serializable]
-//#if !FEATURE_CORECLR
-//    [SecurityPermissionAttribute( SecurityAction.InheritanceDemand, ControlEvidence = true, ControlPolicy = true )]
-//#endif
-//    [System.Runtime.InteropServices.ComVisible(true)]
-public abstract class CodeAccessPermission : DotNetObject, IPermission, ISecurityEncodable, IStackWalk
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+// #if !FEATURE_CORECLR
+// [SecurityPermissionAttribute( SecurityAction.InheritanceDemand, ControlEvidence = true, ControlPolicy = true )]
+// #endif
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public abstract class CodeAccessPermission : __DotNet__Object, IPermission, ISecurityEncodable, IStackWalk
 {
     //TODO: generate method RevertAssert
     //TODO: generate method RevertDeny
@@ -221,11 +223,12 @@ public abstract class CodeAccessPermission : DotNetObject, IPermission, ISecurit
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\CodeAccessSecurityEngine.cs'
 //
-// Ignored: // Used in DemandInternal, to remember the result of previous demands
-// Ignored: // KEEP IN SYNC WITH DEFINITIONS IN SECURITYPOLICY.H
-// Ignored: [Serializable]
+// Used in DemandInternal, to remember the result of previous demands
+// KEEP IN SYNC WITH DEFINITIONS IN SECURITYPOLICY.H
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum PermissionType
 {
+    // special flags
     SecurityUnmngdCodeAccess = 0,
     SecuritySkipVerification = 1,
     ReflectionTypeInfo = 2,
@@ -235,16 +238,18 @@ public enum PermissionType
     ReflectionRestrictedMemberAccess = 6,
     FullTrust = 7,
     SecurityBindingRedirects = 8,
+    // special permissions
     UIPermission = 9,
     EnvironmentPermission = 10,
     FileDialogPermission = 11,
     FileIOPermission = 12,
     ReflectionPermission = 13,
     SecurityPermission = 14,
+    // additional special flags
     SecurityControlEvidence = 16,
     SecurityControlPrincipal = 17,
 }
-public class CodeAccessSecurityEngine : DotNetObject
+public class CodeAccessSecurityEngine : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public static SecurityPermission AssertPermission;
@@ -271,15 +276,14 @@ public class CodeAccessSecurityEngine : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\FrameSecurityDescriptor.cs'
 //
-//#endif    
-//     //FrameSecurityDescriptor.cs
-//    //
-//    // Internal use only.
-//    // DO NOT DOCUMENT
-//    //
+// #endif    
+//FrameSecurityDescriptor.cs
 //
-//    [Serializable]
-public class FrameSecurityDescriptor : DotNetObject
+// Internal use only.
+// DO NOT DOCUMENT
+//
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class FrameSecurityDescriptor : __DotNet__Object
 {
     private PermissionSet m_assertions;
     private PermissionSet m_denials;
@@ -287,15 +291,15 @@ public class FrameSecurityDescriptor : DotNetObject
     private PermissionSet m_DeclarativeAssertions;
     private PermissionSet m_DeclarativeDenials;
     private PermissionSet m_DeclarativeRestrictions;
-    // Ignored: #if !FEATURE_PAL
-    // Ignored: // if this frame contains a call to any WindowsIdentity.Impersonate(),
-    // Ignored: // we save the previous SafeTokenHandles here (in the next two fields)
-    // Ignored: // Used during exceptionstackwalks to revert impersonation before calling filters
-    // Ignored: [System.Security.SecurityCritical] // auto-generated
-    // Ignored: [NonSerialized]
+    // #if !FEATURE_PAL
+    // if this frame contains a call to any WindowsIdentity.Impersonate(), 
+    // we save the previous SafeTokenHandles here (in the next two fields)
+    // Used during exceptionstackwalks to revert impersonation before calling filters        
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private SafeAccessTokenHandle m_callerToken;
-    // Ignored: [System.Security.SecurityCritical] // auto-generated
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private SafeAccessTokenHandle m_impToken;
     private bool m_AssertFT;
     private bool m_assertAllPossible;
@@ -335,8 +339,8 @@ public class FrameSecurityDescriptor : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\HostProtectionException.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class HostProtectionException : SystemException
 {
     private HostProtectionResource m_protected;
@@ -359,27 +363,26 @@ public class HostProtectionException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\HostSecurityManager.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum HostSecurityManagerOptions
 {
     None = 0x0000,
     HostAppDomainEvidence = 0x0001,
-    // Ignored: [Obsolete("AppDomain policy levels are obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
     HostPolicyLevel = 0x0002,
     HostAssemblyEvidence = 0x0004,
     HostDetermineApplicationTrust = 0x0008,
     HostResolvePolicy = 0x0010,
     AllFlags = 0x001F,
 }
-//[System.Security.SecurityCritical]  // auto-generated_required
-//[Serializable]
-//#if !FEATURE_CORECLR
-//    [SecurityPermissionAttribute(SecurityAction.InheritanceDemand, Flags=SecurityPermissionFlag.Infrastructure)]
-//#endif
-//    [System.Runtime.InteropServices.ComVisible(true)]
-public class HostSecurityManager : DotNetObject
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+// #if !FEATURE_CORECLR
+// [SecurityPermissionAttribute(SecurityAction.InheritanceDemand, Flags=SecurityPermissionFlag.Infrastructure)]
+// #endif
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class HostSecurityManager : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate property 'Flags'
@@ -394,7 +397,7 @@ public class HostSecurityManager : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\IEvidenceFactory.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface IEvidenceFactory
 {
 }
@@ -402,7 +405,7 @@ public interface IEvidenceFactory
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\IPermission.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface IPermission : ISecurityEncodable
 {
     //TODO: generate method Copy
@@ -415,7 +418,7 @@ public interface IPermission : ISecurityEncodable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\ISecurityEncodable.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISecurityEncodable
 {
 }
@@ -423,7 +426,7 @@ public interface ISecurityEncodable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\ISecurityPolicyEncodable.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISecurityPolicyEncodable
 {
 }
@@ -431,7 +434,7 @@ public interface ISecurityPolicyEncodable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\IStackWalk.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface IStackWalk
 {
     //TODO: generate method Assert
@@ -443,14 +446,11 @@ public interface IStackWalk
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\NamedPermissionSet.cs'
 //
-//#else // FEATURE_CAS_POLICY
-//    
-//    using System.Threading;
-//
-//#endif // FEATURE_CAS_POLICY
-//    
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// #else // FEATURE_CAS_POLICY
+// using System.Threading;
+// #endif // FEATURE_CAS_POLICY
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class NamedPermissionSet : PermissionSet
 {
     //TODO: generate method GetBuiltInSet
@@ -464,8 +464,8 @@ public final class NamedPermissionSet : PermissionSet
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\PermissionListSet.cs'
 //
-//[Serializable]
-public final class PermissionListSet : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class PermissionListSet : __DotNet__Object
 {
     private PermissionSetTriple m_firstPermSetTriple;
     private ArrayList m_permSetTriples;
@@ -493,52 +493,53 @@ public final class PermissionListSet : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\PermissionSet.cs'
 //
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum SpecialPermissionSetFlag
 {
+    // These also appear in clr/src/vm/permset.h
     Regular = 0,
     NoSet = 1,
     EmptySet = 2,
     SkipVerification = 3,
 }
-//#if FEATURE_SERIALIZATION
-//    [Serializable]
-//#endif
-//#if !FEATURE_CORECLR
-//    [StrongNameIdentityPermissionAttribute(SecurityAction.InheritanceDemand, Name = "mscorlib", PublicKey = "0x" + AssemblyRef.EcmaPublicKeyFull)]
-//#endif
-//    [System.Runtime.InteropServices.ComVisible(true)]
-public class PermissionSet : DotNetObject, ISecurityEncodable, ICollection, IStackWalk
+// #if FEATURE_SERIALIZATION
+// [Serializable]
+// #endif
+// #if !FEATURE_CORECLR
+// [StrongNameIdentityPermissionAttribute(SecurityAction.InheritanceDemand, Name = "mscorlib", PublicKey = "0x" + AssemblyRef.EcmaPublicKeyFull)]
+// #endif
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class PermissionSet : __DotNet__Object, ISecurityEncodable, ICollection, IStackWalk
 {
     public static immutable bool debug_;
     //TODO: generate method DEBUG_WRITE
     //TODO: generate method DEBUG_COND_WRITE
     //TODO: generate method DEBUG_PRINTSTACK
     private bool m_Unrestricted;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_allPermissionsDecoded/*todo: implement initializer*/ = bool();
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     public TokenBasedSet m_permSet/*todo: implement initializer*/ = null;
-    // Ignored: // This is a workaround so that SQL can operate under default policy without actually
-    // Ignored: // granting permissions in assemblies that they disallow.
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    // This is a workaround so that SQL can operate under default policy without actually
+    // granting permissions in assemblies that they disallow.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_ignoreTypeLoadFailures/*todo: implement initializer*/ = bool();
-    // Ignored: // This field will be populated only for non X-AD scenarios where we create a XML-ised string of the PermissionSet
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    // This field will be populated only for non X-AD scenarios where we create a XML-ised string of the PermissionSet
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private String m_serializedPermissionSet;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private bool m_CheckedForNonCas;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private bool m_ContainsCas;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private bool m_ContainsNonCas;
-    // Ignored: // only used during non X-AD serialization to save the m_permSet value (which we dont want serialized)
-    // Ignored: [NonSerialized]
+    // only used during non X-AD serialization to save the m_permSet value (which we dont want serialized)
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private TokenBasedSet m_permSetSaved;
     private bool readableonly;
     private TokenBasedSet m_unrestrictedPermSet;
     private TokenBasedSet m_normalPermSet;
-    // Ignored: [OptionalField(VersionAdded = 2)]
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_canUnrestrictedOverride;
     public static immutable PermissionSet s_fullTrust/*todo: implement initializer*/ = null;
     //TODO: generate method OnSerialized
@@ -618,7 +619,7 @@ public class PermissionSet : DotNetObject, ISecurityEncodable, ICollection, ISta
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\PermissionSetEnumerator.cs'
 //
-public class PermissionSetEnumerator : DotNetObject, IEnumerator
+public class PermissionSetEnumerator : __DotNet__Object, IEnumerator
 {
     private PermissionSetEnumeratorInternal enm;
     //TODO: generate property 'Current'
@@ -640,11 +641,11 @@ public struct PermissionSetEnumeratorInternal
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\PermissionSetTriple.cs'
 //
-//[Serializable]
-public final class PermissionSetTriple : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class PermissionSetTriple : __DotNet__Object
 {
-    private static /*todo: volatile*/PermissionToken s_zoneToken;
-    private static /*todo: volatile*/PermissionToken s_urlToken;
+    private static /*todo: volatile*/ PermissionToken s_zoneToken;
+    private static /*todo: volatile*/ PermissionToken s_urlToken;
     public PermissionSet AssertSet;
     public PermissionSet GrantSet;
     public PermissionSet RefusedSet;
@@ -671,7 +672,7 @@ public final class PermissionSetTriple : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\PermissionToken.cs'
 //
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum PermissionTokenType
 {
     Normal = 0x1,
@@ -679,8 +680,8 @@ public enum PermissionTokenType
     DontKnow = 0x4,
     BuiltIn = 0x8,
 }
-//[Serializable]
-public final class PermissionTokenKeyComparer : DotNetObject, IEqualityComparer
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class PermissionTokenKeyComparer : __DotNet__Object, IEqualityComparer
 {
     private Comparer _caseSensitiveComparer;
     private TextInfo _info;
@@ -689,13 +690,13 @@ public final class PermissionTokenKeyComparer : DotNetObject, IEqualityComparer
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
-//[Serializable]
-public final class PermissionToken : DotNetObject, ISecurityEncodable
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public final class PermissionToken : __DotNet__Object, ISecurityEncodable
 {
     private static immutable PermissionTokenFactory s_theTokenFactory;
     private enum String c_mscorlibName/*todo: implement initializer*/ = null;
     public int m_index;
-    public /*todo: volatile*/PermissionTokenType m_type;
+    public /*todo: volatile*/ PermissionTokenType m_type;
     public static TokenBasedSet s_tokenSet/*todo: implement initializer*/ = null;
     //TODO: generate method IsMscorlibClassName
     //TODO: generate constructor
@@ -706,14 +707,14 @@ public final class PermissionToken : DotNetObject, ISecurityEncodable
     //TODO: generate method FindTokenByIndex
     //TODO: generate method IsTokenProperlyAssigned
 }
-public class PermissionTokenFactory : DotNetObject
+public class PermissionTokenFactory : __DotNet__Object
 {
-    private /*todo: volatile*/int m_size;
-    private /*todo: volatile*/int m_index;
-    private /*todo: volatile*/Hashtable m_tokenTable;
-    private /*todo: volatile*/Hashtable m_handleTable;
-    private /*todo: volatile*/Hashtable m_indexTable;
-    private /*todo: volatile*/PermissionToken[] m_builtIn;
+    private /*todo: volatile*/ int m_size;
+    private /*todo: volatile*/ int m_index;
+    private /*todo: volatile*/ Hashtable m_tokenTable;
+    private /*todo: volatile*/ Hashtable m_handleTable;
+    private /*todo: volatile*/ Hashtable m_indexTable;
+    private /*todo: volatile*/ PermissionToken[] m_builtIn;
     private enum String s_unrestrictedPermissionInferfaceName/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate method FindTokenByIndex
@@ -753,9 +754,9 @@ public interface ISecurityElementFactory
     //TODO: generate method GetTag
     //TODO: generate method Attribute
 }
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class SecurityElement : DotNetObject, ISecurityElementFactory
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class SecurityElement : __DotNet__Object, ISecurityElementFactory
 {
     public String m_strTag;
     public String m_strText;
@@ -798,7 +799,7 @@ public final class SecurityElement : DotNetObject, ISecurityElementFactory
     //TODO: generate method Escape
     //TODO: generate method GetUnescapeSequence
     //TODO: generate method Unescape
-    private alias ToStringHelperFunc = void delegate(DotNetObject obj, String str);
+    private alias ToStringHelperFunc = void delegate(__DotNet__Object obj, String str);
     //TODO: generate method ToStringHelperStringBuilder
     //TODO: generate method ToStringHelperStreamWriter
     //TODO: generate method ToString
@@ -813,8 +814,8 @@ public final class SecurityElement : DotNetObject, ISecurityElementFactory
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\SecurityException.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class SecurityException : SystemException
 {
     //TODO: generate method GetResString
@@ -846,8 +847,8 @@ public class SecurityException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\SecurityManager.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum PolicyLevelType
 {
     User = 0,
@@ -855,8 +856,8 @@ public enum PolicyLevelType
     Enterprise = 2,
     AppDomain = 3,
 }
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class SecurityManager : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class SecurityManager : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static int[][] s_BuiltInPermissionIndexMap/*todo: implement initializer*/ = null;
@@ -871,7 +872,7 @@ public class SecurityManager : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\SecurityRuntime.cs'
 //
-public class SecurityRuntime : DotNetObject
+public class SecurityRuntime : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method GetSecurityObjectForFrame
@@ -893,10 +894,10 @@ public class SecurityRuntime : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\SecurityState.cs'
 //
-//[System.Security.SecurityCritical]  // auto-generated_required
-//#pragma warning disable 618
-//    [PermissionSet(SecurityAction.InheritanceDemand, Unrestricted = true)]
-public abstract class SecurityState : DotNetObject
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+// #pragma warning disable 618
+@__DotNet__Attribute!(PermissionSetAttribute.stringof/*, SecurityAction.InheritanceDemand, Unrestricted = true*/)
+public abstract class SecurityState : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method IsStateAvailable
@@ -906,10 +907,10 @@ public abstract class SecurityState : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\SecurityZone.cs'
 //
-// Ignored: // The quick cache code depends on the values in this enumeration. Any change to this enumeration should
-// Ignored: // be reflected in PolicyManager.GenerateQuickCache as well.
-// Ignored: [ComVisible(true)]
-// Ignored: [Serializable]
+// The quick cache code depends on the values in this enumeration. Any change to this enumeration should
+// be reflected in PolicyManager.GenerateQuickCache as well.
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum SecurityZone
 {
     MyComputer = 0,
@@ -923,8 +924,8 @@ public enum SecurityZone
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\VerificationException.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class VerificationException : SystemException
 {
     //TODO: generate constructor

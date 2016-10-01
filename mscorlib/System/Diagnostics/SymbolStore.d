@@ -1,22 +1,27 @@
 module mscorlib.System.Diagnostics.SymbolStore;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    SerializableAttribute,
+    __DotNet__Object,
     Guid;
+import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\ISymBinder.cs'
 //
-//// Interface does not need to be marked with the serializable attribute
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Interface does not need to be marked with the serializable attribute
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISymbolBinder
 {
     //TODO: generate method GetReader
 }
-//// This interface has a revised ISymbolBinder.GetReader() with the proper signature.
-//    // It is not called ISymbolBinder2 because it maps to the IUnmanagedSymbolBinder interfaces, and 
-//    // does not wrap the IUnmanagedSymbolBinder2 interfaces declared in CorSym.idl.
-//[System.Runtime.InteropServices.ComVisible(true)]
+// This interface has a revised ISymbolBinder.GetReader() with the proper signature.
+// It is not called ISymbolBinder2 because it maps to the IUnmanagedSymbolBinder interfaces, and 
+// does not wrap the IUnmanagedSymbolBinder2 interfaces declared in CorSym.idl.
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISymbolBinder1
 {
     //TODO: generate method GetReader
@@ -25,8 +30,8 @@ public interface ISymbolBinder1
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\ISymDocument.cs'
 //
-//// Interface does not need to be marked with the serializable attribute
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Interface does not need to be marked with the serializable attribute
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISymbolDocument
 {
     //TODO: generate property 'URL'
@@ -44,8 +49,8 @@ public interface ISymbolDocument
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\ISymDocumentWriter.cs'
 //
-//// Interface does not need to be marked with the serializable attribute
-//    [System.Runtime.InteropServices.ComVisible(true)]
+// Interface does not need to be marked with the serializable attribute
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISymbolDocumentWriter
 {
     //TODO: generate method SetSource
@@ -55,8 +60,8 @@ public interface ISymbolDocumentWriter
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\ISymMethod.cs'
 //
-//// Interface does not need to be marked with the serializable attribute
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Interface does not need to be marked with the serializable attribute
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISymbolMethod
 {
     //TODO: generate property 'Token'
@@ -74,8 +79,8 @@ public interface ISymbolMethod
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\ISymNamespace.cs'
 //
-//// Interface does not need to be marked with the serializable attribute
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Interface does not need to be marked with the serializable attribute
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISymbolNamespace
 {
     //TODO: generate property 'Name'
@@ -86,7 +91,7 @@ public interface ISymbolNamespace
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\ISymReader.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISymbolReader
 {
     //TODO: generate method GetDocument
@@ -104,7 +109,7 @@ public interface ISymbolReader
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\ISymScope.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISymbolScope
 {
     //TODO: generate property 'Method'
@@ -119,7 +124,7 @@ public interface ISymbolScope
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\ISymVariable.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISymbolVariable
 {
     //TODO: generate property 'Name'
@@ -136,8 +141,8 @@ public interface ISymbolVariable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\ISymWriter.cs'
 //
-//// Interface does not need to be marked with the serializable attribute
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Interface does not need to be marked with the serializable attribute
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISymbolWriter
 {
     //TODO: generate method Initialize
@@ -165,27 +170,37 @@ public interface ISymbolWriter
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\SymAddressKind.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum SymAddressKind
 {
+    // ILOffset: addr1 = IL local var or param index.
     ILOffset = 1,
+    // NativeRVA: addr1 = RVA into module.
     NativeRVA = 2,
+    // NativeRegister: addr1 = register the var is stored in.
     NativeRegister = 3,
+    // NativeRegisterRelative: addr1 = register, addr2 = offset.
     NativeRegisterRelative = 4,
+    // NativeOffset: addr1 = offset from start of parent.
     NativeOffset = 5,
+    // NativeRegisterRegister: addr1 = reg low, addr2 = reg high.
     NativeRegisterRegister = 6,
+    // NativeRegisterStack: addr1 = reg low, addr2 = reg stk, addr3 = offset.
     NativeRegisterStack = 7,
+    // NativeStackRegister: addr1 = reg stk, addr2 = offset, addr3 = reg high.
     NativeStackRegister = 8,
+    // BitField: addr1 = field start, addr = field length.
     BitField = 9,
+    // NativeSectionOffset: addr1 = section, addr = offset
     NativeSectionOffset = 10,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\SymDocumentType.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class SymDocumentType : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class SymDocumentType : __DotNet__Object
 {
     public static immutable Guid Text/*todo: implement initializer*/ = Guid();
 }
@@ -193,8 +208,8 @@ public class SymDocumentType : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\SymLanguageType.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class SymLanguageType : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class SymLanguageType : __DotNet__Object
 {
     public static immutable Guid C/*todo: implement initializer*/ = Guid();
     public static immutable Guid CPlusPlus/*todo: implement initializer*/ = Guid();
@@ -212,8 +227,8 @@ public class SymLanguageType : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\SymLanguageVendor.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class SymLanguageVendor : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class SymLanguageVendor : __DotNet__Object
 {
     public static immutable Guid Microsoft/*todo: implement initializer*/ = Guid();
 }
@@ -221,7 +236,7 @@ public class SymLanguageVendor : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\SymbolStore\Token.cs'
 //
-//[ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct SymbolToken
 {
     public int m_token;

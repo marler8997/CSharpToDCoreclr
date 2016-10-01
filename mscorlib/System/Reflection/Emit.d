@@ -1,9 +1,13 @@
 module mscorlib.System.Reflection.Emit;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Object,
     IntPtr,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    FlagsAttribute,
     String,
+    SerializableAttribute,
     Type,
     Resolver,
     RuntimeMethodHandleInternal,
@@ -14,7 +18,9 @@ import mscorlib.System :
     IRuntimeMethodInfo,
     Guid,
     Void,
-    IEquatable1;
+    IEquatable1,
+    NonSerializedAttribute,
+    ObsoleteAttribute;
 import mscorlib.System.Reflection :
     RuntimeAssembly,
     Assembly,
@@ -27,7 +33,7 @@ import mscorlib.System.Reflection :
     MethodAttributes,
     CallingConventions,
     ICustomAttributeProvider,
-    DotNetTypeInfo,
+    __DotNet__TypeInfo,
     EventAttributes,
     FieldInfo,
     FieldAttributes,
@@ -40,7 +46,12 @@ import mscorlib.System.Reflection :
     PropertyAttributes,
     TypeAttributes,
     GenericParameterAttributes;
+import mscorlib.System.Security.Permissions :
+    HostProtectionAttribute;
 import mscorlib.System.Runtime.InteropServices :
+    ClassInterfaceAttribute,
+    ComDefaultInterfaceAttribute,
+    ComVisibleAttribute,
     _AssemblyBuilder,
     _ConstructorBuilder,
     _CustomAttributeBuilder,
@@ -48,6 +59,7 @@ import mscorlib.System.Runtime.InteropServices :
     _EventBuilder,
     _FieldBuilder,
     _ILGenerator,
+    StructLayoutAttribute,
     SafeHandle,
     _LocalBuilder,
     _MethodBuilder,
@@ -61,7 +73,8 @@ import mscorlib.System.Collections.Generic :
     List1,
     Dictionary2;
 import mscorlib.System.Security :
-    PermissionSet;
+    PermissionSet,
+    SecurityCriticalAttribute;
 import mscorlib.System.Resources :
     IResourceWriter;
 import mscorlib.System.IO :
@@ -75,7 +88,7 @@ import mscorlib.System.Collections :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\AQNBuilder.cs'
 //
-public class TypeNameBuilder : DotNetObject
+public class TypeNameBuilder : __DotNet__Object
 {
     public enum Format
     {
@@ -120,11 +133,12 @@ public class TypeNameBuilder : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\AssemblyBuilder.cs'
 //
-// Ignored: // These must match the definitions in Assembly.hpp
-// Ignored: [Flags]
+// These must match the definitions in Assembly.hpp
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum DynamicAssemblyFlags
 {
     None = 0x00000000,
+    // Security attributes which affect the module security descriptor
     AllCritical = 0x00000001,
     Aptca = 0x00000002,
     Critical = 0x00000004,
@@ -147,12 +161,12 @@ public final class InternalAssemblyBuilder : RuntimeAssembly
     //TODO: generate method GetExportedTypes
     //TODO: generate property 'ImageRuntimeVersion'
 }
-//// AssemblyBuilder class.
-//    // deliberately not [serializable]
-//    [HostProtection(MayLeakOnAbort = true)]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_AssemblyBuilder))]
-//[ComVisible(true)]
+// AssemblyBuilder class.
+// deliberately not [serializable]
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_AssemblyBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AssemblyBuilder : Assembly, _AssemblyBuilder
 {
     //TODO: generate method GetInMemoryAssemblyModule
@@ -174,7 +188,7 @@ public final class AssemblyBuilder : Assembly, _AssemblyBuilder
     //TODO: generate method DefineDynamicAssembly
     //TODO: generate method DefineDynamicAssembly
     //TODO: generate method nCreateDynamicAssembly
-    private static class AssemblyBuilderLock : DotNetObject
+    private static class AssemblyBuilderLock : __DotNet__Object
     {
     }
     //TODO: generate method InternalDefineDynamicAssembly
@@ -259,19 +273,27 @@ public final class AssemblyBuilder : Assembly, _AssemblyBuilder
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\AssemblyBuilderAccess.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
-// Ignored: [Flags]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum AssemblyBuilderAccess
 {
     Run = 1,
+    // #if !FEATURE_CORECLR // these are unsupported
+    // Save = 2,
+    // RunAndSave = Run | Save,
+    // #endif // !FEATURE_CORECLR
+    // #if FEATURE_REFLECTION_ONLY_LOAD
+    // ReflectionOnly = 6, // 4 | Save,
+    // #endif // FEATURE_REFLECTION_ONLY_LOAD
+    // #if FEATURE_COLLECTIBLE_TYPES
     RunAndCollect = 8 | Run,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\AssemblyBuilderData.cs'
 //
-public class AssemblyBuilderData : DotNetObject
+public class AssemblyBuilderData : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method AddModule
@@ -316,7 +338,7 @@ public class AssemblyBuilderData : DotNetObject
     public bool m_hasUnmanagedVersionInfo;
     public bool m_OverrideUnmanagedVersionInfo;
 }
-public class ResWriterData : DotNetObject
+public class ResWriterData : __DotNet__Object
 {
     //TODO: generate constructor
     public IResourceWriter m_resWriter;
@@ -327,7 +349,7 @@ public class ResWriterData : DotNetObject
     public ResWriterData m_nextResWriter;
     public ResourceAttributes m_attribute;
 }
-public class NativeVersionInfo : DotNetObject
+public class NativeVersionInfo : __DotNet__Object
 {
     //TODO: generate constructor
     public String m_strDescription;
@@ -344,10 +366,10 @@ public class NativeVersionInfo : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\ConstructorBuilder.cs'
 //
-//[HostProtection(MayLeakOnAbort = true)]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_ConstructorBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_ConstructorBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ConstructorBuilder : ConstructorInfo, _ConstructorBuilder
 {
     private immutable MethodBuilder m_methodBuilder;
@@ -393,11 +415,11 @@ public final class ConstructorBuilder : ConstructorInfo, _ConstructorBuilder
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\CustomAttributeBuilder.cs'
 //
-//[HostProtection(MayLeakOnAbort = true)]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_CustomAttributeBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class CustomAttributeBuilder : DotNetObject, _CustomAttributeBuilder
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_CustomAttributeBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class CustomAttributeBuilder : __DotNet__Object, _CustomAttributeBuilder
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -412,7 +434,7 @@ public class CustomAttributeBuilder : DotNetObject, _CustomAttributeBuilder
     //TODO: generate method PrepareCreateCustomAttributeToDisk
     //TODO: generate method CreateCustomAttribute
     public ConstructorInfo m_con;
-    public DotNetObject[] m_constructorArgs;
+    public __DotNet__Object[] m_constructorArgs;
     public ubyte[] m_blob;
 }
 
@@ -474,13 +496,13 @@ public class DynamicResolver : Resolver
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate destructor
-    private static class DestroyScout : DotNetObject
+    private static class DestroyScout : __DotNet__Object
     {
         public RuntimeMethodHandleInternal m_methodHandle;
         //TODO: generate destructor
     }
-    // Ignored: // Keep in sync with vm/dynamicmethod.h
-    // Ignored: [Flags]
+    // Keep in sync with vm/dynamicmethod.h
+    @__DotNet__Attribute!(FlagsAttribute.stringof)
     public enum SecurityControlFlags
     {
         Default = 0x0,
@@ -500,11 +522,11 @@ public class DynamicResolver : Resolver
     //TODO: generate method ResolveSignature
     //TODO: generate method GetDynamicMethod
 }
-//#if FEATURE_CORECLR
-//[System.Security.SecurityCritical] // auto-generated
-//#endif
-//    [System.Runtime.InteropServices.ComVisible(true)]
-public class DynamicILInfo : DotNetObject
+// #if FEATURE_CORECLR
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+// #endif
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class DynamicILInfo : __DotNet__Object
 {
     private DynamicMethod m_method;
     private DynamicScope m_scope;
@@ -536,9 +558,9 @@ public class DynamicILInfo : DotNetObject
     //TODO: generate method GetTokenFor
     //TODO: generate method GetTokenFor
 }
-public class DynamicScope : DotNetObject
+public class DynamicScope : __DotNet__Object
 {
-    public List1!(DotNetObject) m_tokens;
+    public List1!(__DotNet__Object) m_tokens;
     //TODO: generate constructor
     //TODO: generate indexer
     //TODO: generate method GetTokenFor
@@ -553,19 +575,19 @@ public class DynamicScope : DotNetObject
     //TODO: generate method GetTokenFor
     //TODO: generate method GetTokenFor
 }
-public final class GenericMethodInfo : DotNetObject
+public final class GenericMethodInfo : __DotNet__Object
 {
     public RuntimeMethodHandle m_methodHandle;
     public RuntimeTypeHandle m_context;
     //TODO: generate constructor
 }
-public final class GenericFieldInfo : DotNetObject
+public final class GenericFieldInfo : __DotNet__Object
 {
     public RuntimeFieldHandle m_fieldHandle;
     public RuntimeTypeHandle m_context;
     //TODO: generate constructor
 }
-public final class VarArgMethod : DotNetObject
+public final class VarArgMethod : __DotNet__Object
 {
     public RuntimeMethodInfo m_method;
     public DynamicMethod m_dynamicMethod;
@@ -577,15 +599,15 @@ public final class VarArgMethod : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\DynamicMethod.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DynamicMethod : MethodInfo
 {
     private RuntimeType[] m_parameterTypes;
     public IRuntimeMethodInfo m_methodHandle;
     private RuntimeType m_returnType;
     private DynamicILGenerator m_ilGenerator;
-    // Ignored: #if FEATURE_CORECLR
-    // Ignored: [System.Security.SecurityCritical] // auto-generated
+    // #if FEATURE_CORECLR
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private DynamicILInfo m_DynamicILInfo;
     private bool m_fInitLocals;
     private RuntimeModule m_module;
@@ -596,8 +618,8 @@ public final class DynamicMethod : MethodInfo
     private bool m_profileAPICheck;
     private RuntimeAssembly m_creatorAssembly;
     public bool m_restrictedSkipVisibility;
-    private static /*todo: volatile*/InternalModuleBuilder s_anonymouslyHostedDynamicMethodsModule;
-    private static immutable DotNetObject s_anonymouslyHostedDynamicMethodsModuleLock/*todo: implement initializer*/ = null;
+    private static /*todo: volatile*/ InternalModuleBuilder s_anonymouslyHostedDynamicMethodsModule;
+    private static immutable __DotNet__Object s_anonymouslyHostedDynamicMethodsModuleLock/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -676,7 +698,7 @@ public final class DynamicMethod : MethodInfo
         //TODO: generate property 'ReturnTypeCustomAttributes'
         //TODO: generate method LoadParameters
         //TODO: generate method GetEmptyCAHolder
-        private static class EmptyCAHolder : DotNetObject, ICustomAttributeProvider
+        private static class EmptyCAHolder : __DotNet__Object, ICustomAttributeProvider
         {
             //TODO: generate constructor
             //TODO: generate method GetCustomAttributes
@@ -689,11 +711,11 @@ public final class DynamicMethod : MethodInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\EnumBuilder.cs'
 //
-//[HostProtection(MayLeakOnAbort = true)]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_EnumBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class EnumBuilder : DotNetTypeInfo, _EnumBuilder
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_EnumBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class EnumBuilder : __DotNet__TypeInfo, _EnumBuilder
 {
     //TODO: generate method IsAssignableFrom
     //TODO: generate method DefineLiteral
@@ -762,15 +784,15 @@ public final class EnumBuilder : DotNetTypeInfo, _EnumBuilder
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\EventBuilder.cs'
 //
-//// 
-//    // A EventBuilder is always associated with a TypeBuilder.  The TypeBuilder.DefineEvent
-//    // method will return a new EventBuilder to a client.
-//    // 
-//    [HostProtection(MayLeakOnAbort = true)]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_EventBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class EventBuilder : DotNetObject, _EventBuilder
+// 
+// A EventBuilder is always associated with a TypeBuilder.  The TypeBuilder.DefineEvent
+// method will return a new EventBuilder to a client.
+// 
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_EventBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class EventBuilder : __DotNet__Object, _EventBuilder
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -792,8 +814,8 @@ public final class EventBuilder : DotNetObject, _EventBuilder
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\EventToken.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct EventToken
 {
     public static immutable EventToken Empty/*todo: implement initializer*/ = EventToken();
@@ -810,10 +832,10 @@ public struct EventToken
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\FieldBuilder.cs'
 //
-//[HostProtection(MayLeakOnAbort = true)]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_FieldBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_FieldBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class FieldBuilder : FieldInfo, _FieldBuilder
 {
     private int m_fieldTok;
@@ -849,17 +871,17 @@ public final class FieldBuilder : FieldInfo, _FieldBuilder
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\FieldToken.cs'
 //
-//// The FieldToken class is an opaque representation of the Token returned
-//    // by the Metadata to represent the field.  FieldTokens are generated by 
-//    // Module.GetFieldToken().  There are no meaningful accessors on this class,
-//    // but it can be passed to ILGenerator which understands it's internals.
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// The FieldToken class is an opaque representation of the Token returned
+// by the Metadata to represent the field.  FieldTokens are generated by 
+// Module.GetFieldToken().  There are no meaningful accessors on this class,
+// but it can be passed to ILGenerator which understands it's internals.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct FieldToken
 {
     public static immutable FieldToken Empty/*todo: implement initializer*/ = FieldToken();
     public int m_fieldTok;
-    public DotNetObject m_class;
+    public __DotNet__Object m_class;
     //TODO: generate constructor
     //TODO: generate property 'Token'
     //TODO: generate method GetHashCode
@@ -872,8 +894,8 @@ public struct FieldToken
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\FlowControl.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum FlowControl
 {
     Branch = 0,
@@ -882,6 +904,11 @@ public enum FlowControl
     Cond_Branch = 3,
     Meta = 4,
     Next = 5,
+    // #if !FEATURE_CORECLR
+    /// <internalonly/>
+    // [Obsolete("This API has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
+    // Phi          = 6,
+    // #endif
     Return = 7,
     Throw = 8,
 }
@@ -889,8 +916,8 @@ public enum FlowControl
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\GenericTypeParameterBuilder.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class GenericTypeParameterBuilder : DotNetTypeInfo
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class GenericTypeParameterBuilder : __DotNet__TypeInfo
 {
     //TODO: generate method IsAssignableFrom
     public TypeBuilder m_type;
@@ -969,10 +996,10 @@ public final class GenericTypeParameterBuilder : DotNetTypeInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\ILGenerator.cs'
 //
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_ILGenerator))]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class ILGenerator : DotNetObject, _ILGenerator
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_ILGenerator)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class ILGenerator : __DotNet__Object, _ILGenerator
 {
     private enum int defaultSize/*todo: implement initializer*/ = int();
     private enum int DefaultFixupArraySize/*todo: implement initializer*/ = int();
@@ -1069,7 +1096,7 @@ public struct __FixupData
     public int m_fixupPos;
     public int m_fixupInstSize;
 }
-public final class __ExceptionInfo : DotNetObject
+public final class __ExceptionInfo : __DotNet__Object
 {
     public enum int None/*todo: implement initializer*/ = int();
     public enum int Filter/*todo: implement initializer*/ = int();
@@ -1117,21 +1144,21 @@ public final class __ExceptionInfo : DotNetObject
     //TODO: generate method IsInner
     //TODO: generate method GetCurrentState
 }
-// Ignored: /***************************
-// Ignored: *
-// Ignored: * Scope Tree is a class that track the scope structure within a method body
-// Ignored: * It keeps track two parallel array. m_ScopeAction keeps track the action. It can be
-// Ignored: * OpenScope or CloseScope. m_iOffset records the offset where the action
-// Ignored: * takes place.
-// Ignored: *
-// Ignored: ***************************/
-// Ignored: [Serializable]
+// **************************
+// *
+// * Scope Tree is a class that track the scope structure within a method body
+// * It keeps track two parallel array. m_ScopeAction keeps track the action. It can be
+// * OpenScope or CloseScope. m_iOffset records the offset where the action
+// * takes place.
+// *
+// **************************
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 private enum ScopeAction
 {
     Open = 0x0,
     Close = 0x1,
 }
-public final class ScopeTree : DotNetObject
+public final class ScopeTree : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method GetCurrentActiveScopeIndex
@@ -1147,7 +1174,7 @@ public final class ScopeTree : DotNetObject
     public enum int InitialSize/*todo: implement initializer*/ = int();
     public LocalSymInfo[] m_localSymInfos;
 }
-public final class LineNumberInfo : DotNetObject
+public final class LineNumberInfo : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method AddLineNumberInfo
@@ -1159,7 +1186,7 @@ public final class LineNumberInfo : DotNetObject
     private enum int InitialSize/*todo: implement initializer*/ = int();
     private int m_iLastFound;
 }
-public final class REDocument : DotNetObject
+public final class REDocument : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method AddLineNumberInfo
@@ -1178,60 +1205,60 @@ public final class REDocument : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\ISymWrapperCore.cs'
 //
-private class SymWrapperCore : DotNetObject
+private class SymWrapperCore : __DotNet__Object
 {
     //TODO: generate constructor
-    private static class SymDocumentWriter : DotNetObject, ISymbolDocumentWriter
+    private static class SymDocumentWriter : __DotNet__Object, ISymbolDocumentWriter
     {
         //TODO: generate constructor
         //TODO: generate method GetUnmanaged
         //TODO: generate method SetSource
         //TODO: generate method SetCheckSum
-        //[System.Security.SecurityCritical]
-        private alias DSetCheckSum = int delegate(ISymUnmanagedDocumentWriter* pThis, Guid algorithmId, uint checkSumSize, /*[In]*/ubyte[] checkSum);
-        ////------------------------------------------------------------------------------
-//            // This layout must match the unmanaged ISymUnmanagedDocumentWriter* COM vtable
-//            // exactly. If a member is declared as an IntPtr rather than a delegate, it means
-//            // we don't call that particular member.
-//            //------------------------------------------------------------------------------
-//            [System.Security.SecurityCritical]
-        //[StructLayout(LayoutKind.Sequential)]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+        private alias DSetCheckSum = int delegate(ISymUnmanagedDocumentWriter* pThis, Guid algorithmId, uint checkSumSize, /*todo: param attributes*/ubyte[] checkSum);
+        //------------------------------------------------------------------------------
+        // This layout must match the unmanaged ISymUnmanagedDocumentWriter* COM vtable
+        // exactly. If a member is declared as an IntPtr rather than a delegate, it means
+        // we don't call that particular member.
+        //------------------------------------------------------------------------------
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+        @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
         private static struct ISymUnmanagedDocumentWriterVTable
         {
             public IntPtr QueryInterface;
             public IntPtr AddRef;
             public IntPtr Release;
             public IntPtr SetSource;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical]
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DSetCheckSum SetCheckSum;
         }
-        ////------------------------------------------------------------------------------
-//            // This layout must match the (start) of the unmanaged ISymUnmanagedDocumentWriter
-//            // COM object.
-//            //------------------------------------------------------------------------------
-//            [System.Security.SecurityCritical]
-        //[StructLayout(LayoutKind.Sequential)]
+        //------------------------------------------------------------------------------
+        // This layout must match the (start) of the unmanaged ISymUnmanagedDocumentWriter
+        // COM object.
+        //------------------------------------------------------------------------------
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+        @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
         private static struct ISymUnmanagedDocumentWriter
         {
             public IntPtr m_unmanagedVTable;
         }
-        // Ignored: //------------------------------------------------------------------------------
-        // Ignored: // Stores underlying ISymUnmanagedDocumentWriter* pointer (wrapped in a safehandle.)
-        // Ignored: //------------------------------------------------------------------------------
-        // Ignored: #if FEATURE_CORECLR
-        // Ignored: [System.Security.SecurityCritical] // auto-generated
+        //------------------------------------------------------------------------------
+        // Stores underlying ISymUnmanagedDocumentWriter* pointer (wrapped in a safehandle.)
+        //------------------------------------------------------------------------------
+        // #if FEATURE_CORECLR
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private PunkSafeHandle m_pDocumentWriterSafeHandle;
-        // Ignored: [SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private ISymUnmanagedDocumentWriter* m_pDocWriter;
-        // Ignored: //------------------------------------------------------------------------------
-        // Ignored: // Stores the "managed vtable" (actually a structure full of delegates that
-        // Ignored: // P/Invoke to the corresponding unmanaged COM methods.)
-        // Ignored: //------------------------------------------------------------------------------
-        // Ignored: [SecurityCritical]
+        //------------------------------------------------------------------------------
+        // Stores the "managed vtable" (actually a structure full of delegates that
+        // P/Invoke to the corresponding unmanaged COM methods.)
+        //------------------------------------------------------------------------------
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private ISymUnmanagedDocumentWriterVTable m_vtable;
     }
-    public static class SymWriter : DotNetObject, ISymbolWriter
+    public static class SymWriter : __DotNet__Object, ISymbolWriter
     {
         //TODO: generate method CreateSymWriter
         //TODO: generate constructor
@@ -1256,134 +1283,134 @@ private class SymWrapperCore : DotNetObject
         //TODO: generate method SetMethodSourceRange
         //TODO: generate method SetUnderlyingWriter
         //TODO: generate method InternalSetUnderlyingWriter
-        ////------------------------------------------------------------------------------
-//            // Define delegates for the unmanaged COM methods we invoke.
-//            //------------------------------------------------------------------------------
-//            [System.Security.SecurityCritical]
-        private alias DInitialize = int delegate(ISymUnmanagedWriter* pthis, IntPtr emitter, /*[MarshalAs(UnmanagedType.LPWStr)]*/String filename, IntPtr pIStream, /*[MarshalAs(UnmanagedType.Bool)]*/bool fFullBuild);
-        //[System.Security.SecurityCritical]
-        private alias DDefineDocument = int delegate(ISymUnmanagedWriter* pthis, /*[MarshalAs(UnmanagedType.LPWStr)]*/String url, /*[In]*/ref Guid language, /*[In]*/ref Guid languageVender, /*[In]*/ref Guid documentType, /*[Out]*/out PunkSafeHandle ppsymUnmanagedDocumentWriter);
-        //[System.Security.SecurityCritical]
+        //------------------------------------------------------------------------------
+        // Define delegates for the unmanaged COM methods we invoke.
+        //------------------------------------------------------------------------------
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+        private alias DInitialize = int delegate(ISymUnmanagedWriter* pthis, IntPtr emitter, /*todo: param attributes*/String filename, IntPtr pIStream, /*todo: param attributes*/bool fFullBuild);
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+        private alias DDefineDocument = int delegate(ISymUnmanagedWriter* pthis, /*todo: param attributes*/String url, /*todo: param attributes*/ref Guid language, /*todo: param attributes*/ref Guid languageVender, /*todo: param attributes*/ref Guid documentType, /*todo: param attributes*/out PunkSafeHandle ppsymUnmanagedDocumentWriter);
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private alias DSetUserEntryPoint = int delegate(ISymUnmanagedWriter* pthis, int entryMethod);
-        //[System.Security.SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private alias DOpenMethod = int delegate(ISymUnmanagedWriter* pthis, int entryMethod);
-        //[System.Security.SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private alias DCloseMethod = int delegate(ISymUnmanagedWriter* pthis);
-        //[System.Security.SecurityCritical]
-        private alias DDefineSequencePoints = int delegate(ISymUnmanagedWriter* pthis, PunkSafeHandle document, int spCount, /*[In]*/int[] offsets, /*[In]*/int[] lines, /*[In]*/int[] columns, /*[In]*/int[] endLines, /*[In]*/int[] endColumns);
-        //[System.Security.SecurityCritical]
-        private alias DOpenScope = int delegate(ISymUnmanagedWriter* pthis, int startOffset, /*[Out]*/out int pretval);
-        //[System.Security.SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+        private alias DDefineSequencePoints = int delegate(ISymUnmanagedWriter* pthis, PunkSafeHandle document, int spCount, /*todo: param attributes*/int[] offsets, /*todo: param attributes*/int[] lines, /*todo: param attributes*/int[] columns, /*todo: param attributes*/int[] endLines, /*todo: param attributes*/int[] endColumns);
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+        private alias DOpenScope = int delegate(ISymUnmanagedWriter* pthis, int startOffset, /*todo: param attributes*/out int pretval);
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private alias DCloseScope = int delegate(ISymUnmanagedWriter* pthis, int endOffset);
-        //[System.Security.SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private alias DSetScopeRange = int delegate(ISymUnmanagedWriter* pthis, int scopeID, int startOffset, int endOffset);
-        //[System.Security.SecurityCritical]
-        private alias DDefineLocalVariable = int delegate(ISymUnmanagedWriter* pthis, /*[MarshalAs(UnmanagedType.LPWStr)]*/String name, int attributes, int cSig, /*[In]*/ubyte[] signature, int addrKind, int addr1, int addr2, int addr3, int startOffset, int endOffset);
-        //[System.Security.SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+        private alias DDefineLocalVariable = int delegate(ISymUnmanagedWriter* pthis, /*todo: param attributes*/String name, int attributes, int cSig, /*todo: param attributes*/ubyte[] signature, int addrKind, int addr1, int addr2, int addr3, int startOffset, int endOffset);
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private alias DClose = int delegate(ISymUnmanagedWriter* pthis);
-        //[System.Security.SecurityCritical]
-        private alias DSetSymAttribute = int delegate(ISymUnmanagedWriter* pthis, int parent, /*[MarshalAs(UnmanagedType.LPWStr)]*/String name, int cData, /*[In]*/ubyte[] data);
-        //[System.Security.SecurityCritical]
-        private alias DOpenNamespace = int delegate(ISymUnmanagedWriter* pthis, /*[MarshalAs(UnmanagedType.LPWStr)]*/String name);
-        //[System.Security.SecurityCritical]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+        private alias DSetSymAttribute = int delegate(ISymUnmanagedWriter* pthis, int parent, /*todo: param attributes*/String name, int cData, /*todo: param attributes*/ubyte[] data);
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+        private alias DOpenNamespace = int delegate(ISymUnmanagedWriter* pthis, /*todo: param attributes*/String name);
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private alias DCloseNamespace = int delegate(ISymUnmanagedWriter* pthis);
-        //[System.Security.SecurityCritical]
-        private alias DUsingNamespace = int delegate(ISymUnmanagedWriter* pthis, /*[MarshalAs(UnmanagedType.LPWStr)]*/String name);
-        ////------------------------------------------------------------------------------
-//            // This layout must match the unmanaged ISymUnmanagedWriter* COM vtable
-//            // exactly. If a member is declared as an IntPtr rather than a delegate, it means
-//            // we don't call that particular member.
-//            //------------------------------------------------------------------------------
-//            [StructLayout(LayoutKind.Sequential)]
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+        private alias DUsingNamespace = int delegate(ISymUnmanagedWriter* pthis, /*todo: param attributes*/String name);
+        //------------------------------------------------------------------------------
+        // This layout must match the unmanaged ISymUnmanagedWriter* COM vtable
+        // exactly. If a member is declared as an IntPtr rather than a delegate, it means
+        // we don't call that particular member.
+        //------------------------------------------------------------------------------
+        @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
         private static struct ISymUnmanagedWriterVTable
         {
             public IntPtr QueryInterface;
             public IntPtr AddRef;
             public IntPtr Release;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DDefineDocument DefineDocument;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DSetUserEntryPoint SetUserEntryPoint;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DOpenMethod OpenMethod;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DCloseMethod CloseMethod;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DOpenScope OpenScope;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DCloseScope CloseScope;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DSetScopeRange SetScopeRange;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DDefineLocalVariable DefineLocalVariable;
             public IntPtr DefineParameter;
             public IntPtr DefineField;
             public IntPtr DefineGlobalVariable;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DClose Close;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DSetSymAttribute SetSymAttribute;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DOpenNamespace OpenNamespace;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DCloseNamespace CloseNamespace;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DUsingNamespace UsingNamespace;
             public IntPtr SetMethodSourceRange;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DInitialize Initialize;
             public IntPtr GetDebugInfo;
-            // Ignored: #if FEATURE_CORECLR
-            // Ignored: [System.Security.SecurityCritical] // auto-generated
+            // #if FEATURE_CORECLR
+            @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
             public DDefineSequencePoints DefineSequencePoints;
         }
-        ////------------------------------------------------------------------------------
-//            // This layout must match the (start) of the unmanaged ISymUnmanagedWriter
-//            // COM object.
-//            //------------------------------------------------------------------------------
-//            [StructLayout(LayoutKind.Sequential)]
+        //------------------------------------------------------------------------------
+        // This layout must match the (start) of the unmanaged ISymUnmanagedWriter
+        // COM object.
+        //------------------------------------------------------------------------------
+        @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
         private static struct ISymUnmanagedWriter
         {
             public IntPtr m_unmanagedVTable;
         }
-        // Ignored: //------------------------------------------------------------------------------
-        // Ignored: // Stores native ISymUnmanagedWriter* pointer.
-        // Ignored: //
-        // Ignored: // As with the real ISymWrapper.dll, ISymWrapper performs *no* Release (or AddRef) on this pointer.
-        // Ignored: // Managing lifetime is up to the caller (coreclr.dll).
-        // Ignored: //------------------------------------------------------------------------------
-        // Ignored: [SecurityCritical]
+        //------------------------------------------------------------------------------
+        // Stores native ISymUnmanagedWriter* pointer.
+        //
+        // As with the real ISymWrapper.dll, ISymWrapper performs *no* Release (or AddRef) on this pointer.
+        // Managing lifetime is up to the caller (coreclr.dll).
+        //------------------------------------------------------------------------------
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private ISymUnmanagedWriter* m_pWriter;
         private ISymUnmanagedWriterVTable m_vtable;
     }
 }
-////--------------------------------------------------------------------------------------
-//    // SafeHandle for RAW MTA IUnknown's.
-//    //
-//    // ! Because the Release occurs in the finalizer thread, this safehandle really takes
-//    // ! an ostrich approach to apartment issues. We only tolerate this here because we're emulating
-//    // ! the desktop CLR's use of ISymWrapper which also pays lip service to COM apartment rules.
-//    // !
-//    // ! However, think twice about pulling this safehandle out for other uses.
-//    //
-//    // Had to make this a non-nested class since FCall's don't like to bind to nested classes.
-//    //--------------------------------------------------------------------------------------
-//    #if FEATURE_CORECLR
-//    [System.Security.SecurityCritical] // auto-generated
+//--------------------------------------------------------------------------------------
+// SafeHandle for RAW MTA IUnknown's.
+//
+// ! Because the Release occurs in the finalizer thread, this safehandle really takes
+// ! an ostrich approach to apartment issues. We only tolerate this here because we're emulating
+// ! the desktop CLR's use of ISymWrapper which also pays lip service to COM apartment rules.
+// !
+// ! However, think twice about pulling this safehandle out for other uses.
+//
+// Had to make this a non-nested class since FCall's don't like to bind to nested classes.
+//--------------------------------------------------------------------------------------
+// #if FEATURE_CORECLR
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 private final class PunkSafeHandle : SafeHandle
 {
     //TODO: generate constructor
@@ -1398,14 +1425,14 @@ private final class PunkSafeHandle : SafeHandle
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\Label.cs'
 //
-//// The Label class is an opaque representation of a label used by the 
-//    // ILGenerator class.  The token is used to mark where labels occur in the IL
-//    // stream and then the necessary offsets are put back in the code when the ILGenerator 
-//    // is passed to the MethodWriter.
-//    // Labels are created by using ILGenerator.CreateLabel and their position is set
-//    // by using ILGenerator.MarkLabel.
-//    [Serializable]
-//[ComVisible(true)]
+// The Label class is an opaque representation of a label used by the 
+// ILGenerator class.  The token is used to mark where labels occur in the IL
+// stream and then the necessary offsets are put back in the code when the ILGenerator 
+// is passed to the MethodWriter.
+// Labels are created by using ILGenerator.CreateLabel and their position is set
+// by using ILGenerator.MarkLabel.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct Label
 {
     public int m_label;
@@ -1421,9 +1448,9 @@ public struct Label
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\LocalBuilder.cs'
 //
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_LocalBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_LocalBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class LocalBuilder : LocalVariableInfo, _LocalBuilder
 {
     private int m_localIndex;
@@ -1445,10 +1472,10 @@ public final class LocalBuilder : LocalVariableInfo, _LocalBuilder
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\MethodBuilder.cs'
 //
-//[HostProtection(MayLeakOnAbort = true)]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_MethodBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_MethodBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class MethodBuilder : MethodInfo, _MethodBuilder
 {
     public String m_strName;
@@ -1565,7 +1592,7 @@ public final class MethodBuilder : MethodInfo, _MethodBuilder
     public bool m_canBeRuntimeImpl/*todo: implement initializer*/ = bool();
     public bool m_isDllImport/*todo: implement initializer*/ = bool();
 }
-public class LocalSymInfo : DotNetObject
+public class LocalSymInfo : __DotNet__Object
 {
     public String[] m_strName;
     public ubyte[][] m_ubSignature;
@@ -1583,11 +1610,11 @@ public class LocalSymInfo : DotNetObject
     //TODO: generate method AddUsingNamespace
     //TODO: generate method EmitLocalSymInfo
 }
-///// <summary>
-//    /// Describes exception handler in a method body.
-//    /// </summary>
-//    [StructLayout(LayoutKind.Sequential)]
-//[ComVisible(false)]
+/// <summary>
+/// Describes exception handler in a method body.
+/// </summary>
+@__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
 public struct ExceptionHandler
 {
     public immutable int m_exceptionClass;
@@ -1613,7 +1640,7 @@ public struct ExceptionHandler
     //TODO: generate operator
     //TODO: generate operator
 }
-public class __Boxed__ExceptionHandler : DotNetObject, IEquatable1!(ExceptionHandler)
+public class __Boxed__ExceptionHandler : __DotNet__Object, IEquatable1!(ExceptionHandler)
 {
     ExceptionHandler value;
     alias value this;
@@ -1659,8 +1686,8 @@ public final class MethodBuilderInstantiation : MethodInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\MethodToken.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct MethodToken
 {
     public static immutable MethodToken Empty/*todo: implement initializer*/ = MethodToken();
@@ -1683,11 +1710,11 @@ public final class InternalModuleBuilder : RuntimeModule
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
-//// deliberately not [serializable]
-//    [HostProtection(MayLeakOnAbort = true)]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_ModuleBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// deliberately not [serializable]
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_ModuleBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class ModuleBuilder : Module, _ModuleBuilder
 {
     //TODO: generate method nCreateISymWriterForDynamicModule
@@ -1835,11 +1862,11 @@ public class ModuleBuilder : Module, _ModuleBuilder
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\ModuleBuilderData.cs'
 //
-//// This is a package private class. This class hold all of the managed
-//    // data member for ModuleBuilder. Note that what ever data members added to
-//    // this class cannot be accessed from the EE.
-//    [Serializable]
-public class ModuleBuilderData : DotNetObject
+// This is a package private class. This class hold all of the managed
+// data member for ModuleBuilder. Note that what ever data members added to
+// this class cannot be accessed from the EE.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class ModuleBuilderData : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method InitNames
@@ -1849,13 +1876,13 @@ public class ModuleBuilderData : DotNetObject
     public String m_strFileName;
     public bool m_fGlobalBeenCreated;
     public bool m_fHasGlobal;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public TypeBuilder m_globalTypeBuilder;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public ModuleBuilder m_module;
     private int m_tkFile;
     public bool m_isSaved;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     public ResWriterData m_embeddedRes;
     public enum String MULTI_BYTE_VALUE_CLASS/*todo: implement initializer*/ = null;
     public String m_strResourceFileName;
@@ -1865,7 +1892,7 @@ public class ModuleBuilderData : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\Opcode.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct OpCode
 {
     public enum int OperandTypeMask/*todo: implement initializer*/ = int();
@@ -1892,7 +1919,7 @@ public struct OpCode
     //TODO: generate property 'StackBehaviourPush'
     //TODO: generate property 'Size'
     //TODO: generate property 'Value'
-    private static /*todo: volatile*/String[] g_nameCache;
+    private static /*todo: volatile*/ String[] g_nameCache;
     //TODO: generate property 'Name'
     //TODO: generate method Equals
     //TODO: generate method Equals
@@ -2134,8 +2161,8 @@ public enum OpCodeValues
     Refanytype = 0xfe1d,
     Readonly_ = 0xfe1e,
 }
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class OpCodes : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class OpCodes : __DotNet__Object
 {
     //TODO: generate constructor
     public static immutable OpCode Nop/*todo: implement initializer*/ = OpCode();
@@ -2253,7 +2280,7 @@ public class OpCodes : DotNetObject
     public static immutable OpCode Ldobj/*todo: implement initializer*/ = OpCode();
     public static immutable OpCode Ldstr/*todo: implement initializer*/ = OpCode();
     public static immutable OpCode Newobj/*todo: implement initializer*/ = OpCode();
-    // Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+    @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
     public static immutable OpCode Castclass/*todo: implement initializer*/ = OpCode();
     public static immutable OpCode Isinst/*todo: implement initializer*/ = OpCode();
     public static immutable OpCode Conv_R_Un/*todo: implement initializer*/ = OpCode();
@@ -2371,10 +2398,15 @@ public class OpCodes : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\OpcodeType.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum OpCodeType
 {
+    // #if !FEATURE_CORECLR
+    /// <internalonly/>
+    // [Obsolete("This API has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
+    // Annotation  = 0,
+    // #endif
     Macro = 1,
     Nternal = 2,
     Objmodel = 3,
@@ -2385,8 +2417,8 @@ public enum OpCodeType
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\OperandType.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum OperandType
 {
     InlineBrTarget = 0,
@@ -2395,6 +2427,11 @@ public enum OperandType
     InlineI8 = 3,
     InlineMethod = 4,
     InlineNone = 5,
+    // #if !FEATURE_CORECLR
+    /// <internalonly/>
+    // [Obsolete("This API has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
+    // InlinePhi       = 6,
+    // #endif
     InlineR = 7,
     InlineSig = 9,
     InlineString = 10,
@@ -2411,10 +2448,10 @@ public enum OperandType
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\ParameterBuilder.cs'
 //
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_ParameterBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class ParameterBuilder : DotNetObject, _ParameterBuilder
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_ParameterBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class ParameterBuilder : __DotNet__Object, _ParameterBuilder
 {
     //TODO: generate method SetMarshal
     //TODO: generate method SetConstant
@@ -2440,10 +2477,10 @@ public class ParameterBuilder : DotNetObject, _ParameterBuilder
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\ParameterToken.cs'
 //
-//// The ParameterToken class is an opaque representation of the Token returned
-//    // by the Metadata to represent the parameter. 
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// The ParameterToken class is an opaque representation of the Token returned
+// by the Metadata to represent the parameter. 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct ParameterToken
 {
     public static immutable ParameterToken Empty/*todo: implement initializer*/ = ParameterToken();
@@ -2460,9 +2497,9 @@ public struct ParameterToken
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\PEFileKinds.cs'
 //
-// Ignored: // This Enum matchs the CorFieldAttr defined in CorHdr.h
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// This Enum matchs the CorFieldAttr defined in CorHdr.h
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum PEFileKinds
 {
     Dll = 0x0001,
@@ -2473,14 +2510,14 @@ public enum PEFileKinds
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\PropertyBuilder.cs'
 //
-//// 
-//    // A PropertyBuilder is always associated with a TypeBuilder.  The TypeBuilder.DefineProperty
-//    // method will return a new PropertyBuilder to a client.
-//    // 
-//    [HostProtection(MayLeakOnAbort = true)]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_PropertyBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// 
+// A PropertyBuilder is always associated with a TypeBuilder.  The TypeBuilder.DefineProperty
+// method will return a new PropertyBuilder to a client.
+// 
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_PropertyBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class PropertyBuilder : PropertyInfo, _PropertyBuilder
 {
     //TODO: generate constructor
@@ -2528,8 +2565,8 @@ public final class PropertyBuilder : PropertyInfo, _PropertyBuilder
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\PropertyToken.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct PropertyToken
 {
     public static immutable PropertyToken Empty/*todo: implement initializer*/ = PropertyToken();
@@ -2546,10 +2583,10 @@ public struct PropertyToken
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\SignatureHelper.cs'
 //
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_SignatureHelper))]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class SignatureHelper : DotNetObject, _SignatureHelper
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_SignatureHelper)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class SignatureHelper : __DotNet__Object, _SignatureHelper
 {
     private enum int NO_SIZE_IN_SIG/*todo: implement initializer*/ = int();
     //TODO: generate method GetMethodSigHelper
@@ -2615,7 +2652,7 @@ public final class SignatureHelper : DotNetObject, _SignatureHelper
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\SignatureToken.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct SignatureToken
 {
     public static immutable SignatureToken Empty/*todo: implement initializer*/ = SignatureToken();
@@ -2633,8 +2670,8 @@ public struct SignatureToken
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\StackBehaviour.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum StackBehaviour
 {
     Pop0 = 0,
@@ -2671,8 +2708,8 @@ public enum StackBehaviour
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\StringToken.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct StringToken
 {
     public int m_string;
@@ -2724,14 +2761,14 @@ public final class SymbolMethod : MethodInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\SymbolType.cs'
 //
-// Ignored: [Serializable]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public enum TypeKind
 {
     IsArray = 1,
     IsPointer = 2,
     IsByRef = 3,
 }
-public final class SymbolType : DotNetTypeInfo
+public final class SymbolType : __DotNet__TypeInfo
 {
     //TODO: generate method IsAssignableFrom
     //TODO: generate method FormCompoundType
@@ -2800,8 +2837,8 @@ public final class SymbolType : DotNetTypeInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\TypeBuilder.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum PackingSize
 {
     Unspecified = 0,
@@ -2814,14 +2851,14 @@ public enum PackingSize
     Size64 = 64,
     Size128 = 128,
 }
-//[HostProtection(MayLeakOnAbort = true)]
-//[ClassInterface(ClassInterfaceType.None)]
-//[ComDefaultInterface(typeof(_TypeBuilder))]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class TypeBuilder : DotNetTypeInfo, _TypeBuilder
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
+@__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
+@__DotNet__Attribute!(ComDefaultInterfaceAttribute.stringof/*, typeof(_TypeBuilder)*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class TypeBuilder : __DotNet__TypeInfo, _TypeBuilder
 {
     //TODO: generate method IsAssignableFrom
-    private static class CustAttr : DotNetObject
+    private static class CustAttr : __DotNet__Object
     {
         private ConstructorInfo m_con;
         private ubyte[] m_binaryAttribute;
@@ -3026,7 +3063,7 @@ public final class TypeBuilder : DotNetTypeInfo, _TypeBuilder
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\TypeBuilderInstantiation.cs'
 //
-public final class TypeBuilderInstantiation : DotNetTypeInfo
+public final class TypeBuilderInstantiation : __DotNet__TypeInfo
 {
     //TODO: generate method IsAssignableFrom
     //TODO: generate method MakeGenericType
@@ -3101,8 +3138,8 @@ public final class TypeBuilderInstantiation : DotNetTypeInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\TypeToken.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct TypeToken
 {
     public static immutable TypeToken Empty/*todo: implement initializer*/ = TypeToken();
@@ -3119,12 +3156,12 @@ public struct TypeToken
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\UnmanagedMarshal.cs'
 //
-//// This class is describing the fieldmarshal.
-//    [Serializable]
-//[HostProtection(MayLeakOnAbort = true)]
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Obsolete("An alternate API is available: Emit the MarshalAs custom attribute instead. http://go.microsoft.com/fwlink/?linkid=14202")]
-public final class UnmanagedMarshal : DotNetObject
+// This class is describing the fieldmarshal.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "An alternate API is available: Emit the MarshalAs custom attribute instead. http://go.microsoft.com/fwlink/?linkid=14202"*/)
+public final class UnmanagedMarshal : __DotNet__Object
 {
     //TODO: generate method DefineUnmanagedMarshal
     //TODO: generate method DefineByValTStr

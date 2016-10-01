@@ -1,12 +1,12 @@
 module mscorlib.Internal.Runtime.Augments;
 
 import mscorlib.System :
-    DotNetObject;
+    __DotNet__Object;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Internal\Runtime\Augments\EnvironmentAugments.cs'
 //
-public class EnvironmentAugments : DotNetObject
+public class EnvironmentAugments : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate property 'CurrentManagedThreadId'

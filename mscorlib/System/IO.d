@@ -2,26 +2,47 @@ module mscorlib.System.IO;
 
 import mscorlib.System :
     String,
-    DotNetObject,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    __DotNet__Object,
     IDisposable,
+    SerializableAttribute,
+    FlagsAttribute,
     IAsyncResult,
     AsyncCallback,
     Action1,
     SystemException,
+    NonSerializedAttribute,
+    ThreadStaticAttribute,
+    ObsoleteAttribute,
     IFormatProvider;
+import mscorlib.System.Diagnostics.Contracts :
+    PureAttribute,
+    ContractPublicPropertyNameAttribute;
+import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute,
+    StringBuffer,
+    GCHandle,
+    SafeBuffer;
 import mscorlib.System.Text :
     Decoder,
     Encoding,
     Encoder,
     StringBuilder,
     UnicodeEncoding;
+import mscorlib.System.Runtime.Serialization :
+    OptionalFieldAttribute,
+    ISerializable;
 import mscorlib.System.Threading.Tasks :
     BeginEndAwaitableAdapter,
     Task1,
     ITaskCompletionAction,
     Task;
 import mscorlib.System.Security :
+    SecurityCriticalAttribute,
     SecurityState;
+import mscorlib.System.Runtime.CompilerServices :
+    FriendAccessAllowedAttribute;
 import mscorlib.System.Threading :
     ManualResetEvent,
     NativeOverlapped,
@@ -40,12 +61,6 @@ import mscorlib.System.Collections.Generic :
     List1;
 import mscorlib.Microsoft.Win32 :
     Win32Native;
-import mscorlib.System.Runtime.Serialization :
-    ISerializable;
-import mscorlib.System.Runtime.InteropServices :
-    StringBuffer,
-    GCHandle,
-    SafeBuffer;
 import mscorlib.System.Runtime.ExceptionServices :
     ExceptionDispatchInfo;
 
@@ -67,8 +82,8 @@ public class __DebugOutputTextWriter : TextWriter
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\__Error.cs'
 //
-//[Pure]
-public class __Error : DotNetObject
+@__DotNet__Attribute!(PureAttribute.stringof)
+public class __Error : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method EndOfFile
@@ -97,7 +112,7 @@ public class __Error : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\__HResults.cs'
 //
-public class __HResults : DotNetObject
+public class __HResults : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum int COR_E_ENDOFSTREAM/*todo: implement initializer*/ = int();
@@ -111,8 +126,8 @@ public class __HResults : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\BinaryReader.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class BinaryReader : DotNetObject, IDisposable
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class BinaryReader : __DotNet__Object, IDisposable
 {
     private enum int MaxCharBytesSize/*todo: implement initializer*/ = int();
     private Stream m_stream;
@@ -161,26 +176,26 @@ public class BinaryReader : DotNetObject, IDisposable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\BinaryWriter.cs'
 //
-//// This abstract base class represents a writer that can write
-//    // primitives to an arbitrary stream. A subclass can override methods to
-//    // give unique encodings.
-//    //
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class BinaryWriter : DotNetObject, IDisposable
+// This abstract base class represents a writer that can write
+// primitives to an arbitrary stream. A subclass can override methods to
+// give unique encodings.
+//
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class BinaryWriter : __DotNet__Object, IDisposable
 {
     public static immutable BinaryWriter Null/*todo: implement initializer*/ = null;
     protected Stream OutStream;
     private ubyte[] _buffer;
     private Encoding _encoding;
     private Encoder _encoder;
-    // Ignored: [OptionalField]  // New in .NET FX 4.5.  False is the right default value.
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof)
     private bool _leaveOpen;
-    // Ignored: // This field should never have been serialized and has not been used since before v2.0.
-    // Ignored: // However, this type is serializable, and we need to keep the field name around when deserializing.
-    // Ignored: // Also, we'll make .NET FX 4.5 not break if it's missing.
-    // Ignored: #pragma warning disable 169
-    // Ignored: [OptionalField]
+    // This field should never have been serialized and has not been used since before v2.0.
+    // However, this type is serializable, and we need to keep the field name around when deserializing.
+    // Also, we'll make .NET FX 4.5 not break if it's missing.
+    // #pragma warning disable 169
+    @__DotNet__Attribute!(OptionalFieldAttribute.stringof)
     private wchar[] _tmpOneCharBuffer;
     private ubyte[] _largeByteBuffer;
     private int _maxChars;
@@ -219,40 +234,40 @@ public class BinaryWriter : DotNetObject, IDisposable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\BufferedStream.cs'
 //
-///// <summary>
-///// One of the design goals here is to prevent the buffer from getting in the way and slowing
-///// down underlying stream accesses when it is not needed. If you always read & write for sizes
-///// greater than the internal buffer size, then this class may not even allocate the internal buffer.
-///// See a large comment in Write for the details of the write buffer heuristic.
-///// 
-///// This class buffers reads & writes in a shared buffer.
-///// (If you maintained two buffers separately, one operation would always trash the other buffer
-///// anyways, so we might as well use one buffer.) 
-///// The assumption here is you will almost always be doing a series of reads or writes, but rarely
-///// alternate between the two of them on the same stream.
-/////
-///// Class Invariants:
-///// The class has one buffer, shared for reading & writing.
-///// It can only be used for one or the other at any point in time - not both.
-///// The following should be true:
-///// <![CDATA[
-/////   * 0 <= _readPos <= _readLen < _bufferSize
-/////   * 0 <= _writePos < _bufferSize
-/////   * _readPos == _readLen && _readPos > 0 implies the read buffer is valid, but we're at the end of the buffer.
-/////   * _readPos == _readLen == 0 means the read buffer contains garbage.
-/////   * Either _writePos can be greater than 0, or _readLen & _readPos can be greater than zero,
-/////     but neither can be greater than zero at the same time.
-/////  ]]>
-///// This class will never cache more bytes than the max specified buffer size.
-///// However, it may use a temporary buffer of up to twice the size in order to combine several IO operations on
-///// the underlying stream into a single operation. This is because we assume that memory copies are significantly
-///// faster than IO operations on the underlying stream (if this was not true, using buffering is never appropriate).
-///// The max size of this "shadow" buffer is limited as to not allocate it on the LOH.
-///// Shadowing is always transient. Even when using this technique, this class still guarantees that the number of
-///// bytes cached (not yet written to the target stream or not yet consumed by the user) is never larger than the 
-///// actual specified buffer size.
-///// </summary>
-//[ComVisible(true)]
+/// <summary>
+/// One of the design goals here is to prevent the buffer from getting in the way and slowing
+/// down underlying stream accesses when it is not needed. If you always read & write for sizes
+/// greater than the internal buffer size, then this class may not even allocate the internal buffer.
+/// See a large comment in Write for the details of the write buffer heuristic.
+/// 
+/// This class buffers reads & writes in a shared buffer.
+/// (If you maintained two buffers separately, one operation would always trash the other buffer
+/// anyways, so we might as well use one buffer.) 
+/// The assumption here is you will almost always be doing a series of reads or writes, but rarely
+/// alternate between the two of them on the same stream.
+///
+/// Class Invariants:
+/// The class has one buffer, shared for reading & writing.
+/// It can only be used for one or the other at any point in time - not both.
+/// The following should be true:
+/// <![CDATA[
+///   * 0 <= _readPos <= _readLen < _bufferSize
+///   * 0 <= _writePos < _bufferSize
+///   * _readPos == _readLen && _readPos > 0 implies the read buffer is valid, but we're at the end of the buffer.
+///   * _readPos == _readLen == 0 means the read buffer contains garbage.
+///   * Either _writePos can be greater than 0, or _readLen & _readPos can be greater than zero,
+///     but neither can be greater than zero at the same time.
+///  ]]>
+/// This class will never cache more bytes than the max specified buffer size.
+/// However, it may use a temporary buffer of up to twice the size in order to combine several IO operations on
+/// the underlying stream into a single operation. This is because we assume that memory copies are significantly
+/// faster than IO operations on the underlying stream (if this was not true, using buffering is never appropriate).
+/// The max size of this "shadow" buffer is limited as to not allocate it on the LOH.
+/// Shadowing is always transient. Even when using this technique, this class still guarantees that the number of
+/// bytes cached (not yet written to the target stream or not yet consumed by the user) is never larger than the 
+/// actual specified buffer size.
+/// </summary>
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class BufferedStream : Stream
 {
     private enum int _DefaultBufferSize/*todo: implement initializer*/ = int();
@@ -316,8 +331,8 @@ public final class BufferedStream : Stream
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\Directory.cs'
 //
-//[ComVisible(true)]
-public class Directory : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class Directory : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetParent
@@ -358,7 +373,7 @@ public class Directory : DotNetObject
     //TODO: generate method GetFileSystemEntries
     //TODO: generate method GetFileSystemEntries
     //TODO: generate method InternalGetFileSystemEntries
-    public static final class SearchData : DotNetObject
+    public static final class SearchData : __DotNet__Object
     {
         //TODO: generate constructor
         public immutable String fullPath;
@@ -407,8 +422,8 @@ public class Directory : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\DirectoryInfo.cs'
 //
-//[Serializable]
-//[ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DirectoryInfo : FileSystemInfo
 {
     private String[] demandDir;
@@ -461,14 +476,14 @@ public final class DirectoryInfo : FileSystemInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\DirectoryNotFoundException.cs'
 //
-///*
-//     * Thrown when trying to access a directory that doesn't exist on disk.
-//     * From COM Interop, this exception is thrown for 2 HRESULTS: 
-//     * the Win32 errorcode-as-HRESULT ERROR_PATH_NOT_FOUND (0x80070003) 
-//     * and STG_E_PATHNOTFOUND (0x80030003).
-//     */
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// 
+// * Thrown when trying to access a directory that doesn't exist on disk.
+// * From COM Interop, this exception is thrown for 2 HRESULTS: 
+// * the Win32 errorcode-as-HRESULT ERROR_PATH_NOT_FOUND (0x80070003) 
+// * and STG_E_PATHNOTFOUND (0x80030003).
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class DirectoryNotFoundException : IOException
 {
     //TODO: generate constructor
@@ -480,9 +495,9 @@ public class DirectoryNotFoundException : IOException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\DriveInfo.cs'
 //
-// Ignored: // Matches Win32's DRIVE_XXX #defines from winbase.h
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// Matches Win32's DRIVE_XXX #defines from winbase.h
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum DriveType
 {
     Unknown = 0,
@@ -493,13 +508,13 @@ public enum DriveType
     CDRom = 5,
     Ram = 6,
 }
-//// Ideally we'll get a better security permission, but possibly
-//    // not for Whidbey.
-//#if FEATURE_SERIALIZATION
-//    [Serializable]
-//#endif
-//    [ComVisible(true)]
-public final class DriveInfo : DotNetObject
+// Ideally we'll get a better security permission, but possibly
+// not for Whidbey.
+// #if FEATURE_SERIALIZATION
+// [Serializable]
+// #endif
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class DriveInfo : __DotNet__Object
 {
     private String _name;
     private enum String NameField/*todo: implement initializer*/ = null;
@@ -521,9 +536,9 @@ public final class DriveInfo : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\DriveNotFoundException.cs'
 //
-////Thrown when trying to access a drive that is not availabe.
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+//Thrown when trying to access a drive that is not availabe.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class DriveNotFoundException : IOException
 {
     //TODO: generate constructor
@@ -535,8 +550,8 @@ public class DriveNotFoundException : IOException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\EndOfStreamException.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class EndOfStreamException : IOException
 {
     //TODO: generate constructor
@@ -548,10 +563,10 @@ public class EndOfStreamException : IOException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\File.cs'
 //
-//// Class for creating FileStream objects, and some basic file management
-//    // routines such as Delete, etc.
-//    [ComVisible(true)]
-public class File : DotNetObject
+// Class for creating FileStream objects, and some basic file management
+// routines such as Delete, etc.
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class File : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private enum int GetFileExInfoStandard/*todo: implement initializer*/ = int();
@@ -640,30 +655,38 @@ public class File : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileAccess.cs'
 //
-// Ignored: // Contains constants for specifying the access you want for a file.
-// Ignored: // You can have Read, Write or ReadWrite access.
-// Ignored: //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// Contains constants for specifying the access you want for a file.
+// You can have Read, Write or ReadWrite access.
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum FileAccess
 {
+    // Specifies read access to the file. Data can be read from the file and
+    // the file pointer can be moved. Combine with WRITE for read-write access.
     Read = 1,
+    // Specifies write access to the file. Data can be written to the file and
+    // the file pointer can be moved. Combine with READ for read-write access.
     Write = 2,
+    // Specifies read and write access to the file. Data can be written to the
+    // file and the file pointer can be moved. Data can also be read from the 
+    // file.
     ReadWrite = 3,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileAttributes.cs'
 //
-// Ignored: // File attributes for use with the FileEnumerator class.
-// Ignored: // These constants correspond to the constants in WinNT.h.
-// Ignored: //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// File attributes for use with the FileEnumerator class.
+// These constants correspond to the constants in WinNT.h.
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum FileAttributes
 {
+    // From WinNT.h (FILE_ATTRIBUTE_XXX)
     ReadOnly = 0x1,
     Hidden = 0x2,
     System = 0x4,
@@ -683,10 +706,10 @@ public enum FileAttributes
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileInfo.cs'
 //
-//// Class for creating FileStream objects, and some basic file management
-//    // routines such as Delete, etc.
-//    [Serializable]
-//[ComVisible(true)]
+// Class for creating FileStream objects, and some basic file management
+// routines such as Delete, etc.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class FileInfo : FileSystemInfo
 {
     private String _name;
@@ -726,8 +749,8 @@ public final class FileInfo : FileSystemInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileLoadException.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class FileLoadException : IOException
 {
     private String _fileName;
@@ -752,32 +775,41 @@ public class FileLoadException : IOException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileMode.cs'
 //
-// Ignored: // Contains constants for specifying how the OS should open a file.
-// Ignored: // These will control whether you overwrite a file, open an existing
-// Ignored: // file, or some combination thereof.
-// Ignored: //
-// Ignored: // To append to a file, use Append (which maps to OpenOrCreate then we seek
-// Ignored: // to the end of the file).  To truncate a file or create it if it doesn't
-// Ignored: // exist, use Create.
-// Ignored: //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// Contains constants for specifying how the OS should open a file.
+// These will control whether you overwrite a file, open an existing
+// file, or some combination thereof.
+// 
+// To append to a file, use Append (which maps to OpenOrCreate then we seek
+// to the end of the file).  To truncate a file or create it if it doesn't 
+// exist, use Create.
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum FileMode
 {
+    // Creates a new file. An exception is raised if the file already exists.
     CreateNew = 1,
+    // Creates a new file. If the file already exists, it is overwritten.
     Create = 2,
+    // Opens an existing file. An exception is raised if the file does not exist.
     Open = 3,
+    // Opens the file if it exists. Otherwise, creates a new file.
     OpenOrCreate = 4,
+    // Opens an existing file. Once opened, the file is truncated so that its
+    // size is zero bytes. The calling process must open the file with at least
+    // WRITE access. An exception is raised if the file does not exist.
     Truncate = 5,
+    // Opens the file if it exists and seeks to the end.  Otherwise, 
+    // creates a new file.
     Append = 6,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileNotFoundException.cs'
 //
-//// Thrown when trying to access a file that doesn't exist on disk.
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Thrown when trying to access a file that doesn't exist on disk.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class FileNotFoundException : IOException
 {
     private String _fileName;
@@ -799,28 +831,36 @@ public class FileNotFoundException : IOException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileOptions.cs'
 //
-// Ignored: // Maps to FILE_FLAG_DELETE_ON_CLOSE and similar values from winbase.h.
-// Ignored: // We didn't expose a number of these values because we didn't believe
-// Ignored: // a number of them made sense in managed code, at least not yet.
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [ComVisible(true)]
+// Maps to FILE_FLAG_DELETE_ON_CLOSE and similar values from winbase.h.
+// We didn't expose a number of these values because we didn't believe 
+// a number of them made sense in managed code, at least not yet.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum FileOptions
 {
+    // NOTE: any change to FileOptions enum needs to be 
+    // matched in the FileStream ctor for error validation
     None = 0,
     WriteThrough = cast(int)0x80000000,
     Asynchronous = cast(int)0x40000000,
+    // NoBuffering = 0x20000000,
     RandomAccess = 0x10000000,
     DeleteOnClose = 0x04000000,
     SequentialScan = 0x08000000,
+    // AllowPosix = 0x01000000,  // FILE_FLAG_POSIX_SEMANTICS
+    // BackupOrRestore,
+    // DisallowReparsePoint = 0x00200000, // FILE_FLAG_OPEN_REPARSE_POINT
+    // NoRemoteRecall = 0x00100000, // FILE_FLAG_OPEN_NO_RECALL
+    // FirstPipeInstance = 0x00080000, // FILE_FLAG_FIRST_PIPE_INSTANCE
     Encrypted = 0x00004000,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileSecurityState.cs'
 //
-//[SecurityCritical]
-//[System.Runtime.CompilerServices.FriendAccessAllowed]
+@__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
+@__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
 public class FileSecurityState : SecurityState
 {
     private static immutable wchar[] m_illegalCharacters/*todo: implement initializer*/ = null;
@@ -841,7 +881,7 @@ public class FileSecurityState : SecurityState
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileSecurityStateAccess.cs'
 //
-// Ignored: [Flags]
+@__DotNet__Attribute!(FlagsAttribute.stringof)
 public enum FileSecurityStateAccess
 {
     NoAccess = 0,
@@ -855,37 +895,51 @@ public enum FileSecurityStateAccess
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileShare.cs'
 //
-// Ignored: // Contains constants for controlling file sharing options while
-// Ignored: // opening files.  You can specify what access other processes trying
-// Ignored: // to open the same file concurrently can have.
-// Ignored: //
-// Ignored: // Note these values currently match the values for FILE_SHARE_READ,
-// Ignored: // FILE_SHARE_WRITE, and FILE_SHARE_DELETE in winnt.h
-// Ignored: //
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// Contains constants for controlling file sharing options while
+// opening files.  You can specify what access other processes trying
+// to open the same file concurrently can have.
+//
+// Note these values currently match the values for FILE_SHARE_READ,
+// FILE_SHARE_WRITE, and FILE_SHARE_DELETE in winnt.h
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum FileShare
 {
+    // No sharing. Any request to open the file (by this process or another
+    // process) will fail until the file is closed.
     None = 0,
+    // Allows subsequent opening of the file for reading. If this flag is not
+    // specified, any request to open the file for reading (by this process or
+    // another process) will fail until the file is closed.
     Read = 1,
+    // Allows subsequent opening of the file for writing. If this flag is not
+    // specified, any request to open the file for writing (by this process or
+    // another process) will fail until the file is closed.
     Write = 2,
+    // Allows subsequent opening of the file for writing or reading. If this flag
+    // is not specified, any request to open the file for writing or reading (by
+    // this process or another process) will fail until the file is closed.
     ReadWrite = 3,
+    // Open the file, but allow someone else to delete the file.
     Delete = 4,
+    // Whether the file handle should be inheritable by child processes.
+    // Note this is not directly supported like this by Win32.
     Inheritable = 0x10,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileStream.cs'
 //
-public final class FileStreamAsyncResult : DotNetObject, IAsyncResult
+public final class FileStreamAsyncResult : __DotNet__Object, IAsyncResult
 {
     private AsyncCallback _userCallback;
-    private DotNetObject _userStateObject;
+    private __DotNet__Object _userStateObject;
     private ManualResetEvent _waitHandle;
-    // Ignored: [System.Security.SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private SafeFileHandle _handle;
-    // Ignored: [SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private NativeOverlapped* _overlapped;
     //TODO: generate property 'OverLapped'
     //TODO: generate property 'IsAsync'
@@ -901,12 +955,12 @@ public final class FileStreamAsyncResult : DotNetObject, IAsyncResult
     //TODO: generate property 'IsWrite'
     private bool _isComplete;
     private bool _completedSynchronously;
-    // Ignored: // The NativeOverlapped struct keeps a GCHandle to this IAsyncResult object.
-    // Ignored: // So if the user doesn't call EndRead/EndWrite, a finalizer won't help because
-    // Ignored: // it'll never get called.
-    // Ignored: // Overlapped class will take care of the async IO operations in progress
-    // Ignored: // when an appdomain unload occurs.
-    // Ignored: [System.Security.SecurityCritical] // auto-generated
+    // The NativeOverlapped struct keeps a GCHandle to this IAsyncResult object.
+    // So if the user doesn't call EndRead/EndWrite, a finalizer won't help because
+    // it'll never get called. 
+    // Overlapped class will take care of the async IO operations in progress 
+    // when an appdomain unload occurs.
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static IOCompletionCallback s_IOCallback;
     //TODO: generate constructor
     //TODO: generate method CreateBufferedReadResult
@@ -922,7 +976,7 @@ public final class FileStreamAsyncResult : DotNetObject, IAsyncResult
     //TODO: generate method AsyncFSCallback
     //TODO: generate method Cancel
 }
-//[ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class FileStream : Stream
 {
     public enum int DefaultBufferSize/*todo: implement initializer*/ = int();
@@ -938,14 +992,14 @@ public class FileStream : Stream
     private int _readLen;
     private int _writePos;
     private int _bufferSize;
-    // Ignored: [System.Security.SecurityCritical] // auto-generated
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private SafeFileHandle _handle;
     private long _pos;
     private long _appendStart;
     private static AsyncCallback s_endReadTask;
     private static AsyncCallback s_endWriteTask;
-    private static Action1!(DotNetObject) s_cancelReadHandler;
-    private static Action1!(DotNetObject) s_cancelWriteHandler;
+    private static Action1!(__DotNet__Object) s_cancelReadHandler;
+    private static Action1!(__DotNet__Object) s_cancelWriteHandler;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1038,7 +1092,7 @@ public class FileStream : Stream
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileSystemEnumerable.cs'
 //
-public class FileSystemEnumerableFactory : DotNetObject
+public class FileSystemEnumerableFactory : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method CreateFileNameIterator
@@ -1046,7 +1100,7 @@ public class FileSystemEnumerableFactory : DotNetObject
     //TODO: generate method CreateDirectoryInfoIterator
     //TODO: generate method CreateFileSystemInfoIterator
 }
-public abstract class Iterator1(TSource) : DotNetObject, IEnumerable1!(TSource), IEnumerator1!(TSource)
+public abstract class Iterator1(TSource) : __DotNet__Object, IEnumerable1!(TSource), IEnumerator1!(TSource)
 {
     private int threadId;
     public int state;
@@ -1072,7 +1126,7 @@ public class FileSystemEnumerableIterator1(TSource) : Iterator1!(TSource)
     private List1!(Directory.SearchData) searchStack;
     private Directory.SearchData searchData;
     private String searchCriteria;
-    // Ignored: [System.Security.SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private SafeFindHandle _hnd/*todo: implement initializer*/ = null;
     private bool needsParentPathDiscoveryDemand;
     private bool empty;
@@ -1096,7 +1150,7 @@ public class FileSystemEnumerableIterator1(TSource) : Iterator1!(TSource)
     //TODO: generate method GetNormalizedSearchCriteria
     //TODO: generate method GetFullSearchString
 }
-public abstract class SearchResultHandler1(TSource) : DotNetObject
+public abstract class SearchResultHandler1(TSource) : __DotNet__Object
 {
     //TODO: generate method IsResultIncluded
     //TODO: generate method CreateObject
@@ -1124,18 +1178,18 @@ public class FileSystemInfoResultHandler : SearchResultHandler1!(FileSystemInfo)
     //TODO: generate method IsResultIncluded
     //TODO: generate method CreateObject
 }
-public final class SearchResult : DotNetObject
+public final class SearchResult : __DotNet__Object
 {
     private String fullPath;
     private String userPath;
-    // Ignored: [System.Security.SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private Win32Native.WIN32_FIND_DATA findData;
     //TODO: generate constructor
     //TODO: generate property 'FullPath'
     //TODO: generate property 'UserPath'
     //TODO: generate property 'FindData'
 }
-public class FileSystemEnumerableHelpers : DotNetObject
+public class FileSystemEnumerableHelpers : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method IsDir
@@ -1145,17 +1199,17 @@ public class FileSystemEnumerableHelpers : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileSystemInfo.cs'
 //
-//#if FEATURE_SERIALIZATION
-//    [Serializable]
-//#endif
-//#if !FEATURE_CORECLR
-//    [FileIOPermissionAttribute(SecurityAction.InheritanceDemand,Unrestricted=true)]
-//#endif
-//    [ComVisible(true)]
-public abstract class FileSystemInfo : DotNetObject, ISerializable
+// #if FEATURE_SERIALIZATION
+// [Serializable]
+// #endif
+// #if !FEATURE_CORECLR
+// [FileIOPermissionAttribute(SecurityAction.InheritanceDemand,Unrestricted=true)]
+// #endif
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public abstract class FileSystemInfo : __DotNet__Object, ISerializable
 {
-    // Ignored: #endif  //FEATURE_REMOTING
-    // Ignored: [System.Security.SecurityCritical] // auto-generated
+    // #endif  //FEATURE_REMOTING      
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     public Win32Native.WIN32_FILE_ATTRIBUTE_DATA _data;
     public int _dataInitialised/*todo: implement initializer*/ = int();
     private enum int ERROR_INVALID_PARAMETER/*todo: implement initializer*/ = int();
@@ -1187,19 +1241,19 @@ public abstract class FileSystemInfo : DotNetObject, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\IOException.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class IOException : SystemException
 {
-    // Ignored: // For debugging purposes, store the complete path in the IOException
-    // Ignored: // if possible.  Don't give it back to users due to security concerns.
-    // Ignored: // Let the code that throws the exception worry about that.  But we can
-    // Ignored: // at least assist people attached to the process with a managed
-    // Ignored: // debugger.  Don't serialize it to avoid any security problems.
-    // Ignored: // This information isn't guaranteed to be correct, but is our second
-    // Ignored: // best effort at a file or directory involved, after the exception
-    // Ignored: // message.
-    // Ignored: [NonSerialized]
+    // For debugging purposes, store the complete path in the IOException
+    // if possible.  Don't give it back to users due to security concerns.
+    // Let the code that throws the exception worry about that.  But we can
+    // at least assist people attached to the process with a managed 
+    // debugger.  Don't serialize it to avoid any security problems.
+    // This information isn't guaranteed to be correct, but is our second 
+    // best effort at a file or directory involved, after the exception 
+    // message.
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private String _maybeFullPath;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1212,12 +1266,12 @@ public class IOException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\LongPathHelper.cs'
 //
-public class LongPathHelper : DotNetObject
+public class LongPathHelper : __DotNet__Object
 {
     private enum int MaxShortName/*todo: implement initializer*/ = int();
     private enum wchar LastAnsi/*todo: implement initializer*/ = wchar();
     private enum wchar Delete/*todo: implement initializer*/ = wchar();
-    // Ignored: [ThreadStatic]
+    @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static StringBuffer t_fullPathBuffer;
     //TODO: generate method Normalize
     //TODO: generate method GetFullPathName
@@ -1231,29 +1285,29 @@ public class LongPathHelper : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\MemoryStream.cs'
 //
-//// A MemoryStream represents a Stream in memory (ie, it has no backing store).
-//    // This stream may reduce the need for temporary buffers and files in 
-//    // an application.  
-//    // 
-//    // There are two ways to create a MemoryStream.  You can initialize one
-//    // from an unsigned byte array, or you can create an empty one.  Empty 
-//    // memory streams are resizable, while ones created with a byte array provide
-//    // a stream "view" of the data.
-//    [Serializable]
-//[ComVisible(true)]
+// A MemoryStream represents a Stream in memory (ie, it has no backing store).
+// This stream may reduce the need for temporary buffers and files in 
+// an application.  
+// 
+// There are two ways to create a MemoryStream.  You can initialize one
+// from an unsigned byte array, or you can create an empty one.  Empty 
+// memory streams are resizable, while ones created with a byte array provide
+// a stream "view" of the data.
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class MemoryStream : Stream
 {
     private ubyte[] _buffer;
     private int _origin;
     private int _position;
-    // Ignored: [ContractPublicPropertyName("Length")]
+    @__DotNet__Attribute!(ContractPublicPropertyNameAttribute.stringof/*, "Length"*/)
     private int _length;
     private int _capacity;
     private bool _expandable;
     private bool _writable;
     private bool _exposable;
     private bool _isOpen;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private Task1!(int) _lastReadTask;
     private enum int MemStreamMaxLength/*todo: implement initializer*/ = int();
     //TODO: generate constructor
@@ -1298,27 +1352,27 @@ public class MemoryStream : Stream
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\Path.cs'
 //
-//// Provides methods for processing directory strings in an ideally
-//    // cross-platform manner.  Most of the methods don't do a complete
-//    // full parsing (such as examining a UNC hostname), but they will
-//    // handle most string operations.  
-//    [ComVisible(true)]
-public class Path : DotNetObject
+// Provides methods for processing directory strings in an ideally
+// cross-platform manner.  Most of the methods don't do a complete
+// full parsing (such as examining a UNC hostname), but they will
+// handle most string operations.  
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class Path : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public static immutable wchar DirectorySeparatorChar/*todo: implement initializer*/ = wchar();
     public enum String DirectorySeparatorCharAsString/*todo: implement initializer*/ = null;
     public static immutable wchar AltDirectorySeparatorChar/*todo: implement initializer*/ = wchar();
     public static immutable wchar VolumeSeparatorChar/*todo: implement initializer*/ = wchar();
-    // Ignored: #else
-    // Ignored: public static readonly char VolumeSeparatorChar = '/';
-    // Ignored: #endif // !PLATFORM_UNIX
-    // Ignored: // Platform specific invalid list of characters in a path.
-    // Ignored: // See the "Naming a File" MSDN conceptual docs for more details on
-    // Ignored: // what is valid in a file name (which is slightly different from what
-    // Ignored: // is legal in a path name).
-    // Ignored: // Note: This list is duplicated in CheckInvalidPathChars
-    // Ignored: [Obsolete("Please use GetInvalidPathChars or GetInvalidFileNameChars instead.")]
+    // #else
+    // public static readonly char VolumeSeparatorChar = '/';
+    // #endif // !PLATFORM_UNIX
+    // Platform specific invalid list of characters in a path.
+    // See the "Naming a File" MSDN conceptual docs for more details on
+    // what is valid in a file name (which is slightly different from what
+    // is legal in a path name).
+    // Note: This list is duplicated in CheckInvalidPathChars
+    @__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Please use GetInvalidPathChars or GetInvalidFileNameChars instead."*/)
     public static immutable wchar[] InvalidPathChars/*todo: implement initializer*/ = null;
     public static immutable wchar[] TrimEndChars/*todo: implement initializer*/ = null;
     private static immutable wchar[] RealInvalidPathChars/*todo: implement initializer*/ = null;
@@ -1380,7 +1434,7 @@ public class Path : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\PathInternal.cs'
 //
-public class PathInternal : DotNetObject
+public class PathInternal : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum String ExtendedPathPrefix/*todo: implement initializer*/ = null;
@@ -1430,8 +1484,8 @@ public class PathInternal : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\PathTooLongException.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class PathTooLongException : IOException
 {
     //TODO: generate constructor
@@ -1472,23 +1526,30 @@ public class ReadLinesIterator : Iterator1!(String)
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\SearchOption.cs'
 //
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum SearchOption
 {
+    // Include only the current directory in the search operation
     TopDirectoryOnly,
+    // Include the current directory and all the sub-directories
+    // underneath it including reparse points in the search operation. 
+    // This will traverse reparse points (i.e, mounted points and symbolic links)
+    // recursively. If the directory structure searched contains a loop
+    // because of hard links, the search operation will go on for ever. 
     AllDirectories,
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\SeekOrigin.cs'
 //
-// Ignored: // Provides seek reference points.  To seek to the end of a stream,
-// Ignored: // call stream.Seek(0, SeekOrigin.End).
-// Ignored: [Serializable]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// Provides seek reference points.  To seek to the end of a stream,
+// call stream.Seek(0, SeekOrigin.End).
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum SeekOrigin
 {
+    // These constants match Win32's FILE_BEGIN, FILE_CURRENT, and FILE_END
     Begin = 0,
     Current = 1,
     End = 2,
@@ -1497,16 +1558,16 @@ public enum SeekOrigin
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\Stream.cs'
 //
-//[Serializable]
-//[ComVisible(true)]
-public abstract class Stream : DotNetObject, IDisposable
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public abstract class Stream : __DotNet__Object, IDisposable
 {
     public static immutable Stream Null/*todo: implement initializer*/ = null;
     private enum int _DefaultCopyBufferSize/*todo: implement initializer*/ = int();
-    // Ignored: // To implement Async IO operations on streams that don't support async IO
-    // Ignored: [NonSerialized]
+    // To implement Async IO operations on streams that don't support async IO
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private ReadWriteTask _activeReadWriteTask;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private SemaphoreSlim _asyncActiveSemaphore;
     //TODO: generate method EnsureAsyncActiveSemaphoreInitialized
     //TODO: generate property 'CanRead'
@@ -1562,7 +1623,7 @@ public abstract class Stream : DotNetObject, IDisposable
         //TODO: generate method ClearBeginState
         //TODO: generate constructor
         //TODO: generate method InvokeAsyncCallback
-        // Ignored: [SecurityCritical] // necessary for CoreCLR
+        @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private static ContextCallback s_invokeAsyncCallback;
         //TODO: generate method Invoke
         //TODO: generate property 'InvokeMayRunArbitraryCode'
@@ -1584,7 +1645,7 @@ public abstract class Stream : DotNetObject, IDisposable
     //TODO: generate method BlockingBeginWrite
     //TODO: generate method BlockingEndWrite
     //TODO: generate method ValidateCopyToArguments
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     private static final class NullStream : Stream
     {
         //TODO: generate constructor
@@ -1611,9 +1672,9 @@ public abstract class Stream : DotNetObject, IDisposable
         //TODO: generate method Seek
         //TODO: generate method SetLength
     }
-    public static final class SynchronousAsyncResult : DotNetObject, IAsyncResult
+    public static final class SynchronousAsyncResult : __DotNet__Object, IAsyncResult
     {
-        private immutable DotNetObject _stateObject;
+        private immutable __DotNet__Object _stateObject;
         private immutable bool _isWrite;
         private ManualResetEvent _waitHandle;
         private ExceptionDispatchInfo _exceptionInfo;
@@ -1630,9 +1691,9 @@ public abstract class Stream : DotNetObject, IDisposable
         //TODO: generate method EndRead
         //TODO: generate method EndWrite
     }
-    //// SyncStream is a wrapper around a stream that takes 
-//        // a lock for every operation making it thread safe.
-//        [Serializable]
+    // SyncStream is a wrapper around a stream that takes 
+    // a lock for every operation making it thread safe.
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static final class SyncStream : Stream, IDisposable
     {
         private Stream _stream;
@@ -1664,15 +1725,15 @@ public abstract class Stream : DotNetObject, IDisposable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\StreamReader.cs'
 //
-//// This class implements a TextReader for reading characters to a Stream.
-//    // This is designed for character input in a particular Encoding, 
-//    // whereas the Stream class is designed for byte input and output.  
-//    // 
-//    [Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+// This class implements a TextReader for reading characters to a Stream.
+// This is designed for character input in a particular Encoding, 
+// whereas the Stream class is designed for byte input and output.  
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class StreamReader : TextReader
 {
-    public static immutable /*todo: new modifier*/StreamReader Null/*todo: implement initializer*/ = null;
+    public static immutable /*todo: new modifier*/ StreamReader Null/*todo: implement initializer*/ = null;
     private static ubyte[] s_utf8Preamble;
     //TODO: generate property 'DefaultBufferSize'
     private enum int DefaultFileStreamBufferSize/*todo: implement initializer*/ = int();
@@ -1688,18 +1749,18 @@ public class StreamReader : TextReader
     private int charLen;
     private int byteLen;
     private int bytePos;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private StringBuilder _builder;
     private int _maxCharsPerBuffer;
     private bool _detectEncoding;
     private bool _checkPreamble;
     private bool _isBlocked;
     private bool _closable;
-    // Ignored: // We don't guarantee thread safety on StreamReader, but we should at
-    // Ignored: // least prevent users from trying to read anything while an Async
-    // Ignored: // read from the same thread is in progress.
-    // Ignored: [NonSerialized]
-    private /*todo: volatile*/Task _asyncReadTask;
+    // We don't guarantee thread safety on StreamReader, but we should at 
+    // least prevent users from trying to read anything while an Async
+    // read from the same thread is in progress.
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
+    private /*todo: volatile*/ Task _asyncReadTask;
     //TODO: generate method CheckAsyncTaskInProgress
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1775,19 +1836,19 @@ public class StreamReader : TextReader
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\StreamWriter.cs'
 //
-//// This class implements a TextWriter for writing characters to a Stream.
-//    // This is designed for character output in a particular Encoding, 
-//    // whereas the Stream class is designed for byte input and output.  
-//    // 
-//    [Serializable]
-//[ComVisible(true)]
+// This class implements a TextWriter for writing characters to a Stream.
+// This is designed for character output in a particular Encoding, 
+// whereas the Stream class is designed for byte input and output.  
+// 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class StreamWriter : TextWriter
 {
     public enum int DefaultBufferSize/*todo: implement initializer*/ = int();
     private enum int DefaultFileStreamBufferSize/*todo: implement initializer*/ = int();
     private enum int MinBufferSize/*todo: implement initializer*/ = int();
     private enum int DontCopyOnWriteLineThreshold/*todo: implement initializer*/ = int();
-    public static immutable /*todo: new modifier*/StreamWriter Null/*todo: implement initializer*/ = null;
+    public static immutable /*todo: new modifier*/ StreamWriter Null/*todo: implement initializer*/ = null;
     private Stream stream;
     private Encoding encoding;
     private Encoder encoder;
@@ -1798,18 +1859,18 @@ public class StreamWriter : TextWriter
     private bool autoFlush;
     private bool haveWrittenPreamble;
     private bool closable;
-    // Ignored: #if MDA_SUPPORTED
-    // Ignored: [NonSerialized]
-    // Ignored: // For StreamWriterBufferedDataLost MDA
-    // Ignored: private MdaHelper mdaHelper;
-    // Ignored: #endif
-    // Ignored: // We don't guarantee thread safety on StreamWriter, but we should at
-    // Ignored: // least prevent users from trying to write anything while an Async
-    // Ignored: // write from the same thread is in progress.
-    // Ignored: [NonSerialized]
-    private /*todo: volatile*/Task _asyncWriteTask;
+    // #if MDA_SUPPORTED
+    // [NonSerialized] 
+    // For StreamWriterBufferedDataLost MDA
+    // private MdaHelper mdaHelper;
+    // #endif
+    // We don't guarantee thread safety on StreamWriter, but we should at 
+    // least prevent users from trying to write anything while an Async
+    // write from the same thread is in progress.
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
+    private /*todo: volatile*/ Task _asyncWriteTask;
     //TODO: generate method CheckAsyncTaskInProgress
-    private static /*todo: volatile*/Encoding _UTF8NoBOM;
+    private static /*todo: volatile*/ Encoding _UTF8NoBOM;
     //TODO: generate property 'UTF8NoBOM'
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1856,10 +1917,10 @@ public class StreamWriter : TextWriter
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\StringReader.cs'
 //
-//// This class implements a text reader that reads from a string.
-//    //
-//    [Serializable]
-//[ComVisible(true)]
+// This class implements a text reader that reads from a string.
+//
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class StringReader : TextReader
 {
     private String _s;
@@ -1882,14 +1943,14 @@ public class StringReader : TextReader
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\StringWriter.cs'
 //
-//// This class implements a text writer that writes to a string buffer and allows
-//    // the resulting sequence of characters to be presented as a string.
-//    //
-//    [Serializable]
-//[ComVisible(true)]
+// This class implements a text writer that writes to a string buffer and allows
+// the resulting sequence of characters to be presented as a string.
+//
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class StringWriter : TextWriter
 {
-    private static /*todo: volatile*/UnicodeEncoding m_encoding/*todo: implement initializer*/ = null;
+    private static /*todo: volatile*/ UnicodeEncoding m_encoding/*todo: implement initializer*/ = null;
     private StringBuilder _sb;
     private bool _isOpen;
     //TODO: generate constructor
@@ -1916,16 +1977,16 @@ public class StringWriter : TextWriter
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\TextReader.cs'
 //
-//// This abstract base class represents a reader that can read a sequential
-//    // stream of characters.  This is not intended for reading bytes -
-//    // there are methods on the Stream class to read bytes.
-//    // A subclass must minimally implement the Peek() and Read() methods.
-//    //
-//    // This class is intended for character input, not bytes.  
-//    // There are methods on the Stream class for reading bytes. 
-//    [Serializable]
-//[ComVisible(true)]
-public abstract class TextReader : DotNetObject, IDisposable
+// This abstract base class represents a reader that can read a sequential
+// stream of characters.  This is not intended for reading bytes -
+// there are methods on the Stream class to read bytes.
+// A subclass must minimally implement the Peek() and Read() methods.
+//
+// This class is intended for character input, not bytes.  
+// There are methods on the Stream class for reading bytes. 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public abstract class TextReader : __DotNet__Object, IDisposable
 {
     public static immutable TextReader Null/*todo: implement initializer*/ = null;
     //TODO: generate constructor
@@ -1945,14 +2006,14 @@ public abstract class TextReader : DotNetObject, IDisposable
     //TODO: generate method ReadBlockAsync
     //TODO: generate method ReadBlockAsyncInternal
     //TODO: generate method Synchronized
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     private static final class NullTextReader : TextReader
     {
         //TODO: generate constructor
         //TODO: generate method Read
         //TODO: generate method ReadLine
     }
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static final class SyncTextReader : TextReader
     {
         public TextReader _in;
@@ -1975,15 +2036,15 @@ public abstract class TextReader : DotNetObject, IDisposable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\TextWriter.cs'
 //
-//// This abstract base class represents a writer that can write a sequential
-//    // stream of characters. A subclass must minimally implement the 
-//    // Write(char) method.
-//    //
-//    // This class is intended for character output, not bytes.  
-//    // There are methods on the Stream class for writing bytes. 
-//    [Serializable]
-//[ComVisible(true)]
-public abstract class TextWriter : DotNetObject, IDisposable
+// This abstract base class represents a writer that can write a sequential
+// stream of characters. A subclass must minimally implement the 
+// Write(char) method.
+//
+// This class is intended for character output, not bytes.  
+// There are methods on the Stream class for writing bytes. 
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public abstract class TextWriter : __DotNet__Object, IDisposable
 {
     public static immutable TextWriter Null/*todo: implement initializer*/ = null;
     private enum String InitialNewLine/*todo: implement initializer*/ = null;
@@ -2044,9 +2105,8 @@ public abstract class TextWriter : DotNetObject, IDisposable
     //TODO: generate method WriteLineAsync
     //TODO: generate method WriteLineAsync
     //TODO: generate method FlushAsync
-    //#endregion
-//
-//        [Serializable]
+    // #endregion
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     private static final class NullTextWriter : TextWriter
     {
         //TODO: generate constructor
@@ -2057,7 +2117,7 @@ public abstract class TextWriter : DotNetObject, IDisposable
         //TODO: generate method WriteLine
         //TODO: generate method WriteLine
     }
-    //[Serializable]
+    @__DotNet__Attribute!(SerializableAttribute.stringof)
     public static final class SyncTextWriter : TextWriter, IDisposable
     {
         private TextWriter _out;
@@ -2116,12 +2176,12 @@ public abstract class TextWriter : DotNetObject, IDisposable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\UnmanagedMemoryAccessor.cs'
 //
-public class UnmanagedMemoryAccessor : DotNetObject, IDisposable
+public class UnmanagedMemoryAccessor : __DotNet__Object, IDisposable
 {
-    // Ignored: [System.Security.SecurityCritical] // auto-generated
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private SafeBuffer _buffer;
     private long _offset;
-    // Ignored: [ContractPublicPropertyName("Capacity")]
+    @__DotNet__Attribute!(ContractPublicPropertyNameAttribute.stringof/*, "Capacity"*/)
     private long _capacity;
     private FileAccess _access;
     private bool _isOpen;
@@ -2179,9 +2239,9 @@ public class UnmanagedMemoryAccessor : DotNetObject, IDisposable
 public class UnmanagedMemoryStream : Stream
 {
     private enum long UnmanagedMemStreamMaxLength/*todo: implement initializer*/ = long();
-    // Ignored: [System.Security.SecurityCritical] // auto-generated
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private SafeBuffer _buffer;
-    // Ignored: [SecurityCritical]
+    @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private ubyte* _mem;
     private long _length;
     private long _capacity;
@@ -2189,7 +2249,7 @@ public class UnmanagedMemoryStream : Stream
     private long _offset;
     private FileAccess _access;
     public bool _isOpen;
-    // Ignored: [NonSerialized]
+    @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private Task1!(int) _lastReadTask;
     //TODO: generate constructor
     //TODO: generate constructor

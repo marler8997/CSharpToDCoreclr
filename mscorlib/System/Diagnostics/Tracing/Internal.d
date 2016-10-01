@@ -1,7 +1,7 @@
 module mscorlib.System.Diagnostics.Tracing.Internal;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Object,
     String;
 import mscorlib.System.Resources :
     ResourceManager;
@@ -9,7 +9,7 @@ import mscorlib.System.Resources :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\StubEnvironment.cs'
 //
-public class Environment : DotNetObject
+public class Environment : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public static immutable String NewLine/*todo: implement initializer*/ = null;

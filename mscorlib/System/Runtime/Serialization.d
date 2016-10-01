@@ -1,11 +1,19 @@
 module mscorlib.System.Runtime.Serialization;
 
 import mscorlib.System :
-    DotNetObject,
+    __DotNet__Attribute,
+    __DotNet__AttributeStruct,
+    __DotNet__Object,
+    CLSCompliantAttribute,
+    SerializableAttribute,
     Type,
+    AttributeUsageAttribute,
     Attribute,
     SystemException,
-    String;
+    String,
+    FlagsAttribute;
+import mscorlib.System.Runtime.InteropServices :
+    ComVisibleAttribute;
 import mscorlib.System.Reflection :
     Binder,
     MemberInfo,
@@ -19,8 +27,8 @@ import mscorlib.System.Collections :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\FormatterConverter.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class FormatterConverter : DotNetObject, IFormatterConverter
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class FormatterConverter : __DotNet__Object, IFormatterConverter
 {
     //TODO: generate constructor
     //TODO: generate method Convert
@@ -45,8 +53,8 @@ public class FormatterConverter : DotNetObject, IFormatterConverter
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\FormatterServices.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public class FormatterServices : DotNetObject
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public class FormatterServices : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetUninitializedObject
@@ -66,7 +74,7 @@ public class FormatterServices : DotNetObject
     //TODO: generate method GetClrTypeFullNameForArray
     //TODO: generate method GetClrTypeFullNameForNonArrayTypes
 }
-public final class SurrogateForCyclicalReference : DotNetObject, ISerializationSurrogate
+public final class SurrogateForCyclicalReference : __DotNet__Object, ISerializationSurrogate
 {
     private ISerializationSurrogate innerSurrogate;
     //TODO: generate constructor
@@ -77,8 +85,8 @@ public final class SurrogateForCyclicalReference : DotNetObject, ISerializationS
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\IDeserializationCallback.cs'
 //
-//// Interface does not need to be marked with the serializable attribute    
-//    [System.Runtime.InteropServices.ComVisible(true)]
+// Interface does not need to be marked with the serializable attribute    
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface IDeserializationCallback
 {
     //TODO: generate method OnDeserialization
@@ -87,7 +95,7 @@ public interface IDeserializationCallback
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\IFormatter.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface IFormatter
 {
     //TODO: generate method Deserialize
@@ -100,8 +108,8 @@ public interface IFormatter
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\IFormatterConverter.cs'
 //
-//[CLSCompliant(false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(CLSCompliantAttribute.stringof/*, false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface IFormatterConverter
 {
     //TODO: generate method Convert
@@ -126,8 +134,8 @@ public interface IFormatterConverter
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\IObjectReference.cs'
 //
-//// Interface does not need to be marked with the serializable attribute
-//[System.Runtime.InteropServices.ComVisible(true)]
+// Interface does not need to be marked with the serializable attribute
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface IObjectReference
 {
     //TODO: generate method GetRealObject
@@ -136,7 +144,7 @@ public interface IObjectReference
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\ISerializable.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISerializable
 {
     //TODO: generate method GetObjectData
@@ -145,7 +153,7 @@ public interface ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\ISerializationSurrogate.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISerializationSurrogate
 {
     //TODO: generate method GetObjectData
@@ -155,7 +163,7 @@ public interface ISerializationSurrogate
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\ISurrogateSelector.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public interface ISurrogateSelector
 {
     //TODO: generate method ChainSelector
@@ -166,8 +174,8 @@ public interface ISurrogateSelector
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\MemberHolder.cs'
 //
-//[Serializable]
-public class MemberHolder : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+public class MemberHolder : __DotNet__Object
 {
     public MemberInfo[] members/*todo: implement initializer*/ = null;
     public Type memberType;
@@ -180,31 +188,31 @@ public class MemberHolder : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\SerializationAttributes.cs'
 //
-//[AttributeUsage(AttributeTargets.Field, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Field, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class OptionalFieldAttribute : Attribute
 {
     private int versionAdded/*todo: implement initializer*/ = int();
     //TODO: generate constructor
     //TODO: generate property 'VersionAdded'
 }
-//[AttributeUsage(AttributeTargets.Method, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class OnSerializingAttribute : Attribute
 {
 }
-//[AttributeUsage(AttributeTargets.Method, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class OnSerializedAttribute : Attribute
 {
 }
-//[AttributeUsage(AttributeTargets.Method, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class OnDeserializingAttribute : Attribute
 {
 }
-//[AttributeUsage(AttributeTargets.Method, Inherited=false)]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, Inherited=false*/)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class OnDeserializedAttribute : Attribute
 {
 }
@@ -212,9 +220,9 @@ public final class OnDeserializedAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\SerializationBinder.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
-public abstract class SerializationBinder : DotNetObject
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public abstract class SerializationBinder : __DotNet__Object
 {
     //TODO: generate method BindToName
     //TODO: generate method BindToType
@@ -223,8 +231,8 @@ public abstract class SerializationBinder : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\SerializationException.cs'
 //
-//[System.Runtime.InteropServices.ComVisible(true)]
-//[Serializable]
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+@__DotNet__Attribute!(SerializableAttribute.stringof)
 public class SerializationException : SystemException
 {
     private static String _nullMessage/*todo: implement initializer*/ = null;
@@ -264,16 +272,15 @@ public final class SerializationFieldInfo : FieldInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\SerializationInfo.cs'
 //
-//#endif 
-//
-//    [System.Runtime.InteropServices.ComVisible(true)]
-public final class SerializationInfo : DotNetObject
+// #endif 
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class SerializationInfo : __DotNet__Object
 {
     private enum int defaultSize/*todo: implement initializer*/ = int();
     private enum String s_mscorlibAssemblySimpleName/*todo: implement initializer*/ = null;
     private enum String s_mscorlibFileName/*todo: implement initializer*/ = null;
     public String[] m_members;
-    public DotNetObject[] m_data;
+    public __DotNet__Object[] m_data;
     public Type[] m_types;
     private Dictionary2!(String,int) m_nameToIndex;
     public int m_currMember;
@@ -343,30 +350,30 @@ public final class SerializationInfo : DotNetObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\SerializationInfoEnumerator.cs'
 //
-////
-//    // The tuple returned by SerializationInfoEnumerator.Current.
-//    //
-//[System.Runtime.InteropServices.ComVisible(true)]
+//
+// The tuple returned by SerializationInfoEnumerator.Current.
+//
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct SerializationEntry
 {
     private Type m_type;
-    private DotNetObject m_value;
+    private __DotNet__Object m_value;
     private String m_name;
     //TODO: generate property 'Value'
     //TODO: generate property 'Name'
     //TODO: generate property 'ObjectType'
     //TODO: generate constructor
 }
-////
-//    // A simple enumerator over the values stored in the SerializationInfo.
-//    // This does not snapshot the values, it just keeps pointers to the 
-//    // member variables of the SerializationInfo that created it.
-//    //
-//[System.Runtime.InteropServices.ComVisible(true)]
-public final class SerializationInfoEnumerator : DotNetObject, IEnumerator
+//
+// A simple enumerator over the values stored in the SerializationInfo.
+// This does not snapshot the values, it just keeps pointers to the 
+// member variables of the SerializationInfo that created it.
+//
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
+public final class SerializationInfoEnumerator : __DotNet__Object, IEnumerator
 {
     private String[] m_members;
-    private DotNetObject[] m_data;
+    private __DotNet__Object[] m_data;
     private Type[] m_types;
     private int m_numItems;
     private int m_currItem;
@@ -384,11 +391,11 @@ public final class SerializationInfoEnumerator : DotNetObject, IEnumerator
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\StreamingContext.cs'
 //
-//[Serializable]
-//[System.Runtime.InteropServices.ComVisible(true)]
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct StreamingContext
 {
-    public DotNetObject m_additionalContext;
+    public __DotNet__Object m_additionalContext;
     public StreamingContextStates m_state;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -397,12 +404,12 @@ public struct StreamingContext
     //TODO: generate method GetHashCode
     //TODO: generate property 'State'
 }
-// Ignored: // **********************************************************
-// Ignored: // Keep these in sync with the version in vm\runtimehandles.h
-// Ignored: // **********************************************************
-// Ignored: [Serializable]
-// Ignored: [Flags]
-// Ignored: [System.Runtime.InteropServices.ComVisible(true)]
+// **********************************************************
+// Keep these in sync with the version in vm\runtimehandles.h
+// **********************************************************
+@__DotNet__Attribute!(SerializableAttribute.stringof)
+@__DotNet__Attribute!(FlagsAttribute.stringof)
+@__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public enum StreamingContextStates
 {
     CrossProcess = 0x01,
