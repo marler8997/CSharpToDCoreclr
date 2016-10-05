@@ -63,12 +63,15 @@ import mscorlib.System.Collections.Generic :
     Dictionary2;
 import mscorlib.System.Diagnostics.Contracts :
     ContractPublicPropertyNameAttribute;
+import mscorlib.System.Runtime.CompilerServices :
+    DecimalConstantAttribute,
+    CustomConstantAttribute;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\__Filters.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class __Filters : __DotNet__Object
+package(mscorlib) class __Filters : __DotNet__Object
 {
     //TODO: generate method FilterTypeName
     //TODO: generate method FilterTypeNameIgnoreCase
@@ -178,7 +181,7 @@ public abstract class Assembly : __DotNet__Object, _Assembly, IEvidenceFactory, 
     //TODO: generate property 'HostContext'
     //TODO: generate property 'IsDynamic'
 }
-public enum LoadContext
+package(mscorlib) enum LoadContext
 {
     DEFAULT,
     LOADFROM,
@@ -186,7 +189,7 @@ public enum LoadContext
     HOSTED,
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class RuntimeAssembly : Assembly
+package(mscorlib) class RuntimeAssembly : Assembly
 {
     private enum ASSEMBLY_FLAGS : uint
     {
@@ -589,11 +592,11 @@ public class AssemblyNameProxy : MarshalByRefObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Associates.cs'
 //
-public class Associates : __DotNet__Object
+package(mscorlib) class Associates : __DotNet__Object
 {
     private this() {} // prevent instantiation
     @__DotNet__Attribute!(FlagsAttribute.stringof)
-    public enum Attributes
+    package(mscorlib) enum Attributes
     {
         ComposedOfAllVirtualMethods = 0x1,
         ComposedOfAllPrivateMethods = 0x2,
@@ -708,7 +711,7 @@ public abstract class ConstructorInfo : MethodBase, _ConstructorInfo
     //TODO: generate method Invoke
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class RuntimeConstructorInfo : ConstructorInfo, ISerializable, IRuntimeMethodInfo
+package(mscorlib) final class RuntimeConstructorInfo : ConstructorInfo, ISerializable, IRuntimeMethodInfo
 {
     private /*todo: volatile*/ RuntimeType m_declaringType;
     private RuntimeType.RuntimeTypeCache m_reflectedTypeCache;
@@ -859,13 +862,13 @@ public struct CustomAttributeTypedArgument
     //TODO: generate property 'Value'
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public struct CustomAttributeRecord
+package(mscorlib) struct CustomAttributeRecord
 {
-    public ConstArray blob;
-    public MetadataToken tkCtor;
+    package(mscorlib) ConstArray blob;
+    package(mscorlib) MetadataToken tkCtor;
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum CustomAttributeEncoding : int
+package(mscorlib) enum CustomAttributeEncoding : int
 {
     Undefined = 0,
     Boolean = /*MemberExpression:Type*/CorElementType.Boolean,
@@ -890,7 +893,7 @@ public enum CustomAttributeEncoding : int
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Auto*/)
-public struct CustomAttributeEncodedArgument
+package(mscorlib) struct CustomAttributeEncodedArgument
 {
     //TODO: generate method ParseAttributeArguments
     //TODO: generate method ParseAttributeArguments
@@ -905,7 +908,7 @@ public struct CustomAttributeEncodedArgument
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Auto*/)
-public struct CustomAttributeNamedParameter
+package(mscorlib) struct CustomAttributeNamedParameter
 {
     private String m_argumentName;
     private CustomAttributeEncoding m_fieldOrProperty;
@@ -917,7 +920,7 @@ public struct CustomAttributeNamedParameter
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Auto*/)
-public struct CustomAttributeCtorParameter
+package(mscorlib) struct CustomAttributeCtorParameter
 {
     private CustomAttributeType m_type;
     private CustomAttributeEncodedArgument m_encodedArgument;
@@ -927,7 +930,7 @@ public struct CustomAttributeCtorParameter
 // Note: This is a managed representation of a frame type defined in vm\frames.h; please ensure the layout remains
 // synchronized.
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
-public struct SecurityContextFrame
+package(mscorlib) struct SecurityContextFrame
 {
     private IntPtr m_GSCookie;
     private IntPtr __VFN_table;
@@ -938,7 +941,7 @@ public struct SecurityContextFrame
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Auto*/)
-public struct CustomAttributeType
+package(mscorlib) struct CustomAttributeType
 {
     private String m_enumName;
     private CustomAttributeEncoding m_encodedType;
@@ -951,7 +954,7 @@ public struct CustomAttributeType
     //TODO: generate property 'EncodedArrayType'
     //TODO: generate property 'EnumName'
 }
-public class CustomAttribute : __DotNet__Object
+package(mscorlib) class CustomAttribute : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static RuntimeType Type_RuntimeType/*todo: implement initializer*/ = null;
@@ -995,7 +998,7 @@ public class CustomAttribute : __DotNet__Object
     //TODO: generate method GetPropertyOrFieldData
     //TODO: generate method CreateAttributeArrayHelper
 }
-public class PseudoCustomAttribute : __DotNet__Object
+package(mscorlib) class PseudoCustomAttribute : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static Dictionary2!(RuntimeType,RuntimeType) s_pca;
@@ -1148,7 +1151,7 @@ public abstract class EventInfo : MemberInfo, _EventInfo
     //TODO: generate property 'IsMulticast'
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class RuntimeEventInfo : EventInfo, ISerializable
+package(mscorlib) final class RuntimeEventInfo : EventInfo, ISerializable
 {
     private int m_token;
     private EventAttributes m_flags;
@@ -1270,7 +1273,7 @@ public abstract class FieldInfo : MemberInfo, _FieldInfo
     //TODO: generate property 'IsSecurityTransparent'
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public abstract class RuntimeFieldInfo : FieldInfo, ISerializable
+package(mscorlib) abstract class RuntimeFieldInfo : FieldInfo, ISerializable
 {
     private BindingFlags m_bindingFlags;
     protected RuntimeType.RuntimeTypeCache m_reflectedTypeCache;
@@ -1294,7 +1297,7 @@ public abstract class RuntimeFieldInfo : FieldInfo, ISerializable
     //TODO: generate method GetObjectData
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class RtFieldInfo : RuntimeFieldInfo, IRuntimeFieldInfo
+package(mscorlib) final class RtFieldInfo : RuntimeFieldInfo, IRuntimeFieldInfo
 {
     //TODO: generate method PerformVisibilityCheckOnField
     private IntPtr m_fieldHandle;
@@ -1330,7 +1333,7 @@ public final class RtFieldInfo : RuntimeFieldInfo, IRuntimeFieldInfo
     //TODO: generate method GetOptionalCustomModifiers
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class MdFieldInfo : RuntimeFieldInfo, ISerializable
+package(mscorlib) final class MdFieldInfo : RuntimeFieldInfo, ISerializable
 {
     private int m_tkField;
     private String m_name;
@@ -1456,18 +1459,18 @@ public interface IReflectableType
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\LoaderAllocator.cs'
 //
-public final class LoaderAllocatorScout : __DotNet__Object
+package(mscorlib) final class LoaderAllocatorScout : __DotNet__Object
 {
-    public IntPtr m_nativeLoaderAllocator;
+    package(mscorlib) IntPtr m_nativeLoaderAllocator;
     //TODO: generate method Destroy
     //TODO: generate destructor
 }
-public final class LoaderAllocator : __DotNet__Object
+package(mscorlib) final class LoaderAllocator : __DotNet__Object
 {
     //TODO: generate constructor
     private LoaderAllocatorScout m_scout;
     private __DotNet__Object[] m_slots;
-    public CerHashtable2!(RuntimeMethodInfo,RuntimeMethodInfo) m_methodInstantiations;
+    package(mscorlib) CerHashtable2!(RuntimeMethodInfo,RuntimeMethodInfo) m_methodInstantiations;
     private int m_slotsUsed;
 }
 
@@ -1500,7 +1503,7 @@ public enum ResourceLocation
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MdConstant.cs'
 //
-public class MdConstant : __DotNet__Object
+package(mscorlib) class MdConstant : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetValue
@@ -1510,7 +1513,7 @@ public class MdConstant : __DotNet__Object
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MdImport.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum CorElementType : ubyte
+package(mscorlib) enum CorElementType : ubyte
 {
     End = 0x00,
     Void = 0x01,
@@ -1551,7 +1554,7 @@ public enum CorElementType : ubyte
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(FlagsAttribute.stringof/**/)
-public enum MdSigCallingConvention : ubyte
+package(mscorlib) enum MdSigCallingConvention : ubyte
 {
     CallConvMask = 0x0f,
     Default = 0x00,
@@ -1571,7 +1574,7 @@ public enum MdSigCallingConvention : ubyte
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(FlagsAttribute.stringof/**/)
-public enum PInvokeAttributes
+package(mscorlib) enum PInvokeAttributes
 {
     NoMangle = 0x0001,
     CharSetMask = 0x0006,
@@ -1598,7 +1601,7 @@ public enum PInvokeAttributes
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(FlagsAttribute.stringof/**/)
-public enum MethodSemanticsAttributes
+package(mscorlib) enum MethodSemanticsAttributes
 {
     Setter = 0x0001,
     Getter = 0x0002,
@@ -1608,7 +1611,7 @@ public enum MethodSemanticsAttributes
     Fire = 0x0020,
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum MetadataTokenType
+package(mscorlib) enum MetadataTokenType
 {
     Module = 0x00000000,
     TypeRef = 0x01000000,
@@ -1638,16 +1641,16 @@ public enum MetadataTokenType
     Invalid = 0x7FFFFFFF,
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public struct ConstArray
+package(mscorlib) struct ConstArray
 {
     //TODO: generate property 'Signature'
     //TODO: generate property 'Length'
     //TODO: generate indexer
-    public int m_length;
-    public IntPtr m_constArray;
+    package(mscorlib) int m_length;
+    package(mscorlib) IntPtr m_constArray;
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public struct MetadataToken
+package(mscorlib) struct MetadataToken
 {
     //TODO: generate conversion operator
     //TODO: generate conversion operator
@@ -1674,7 +1677,7 @@ public struct MetadataToken
     //TODO: generate property 'IsGenericPar'
     //TODO: generate method ToString
 }
-public struct MetadataEnumResult
+package(mscorlib) struct MetadataEnumResult
 {
     private int[] largeResult;
     private int length;
@@ -1682,11 +1685,11 @@ public struct MetadataEnumResult
     //TODO: generate property 'Length'
     //TODO: generate indexer
 }
-public struct MetadataImport
+package(mscorlib) struct MetadataImport
 {
     private IntPtr m_metadataImport2;
     private __DotNet__Object m_keepalive;
-    public static immutable MetadataImport EmptyImport/*todo: implement initializer*/ = MetadataImport();
+    package(mscorlib) static immutable MetadataImport EmptyImport/*todo: implement initializer*/ = MetadataImport();
     //TODO: generate method GetHashCode
     //TODO: generate method Equals
     //TODO: generate method Equals
@@ -1746,7 +1749,7 @@ public struct MetadataImport
     //TODO: generate method _IsValidToken
     //TODO: generate method IsValidToken
 }
-public class MetadataException : __DotNet__Exception
+package(mscorlib) class MetadataException : __DotNet__Exception
 {
     private int m_hr;
     //TODO: generate constructor
@@ -1796,7 +1799,7 @@ public abstract class MemberInfo : __DotNet__Object, ICustomAttributeProvider, _
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\MemberInfoSerializationHolder.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class MemberInfoSerializationHolder : __DotNet__Object, ISerializable, IObjectReference
+package(mscorlib) class MemberInfoSerializationHolder : __DotNet__Object, ISerializable, IObjectReference
 {
     //TODO: generate method GetSerializationInfo
     //TODO: generate method GetSerializationInfo
@@ -1883,7 +1886,7 @@ public enum MethodAttributes
 // so be careful if you change them
 //
 @__DotNet__Attribute!(FlagsAttribute.stringof)
-public enum INVOCATION_FLAGS : uint
+package(mscorlib) enum INVOCATION_FLAGS : uint
 {
     INVOCATION_FLAGS_UNKNOWN = 0x00000000,
     INVOCATION_FLAGS_INITIALIZED = 0x00000001,
@@ -2006,7 +2009,7 @@ public class MethodBody : __DotNet__Object
     private ubyte[] m_IL;
     private ExceptionHandlingClause[] m_exceptionHandlingClauses;
     private LocalVariableInfo[] m_localVariables;
-    public MethodBase m_methodBase;
+    package(mscorlib) MethodBase m_methodBase;
     private int m_localSignatureMetadataToken;
     private int m_maxStackSize;
     private bool m_initLocals;
@@ -2091,7 +2094,7 @@ public abstract class MethodInfo : MethodBase, _MethodInfo
     //TODO: generate method CreateDelegate
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class RuntimeMethodInfo : MethodInfo, ISerializable, IRuntimeMethodInfo
+package(mscorlib) final class RuntimeMethodInfo : MethodInfo, ISerializable, IRuntimeMethodInfo
 {
     private IntPtr m_handle;
     private RuntimeType.RuntimeTypeCache m_reflectedTypeCache;
@@ -2271,7 +2274,7 @@ public abstract class Module : __DotNet__Object, _Module, ISerializable, ICustom
     //TODO: generate method GetModuleHandle
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class RuntimeModule : Module
+package(mscorlib) class RuntimeModule : Module
 {
     //TODO: generate constructor
     //TODO: generate method GetType
@@ -2435,7 +2438,7 @@ public class ParameterInfo : __DotNet__Object, _ParameterInfo, ICustomAttributeP
     //TODO: generate method GetRealObject
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class RuntimeParameterInfo : ParameterInfo, ISerializable
+package(mscorlib) final class RuntimeParameterInfo : ParameterInfo, ISerializable
 {
     //TODO: generate method GetParameters
     //TODO: generate method GetReturnParameter
@@ -2579,7 +2582,7 @@ public abstract class PropertyInfo : MemberInfo, _PropertyInfo
     //TODO: generate property 'IsSpecialName'
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class RuntimePropertyInfo : PropertyInfo, ISerializable
+package(mscorlib) final class RuntimePropertyInfo : PropertyInfo, ISerializable
 {
     private int m_token;
     private String m_name;
@@ -2896,13 +2899,13 @@ public abstract class __DotNet__TypeInfo : Type, IReflectableType
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\RtType.cs'
 //
-public struct CerHashtable2(K,V)
+package(mscorlib) struct CerHashtable2(K,V)
 {
     private static class Table : __DotNet__Object
     {
-        public K[] m_keys;
-        public V[] m_values;
-        public int m_count;
+        package(mscorlib) K[] m_keys;
+        package(mscorlib) V[] m_values;
+        package(mscorlib) int m_count;
         //TODO: generate constructor
         //TODO: generate method Insert
     }

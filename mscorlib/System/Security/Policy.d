@@ -112,7 +112,7 @@ public abstract class EvidenceBase : __DotNet__Object
     //TODO: generate constructor
     //TODO: generate method Clone
 }
-public interface ILegacyEvidenceAdapter
+package(mscorlib) interface ILegacyEvidenceAdapter
 {
     //TODO: generate property 'EvidenceObject'
     //TODO: generate property 'EvidenceType'
@@ -122,7 +122,7 @@ public interface ILegacyEvidenceAdapter
 ///     them to be held in the Evidence collection which expects to maintain lists of EvidenceBase only
 /// </summary>
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class LegacyEvidenceWrapper : EvidenceBase, ILegacyEvidenceAdapter
+package(mscorlib) final class LegacyEvidenceWrapper : EvidenceBase, ILegacyEvidenceAdapter
 {
     private __DotNet__Object m_legacyEvidence;
     //TODO: generate constructor
@@ -143,7 +143,7 @@ public final class LegacyEvidenceWrapper : EvidenceBase, ILegacyEvidenceAdapter
 ///     Hash evidences for intsance.
 /// </summary>
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class LegacyEvidenceList : EvidenceBase, IEnumerable1!(EvidenceBase), ILegacyEvidenceAdapter
+package(mscorlib) final class LegacyEvidenceList : EvidenceBase, IEnumerable1!(EvidenceBase), ILegacyEvidenceAdapter
 {
     private List1!(EvidenceBase) m_legacyEvidenceList/*todo: implement initializer*/ = null;
     //TODO: generate property 'EvidenceObject'
@@ -162,7 +162,7 @@ public final class LegacyEvidenceList : EvidenceBase, IEnumerable1!(EvidenceBase
 ///     evidence. This descriptor also stores any evidence that's been generated of the specific type.
 /// </summary>
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class EvidenceTypeDescriptor : __DotNet__Object
+package(mscorlib) final class EvidenceTypeDescriptor : __DotNet__Object
 {
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private bool m_hostCanGenerate;
@@ -190,7 +190,7 @@ public final class EvidenceTypeDescriptor : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Policy\IDelayEvaluatedEvidence.cs'
 //
-public interface IDelayEvaluatedEvidence
+package(mscorlib) interface IDelayEvaluatedEvidence
 {
     //TODO: generate property 'IsVerified'
     //TODO: generate property 'WasUsed'
@@ -209,7 +209,7 @@ public interface IIdentityPermissionFactory
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Policy\IRuntimeEvidenceFactory.cs'
 //
-public interface IRuntimeEvidenceFactory
+package(mscorlib) interface IRuntimeEvidenceFactory
 {
     //TODO: generate property 'Target'
     //TODO: generate method GetFactorySuppliedEvidence
@@ -248,8 +248,8 @@ public enum PolicyStatementAttribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class PolicyStatement : __DotNet__Object, ISecurityPolicyEncodable, ISecurityEncodable
 {
-    public PermissionSet m_permSet;
-    public PolicyStatementAttribute m_attributes;
+    package(mscorlib) PermissionSet m_permSet;
+    package(mscorlib) PolicyStatementAttribute m_attributes;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor

@@ -39,21 +39,21 @@ import mscorlib.System.Diagnostics.Contracts :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\ArraySortHelper.cs'
 //
-public interface IArraySortHelper1(TKey)
+package(mscorlib) interface IArraySortHelper1(TKey)
 {
     //TODO: generate method Sort
     //TODO: generate method BinarySearch
 }
-public class IntrospectiveSortUtilities : __DotNet__Object
+package(mscorlib) class IntrospectiveSortUtilities : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum int IntrosortSizeThreshold/*todo: implement initializer*/ = int();
-    public enum int QuickSortDepthThreshold/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int IntrosortSizeThreshold/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int QuickSortDepthThreshold/*todo: implement initializer*/ = int();
     //TODO: generate method FloorLog2
     //TODO: generate method ThrowOrIgnoreBadComparer
 }
 @__DotNet__Attribute!(TypeDependencyAttribute.stringof/*, "System.Collections.Generic.GenericArraySortHelper`1"*/)
-public class ArraySortHelper1(T) : __DotNet__Object, IArraySortHelper1!(T)
+package(mscorlib) class ArraySortHelper1(T) : __DotNet__Object, IArraySortHelper1!(T)
 {
     private static /*todo: volatile*/ IArraySortHelper1!(T) defaultArraySortHelper;
     //TODO: generate property 'Default'
@@ -72,7 +72,7 @@ public class ArraySortHelper1(T) : __DotNet__Object, IArraySortHelper1!(T)
     //TODO: generate method InsertionSort
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof/**/)
-public class GenericArraySortHelper1(T) : __DotNet__Object, IArraySortHelper1!(T)/*where T : IComparable<T>*/
+package(mscorlib) class GenericArraySortHelper1(T) : __DotNet__Object, IArraySortHelper1!(T)/*where T : IComparable<T>*/
 {
     //TODO: generate method Sort
     //TODO: generate method BinarySearch
@@ -87,12 +87,12 @@ public class GenericArraySortHelper1(T) : __DotNet__Object, IArraySortHelper1!(T
     //TODO: generate method DownHeap
     //TODO: generate method InsertionSort
 }
-public interface IArraySortHelper2(TKey,TValue)
+package(mscorlib) interface IArraySortHelper2(TKey,TValue)
 {
     //TODO: generate method Sort
 }
 @__DotNet__Attribute!(TypeDependencyAttribute.stringof/*, "System.Collections.Generic.GenericArraySortHelper`2"*/)
-public class ArraySortHelper2(TKey,TValue) : __DotNet__Object, IArraySortHelper2!(TKey,TValue)
+package(mscorlib) class ArraySortHelper2(TKey,TValue) : __DotNet__Object, IArraySortHelper2!(TKey,TValue)
 {
     private static /*todo: volatile*/ IArraySortHelper2!(TKey,TValue) defaultArraySortHelper;
     //TODO: generate property 'Default'
@@ -108,7 +108,7 @@ public class ArraySortHelper2(TKey,TValue) : __DotNet__Object, IArraySortHelper2
     //TODO: generate method DownHeap
     //TODO: generate method InsertionSort
 }
-public class GenericArraySortHelper2(TKey,TValue) : __DotNet__Object, IArraySortHelper2!(TKey,TValue)/*where TKey : IComparable<TKey>*/
+package(mscorlib) class GenericArraySortHelper2(TKey,TValue) : __DotNet__Object, IArraySortHelper2!(TKey,TValue)/*where TKey : IComparable<TKey>*/
 {
     //TODO: generate method Sort
     //TODO: generate method SwapIfGreaterWithItems
@@ -142,28 +142,28 @@ public abstract class Comparer1(T) : __DotNet__Object, IComparer, IComparer1!(T)
 // means another generic instantiation, which can be costly esp.
 // for value types.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class GenericComparer1(T) : Comparer1!(T)/*where T : IComparable<T>*/
+package(mscorlib) final class GenericComparer1(T) : Comparer1!(T)/*where T : IComparable<T>*/
 {
     //TODO: generate method Compare
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class NullableComparer1(T) : Comparer1!(Nullable1!(T))/*where T : struct, IComparable<T>*/
+package(mscorlib) final class NullableComparer1(T) : Comparer1!(Nullable1!(T))/*where T : struct, IComparable<T>*/
 {
     //TODO: generate method Compare
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class ObjectComparer1(T) : Comparer1!(T)
+package(mscorlib) final class ObjectComparer1(T) : Comparer1!(T)
 {
     //TODO: generate method Compare
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class ComparisonComparer1(T) : Comparer1!(T)
+package(mscorlib) final class ComparisonComparer1(T) : Comparer1!(T)
 {
     private immutable Comparison1!(T) _comparison;
     //TODO: generate constructor
@@ -175,7 +175,7 @@ public final class ComparisonComparer1(T) : Comparer1!(T)
 // since we want to serialize as ObjectComparer for
 // back-compat reasons (see below).
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class Int32EnumComparer1(T) : Comparer1!(T), ISerializable/*where T : struct*/
+package(mscorlib) final class Int32EnumComparer1(T) : Comparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -185,7 +185,7 @@ public final class Int32EnumComparer1(T) : Comparer1!(T), ISerializable/*where T
     //TODO: generate method GetObjectData
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class UInt32EnumComparer1(T) : Comparer1!(T), ISerializable/*where T : struct*/
+package(mscorlib) final class UInt32EnumComparer1(T) : Comparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -195,7 +195,7 @@ public final class UInt32EnumComparer1(T) : Comparer1!(T), ISerializable/*where 
     //TODO: generate method GetObjectData
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class Int64EnumComparer1(T) : Comparer1!(T), ISerializable/*where T : struct*/
+package(mscorlib) final class Int64EnumComparer1(T) : Comparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -205,7 +205,7 @@ public final class Int64EnumComparer1(T) : Comparer1!(T), ISerializable/*where T
     //TODO: generate method GetObjectData
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class UInt64EnumComparer1(T) : Comparer1!(T), ISerializable/*where T : struct*/
+package(mscorlib) final class UInt64EnumComparer1(T) : Comparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -218,31 +218,31 @@ public final class UInt64EnumComparer1(T) : Comparer1!(T), ISerializable/*where 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\Generic\DebugView.cs'
 //
-public final class Mscorlib_CollectionDebugView1(T) : __DotNet__Object
+package(mscorlib) final class Mscorlib_CollectionDebugView1(T) : __DotNet__Object
 {
     private ICollection1!(T) collection;
     //TODO: generate constructor
     //TODO: generate property 'Items'
 }
-public final class Mscorlib_DictionaryKeyCollectionDebugView2(TKey,TValue) : __DotNet__Object
+package(mscorlib) final class Mscorlib_DictionaryKeyCollectionDebugView2(TKey,TValue) : __DotNet__Object
 {
     private ICollection1!(TKey) collection;
     //TODO: generate constructor
     //TODO: generate property 'Items'
 }
-public final class Mscorlib_DictionaryValueCollectionDebugView2(TKey,TValue) : __DotNet__Object
+package(mscorlib) final class Mscorlib_DictionaryValueCollectionDebugView2(TKey,TValue) : __DotNet__Object
 {
     private ICollection1!(TValue) collection;
     //TODO: generate constructor
     //TODO: generate property 'Items'
 }
-public final class Mscorlib_DictionaryDebugView2(K,V) : __DotNet__Object
+package(mscorlib) final class Mscorlib_DictionaryDebugView2(K,V) : __DotNet__Object
 {
     private IDictionary2!(K,V) dict;
     //TODO: generate constructor
     //TODO: generate property 'Items'
 }
-public final class Mscorlib_KeyedCollectionDebugView2(K,T) : __DotNet__Object
+package(mscorlib) final class Mscorlib_KeyedCollectionDebugView2(K,T) : __DotNet__Object
 {
     private KeyedCollection2!(K,T) kc;
     //TODO: generate constructor
@@ -339,8 +339,8 @@ public class Dictionary2(TKey,TValue) : __DotNet__Object, IDictionary2!(TKey,TVa
         private int index;
         private KeyValuePair2!(TKey,TValue) current;
         private int getEnumeratorRetType;
-        public enum int DictEntry/*todo: implement initializer*/ = int();
-        public enum int KeyValuePair/*todo: implement initializer*/ = int();
+        package(mscorlib) enum int DictEntry/*todo: implement initializer*/ = int();
+        package(mscorlib) enum int KeyValuePair/*todo: implement initializer*/ = int();
         //TODO: generate constructor
         //TODO: generate method MoveNext
         //TODO: generate property 'Current'
@@ -458,7 +458,7 @@ public abstract class EqualityComparer1(T) : __DotNet__Object, IEqualityComparer
 // The methods in this class look identical to the inherited methods, but the calls
 // to Equal bind to IEquatable<T>.Equals(T) instead of Object.Equals(Object)
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class GenericEqualityComparer1(T) : EqualityComparer1!(T)/*where T: IEquatable<T>*/
+package(mscorlib) class GenericEqualityComparer1(T) : EqualityComparer1!(T)/*where T: IEquatable<T>*/
 {
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
@@ -468,7 +468,7 @@ public class GenericEqualityComparer1(T) : EqualityComparer1!(T)/*where T: IEqua
     //TODO: generate method GetHashCode
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class NullableEqualityComparer1(T) : EqualityComparer1!(Nullable1!(T))/*where T : struct, IEquatable<T>*/
+package(mscorlib) class NullableEqualityComparer1(T) : EqualityComparer1!(Nullable1!(T))/*where T : struct, IEquatable<T>*/
 {
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
@@ -478,7 +478,7 @@ public class NullableEqualityComparer1(T) : EqualityComparer1!(Nullable1!(T))/*w
     //TODO: generate method GetHashCode
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class ObjectEqualityComparer1(T) : EqualityComparer1!(T)
+package(mscorlib) class ObjectEqualityComparer1(T) : EqualityComparer1!(T)
 {
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
@@ -487,7 +487,7 @@ public class ObjectEqualityComparer1(T) : EqualityComparer1!(T)
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
-public class NonRandomizedStringEqualityComparer : GenericEqualityComparer1!(String)
+package(mscorlib) class NonRandomizedStringEqualityComparer : GenericEqualityComparer1!(String)
 {
     private static IEqualityComparer1!(String) s_nonRandomizedComparer;
     //TODO: generate property 'Default'
@@ -497,7 +497,7 @@ public class NonRandomizedStringEqualityComparer : GenericEqualityComparer1!(Str
 // Performance of IndexOf on byte array is very important for some scenarios.
 // We will call the C runtime function memchr, which is optimized.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class ByteEqualityComparer : EqualityComparer1!(ubyte)
+package(mscorlib) class ByteEqualityComparer : EqualityComparer1!(ubyte)
 {
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
@@ -507,7 +507,7 @@ public class ByteEqualityComparer : EqualityComparer1!(ubyte)
     //TODO: generate method GetHashCode
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class EnumEqualityComparer1(T) : EqualityComparer1!(T), ISerializable/*where T : struct*/
+package(mscorlib) class EnumEqualityComparer1(T) : EqualityComparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
@@ -518,21 +518,21 @@ public class EnumEqualityComparer1(T) : EqualityComparer1!(T), ISerializable/*wh
     //TODO: generate method GetHashCode
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class SByteEnumEqualityComparer1(T) : EnumEqualityComparer1!(T), ISerializable/*where T : struct*/
+package(mscorlib) final class SByteEnumEqualityComparer1(T) : EnumEqualityComparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate method GetHashCode
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class ShortEnumEqualityComparer1(T) : EnumEqualityComparer1!(T), ISerializable/*where T : struct*/
+package(mscorlib) final class ShortEnumEqualityComparer1(T) : EnumEqualityComparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate method GetHashCode
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class LongEnumEqualityComparer1(T) : EqualityComparer1!(T), ISerializable/*where T : struct*/
+package(mscorlib) final class LongEnumEqualityComparer1(T) : EqualityComparer1!(T), ISerializable/*where T : struct*/
 {
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
@@ -542,7 +542,7 @@ public final class LongEnumEqualityComparer1(T) : EqualityComparer1!(T), ISerial
     //TODO: generate constructor
     //TODO: generate method GetObjectData
 }
-public final class RandomizedStringEqualityComparer : __DotNet__Object, IEqualityComparer1!(String), IEqualityComparer, IWellKnownStringEqualityComparer
+package(mscorlib) final class RandomizedStringEqualityComparer : __DotNet__Object, IEqualityComparer1!(String), IEqualityComparer, IWellKnownStringEqualityComparer
 {
     private long _entropy;
     //TODO: generate constructor
@@ -555,7 +555,7 @@ public final class RandomizedStringEqualityComparer : __DotNet__Object, IEqualit
     //TODO: generate method GetRandomizedEqualityComparer
     //TODO: generate method GetEqualityComparerForSerialization
 }
-public final class RandomizedObjectEqualityComparer : __DotNet__Object, IEqualityComparer, IWellKnownStringEqualityComparer
+package(mscorlib) final class RandomizedObjectEqualityComparer : __DotNet__Object, IEqualityComparer, IWellKnownStringEqualityComparer
 {
     private long _entropy;
     //TODO: generate constructor

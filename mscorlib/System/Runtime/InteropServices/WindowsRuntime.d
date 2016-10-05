@@ -22,6 +22,7 @@ import mscorlib.System.Runtime.CompilerServices :
 import mscorlib.System.Collections.Generic :
     KeyValuePair2,
     IComparer1,
+    Comparer1,
     IEnumerator1,
     ICollection1,
     IDictionary2,
@@ -34,6 +35,8 @@ import mscorlib.System.Collections :
     IList,
     IEnumerator,
     IEnumerable;
+import mscorlib :
+    AssemblyRef;
 import mscorlib.System.Diagnostics :
     DebuggerDisplayAttribute;
 import mscorlib.System.Reflection :
@@ -73,7 +76,7 @@ public final class DefaultInterfaceAttribute : Attribute
 // generally be done via winmdexp for user code.
 @__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Enum | AttributeTargets.Struct | AttributeTargets.Delegate, Inherited = false*/)
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public final class WindowsRuntimeImportAttribute : Attribute
+package(mscorlib) final class WindowsRuntimeImportAttribute : Attribute
 {
     //TODO: generate constructor
 }
@@ -121,7 +124,7 @@ public final class ReturnValueNameAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\BindableVectorToCollectionAdapter.cs'
 //
-public final class BindableVectorToCollectionAdapter : __DotNet__Object
+package(mscorlib) final class BindableVectorToCollectionAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Count
@@ -133,7 +136,7 @@ public final class BindableVectorToCollectionAdapter : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\BindableVectorToListAdapter.cs'
 //
-public final class BindableVectorToListAdapter : __DotNet__Object
+package(mscorlib) final class BindableVectorToListAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Indexer_Get
@@ -156,7 +159,7 @@ public final class BindableVectorToListAdapter : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\CLRIKeyValuePairImpl.cs'
 //
-public final class CLRIKeyValuePairImpl2(K,V) : __DotNet__Object, IKeyValuePair2!(K,V), IGetProxyTarget
+package(mscorlib) final class CLRIKeyValuePairImpl2(K,V) : __DotNet__Object, IKeyValuePair2!(K,V), IGetProxyTarget
 {
     private immutable KeyValuePair2!(K,V) _pair;
     //TODO: generate constructor
@@ -171,7 +174,7 @@ public final class CLRIKeyValuePairImpl2(K,V) : __DotNet__Object, IKeyValuePair2
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\CLRIPropertyValueImpl.cs'
 //
-public class CLRIPropertyValueImpl : __DotNet__Object, IPropertyValue
+package(mscorlib) class CLRIPropertyValueImpl : __DotNet__Object, IPropertyValue
 {
     private PropertyType _type;
     private __DotNet__Object _data;
@@ -231,7 +234,7 @@ public class CLRIPropertyValueImpl : __DotNet__Object, IPropertyValue
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\CLRIReferenceImpl.cs'
 //
-public final class CLRIReferenceImpl1(T) : CLRIPropertyValueImpl, IReference1!(T), IGetProxyTarget
+package(mscorlib) final class CLRIReferenceImpl1(T) : CLRIPropertyValueImpl, IReference1!(T), IGetProxyTarget
 {
     private T _value;
     //TODO: generate constructor
@@ -240,7 +243,7 @@ public final class CLRIReferenceImpl1(T) : CLRIPropertyValueImpl, IReference1!(T
     //TODO: generate method GetTarget
     //TODO: generate method UnboxHelper
 }
-public final class CLRIReferenceArrayImpl1(T) : CLRIPropertyValueImpl, IGetProxyTarget, IReferenceArray1!(T), IList
+package(mscorlib) final class CLRIReferenceArrayImpl1(T) : CLRIPropertyValueImpl, IGetProxyTarget, IReferenceArray1!(T), IList
 {
     private T[] _value;
     private IList _list;
@@ -265,12 +268,12 @@ public final class CLRIReferenceArrayImpl1(T) : CLRIPropertyValueImpl, IGetProxy
     //TODO: generate method GetTarget
     //TODO: generate method UnboxHelper
 }
-public class IReferenceFactory : __DotNet__Object
+package(mscorlib) class IReferenceFactory : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public static immutable Type s_pointType/*todo: implement initializer*/ = null;
-    public static immutable Type s_rectType/*todo: implement initializer*/ = null;
-    public static immutable Type s_sizeType/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable Type s_pointType/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable Type s_rectType/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable Type s_sizeType/*todo: implement initializer*/ = null;
     //TODO: generate method CreateIReference
     //TODO: generate method CreateIReferenceArray
 }
@@ -289,7 +292,7 @@ public class IReferenceFactory : __DotNet__Object
 /// <typeparam name="TValue">Type of objects that act as entries / values.</typeparam>
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
-public final class ConstantSplittableMap2(TKey,TValue) : __DotNet__Object, IMapView2!(TKey,TValue)
+package(mscorlib) final class ConstantSplittableMap2(TKey,TValue) : __DotNet__Object, IMapView2!(TKey,TValue)
 {
     private static class KeyValuePairComparator : __DotNet__Object, IComparer1!(KeyValuePair2!(TKey,TValue))
     {
@@ -321,7 +324,7 @@ public final class ConstantSplittableMap2(TKey,TValue) : __DotNet__Object, IMapV
     // #endregion IReadOnlyDictionary members
     // #region IKeyValuePair Enumerator
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static struct IKeyValuePairEnumerator
+    package(mscorlib) static struct IKeyValuePairEnumerator
     {
         private KeyValuePair2!(TKey,TValue)[] _array;
         private int _start;
@@ -334,7 +337,7 @@ public final class ConstantSplittableMap2(TKey,TValue) : __DotNet__Object, IMapV
         //TODO: generate method Reset
         //TODO: generate method Dispose
     }
-    public static class __Boxed__IKeyValuePairEnumerator : __DotNet__Object, IEnumerator1!(IKeyValuePair2!(TKey,TValue))
+    package(mscorlib) static class __Boxed__IKeyValuePairEnumerator : __DotNet__Object, IEnumerator1!(IKeyValuePair2!(TKey,TValue))
     {
         IKeyValuePairEnumerator value;
         alias value this;
@@ -344,7 +347,7 @@ public final class ConstantSplittableMap2(TKey,TValue) : __DotNet__Object, IMapV
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\CustomPropertyImpl.cs'
 //
-public final class CustomPropertyImpl : __DotNet__Object, ICustomProperty
+package(mscorlib) final class CustomPropertyImpl : __DotNet__Object, ICustomProperty
 {
     private PropertyInfo m_property;
     //TODO: generate constructor
@@ -364,7 +367,7 @@ public final class CustomPropertyImpl : __DotNet__Object, ICustomProperty
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
-public final class DictionaryKeyCollection2(TKey,TValue) : __DotNet__Object, ICollection1!(TKey)
+package(mscorlib) final class DictionaryKeyCollection2(TKey,TValue) : __DotNet__Object, ICollection1!(TKey)
 {
     private immutable IDictionary2!(TKey,TValue) dictionary;
     //TODO: generate constructor
@@ -379,7 +382,7 @@ public final class DictionaryKeyCollection2(TKey,TValue) : __DotNet__Object, ICo
     //TODO: generate method GetEnumerator
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class DictionaryKeyEnumerator2(TKey,TValue) : __DotNet__Object, IEnumerator1!(TKey)
+package(mscorlib) final class DictionaryKeyEnumerator2(TKey,TValue) : __DotNet__Object, IEnumerator1!(TKey)
 {
     private immutable IDictionary2!(TKey,TValue) dictionary;
     private IEnumerator1!(KeyValuePair2!(TKey,TValue)) enumeration;
@@ -394,7 +397,7 @@ public final class DictionaryKeyEnumerator2(TKey,TValue) : __DotNet__Object, IEn
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\DictionaryToMapAdapter.cs'
 //
-public final class DictionaryToMapAdapter : __DotNet__Object
+package(mscorlib) final class DictionaryToMapAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Lookup
@@ -411,7 +414,7 @@ public final class DictionaryToMapAdapter : __DotNet__Object
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
-public final class DictionaryValueCollection2(TKey,TValue) : __DotNet__Object, ICollection1!(TValue)
+package(mscorlib) final class DictionaryValueCollection2(TKey,TValue) : __DotNet__Object, ICollection1!(TValue)
 {
     private immutable IDictionary2!(TKey,TValue) dictionary;
     //TODO: generate constructor
@@ -426,7 +429,7 @@ public final class DictionaryValueCollection2(TKey,TValue) : __DotNet__Object, I
     //TODO: generate method GetEnumerator
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class DictionaryValueEnumerator2(TKey,TValue) : __DotNet__Object, IEnumerator1!(TValue)
+package(mscorlib) final class DictionaryValueEnumerator2(TKey,TValue) : __DotNet__Object, IEnumerator1!(TValue)
 {
     private immutable IDictionary2!(TKey,TValue) dictionary;
     private IEnumerator1!(KeyValuePair2!(TKey,TValue)) enumeration;
@@ -441,15 +444,15 @@ public final class DictionaryValueEnumerator2(TKey,TValue) : __DotNet__Object, I
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\EnumeratorToIteratorAdapter.cs'
 //
-public final class EnumerableToIterableAdapter : __DotNet__Object
+package(mscorlib) final class EnumerableToIterableAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method First_Stub
 }
-public final class EnumerableToBindableIterableAdapter : __DotNet__Object
+package(mscorlib) final class EnumerableToBindableIterableAdapter : __DotNet__Object
 {
     //TODO: generate constructor
-    public static final class NonGenericToGenericEnumerator : __DotNet__Object, IEnumerator1!(__DotNet__Object)
+    package(mscorlib) static final class NonGenericToGenericEnumerator : __DotNet__Object, IEnumerator1!(__DotNet__Object)
     {
         private IEnumerator enumerator;
         //TODO: generate constructor
@@ -460,7 +463,7 @@ public final class EnumerableToBindableIterableAdapter : __DotNet__Object
     }
     //TODO: generate method First_Stub
 }
-public final class EnumeratorToIteratorAdapter1(T) : __DotNet__Object, IIterator1!(T), IBindableIterator
+package(mscorlib) final class EnumeratorToIteratorAdapter1(T) : __DotNet__Object, IIterator1!(T), IBindableIterator
 {
     private IEnumerator1!(T) m_enumerator;
     private bool m_firstItem/*todo: implement initializer*/ = bool();
@@ -478,7 +481,7 @@ public final class EnumeratorToIteratorAdapter1(T) : __DotNet__Object, IIterator
 //
 public struct EventRegistrationToken
 {
-    public ulong m_value;
+    package(mscorlib) ulong m_value;
     //TODO: generate constructor
     //TODO: generate property 'Value'
     //TODO: generate operator
@@ -524,18 +527,18 @@ public interface IActivationFactory
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "30d5a829-7fa4-4026-83bb-d75bae4ea99e"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IClosable
+package(mscorlib) interface IClosable
 {
     //TODO: generate method Close
 }
-public final class IDisposableToIClosableAdapter : __DotNet__Object
+package(mscorlib) final class IDisposableToIClosableAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Close
 }
 // Adapter class which converts IDisposable.Dispose calls into IClosable.Close
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class IClosableToIDisposableAdapter : __DotNet__Object
+package(mscorlib) final class IClosableToIDisposableAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Dispose
@@ -547,7 +550,7 @@ public final class IClosableToIDisposableAdapter : __DotNet__Object
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "30DA92C0-23E8-42A0-AE7C-734A0E5D2782"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface ICustomProperty
+package(mscorlib) interface ICustomProperty
 {
     //TODO: generate property 'Type'
     //TODO: generate property 'Name'
@@ -562,7 +565,7 @@ public interface ICustomProperty
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\ICustomPropertyProvider.cs'
 //
-public class ICustomPropertyProviderImpl : __DotNet__Object
+package(mscorlib) class ICustomPropertyProviderImpl : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method CreateProperty
@@ -580,11 +583,11 @@ private enum InterfaceForwardingSupport
     IVectorView = 0x8,
     IBindableIterableOrIIterable = 0x10,
 }
-public interface IGetProxyTarget
+package(mscorlib) interface IGetProxyTarget
 {
     //TODO: generate method GetTarget
 }
-public class ICustomPropertyProviderProxy2(T1,T2) : __DotNet__Object, IGetProxyTarget, ICustomQueryInterface, IEnumerable, IBindableVector, IBindableVectorView
+package(mscorlib) class ICustomPropertyProviderProxy2(T1,T2) : __DotNet__Object, IGetProxyTarget, ICustomQueryInterface, IEnumerable, IBindableVector, IBindableVectorView
 {
     private __DotNet__Object _target;
     private InterfaceForwardingSupport _flags;
@@ -638,14 +641,14 @@ public class ICustomPropertyProviderProxy2(T1,T2) : __DotNet__Object, IGetProxyT
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "faa585ea-6214-4217-afda-7f46de5869b3"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IIterable1(T) : IEnumerable1!(T)
+package(mscorlib) interface IIterable1(T) : IEnumerable1!(T)
 {
     //TODO: generate method First
 }
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "036d2c08-df29-41af-8aa2-d774be62ba6f"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IBindableIterable
+package(mscorlib) interface IBindableIterable
 {
     //TODO: generate method First
 }
@@ -656,7 +659,7 @@ public interface IBindableIterable
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "6a79e863-4300-459a-9966-cbb660963ee1"*/)
-public interface IIterator1(T)
+package(mscorlib) interface IIterator1(T)
 {
     //TODO: generate property 'Current'
     //TODO: generate property 'HasCurrent'
@@ -666,7 +669,7 @@ public interface IIterator1(T)
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "6a1d6c07-076d-49f2-8314-f52c9c9a8331"*/)
-public interface IBindableIterator
+package(mscorlib) interface IBindableIterator
 {
     //TODO: generate property 'Current'
     //TODO: generate property 'HasCurrent'
@@ -679,7 +682,7 @@ public interface IBindableIterator
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "3c2925fe-8519-45c1-aa79-197b6718c1c1"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IMap2(K,V) : IIterable1!(IKeyValuePair2!(K,V))
+package(mscorlib) interface IMap2(K,V) : IIterable1!(IKeyValuePair2!(K,V))
 {
     //TODO: generate method Lookup
     //TODO: generate property 'Size'
@@ -692,7 +695,7 @@ public interface IMap2(K,V) : IIterable1!(IKeyValuePair2!(K,V))
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "e480ce40-a338-4ada-adcf-272272e48cb9"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IMapView2(K,V) : IIterable1!(IKeyValuePair2!(K,V))
+package(mscorlib) interface IMapView2(K,V) : IIterable1!(IKeyValuePair2!(K,V))
 {
     //TODO: generate method Lookup
     //TODO: generate property 'Size'
@@ -702,7 +705,7 @@ public interface IMapView2(K,V) : IIterable1!(IKeyValuePair2!(K,V))
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "02b51929-c1c4-4a7e-8940-0312b5c18500"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IKeyValuePair2(K,V)
+package(mscorlib) interface IKeyValuePair2(K,V)
 {
     //TODO: generate property 'Key'
     //TODO: generate property 'Value'
@@ -720,7 +723,7 @@ public interface IKeyValuePair2(K,V)
 // IMapView<K, V>. No actual IMapViewToIReadOnlyDictionaryAdapter object is ever instantiated. Thus, you will see
 // a lot of expressions that cast "this" to "IMapView<K, V>".
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
-public final class IMapViewToIReadOnlyDictionaryAdapter : __DotNet__Object
+package(mscorlib) final class IMapViewToIReadOnlyDictionaryAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Indexer_Get
@@ -733,7 +736,7 @@ public final class IMapViewToIReadOnlyDictionaryAdapter : __DotNet__Object
 // Note: One day we may make these return IReadOnlyCollection<T>
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
-public final class ReadOnlyDictionaryKeyCollection2(TKey,TValue) : __DotNet__Object, IEnumerable1!(TKey)
+package(mscorlib) final class ReadOnlyDictionaryKeyCollection2(TKey,TValue) : __DotNet__Object, IEnumerable1!(TKey)
 {
     private immutable IReadOnlyDictionary2!(TKey,TValue) dictionary;
     //TODO: generate constructor
@@ -741,7 +744,7 @@ public final class ReadOnlyDictionaryKeyCollection2(TKey,TValue) : __DotNet__Obj
     //TODO: generate method GetEnumerator
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class ReadOnlyDictionaryKeyEnumerator2(TKey,TValue) : __DotNet__Object, IEnumerator1!(TKey)
+package(mscorlib) final class ReadOnlyDictionaryKeyEnumerator2(TKey,TValue) : __DotNet__Object, IEnumerator1!(TKey)
 {
     private immutable IReadOnlyDictionary2!(TKey,TValue) dictionary;
     private IEnumerator1!(KeyValuePair2!(TKey,TValue)) enumeration;
@@ -754,7 +757,7 @@ public final class ReadOnlyDictionaryKeyEnumerator2(TKey,TValue) : __DotNet__Obj
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
-public final class ReadOnlyDictionaryValueCollection2(TKey,TValue) : __DotNet__Object, IEnumerable1!(TValue)
+package(mscorlib) final class ReadOnlyDictionaryValueCollection2(TKey,TValue) : __DotNet__Object, IEnumerable1!(TValue)
 {
     private immutable IReadOnlyDictionary2!(TKey,TValue) dictionary;
     //TODO: generate constructor
@@ -762,7 +765,7 @@ public final class ReadOnlyDictionaryValueCollection2(TKey,TValue) : __DotNet__O
     //TODO: generate method GetEnumerator
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class ReadOnlyDictionaryValueEnumerator2(TKey,TValue) : __DotNet__Object, IEnumerator1!(TValue)
+package(mscorlib) final class ReadOnlyDictionaryValueEnumerator2(TKey,TValue) : __DotNet__Object, IEnumerator1!(TValue)
 {
     private immutable IReadOnlyDictionary2!(TKey,TValue) dictionary;
     private IEnumerator1!(KeyValuePair2!(TKey,TValue)) enumeration;
@@ -780,7 +783,7 @@ public final class ReadOnlyDictionaryValueEnumerator2(TKey,TValue) : __DotNet__O
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "4bd682dd-7554-40e9-9a9b-82654ede7e62"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IPropertyValue
+package(mscorlib) interface IPropertyValue
 {
     //TODO: generate property 'Type'
     //TODO: generate property 'IsNumericScalar'
@@ -825,19 +828,19 @@ public interface IPropertyValue
 // Specify size directly instead of fields to avoid warnings
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, Size=8*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public struct Point
+package(mscorlib) struct Point
 {
 }
 // Specify size directly instead of fields to avoid warnings
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, Size=8*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public struct Size
+package(mscorlib) struct Size
 {
 }
 // Specify size directly instead of fields to avoid warnings
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, Size=16*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public struct Rect
+package(mscorlib) struct Rect
 {
 }
 
@@ -853,7 +856,7 @@ public struct Rect
 // IReadOnlyDictionary<K, V>. No actual IReadOnlyDictionaryToIMapViewAdapter object is ever instantiated. Thus, you will
 // see a lot of expressions that cast "this" to "IReadOnlyDictionary<K, V>". 
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Size = {Size}"*/)
-public final class IReadOnlyDictionaryToIMapViewAdapter : __DotNet__Object
+package(mscorlib) final class IReadOnlyDictionaryToIMapViewAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Lookup
@@ -874,7 +877,7 @@ public final class IReadOnlyDictionaryToIMapViewAdapter : __DotNet__Object
 // IReadOnlyList<T>. No actual IReadOnlyListToIVectorViewAdapter object is ever instantiated. Thus, you will
 // see a lot of expressions that cast "this" to "IReadOnlyList<T>". 
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Size = {Size}"*/)
-public final class IReadOnlyListToIVectorViewAdapter : __DotNet__Object
+package(mscorlib) final class IReadOnlyListToIVectorViewAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method GetAt
@@ -890,14 +893,14 @@ public final class IReadOnlyListToIVectorViewAdapter : __DotNet__Object
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "61c17706-2d65-11e0-9ae8-d48564015472"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IReference1(T) : IPropertyValue
+package(mscorlib) interface IReference1(T) : IPropertyValue
 {
     //TODO: generate property 'Value'
 }
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "61c17707-2d65-11e0-9ae8-d48564015472"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IReferenceArray1(T) : IPropertyValue
+package(mscorlib) interface IReferenceArray1(T) : IPropertyValue
 {
     //TODO: generate property 'Value'
 }
@@ -911,7 +914,7 @@ public interface IReferenceArray1(T) : IPropertyValue
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "82BA7092-4C88-427D-A7BC-16DD93FEB67E"*/)
 @__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
-public interface IRestrictedErrorInfo
+package(mscorlib) interface IRestrictedErrorInfo
 {
     //TODO: generate method GetErrorDetails
     //TODO: generate method GetReference
@@ -920,17 +923,17 @@ public interface IRestrictedErrorInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\IteratorToEnumeratorAdapter.cs'
 //
-public template GetEnumerator_Delegate1(T)
+package(mscorlib) template GetEnumerator_Delegate1(T)
 {
     alias GetEnumerator_Delegate1 = IEnumerator1!(T) delegate();
 }
-public final class IterableToEnumerableAdapter : __DotNet__Object
+package(mscorlib) final class IterableToEnumerableAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method GetEnumerator_Stub
     //TODO: generate method GetEnumerator_Variance_Stub
 }
-public final class BindableIterableToEnumerableAdapter : __DotNet__Object
+package(mscorlib) final class BindableIterableToEnumerableAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     private static final class NonGenericToGenericIterator : __DotNet__Object, IIterator1!(__DotNet__Object)
@@ -944,7 +947,7 @@ public final class BindableIterableToEnumerableAdapter : __DotNet__Object
     }
     //TODO: generate method GetEnumerator_Stub
 }
-public final class IteratorToEnumeratorAdapter1(T) : __DotNet__Object, IEnumerator1!(T)
+package(mscorlib) final class IteratorToEnumeratorAdapter1(T) : __DotNet__Object, IEnumerator1!(T)
 {
     private IIterator1!(T) m_iterator;
     private bool m_hadCurrent;
@@ -964,7 +967,7 @@ public final class IteratorToEnumeratorAdapter1(T) : __DotNet__Object, IEnumerat
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "913337e9-11a1-4345-a3a2-4e7f956e222d"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IVector1(T) : IIterable1!(T)
+package(mscorlib) interface IVector1(T) : IIterable1!(T)
 {
     //TODO: generate method GetAt
     //TODO: generate property 'Size'
@@ -983,7 +986,7 @@ public interface IVector1(T) : IIterable1!(T)
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "913337e9-11a1-4345-a3a2-4e7f956e222d"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IVector_Raw1(T) : IIterable1!(T)
+package(mscorlib) interface IVector_Raw1(T) : IIterable1!(T)
 {
     //TODO: generate method GetAt
     //TODO: generate property 'Size'
@@ -1001,7 +1004,7 @@ public interface IVector_Raw1(T) : IIterable1!(T)
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "bbe1fa4c-b0e3-4583-baef-1f1b2e483e56"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IVectorView1(T) : IIterable1!(T)
+package(mscorlib) interface IVectorView1(T) : IIterable1!(T)
 {
     //TODO: generate method GetAt
     //TODO: generate property 'Size'
@@ -1011,7 +1014,7 @@ public interface IVectorView1(T) : IIterable1!(T)
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "393de7de-6fd0-4c0d-bb71-47244a113e93"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IBindableVector : IBindableIterable
+package(mscorlib) interface IBindableVector : IBindableIterable
 {
     //TODO: generate method GetAt
     //TODO: generate property 'Size'
@@ -1027,7 +1030,7 @@ public interface IBindableVector : IBindableIterable
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "346dd6e7-976e-4bc3-815d-ece243bc0f33"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IBindableVectorView : IBindableIterable
+package(mscorlib) interface IBindableVectorView : IBindableIterable
 {
     //TODO: generate method GetAt
     //TODO: generate property 'Size'
@@ -1037,7 +1040,7 @@ public interface IBindableVectorView : IBindableIterable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\IVectorViewToIReadOnlyListAdapter.cs'
 //
-public template Indexer_Get_Delegate1(T)
+package(mscorlib) template Indexer_Get_Delegate1(T)
 {
     alias Indexer_Get_Delegate1 = T delegate(int index);
 }
@@ -1050,7 +1053,7 @@ public template Indexer_Get_Delegate1(T)
 // IVectorView<T>. No actual IVectorViewToIReadOnlyListAdapter object is ever instantiated. Thus, you will see
 // a lot of expressions that cast "this" to "IVectorView<T>".
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
-public final class IVectorViewToIReadOnlyListAdapter : __DotNet__Object
+package(mscorlib) final class IVectorViewToIReadOnlyListAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Indexer_Get
@@ -1060,7 +1063,7 @@ public final class IVectorViewToIReadOnlyListAdapter : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\ListToBindableVectorAdapter.cs'
 //
-public final class ListToBindableVectorAdapter : __DotNet__Object
+package(mscorlib) final class ListToBindableVectorAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method GetAt
@@ -1079,7 +1082,7 @@ public final class ListToBindableVectorAdapter : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\ListToBindableVectorViewAdapter.cs'
 //
-public final class ListToBindableVectorViewAdapter : __DotNet__Object, IBindableVectorView
+package(mscorlib) final class ListToBindableVectorViewAdapter : __DotNet__Object, IBindableVectorView
 {
     private immutable IList list;
     //TODO: generate constructor
@@ -1093,7 +1096,7 @@ public final class ListToBindableVectorViewAdapter : __DotNet__Object, IBindable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\ListToVectorAdapter.cs'
 //
-public final class ListToVectorAdapter : __DotNet__Object
+package(mscorlib) final class ListToVectorAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method GetAt
@@ -1118,7 +1121,7 @@ public final class ListToVectorAdapter : __DotNet__Object
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "60D27C8D-5F61-4CCE-B751-690FAE66AA53"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IManagedActivationFactory
+package(mscorlib) interface IManagedActivationFactory
 {
     //TODO: generate method RunClassConstructor
 }
@@ -1130,7 +1133,7 @@ public interface IManagedActivationFactory
 // ActivatableAttribute, or StaticAttribute.
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 @__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.None*/)
-public final class ManagedActivationFactory : __DotNet__Object, IActivationFactory, IManagedActivationFactory
+package(mscorlib) final class ManagedActivationFactory : __DotNet__Object, IActivationFactory, IManagedActivationFactory
 {
     private Type m_type;
     //TODO: generate constructor
@@ -1141,7 +1144,7 @@ public final class ManagedActivationFactory : __DotNet__Object, IActivationFacto
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\MapToCollectionAdapter.cs'
 //
-public final class MapToCollectionAdapter : __DotNet__Object
+package(mscorlib) final class MapToCollectionAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Count
@@ -1156,7 +1159,7 @@ public final class MapToCollectionAdapter : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\MapToDictionaryAdapter.cs'
 //
-public final class MapToDictionaryAdapter : __DotNet__Object
+package(mscorlib) final class MapToDictionaryAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Indexer_Get
@@ -1174,7 +1177,7 @@ public final class MapToDictionaryAdapter : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\MapViewToReadOnlyCollectionAdapter.cs'
 //
-public final class MapViewToReadOnlyCollectionAdapter : __DotNet__Object
+package(mscorlib) final class MapViewToReadOnlyCollectionAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Count
@@ -1185,10 +1188,10 @@ public final class MapViewToReadOnlyCollectionAdapter : __DotNet__Object
 //
 // #if BIT64
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit, Size = 24*/)
-public struct HSTRING_HEADER
+package(mscorlib) struct HSTRING_HEADER
 {
 }
-public class UnsafeNativeMethods : __DotNet__Object
+package(mscorlib) class UnsafeNativeMethods : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetRestrictedErrorInfo
@@ -1203,7 +1206,7 @@ public class UnsafeNativeMethods : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\PropertyValue.cs'
 //
-public enum PropertyType
+package(mscorlib) enum PropertyType
 {
     // WARNING: These values have to match enum Windows.Foundation.PropertyType !!!
     Empty = 0,
@@ -1256,15 +1259,15 @@ public enum PropertyType
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "96369f54-8eb6-48f0-abce-c1b211e627c3"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IStringable
+package(mscorlib) interface IStringable
 {
     //TODO: generate method ToString
 }
-public class IStringableHelper : __DotNet__Object
+package(mscorlib) class IStringableHelper : __DotNet__Object
 {
     //TODO: generate method ToString
 }
-public abstract class RuntimeClass : __ComObject
+package(mscorlib) abstract class RuntimeClass : __ComObject
 {
     //TODO: generate method GetRedirectedGetHashCodeMD
     //TODO: generate method RedirectGetHashCode
@@ -1280,7 +1283,7 @@ public abstract class RuntimeClass : __ComObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\VectorToCollectionAdapter.cs'
 //
-public final class VectorToCollectionAdapter : __DotNet__Object
+package(mscorlib) final class VectorToCollectionAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Count
@@ -1295,7 +1298,7 @@ public final class VectorToCollectionAdapter : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\VectorToListAdapter.cs'
 //
-public final class VectorToListAdapter : __DotNet__Object
+package(mscorlib) final class VectorToListAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Indexer_Get
@@ -1312,7 +1315,7 @@ public final class VectorToListAdapter : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\WindowsRuntime\VectorViewToReadOnlyCollectionAdapter.cs'
 //
-public final class VectorViewToReadOnlyCollectionAdapter : __DotNet__Object
+package(mscorlib) final class VectorViewToReadOnlyCollectionAdapter : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method Count
@@ -1324,7 +1327,7 @@ public final class VectorViewToReadOnlyCollectionAdapter : __DotNet__Object
 // WindowsFoundationEventHandler<T> a copy of the definition for the Windows.Foundation.EventHandler<T> delegate
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "9de1c535-6ae1-11e0-84e1-18a905bcc53f"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public template WindowsFoundationEventHandler1(T)
+package(mscorlib) template WindowsFoundationEventHandler1(T)
 {
     alias WindowsFoundationEventHandler1 = void delegate(__DotNet__Object sender, T args);
 }
@@ -1337,7 +1340,7 @@ public template WindowsFoundationEventHandler1(T)
 /// <code>System.Runtime.WindowsRuntime.dll</code> to call into the VM.
 /// </summary>
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class WindowsRuntimeBufferHelper : __DotNet__Object
+package(mscorlib) class WindowsRuntimeBufferHelper : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method StoreOverlappedPtrInCCW
@@ -1354,7 +1357,7 @@ public class WindowsRuntimeMarshal : __DotNet__Object
     //TODO: generate method RemoveEventHandler
     //TODO: generate method RemoveAllEventHandlers
     //TODO: generate method GetRegistrationTokenCacheSize
-    public static struct EventRegistrationTokenList
+    package(mscorlib) static struct EventRegistrationTokenList
     {
         private EventRegistrationToken firstToken;
         private List1!(EventRegistrationToken) restTokens;
@@ -1364,30 +1367,30 @@ public class WindowsRuntimeMarshal : __DotNet__Object
         //TODO: generate method Pop
         //TODO: generate method CopyTo
     }
-    public static class ManagedEventRegistrationImpl : __DotNet__Object
+    package(mscorlib) static class ManagedEventRegistrationImpl : __DotNet__Object
     {
         private this() {} // prevent instantiation
-        public static /*todo: volatile*/ ConditionalWeakTable2!(__DotNet__Object,Dictionary2!(MethodInfo,Dictionary2!(__DotNet__Object,EventRegistrationTokenList))) s_eventRegistrations/*todo: implement initializer*/ = null;
+        package(mscorlib) static /*todo: volatile*/ ConditionalWeakTable2!(__DotNet__Object,Dictionary2!(MethodInfo,Dictionary2!(__DotNet__Object,EventRegistrationTokenList))) s_eventRegistrations/*todo: implement initializer*/ = null;
         //TODO: generate method AddEventHandler
         //TODO: generate method GetEventRegistrationTokenTable
         //TODO: generate method RemoveEventHandler
         //TODO: generate method RemoveAllEventHandlers
     }
-    public static class NativeOrStaticEventRegistrationImpl : __DotNet__Object
+    package(mscorlib) static class NativeOrStaticEventRegistrationImpl : __DotNet__Object
     {
         private this() {} // prevent instantiation
-        public static struct EventCacheKey
+        package(mscorlib) static struct EventCacheKey
         {
-            public __DotNet__Object target;
-            public MethodInfo method;
+            package(mscorlib) __DotNet__Object target;
+            package(mscorlib) MethodInfo method;
             //TODO: generate method ToString
         }
-        public static class EventCacheKeyEqualityComparer : __DotNet__Object, IEqualityComparer1!(EventCacheKey)
+        package(mscorlib) static class EventCacheKeyEqualityComparer : __DotNet__Object, IEqualityComparer1!(EventCacheKey)
         {
             //TODO: generate method Equals
             //TODO: generate method GetHashCode
         }
-        public static class EventRegistrationTokenListWithCount : __DotNet__Object
+        package(mscorlib) static class EventRegistrationTokenListWithCount : __DotNet__Object
         {
             private TokenListCount _tokenListCount;
             private EventRegistrationTokenList _tokenList;
@@ -1397,7 +1400,7 @@ public class WindowsRuntimeMarshal : __DotNet__Object
             //TODO: generate method Pop
             //TODO: generate method CopyTo
         }
-        public static class TokenListCount : __DotNet__Object
+        package(mscorlib) static class TokenListCount : __DotNet__Object
         {
             private int _count;
             private EventCacheKey _key;
@@ -1407,12 +1410,12 @@ public class WindowsRuntimeMarshal : __DotNet__Object
             //TODO: generate method Dec
             //TODO: generate method CleanupCache
         }
-        public static struct EventCacheEntry
+        package(mscorlib) static struct EventCacheEntry
         {
-            public ConditionalWeakTable2!(__DotNet__Object,EventRegistrationTokenListWithCount) registrationTable;
-            public TokenListCount tokenListCount;
+            package(mscorlib) ConditionalWeakTable2!(__DotNet__Object,EventRegistrationTokenListWithCount) registrationTable;
+            package(mscorlib) TokenListCount tokenListCount;
         }
-        public static /*todo: volatile*/ Dictionary2!(EventCacheKey,EventCacheEntry) s_eventRegistrations/*todo: implement initializer*/ = null;
+        package(mscorlib) static /*todo: volatile*/ Dictionary2!(EventCacheKey,EventCacheEntry) s_eventRegistrations/*todo: implement initializer*/ = null;
         private static /*todo: volatile*/ MyReaderWriterLock s_eventCacheRWLock/*todo: implement initializer*/ = null;
         //TODO: generate method GetInstanceKey
         //TODO: generate method AddEventHandler
@@ -1421,10 +1424,10 @@ public class WindowsRuntimeMarshal : __DotNet__Object
         //TODO: generate method GetEventRegistrationTokenTableInternal
         //TODO: generate method RemoveEventHandler
         //TODO: generate method RemoveAllEventHandlers
-        public static class ReaderWriterLockTimedOutException : ApplicationException
+        package(mscorlib) static class ReaderWriterLockTimedOutException : ApplicationException
         {
         }
-        public static class MyReaderWriterLock : __DotNet__Object
+        package(mscorlib) static class MyReaderWriterLock : __DotNet__Object
         {
             private int myLock;
             private int owners;

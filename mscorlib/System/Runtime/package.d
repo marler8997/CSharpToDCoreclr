@@ -71,7 +71,7 @@ public final class MemoryFailPoint : CriticalFinalizerObject, IDisposable
     //TODO: generate method Dispose
     // #if _DEBUG
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static final class MemoryFailPointState : __DotNet__Object
+    package(mscorlib) static final class MemoryFailPointState : __DotNet__Object
     {
         private ulong _segmentSize;
         private int _allocationSizeInMB;

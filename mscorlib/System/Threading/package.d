@@ -21,6 +21,7 @@ import mscorlib.System :
     LocalDataStoreMgr,
     ThreadStaticAttribute,
     LocalDataStoreHolder,
+    Environment,
     Random,
     CLSCompliantAttribute,
     TimeSpan;
@@ -46,7 +47,9 @@ import mscorlib.Microsoft.Win32.SafeHandles :
     SafeWaitHandle,
     SafeHandleZeroOrMinusOneIsInvalid;
 import mscorlib.System.Threading.Tasks :
-    Task1;
+    Task1,
+    TaskCreationOptions,
+    InternalTaskOptions;
 import mscorlib.System.Runtime.CompilerServices :
     FriendAccessAllowedAttribute;
 import mscorlib.System.Runtime.ConstrainedExecution :
@@ -102,7 +105,7 @@ public final class AsyncLocal1(T) : __DotNet__Object, IAsyncLocal
     //TODO: generate property 'Value'
     //TODO: generate method OnValueChanged
 }
-public interface IAsyncLocal
+package(mscorlib) interface IAsyncLocal
 {
     //TODO: generate method OnValueChanged
 }
@@ -289,21 +292,21 @@ public class CancellationTokenSource : __DotNet__Object, IDisposable
         //TODO: generate method Dispose
     }
 }
-public struct CancellationCallbackCoreWorkArguments
+package(mscorlib) struct CancellationCallbackCoreWorkArguments
 {
-    public SparselyPopulatedArrayFragment1!(CancellationCallbackInfo) m_currArrayFragment;
-    public int m_currArrayIndex;
+    package(mscorlib) SparselyPopulatedArrayFragment1!(CancellationCallbackInfo) m_currArrayFragment;
+    package(mscorlib) int m_currArrayIndex;
     //TODO: generate constructor
 }
-public class CancellationCallbackInfo : __DotNet__Object
+package(mscorlib) class CancellationCallbackInfo : __DotNet__Object
 {
-    public immutable Action1!(__DotNet__Object) Callback;
-    public immutable __DotNet__Object StateForCallback;
-    public immutable ExecutionContext TargetExecutionContext;
-    public immutable CancellationTokenSource CancellationTokenSource_;
-    public static final class WithSyncContext : CancellationCallbackInfo
+    package(mscorlib) immutable Action1!(__DotNet__Object) Callback;
+    package(mscorlib) immutable __DotNet__Object StateForCallback;
+    package(mscorlib) immutable ExecutionContext TargetExecutionContext;
+    package(mscorlib) immutable CancellationTokenSource CancellationTokenSource_;
+    package(mscorlib) static final class WithSyncContext : CancellationCallbackInfo
     {
-        public immutable SynchronizationContext TargetSyncContext;
+        package(mscorlib) immutable SynchronizationContext TargetSyncContext;
         //TODO: generate constructor
     }
     //TODO: generate constructor
@@ -313,7 +316,7 @@ public class CancellationCallbackInfo : __DotNet__Object
     //TODO: generate method ExecuteCallback
     //TODO: generate method ExecutionContextCallback
 }
-public class SparselyPopulatedArray1(T) : __DotNet__Object/*where T : class*/
+package(mscorlib) class SparselyPopulatedArray1(T) : __DotNet__Object/*where T : class*/
 {
     private immutable SparselyPopulatedArrayFragment1!(T) m_head;
     private /*todo: volatile*/ SparselyPopulatedArrayFragment1!(T) m_tail;
@@ -322,7 +325,7 @@ public class SparselyPopulatedArray1(T) : __DotNet__Object/*where T : class*/
     //TODO: generate property 'Tail'
     //TODO: generate method Add
 }
-public struct SparselyPopulatedArrayAddInfo1(T)
+package(mscorlib) struct SparselyPopulatedArrayAddInfo1(T)
 {
     private SparselyPopulatedArrayFragment1!(T) m_source;
     private int m_index;
@@ -330,12 +333,12 @@ public struct SparselyPopulatedArrayAddInfo1(T)
     //TODO: generate property 'Source'
     //TODO: generate property 'Index'
 }
-public class SparselyPopulatedArrayFragment1(T) : __DotNet__Object/*where T : class*/
+package(mscorlib) class SparselyPopulatedArrayFragment1(T) : __DotNet__Object/*where T : class*/
 {
-    public immutable T[] m_elements;
-    public /*todo: volatile*/ int m_freeCount;
-    public /*todo: volatile*/ SparselyPopulatedArrayFragment1!(T) m_next;
-    public /*todo: volatile*/ SparselyPopulatedArrayFragment1!(T) m_prev;
+    package(mscorlib) immutable T[] m_elements;
+    package(mscorlib) /*todo: volatile*/ int m_freeCount;
+    package(mscorlib) /*todo: volatile*/ SparselyPopulatedArrayFragment1!(T) m_next;
+    package(mscorlib) /*todo: volatile*/ SparselyPopulatedArrayFragment1!(T) m_prev;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate indexer
@@ -432,10 +435,10 @@ public class EventWaitHandle : WaitHandle
 public alias ContextCallback = void delegate(__DotNet__Object state);
 // #if FEATURE_CORECLR
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public struct ExecutionContextSwitcher
+package(mscorlib) struct ExecutionContextSwitcher
 {
-    public ExecutionContext m_ec;
-    public SynchronizationContext m_sc;
+    package(mscorlib) ExecutionContext m_ec;
+    package(mscorlib) SynchronizationContext m_sc;
     //TODO: generate method Undo
 }
 public final class ExecutionContext : __DotNet__Object, IDisposable
@@ -454,7 +457,7 @@ public final class ExecutionContext : __DotNet__Object, IDisposable
     //TODO: generate method SetLocalValue
     // #region Wrappers for CLR compat, to avoid ifdefs all over the BCL
     @__DotNet__Attribute!(FlagsAttribute.stringof)
-    public enum CaptureOptions
+    package(mscorlib) enum CaptureOptions
     {
         None = 0x00,
         IgnoreSyncCtx = 0x01,
@@ -556,7 +559,7 @@ public class LazyInitializer : __DotNet__Object
 private class LazyHelpers1(T) : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public static Func1!(T) s_activatorFactorySelector/*todo: implement initializer*/ = null;
+    package(mscorlib) static Func1!(T) s_activatorFactorySelector/*todo: implement initializer*/ = null;
     //TODO: generate method ActivatorFactorySelector
 }
 
@@ -730,11 +733,11 @@ public final class Mutex : WaitHandle
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate method CreateMutexWithGuaranteedCleanup
-    public static class MutexTryCodeHelper : __DotNet__Object
+    package(mscorlib) static class MutexTryCodeHelper : __DotNet__Object
     {
         private bool m_initiallyOwned;
         private MutexCleanupInfo m_cleanupInfo;
-        public bool m_newMutex;
+        package(mscorlib) bool m_newMutex;
         private String m_name;
         @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private Win32Native.SECURITY_ATTRIBUTES m_secAttrs;
@@ -743,11 +746,11 @@ public final class Mutex : WaitHandle
         //TODO: generate method MutexTryCode
     }
     //TODO: generate method MutexCleanupCode
-    public static class MutexCleanupInfo : __DotNet__Object
+    package(mscorlib) static class MutexCleanupInfo : __DotNet__Object
     {
         @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-        public SafeWaitHandle mutexHandle;
-        public bool inCriticalRegion;
+        package(mscorlib) SafeWaitHandle mutexHandle;
+        package(mscorlib) bool inCriticalRegion;
         //TODO: generate constructor
     }
     //TODO: generate constructor
@@ -782,7 +785,7 @@ public struct NativeOverlapped
     public int OffsetHigh;
     public IntPtr EventHandle;
 }
-public class _IOCompletionCallback : __DotNet__Object
+package(mscorlib) class _IOCompletionCallback : __DotNet__Object
 {
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private IOCompletionCallback _ioCompletionCallback;
@@ -796,24 +799,24 @@ public class _IOCompletionCallback : __DotNet__Object
     // Context callback: same sig for SendOrPostCallback and ContextCallback
     // #if FEATURE_CORECLR
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public static ContextCallback _ccb/*todo: implement initializer*/ = null;
+    package(mscorlib) static ContextCallback _ccb/*todo: implement initializer*/ = null;
     //TODO: generate method IOCompletionCallback_Context
     //TODO: generate method PerformIOCompletionCallback
 }
-public final class OverlappedData : __DotNet__Object
+package(mscorlib) final class OverlappedData : __DotNet__Object
 {
-    public IAsyncResult m_asyncResult;
+    package(mscorlib) IAsyncResult m_asyncResult;
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public IOCompletionCallback m_iocb;
-    public _IOCompletionCallback m_iocbHelper;
-    public Overlapped m_overlapped;
+    package(mscorlib) IOCompletionCallback m_iocb;
+    package(mscorlib) _IOCompletionCallback m_iocbHelper;
+    package(mscorlib) Overlapped m_overlapped;
     private __DotNet__Object m_userObject;
     private IntPtr m_pinSelf;
     private IntPtr m_userObjectInternal;
     private int m_AppDomainId;
     private ubyte m_isArray;
     private ubyte m_toBeCleaned;
-    public NativeOverlapped m_nativeOverlapped;
+    package(mscorlib) NativeOverlapped m_nativeOverlapped;
     //TODO: generate constructor
     //TODO: generate method ReInitialize
     //TODO: generate method Pack
@@ -921,7 +924,7 @@ public class SemaphoreSlim : __DotNet__Object, IDisposable
     private enum int NO_MAXIMUM/*todo: implement initializer*/ = int();
     private static final class TaskNode : Task1!(bool), IThreadPoolWorkItem
     {
-        public TaskNode Prev, Next;
+        package(mscorlib) TaskNode Prev, Next;
         //TODO: generate constructor
         //TODO: generate method ExecuteWorkItem
         //TODO: generate method MarkAborted
@@ -1028,7 +1031,7 @@ public struct SpinLock
     //TODO: generate property 'IsHeld'
     //TODO: generate property 'IsHeldByCurrentThread'
     //TODO: generate property 'IsThreadOwnerTrackingEnabled'
-    public static class SystemThreading_SpinLockDebugView : __DotNet__Object
+    package(mscorlib) static class SystemThreading_SpinLockDebugView : __DotNet__Object
     {
         private SpinLock m_spinLock;
         //TODO: generate constructor
@@ -1093,9 +1096,9 @@ public struct SpinLock
 @__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
 public struct SpinWait
 {
-    public enum int YIELD_THRESHOLD/*todo: implement initializer*/ = int();
-    public enum int SLEEP_0_EVERY_HOW_MANY_TIMES/*todo: implement initializer*/ = int();
-    public enum int SLEEP_1_EVERY_HOW_MANY_TIMES/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int YIELD_THRESHOLD/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int SLEEP_0_EVERY_HOW_MANY_TIMES/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int SLEEP_1_EVERY_HOW_MANY_TIMES/*todo: implement initializer*/ = int();
     private int m_count;
     //TODO: generate property 'Count'
     //TODO: generate property 'NextSpinWillYield'
@@ -1105,7 +1108,7 @@ public struct SpinWait
     //TODO: generate method SpinUntil
     //TODO: generate method SpinUntil
 }
-public class PlatformHelper : __DotNet__Object
+package(mscorlib) class PlatformHelper : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private enum int PROCESSOR_COUNT_REFRESH_INTERVAL_MS/*todo: implement initializer*/ = int();
@@ -1114,7 +1117,7 @@ public class PlatformHelper : __DotNet__Object
     //TODO: generate property 'ProcessorCount'
     //TODO: generate property 'IsSingleProcessor'
 }
-public class TimeoutHelper : __DotNet__Object
+package(mscorlib) class TimeoutHelper : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetTime
@@ -1139,7 +1142,7 @@ public class TimeoutHelper : __DotNet__Object
 //
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public class WinRTSynchronizationContextFactoryBase : __DotNet__Object
+package(mscorlib) class WinRTSynchronizationContextFactoryBase : __DotNet__Object
 {
     //TODO: generate method Create
 }
@@ -1178,8 +1181,8 @@ public class SynchronizationLockException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Thread.cs'
 //
-public alias InternalCrossContextDelegate = __DotNet__Object delegate(__DotNet__Object[] args);
-public class ThreadHelper : __DotNet__Object
+package(mscorlib) alias InternalCrossContextDelegate = __DotNet__Object delegate(__DotNet__Object[] args);
+package(mscorlib) class ThreadHelper : __DotNet__Object
 {
     //TODO: generate constructor
     private Delegate _start;
@@ -1188,12 +1191,12 @@ public class ThreadHelper : __DotNet__Object
     //TODO: generate constructor
     //TODO: generate method SetExecutionContextHelper
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public static ContextCallback _ccb/*todo: implement initializer*/ = null;
+    package(mscorlib) static ContextCallback _ccb/*todo: implement initializer*/ = null;
     //TODO: generate method ThreadStart_Context
     //TODO: generate method ThreadStart
     //TODO: generate method ThreadStart
 }
-public struct ThreadHandle
+package(mscorlib) struct ThreadHandle
 {
     private IntPtr m_ptr;
     //TODO: generate constructor
@@ -1225,9 +1228,9 @@ public final class Thread : CriticalFinalizerObject, _Thread
     // See code:#threadCultureInfo
     // #if !FEATURE_LEAK_CULTURE_INFO
     @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
-    public static CultureInfo m_CurrentCulture;
+    package(mscorlib) static CultureInfo m_CurrentCulture;
     @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
-    public static CultureInfo m_CurrentUICulture;
+    package(mscorlib) static CultureInfo m_CurrentUICulture;
     private static AsyncLocal1!(CultureInfo) s_asyncLocalCurrentCulture;
     private static AsyncLocal1!(CultureInfo) s_asyncLocalCurrentUICulture;
     //TODO: generate method AsyncLocalSetCurrentCulture
@@ -1340,7 +1343,7 @@ public final class Thread : CriticalFinalizerObject, _Thread
 // stack crawl will both prevent inlining of the calle and pass an ESP point to stack crawl to
 // Declaring these in EH clauses is illegal; they must declared in the main method body
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum StackCrawlMark
+package(mscorlib) enum StackCrawlMark
 {
     LookForMe = 0,
     LookForMyCaller = 1,
@@ -1432,15 +1435,15 @@ public class ThreadLocal1(T) : __DotNet__Object, IDisposable
     //TODO: generate method GetNewTableSize
     private static struct LinkedSlotVolatile
     {
-        public /*todo: volatile*/ LinkedSlot Value;
+        package(mscorlib) /*todo: volatile*/ LinkedSlot Value;
     }
     private static final class LinkedSlot : __DotNet__Object
     {
         //TODO: generate constructor
-        public /*todo: volatile*/ LinkedSlot Next;
-        public /*todo: volatile*/ LinkedSlot Previous;
-        public /*todo: volatile*/ LinkedSlotVolatile[] SlotArray;
-        public T Value;
+        package(mscorlib) /*todo: volatile*/ LinkedSlot Next;
+        package(mscorlib) /*todo: volatile*/ LinkedSlot Previous;
+        package(mscorlib) /*todo: volatile*/ LinkedSlotVolatile[] SlotArray;
+        package(mscorlib) T Value;
     }
     private static class IdManager : __DotNet__Object
     {
@@ -1451,13 +1454,13 @@ public class ThreadLocal1(T) : __DotNet__Object, IDisposable
     }
     private static class FinalizationHelper : __DotNet__Object
     {
-        public LinkedSlotVolatile[] SlotArray;
+        package(mscorlib) LinkedSlotVolatile[] SlotArray;
         private bool m_trackAllValues;
         //TODO: generate constructor
         //TODO: generate destructor
     }
 }
-public final class SystemThreading_ThreadLocalDebugView1(T) : __DotNet__Object
+package(mscorlib) final class SystemThreading_ThreadLocalDebugView1(T) : __DotNet__Object
 {
     private immutable ThreadLocal1!(T) m_tlocal;
     //TODO: generate constructor
@@ -1469,7 +1472,7 @@ public final class SystemThreading_ThreadLocalDebugView1(T) : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\ThreadPool.cs'
 //
-public class ThreadPoolGlobals : __DotNet__Object
+package(mscorlib) class ThreadPoolGlobals : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public static uint tpQuantum/*todo: implement initializer*/ = uint();
@@ -1481,9 +1484,9 @@ public class ThreadPoolGlobals : __DotNet__Object
     public static ThreadPoolWorkQueue workQueue/*todo: implement initializer*/ = null;
     //TODO: generate constructor
 }
-public final class ThreadPoolWorkQueue : __DotNet__Object
+package(mscorlib) final class ThreadPoolWorkQueue : __DotNet__Object
 {
-    public static class SparseArray1(T) : __DotNet__Object/*where T : class*/
+    package(mscorlib) static class SparseArray1(T) : __DotNet__Object/*where T : class*/
     {
         private /*todo: volatile*/ T[] m_array;
         //TODO: generate constructor
@@ -1491,10 +1494,10 @@ public final class ThreadPoolWorkQueue : __DotNet__Object
         //TODO: generate method Add
         //TODO: generate method Remove
     }
-    public static class WorkStealingQueue : __DotNet__Object
+    package(mscorlib) static class WorkStealingQueue : __DotNet__Object
     {
         private enum int INITIAL_SIZE/*todo: implement initializer*/ = int();
-        public /*todo: volatile*/ IThreadPoolWorkItem[] m_array/*todo: implement initializer*/ = null;
+        package(mscorlib) /*todo: volatile*/ IThreadPoolWorkItem[] m_array/*todo: implement initializer*/ = null;
         private /*todo: volatile*/ int m_mask/*todo: implement initializer*/ = int();
         private enum int START_INDEX/*todo: implement initializer*/ = int();
         private /*todo: volatile*/ int m_headIndex/*todo: implement initializer*/ = int();
@@ -1506,9 +1509,9 @@ public final class ThreadPoolWorkQueue : __DotNet__Object
         //TODO: generate method TrySteal
         //TODO: generate method TrySteal
     }
-    public static class QueueSegment : __DotNet__Object
+    package(mscorlib) static class QueueSegment : __DotNet__Object
     {
-        public immutable IThreadPoolWorkItem[] nodes;
+        package(mscorlib) immutable IThreadPoolWorkItem[] nodes;
         private enum int QueueSegmentLength/*todo: implement initializer*/ = int();
         private /*todo: volatile*/ int indexes;
         public /*todo: volatile*/ QueueSegment Next;
@@ -1520,10 +1523,10 @@ public final class ThreadPoolWorkQueue : __DotNet__Object
         //TODO: generate method TryEnqueue
         //TODO: generate method TryDequeue
     }
-    public /*todo: volatile*/ QueueSegment queueHead;
-    public /*todo: volatile*/ QueueSegment queueTail;
-    public bool loggingEnabled;
-    public static SparseArray1!(WorkStealingQueue) allThreadQueues/*todo: implement initializer*/ = null;
+    package(mscorlib) /*todo: volatile*/ QueueSegment queueHead;
+    package(mscorlib) /*todo: volatile*/ QueueSegment queueTail;
+    package(mscorlib) bool loggingEnabled;
+    package(mscorlib) static SparseArray1!(WorkStealingQueue) allThreadQueues/*todo: implement initializer*/ = null;
     private /*todo: volatile*/ int numOutstandingThreadRequests/*todo: implement initializer*/ = int();
     //TODO: generate constructor
     //TODO: generate method EnsureCurrentThreadHasQueue
@@ -1534,7 +1537,7 @@ public final class ThreadPoolWorkQueue : __DotNet__Object
     //TODO: generate method Dequeue
     //TODO: generate method Dispatch
 }
-public final class ThreadPoolWorkQueueThreadLocals : __DotNet__Object
+package(mscorlib) final class ThreadPoolWorkQueueThreadLocals : __DotNet__Object
 {
     @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
@@ -1546,7 +1549,7 @@ public final class ThreadPoolWorkQueueThreadLocals : __DotNet__Object
     //TODO: generate method CleanUp
     //TODO: generate destructor
 }
-public final class RegisteredWaitHandleSafe : CriticalFinalizerObject
+package(mscorlib) final class RegisteredWaitHandleSafe : CriticalFinalizerObject
 {
     //TODO: generate property 'InvalidHandle'
     private IntPtr registeredWaitHandle;
@@ -1576,17 +1579,17 @@ public final class RegisteredWaitHandle : __DotNet__Object
 public alias WaitCallback = void delegate(__DotNet__Object state);
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public alias WaitOrTimerCallback = void delegate(__DotNet__Object state, bool timedOut);
-public class _ThreadPoolWaitCallback : __DotNet__Object
+package(mscorlib) class _ThreadPoolWaitCallback : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method PerformWaitCallback
 }
-public interface IThreadPoolWorkItem
+package(mscorlib) interface IThreadPoolWorkItem
 {
     //TODO: generate method ExecuteWorkItem
     //TODO: generate method MarkAborted
 }
-public final class QueueUserWorkItemCallback : __DotNet__Object, IThreadPoolWorkItem
+package(mscorlib) final class QueueUserWorkItemCallback : __DotNet__Object, IThreadPoolWorkItem
 {
     //TODO: generate constructor
     private WaitCallback callback;
@@ -1599,10 +1602,10 @@ public final class QueueUserWorkItemCallback : __DotNet__Object, IThreadPoolWork
     //TODO: generate method ExecuteWorkItem
     //TODO: generate method MarkAborted
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public static ContextCallback ccb/*todo: implement initializer*/ = null;
+    package(mscorlib) static ContextCallback ccb/*todo: implement initializer*/ = null;
     //TODO: generate method WaitCallback_Context
 }
-public final class QueueUserWorkItemCallbackDefaultContext : __DotNet__Object, IThreadPoolWorkItem
+package(mscorlib) final class QueueUserWorkItemCallbackDefaultContext : __DotNet__Object, IThreadPoolWorkItem
 {
     //TODO: generate constructor
     private WaitCallback callback;
@@ -1614,10 +1617,10 @@ public final class QueueUserWorkItemCallbackDefaultContext : __DotNet__Object, I
     //TODO: generate method ExecuteWorkItem
     //TODO: generate method MarkAborted
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public static ContextCallback ccb/*todo: implement initializer*/ = null;
+    package(mscorlib) static ContextCallback ccb/*todo: implement initializer*/ = null;
     //TODO: generate method WaitCallback_Context
 }
-public class _ThreadPoolWaitOrTimerCallback : __DotNet__Object
+package(mscorlib) class _ThreadPoolWaitOrTimerCallback : __DotNet__Object
 {
     //TODO: generate constructor
     private WaitOrTimerCallback _waitOrTimerCallback;
@@ -1775,7 +1778,7 @@ public class Timeout : __DotNet__Object
     @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
     public static immutable TimeSpan InfiniteTimeSpan/*todo: implement initializer*/ = TimeSpan();
     public enum int Infinite/*todo: implement initializer*/ = int();
-    public enum uint UnsignedInfinite/*todo: implement initializer*/ = uint();
+    package(mscorlib) enum uint UnsignedInfinite/*todo: implement initializer*/ = uint();
 }
 
 //
@@ -1821,11 +1824,11 @@ private class TimerQueue : __DotNet__Object
 }
 private final class TimerQueueTimer : __DotNet__Object
 {
-    public TimerQueueTimer m_next;
-    public TimerQueueTimer m_prev;
-    public int m_startTicks;
-    public uint m_dueTime;
-    public uint m_period;
+    package(mscorlib) TimerQueueTimer m_next;
+    package(mscorlib) TimerQueueTimer m_prev;
+    package(mscorlib) int m_startTicks;
+    package(mscorlib) uint m_dueTime;
+    package(mscorlib) uint m_period;
     private immutable TimerCallback m_timerCallback;
     private immutable __DotNet__Object m_state;
     private immutable ExecutionContext m_executionContext;
@@ -1845,7 +1848,7 @@ private final class TimerQueueTimer : __DotNet__Object
 }
 private final class TimerHolder : __DotNet__Object
 {
-    public TimerQueueTimer m_timer;
+    package(mscorlib) TimerQueueTimer m_timer;
     //TODO: generate constructor
     //TODO: generate destructor
     //TODO: generate method Close
@@ -1921,15 +1924,15 @@ public abstract class WaitHandle : __DotNet__Object, IDisposable
     private IntPtr waitHandle;
     // #pragma warning restore 414
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public /*todo: volatile*/ SafeWaitHandle safeWaitHandle;
-    public bool hasThreadAffinity;
+    package(mscorlib) /*todo: volatile*/ SafeWaitHandle safeWaitHandle;
+    package(mscorlib) bool hasThreadAffinity;
     //TODO: generate method GetInvalidHandle
     protected static immutable IntPtr InvalidHandle/*todo: implement initializer*/ = IntPtr();
     private enum int WAIT_OBJECT_0/*todo: implement initializer*/ = int();
     private enum int WAIT_ABANDONED/*todo: implement initializer*/ = int();
     private enum int WAIT_FAILED/*todo: implement initializer*/ = int();
     private enum int ERROR_TOO_MANY_POSTS/*todo: implement initializer*/ = int();
-    public enum OpenExistingResult
+    package(mscorlib) enum OpenExistingResult
     {
         Success,
         NameNotFound,

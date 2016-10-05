@@ -269,7 +269,7 @@ public class ReadOnlyDictionary2(TKey,TValue) : __DotNet__Object, IDictionary2!(
         //TODO: generate property 'SyncRoot'
     }
 }
-public class ReadOnlyDictionaryHelpers : __DotNet__Object
+package(mscorlib) class ReadOnlyDictionaryHelpers : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method CopyToNonGenericICollectionHelper

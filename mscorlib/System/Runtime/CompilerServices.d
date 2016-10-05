@@ -51,7 +51,7 @@ public class ContractHelper : __DotNet__Object
     //TODO: generate method TriggerFailureImplementation
     private static /*todo: volatile*/ EventHandler1!(ContractFailedEventArgs) contractFailedEvent;
     private static immutable __DotNet__Object lockObject/*todo: implement initializer*/ = null;
-    public enum int COR_E_CODECONTRACTFAILED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_CODECONTRACTFAILED/*todo: implement initializer*/ = int();
     //TODO: generate event 'InternalContractFailed'
     //TODO: generate method RaiseContractFailedEventImplementation
     //TODO: generate method TriggerFailureImplementation
@@ -83,22 +83,22 @@ public final class AccessedThroughPropertyAttribute : Attribute
 // They're used for metadata tokens for making multi-module assemblies.
 // Do not randomly touch these classes.
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public final class AssemblyAttributesGoHere : __DotNet__Object
+package(mscorlib) final class AssemblyAttributesGoHere : __DotNet__Object
 {
     //TODO: generate constructor
 }
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public final class AssemblyAttributesGoHereS : __DotNet__Object
+package(mscorlib) final class AssemblyAttributesGoHereS : __DotNet__Object
 {
     //TODO: generate constructor
 }
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public final class AssemblyAttributesGoHereM : __DotNet__Object
+package(mscorlib) final class AssemblyAttributesGoHereM : __DotNet__Object
 {
     //TODO: generate constructor
 }
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public final class AssemblyAttributesGoHereSM : __DotNet__Object
+package(mscorlib) final class AssemblyAttributesGoHereSM : __DotNet__Object
 {
     //TODO: generate constructor
 }
@@ -204,7 +204,7 @@ public struct AsyncTaskMethodBuilder
 @__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization = true, ExternalThreading = true*/)
 public struct AsyncTaskMethodBuilder1(TResult)
 {
-    public static immutable Task1!(TResult) s_defaultResultTask/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable Task1!(TResult) s_defaultResultTask/*todo: implement initializer*/ = null;
     private AsyncMethodBuilderCore m_coreState;
     private Task1!(TResult) m_task;
     //TODO: generate method Create
@@ -220,35 +220,35 @@ public struct AsyncTaskMethodBuilder1(TResult)
     //TODO: generate property 'ObjectIdForDebugger'
     //TODO: generate method GetTaskForResult
 }
-public class AsyncTaskCache : __DotNet__Object
+package(mscorlib) class AsyncTaskCache : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public static immutable Task1!(bool) TrueTask/*todo: implement initializer*/ = null;
-    public static immutable Task1!(bool) FalseTask/*todo: implement initializer*/ = null;
-    public static immutable Task1!(int)[] Int32Tasks/*todo: implement initializer*/ = null;
-    public enum int INCLUSIVE_INT32_MIN/*todo: implement initializer*/ = int();
-    public enum int EXCLUSIVE_INT32_MAX/*todo: implement initializer*/ = int();
+    package(mscorlib) static immutable Task1!(bool) TrueTask/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable Task1!(bool) FalseTask/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable Task1!(int)[] Int32Tasks/*todo: implement initializer*/ = null;
+    package(mscorlib) enum int INCLUSIVE_INT32_MIN/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EXCLUSIVE_INT32_MAX/*todo: implement initializer*/ = int();
     //TODO: generate method CreateInt32Tasks
     //TODO: generate method CreateCacheableTask
 }
-public struct AsyncMethodBuilderCore
+package(mscorlib) struct AsyncMethodBuilderCore
 {
-    public IAsyncStateMachine m_stateMachine;
-    public Action m_defaultContextAction;
+    package(mscorlib) IAsyncStateMachine m_stateMachine;
+    package(mscorlib) Action m_defaultContextAction;
     //TODO: generate method SetStateMachine
     //TODO: generate method GetCompletionAction
     //TODO: generate method OutputAsyncCausalityEvents
     //TODO: generate method PostBoxInitialization
     //TODO: generate method ThrowAsync
-    public static final class MoveNextRunnerWithContext : MoveNextRunner
+    package(mscorlib) static final class MoveNextRunnerWithContext : MoveNextRunner
     {
         private immutable ExecutionContext m_context;
         //TODO: generate constructor
         //TODO: generate method RunWithCapturedContext
     }
-    public static class MoveNextRunner : __DotNet__Object
+    package(mscorlib) static class MoveNextRunner : __DotNet__Object
     {
-        public IAsyncStateMachine m_stateMachine;
+        package(mscorlib) IAsyncStateMachine m_stateMachine;
         //TODO: generate constructor
         //TODO: generate method RunWithDefaultContext
         //TODO: generate property 'InvokeMoveNextCallback'
@@ -259,9 +259,9 @@ public struct AsyncMethodBuilderCore
     }
     private static class ContinuationWrapper : __DotNet__Object
     {
-        public immutable Action m_continuation;
+        package(mscorlib) immutable Action m_continuation;
         private immutable Action m_invokeAction;
-        public immutable Task m_innerTask;
+        package(mscorlib) immutable Task m_innerTask;
         //TODO: generate constructor
         //TODO: generate method Invoke
     }
@@ -482,7 +482,7 @@ public final class DecimalConstantAttribute : Attribute
 //
 @__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.All*/)
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
-public final class DecoratedNameAttribute : Attribute
+package(mscorlib) final class DecoratedNameAttribute : Attribute
 {
     //TODO: generate constructor
 }
@@ -643,7 +643,7 @@ public final class InternalsVisibleToAttribute : Attribute
                     AttributeTargets.Property |
                     AttributeTargets.Struct, AllowMultiple = false, Inherited = false*/)
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public final class FriendAccessAllowedAttribute : Attribute
+package(mscorlib) final class FriendAccessAllowedAttribute : Attribute
 {
 }
 
@@ -669,30 +669,30 @@ public final class IteratorStateMachineAttribute : StateMachineAttribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\CompilerServices\jithelpers.cs'
 //
-public struct StringHandleOnStack
+package(mscorlib) struct StringHandleOnStack
 {
     private IntPtr m_ptr;
     //TODO: generate constructor
 }
-public struct ObjectHandleOnStack
+package(mscorlib) struct ObjectHandleOnStack
 {
     private IntPtr m_ptr;
     //TODO: generate constructor
 }
-public struct StackCrawlMarkHandle
+package(mscorlib) struct StackCrawlMarkHandle
 {
     private IntPtr m_ptr;
     //TODO: generate constructor
 }
-public class PinningHelper : __DotNet__Object
+package(mscorlib) class PinningHelper : __DotNet__Object
 {
     public ubyte m_data;
 }
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class JitHelpers : __DotNet__Object
+package(mscorlib) class JitHelpers : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum String QCall/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String QCall/*todo: implement initializer*/ = null;
     //TODO: generate method GetStringHandleOnStack
     //TODO: generate method GetObjectHandleOnStack
     //TODO: generate method GetStackCrawlMarkHandle
@@ -744,7 +744,7 @@ public enum MethodCodeType
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class MethodImplAttribute : Attribute
 {
-    public MethodImplOptions _val;
+    package(mscorlib) MethodImplOptions _val;
     public MethodCodeType MethodCodeType_;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -870,7 +870,7 @@ public final class SuppressIldasmAttribute : Attribute
                     AttributeTargets.Field |
                     AttributeTargets.Event |
                     AttributeTargets.Property*/)
-public final class SuppressMergeCheckAttribute : Attribute
+package(mscorlib) final class SuppressMergeCheckAttribute : Attribute
 {
     //TODO: generate constructor
 }
@@ -972,7 +972,7 @@ public struct ConfiguredTaskAwaitable1(TResult)
 // We might want to make this inherited someday.  But I suspect it shouldn't
 // be necessary.
 @__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Struct | AttributeTargets.Class | AttributeTargets.Interface, AllowMultiple = true, Inherited = false*/)
-public final class TypeDependencyAttribute : Attribute
+package(mscorlib) final class TypeDependencyAttribute : Attribute
 {
     private String typeName;
     //TODO: generate constructor

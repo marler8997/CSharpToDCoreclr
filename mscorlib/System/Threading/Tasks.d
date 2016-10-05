@@ -12,10 +12,10 @@ import mscorlib.System :
     __DotNet__Exception,
     Func2,
     Func3,
+    Action1,
     Nullable1,
     IDisposable,
     ThreadStaticAttribute,
-    Action1,
     Predicate1,
     SerializableAttribute,
     OperationCanceledException,
@@ -36,6 +36,20 @@ import mscorlib.Windows.Foundation.Diagnostics :
     CausalitySource,
     IAsyncCausalityTracerStatics;
 static import mscorlib.Windows.Foundation.Diagnostics;
+import mscorlib.System.Diagnostics.Contracts :
+    Contract;
+import mscorlib.System.Threading :
+    Interlocked,
+    CancellationToken,
+    IThreadPoolWorkItem,
+    ExecutionContext,
+    ManualResetEventSlim,
+    CancellationTokenRegistration,
+    ContextCallback,
+    Timer,
+    SendOrPostCallback,
+    SynchronizationContext,
+    ParameterizedThreadStart;
 import mscorlib.System.Security.Permissions :
     HostProtectionAttribute,
     PermissionSetAttribute;
@@ -52,17 +66,6 @@ import mscorlib.System.Collections.Generic :
     IEnumerable1,
     Dictionary2,
     IList1;
-import mscorlib.System.Threading :
-    CancellationToken,
-    IThreadPoolWorkItem,
-    ExecutionContext,
-    ManualResetEventSlim,
-    CancellationTokenRegistration,
-    ContextCallback,
-    Timer,
-    SendOrPostCallback,
-    SynchronizationContext,
-    ParameterizedThreadStart;
 import mscorlib.System.Runtime.InteropServices :
     StructLayoutAttribute;
 import mscorlib.System.Security :
@@ -79,7 +82,7 @@ import mscorlib.System.Diagnostics.Tracing :
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\AsyncCausalityTracer.cs'
 //
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public enum CausalityTraceLevel
+package(mscorlib) enum CausalityTraceLevel
 {
     // #if FEATURE_COMINTEROP
     Required = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalityTraceLevel.Required,
@@ -87,7 +90,7 @@ public enum CausalityTraceLevel
     Verbose = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalityTraceLevel.Verbose,
 }
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public enum AsyncCausalityStatus
+package(mscorlib) enum AsyncCausalityStatus
 {
     // #if FEATURE_COMINTEROP
     Canceled = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.AsyncCausalityStatus.Canceled,
@@ -95,7 +98,7 @@ public enum AsyncCausalityStatus
     Error = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.AsyncCausalityStatus.Error,
     Started = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.AsyncCausalityStatus.Started,
 }
-public enum CausalityRelation
+package(mscorlib) enum CausalityRelation
 {
     // #if FEATURE_COMINTEROP
     AssignDelegate = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalityRelation.AssignDelegate,
@@ -104,7 +107,7 @@ public enum CausalityRelation
     Cancel = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalityRelation.Cancel,
     Error = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalityRelation.Error,
 }
-public enum CausalitySynchronousWork
+package(mscorlib) enum CausalitySynchronousWork
 {
     // #if FEATURE_COMINTEROP
     CompletionNotification = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalitySynchronousWork.CompletionNotification,
@@ -112,7 +115,7 @@ public enum CausalitySynchronousWork
     Execution = /*MemberName:Type*/mscorlib.Windows.Foundation.Diagnostics.CausalitySynchronousWork.Execution,
 }
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class AsyncCausalityTracer : __DotNet__Object
+package(mscorlib) class AsyncCausalityTracer : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method EnableToETW
@@ -142,7 +145,7 @@ public class AsyncCausalityTracer : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\BeginEndAwaitableAdapter.cs'
 //
-public final class BeginEndAwaitableAdapter : __DotNet__Object, ICriticalNotifyCompletion
+package(mscorlib) final class BeginEndAwaitableAdapter : __DotNet__Object, ICriticalNotifyCompletion
 {
     private static immutable Action CALLBACK_RAN/*todo: implement initializer*/ = null;
     private IAsyncResult _asyncResult;
@@ -220,9 +223,9 @@ public class ConcurrentExclusiveSchedulerPair : __DotNet__Object
     @__DotNet__Attribute!(SuppressMessageAttribute.stringof/*, "Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses"*/)
     private static final class CompletionState : TaskCompletionSource1!(VoidTaskResult)
     {
-        public bool m_completionRequested;
-        public bool m_completionQueued;
-        public List1!(__DotNet__Exception) m_exceptions;
+        package(mscorlib) bool m_completionRequested;
+        package(mscorlib) bool m_completionQueued;
+        package(mscorlib) List1!(__DotNet__Exception) m_exceptions;
     }
     /// <summary>
     /// A scheduler shim used to queue tasks to the pair and execute those tasks on request of the pair.
@@ -235,7 +238,7 @@ public class ConcurrentExclusiveSchedulerPair : __DotNet__Object
         private immutable ConcurrentExclusiveSchedulerPair m_pair;
         private immutable int m_maxConcurrencyLevel;
         private immutable ProcessingMode m_processingMode;
-        public immutable IProducerConsumerQueue1!(Task) m_tasks;
+        package(mscorlib) immutable IProducerConsumerQueue1!(Task) m_tasks;
         //TODO: generate constructor
         //TODO: generate property 'MaximumConcurrencyLevel'
         //TODO: generate method QueueTask
@@ -331,9 +334,9 @@ public class ConcurrentExclusiveSchedulerPair : __DotNet__Object
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Id = {Id}, Status = {Status}, Method = {DebuggerDisplayMethodDescription}, Result = {DebuggerDisplayResultDescription}"*/)
 public class Task1(TResult) : Task
 {
-    public TResult m_result;
+    package(mscorlib) TResult m_result;
     private static immutable TaskFactory1!(TResult) s_Factory/*todo: implement initializer*/ = null;
-    public static immutable Func2!(Task1!(Task),Task1!(TResult)) TaskWhenAnyCast/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable Func2!(Task1!(Task),Task1!(TResult)) TaskWhenAnyCast/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -391,7 +394,7 @@ public class Task1(TResult) : Task
     //TODO: generate method ContinueWith
     //TODO: generate method ContinueWith
 }
-public class SystemThreadingTasks_FutureDebugView1(TResult) : __DotNet__Object
+package(mscorlib) class SystemThreadingTasks_FutureDebugView1(TResult) : __DotNet__Object
 {
     private Task1!(TResult) m_task;
     //TODO: generate constructor
@@ -471,7 +474,7 @@ public class TaskFactory1(TResult) : __DotNet__Object
     //TODO: generate method FromAsyncTrim
     private static final class FromAsyncTrimPromise1(TInstance) : Task1!(TResult)/*where TInstance : class*/
     {
-        public static immutable AsyncCallback s_completeFromAsyncResult/*todo: implement initializer*/ = null;
+        package(mscorlib) static immutable AsyncCallback s_completeFromAsyncResult/*todo: implement initializer*/ = null;
         private TInstance m_thisRef;
         private Func3!(TInstance,IAsyncResult,TResult) m_endMethod;
         //TODO: generate constructor
@@ -500,13 +503,13 @@ public class TaskFactory1(TResult) : __DotNet__Object
     //TODO: generate method ContinueWhenAnyImpl
     //TODO: generate method ContinueWhenAnyImpl
 }
-public class GenericDelegateCache2(TAntecedentResult,TResult) : __DotNet__Object
+package(mscorlib) class GenericDelegateCache2(TAntecedentResult,TResult) : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public static Func3!(Task1!(Task),__DotNet__Object,TResult) CWAnyFuncDelegate/*todo: implement initializer*/ = null;
-    public static Func3!(Task1!(Task),__DotNet__Object,TResult) CWAnyActionDelegate/*todo: implement initializer*/ = null;
-    public static Func3!(Task1!(Task1!(TAntecedentResult)[]),__DotNet__Object,TResult) CWAllFuncDelegate/*todo: implement initializer*/ = null;
-    public static Func3!(Task1!(Task1!(TAntecedentResult)[]),__DotNet__Object,TResult) CWAllActionDelegate/*todo: implement initializer*/ = null;
+    package(mscorlib) static Func3!(Task1!(Task),__DotNet__Object,TResult) CWAnyFuncDelegate/*todo: implement initializer*/ = null;
+    package(mscorlib) static Func3!(Task1!(Task),__DotNet__Object,TResult) CWAnyActionDelegate/*todo: implement initializer*/ = null;
+    package(mscorlib) static Func3!(Task1!(Task1!(TAntecedentResult)[]),__DotNet__Object,TResult) CWAllFuncDelegate/*todo: implement initializer*/ = null;
+    package(mscorlib) static Func3!(Task1!(Task1!(TAntecedentResult)[]),__DotNet__Object,TResult) CWAllActionDelegate/*todo: implement initializer*/ = null;
 }
 
 //
@@ -535,9 +538,9 @@ public class ParallelOptions : __DotNet__Object
 public class Parallel : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public static int s_forkJoinContextID;
-    public enum int DEFAULT_LOOP_STRIDE/*todo: implement initializer*/ = int();
-    public static ParallelOptions s_defaultParallelOptions/*todo: implement initializer*/ = null;
+    package(mscorlib) static int s_forkJoinContextID;
+    package(mscorlib) enum int DEFAULT_LOOP_STRIDE/*todo: implement initializer*/ = int();
+    package(mscorlib) static ParallelOptions s_defaultParallelOptions/*todo: implement initializer*/ = null;
     //TODO: generate method Invoke
     //TODO: generate method Invoke
     //TODO: generate method For
@@ -579,7 +582,7 @@ public class Parallel : __DotNet__Object
     //TODO: generate method ForEach
     //TODO: generate method PartitionerForEachWorker
     //TODO: generate method ThrowIfReducableToSingleOCE
-    public static struct LoopTimer
+    package(mscorlib) static struct LoopTimer
     {
         //TODO: generate constructor
         //TODO: generate method LimitExceeded
@@ -614,7 +617,7 @@ public class ParallelLoopState : __DotNet__Object
     //TODO: generate method Break
     //TODO: generate method Break
 }
-public class ParallelLoopState32 : ParallelLoopState
+package(mscorlib) class ParallelLoopState32 : ParallelLoopState
 {
     private ParallelLoopStateFlags32 m_sharedParallelStateFlags;
     private int m_currentIteration/*todo: implement initializer*/ = int();
@@ -624,7 +627,7 @@ public class ParallelLoopState32 : ParallelLoopState
     //TODO: generate property 'InternalLowestBreakIteration'
     //TODO: generate method InternalBreak
 }
-public class ParallelLoopState64 : ParallelLoopState
+package(mscorlib) class ParallelLoopState64 : ParallelLoopState
 {
     private ParallelLoopStateFlags64 m_sharedParallelStateFlags;
     private long m_currentIteration/*todo: implement initializer*/ = long();
@@ -634,13 +637,13 @@ public class ParallelLoopState64 : ParallelLoopState
     //TODO: generate property 'InternalLowestBreakIteration'
     //TODO: generate method InternalBreak
 }
-public class ParallelLoopStateFlags : __DotNet__Object
+package(mscorlib) class ParallelLoopStateFlags : __DotNet__Object
 {
-    public static int PLS_NONE;
-    public static int PLS_EXCEPTIONAL/*todo: implement initializer*/ = int();
-    public static int PLS_BROKEN/*todo: implement initializer*/ = int();
-    public static int PLS_STOPPED/*todo: implement initializer*/ = int();
-    public static int PLS_CANCELED/*todo: implement initializer*/ = int();
+    package(mscorlib) static int PLS_NONE;
+    package(mscorlib) static int PLS_EXCEPTIONAL/*todo: implement initializer*/ = int();
+    package(mscorlib) static int PLS_BROKEN/*todo: implement initializer*/ = int();
+    package(mscorlib) static int PLS_STOPPED/*todo: implement initializer*/ = int();
+    package(mscorlib) static int PLS_CANCELED/*todo: implement initializer*/ = int();
     private /*todo: volatile*/ int m_LoopStateFlags/*todo: implement initializer*/ = int();
     //TODO: generate property 'LoopStateFlags'
     //TODO: generate method AtomicLoopStateUpdate
@@ -649,17 +652,17 @@ public class ParallelLoopStateFlags : __DotNet__Object
     //TODO: generate method Stop
     //TODO: generate method Cancel
 }
-public class ParallelLoopStateFlags32 : ParallelLoopStateFlags
+package(mscorlib) class ParallelLoopStateFlags32 : ParallelLoopStateFlags
 {
-    public /*todo: volatile*/ int m_lowestBreakIteration/*todo: implement initializer*/ = int();
+    package(mscorlib) /*todo: volatile*/ int m_lowestBreakIteration/*todo: implement initializer*/ = int();
     //TODO: generate property 'LowestBreakIteration'
     //TODO: generate property 'NullableLowestBreakIteration'
     //TODO: generate method ShouldExitLoop
     //TODO: generate method ShouldExitLoop
 }
-public class ParallelLoopStateFlags64 : ParallelLoopStateFlags
+package(mscorlib) class ParallelLoopStateFlags64 : ParallelLoopStateFlags
 {
-    public long m_lowestBreakIteration/*todo: implement initializer*/ = long();
+    package(mscorlib) long m_lowestBreakIteration/*todo: implement initializer*/ = long();
     //TODO: generate property 'LowestBreakIteration'
     //TODO: generate property 'NullableLowestBreakIteration'
     //TODO: generate method ShouldExitLoop
@@ -667,8 +670,8 @@ public class ParallelLoopStateFlags64 : ParallelLoopStateFlags
 }
 public struct ParallelLoopResult
 {
-    public bool m_completed;
-    public Nullable1!(long) m_lowestBreakIteration;
+    package(mscorlib) bool m_completed;
+    package(mscorlib) Nullable1!(long) m_lowestBreakIteration;
     //TODO: generate property 'IsCompleted'
     //TODO: generate property 'LowestBreakIteration'
 }
@@ -676,29 +679,29 @@ public struct ParallelLoopResult
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\ParallelRangeManager.cs'
 //
-public struct IndexRange
+package(mscorlib) struct IndexRange
 {
-    public long m_nFromInclusive;
-    public long m_nToExclusive;
-    public /*todo: volatile*/ Shared1!(long) m_nSharedCurrentIndexOffset;
-    public int m_bRangeFinished;
+    package(mscorlib) long m_nFromInclusive;
+    package(mscorlib) long m_nToExclusive;
+    package(mscorlib) /*todo: volatile*/ Shared1!(long) m_nSharedCurrentIndexOffset;
+    package(mscorlib) int m_bRangeFinished;
 }
-public struct RangeWorker
+package(mscorlib) struct RangeWorker
 {
-    public immutable IndexRange[] m_indexRanges;
-    public int m_nCurrentIndexRange;
-    public long m_nStep;
-    public long m_nIncrementValue;
-    public immutable long m_nMaxIncrementValue;
+    package(mscorlib) immutable IndexRange[] m_indexRanges;
+    package(mscorlib) int m_nCurrentIndexRange;
+    package(mscorlib) long m_nStep;
+    package(mscorlib) long m_nIncrementValue;
+    package(mscorlib) immutable long m_nMaxIncrementValue;
     //TODO: generate constructor
     //TODO: generate method FindNewWork
     //TODO: generate method FindNewWork32
 }
-public class RangeManager : __DotNet__Object
+package(mscorlib) class RangeManager : __DotNet__Object
 {
-    public immutable IndexRange[] m_indexRanges;
-    public int m_nCurrentIndexRangeToAssign;
-    public long m_nStep;
+    package(mscorlib) immutable IndexRange[] m_indexRanges;
+    package(mscorlib) int m_nCurrentIndexRangeToAssign;
+    package(mscorlib) long m_nStep;
     //TODO: generate constructor
     //TODO: generate method RegisterNewWorker
 }
@@ -706,7 +709,7 @@ public class RangeManager : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\ProducerConsumerQueues.cs'
 //
-public interface IProducerConsumerQueue1(T) : IEnumerable1!(T)
+package(mscorlib) interface IProducerConsumerQueue1(T) : IEnumerable1!(T)
 {
     //TODO: generate method Enqueue
     //TODO: generate method TryDequeue
@@ -719,7 +722,7 @@ public interface IProducerConsumerQueue1(T) : IEnumerable1!(T)
 /// </summary>
 /// <typeparam name="T">Specifies the type of data contained in the queue.</typeparam>
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
-public final class MultiProducerMultiConsumerQueue1(T) : ConcurrentQueue1!(T), IProducerConsumerQueue1!(T)
+package(mscorlib) final class MultiProducerMultiConsumerQueue1(T) : ConcurrentQueue1!(T), IProducerConsumerQueue1!(T)
 {
     //TODO: generate method Enqueue
     //TODO: generate method TryDequeue
@@ -733,7 +736,7 @@ public final class MultiProducerMultiConsumerQueue1(T) : ConcurrentQueue1!(T), I
 /// <typeparam name="T">Specifies the type of data contained in the queue.</typeparam>
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "Count = {Count}"*/)
 @__DotNet__Attribute!(DebuggerTypeProxyAttribute.stringof/*, typeof(SingleProducerSingleConsumerQueue<>.SingleProducerSingleConsumerQueue_DebugView)*/)
-public final class SingleProducerSingleConsumerQueue1(T) : __DotNet__Object, IProducerConsumerQueue1!(T)
+package(mscorlib) final class SingleProducerSingleConsumerQueue1(T) : __DotNet__Object, IProducerConsumerQueue1!(T)
 {
     private enum int INIT_SEGMENT_SIZE/*todo: implement initializer*/ = int();
     private enum int MAX_SEGMENT_SIZE/*todo: implement initializer*/ = int();
@@ -758,22 +761,22 @@ public final class SingleProducerSingleConsumerQueue1(T) : __DotNet__Object, IPr
     @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     private static final class Segment : __DotNet__Object
     {
-        public Segment m_next;
-        public immutable T[] m_array;
-        public SegmentState m_state;
+        package(mscorlib) Segment m_next;
+        package(mscorlib) immutable T[] m_array;
+        package(mscorlib) SegmentState m_state;
         //TODO: generate constructor
     }
     /// <summary>Stores information about a segment.</summary>
     @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     private static struct SegmentState
     {
-        public PaddingFor32 m_pad0;
-        public /*todo: volatile*/ int m_first;
-        public int m_lastCopy;
-        public PaddingFor32 m_pad1;
-        public int m_firstCopy;
-        public /*todo: volatile*/ int m_last;
-        public PaddingFor32 m_pad2;
+        package(mscorlib) PaddingFor32 m_pad0;
+        package(mscorlib) /*todo: volatile*/ int m_first;
+        package(mscorlib) int m_lastCopy;
+        package(mscorlib) PaddingFor32 m_pad1;
+        package(mscorlib) int m_firstCopy;
+        package(mscorlib) /*todo: volatile*/ int m_last;
+        package(mscorlib) PaddingFor32 m_pad2;
     }
     private static final class SingleProducerSingleConsumerQueue_DebugView : __DotNet__Object
     {
@@ -785,7 +788,7 @@ public final class SingleProducerSingleConsumerQueue1(T) : __DotNet__Object, IPr
 private class PaddingHelpers : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum int CACHE_LINE_SIZE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CACHE_LINE_SIZE/*todo: implement initializer*/ = int();
 }
 /// <summary>Padding structure used to minimize false sharing in SingleProducerSingleConsumerQueue{T}.</summary>
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit, Size = PaddingHelpers.CACHE_LINE_SIZE - sizeof(Int32)*/)
@@ -796,9 +799,9 @@ private struct PaddingFor32
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\Task.cs'
 //
-public class Shared1(T) : __DotNet__Object
+package(mscorlib) class Shared1(T) : __DotNet__Object
 {
-    public T Value;
+    package(mscorlib) T Value;
     //TODO: generate constructor
 }
 public enum TaskStatus
@@ -895,34 +898,34 @@ public enum TaskStatus
 public class Task : __DotNet__Object, IThreadPoolWorkItem, IAsyncResult, IDisposable
 {
     @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
-    public static Task t_currentTask;
+    package(mscorlib) static Task t_currentTask;
     @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static StackGuard t_stackGuard;
-    public static int s_taskIdCounter;
+    package(mscorlib) static int s_taskIdCounter;
     private static immutable TaskFactory s_factory/*todo: implement initializer*/ = null;
     private /*todo: volatile*/ int m_taskId;
-    public __DotNet__Object m_action;
-    public __DotNet__Object m_stateObject;
-    public TaskScheduler m_taskScheduler;
-    public /*todo: volatile*/ int m_stateFlags;
+    package(mscorlib) __DotNet__Object m_action;
+    package(mscorlib) __DotNet__Object m_stateObject;
+    package(mscorlib) TaskScheduler m_taskScheduler;
+    package(mscorlib) /*todo: volatile*/ int m_stateFlags;
     //TODO: generate property 'ParentForDebugger'
     //TODO: generate property 'StateFlagsForDebugger'
     private enum int OptionsMask/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_STARTED/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_DELEGATE_INVOKED/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_DISPOSED/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_EXCEPTIONOBSERVEDBYPARENT/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_CANCELLATIONACKNOWLEDGED/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_FAULTED/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_CANCELED/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_WAITING_ON_CHILDREN/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_RAN_TO_COMPLETION/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_WAITINGFORACTIVATION/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_COMPLETION_RESERVED/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_THREAD_WAS_ABORTED/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_WAIT_COMPLETION_NOTIFICATION/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_EXECUTIONCONTEXT_IS_NULL/*todo: implement initializer*/ = int();
-    public enum int TASK_STATE_TASKSCHEDULED_WAS_FIRED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_STARTED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_DELEGATE_INVOKED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_DISPOSED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_EXCEPTIONOBSERVEDBYPARENT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_CANCELLATIONACKNOWLEDGED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_FAULTED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_CANCELED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_WAITING_ON_CHILDREN/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_RAN_TO_COMPLETION/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_WAITINGFORACTIVATION/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_COMPLETION_RESERVED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_THREAD_WAS_ABORTED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_WAIT_COMPLETION_NOTIFICATION/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_EXECUTIONCONTEXT_IS_NULL/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TASK_STATE_TASKSCHEDULED_WAS_FIRED/*todo: implement initializer*/ = int();
     private enum int TASK_STATE_COMPLETED_MASK/*todo: implement initializer*/ = int();
     private enum int CANCELLATION_REQUESTED/*todo: implement initializer*/ = int();
     private /*todo: volatile*/ __DotNet__Object m_continuationObject/*todo: implement initializer*/ = null;
@@ -930,26 +933,26 @@ public class Task : __DotNet__Object, IThreadPoolWorkItem, IAsyncResult, IDispos
     // A private flag that would be set (only) by the debugger
     // When true the Async Causality logging trace is enabled as well as a dictionary to relate operation ids with Tasks
     @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-    public static bool s_asyncDebuggingEnabled;
+    package(mscorlib) static bool s_asyncDebuggingEnabled;
     private static immutable Dictionary2!(int,Task) s_currentActiveTasks/*todo: implement initializer*/ = null;
     private static immutable __DotNet__Object s_activeTasksLock/*todo: implement initializer*/ = null;
     //TODO: generate method AddToActiveTasks
     //TODO: generate method RemoveFromActiveTasks
-    public static class ContingentProperties : __DotNet__Object
+    package(mscorlib) static class ContingentProperties : __DotNet__Object
     {
-        public ExecutionContext m_capturedContext;
-        public /*todo: volatile*/ ManualResetEventSlim m_completionEvent;
-        public /*todo: volatile*/ TaskExceptionHolder m_exceptionsHolder;
-        public CancellationToken m_cancellationToken;
-        public Shared1!(CancellationTokenRegistration) m_cancellationRegistration;
-        public /*todo: volatile*/ int m_internalCancellationRequested;
-        public /*todo: volatile*/ int m_completionCountdown/*todo: implement initializer*/ = int();
-        public /*todo: volatile*/ List1!(Task) m_exceptionalChildren;
-        public Task m_parent;
+        package(mscorlib) ExecutionContext m_capturedContext;
+        package(mscorlib) /*todo: volatile*/ ManualResetEventSlim m_completionEvent;
+        package(mscorlib) /*todo: volatile*/ TaskExceptionHolder m_exceptionsHolder;
+        package(mscorlib) CancellationToken m_cancellationToken;
+        package(mscorlib) Shared1!(CancellationTokenRegistration) m_cancellationRegistration;
+        package(mscorlib) /*todo: volatile*/ int m_internalCancellationRequested;
+        package(mscorlib) /*todo: volatile*/ int m_completionCountdown/*todo: implement initializer*/ = int();
+        package(mscorlib) /*todo: volatile*/ List1!(Task) m_exceptionalChildren;
+        package(mscorlib) Task m_parent;
         //TODO: generate method SetCompleted
         //TODO: generate method DeregisterCancellationCallback
     }
-    public ContingentProperties m_contingentProperties;
+    package(mscorlib) ContingentProperties m_contingentProperties;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1164,9 +1167,9 @@ public class Task : __DotNet__Object, IThreadPoolWorkItem, IAsyncResult, IDispos
     private static final class DelayPromise : Task1!(VoidTaskResult)
     {
         //TODO: generate constructor
-        public immutable CancellationToken Token;
-        public CancellationTokenRegistration Registration;
-        public Timer Timer_;
+        package(mscorlib) immutable CancellationToken Token;
+        package(mscorlib) CancellationTokenRegistration Registration;
+        package(mscorlib) Timer Timer_;
         //TODO: generate method Complete
     }
     //TODO: generate method WhenAll
@@ -1203,7 +1206,7 @@ public class Task : __DotNet__Object, IThreadPoolWorkItem, IAsyncResult, IDispos
     //TODO: generate method GetActiveTaskFromId
     //TODO: generate method GetActiveTasks
 }
-public final class CompletionActionInvoker : __DotNet__Object, IThreadPoolWorkItem
+package(mscorlib) final class CompletionActionInvoker : __DotNet__Object, IThreadPoolWorkItem
 {
     private immutable ITaskCompletionAction m_action;
     private immutable Task m_completingTask;
@@ -1211,7 +1214,7 @@ public final class CompletionActionInvoker : __DotNet__Object, IThreadPoolWorkIt
     //TODO: generate method ExecuteWorkItem
     //TODO: generate method MarkAborted
 }
-public class SystemThreadingTasks_TaskDebugView : __DotNet__Object
+package(mscorlib) class SystemThreadingTasks_TaskDebugView : __DotNet__Object
 {
     private Task m_task;
     //TODO: generate constructor
@@ -1222,18 +1225,18 @@ public class SystemThreadingTasks_TaskDebugView : __DotNet__Object
     //TODO: generate property 'CancellationPending'
     //TODO: generate property 'Status'
 }
-public class ParallelForReplicatingTask : Task
+package(mscorlib) class ParallelForReplicatingTask : Task
 {
     private int m_replicationDownCount;
     //TODO: generate constructor
     //TODO: generate method ShouldReplicate
     //TODO: generate method CreateReplicaTask
 }
-public class ParallelForReplicaTask : Task
+package(mscorlib) class ParallelForReplicaTask : Task
 {
-    public __DotNet__Object m_stateForNextReplica;
-    public __DotNet__Object m_stateFromPreviousReplica;
-    public Task m_handedOverChildReplica;
+    package(mscorlib) __DotNet__Object m_stateForNextReplica;
+    package(mscorlib) __DotNet__Object m_stateFromPreviousReplica;
+    package(mscorlib) Task m_handedOverChildReplica;
     //TODO: generate constructor
     //TODO: generate property 'SavedStateForNextReplica'
     //TODO: generate property 'SavedStateFromPreviousReplica'
@@ -1289,7 +1292,7 @@ public enum TaskCreationOptions
 /// </summary>
 @__DotNet__Attribute!(FlagsAttribute.stringof)
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum InternalTaskOptions
+package(mscorlib) enum InternalTaskOptions
 {
     /// <summary> Specifies "No internal task options" </summary>
     None,
@@ -1397,7 +1400,7 @@ public enum TaskContinuationOptions
     /// </summary>
     ExecuteSynchronously = 0x80000,
 }
-public class StackGuard : __DotNet__Object
+package(mscorlib) class StackGuard : __DotNet__Object
 {
     private int m_inliningDepth/*todo: implement initializer*/ = int();
     private enum int MAX_UNCHECKED_INLINING_DEPTH/*todo: implement initializer*/ = int();
@@ -1405,15 +1408,15 @@ public class StackGuard : __DotNet__Object
     //TODO: generate method EndInliningScope
     //TODO: generate method CheckForSufficientStack
 }
-public struct VoidTaskResult
+package(mscorlib) struct VoidTaskResult
 {
 }
-public interface ITaskCompletionAction
+package(mscorlib) interface ITaskCompletionAction
 {
     //TODO: generate method Invoke
     //TODO: generate property 'InvokeMayRunArbitraryCode'
 }
-public final class UnwrapPromise1(TResult) : Task1!(TResult), ITaskCompletionAction
+package(mscorlib) final class UnwrapPromise1(TResult) : Task1!(TResult), ITaskCompletionAction
 {
     private enum ubyte STATE_WAITING_ON_OUTER_TASK/*todo: implement initializer*/ = ubyte();
     private enum ubyte STATE_WAITING_ON_INNER_TASK/*todo: implement initializer*/ = ubyte();
@@ -1500,46 +1503,46 @@ public class TaskCompletionSource1(TResult) : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\TaskContinuation.cs'
 //
-public final class ContinuationTaskFromTask : Task
+package(mscorlib) final class ContinuationTaskFromTask : Task
 {
     private Task m_antecedent;
     //TODO: generate constructor
     //TODO: generate method InnerInvoke
 }
-public final class ContinuationResultTaskFromTask1(TResult) : Task1!(TResult)
+package(mscorlib) final class ContinuationResultTaskFromTask1(TResult) : Task1!(TResult)
 {
     private Task m_antecedent;
     //TODO: generate constructor
     //TODO: generate method InnerInvoke
 }
-public final class ContinuationTaskFromResultTask1(TAntecedentResult) : Task
+package(mscorlib) final class ContinuationTaskFromResultTask1(TAntecedentResult) : Task
 {
     private Task1!(TAntecedentResult) m_antecedent;
     //TODO: generate constructor
     //TODO: generate method InnerInvoke
 }
-public final class ContinuationResultTaskFromResultTask2(TAntecedentResult,TResult) : Task1!(TResult)
+package(mscorlib) final class ContinuationResultTaskFromResultTask2(TAntecedentResult,TResult) : Task1!(TResult)
 {
     private Task1!(TAntecedentResult) m_antecedent;
     //TODO: generate constructor
     //TODO: generate method InnerInvoke
 }
-public abstract class TaskContinuation : __DotNet__Object
+package(mscorlib) abstract class TaskContinuation : __DotNet__Object
 {
     //TODO: generate method Run
     //TODO: generate method InlineIfPossibleOrElseQueue
     //TODO: generate method GetDelegateContinuationsForDebugger
 }
-public class StandardTaskContinuation : TaskContinuation
+package(mscorlib) class StandardTaskContinuation : TaskContinuation
 {
-    public immutable Task m_task;
-    public immutable TaskContinuationOptions m_options;
+    package(mscorlib) immutable Task m_task;
+    package(mscorlib) immutable TaskContinuationOptions m_options;
     private immutable TaskScheduler m_taskScheduler;
     //TODO: generate constructor
     //TODO: generate method Run
     //TODO: generate method GetDelegateContinuationsForDebugger
 }
-public final class SynchronizationContextAwaitTaskContinuation : AwaitTaskContinuation
+package(mscorlib) final class SynchronizationContextAwaitTaskContinuation : AwaitTaskContinuation
 {
     private static immutable SendOrPostCallback s_postCallback/*todo: implement initializer*/ = null;
     /// <summary>Cached delegate for PostAction</summary>
@@ -1552,13 +1555,13 @@ public final class SynchronizationContextAwaitTaskContinuation : AwaitTaskContin
     //TODO: generate method GetActionLogDelegate
     //TODO: generate method GetPostActionCallback
 }
-public final class TaskSchedulerAwaitTaskContinuation : AwaitTaskContinuation
+package(mscorlib) final class TaskSchedulerAwaitTaskContinuation : AwaitTaskContinuation
 {
     private immutable TaskScheduler m_scheduler;
     //TODO: generate constructor
     //TODO: generate method Run
 }
-public class AwaitTaskContinuation : TaskContinuation, IThreadPoolWorkItem
+package(mscorlib) class AwaitTaskContinuation : TaskContinuation, IThreadPoolWorkItem
 {
     private immutable ExecutionContext m_capturedContext;
     protected immutable Action m_action;
@@ -1586,7 +1589,7 @@ public class AwaitTaskContinuation : TaskContinuation, IThreadPoolWorkItem
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\TaskExceptionHolder.cs'
 //
-public class TaskExceptionHolder : __DotNet__Object
+package(mscorlib) class TaskExceptionHolder : __DotNet__Object
 {
     private static immutable bool s_failFastOnUnobservedException/*todo: implement initializer*/ = bool();
     private static /*todo: volatile*/ bool s_domainUnloadStarted;
@@ -1726,7 +1729,7 @@ public class TaskFactory : __DotNet__Object
     //TODO: generate method ContinueWhenAll
     //TODO: generate method ContinueWhenAll
     //TODO: generate method ContinueWhenAll
-    public static final class CompleteOnInvokePromise : Task1!(Task), ITaskCompletionAction
+    package(mscorlib) static final class CompleteOnInvokePromise : Task1!(Task), ITaskCompletionAction
     {
         private IList1!(Task) _tasks;
         private int m_firstTaskAlreadyCompleted;
@@ -1791,7 +1794,7 @@ public abstract class TaskScheduler : __DotNet__Object
     //TODO: generate method InternalQueueTask
     private static ConditionalWeakTable2!(TaskScheduler,__DotNet__Object) s_activeTaskSchedulers;
     private static immutable TaskScheduler s_defaultTaskScheduler/*todo: implement initializer*/ = null;
-    public static int s_taskSchedulerIdCounter;
+    package(mscorlib) static int s_taskSchedulerIdCounter;
     private /*todo: volatile*/ int m_taskSchedulerId;
     //TODO: generate constructor
     //TODO: generate method AddToActiveTaskSchedulers
@@ -1807,7 +1810,7 @@ public abstract class TaskScheduler : __DotNet__Object
     //TODO: generate method PublishUnobservedTaskException
     //TODO: generate method GetScheduledTasksForDebugger
     //TODO: generate method GetTaskSchedulersForDebugger
-    public static final class SystemThreadingTasks_TaskSchedulerDebugView : __DotNet__Object
+    package(mscorlib) static final class SystemThreadingTasks_TaskSchedulerDebugView : __DotNet__Object
     {
         private immutable TaskScheduler m_taskScheduler;
         //TODO: generate constructor
@@ -1815,7 +1818,7 @@ public abstract class TaskScheduler : __DotNet__Object
         //TODO: generate property 'ScheduledTasks'
     }
 }
-public final class SynchronizationContextTaskScheduler : TaskScheduler
+package(mscorlib) final class SynchronizationContextTaskScheduler : TaskScheduler
 {
     private SynchronizationContext m_synchronizationContext;
     //TODO: generate constructor
@@ -1829,7 +1832,7 @@ public final class SynchronizationContextTaskScheduler : TaskScheduler
 public class UnobservedTaskExceptionEventArgs : EventArgs
 {
     private AggregateException m_exception;
-    public bool m_observed/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool m_observed/*todo: implement initializer*/ = bool();
     //TODO: generate constructor
     //TODO: generate method SetObserved
     //TODO: generate property 'Observed'
@@ -1856,7 +1859,7 @@ public class TaskSchedulerException : __DotNet__Exception
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\TaskToApm.cs'
 //
-public class TaskToApm : __DotNet__Object
+package(mscorlib) class TaskToApm : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method Begin
@@ -1865,7 +1868,7 @@ public class TaskToApm : __DotNet__Object
     //TODO: generate method InvokeCallbackWhenTaskCompletes
     private static final class TaskWrapperAsyncResult : __DotNet__Object, IAsyncResult
     {
-        public immutable Task Task_;
+        package(mscorlib) immutable Task Task_;
         private immutable __DotNet__Object m_state;
         private immutable bool m_completedSynchronously;
         //TODO: generate constructor
@@ -1879,7 +1882,7 @@ public class TaskToApm : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Threading\Tasks\ThreadPoolTaskScheduler.cs'
 //
-public final class ThreadPoolTaskScheduler : TaskScheduler
+package(mscorlib) final class ThreadPoolTaskScheduler : TaskScheduler
 {
     //TODO: generate constructor
     private static immutable ParameterizedThreadStart s_longRunningThreadWork/*todo: implement initializer*/ = null;
@@ -1898,10 +1901,10 @@ public final class ThreadPoolTaskScheduler : TaskScheduler
 //
 /// <summary>Provides an event source for tracing TPL information.</summary>
 @__DotNet__Attribute!(EventSourceAttribute.stringof/*, Name = "System.Threading.Tasks.TplEventSource", Guid = "2e5dba47-a3d2-4d16-8ee0-6671ffdcd7b5", LocalizationResources = System.CoreLib.Name*/)
-public final class TplEtwProvider : EventSource
+package(mscorlib) final class TplEtwProvider : EventSource
 {
-    public bool TasksSetActivityIds;
-    public bool Debug;
+    package(mscorlib) bool TasksSetActivityIds;
+    package(mscorlib) bool Debug;
     private bool DebugActivityId;
     //TODO: generate method OnEventCommand
     public static TplEtwProvider Log/*todo: implement initializer*/ = null;

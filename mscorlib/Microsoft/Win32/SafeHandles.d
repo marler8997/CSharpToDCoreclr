@@ -25,7 +25,7 @@ public final class SafeFileHandle : SafeHandleZeroOrMinusOneIsInvalid
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\SafeFileMappingHandle.cs'
 //
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class SafeFileMappingHandle : SafeHandleZeroOrMinusOneIsInvalid
+package(mscorlib) final class SafeFileMappingHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -36,7 +36,7 @@ public final class SafeFileMappingHandle : SafeHandleZeroOrMinusOneIsInvalid
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\SafeFindHandle.cs'
 //
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class SafeFindHandle : SafeHandleZeroOrMinusOneIsInvalid
+package(mscorlib) final class SafeFindHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
     //TODO: generate method ReleaseHandle
@@ -46,7 +46,7 @@ public final class SafeFindHandle : SafeHandleZeroOrMinusOneIsInvalid
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\SafeLocalAllocHandle.cs'
 //
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class SafeLocalAllocHandle : SafeBuffer
+package(mscorlib) final class SafeLocalAllocHandle : SafeBuffer
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -70,7 +70,7 @@ public final class SafeRegistryHandle : SafeHandleZeroOrMinusOneIsInvalid
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\Microsoft\Win32\SafeHandles\SafeViewOfFileHandle.cs'
 //
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class SafeViewOfFileHandle : SafeHandleZeroOrMinusOneIsInvalid
+package(mscorlib) final class SafeViewOfFileHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -137,7 +137,7 @@ public final class SafeAccessTokenHandle : SafeHandle
     //TODO: generate method ReleaseHandle
 }
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class SafeLsaLogonProcessHandle : SafeHandleZeroOrMinusOneIsInvalid
+package(mscorlib) final class SafeLsaLogonProcessHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -145,7 +145,7 @@ public final class SafeLsaLogonProcessHandle : SafeHandleZeroOrMinusOneIsInvalid
     //TODO: generate method ReleaseHandle
 }
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class SafeLsaMemoryHandle : SafeBuffer
+package(mscorlib) final class SafeLsaMemoryHandle : SafeBuffer
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -153,7 +153,7 @@ public final class SafeLsaMemoryHandle : SafeBuffer
     //TODO: generate method ReleaseHandle
 }
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class SafeLsaPolicyHandle : SafeHandleZeroOrMinusOneIsInvalid
+package(mscorlib) final class SafeLsaPolicyHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -161,7 +161,7 @@ public final class SafeLsaPolicyHandle : SafeHandleZeroOrMinusOneIsInvalid
     //TODO: generate method ReleaseHandle
 }
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class SafeLsaReturnBufferHandle : SafeBuffer
+package(mscorlib) final class SafeLsaReturnBufferHandle : SafeBuffer
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -169,7 +169,7 @@ public final class SafeLsaReturnBufferHandle : SafeBuffer
     //TODO: generate method ReleaseHandle
 }
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class SafeProcessHandle : SafeHandleZeroOrMinusOneIsInvalid
+package(mscorlib) final class SafeProcessHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -177,7 +177,7 @@ public final class SafeProcessHandle : SafeHandleZeroOrMinusOneIsInvalid
     //TODO: generate method ReleaseHandle
 }
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class SafeThreadHandle : SafeHandleZeroOrMinusOneIsInvalid
+package(mscorlib) final class SafeThreadHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate constructor
     //TODO: generate constructor

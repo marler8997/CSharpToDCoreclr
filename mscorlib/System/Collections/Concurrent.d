@@ -52,14 +52,14 @@ public class ConcurrentDictionary2(TKey,TValue) : __DotNet__Object, IDictionary2
 {
     private static class Tables : __DotNet__Object
     {
-        public immutable Node[] m_buckets;
-        public immutable __DotNet__Object[] m_locks;
-        public /*todo: volatile*/ int[] m_countPerLock;
-        public immutable IEqualityComparer1!(TKey) m_comparer;
+        package(mscorlib) immutable Node[] m_buckets;
+        package(mscorlib) immutable __DotNet__Object[] m_locks;
+        package(mscorlib) /*todo: volatile*/ int[] m_countPerLock;
+        package(mscorlib) immutable IEqualityComparer1!(TKey) m_comparer;
         //TODO: generate constructor
     }
     private /*todo: volatile*/ Tables m_tables;
-    public IEqualityComparer1!(TKey) m_comparer;
+    package(mscorlib) IEqualityComparer1!(TKey) m_comparer;
     private immutable bool m_growLockArray;
     private int m_keyRehashCount;
     private int m_budget;
@@ -132,10 +132,10 @@ public class ConcurrentDictionary2(TKey,TValue) : __DotNet__Object, IDictionary2
     //TODO: generate method Assert
     private static class Node : __DotNet__Object
     {
-        public TKey m_key;
-        public TValue m_value;
-        public /*todo: volatile*/ Node m_next;
-        public int m_hashcode;
+        package(mscorlib) TKey m_key;
+        package(mscorlib) TValue m_value;
+        package(mscorlib) /*todo: volatile*/ Node m_next;
+        package(mscorlib) int m_hashcode;
         //TODO: generate constructor
     }
     private static class DictionaryEnumerator : __DotNet__Object, IDictionaryEnumerator
@@ -178,7 +178,7 @@ public class ConcurrentQueue1(T) : __DotNet__Object, IProducerConsumerCollection
     private enum int SEGMENT_SIZE/*todo: implement initializer*/ = int();
     //number of snapshot takers, GetEnumerator(), ToList() and ToArray() operations take snapshot.
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public /*todo: volatile*/ int m_numSnapshotTakers/*todo: implement initializer*/ = int();
+    package(mscorlib) /*todo: volatile*/ int m_numSnapshotTakers/*todo: implement initializer*/ = int();
     //TODO: generate constructor
     //TODO: generate method InitializeFromCollection
     //TODO: generate constructor
@@ -203,10 +203,10 @@ public class ConcurrentQueue1(T) : __DotNet__Object, IProducerConsumerCollection
     //TODO: generate method TryPeek
     private static class Segment : __DotNet__Object
     {
-        public /*todo: volatile*/ T[] m_array;
-        public /*todo: volatile*/ VolatileBool[] m_state;
+        package(mscorlib) /*todo: volatile*/ T[] m_array;
+        package(mscorlib) /*todo: volatile*/ VolatileBool[] m_state;
         private /*todo: volatile*/ Segment m_next;
-        public immutable long m_index;
+        package(mscorlib) immutable long m_index;
         private /*todo: volatile*/ int m_low;
         private /*todo: volatile*/ int m_high;
         private /*todo: volatile*/ ConcurrentQueue1!(T) m_source;
@@ -257,8 +257,8 @@ public class ConcurrentStack1(T) : __DotNet__Object, IProducerConsumerCollection
 {
     private static class Node : __DotNet__Object
     {
-        public immutable T m_value;
-        public Node m_next;
+        package(mscorlib) immutable T m_value;
+        package(mscorlib) Node m_next;
         //TODO: generate constructor
     }
     private /*todo: volatile*/ Node m_head;
@@ -304,7 +304,7 @@ public interface IProducerConsumerCollection1(T) : IEnumerable1!(T), ICollection
     //TODO: generate method TryTake
     //TODO: generate method ToArray
 }
-public final class SystemCollectionsConcurrent_ProducerConsumerCollectionDebugView1(T) : __DotNet__Object
+package(mscorlib) final class SystemCollectionsConcurrent_ProducerConsumerCollectionDebugView1(T) : __DotNet__Object
 {
     private IProducerConsumerCollection1!(T) m_collection;
     //TODO: generate constructor
@@ -657,17 +657,17 @@ public class Partitioner : __DotNet__Object
     }
     private static class SharedInt : __DotNet__Object
     {
-        public /*todo: volatile*/ int Value;
+        package(mscorlib) /*todo: volatile*/ int Value;
         //TODO: generate constructor
     }
     private static class SharedBool : __DotNet__Object
     {
-        public /*todo: volatile*/ bool Value;
+        package(mscorlib) /*todo: volatile*/ bool Value;
         //TODO: generate constructor
     }
     private static class SharedLong : __DotNet__Object
     {
-        public long Value;
+        package(mscorlib) long Value;
         //TODO: generate constructor
     }
     private enum int DEFAULT_BYTES_PER_CHUNK/*todo: implement initializer*/ = int();

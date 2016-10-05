@@ -4,13 +4,15 @@ import mscorlib.System :
     __DotNet__Attribute,
     __DotNet__AttributeStruct,
     __DotNet__Object,
+    Type,
     CLSCompliantAttribute,
     SerializableAttribute,
-    Type,
     AttributeUsageAttribute,
     Attribute,
     SystemException,
     String,
+    Environment,
+    CoreLib,
     FlagsAttribute;
 import mscorlib.System.Runtime.InteropServices :
     ComVisibleAttribute;
@@ -74,7 +76,7 @@ public class FormatterServices : __DotNet__Object
     //TODO: generate method GetClrTypeFullNameForArray
     //TODO: generate method GetClrTypeFullNameForNonArrayTypes
 }
-public final class SurrogateForCyclicalReference : __DotNet__Object, ISerializationSurrogate
+package(mscorlib) final class SurrogateForCyclicalReference : __DotNet__Object, ISerializationSurrogate
 {
     private ISerializationSurrogate innerSurrogate;
     //TODO: generate constructor
@@ -175,11 +177,11 @@ public interface ISurrogateSelector
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\MemberHolder.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class MemberHolder : __DotNet__Object
+package(mscorlib) class MemberHolder : __DotNet__Object
 {
-    public MemberInfo[] members/*todo: implement initializer*/ = null;
-    public Type memberType;
-    public StreamingContext context;
+    package(mscorlib) MemberInfo[] members/*todo: implement initializer*/ = null;
+    package(mscorlib) Type memberType;
+    package(mscorlib) StreamingContext context;
     //TODO: generate constructor
     //TODO: generate method GetHashCode
     //TODO: generate method Equals
@@ -245,9 +247,9 @@ public class SerializationException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\Serialization\SerializationFieldInfo.cs'
 //
-public final class SerializationFieldInfo : FieldInfo
+package(mscorlib) final class SerializationFieldInfo : FieldInfo
 {
-    public enum String FakeNameSeparatorString/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String FakeNameSeparatorString/*todo: implement initializer*/ = null;
     private RuntimeFieldInfo m_field;
     private String m_serializationName;
     //TODO: generate property 'Module'
@@ -279,12 +281,12 @@ public final class SerializationInfo : __DotNet__Object
     private enum int defaultSize/*todo: implement initializer*/ = int();
     private enum String s_mscorlibAssemblySimpleName/*todo: implement initializer*/ = null;
     private enum String s_mscorlibFileName/*todo: implement initializer*/ = null;
-    public String[] m_members;
-    public __DotNet__Object[] m_data;
-    public Type[] m_types;
+    package(mscorlib) String[] m_members;
+    package(mscorlib) __DotNet__Object[] m_data;
+    package(mscorlib) Type[] m_types;
     private Dictionary2!(String,int) m_nameToIndex;
-    public int m_currMember;
-    public IFormatterConverter m_converter;
+    package(mscorlib) int m_currMember;
+    package(mscorlib) IFormatterConverter m_converter;
     private String m_fullTypeName;
     private String m_assemName;
     private Type objectType;
@@ -395,8 +397,8 @@ public final class SerializationInfoEnumerator : __DotNet__Object, IEnumerator
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct StreamingContext
 {
-    public __DotNet__Object m_additionalContext;
-    public StreamingContextStates m_state;
+    package(mscorlib) __DotNet__Object m_additionalContext;
+    package(mscorlib) StreamingContextStates m_state;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'Context'

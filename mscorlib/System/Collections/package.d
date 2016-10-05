@@ -21,12 +21,15 @@ import mscorlib.System.Runtime.InteropServices :
     GuidAttribute;
 import mscorlib.System.Diagnostics.Contracts :
     ContractPublicPropertyNameAttribute;
+import mscorlib :
+    EmptyArray1;
 import mscorlib.System.Runtime.Serialization :
     ISerializable,
     IDeserializationCallback,
     SerializationInfo;
 import mscorlib.System.Globalization :
-    CompareInfo;
+    CompareInfo,
+    CultureInfo;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\ArrayList.cs'
@@ -443,7 +446,7 @@ public class ArrayList : __DotNet__Object, IList, ICloneable
         //TODO: generate property 'Current'
         //TODO: generate method Reset
     }
-    public static class ArrayListDebugView : __DotNet__Object
+    package(mscorlib) static class ArrayListDebugView : __DotNet__Object
     {
         private ArrayList arrayList;
         //TODO: generate constructor
@@ -570,7 +573,7 @@ public final class Comparer : __DotNet__Object, IComparer, ISerializable
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\CompatibleComparer.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class CompatibleComparer : __DotNet__Object, IEqualityComparer
+package(mscorlib) class CompatibleComparer : __DotNet__Object, IEqualityComparer
 {
     private IComparer _comparer;
     private IHashCodeProvider _hcp;
@@ -603,7 +606,7 @@ public struct DictionaryEntry
 //
 ///    This is a simple implementation of IDictionary that is empty and readonly.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class EmptyReadOnlyDictionaryInternal : __DotNet__Object, IDictionary
+package(mscorlib) final class EmptyReadOnlyDictionaryInternal : __DotNet__Object, IDictionary
 {
     //TODO: generate constructor
     //TODO: generate method GetEnumerator
@@ -685,7 +688,7 @@ public final class EmptyReadOnlyDictionaryInternal : __DotNet__Object, IDictiona
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public class Hashtable : __DotNet__Object, IDictionary, ISerializable, IDeserializationCallback, ICloneable
 {
-    public enum int HashPrime/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int HashPrime/*todo: implement initializer*/ = int();
     private enum int InitialSize/*todo: implement initializer*/ = int();
     private enum String LoadFactorName/*todo: implement initializer*/ = null;
     private enum String VersionName/*todo: implement initializer*/ = null;
@@ -834,9 +837,9 @@ public class Hashtable : __DotNet__Object, IDictionary, ISerializable, IDeserial
         private int getObjectRetType;
         private __DotNet__Object currentKey;
         private __DotNet__Object currentValue;
-        public enum int Keys/*todo: implement initializer*/ = int();
-        public enum int Values/*todo: implement initializer*/ = int();
-        public enum int DictEntry/*todo: implement initializer*/ = int();
+        package(mscorlib) enum int Keys/*todo: implement initializer*/ = int();
+        package(mscorlib) enum int Values/*todo: implement initializer*/ = int();
+        package(mscorlib) enum int DictEntry/*todo: implement initializer*/ = int();
         //TODO: generate constructor
         //TODO: generate method Clone
         //TODO: generate property 'Key'
@@ -846,7 +849,7 @@ public class Hashtable : __DotNet__Object, IDictionary, ISerializable, IDeserial
         //TODO: generate property 'Value'
         //TODO: generate method Reset
     }
-    public static class HashtableDebugView : __DotNet__Object
+    package(mscorlib) static class HashtableDebugView : __DotNet__Object
     {
         private Hashtable hashtable;
         //TODO: generate constructor
@@ -854,7 +857,7 @@ public class Hashtable : __DotNet__Object, IDictionary, ISerializable, IDeserial
     }
 }
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class HashHelpers : __DotNet__Object
+package(mscorlib) class HashHelpers : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum int HashCollisionThreshold/*todo: implement initializer*/ = int();
@@ -1057,7 +1060,7 @@ public interface IStructuralEquatable
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Collections\KeyValuePairs.cs'
 //
 @__DotNet__Attribute!(DebuggerDisplayAttribute.stringof/*, "{value}", Name = "[{key}]", Type = ""*/)
-public class KeyValuePairs : __DotNet__Object
+package(mscorlib) class KeyValuePairs : __DotNet__Object
 {
     @__DotNet__Attribute!(DebuggerBrowsableAttribute.stringof/*, DebuggerBrowsableState.Never*/)
     private __DotNet__Object key;
@@ -1075,7 +1078,7 @@ public class KeyValuePairs : __DotNet__Object
 ///    will be smaller and faster than a Hashtable if the number of elements is 10 or less.
 ///    This should not be used if performance is important for large numbers of elements.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class ListDictionaryInternal : __DotNet__Object, IDictionary
+package(mscorlib) class ListDictionaryInternal : __DotNet__Object, IDictionary
 {
     private DictionaryNode head;
     private int version_;
@@ -1290,9 +1293,9 @@ public class SortedList : __DotNet__Object, IDictionary, ICloneable
         private int version_;
         private bool current;
         private int getObjectRetType;
-        public enum int Keys/*todo: implement initializer*/ = int();
-        public enum int Values/*todo: implement initializer*/ = int();
-        public enum int DictEntry/*todo: implement initializer*/ = int();
+        package(mscorlib) enum int Keys/*todo: implement initializer*/ = int();
+        package(mscorlib) enum int Values/*todo: implement initializer*/ = int();
+        package(mscorlib) enum int DictEntry/*todo: implement initializer*/ = int();
         //TODO: generate constructor
         //TODO: generate method Clone
         //TODO: generate property 'Key'
@@ -1344,7 +1347,7 @@ public class SortedList : __DotNet__Object, IDictionary, ICloneable
         //TODO: generate method Remove
         //TODO: generate method RemoveAt
     }
-    public static class SortedListDebugView : __DotNet__Object
+    package(mscorlib) static class SortedListDebugView : __DotNet__Object
     {
         private SortedList sortedList;
         //TODO: generate constructor
@@ -1418,7 +1421,7 @@ public class Stack : __DotNet__Object, ICollection, ICloneable
         //TODO: generate property 'Current'
         //TODO: generate method Reset
     }
-    public static class StackDebugView : __DotNet__Object
+    package(mscorlib) static class StackDebugView : __DotNet__Object
     {
         private Stack stack;
         //TODO: generate constructor
@@ -1438,13 +1441,13 @@ public class StructuralComparisons : __DotNet__Object
     //TODO: generate property 'StructuralEqualityComparer'
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class StructuralEqualityComparer : __DotNet__Object, IEqualityComparer
+package(mscorlib) class StructuralEqualityComparer : __DotNet__Object, IEqualityComparer
 {
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class StructuralComparer : __DotNet__Object, IComparer
+package(mscorlib) class StructuralComparer : __DotNet__Object, IComparer
 {
     //TODO: generate method Compare
 }

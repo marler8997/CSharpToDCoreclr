@@ -230,7 +230,7 @@ public final class ContractFailedEventArgs : EventArgs
     private __DotNet__Exception _originalException;
     private bool _handled;
     private bool _unwind;
-    public __DotNet__Exception thrownDuringHandler;
+    package(mscorlib) __DotNet__Exception thrownDuringHandler;
     //TODO: generate constructor
     //TODO: generate property 'Message'
     //TODO: generate property 'Condition'
@@ -243,7 +243,7 @@ public final class ContractFailedEventArgs : EventArgs
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(SuppressMessageAttribute.stringof/*, "Microsoft.Design", "CA1064:ExceptionsShouldBePublic"*/)
-public final class ContractException : __DotNet__Exception
+package(mscorlib) final class ContractException : __DotNet__Exception
 {
     private immutable ContractFailureKind _Kind;
     private immutable String _UserMessage;

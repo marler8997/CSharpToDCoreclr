@@ -47,9 +47,9 @@ import mscorlib.System.IO :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Resources\__FastResourceComparer.cs'
 //
-public final class FastResourceComparer : __DotNet__Object, IComparer, IEqualityComparer, IComparer1!(String), IEqualityComparer1!(String)
+package(mscorlib) final class FastResourceComparer : __DotNet__Object, IComparer, IEqualityComparer, IComparer1!(String), IEqualityComparer1!(String)
 {
-    public static immutable FastResourceComparer Default/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable FastResourceComparer Default/*todo: implement initializer*/ = null;
     //TODO: generate method GetHashCode
     //TODO: generate method GetHashCode
     //TODO: generate method HashFunction
@@ -65,7 +65,7 @@ public final class FastResourceComparer : __DotNet__Object, IComparer, IEquality
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Resources\__HResults.cs'
 //
-public class __HResults : __DotNet__Object
+package(mscorlib) class __HResults : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum int ERROR_MRM_MAP_NOT_FOUND/*todo: implement initializer*/ = int();
@@ -74,7 +74,7 @@ public class __HResults : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Resources\FileBasedResourceGroveler.cs'
 //
-public class FileBasedResourceGroveler : __DotNet__Object, IResourceGroveler
+package(mscorlib) class FileBasedResourceGroveler : __DotNet__Object, IResourceGroveler
 {
     private ResourceManager.ResourceManagerMediator _mediator;
     //TODO: generate constructor
@@ -86,7 +86,7 @@ public class FileBasedResourceGroveler : __DotNet__Object, IResourceGroveler
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Resources\IResourceGroveler.cs'
 //
-public interface IResourceGroveler
+package(mscorlib) interface IResourceGroveler
 {
     //TODO: generate method GrovelForResourceSet
 }
@@ -117,7 +117,7 @@ public interface IResourceWriter : IDisposable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Resources\ManifestBasedResourceGroveler.cs'
 //
-public class ManifestBasedResourceGroveler : __DotNet__Object, IResourceGroveler
+package(mscorlib) class ManifestBasedResourceGroveler : __DotNet__Object, IResourceGroveler
 {
     private ResourceManager.ResourceManagerMediator _mediator;
     //TODO: generate constructor
@@ -182,7 +182,7 @@ public final class NeutralResourcesLanguageAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Resources\ResourceFallbackManager.cs'
 //
-public class ResourceFallbackManager : __DotNet__Object, IEnumerable1!(CultureInfo)
+package(mscorlib) class ResourceFallbackManager : __DotNet__Object, IEnumerable1!(CultureInfo)
 {
     private CultureInfo m_startingCulture;
     private CultureInfo m_neutralResourcesCulture;
@@ -222,7 +222,7 @@ public class ResourceFallbackManager : __DotNet__Object, IEnumerable1!(CultureIn
 //
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public class WindowsRuntimeResourceManagerBase : __DotNet__Object
+package(mscorlib) class WindowsRuntimeResourceManagerBase : __DotNet__Object
 {
     //TODO: generate method Initialize
     //TODO: generate method GetString
@@ -230,7 +230,7 @@ public class WindowsRuntimeResourceManagerBase : __DotNet__Object
     //TODO: generate method SetGlobalResourceContextDefaultCulture
 }
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class PRIExceptionInfo : __DotNet__Object
+package(mscorlib) class PRIExceptionInfo : __DotNet__Object
 {
     public String _PackageSimpleName;
     public String _ResWFile;
@@ -323,7 +323,7 @@ public class PRIExceptionInfo : __DotNet__Object
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class ResourceManager : __DotNet__Object
 {
-    public static class CultureNameResourceSetPair : __DotNet__Object
+    package(mscorlib) static class CultureNameResourceSetPair : __DotNet__Object
     {
         public String lastCultureName;
         public ResourceSet lastResourceSet;
@@ -372,12 +372,12 @@ public class ResourceManager : __DotNet__Object
     public static immutable int MagicNumber/*todo: implement initializer*/ = int();
     public static immutable int HeaderVersionNumber/*todo: implement initializer*/ = int();
     private static immutable Type _minResourceSet/*todo: implement initializer*/ = null;
-    public static immutable String ResReaderTypeName/*todo: implement initializer*/ = null;
-    public static immutable String ResSetTypeName/*todo: implement initializer*/ = null;
-    public static immutable String MscorlibName/*todo: implement initializer*/ = null;
-    public enum String ResFileExtension/*todo: implement initializer*/ = null;
-    public enum int ResFileExtensionLength/*todo: implement initializer*/ = int();
-    public static immutable int DEBUG/*todo: implement initializer*/ = int();
+    package(mscorlib) static immutable String ResReaderTypeName/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable String ResSetTypeName/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable String MscorlibName/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String ResFileExtension/*todo: implement initializer*/ = null;
+    package(mscorlib) enum int ResFileExtensionLength/*todo: implement initializer*/ = int();
+    package(mscorlib) static immutable int DEBUG/*todo: implement initializer*/ = int();
     private static /*todo: volatile*/ bool s_IsAppXModel;
     //TODO: generate method Init
     //TODO: generate constructor
@@ -428,7 +428,7 @@ public class ResourceManager : __DotNet__Object
     //TODO: generate method GetStream
     //TODO: generate method TryLookingForSatellite
     //TODO: generate method GetSatelliteAssembliesFromConfig
-    public static class ResourceManagerMediator : __DotNet__Object
+    package(mscorlib) static class ResourceManagerMediator : __DotNet__Object
     {
         private ResourceManager _rm;
         //TODO: generate constructor
@@ -452,10 +452,10 @@ public class ResourceManager : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Resources\ResourceReader.cs'
 //
-public struct ResourceLocator
+package(mscorlib) struct ResourceLocator
 {
-    public __DotNet__Object _value;
-    public int _dataPos;
+    package(mscorlib) __DotNet__Object _value;
+    package(mscorlib) int _dataPos;
     //TODO: generate constructor
     //TODO: generate property 'DataPosition'
     //TODO: generate property 'Value'
@@ -466,7 +466,7 @@ public final class ResourceReader : __DotNet__Object, IResourceReader
 {
     private enum int DefaultFileStreamBufferSize/*todo: implement initializer*/ = int();
     private BinaryReader _store;
-    public Dictionary2!(String,ResourceLocator) _resCache;
+    package(mscorlib) Dictionary2!(String,ResourceLocator) _resCache;
     private long _nameSectionOffset;
     private long _dataSectionOffset;
     private int[] _nameHashes;
@@ -510,7 +510,7 @@ public final class ResourceReader : __DotNet__Object, IResourceReader
     //TODO: generate method FindType
     //TODO: generate method GetResourceData
     //TODO: generate method TypeNameFromTypeCode
-    public static final class ResourceEnumerator : __DotNet__Object, IDictionaryEnumerator
+    package(mscorlib) static final class ResourceEnumerator : __DotNet__Object, IDictionaryEnumerator
     {
         private enum int ENUM_DONE/*todo: implement initializer*/ = int();
         private enum int ENUM_NOT_STARTED/*todo: implement initializer*/ = int();
@@ -544,7 +544,7 @@ public class ResourceSet : __DotNet__Object, IDisposable, IEnumerable
 {
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     protected IResourceReader Reader;
-    public Hashtable Table;
+    package(mscorlib) Hashtable Table;
     private Hashtable _caseInsensitiveTable;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -580,7 +580,7 @@ public class ResourceSet : __DotNet__Object, IDisposable, IEnumerable
 // internals of .resources files.
 // 
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum ResourceTypeCode
+package(mscorlib) enum ResourceTypeCode
 {
     // Primitives
     Null = 0,
@@ -612,9 +612,9 @@ public enum ResourceTypeCode
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Resources\RuntimeResourceSet.cs'
 //
-public final class RuntimeResourceSet : ResourceSet, IEnumerable
+package(mscorlib) final class RuntimeResourceSet : ResourceSet, IEnumerable
 {
-    public enum int Version/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int Version/*todo: implement initializer*/ = int();
     private Dictionary2!(String,ResourceLocator) _resCache;
     private ResourceReader _defaultReader;
     private Dictionary2!(String,ResourceLocator) _caseInsensitiveTable;

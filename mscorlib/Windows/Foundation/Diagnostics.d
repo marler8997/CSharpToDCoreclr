@@ -16,7 +16,7 @@ import mscorlib.System.Runtime.InteropServices.WindowsRuntime :
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "50850B26-267E-451B-A890-AB6A370245EE"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface IAsyncCausalityTracerStatics
+package(mscorlib) interface IAsyncCausalityTracerStatics
 {
     //TODO: generate method TraceOperationCreation
     //TODO: generate method TraceOperationCompletion
@@ -29,7 +29,7 @@ public interface IAsyncCausalityTracerStatics
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "410B7711-FF3B-477F-9C9A-D2EFDA302DC3"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public interface ITracingStatusChangedEventArgs
+package(mscorlib) interface ITracingStatusChangedEventArgs
 {
     //TODO: generate property 'Enabled'
     //TODO: generate property 'TraceLevel'
@@ -40,12 +40,12 @@ public interface ITracingStatusChangedEventArgs
 @__DotNet__Attribute!(ComImportAttribute.stringof)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "410B7711-FF3B-477F-9C9A-D2EFDA302DC3"*/)
 @__DotNet__Attribute!(WindowsRuntimeImportAttribute.stringof)
-public final class TracingStatusChangedEventArgs : __DotNet__Object, ITracingStatusChangedEventArgs
+package(mscorlib) final class TracingStatusChangedEventArgs : __DotNet__Object, ITracingStatusChangedEventArgs
 {
     //TODO: generate property 'Enabled'
     //TODO: generate property 'TraceLevel'
 }
-public enum CausalityRelation
+package(mscorlib) enum CausalityRelation
 {
     AssignDelegate,
     Join,
@@ -53,25 +53,25 @@ public enum CausalityRelation
     Cancel,
     Error,
 }
-public enum CausalitySource
+package(mscorlib) enum CausalitySource
 {
     Application,
     Library,
     System,
 }
-public enum CausalitySynchronousWork
+package(mscorlib) enum CausalitySynchronousWork
 {
     CompletionNotification,
     ProgressNotification,
     Execution,
 }
-public enum CausalityTraceLevel
+package(mscorlib) enum CausalityTraceLevel
 {
     Required,
     Important,
     Verbose,
 }
-public enum AsyncCausalityStatus
+package(mscorlib) enum AsyncCausalityStatus
 {
     Canceled = 2,
     Completed = 1,

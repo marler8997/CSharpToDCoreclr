@@ -71,7 +71,7 @@ import mscorlib.System.Diagnostics :
 //  As such, your test code should define the TargetFrameworkAttribute (which VS does for you)
 //  if you want to see the new behavior!
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class BinaryCompatibility : __DotNet__Object
+package(mscorlib) class BinaryCompatibility : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate property 'TargetsAtLeast_Phone_V7_1'
@@ -97,18 +97,18 @@ public class BinaryCompatibility : __DotNet__Object
     private enum String c_profileKey/*todo: implement initializer*/ = null;
     private static final class BinaryCompatibilityMap : __DotNet__Object
     {
-        public bool TargetsAtLeast_Phone_V7_1;
-        public bool TargetsAtLeast_Phone_V8_0;
-        public bool TargetsAtLeast_Phone_V8_1;
-        public bool TargetsAtLeast_Desktop_V4_5;
-        public bool TargetsAtLeast_Desktop_V4_5_1;
-        public bool TargetsAtLeast_Desktop_V4_5_2;
-        public bool TargetsAtLeast_Desktop_V4_5_3;
-        public bool TargetsAtLeast_Desktop_V4_5_4;
-        public bool TargetsAtLeast_Desktop_V5_0;
-        public bool TargetsAtLeast_Silverlight_V4;
-        public bool TargetsAtLeast_Silverlight_V5;
-        public bool TargetsAtLeast_Silverlight_V6;
+        package(mscorlib) bool TargetsAtLeast_Phone_V7_1;
+        package(mscorlib) bool TargetsAtLeast_Phone_V8_0;
+        package(mscorlib) bool TargetsAtLeast_Phone_V8_1;
+        package(mscorlib) bool TargetsAtLeast_Desktop_V4_5;
+        package(mscorlib) bool TargetsAtLeast_Desktop_V4_5_1;
+        package(mscorlib) bool TargetsAtLeast_Desktop_V4_5_2;
+        package(mscorlib) bool TargetsAtLeast_Desktop_V4_5_3;
+        package(mscorlib) bool TargetsAtLeast_Desktop_V4_5_4;
+        package(mscorlib) bool TargetsAtLeast_Desktop_V5_0;
+        package(mscorlib) bool TargetsAtLeast_Silverlight_V4;
+        package(mscorlib) bool TargetsAtLeast_Silverlight_V5;
+        package(mscorlib) bool TargetsAtLeast_Silverlight_V6;
         //TODO: generate constructor
         //TODO: generate method AddQuirksForFramework
     }
@@ -206,7 +206,7 @@ public enum ResourceScope
     Assembly = 0x20,
 }
 @__DotNet__Attribute!(FlagsAttribute.stringof)
-public enum SxSRequirements
+package(mscorlib) enum SxSRequirements
 {
     None = 0,
     AppDomainID = 0x1,
@@ -245,7 +245,7 @@ public final class TargetFrameworkAttribute : Attribute
 //
 // What type of .NET Framework was this application compiled against?
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public enum TargetFrameworkId
+package(mscorlib) enum TargetFrameworkId
 {
     NotYetChecked = 0,
     Unrecognized = 1,

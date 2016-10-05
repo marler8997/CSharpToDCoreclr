@@ -111,7 +111,7 @@ public interface IEnumConnections
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IEnumerable.cs'
 //
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "496B0ABE-CDEE-11d3-88E8-00902754C43A"*/)
-public interface IEnumerable
+package(mscorlib) interface IEnumerable
 {
     //TODO: generate method GetEnumerator
 }
@@ -120,7 +120,7 @@ public interface IEnumerable
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IEnumerator.cs'
 //
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "496B0ABF-CDEE-11d3-88E8-00902754C43A"*/)
-public interface IEnumerator
+package(mscorlib) interface IEnumerator
 {
     //TODO: generate method MoveNext
     //TODO: generate property 'Current'
@@ -173,7 +173,7 @@ public interface IEnumVARIANT
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IExpando.cs'
 //
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "AFBF15E6-C37C-11d2-B88E-00A0C9B471B8"*/)
-public interface IExpando : IReflect
+package(mscorlib) interface IExpando : IReflect
 {
     //TODO: generate method AddField
     //TODO: generate method AddProperty
@@ -237,7 +237,7 @@ public interface IPersistFile
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComTypes\IReflect.cs'
 //
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "AFBF15E5-C37C-11d2-B88E-00A0C9B471B8"*/)
-public interface IReflect
+package(mscorlib) interface IReflect
 {
     //TODO: generate method GetMethod
     //TODO: generate method GetMethod

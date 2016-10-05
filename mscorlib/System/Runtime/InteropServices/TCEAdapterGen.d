@@ -16,7 +16,7 @@ import mscorlib.System.Collections :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\TCEAdapterGen\EventItfInfo.cs'
 //
-public class EventItfInfo : __DotNet__Object
+package(mscorlib) class EventItfInfo : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method GetEventItfType
@@ -32,7 +32,7 @@ public class EventItfInfo : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\TCEAdapterGen\EventProviderWriter.cs'
 //
-public class EventProviderWriter : __DotNet__Object
+package(mscorlib) class EventProviderWriter : __DotNet__Object
 {
     private enum BindingFlags DefaultLookup/*todo: implement initializer*/ = (cast(BindingFlags)0);
     private immutable Type[] MonitorEnterParamTypes/*todo: implement initializer*/ = null;
@@ -54,7 +54,7 @@ public class EventProviderWriter : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\TCEAdapterGen\EventSinkHelperWriter.cs'
 //
-public class EventSinkHelperWriter : __DotNet__Object
+package(mscorlib) class EventSinkHelperWriter : __DotNet__Object
 {
     public static immutable String GeneratedTypeNamePostfix/*todo: implement initializer*/ = null;
     //TODO: generate constructor
@@ -71,7 +71,7 @@ public class EventSinkHelperWriter : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\TCEAdapterGen\NameSpaceExtractor.cs'
 //
-public class NameSpaceExtractor : __DotNet__Object
+package(mscorlib) class NameSpaceExtractor : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static wchar NameSpaceSeperator/*todo: implement initializer*/ = wchar();
@@ -81,7 +81,7 @@ public class NameSpaceExtractor : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\TCEAdapterGen\TCEAdapterGenerator.cs'
 //
-public class TCEAdapterGenerator : __DotNet__Object
+package(mscorlib) class TCEAdapterGenerator : __DotNet__Object
 {
     //TODO: generate method Process
     //TODO: generate method SetClassInterfaceTypeToNone

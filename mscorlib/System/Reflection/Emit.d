@@ -88,9 +88,9 @@ import mscorlib.System.Collections :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\AQNBuilder.cs'
 //
-public class TypeNameBuilder : __DotNet__Object
+package(mscorlib) class TypeNameBuilder : __DotNet__Object
 {
-    public enum Format
+    package(mscorlib) enum Format
     {
         ToString,
         FullName,
@@ -135,7 +135,7 @@ public class TypeNameBuilder : __DotNet__Object
 //
 // These must match the definitions in Assembly.hpp
 @__DotNet__Attribute!(FlagsAttribute.stringof)
-public enum DynamicAssemblyFlags
+package(mscorlib) enum DynamicAssemblyFlags
 {
     None = 0x00000000,
     // Security attributes which affect the module security descriptor
@@ -145,7 +145,7 @@ public enum DynamicAssemblyFlags
     Transparent = 0x00000008,
     TreatAsSafe = 0x00000010,
 }
-public final class InternalAssemblyBuilder : RuntimeAssembly
+package(mscorlib) final class InternalAssemblyBuilder : RuntimeAssembly
 {
     //TODO: generate constructor
     //TODO: generate method Equals
@@ -171,11 +171,11 @@ public final class AssemblyBuilder : Assembly, _AssemblyBuilder
 {
     //TODO: generate method GetInMemoryAssemblyModule
     //TODO: generate method nGetInMemoryAssemblyModule
-    public AssemblyBuilderData m_assemblyData;
+    package(mscorlib) AssemblyBuilderData m_assemblyData;
     private InternalAssemblyBuilder m_internalAssemblyBuilder;
     private ModuleBuilder m_manifestModuleBuilder;
     private bool m_fManifestModuleUsedAsDefinedModule;
-    public enum String MANIFEST_MODULE_NAME/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String MANIFEST_MODULE_NAME/*todo: implement initializer*/ = null;
     private bool m_profileAPICheck;
     //TODO: generate method GetModuleBuilder
     //TODO: generate property 'SyncRoot'
@@ -293,7 +293,7 @@ public enum AssemblyBuilderAccess
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\AssemblyBuilderData.cs'
 //
-public class AssemblyBuilderData : __DotNet__Object
+package(mscorlib) class AssemblyBuilderData : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method AddModule
@@ -310,57 +310,57 @@ public class AssemblyBuilderData : __DotNet__Object
     //TODO: generate method AddPublicComType
     //TODO: generate method AddPermissionRequests
     //TODO: generate method EnsurePublicComTypeCapacity
-    public List1!(ModuleBuilder) m_moduleBuilderList;
-    public List1!(ResWriterData) m_resWriterList;
-    public String m_strAssemblyName;
-    public AssemblyBuilderAccess m_access;
+    package(mscorlib) List1!(ModuleBuilder) m_moduleBuilderList;
+    package(mscorlib) List1!(ResWriterData) m_resWriterList;
+    package(mscorlib) String m_strAssemblyName;
+    package(mscorlib) AssemblyBuilderAccess m_access;
     private InternalAssemblyBuilder m_assembly;
-    public Type[] m_publicComTypeList;
-    public int m_iPublicComTypeCount;
-    public bool m_isSaved;
-    public enum int m_iInitialSize/*todo: implement initializer*/ = int();
-    public String m_strDir;
-    public enum int m_tkAssembly/*todo: implement initializer*/ = int();
-    public PermissionSet m_RequiredPset;
-    public PermissionSet m_OptionalPset;
-    public PermissionSet m_RefusedPset;
-    public CustomAttributeBuilder[] m_CABuilders;
-    public int m_iCABuilder;
-    public ubyte[][] m_CABytes;
-    public ConstructorInfo[] m_CACons;
-    public int m_iCAs;
-    public PEFileKinds m_peFileKind;
-    public MethodInfo m_entryPointMethod;
-    public Assembly m_ISymWrapperAssembly;
-    public String m_strResourceFileName;
-    public ubyte[] m_resourceBytes;
-    public NativeVersionInfo m_nativeVersion;
-    public bool m_hasUnmanagedVersionInfo;
-    public bool m_OverrideUnmanagedVersionInfo;
+    package(mscorlib) Type[] m_publicComTypeList;
+    package(mscorlib) int m_iPublicComTypeCount;
+    package(mscorlib) bool m_isSaved;
+    package(mscorlib) enum int m_iInitialSize/*todo: implement initializer*/ = int();
+    package(mscorlib) String m_strDir;
+    package(mscorlib) enum int m_tkAssembly/*todo: implement initializer*/ = int();
+    package(mscorlib) PermissionSet m_RequiredPset;
+    package(mscorlib) PermissionSet m_OptionalPset;
+    package(mscorlib) PermissionSet m_RefusedPset;
+    package(mscorlib) CustomAttributeBuilder[] m_CABuilders;
+    package(mscorlib) int m_iCABuilder;
+    package(mscorlib) ubyte[][] m_CABytes;
+    package(mscorlib) ConstructorInfo[] m_CACons;
+    package(mscorlib) int m_iCAs;
+    package(mscorlib) PEFileKinds m_peFileKind;
+    package(mscorlib) MethodInfo m_entryPointMethod;
+    package(mscorlib) Assembly m_ISymWrapperAssembly;
+    package(mscorlib) String m_strResourceFileName;
+    package(mscorlib) ubyte[] m_resourceBytes;
+    package(mscorlib) NativeVersionInfo m_nativeVersion;
+    package(mscorlib) bool m_hasUnmanagedVersionInfo;
+    package(mscorlib) bool m_OverrideUnmanagedVersionInfo;
 }
-public class ResWriterData : __DotNet__Object
+package(mscorlib) class ResWriterData : __DotNet__Object
 {
     //TODO: generate constructor
-    public IResourceWriter m_resWriter;
-    public String m_strName;
-    public String m_strFileName;
-    public String m_strFullFileName;
-    public Stream m_memoryStream;
-    public ResWriterData m_nextResWriter;
-    public ResourceAttributes m_attribute;
+    package(mscorlib) IResourceWriter m_resWriter;
+    package(mscorlib) String m_strName;
+    package(mscorlib) String m_strFileName;
+    package(mscorlib) String m_strFullFileName;
+    package(mscorlib) Stream m_memoryStream;
+    package(mscorlib) ResWriterData m_nextResWriter;
+    package(mscorlib) ResourceAttributes m_attribute;
 }
-public class NativeVersionInfo : __DotNet__Object
+package(mscorlib) class NativeVersionInfo : __DotNet__Object
 {
     //TODO: generate constructor
-    public String m_strDescription;
-    public String m_strCompany;
-    public String m_strTitle;
-    public String m_strCopyright;
-    public String m_strTrademark;
-    public String m_strProduct;
-    public String m_strProductVersion;
-    public String m_strFileVersion;
-    public int m_lcid;
+    package(mscorlib) String m_strDescription;
+    package(mscorlib) String m_strCompany;
+    package(mscorlib) String m_strTitle;
+    package(mscorlib) String m_strCopyright;
+    package(mscorlib) String m_strTrademark;
+    package(mscorlib) String m_strProduct;
+    package(mscorlib) String m_strProductVersion;
+    package(mscorlib) String m_strFileVersion;
+    package(mscorlib) int m_lcid;
 }
 
 //
@@ -373,7 +373,7 @@ public class NativeVersionInfo : __DotNet__Object
 public final class ConstructorBuilder : ConstructorInfo, _ConstructorBuilder
 {
     private immutable MethodBuilder m_methodBuilder;
-    public bool m_isDefaultConstructor;
+    package(mscorlib) bool m_isDefaultConstructor;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -433,17 +433,17 @@ public class CustomAttributeBuilder : __DotNet__Object, _CustomAttributeBuilder
     //TODO: generate method CreateCustomAttribute
     //TODO: generate method PrepareCreateCustomAttributeToDisk
     //TODO: generate method CreateCustomAttribute
-    public ConstructorInfo m_con;
-    public __DotNet__Object[] m_constructorArgs;
-    public ubyte[] m_blob;
+    package(mscorlib) ConstructorInfo m_con;
+    package(mscorlib) __DotNet__Object[] m_constructorArgs;
+    package(mscorlib) ubyte[] m_blob;
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\DynamicILGenerator.cs'
 //
-public class DynamicILGenerator : ILGenerator
+package(mscorlib) class DynamicILGenerator : ILGenerator
 {
-    public DynamicScope m_scope;
+    package(mscorlib) DynamicScope m_scope;
     private int m_methodSigToken;
     //TODO: generate constructor
     //TODO: generate method GetCallableMethod
@@ -484,7 +484,7 @@ public class DynamicILGenerator : ILGenerator
     //TODO: generate method GetTokenForString
     //TODO: generate method GetTokenForSig
 }
-public class DynamicResolver : Resolver
+package(mscorlib) class DynamicResolver : Resolver
 {
     private __ExceptionInfo[] m_exceptions;
     private ubyte[] m_exceptionHeader;
@@ -498,12 +498,12 @@ public class DynamicResolver : Resolver
     //TODO: generate destructor
     private static class DestroyScout : __DotNet__Object
     {
-        public RuntimeMethodHandleInternal m_methodHandle;
+        package(mscorlib) RuntimeMethodHandleInternal m_methodHandle;
         //TODO: generate destructor
     }
     // Keep in sync with vm/dynamicmethod.h
     @__DotNet__Attribute!(FlagsAttribute.stringof)
-    public enum SecurityControlFlags
+    package(mscorlib) enum SecurityControlFlags
     {
         Default = 0x0,
         SkipVisibilityChecks = 0x1,
@@ -558,9 +558,9 @@ public class DynamicILInfo : __DotNet__Object
     //TODO: generate method GetTokenFor
     //TODO: generate method GetTokenFor
 }
-public class DynamicScope : __DotNet__Object
+package(mscorlib) class DynamicScope : __DotNet__Object
 {
-    public List1!(__DotNet__Object) m_tokens;
+    package(mscorlib) List1!(__DotNet__Object) m_tokens;
     //TODO: generate constructor
     //TODO: generate indexer
     //TODO: generate method GetTokenFor
@@ -575,23 +575,23 @@ public class DynamicScope : __DotNet__Object
     //TODO: generate method GetTokenFor
     //TODO: generate method GetTokenFor
 }
-public final class GenericMethodInfo : __DotNet__Object
+package(mscorlib) final class GenericMethodInfo : __DotNet__Object
 {
-    public RuntimeMethodHandle m_methodHandle;
-    public RuntimeTypeHandle m_context;
+    package(mscorlib) RuntimeMethodHandle m_methodHandle;
+    package(mscorlib) RuntimeTypeHandle m_context;
     //TODO: generate constructor
 }
-public final class GenericFieldInfo : __DotNet__Object
+package(mscorlib) final class GenericFieldInfo : __DotNet__Object
 {
-    public RuntimeFieldHandle m_fieldHandle;
-    public RuntimeTypeHandle m_context;
+    package(mscorlib) RuntimeFieldHandle m_fieldHandle;
+    package(mscorlib) RuntimeTypeHandle m_context;
     //TODO: generate constructor
 }
-public final class VarArgMethod : __DotNet__Object
+package(mscorlib) final class VarArgMethod : __DotNet__Object
 {
-    public RuntimeMethodInfo m_method;
-    public DynamicMethod m_dynamicMethod;
-    public SignatureHelper m_signature;
+    package(mscorlib) RuntimeMethodInfo m_method;
+    package(mscorlib) DynamicMethod m_dynamicMethod;
+    package(mscorlib) SignatureHelper m_signature;
     //TODO: generate constructor
     //TODO: generate constructor
 }
@@ -603,7 +603,7 @@ public final class VarArgMethod : __DotNet__Object
 public final class DynamicMethod : MethodInfo
 {
     private RuntimeType[] m_parameterTypes;
-    public IRuntimeMethodInfo m_methodHandle;
+    package(mscorlib) IRuntimeMethodInfo m_methodHandle;
     private RuntimeType m_returnType;
     private DynamicILGenerator m_ilGenerator;
     // #if FEATURE_CORECLR
@@ -611,13 +611,13 @@ public final class DynamicMethod : MethodInfo
     private DynamicILInfo m_DynamicILInfo;
     private bool m_fInitLocals;
     private RuntimeModule m_module;
-    public bool m_skipVisibility;
-    public RuntimeType m_typeOwner;
+    package(mscorlib) bool m_skipVisibility;
+    package(mscorlib) RuntimeType m_typeOwner;
     private RTDynamicMethod m_dynMethod;
-    public DynamicResolver m_resolver;
+    package(mscorlib) DynamicResolver m_resolver;
     private bool m_profileAPICheck;
     private RuntimeAssembly m_creatorAssembly;
-    public bool m_restrictedSkipVisibility;
+    package(mscorlib) bool m_restrictedSkipVisibility;
     private static /*todo: volatile*/ InternalModuleBuilder s_anonymouslyHostedDynamicMethodsModule;
     private static immutable __DotNet__Object s_anonymouslyHostedDynamicMethodsModuleLock/*todo: implement initializer*/ = null;
     //TODO: generate constructor
@@ -666,9 +666,9 @@ public final class DynamicMethod : MethodInfo
     //TODO: generate method GetILGenerator
     //TODO: generate property 'InitLocals'
     //TODO: generate method GetMethodInfo
-    public static class RTDynamicMethod : MethodInfo
+    package(mscorlib) static class RTDynamicMethod : MethodInfo
     {
-        public DynamicMethod m_owner;
+        package(mscorlib) DynamicMethod m_owner;
         private ParameterInfo[] m_parameters;
         private String m_name;
         private MethodAttributes m_attributes;
@@ -777,7 +777,7 @@ public final class EnumBuilder : __DotNet__TypeInfo, _EnumBuilder
     //TODO: generate method MakeArrayType
     //TODO: generate method MakeArrayType
     //TODO: generate constructor
-    public TypeBuilder m_typeBuilder;
+    package(mscorlib) TypeBuilder m_typeBuilder;
     private FieldBuilder m_underlyingField;
 }
 
@@ -819,7 +819,7 @@ public final class EventBuilder : __DotNet__Object, _EventBuilder
 public struct EventToken
 {
     public static immutable EventToken Empty/*todo: implement initializer*/ = EventToken();
-    public int m_event;
+    package(mscorlib) int m_event;
     //TODO: generate constructor
     //TODO: generate property 'Token'
     //TODO: generate method GetHashCode
@@ -880,8 +880,8 @@ public final class FieldBuilder : FieldInfo, _FieldBuilder
 public struct FieldToken
 {
     public static immutable FieldToken Empty/*todo: implement initializer*/ = FieldToken();
-    public int m_fieldTok;
-    public __DotNet__Object m_class;
+    package(mscorlib) int m_fieldTok;
+    package(mscorlib) __DotNet__Object m_class;
     //TODO: generate constructor
     //TODO: generate property 'Token'
     //TODO: generate method GetHashCode
@@ -920,7 +920,7 @@ public enum FlowControl
 public final class GenericTypeParameterBuilder : __DotNet__TypeInfo
 {
     //TODO: generate method IsAssignableFrom
-    public TypeBuilder m_type;
+    package(mscorlib) TypeBuilder m_type;
     //TODO: generate constructor
     //TODO: generate method ToString
     //TODO: generate method Equals
@@ -1021,11 +1021,11 @@ public class ILGenerator : __DotNet__Object, _ILGenerator
     private int m_currExcStackCount;
     private __ExceptionInfo[] m_exceptions;
     private __ExceptionInfo[] m_currExcStack;
-    public ScopeTree m_ScopeTree;
-    public LineNumberInfo m_LineNumberInfo;
-    public MethodInfo m_methodBuilder;
-    public int m_localCount;
-    public SignatureHelper m_localSignature;
+    package(mscorlib) ScopeTree m_ScopeTree;
+    package(mscorlib) LineNumberInfo m_LineNumberInfo;
+    package(mscorlib) MethodInfo m_methodBuilder;
+    package(mscorlib) int m_localCount;
+    package(mscorlib) SignatureHelper m_localSignature;
     private int m_maxStackSize/*todo: implement initializer*/ = int();
     private int m_maxMidStack/*todo: implement initializer*/ = int();
     private int m_maxMidStackCur/*todo: implement initializer*/ = int();
@@ -1090,36 +1090,36 @@ public class ILGenerator : __DotNet__Object, _ILGenerator
     //TODO: generate method EndScope
     //TODO: generate property 'ILOffset'
 }
-public struct __FixupData
+package(mscorlib) struct __FixupData
 {
-    public Label m_fixupLabel;
-    public int m_fixupPos;
-    public int m_fixupInstSize;
+    package(mscorlib) Label m_fixupLabel;
+    package(mscorlib) int m_fixupPos;
+    package(mscorlib) int m_fixupInstSize;
 }
-public final class __ExceptionInfo : __DotNet__Object
+package(mscorlib) final class __ExceptionInfo : __DotNet__Object
 {
-    public enum int None/*todo: implement initializer*/ = int();
-    public enum int Filter/*todo: implement initializer*/ = int();
-    public enum int Finally/*todo: implement initializer*/ = int();
-    public enum int Fault/*todo: implement initializer*/ = int();
-    public enum int PreserveStack/*todo: implement initializer*/ = int();
-    public enum int State_Try/*todo: implement initializer*/ = int();
-    public enum int State_Filter/*todo: implement initializer*/ = int();
-    public enum int State_Catch/*todo: implement initializer*/ = int();
-    public enum int State_Finally/*todo: implement initializer*/ = int();
-    public enum int State_Fault/*todo: implement initializer*/ = int();
-    public enum int State_Done/*todo: implement initializer*/ = int();
-    public int m_startAddr;
-    public int[] m_filterAddr;
-    public int[] m_catchAddr;
-    public int[] m_catchEndAddr;
-    public int[] m_type;
-    public Type[] m_catchClass;
-    public Label m_endLabel;
-    public Label m_finallyEndLabel;
-    public int m_endAddr;
-    public int m_endFinally;
-    public int m_currentCatch;
+    package(mscorlib) enum int None/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int Filter/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int Finally/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int Fault/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int PreserveStack/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int State_Try/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int State_Filter/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int State_Catch/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int State_Finally/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int State_Fault/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int State_Done/*todo: implement initializer*/ = int();
+    package(mscorlib) int m_startAddr;
+    package(mscorlib) int[] m_filterAddr;
+    package(mscorlib) int[] m_catchAddr;
+    package(mscorlib) int[] m_catchEndAddr;
+    package(mscorlib) int[] m_type;
+    package(mscorlib) Type[] m_catchClass;
+    package(mscorlib) Label m_endLabel;
+    package(mscorlib) Label m_finallyEndLabel;
+    package(mscorlib) int m_endAddr;
+    package(mscorlib) int m_endFinally;
+    package(mscorlib) int m_currentCatch;
     private int m_currentState;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1158,7 +1158,7 @@ private enum ScopeAction
     Open = 0x0,
     Close = 0x1,
 }
-public final class ScopeTree : __DotNet__Object
+package(mscorlib) final class ScopeTree : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method GetCurrentActiveScopeIndex
@@ -1167,14 +1167,14 @@ public final class ScopeTree : __DotNet__Object
     //TODO: generate method AddScopeInfo
     //TODO: generate method EnsureCapacity
     //TODO: generate method EmitScopeTree
-    public int[] m_iOffsets;
-    public ScopeAction[] m_ScopeActions;
-    public int m_iCount;
-    public int m_iOpenScopeCount;
-    public enum int InitialSize/*todo: implement initializer*/ = int();
-    public LocalSymInfo[] m_localSymInfos;
+    package(mscorlib) int[] m_iOffsets;
+    package(mscorlib) ScopeAction[] m_ScopeActions;
+    package(mscorlib) int m_iCount;
+    package(mscorlib) int m_iOpenScopeCount;
+    package(mscorlib) enum int InitialSize/*todo: implement initializer*/ = int();
+    package(mscorlib) LocalSymInfo[] m_localSymInfos;
 }
-public final class LineNumberInfo : __DotNet__Object
+package(mscorlib) final class LineNumberInfo : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method AddLineNumberInfo
@@ -1186,7 +1186,7 @@ public final class LineNumberInfo : __DotNet__Object
     private enum int InitialSize/*todo: implement initializer*/ = int();
     private int m_iLastFound;
 }
-public final class REDocument : __DotNet__Object
+package(mscorlib) final class REDocument : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method AddLineNumberInfo
@@ -1197,7 +1197,7 @@ public final class REDocument : __DotNet__Object
     private int[] m_iColumns;
     private int[] m_iEndLines;
     private int[] m_iEndColumns;
-    public ISymbolDocumentWriter m_document;
+    package(mscorlib) ISymbolDocumentWriter m_document;
     private int m_iLineNumberCount;
     private enum int InitialSize/*todo: implement initializer*/ = int();
 }
@@ -1225,13 +1225,13 @@ private class SymWrapperCore : __DotNet__Object
         @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
         private static struct ISymUnmanagedDocumentWriterVTable
         {
-            public IntPtr QueryInterface;
-            public IntPtr AddRef;
-            public IntPtr Release;
-            public IntPtr SetSource;
+            package(mscorlib) IntPtr QueryInterface;
+            package(mscorlib) IntPtr AddRef;
+            package(mscorlib) IntPtr Release;
+            package(mscorlib) IntPtr SetSource;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DSetCheckSum SetCheckSum;
+            package(mscorlib) DSetCheckSum SetCheckSum;
         }
         //------------------------------------------------------------------------------
         // This layout must match the (start) of the unmanaged ISymUnmanagedDocumentWriter
@@ -1241,7 +1241,7 @@ private class SymWrapperCore : __DotNet__Object
         @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
         private static struct ISymUnmanagedDocumentWriter
         {
-            public IntPtr m_unmanagedVTable;
+            package(mscorlib) IntPtr m_unmanagedVTable;
         }
         //------------------------------------------------------------------------------
         // Stores underlying ISymUnmanagedDocumentWriter* pointer (wrapped in a safehandle.)
@@ -1258,7 +1258,7 @@ private class SymWrapperCore : __DotNet__Object
         @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private ISymUnmanagedDocumentWriterVTable m_vtable;
     }
-    public static class SymWriter : __DotNet__Object, ISymbolWriter
+    package(mscorlib) static class SymWriter : __DotNet__Object, ISymbolWriter
     {
         //TODO: generate method CreateSymWriter
         //TODO: generate constructor
@@ -1324,59 +1324,59 @@ private class SymWrapperCore : __DotNet__Object
         @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
         private static struct ISymUnmanagedWriterVTable
         {
-            public IntPtr QueryInterface;
-            public IntPtr AddRef;
-            public IntPtr Release;
+            package(mscorlib) IntPtr QueryInterface;
+            package(mscorlib) IntPtr AddRef;
+            package(mscorlib) IntPtr Release;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DDefineDocument DefineDocument;
+            package(mscorlib) DDefineDocument DefineDocument;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DSetUserEntryPoint SetUserEntryPoint;
+            package(mscorlib) DSetUserEntryPoint SetUserEntryPoint;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DOpenMethod OpenMethod;
+            package(mscorlib) DOpenMethod OpenMethod;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DCloseMethod CloseMethod;
+            package(mscorlib) DCloseMethod CloseMethod;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DOpenScope OpenScope;
+            package(mscorlib) DOpenScope OpenScope;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DCloseScope CloseScope;
+            package(mscorlib) DCloseScope CloseScope;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DSetScopeRange SetScopeRange;
+            package(mscorlib) DSetScopeRange SetScopeRange;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DDefineLocalVariable DefineLocalVariable;
-            public IntPtr DefineParameter;
-            public IntPtr DefineField;
-            public IntPtr DefineGlobalVariable;
+            package(mscorlib) DDefineLocalVariable DefineLocalVariable;
+            package(mscorlib) IntPtr DefineParameter;
+            package(mscorlib) IntPtr DefineField;
+            package(mscorlib) IntPtr DefineGlobalVariable;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DClose Close;
+            package(mscorlib) DClose Close;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DSetSymAttribute SetSymAttribute;
+            package(mscorlib) DSetSymAttribute SetSymAttribute;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DOpenNamespace OpenNamespace;
+            package(mscorlib) DOpenNamespace OpenNamespace;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DCloseNamespace CloseNamespace;
+            package(mscorlib) DCloseNamespace CloseNamespace;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DUsingNamespace UsingNamespace;
-            public IntPtr SetMethodSourceRange;
+            package(mscorlib) DUsingNamespace UsingNamespace;
+            package(mscorlib) IntPtr SetMethodSourceRange;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DInitialize Initialize;
-            public IntPtr GetDebugInfo;
+            package(mscorlib) DInitialize Initialize;
+            package(mscorlib) IntPtr GetDebugInfo;
             // #if FEATURE_CORECLR
             @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-            public DDefineSequencePoints DefineSequencePoints;
+            package(mscorlib) DDefineSequencePoints DefineSequencePoints;
         }
         //------------------------------------------------------------------------------
         // This layout must match the (start) of the unmanaged ISymUnmanagedWriter
@@ -1385,7 +1385,7 @@ private class SymWrapperCore : __DotNet__Object
         @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
         private static struct ISymUnmanagedWriter
         {
-            public IntPtr m_unmanagedVTable;
+            package(mscorlib) IntPtr m_unmanagedVTable;
         }
         //------------------------------------------------------------------------------
         // Stores native ISymUnmanagedWriter* pointer.
@@ -1435,7 +1435,7 @@ private final class PunkSafeHandle : SafeHandle
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct Label
 {
-    public int m_label;
+    package(mscorlib) int m_label;
     //TODO: generate constructor
     //TODO: generate method GetLabelValue
     //TODO: generate method GetHashCode
@@ -1478,26 +1478,26 @@ public final class LocalBuilder : LocalVariableInfo, _LocalBuilder
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class MethodBuilder : MethodInfo, _MethodBuilder
 {
-    public String m_strName;
+    package(mscorlib) String m_strName;
     private MethodToken m_tkMethod;
     private ModuleBuilder m_module;
-    public TypeBuilder m_containingType;
+    package(mscorlib) TypeBuilder m_containingType;
     private int[] m_mdMethodFixups;
     private ubyte[] m_localSignature;
-    public LocalSymInfo m_localSymInfo;
-    public ILGenerator m_ilGenerator;
+    package(mscorlib) LocalSymInfo m_localSymInfo;
+    package(mscorlib) ILGenerator m_ilGenerator;
     private ubyte[] m_ubBody;
     private ExceptionHandler[] m_exceptions;
     private enum int DefaultMaxStack/*todo: implement initializer*/ = int();
     private int m_maxStack/*todo: implement initializer*/ = int();
-    public bool m_bIsBaked;
+    package(mscorlib) bool m_bIsBaked;
     private bool m_bIsGlobalMethod;
     private bool m_fInitLocals;
     private MethodAttributes m_iAttributes;
     private CallingConventions m_callingConvention;
     private MethodImplAttributes m_dwMethodImplFlags;
     private SignatureHelper m_signature;
-    public Type[] m_parameterTypes;
+    package(mscorlib) Type[] m_parameterTypes;
     private ParameterBuilder m_retParam;
     private Type m_returnType;
     private Type[] m_returnTypeRequiredCustomModifiers;
@@ -1589,20 +1589,20 @@ public final class MethodBuilder : MethodInfo, _MethodBuilder
     //TODO: generate method SetCustomAttribute
     //TODO: generate method IsKnownCA
     //TODO: generate method ParseCA
-    public bool m_canBeRuntimeImpl/*todo: implement initializer*/ = bool();
-    public bool m_isDllImport/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool m_canBeRuntimeImpl/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool m_isDllImport/*todo: implement initializer*/ = bool();
 }
-public class LocalSymInfo : __DotNet__Object
+package(mscorlib) class LocalSymInfo : __DotNet__Object
 {
-    public String[] m_strName;
-    public ubyte[][] m_ubSignature;
-    public int[] m_iLocalSlot;
-    public int[] m_iStartOffset;
-    public int[] m_iEndOffset;
-    public int m_iLocalSymCount;
-    public String[] m_namespace;
-    public int m_iNameSpaceCount;
-    public enum int InitialSize/*todo: implement initializer*/ = int();
+    package(mscorlib) String[] m_strName;
+    package(mscorlib) ubyte[][] m_ubSignature;
+    package(mscorlib) int[] m_iLocalSlot;
+    package(mscorlib) int[] m_iStartOffset;
+    package(mscorlib) int[] m_iEndOffset;
+    package(mscorlib) int m_iLocalSymCount;
+    package(mscorlib) String[] m_namespace;
+    package(mscorlib) int m_iNameSpaceCount;
+    package(mscorlib) enum int InitialSize/*todo: implement initializer*/ = int();
     //TODO: generate constructor
     //TODO: generate method EnsureCapacityNamespace
     //TODO: generate method EnsureCapacity
@@ -1617,13 +1617,13 @@ public class LocalSymInfo : __DotNet__Object
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
 public struct ExceptionHandler
 {
-    public immutable int m_exceptionClass;
-    public immutable int m_tryStartOffset;
-    public immutable int m_tryEndOffset;
-    public immutable int m_filterOffset;
-    public immutable int m_handlerStartOffset;
-    public immutable int m_handlerEndOffset;
-    public immutable ExceptionHandlingClauseOptions m_kind;
+    package(mscorlib) immutable int m_exceptionClass;
+    package(mscorlib) immutable int m_tryStartOffset;
+    package(mscorlib) immutable int m_tryEndOffset;
+    package(mscorlib) immutable int m_filterOffset;
+    package(mscorlib) immutable int m_handlerStartOffset;
+    package(mscorlib) immutable int m_handlerEndOffset;
+    package(mscorlib) immutable ExceptionHandlingClauseOptions m_kind;
     //TODO: generate property 'ExceptionTypeToken'
     //TODO: generate property 'TryOffset'
     //TODO: generate property 'TryLength'
@@ -1649,10 +1649,10 @@ public class __Boxed__ExceptionHandler : __DotNet__Object, IEquatable1!(Exceptio
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\MethodBuilderInstantiation.cs'
 //
-public final class MethodBuilderInstantiation : MethodInfo
+package(mscorlib) final class MethodBuilderInstantiation : MethodInfo
 {
     //TODO: generate method MakeGenericMethod
-    public MethodInfo m_method;
+    package(mscorlib) MethodInfo m_method;
     private Type[] m_inst;
     //TODO: generate constructor
     //TODO: generate method GetParameterTypes
@@ -1691,7 +1691,7 @@ public final class MethodBuilderInstantiation : MethodInfo
 public struct MethodToken
 {
     public static immutable MethodToken Empty/*todo: implement initializer*/ = MethodToken();
-    public int m_method;
+    package(mscorlib) int m_method;
     //TODO: generate constructor
     //TODO: generate property 'Token'
     //TODO: generate method GetHashCode
@@ -1704,7 +1704,7 @@ public struct MethodToken
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\ModuleBuilder.cs'
 //
-public final class InternalModuleBuilder : RuntimeModule
+package(mscorlib) final class InternalModuleBuilder : RuntimeModule
 {
     //TODO: generate constructor
     //TODO: generate method Equals
@@ -1721,8 +1721,8 @@ public class ModuleBuilder : Module, _ModuleBuilder
     //TODO: generate method UnmangleTypeName
     private Dictionary2!(String,Type) m_TypeBuilderDict;
     private ISymbolWriter m_iSymWriter;
-    public ModuleBuilderData m_moduleData;
-    public InternalModuleBuilder m_internalModuleBuilder;
+    package(mscorlib) ModuleBuilderData m_moduleData;
+    package(mscorlib) InternalModuleBuilder m_internalModuleBuilder;
     private AssemblyBuilder m_assemblyBuilder;
     //TODO: generate property 'ContainingAssemblyBuilder'
     //TODO: generate constructor
@@ -1866,27 +1866,27 @@ public class ModuleBuilder : Module, _ModuleBuilder
 // data member for ModuleBuilder. Note that what ever data members added to
 // this class cannot be accessed from the EE.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class ModuleBuilderData : __DotNet__Object
+package(mscorlib) class ModuleBuilderData : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method InitNames
     //TODO: generate method ModifyModuleName
     //TODO: generate property 'FileToken'
-    public String m_strModuleName;
-    public String m_strFileName;
-    public bool m_fGlobalBeenCreated;
-    public bool m_fHasGlobal;
+    package(mscorlib) String m_strModuleName;
+    package(mscorlib) String m_strFileName;
+    package(mscorlib) bool m_fGlobalBeenCreated;
+    package(mscorlib) bool m_fHasGlobal;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public TypeBuilder m_globalTypeBuilder;
+    package(mscorlib) TypeBuilder m_globalTypeBuilder;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public ModuleBuilder m_module;
+    package(mscorlib) ModuleBuilder m_module;
     private int m_tkFile;
-    public bool m_isSaved;
+    package(mscorlib) bool m_isSaved;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public ResWriterData m_embeddedRes;
-    public enum String MULTI_BYTE_VALUE_CLASS/*todo: implement initializer*/ = null;
-    public String m_strResourceFileName;
-    public ubyte[] m_resourceBytes;
+    package(mscorlib) ResWriterData m_embeddedRes;
+    package(mscorlib) enum String MULTI_BYTE_VALUE_CLASS/*todo: implement initializer*/ = null;
+    package(mscorlib) String m_strResourceFileName;
+    package(mscorlib) ubyte[] m_resourceBytes;
 }
 
 //
@@ -1895,18 +1895,18 @@ public class ModuleBuilderData : __DotNet__Object
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct OpCode
 {
-    public enum int OperandTypeMask/*todo: implement initializer*/ = int();
-    public enum int FlowControlShift/*todo: implement initializer*/ = int();
-    public enum int FlowControlMask/*todo: implement initializer*/ = int();
-    public enum int OpCodeTypeShift/*todo: implement initializer*/ = int();
-    public enum int OpCodeTypeMask/*todo: implement initializer*/ = int();
-    public enum int StackBehaviourPopShift/*todo: implement initializer*/ = int();
-    public enum int StackBehaviourPushShift/*todo: implement initializer*/ = int();
-    public enum int StackBehaviourMask/*todo: implement initializer*/ = int();
-    public enum int SizeShift/*todo: implement initializer*/ = int();
-    public enum int SizeMask/*todo: implement initializer*/ = int();
-    public enum int EndsUncondJmpBlkFlag/*todo: implement initializer*/ = int();
-    public enum int StackChangeShift/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int OperandTypeMask/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int FlowControlShift/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int FlowControlMask/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int OpCodeTypeShift/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int OpCodeTypeMask/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int StackBehaviourPopShift/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int StackBehaviourPushShift/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int StackBehaviourMask/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int SizeShift/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int SizeMask/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EndsUncondJmpBlkFlag/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int StackChangeShift/*todo: implement initializer*/ = int();
     private OpCodeValues m_value;
     private int m_flags;
     //TODO: generate constructor
@@ -1932,7 +1932,7 @@ public struct OpCode
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\OpCodes.cs'
 //
-public enum OpCodeValues
+package(mscorlib) enum OpCodeValues
 {
     Nop = 0x00,
     Break = 0x01,
@@ -2484,7 +2484,7 @@ public class ParameterBuilder : __DotNet__Object, _ParameterBuilder
 public struct ParameterToken
 {
     public static immutable ParameterToken Empty/*todo: implement initializer*/ = ParameterToken();
-    public int m_tkParameter;
+    package(mscorlib) int m_tkParameter;
     //TODO: generate constructor
     //TODO: generate property 'Token'
     //TODO: generate method GetHashCode
@@ -2570,7 +2570,7 @@ public final class PropertyBuilder : PropertyInfo, _PropertyBuilder
 public struct PropertyToken
 {
     public static immutable PropertyToken Empty/*todo: implement initializer*/ = PropertyToken();
-    public int m_property;
+    package(mscorlib) int m_property;
     //TODO: generate constructor
     //TODO: generate property 'Token'
     //TODO: generate method GetHashCode
@@ -2656,8 +2656,8 @@ public final class SignatureHelper : __DotNet__Object, _SignatureHelper
 public struct SignatureToken
 {
     public static immutable SignatureToken Empty/*todo: implement initializer*/ = SignatureToken();
-    public int m_signature;
-    public ModuleBuilder m_moduleBuilder;
+    package(mscorlib) int m_signature;
+    package(mscorlib) ModuleBuilder m_moduleBuilder;
     //TODO: generate constructor
     //TODO: generate property 'Token'
     //TODO: generate method GetHashCode
@@ -2712,7 +2712,7 @@ public enum StackBehaviour
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct StringToken
 {
-    public int m_string;
+    package(mscorlib) int m_string;
     //TODO: generate constructor
     //TODO: generate property 'Token'
     //TODO: generate method GetHashCode
@@ -2725,7 +2725,7 @@ public struct StringToken
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\SymbolMethod.cs'
 //
-public final class SymbolMethod : MethodInfo
+package(mscorlib) final class SymbolMethod : MethodInfo
 {
     private ModuleBuilder m_module;
     private Type m_containingType;
@@ -2762,21 +2762,21 @@ public final class SymbolMethod : MethodInfo
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\SymbolType.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum TypeKind
+package(mscorlib) enum TypeKind
 {
     IsArray = 1,
     IsPointer = 2,
     IsByRef = 3,
 }
-public final class SymbolType : __DotNet__TypeInfo
+package(mscorlib) final class SymbolType : __DotNet__TypeInfo
 {
     //TODO: generate method IsAssignableFrom
     //TODO: generate method FormCompoundType
-    public TypeKind m_typeKind;
-    public Type m_baseType;
-    public int m_cRank;
-    public int[] m_iaLowerBound;
-    public int[] m_iaUpperBound;
+    package(mscorlib) TypeKind m_typeKind;
+    package(mscorlib) Type m_baseType;
+    package(mscorlib) int m_cRank;
+    package(mscorlib) int[] m_iaLowerBound;
+    package(mscorlib) int[] m_iaUpperBound;
     private String m_format;
     private bool m_isSzArray/*todo: implement initializer*/ = bool();
     //TODO: generate constructor
@@ -2904,14 +2904,14 @@ public final class TypeBuilder : __DotNet__TypeInfo, _TypeBuilder
     private List1!(Type) m_typeInterfaces;
     private TypeAttributes m_iAttr;
     private GenericParameterAttributes m_genParamAttributes;
-    public List1!(MethodBuilder) m_listMethods;
-    public int m_lastTokenizedMethod;
+    package(mscorlib) List1!(MethodBuilder) m_listMethods;
+    package(mscorlib) int m_lastTokenizedMethod;
     private int m_constructorCount;
     private int m_iTypeSize;
     private PackingSize m_iPackingSize;
     private TypeBuilder m_DeclaringType;
     private Type m_enumUnderlyingType;
-    public bool m_isHiddenGlobalType;
+    package(mscorlib) bool m_isHiddenGlobalType;
     private bool m_hasBeenCreated;
     private RuntimeType m_bakedRuntimeType;
     private int m_genParamPos;
@@ -3063,14 +3063,14 @@ public final class TypeBuilder : __DotNet__TypeInfo, _TypeBuilder
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\TypeBuilderInstantiation.cs'
 //
-public final class TypeBuilderInstantiation : __DotNet__TypeInfo
+package(mscorlib) final class TypeBuilderInstantiation : __DotNet__TypeInfo
 {
     //TODO: generate method IsAssignableFrom
     //TODO: generate method MakeGenericType
     private Type m_type;
     private Type[] m_inst;
     private String m_strFullQualName;
-    public Hashtable m_hashtable/*todo: implement initializer*/ = null;
+    package(mscorlib) Hashtable m_hashtable/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate method ToString
     //TODO: generate property 'DeclaringType'
@@ -3143,7 +3143,7 @@ public final class TypeBuilderInstantiation : __DotNet__TypeInfo
 public struct TypeToken
 {
     public static immutable TypeToken Empty/*todo: implement initializer*/ = TypeToken();
-    public int m_class;
+    package(mscorlib) int m_class;
     //TODO: generate constructor
     //TODO: generate property 'Token'
     //TODO: generate method GetHashCode
@@ -3173,20 +3173,20 @@ public final class UnmanagedMarshal : __DotNet__Object
     //TODO: generate property 'ElementCount'
     //TODO: generate property 'BaseType'
     //TODO: generate constructor
-    public UnmanagedType m_unmanagedType;
-    public Guid m_guid;
-    public int m_numElem;
-    public UnmanagedType m_baseType;
+    package(mscorlib) UnmanagedType m_unmanagedType;
+    package(mscorlib) Guid m_guid;
+    package(mscorlib) int m_numElem;
+    package(mscorlib) UnmanagedType m_baseType;
     //TODO: generate method InternalGetBytes
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Reflection\Emit\XXXOnTypeBuilderInstantiation.cs'
 //
-public final class MethodOnTypeBuilderInstantiation : MethodInfo
+package(mscorlib) final class MethodOnTypeBuilderInstantiation : MethodInfo
 {
     //TODO: generate method GetMethod
-    public MethodInfo m_method;
+    package(mscorlib) MethodInfo m_method;
     private TypeBuilderInstantiation m_type;
     //TODO: generate constructor
     //TODO: generate method GetParameterTypes
@@ -3217,10 +3217,10 @@ public final class MethodOnTypeBuilderInstantiation : MethodInfo
     //TODO: generate property 'ReturnTypeCustomAttributes'
     //TODO: generate method GetBaseDefinition
 }
-public final class ConstructorOnTypeBuilderInstantiation : ConstructorInfo
+package(mscorlib) final class ConstructorOnTypeBuilderInstantiation : ConstructorInfo
 {
     //TODO: generate method GetConstructor
-    public ConstructorInfo m_ctor;
+    package(mscorlib) ConstructorInfo m_ctor;
     private TypeBuilderInstantiation m_type;
     //TODO: generate constructor
     //TODO: generate method GetParameterTypes
@@ -3247,7 +3247,7 @@ public final class ConstructorOnTypeBuilderInstantiation : ConstructorInfo
     //TODO: generate property 'IsGenericMethod'
     //TODO: generate method Invoke
 }
-public final class FieldOnTypeBuilderInstantiation : FieldInfo
+package(mscorlib) final class FieldOnTypeBuilderInstantiation : FieldInfo
 {
     //TODO: generate method GetField
     private FieldInfo m_field;

@@ -43,7 +43,7 @@ public enum EnvironmentPermissionAccess
     AllAccess = 0x03,
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class EnvironmentStringExpressionSet : StringExpressionSet
+package(mscorlib) class EnvironmentStringExpressionSet : StringExpressionSet
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -175,7 +175,7 @@ public final class FileIOPermission : CodeAccessPermission, IUnrestrictedPermiss
     //TODO: generate method EmulateFileIOPermissionChecks
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class FileIOAccess : __DotNet__Object
+package(mscorlib) final class FileIOAccess : __DotNet__Object
 {
     private bool m_ignoreCase/*todo: implement initializer*/ = bool();
     private StringExpressionSet m_set;
@@ -280,9 +280,9 @@ public final class HostProtectionAttribute : CodeAccessSecurityAttribute
     //TODO: generate method CreatePermission
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class HostProtectionPermission : CodeAccessPermission, IUnrestrictedPermission, IBuiltInPermission
+package(mscorlib) final class HostProtectionPermission : CodeAccessPermission, IUnrestrictedPermission, IBuiltInPermission
 {
-    public static /*todo: volatile*/ HostProtectionResource protectedResources/*todo: implement initializer*/ = (cast(HostProtectionResource)0);
+    package(mscorlib) static /*todo: volatile*/ HostProtectionResource protectedResources/*todo: implement initializer*/ = (cast(HostProtectionResource)0);
     private HostProtectionResource m_resources;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -299,35 +299,35 @@ public final class HostProtectionPermission : CodeAccessPermission, IUnrestricte
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Permissions\IBuiltInPermission.cs'
 //
-public interface IBuiltInPermission
+package(mscorlib) interface IBuiltInPermission
 {
     //TODO: generate method GetTokenIndex
 }
-public class BuiltInPermissionIndex : __DotNet__Object
+package(mscorlib) class BuiltInPermissionIndex : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum int NUM_BUILTIN_UNRESTRICTED/*todo: implement initializer*/ = int();
-    public enum int NUM_BUILTIN_NORMAL/*todo: implement initializer*/ = int();
-    public enum int EnvironmentPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int FileDialogPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int FileIOPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int IsolatedStorageFilePermissionIndex/*todo: implement initializer*/ = int();
-    public enum int ReflectionPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int RegistryPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int SecurityPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int UIPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int PrincipalPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int HostProtectionPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int PublisherIdentityPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int SiteIdentityPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int StrongNameIdentityPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int UrlIdentityPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int ZoneIdentityPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int GacIdentityPermissionIndex/*todo: implement initializer*/ = int();
-    public enum int KeyContainerPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int NUM_BUILTIN_UNRESTRICTED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int NUM_BUILTIN_NORMAL/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EnvironmentPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int FileDialogPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int FileIOPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int IsolatedStorageFilePermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ReflectionPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int RegistryPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int SecurityPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int UIPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int PrincipalPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int HostProtectionPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int PublisherIdentityPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int SiteIdentityPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int StrongNameIdentityPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int UrlIdentityPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ZoneIdentityPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int GacIdentityPermissionIndex/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int KeyContainerPermissionIndex/*todo: implement initializer*/ = int();
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum BuiltInPermissionFlag
+package(mscorlib) enum BuiltInPermissionFlag
 {
     // Unrestricted permissions
     EnvironmentPermission = 0x1,
@@ -393,11 +393,11 @@ public enum IsolatedStorageContainment
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public abstract class IsolatedStoragePermission : CodeAccessPermission, IUnrestrictedPermission
 {
-    public long m_userQuota;
-    public long m_machineQuota;
-    public long m_expirationDays;
-    public bool m_permanentData;
-    public IsolatedStorageContainment m_allowed;
+    package(mscorlib) long m_userQuota;
+    package(mscorlib) long m_machineQuota;
+    package(mscorlib) long m_expirationDays;
+    package(mscorlib) bool m_permanentData;
+    package(mscorlib) IsolatedStorageContainment m_allowed;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -558,8 +558,8 @@ public enum SecurityAction
 @__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "SecurityAttribute is no longer accessible to application code."*/)
 public abstract class SecurityAttribute : Attribute
 {
-    public SecurityAction m_action;
-    public bool m_unrestricted;
+    package(mscorlib) SecurityAction m_action;
+    package(mscorlib) bool m_unrestricted;
     //TODO: generate constructor
     //TODO: generate property 'Action'
     //TODO: generate property 'Unrestricted'
@@ -1015,7 +1015,7 @@ public enum ReflectionPermissionFlag
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class ReflectionPermission : CodeAccessPermission, IUnrestrictedPermission, IBuiltInPermission
 {
-    public enum ReflectionPermissionFlag AllFlagsAndMore/*todo: implement initializer*/ = (cast(ReflectionPermissionFlag)0);
+    package(mscorlib) enum ReflectionPermissionFlag AllFlagsAndMore/*todo: implement initializer*/ = (cast(ReflectionPermissionFlag)0);
     private ReflectionPermissionFlag m_flags;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1159,7 +1159,7 @@ public final class SiteIdentityPermission : CodeAccessPermission, IBuiltInPermis
 // The only difference between this class and System.Security.Policy.StrongName is that this one
 // allows m_name to be null.  We should merge this class with System.Security.Policy.StrongName
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class StrongName2 : __DotNet__Object
+package(mscorlib) final class StrongName2 : __DotNet__Object
 {
     public StrongNamePublicKeyBlob m_publicKeyBlob;
     public String m_name;
@@ -1196,7 +1196,7 @@ public final class StrongNameIdentityPermission : CodeAccessPermission, IBuiltIn
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class StrongNamePublicKeyBlob : __DotNet__Object
 {
-    public ubyte[] PublicKey;
+    package(mscorlib) ubyte[] PublicKey;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor

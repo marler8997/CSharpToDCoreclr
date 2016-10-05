@@ -66,7 +66,7 @@ import mscorlib.System.Runtime.CompilerServices :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\ActivityTracker.cs'
 //
-public class ActivityTracker : __DotNet__Object
+package(mscorlib) class ActivityTracker : __DotNet__Object
 {
     //TODO: generate method OnStart
     //TODO: generate method OnStop
@@ -97,16 +97,16 @@ public class ActivityTracker : __DotNet__Object
         }
         //TODO: generate method AddIdToGuid
         //TODO: generate method WriteNibble
-        public immutable String m_name;
+        package(mscorlib) immutable String m_name;
         private immutable long m_uniqueId;
-        public immutable Guid m_guid;
-        public immutable int m_activityPathGuidOffset;
-        public immutable int m_level;
-        public immutable EventActivityOptions m_eventOptions;
-        public long m_lastChildID;
-        public int m_stopped;
-        public immutable ActivityInfo m_creator;
-        public immutable Guid m_activityIdToRestore;
+        package(mscorlib) immutable Guid m_guid;
+        package(mscorlib) immutable int m_activityPathGuidOffset;
+        package(mscorlib) immutable int m_level;
+        package(mscorlib) immutable EventActivityOptions m_eventOptions;
+        package(mscorlib) long m_lastChildID;
+        package(mscorlib) int m_stopped;
+        package(mscorlib) immutable ActivityInfo m_creator;
+        package(mscorlib) immutable Guid m_activityIdToRestore;
     }
     //TODO: generate method ActivityChanging
     private AsyncLocal1!(ActivityInfo) m_current;
@@ -148,7 +148,7 @@ public enum EventActivityOptions
 //
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit, Size = 16*/)
 @__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
-public struct EventDescriptor
+package(mscorlib) struct EventDescriptor
 {
     // # region private
     @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
@@ -186,7 +186,7 @@ public struct EventDescriptor
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\EventProvider.cs'
 //
-public enum ControllerCommand
+package(mscorlib) enum ControllerCommand
 {
     // Strictly Positive numbers are for provider-specific commands, negative number are for 'shared' commands. 256
     // The first 256 negative numbers are reserved for the framework.  
@@ -200,18 +200,18 @@ public enum ControllerCommand
 /// controller callback)
 /// </summary>
 @__DotNet__Attribute!(HostProtectionAttribute.stringof/*, MayLeakOnAbort = true*/)
-public class EventProvider : __DotNet__Object, IDisposable
+package(mscorlib) class EventProvider : __DotNet__Object, IDisposable
 {
     public static struct EventData
     {
-        public ulong Ptr;
-        public uint Size;
-        public uint Reserved;
+        package(mscorlib) ulong Ptr;
+        package(mscorlib) uint Size;
+        package(mscorlib) uint Reserved;
     }
     public static struct SessionInfo
     {
-        public int sessionIdBit;
-        public int etwSessionId;
+        package(mscorlib) int sessionIdBit;
+        package(mscorlib) int etwSessionId;
         //TODO: generate constructor
     }
     private static bool m_setInformationMissing;
@@ -224,7 +224,7 @@ public class EventProvider : __DotNet__Object, IDisposable
     private List1!(SessionInfo) m_liveSessions;
     private bool m_enabled;
     private Guid m_providerId;
-    public bool m_disposed;
+    package(mscorlib) bool m_disposed;
     @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static WriteEventErrorCode s_returnCode;
     private enum int s_basicTypeAllocationBufferSize/*todo: implement initializer*/ = int();
@@ -324,14 +324,14 @@ public class EventSource : __DotNet__Object, IDisposable
     //TODO: generate method WriteEvent
     //TODO: generate method WriteEvent
     //TODO: generate method WriteEvent
-    public  static struct EventData
+    public static struct EventData
     {
         //TODO: generate property 'DataPointer'
         //TODO: generate property 'Size'
         //TODO: generate method SetMetadata
-        public long m_Ptr;
-        public int m_Size;
-        public int m_Reserved;
+        package(mscorlib) long m_Ptr;
+        package(mscorlib) int m_Size;
+        package(mscorlib) int m_Reserved;
     }
     //TODO: generate method WriteEventCore
     //TODO: generate method WriteEventWithRelatedActivityIdCore
@@ -384,7 +384,7 @@ public class EventSource : __DotNet__Object, IDisposable
         //TODO: generate method OnControllerCommand
         private EventSource m_eventSource;
     }
-    public static struct EventMetadata
+    package(mscorlib) static struct EventMetadata
     {
         public EventDescriptor Descriptor;
         public EventTags Tags;
@@ -425,38 +425,38 @@ public class EventSource : __DotNet__Object, IDisposable
     //TODO: generate property 'SelfDescribingEvents'
     //TODO: generate method ReportActivitySamplingInfo
     private String m_name;
-    public int m_id;
+    package(mscorlib) int m_id;
     private Guid m_guid;
-    public /*todo: volatile*/ EventMetadata[] m_eventData;
+    package(mscorlib) /*todo: volatile*/ EventMetadata[] m_eventData;
     private /*todo: volatile*/ ubyte[] m_rawManifest;
     private EventHandler1!(EventCommandEventArgs) m_eventCommandExecuted;
     private EventSourceSettings m_config;
     private bool m_eventSourceDisposed;
     private bool m_eventSourceEnabled;
-    public EventLevel m_level;
-    public EventKeywords m_matchAnyKeyword;
-    public /*todo: volatile*/ EventDispatcher m_Dispatchers;
+    package(mscorlib) EventLevel m_level;
+    package(mscorlib) EventKeywords m_matchAnyKeyword;
+    package(mscorlib) /*todo: volatile*/ EventDispatcher m_Dispatchers;
     private /*todo: volatile*/ OverideEventProvider m_provider;
     private bool m_completelyInited;
     private __DotNet__Exception m_constructionException;
     private ubyte m_outOfBandMessageCount;
     private EventCommandEventArgs m_deferredCommands;
     private String[] m_traits;
-    public static uint s_currentPid;
+    package(mscorlib) static uint s_currentPid;
     @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static ubyte m_EventSourceExceptionRecurenceCount/*todo: implement initializer*/ = ubyte();
     @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
     private static bool m_EventSourceInDecodeObject/*todo: implement initializer*/ = bool();
-    public /*todo: volatile*/ ulong[] m_channelData;
+    package(mscorlib) /*todo: volatile*/ ulong[] m_channelData;
     private SessionMask m_curLiveSessions;
     private EtwSession[] m_etwSessionIdMap;
     private List1!(EtwSession) m_legacySessions;
-    public long m_keywordTriggers;
-    public SessionMask m_activityFilteringForETWEnabled;
-    public static Action1!(Guid) s_activityDying;
+    package(mscorlib) long m_keywordTriggers;
+    package(mscorlib) SessionMask m_activityFilteringForETWEnabled;
+    package(mscorlib) static Action1!(Guid) s_activityDying;
     private ActivityTracker m_activityTracker;
-    public enum String s_ActivityStartSuffix/*todo: implement initializer*/ = null;
-    public enum String s_ActivityStopSuffix/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String s_ActivityStartSuffix/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String s_ActivityStopSuffix/*todo: implement initializer*/ = null;
     private static immutable ubyte[] namespaceBytes/*todo: implement initializer*/ = null;
     //TODO: generate method SetCurrentThreadActivityId
     //TODO: generate method SetCurrentThreadActivityId
@@ -535,10 +535,10 @@ public class EventListener : __DotNet__Object, IDisposable
     //TODO: generate method Validate
     //TODO: generate property 'EventListenersLock'
     //TODO: generate method CallBackForExistingEventSources
-    public /*todo: volatile*/ EventListener m_Next;
-    public ActivityFilter m_activityFilter;
-    public static EventListener s_Listeners;
-    public static List1!(WeakReference) s_EventSources;
+    package(mscorlib) /*todo: volatile*/ EventListener m_Next;
+    package(mscorlib) ActivityFilter m_activityFilter;
+    package(mscorlib) static EventListener s_Listeners;
+    package(mscorlib) static List1!(WeakReference) s_EventSources;
     private static bool s_CreatingListener/*todo: implement initializer*/ = bool();
     private static bool s_EventSourceShutdownRegistered/*todo: implement initializer*/ = bool();
 }
@@ -549,15 +549,15 @@ public class EventCommandEventArgs : EventArgs
     //TODO: generate method EnableEvent
     //TODO: generate method DisableEvent
     //TODO: generate constructor
-    public EventSource eventSource;
-    public EventDispatcher dispatcher;
-    public EventListener listener;
-    public int perEventSourceSessionId;
-    public int etwSessionId;
-    public bool enable;
-    public EventLevel level;
-    public EventKeywords matchAnyKeyword;
-    public EventCommandEventArgs nextCommand;
+    package(mscorlib) EventSource eventSource;
+    package(mscorlib) EventDispatcher dispatcher;
+    package(mscorlib) EventListener listener;
+    package(mscorlib) int perEventSourceSessionId;
+    package(mscorlib) int etwSessionId;
+    package(mscorlib) bool enable;
+    package(mscorlib) EventLevel level;
+    package(mscorlib) EventKeywords matchAnyKeyword;
+    package(mscorlib) EventCommandEventArgs nextCommand;
 }
 public class EventSourceCreatedEventArgs : EventArgs
 {
@@ -585,10 +585,10 @@ public class EventWrittenEventArgs : EventArgs
     private String m_eventName;
     private EventSource m_eventSource;
     private ReadOnlyCollection1!(String) m_payloadNames;
-    public EventTags m_tags;
-    public EventOpcode m_opcode;
-    public EventLevel m_level;
-    public EventKeywords m_keywords;
+    package(mscorlib) EventTags m_tags;
+    package(mscorlib) EventOpcode m_opcode;
+    package(mscorlib) EventLevel m_level;
+    package(mscorlib) EventKeywords m_keywords;
 }
 /// <summary>
 /// Allows customizing defaults and specifying localization support for the event source class to which it is applied. 
@@ -687,7 +687,7 @@ public enum EventCommand
     /// </summary>
     Disable = -3,
 }
-public final class ActivityFilter : __DotNet__Object, IDisposable
+package(mscorlib) final class ActivityFilter : __DotNet__Object, IDisposable
 {
     //TODO: generate method DisableFilter
     //TODO: generate method UpdateFilter
@@ -715,7 +715,7 @@ public final class ActivityFilter : __DotNet__Object, IDisposable
     private ActivityFilter m_next;
     private Action1!(Guid) m_myActivityDelegate;
 }
-public class EtwSession : __DotNet__Object
+package(mscorlib) class EtwSession : __DotNet__Object
 {
     //TODO: generate method GetEtwSession
     //TODO: generate method RemoveEtwSession
@@ -726,7 +726,7 @@ public class EtwSession : __DotNet__Object
     private static List1!(WeakReference1!(EtwSession)) s_etwSessions/*todo: implement initializer*/ = null;
     private enum int s_thrSessionCount/*todo: implement initializer*/ = int();
 }
-public struct SessionMask
+package(mscorlib) struct SessionMask
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -743,17 +743,17 @@ public struct SessionMask
     //TODO: generate conversion operator
     //TODO: generate conversion operator
     private uint m_mask;
-    public enum int SHIFT_SESSION_TO_KEYWORD/*todo: implement initializer*/ = int();
-    public enum uint MASK/*todo: implement initializer*/ = uint();
-    public enum uint MAX/*todo: implement initializer*/ = uint();
+    package(mscorlib) enum int SHIFT_SESSION_TO_KEYWORD/*todo: implement initializer*/ = int();
+    package(mscorlib) enum uint MASK/*todo: implement initializer*/ = uint();
+    package(mscorlib) enum uint MAX/*todo: implement initializer*/ = uint();
 }
-public class EventDispatcher : __DotNet__Object
+package(mscorlib) class EventDispatcher : __DotNet__Object
 {
     //TODO: generate constructor
-    public immutable EventListener m_Listener;
-    public bool[] m_EventEnabled;
-    public bool m_activityFilteringEnabled;
-    public EventDispatcher m_Next;
+    package(mscorlib) immutable EventListener m_Listener;
+    package(mscorlib) bool[] m_EventEnabled;
+    package(mscorlib) bool m_activityFilteringEnabled;
+    package(mscorlib) EventDispatcher m_Next;
 }
 /// <summary>
 /// Flags that can be used with EventSource.GenerateManifest to control how the ETW manifest for the EventSource is
@@ -786,7 +786,7 @@ public enum EventManifestOptions
     /// </summary>
     AllowEventSourceOverride = 0x8,
 }
-public class ManifestBuilder : __DotNet__Object
+package(mscorlib) class ManifestBuilder : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method AddOpcode
@@ -829,7 +829,7 @@ public class ManifestBuilder : __DotNet__Object
     private Dictionary2!(ulong,String) keywordTab;
     private Dictionary2!(String,Type) mapsTab;
     private Dictionary2!(String,String) stringTab;
-    public enum ulong ValidPredefinedChannelKeywords/*todo: implement initializer*/ = ulong();
+    package(mscorlib) enum ulong ValidPredefinedChannelKeywords/*todo: implement initializer*/ = ulong();
     private ulong nextChannelKeywordBit/*todo: implement initializer*/ = ulong();
     private enum int MaxCountChannels/*todo: implement initializer*/ = int();
     private StringBuilder sb;
@@ -845,7 +845,7 @@ public class ManifestBuilder : __DotNet__Object
     private List1!(int) byteArrArgIndices;
     //TODO: generate method GetTypeNameHelper
 }
-public struct ManifestEnvelope
+package(mscorlib) struct ManifestEnvelope
 {
     public enum int MaxChunkSize/*todo: implement initializer*/ = int();
     public enum ManifestFormats : ubyte
@@ -866,7 +866,7 @@ public struct ManifestEnvelope
 // partial class 'EventSource' moved
 // partial class 'ManifestBuilder' moved
 // partial class 'EventProvider' moved
-public class Resources : __DotNet__Object
+package(mscorlib) class Resources : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetResourceString
@@ -903,7 +903,7 @@ public class EventSourceException : __DotNet__Exception
 //
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
 @__DotNet__Attribute!(EventSourceAttribute.stringof/*, Guid = "8E9F5090-2D75-4d03-8A81-E5AFBF85DAF1", Name = "System.Diagnostics.Eventing.FrameworkEventSource"*/)
-public final class FrameworkEventSource : EventSource
+package(mscorlib) final class FrameworkEventSource : EventSource
 {
     public static immutable FrameworkEventSource Log/*todo: implement initializer*/ = null;
     public static class Keywords : __DotNet__Object
@@ -1006,7 +1006,7 @@ public final class FrameworkEventSource : EventSource
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\ArrayTypeInfo.cs'
 //
-public final class ArrayTypeInfo : TraceLoggingTypeInfo
+package(mscorlib) final class ArrayTypeInfo : TraceLoggingTypeInfo
 {
     private immutable TraceLoggingTypeInfo elementInfo;
     //TODO: generate constructor
@@ -1018,7 +1018,7 @@ public final class ArrayTypeInfo : TraceLoggingTypeInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\ConcurrentSet.cs'
 //
-public struct ConcurrentSet2(KeyType,ItemType)
+package(mscorlib) struct ConcurrentSet2(KeyType,ItemType)
 {
     private ItemType[] items;
     //TODO: generate method TryGet
@@ -1028,7 +1028,7 @@ public struct ConcurrentSet2(KeyType,ItemType)
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\ConcurrentSetItem.cs'
 //
-public abstract class ConcurrentSetItem2(KeyType,ItemType) : __DotNet__Object/*where ItemType : ConcurrentSetItem<KeyType, ItemType>*/
+package(mscorlib) abstract class ConcurrentSetItem2(KeyType,ItemType) : __DotNet__Object/*where ItemType : ConcurrentSetItem<KeyType, ItemType>*/
 {
     //TODO: generate method Compare
     //TODO: generate method Compare
@@ -1047,10 +1047,10 @@ public abstract class ConcurrentSetItem2(KeyType,ItemType) : __DotNet__Object/*w
 /// by the pointers are freed or unpinned.
 /// </summary>
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public struct DataCollector
+package(mscorlib) struct DataCollector
 {
     @__DotNet__Attribute!(ThreadStaticAttribute.stringof)
-    public static DataCollector ThreadInstance;
+    package(mscorlib) static DataCollector ThreadInstance;
     private ubyte* scratchEnd;
     private EventSource.EventData* datasEnd;
     private GCHandle* pinsEnd;
@@ -1084,14 +1084,14 @@ public struct DataCollector
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\EmptyStruct.cs'
 //
-public struct EmptyStruct
+package(mscorlib) struct EmptyStruct
 {
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\EnumerableTypeInfo.cs'
 //
-public final class EnumerableTypeInfo : TraceLoggingTypeInfo
+package(mscorlib) final class EnumerableTypeInfo : TraceLoggingTypeInfo
 {
     private immutable TraceLoggingTypeInfo elementInfo;
     //TODO: generate constructor
@@ -1269,7 +1269,7 @@ public class EventIgnoreAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\EventPayload.cs'
 //
-public class EventPayload : __DotNet__Object, IDictionary2!(String,__DotNet__Object)
+package(mscorlib) class EventPayload : __DotNet__Object, IDictionary2!(String,__DotNet__Object)
 {
     //TODO: generate constructor
     //TODO: generate property 'Keys'
@@ -1295,7 +1295,7 @@ public class EventPayload : __DotNet__Object, IDictionary2!(String,__DotNet__Obj
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\EventSourceActivity.cs'
 //
-public final class EventSourceActivity : __DotNet__Object, IDisposable
+package(mscorlib) final class EventSourceActivity : __DotNet__Object, IDisposable
 {
     //TODO: generate constructor
     //TODO: generate conversion operator
@@ -1325,10 +1325,10 @@ public final class EventSourceActivity : __DotNet__Object, IDisposable
     //TODO: generate property 'StartEventWasFired'
     private immutable EventSource eventSource;
     private EventSourceOptions startStopOptions;
-    public Guid activityId;
+    package(mscorlib) Guid activityId;
     private State state;
     private String eventName;
-    public static Guid s_empty;
+    package(mscorlib) static Guid s_empty;
 }
 
 //
@@ -1336,17 +1336,17 @@ public final class EventSourceActivity : __DotNet__Object, IDisposable
 //
 public struct EventSourceOptions
 {
-    public EventKeywords keywords;
-    public EventTags tags;
-    public EventActivityOptions activityOptions;
-    public ubyte level;
-    public ubyte opcode;
-    public ubyte valuesSet;
-    public enum ubyte keywordsSet/*todo: implement initializer*/ = ubyte();
-    public enum ubyte tagsSet/*todo: implement initializer*/ = ubyte();
-    public enum ubyte levelSet/*todo: implement initializer*/ = ubyte();
-    public enum ubyte opcodeSet/*todo: implement initializer*/ = ubyte();
-    public enum ubyte activityOptionsSet/*todo: implement initializer*/ = ubyte();
+    package(mscorlib) EventKeywords keywords;
+    package(mscorlib) EventTags tags;
+    package(mscorlib) EventActivityOptions activityOptions;
+    package(mscorlib) ubyte level;
+    package(mscorlib) ubyte opcode;
+    package(mscorlib) ubyte valuesSet;
+    package(mscorlib) enum ubyte keywordsSet/*todo: implement initializer*/ = ubyte();
+    package(mscorlib) enum ubyte tagsSet/*todo: implement initializer*/ = ubyte();
+    package(mscorlib) enum ubyte levelSet/*todo: implement initializer*/ = ubyte();
+    package(mscorlib) enum ubyte opcodeSet/*todo: implement initializer*/ = ubyte();
+    package(mscorlib) enum ubyte activityOptionsSet/*todo: implement initializer*/ = ubyte();
     //TODO: generate property 'Level'
     //TODO: generate property 'Opcode'
     //TODO: generate property 'IsOpcodeSet'
@@ -1358,7 +1358,7 @@ public struct EventSourceOptions
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\FieldMetadata.cs'
 //
-public class FieldMetadata : __DotNet__Object
+package(mscorlib) class FieldMetadata : __DotNet__Object
 {
     private immutable String name;
     private immutable int nameSize;
@@ -1378,7 +1378,7 @@ public class FieldMetadata : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\InvokeTypeInfo.cs'
 //
-public final class InvokeTypeInfo : TraceLoggingTypeInfo
+package(mscorlib) final class InvokeTypeInfo : TraceLoggingTypeInfo
 {
     private immutable PropertyAnalysis[] properties;
     //TODO: generate constructor
@@ -1390,14 +1390,14 @@ public final class InvokeTypeInfo : TraceLoggingTypeInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\NameInfo.cs'
 //
-public final class NameInfo : ConcurrentSetItem2!(KeyValuePair2!(String,EventTags),NameInfo)
+package(mscorlib) final class NameInfo : ConcurrentSetItem2!(KeyValuePair2!(String,EventTags),NameInfo)
 {
     //TODO: generate method ReserveEventIDsBelow
     private static int lastIdentity/*todo: implement initializer*/ = int();
-    public immutable String name;
-    public immutable EventTags tags;
-    public immutable int identity;
-    public immutable ubyte[] nameMetadata;
+    package(mscorlib) immutable String name;
+    package(mscorlib) immutable EventTags tags;
+    package(mscorlib) immutable int identity;
+    package(mscorlib) immutable ubyte[] nameMetadata;
     //TODO: generate constructor
     //TODO: generate method Compare
     //TODO: generate method Compare
@@ -1407,20 +1407,20 @@ public final class NameInfo : ConcurrentSetItem2!(KeyValuePair2!(String,EventTag
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\PropertyAnalysis.cs'
 //
-public final class PropertyAnalysis : __DotNet__Object
+package(mscorlib) final class PropertyAnalysis : __DotNet__Object
 {
-    public immutable String name;
-    public immutable PropertyInfo propertyInfo;
-    public immutable Func2!(PropertyValue,PropertyValue) getter;
-    public immutable TraceLoggingTypeInfo typeInfo;
-    public immutable EventFieldAttribute fieldAttribute;
+    package(mscorlib) immutable String name;
+    package(mscorlib) immutable PropertyInfo propertyInfo;
+    package(mscorlib) immutable Func2!(PropertyValue,PropertyValue) getter;
+    package(mscorlib) immutable TraceLoggingTypeInfo typeInfo;
+    package(mscorlib) immutable EventFieldAttribute fieldAttribute;
     //TODO: generate constructor
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\PropertyValue.cs'
 //
-public struct PropertyValue
+package(mscorlib) struct PropertyValue
 {
     /// <summary>
     /// Union of well-known value types, to avoid boxing those types.
@@ -1512,7 +1512,7 @@ public struct PropertyValue
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\SimpleEventTypes.cs'
 //
-public class SimpleEventTypes1(T) : __DotNet__Object
+package(mscorlib) class SimpleEventTypes1(T) : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static TraceLoggingEventTypes instance;
@@ -1523,7 +1523,7 @@ public class SimpleEventTypes1(T) : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\SimpleTypeInfos.cs'
 //
-public final class NullTypeInfo : TraceLoggingTypeInfo
+package(mscorlib) final class NullTypeInfo : TraceLoggingTypeInfo
 {
     //TODO: generate constructor
     //TODO: generate method WriteMetadata
@@ -1553,7 +1553,7 @@ private final class ScalarTypeInfo : TraceLoggingTypeInfo
     //TODO: generate method Double
     //TODO: generate method Guid
 }
-public final class ScalarArrayTypeInfo : TraceLoggingTypeInfo
+package(mscorlib) final class ScalarArrayTypeInfo : TraceLoggingTypeInfo
 {
     private Func3!(EventFieldFormat,TraceLoggingDataType,TraceLoggingDataType) formatFunc;
     private TraceLoggingDataType nativeFormat;
@@ -1577,38 +1577,38 @@ public final class ScalarArrayTypeInfo : TraceLoggingTypeInfo
     //TODO: generate method Double
     //TODO: generate method Guid
 }
-public final class StringTypeInfo : TraceLoggingTypeInfo
+package(mscorlib) final class StringTypeInfo : TraceLoggingTypeInfo
 {
     //TODO: generate constructor
     //TODO: generate method WriteMetadata
     //TODO: generate method WriteData
     //TODO: generate method GetData
 }
-public final class DateTimeTypeInfo : TraceLoggingTypeInfo
+package(mscorlib) final class DateTimeTypeInfo : TraceLoggingTypeInfo
 {
     //TODO: generate constructor
     //TODO: generate method WriteMetadata
     //TODO: generate method WriteData
 }
-public final class DateTimeOffsetTypeInfo : TraceLoggingTypeInfo
+package(mscorlib) final class DateTimeOffsetTypeInfo : TraceLoggingTypeInfo
 {
     //TODO: generate constructor
     //TODO: generate method WriteMetadata
     //TODO: generate method WriteData
 }
-public final class TimeSpanTypeInfo : TraceLoggingTypeInfo
+package(mscorlib) final class TimeSpanTypeInfo : TraceLoggingTypeInfo
 {
     //TODO: generate constructor
     //TODO: generate method WriteMetadata
     //TODO: generate method WriteData
 }
-public final class DecimalTypeInfo : TraceLoggingTypeInfo
+package(mscorlib) final class DecimalTypeInfo : TraceLoggingTypeInfo
 {
     //TODO: generate constructor
     //TODO: generate method WriteMetadata
     //TODO: generate method WriteData
 }
-public final class NullableTypeInfo : TraceLoggingTypeInfo
+package(mscorlib) final class NullableTypeInfo : TraceLoggingTypeInfo
 {
     private immutable TraceLoggingTypeInfo valueInfo;
     private immutable Func2!(PropertyValue,PropertyValue) hasValueGetter;
@@ -1621,7 +1621,7 @@ public final class NullableTypeInfo : TraceLoggingTypeInfo
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\Statics.cs'
 //
-public class Statics : __DotNet__Object
+package(mscorlib) class Statics : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum ubyte DefaultLevel/*todo: implement initializer*/ = ubyte();
@@ -1681,9 +1681,9 @@ public class Statics : __DotNet__Object
 /// doesn't hurt anything).
 /// </summary>
 @__DotNet__Attribute!(SecuritySafeCriticalAttribute.stringof)
-public class TraceLoggingDataCollector : __DotNet__Object
+package(mscorlib) class TraceLoggingDataCollector : __DotNet__Object
 {
-    public static immutable TraceLoggingDataCollector Instance/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable TraceLoggingDataCollector Instance/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate method BeginBufferedArray
     //TODO: generate method EndBufferedArray
@@ -1698,7 +1698,7 @@ public class TraceLoggingDataCollector : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\TraceLoggingDataType.cs'
 //
-public enum TraceLoggingDataType
+package(mscorlib) enum TraceLoggingDataType
 {
     /// <summary>
     /// Core type.
@@ -2008,16 +2008,16 @@ public enum EventTags
 //
 public class TraceLoggingEventTypes : __DotNet__Object
 {
-    public immutable TraceLoggingTypeInfo[] typeInfos;
-    public immutable String name;
-    public immutable EventTags tags;
-    public immutable ubyte level;
-    public immutable ubyte opcode;
-    public immutable EventKeywords keywords;
-    public immutable ubyte[] typeMetadata;
-    public immutable int scratchSize;
-    public immutable int dataCount;
-    public immutable int pinCount;
+    package(mscorlib) immutable TraceLoggingTypeInfo[] typeInfos;
+    package(mscorlib) immutable String name;
+    package(mscorlib) immutable EventTags tags;
+    package(mscorlib) immutable ubyte level;
+    package(mscorlib) immutable ubyte opcode;
+    package(mscorlib) immutable EventKeywords keywords;
+    package(mscorlib) immutable ubyte[] typeMetadata;
+    package(mscorlib) immutable int scratchSize;
+    package(mscorlib) immutable int dataCount;
+    package(mscorlib) immutable int pinCount;
     private ConcurrentSet2!(KeyValuePair2!(String,EventTags),NameInfo) nameInfos;
     //TODO: generate constructor
     //TODO: generate constructor
@@ -2037,7 +2037,7 @@ public class TraceLoggingEventTypes : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\TraceLoggingMetadataCollector.cs'
 //
-public class TraceLoggingMetadataCollector : __DotNet__Object
+package(mscorlib) class TraceLoggingMetadataCollector : __DotNet__Object
 {
     private immutable Impl impl;
     private immutable FieldMetadata currentGroup;
@@ -2060,10 +2060,10 @@ public class TraceLoggingMetadataCollector : __DotNet__Object
     //TODO: generate method AddField
     private static class Impl : __DotNet__Object
     {
-        public immutable List1!(FieldMetadata) fields/*todo: implement initializer*/ = null;
-        public short scratchSize;
-        public byte dataCount;
-        public byte pinCount;
+        package(mscorlib) immutable List1!(FieldMetadata) fields/*todo: implement initializer*/ = null;
+        package(mscorlib) short scratchSize;
+        package(mscorlib) byte dataCount;
+        package(mscorlib) byte pinCount;
         private int bufferNesting;
         private bool scalar;
         //TODO: generate method AddScalar
@@ -2077,7 +2077,7 @@ public class TraceLoggingMetadataCollector : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\TraceLoggingTypeInfo.cs'
 //
-public abstract class TraceLoggingTypeInfo : __DotNet__Object
+package(mscorlib) abstract class TraceLoggingTypeInfo : __DotNet__Object
 {
     private immutable String name;
     private immutable EventKeywords keywords;
@@ -2106,14 +2106,14 @@ public abstract class TraceLoggingTypeInfo : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\TraceLogging\TypeAnalysis.cs'
 //
-public final class TypeAnalysis : __DotNet__Object
+package(mscorlib) final class TypeAnalysis : __DotNet__Object
 {
-    public immutable PropertyAnalysis[] properties;
-    public immutable String name;
-    public immutable EventKeywords keywords;
-    public immutable EventLevel level/*todo: implement initializer*/ = (cast(EventLevel)0);
-    public immutable EventOpcode opcode/*todo: implement initializer*/ = (cast(EventOpcode)0);
-    public immutable EventTags tags;
+    package(mscorlib) immutable PropertyAnalysis[] properties;
+    package(mscorlib) immutable String name;
+    package(mscorlib) immutable EventKeywords keywords;
+    package(mscorlib) immutable EventLevel level/*todo: implement initializer*/ = (cast(EventLevel)0);
+    package(mscorlib) immutable EventOpcode opcode/*todo: implement initializer*/ = (cast(EventOpcode)0);
+    package(mscorlib) immutable EventTags tags;
     //TODO: generate constructor
 }
 

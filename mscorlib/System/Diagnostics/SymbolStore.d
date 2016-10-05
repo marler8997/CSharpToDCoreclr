@@ -239,7 +239,7 @@ public class SymLanguageVendor : __DotNet__Object
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct SymbolToken
 {
-    public int m_token;
+    package(mscorlib) int m_token;
     //TODO: generate constructor
     //TODO: generate method GetToken
     //TODO: generate method GetHashCode

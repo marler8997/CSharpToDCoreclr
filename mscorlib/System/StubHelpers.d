@@ -23,7 +23,7 @@ import mscorlib.System.Collections.Generic :
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\StubHelpers.cs'
 //
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class AnsiCharMarshaler : __DotNet__Object
+package(mscorlib) class AnsiCharMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method DoAnsiConversion
@@ -31,7 +31,7 @@ public class AnsiCharMarshaler : __DotNet__Object
     //TODO: generate method ConvertToManaged
 }
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class CSTRMarshaler : __DotNet__Object
+package(mscorlib) class CSTRMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -39,7 +39,7 @@ public class CSTRMarshaler : __DotNet__Object
     //TODO: generate method ClearNative
 }
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class UTF8Marshaler : __DotNet__Object
+package(mscorlib) class UTF8Marshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private enum int MAX_UTF8_CHAR_SIZE/*todo: implement initializer*/ = int();
@@ -48,7 +48,7 @@ public class UTF8Marshaler : __DotNet__Object
     //TODO: generate method ClearNative
 }
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class UTF8BufferMarshaler : __DotNet__Object
+package(mscorlib) class UTF8BufferMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -56,7 +56,7 @@ public class UTF8BufferMarshaler : __DotNet__Object
 }
 // #if FEATURE_COMINTEROP
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class BSTRMarshaler : __DotNet__Object
+package(mscorlib) class BSTRMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -65,7 +65,7 @@ public class BSTRMarshaler : __DotNet__Object
 }
 // #endif // FEATURE_COMINTEROP
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class VBByValStrMarshaler : __DotNet__Object
+package(mscorlib) class VBByValStrMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -74,7 +74,7 @@ public class VBByValStrMarshaler : __DotNet__Object
 }
 // #if FEATURE_COMINTEROP
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class AnsiBSTRMarshaler : __DotNet__Object
+package(mscorlib) class AnsiBSTRMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -83,7 +83,7 @@ public class AnsiBSTRMarshaler : __DotNet__Object
 }
 // #endif // FEATURE_COMINTEROP
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class WSTRBufferMarshaler : __DotNet__Object
+package(mscorlib) class WSTRBufferMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -92,12 +92,12 @@ public class WSTRBufferMarshaler : __DotNet__Object
 }
 // #if FEATURE_COMINTEROP
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
-public struct DateTimeNative
+package(mscorlib) struct DateTimeNative
 {
     public long UniversalTime;
 }
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class DateTimeOffsetMarshaler : __DotNet__Object
+package(mscorlib) class DateTimeOffsetMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private enum long ManagedUtcTicksAtNativeZero/*todo: implement initializer*/ = long();
@@ -107,7 +107,7 @@ public class DateTimeOffsetMarshaler : __DotNet__Object
 // #endif  // FEATURE_COMINTEROP
 // #if FEATURE_COMINTEROP
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class HStringMarshaler : __DotNet__Object
+package(mscorlib) class HStringMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -116,7 +116,7 @@ public class HStringMarshaler : __DotNet__Object
     //TODO: generate method ClearNative
 }
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class ObjectMarshaler : __DotNet__Object
+package(mscorlib) class ObjectMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -125,7 +125,7 @@ public class ObjectMarshaler : __DotNet__Object
 }
 // #endif // FEATURE_COMINTEROP
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class ValueClassMarshaler : __DotNet__Object
+package(mscorlib) class ValueClassMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -133,7 +133,7 @@ public class ValueClassMarshaler : __DotNet__Object
     //TODO: generate method ClearNative
 }
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class DateMarshaler : __DotNet__Object
+package(mscorlib) class DateMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -142,7 +142,7 @@ public class DateMarshaler : __DotNet__Object
 // #if FEATURE_COMINTEROP
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class InterfaceMarshaler : __DotNet__Object
+package(mscorlib) class InterfaceMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -153,7 +153,7 @@ public class InterfaceMarshaler : __DotNet__Object
 // #endif // FEATURE_COMINTEROP
 // #if FEATURE_COMINTEROP
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class UriMarshaler : __DotNet__Object
+package(mscorlib) class UriMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetRawUriFromNative
@@ -161,7 +161,7 @@ public class UriMarshaler : __DotNet__Object
     //TODO: generate method CreateNativeUriInstance
 }
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class EventArgsMarshaler : __DotNet__Object
+package(mscorlib) class EventArgsMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method CreateNativeNCCEventArgsInstance
@@ -170,7 +170,7 @@ public class EventArgsMarshaler : __DotNet__Object
 }
 // #endif // FEATURE_COMINTEROP
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class MngdNativeArrayMarshaler : __DotNet__Object
+package(mscorlib) class MngdNativeArrayMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method CreateMarshaler
@@ -183,7 +183,7 @@ public class MngdNativeArrayMarshaler : __DotNet__Object
 }
 // #if FEATURE_COMINTEROP
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class MngdSafeArrayMarshaler : __DotNet__Object
+package(mscorlib) class MngdSafeArrayMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method CreateMarshaler
@@ -194,7 +194,7 @@ public class MngdSafeArrayMarshaler : __DotNet__Object
     //TODO: generate method ClearNative
 }
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class MngdHiddenLengthArrayMarshaler : __DotNet__Object
+package(mscorlib) class MngdHiddenLengthArrayMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method CreateMarshaler
@@ -217,7 +217,7 @@ public class MngdHiddenLengthArrayMarshaler : __DotNet__Object
 }
 // #endif // FEATURE_COMINTEROP
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class MngdRefCustomMarshaler : __DotNet__Object
+package(mscorlib) class MngdRefCustomMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method CreateMarshaler
@@ -228,7 +228,7 @@ public class MngdRefCustomMarshaler : __DotNet__Object
 }
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public struct AsAnyMarshaler
+package(mscorlib) struct AsAnyMarshaler
 {
     private enum ushort VTHACK_ANSICHAR/*todo: implement initializer*/ = ushort();
     private enum ushort VTHACK_WINBOOL/*todo: implement initializer*/ = ushort();
@@ -260,7 +260,7 @@ public struct AsAnyMarshaler
 }
 // #if FEATURE_COMINTEROP
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class NullableMarshaler : __DotNet__Object
+package(mscorlib) class NullableMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -269,25 +269,25 @@ public class NullableMarshaler : __DotNet__Object
 }
 // Corresponds to Windows.UI.Xaml.Interop.TypeName
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
-public struct TypeNameNative
+package(mscorlib) struct TypeNameNative
 {
-    public IntPtr typeName;
-    public TypeKind typeKind;
+    package(mscorlib) IntPtr typeName;
+    package(mscorlib) TypeKind typeKind;
 }
-public enum TypeKind
+package(mscorlib) enum TypeKind
 {
     Primitive,
     Metadata,
     Projection,
 }
-public class WinRTTypeNameConverter : __DotNet__Object
+package(mscorlib) class WinRTTypeNameConverter : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToWinRTTypeName
     //TODO: generate method GetTypeFromWinRTTypeName
 }
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class SystemTypeMarshaler : __DotNet__Object
+package(mscorlib) class SystemTypeMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -296,14 +296,14 @@ public class SystemTypeMarshaler : __DotNet__Object
 }
 // For converting WinRT's Windows.Foundation.HResult into System.Exception and vice versa.
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class HResultExceptionMarshaler : __DotNet__Object
+package(mscorlib) class HResultExceptionMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
     //TODO: generate method ConvertToManaged
 }
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
-public class KeyValuePairMarshaler : __DotNet__Object
+package(mscorlib) class KeyValuePairMarshaler : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ConvertToNative
@@ -312,7 +312,7 @@ public class KeyValuePairMarshaler : __DotNet__Object
 }
 // #endif // FEATURE_COMINTEROP
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
-public struct NativeVariant
+package(mscorlib) struct NativeVariant
 {
     private ushort vt;
     private ushort wReserved1;
@@ -357,7 +357,7 @@ public struct NativeVariant
 // has been successfully AddRef'ed. This allows us to do realiable cleanup (Release)
 // if and only if it is needed.
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class CleanupWorkListElement : __DotNet__Object
+package(mscorlib) final class CleanupWorkListElement : __DotNet__Object
 {
     //TODO: generate constructor
     public SafeHandle m_handle;
@@ -365,7 +365,7 @@ public final class CleanupWorkListElement : __DotNet__Object
 }
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class CleanupWorkList : __DotNet__Object
+package(mscorlib) final class CleanupWorkList : __DotNet__Object
 {
     private List1!(CleanupWorkListElement) m_list/*todo: implement initializer*/ = null;
     //TODO: generate method Add
@@ -374,7 +374,7 @@ public final class CleanupWorkList : __DotNet__Object
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 @__DotNet__Attribute!(ReliabilityContractAttribute.stringof/*, Consistency.WillNotCorruptState, Cer.MayFail*/)
 @__DotNet__Attribute!(SuppressUnmanagedCodeSecurityAttribute.stringof/**/)
-public class StubHelpers : __DotNet__Object
+package(mscorlib) class StubHelpers : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method IsQCall

@@ -2,14 +2,15 @@ module mscorlib.System.Diagnostics.Tracing.Internal;
 
 import mscorlib.System :
     __DotNet__Object,
-    String;
+    String/* NameConflict: Environment*/;
+static import mscorlib.System;
 import mscorlib.System.Resources :
     ResourceManager;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Eventing\StubEnvironment.cs'
 //
-public class Environment : __DotNet__Object
+package(mscorlib) class Environment : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public static immutable String NewLine/*todo: implement initializer*/ = null;

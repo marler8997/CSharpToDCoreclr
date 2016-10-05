@@ -38,7 +38,7 @@ import mscorlib.System.Globalization :
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class ASCIIEncoding : Encoding
 {
-    public static immutable ASCIIEncoding s_default/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable ASCIIEncoding s_default/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate method SetDefaultFallbacks
     //TODO: generate method GetByteCount
@@ -73,7 +73,7 @@ public class ASCIIEncoding : Encoding
 // ** to Everett compatibility as well.
 // ==============================================================================
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class CodePageEncoding : __DotNet__Object, IObjectReference, ISerializable
+package(mscorlib) final class CodePageEncoding : __DotNet__Object, IObjectReference, ISerializable
 {
     // Temp stuff
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
@@ -94,7 +94,7 @@ public final class CodePageEncoding : __DotNet__Object, IObjectReference, ISeria
     //TODO: generate method GetObjectData
     // Same problem with the Decoder, this only happens with Everett Decoders
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static final class Decoder : __DotNet__Object, IObjectReference, ISerializable
+    package(mscorlib) static final class Decoder : __DotNet__Object, IObjectReference, ISerializable
     {
         // Might need this when GetRealObjecting
         @__DotNet__Attribute!(NonSerializedAttribute.stringof)
@@ -123,9 +123,9 @@ public final class CodePageEncoding : __DotNet__Object, IObjectReference, ISeria
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public abstract class Decoder : __DotNet__Object
 {
-    public DecoderFallback m_fallback/*todo: implement initializer*/ = null;
+    package(mscorlib) DecoderFallback m_fallback/*todo: implement initializer*/ = null;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public DecoderFallbackBuffer m_fallbackBuffer/*todo: implement initializer*/ = null;
+    package(mscorlib) DecoderFallbackBuffer m_fallbackBuffer/*todo: implement initializer*/ = null;
     //TODO: generate method SerializeDecoder
     //TODO: generate constructor
     //TODO: generate property 'Fallback'
@@ -146,22 +146,22 @@ public abstract class Decoder : __DotNet__Object
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\DecoderBestFitFallback.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class InternalDecoderBestFitFallback : DecoderFallback
+package(mscorlib) final class InternalDecoderBestFitFallback : DecoderFallback
 {
-    public Encoding encoding/*todo: implement initializer*/ = null;
-    public wchar[] arrayBestFit/*todo: implement initializer*/ = null;
-    public wchar cReplacement/*todo: implement initializer*/ = wchar();
+    package(mscorlib) Encoding encoding/*todo: implement initializer*/ = null;
+    package(mscorlib) wchar[] arrayBestFit/*todo: implement initializer*/ = null;
+    package(mscorlib) wchar cReplacement/*todo: implement initializer*/ = wchar();
     //TODO: generate constructor
     //TODO: generate method CreateFallbackBuffer
     //TODO: generate property 'MaxCharCount'
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
-public final class InternalDecoderBestFitFallbackBuffer : DecoderFallbackBuffer
+package(mscorlib) final class InternalDecoderBestFitFallbackBuffer : DecoderFallbackBuffer
 {
-    public wchar cBestFit/*todo: implement initializer*/ = wchar();
-    public int iCount/*todo: implement initializer*/ = int();
-    public int iSize;
+    package(mscorlib) wchar cBestFit/*todo: implement initializer*/ = wchar();
+    package(mscorlib) int iCount/*todo: implement initializer*/ = int();
+    package(mscorlib) int iSize;
     private InternalDecoderBestFitFallback oFallback;
     private static __DotNet__Object s_InternalSyncObject;
     //TODO: generate property 'InternalSyncObject'
@@ -216,7 +216,7 @@ public final class DecoderFallbackException : ArgumentException
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public abstract class DecoderFallback : __DotNet__Object
 {
-    public bool bIsMicrosoftBestFitFallback/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool bIsMicrosoftBestFitFallback/*todo: implement initializer*/ = bool();
     private static /*todo: volatile*/ DecoderFallback replacementFallback;
     private static /*todo: volatile*/ DecoderFallback exceptionFallback;
     private static __DotNet__Object s_InternalSyncObject;
@@ -237,9 +237,9 @@ public abstract class DecoderFallbackBuffer : __DotNet__Object
     // Internal items to help us figure out what we're doing as far as error messages, etc.
     // These help us with our performance and messages internally
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public ubyte* byteStart;
+    package(mscorlib) ubyte* byteStart;
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public wchar* charEnd;
+    package(mscorlib) wchar* charEnd;
     //TODO: generate method InternalReset
     //TODO: generate method InternalInitialize
     //TODO: generate method InternalFallback
@@ -262,15 +262,15 @@ public abstract class DecoderFallbackBuffer : __DotNet__Object
 // of Encoding objects.
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class DecoderNLS : mscorlib.System.Text.Decoder, ISerializable
+package(mscorlib) class DecoderNLS : mscorlib.System.Text.Decoder, ISerializable
 {
     protected Encoding m_encoding;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     protected bool m_mustFlush;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public bool m_throwOnOverflow;
+    package(mscorlib) bool m_throwOnOverflow;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public int m_bytesUsed;
+    package(mscorlib) int m_bytesUsed;
     //TODO: generate constructor
     //TODO: generate method GetObjectData
     //TODO: generate constructor
@@ -336,9 +336,9 @@ public final class DecoderReplacementFallbackBuffer : DecoderFallbackBuffer
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public abstract class Encoder : __DotNet__Object
 {
-    public EncoderFallback m_fallback/*todo: implement initializer*/ = null;
+    package(mscorlib) EncoderFallback m_fallback/*todo: implement initializer*/ = null;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public EncoderFallbackBuffer m_fallbackBuffer/*todo: implement initializer*/ = null;
+    package(mscorlib) EncoderFallbackBuffer m_fallbackBuffer/*todo: implement initializer*/ = null;
     //TODO: generate method SerializeEncoder
     //TODO: generate constructor
     //TODO: generate property 'Fallback'
@@ -357,17 +357,17 @@ public abstract class Encoder : __DotNet__Object
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\EncoderBestFitFallback.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class InternalEncoderBestFitFallback : EncoderFallback
+package(mscorlib) class InternalEncoderBestFitFallback : EncoderFallback
 {
-    public Encoding encoding/*todo: implement initializer*/ = null;
-    public wchar[] arrayBestFit/*todo: implement initializer*/ = null;
+    package(mscorlib) Encoding encoding/*todo: implement initializer*/ = null;
+    package(mscorlib) wchar[] arrayBestFit/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate method CreateFallbackBuffer
     //TODO: generate property 'MaxCharCount'
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
 }
-public final class InternalEncoderBestFitFallbackBuffer : EncoderFallbackBuffer
+package(mscorlib) final class InternalEncoderBestFitFallbackBuffer : EncoderFallbackBuffer
 {
     private wchar cBestFit/*todo: implement initializer*/ = wchar();
     private InternalEncoderBestFitFallback oFallback;
@@ -432,7 +432,7 @@ public final class EncoderFallbackException : ArgumentException
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public abstract class EncoderFallback : __DotNet__Object
 {
-    public bool bIsMicrosoftBestFitFallback/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool bIsMicrosoftBestFitFallback/*todo: implement initializer*/ = bool();
     private static /*todo: volatile*/ EncoderFallback replacementFallback;
     private static /*todo: volatile*/ EncoderFallback exceptionFallback;
     private static __DotNet__Object s_InternalSyncObject;
@@ -453,14 +453,14 @@ public abstract class EncoderFallbackBuffer : __DotNet__Object
     // Internal items to help us figure out what we're doing as far as error messages, etc.
     // These help us with our performance and messages internally
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public wchar* charStart;
+    package(mscorlib) wchar* charStart;
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public wchar* charEnd;
-    public EncoderNLS encoder;
-    public bool setEncoder;
-    public bool bUsedEncoder;
-    public bool bFallingBack/*todo: implement initializer*/ = bool();
-    public int iRecursionCount/*todo: implement initializer*/ = int();
+    package(mscorlib) wchar* charEnd;
+    package(mscorlib) EncoderNLS encoder;
+    package(mscorlib) bool setEncoder;
+    package(mscorlib) bool bUsedEncoder;
+    package(mscorlib) bool bFallingBack/*todo: implement initializer*/ = bool();
+    package(mscorlib) int iRecursionCount/*todo: implement initializer*/ = int();
     private enum int iMaxRecursion/*todo: implement initializer*/ = int();
     //TODO: generate method InternalReset
     //TODO: generate method InternalInitialize
@@ -484,16 +484,16 @@ public abstract class EncoderFallbackBuffer : __DotNet__Object
 // of Encoding objects.
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class EncoderNLS : mscorlib.System.Text.Encoder, ISerializable
+package(mscorlib) class EncoderNLS : mscorlib.System.Text.Encoder, ISerializable
 {
-    public wchar charLeftOver;
+    package(mscorlib) wchar charLeftOver;
     protected Encoding m_encoding;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     protected bool m_mustFlush;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public bool m_throwOnOverflow;
+    package(mscorlib) bool m_throwOnOverflow;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public int m_charsUsed;
+    package(mscorlib) int m_charsUsed;
     //TODO: generate constructor
     //TODO: generate method GetObjectData
     //TODO: generate constructor
@@ -610,10 +610,10 @@ public final class EncoderReplacementFallbackBuffer : EncoderFallbackBuffer
 public abstract class Encoding : __DotNet__Object, ICloneable
 {
     private static Encoding defaultEncoding;
-    public enum int MIMECONTF_MAILNEWS/*todo: implement initializer*/ = int();
-    public enum int MIMECONTF_BROWSER/*todo: implement initializer*/ = int();
-    public enum int MIMECONTF_SAVABLE_MAILNEWS/*todo: implement initializer*/ = int();
-    public enum int MIMECONTF_SAVABLE_BROWSER/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIMECONTF_MAILNEWS/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIMECONTF_BROWSER/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIMECONTF_SAVABLE_MAILNEWS/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIMECONTF_SAVABLE_BROWSER/*todo: implement initializer*/ = int();
     private enum int CodePageDefault/*todo: implement initializer*/ = int();
     private enum int CodePageNoOEM/*todo: implement initializer*/ = int();
     private enum int CodePageNoMac/*todo: implement initializer*/ = int();
@@ -636,8 +636,8 @@ public abstract class Encoding : __DotNet__Object, ICloneable
     private enum int DuplicateEUCCN/*todo: implement initializer*/ = int();
     private enum int EUCCN/*todo: implement initializer*/ = int();
     private enum int EUCKR/*todo: implement initializer*/ = int();
-    public enum int CodePageASCII/*todo: implement initializer*/ = int();
-    public enum int ISO_8859_1/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CodePageASCII/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ISO_8859_1/*todo: implement initializer*/ = int();
     private enum int ISCIIAssemese/*todo: implement initializer*/ = int();
     private enum int ISCIIBengali/*todo: implement initializer*/ = int();
     private enum int ISCIIDevanagari/*todo: implement initializer*/ = int();
@@ -656,18 +656,18 @@ public abstract class Encoding : __DotNet__Object, ICloneable
     private enum int CodePageUTF8/*todo: implement initializer*/ = int();
     private enum int CodePageUTF32/*todo: implement initializer*/ = int();
     private enum int CodePageUTF32BE/*todo: implement initializer*/ = int();
-    public int m_codePage/*todo: implement initializer*/ = int();
-    public CodePageDataItem dataItem/*todo: implement initializer*/ = null;
+    package(mscorlib) int m_codePage/*todo: implement initializer*/ = int();
+    package(mscorlib) CodePageDataItem dataItem/*todo: implement initializer*/ = null;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public bool m_deserializedFromEverett/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool m_deserializedFromEverett/*todo: implement initializer*/ = bool();
     // Because of encoders we may be read only
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_isReadOnly/*todo: implement initializer*/ = bool();
     // Encoding (encoder) fallback
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public EncoderFallback encoderFallback/*todo: implement initializer*/ = null;
+    package(mscorlib) EncoderFallback encoderFallback/*todo: implement initializer*/ = null;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public DecoderFallback decoderFallback/*todo: implement initializer*/ = null;
+    package(mscorlib) DecoderFallback decoderFallback/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -753,13 +753,13 @@ public abstract class Encoding : __DotNet__Object, ICloneable
     //TODO: generate method ThrowCharsOverflow
     //TODO: generate method ThrowCharsOverflow
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static class DefaultEncoder : mscorlib.System.Text.Encoder, IObjectReference, ISerializable
+    package(mscorlib) static class DefaultEncoder : mscorlib.System.Text.Encoder, IObjectReference, ISerializable
     {
         private Encoding m_encoding;
         @__DotNet__Attribute!(NonSerializedAttribute.stringof)
         private bool m_hasInitializedEncoding;
         @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-        public wchar charLeftOver;
+        package(mscorlib) wchar charLeftOver;
         //TODO: generate constructor
         //TODO: generate constructor
         //TODO: generate method GetRealObject
@@ -770,7 +770,7 @@ public abstract class Encoding : __DotNet__Object, ICloneable
         //TODO: generate method GetBytes
     }
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static class DefaultDecoder : mscorlib.System.Text.Decoder, IObjectReference, ISerializable
+    package(mscorlib) static class DefaultDecoder : mscorlib.System.Text.Decoder, IObjectReference, ISerializable
     {
         private Encoding m_encoding;
         @__DotNet__Attribute!(NonSerializedAttribute.stringof)
@@ -786,7 +786,7 @@ public abstract class Encoding : __DotNet__Object, ICloneable
         //TODO: generate method GetChars
         //TODO: generate method GetChars
     }
-    public static class EncodingCharBuffer : __DotNet__Object
+    package(mscorlib) static class EncodingCharBuffer : __DotNet__Object
     {
         @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private wchar* chars;
@@ -819,7 +819,7 @@ public abstract class Encoding : __DotNet__Object, ICloneable
         //TODO: generate method Fallback
         //TODO: generate property 'Count'
     }
-    public static class EncodingByteBuffer : __DotNet__Object
+    package(mscorlib) static class EncodingByteBuffer : __DotNet__Object
     {
         @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
         private ubyte* bytes;
@@ -836,7 +836,7 @@ public abstract class Encoding : __DotNet__Object, ICloneable
         private int byteCountResult/*todo: implement initializer*/ = int();
         private Encoding enc;
         private EncoderNLS encoder;
-        public EncoderFallbackBuffer fallbackBuffer;
+        package(mscorlib) EncoderFallbackBuffer fallbackBuffer;
         //TODO: generate constructor
         //TODO: generate method AddByte
         //TODO: generate method AddByte
@@ -857,7 +857,7 @@ public abstract class Encoding : __DotNet__Object, ICloneable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\EncodingForwarder.cs'
 //
-public class EncodingForwarder : __DotNet__Object
+package(mscorlib) class EncodingForwarder : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method GetByteCount
@@ -897,7 +897,7 @@ public final class EncodingInfo : __DotNet__Object
 // This class overrides Encoding with the things we need for our NLS Encodings
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public abstract class EncodingNLS : Encoding
+package(mscorlib) abstract class EncodingNLS : Encoding
 {
     //TODO: generate constructor
     //TODO: generate method GetByteCount
@@ -952,7 +952,7 @@ public abstract class EncodingProvider : __DotNet__Object
 //      Form IDNA has the above problems plus case mapping, so false (like most encodings)
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class ISCIIEncoding : EncodingNLS, ISerializable
+package(mscorlib) class ISCIIEncoding : EncodingNLS, ISerializable
 {
     private enum int CodeDefault/*todo: implement initializer*/ = int();
     private enum int CodeRoman/*todo: implement initializer*/ = int();
@@ -990,24 +990,24 @@ public class ISCIIEncoding : EncodingNLS, ISerializable
     //TODO: generate method GetEncoder
     //TODO: generate method GetHashCode
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static class ISCIIEncoder : EncoderNLS
+    package(mscorlib) static class ISCIIEncoder : EncoderNLS
     {
-        public int defaultCodePage/*todo: implement initializer*/ = int();
-        public int currentCodePage/*todo: implement initializer*/ = int();
-        public bool bLastVirama/*todo: implement initializer*/ = bool();
+        package(mscorlib) int defaultCodePage/*todo: implement initializer*/ = int();
+        package(mscorlib) int currentCodePage/*todo: implement initializer*/ = int();
+        package(mscorlib) bool bLastVirama/*todo: implement initializer*/ = bool();
         //TODO: generate constructor
         //TODO: generate method Reset
         //TODO: generate property 'HasState'
     }
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static class ISCIIDecoder : DecoderNLS
+    package(mscorlib) static class ISCIIDecoder : DecoderNLS
     {
-        public int currentCodePage/*todo: implement initializer*/ = int();
-        public bool bLastATR/*todo: implement initializer*/ = bool();
-        public bool bLastVirama/*todo: implement initializer*/ = bool();
-        public bool bLastDevenagariStressAbbr/*todo: implement initializer*/ = bool();
-        public wchar cLastCharForNextNukta/*todo: implement initializer*/ = wchar();
-        public wchar cLastCharForNoNextNukta/*todo: implement initializer*/ = wchar();
+        package(mscorlib) int currentCodePage/*todo: implement initializer*/ = int();
+        package(mscorlib) bool bLastATR/*todo: implement initializer*/ = bool();
+        package(mscorlib) bool bLastVirama/*todo: implement initializer*/ = bool();
+        package(mscorlib) bool bLastDevenagariStressAbbr/*todo: implement initializer*/ = bool();
+        package(mscorlib) wchar cLastCharForNextNukta/*todo: implement initializer*/ = wchar();
+        package(mscorlib) wchar cLastCharForNoNextNukta/*todo: implement initializer*/ = wchar();
         //TODO: generate constructor
         //TODO: generate method Reset
         //TODO: generate property 'HasState'
@@ -1026,9 +1026,9 @@ public class ISCIIEncoding : EncodingNLS, ISerializable
 // because of the best fit cases we can't do this when encoding the string, only when decoding
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class Latin1Encoding : EncodingNLS, ISerializable
+package(mscorlib) class Latin1Encoding : EncodingNLS, ISerializable
 {
-    public static immutable Latin1Encoding s_default/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable Latin1Encoding s_default/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate method GetObjectData
@@ -1054,7 +1054,7 @@ public class Latin1Encoding : EncodingNLS, ISerializable
 // ** to Everett compatibility as well.
 // ==============================================================================
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class MLangCodePageEncoding : __DotNet__Object, IObjectReference, ISerializable
+package(mscorlib) final class MLangCodePageEncoding : __DotNet__Object, IObjectReference, ISerializable
 {
     // Temp stuff
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
@@ -1075,7 +1075,7 @@ public final class MLangCodePageEncoding : __DotNet__Object, IObjectReference, I
     //TODO: generate method GetObjectData
     // Same problem with the Encoder, this only happens with Everett Encoders
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static final class MLangEncoder : __DotNet__Object, IObjectReference, ISerializable
+    package(mscorlib) static final class MLangEncoder : __DotNet__Object, IObjectReference, ISerializable
     {
         // Might need this when GetRealObjecting
         @__DotNet__Attribute!(NonSerializedAttribute.stringof)
@@ -1086,7 +1086,7 @@ public final class MLangCodePageEncoding : __DotNet__Object, IObjectReference, I
     }
     // Same problem with the Decoder, this only happens with Everett Decoders
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static final class MLangDecoder : __DotNet__Object, IObjectReference, ISerializable
+    package(mscorlib) static final class MLangDecoder : __DotNet__Object, IObjectReference, ISerializable
     {
         // Might need this when GetRealObjecting
         @__DotNet__Attribute!(NonSerializedAttribute.stringof)
@@ -1110,7 +1110,7 @@ public enum NormalizationForm
     FormKC = 5,
     FormKD = 6,
 }
-public enum ExtendedNormalizationForms
+package(mscorlib) enum ExtendedNormalizationForms
 {
     // #if !FEATURE_NORM_IDNA_ONLY     
     FormC = 1,
@@ -1127,7 +1127,7 @@ public enum ExtendedNormalizationForms
     // #endif // !FEATURE_NORM_IDNA_ONLY        
     FormIdnaDisallowUnassigned = 0x10d,
 }
-public class Normalization : __DotNet__Object
+package(mscorlib) class Normalization : __DotNet__Object
 {
     private static /*todo: volatile*/ bool NFC;
     private static /*todo: volatile*/ bool NFD;
@@ -1178,17 +1178,17 @@ public class Normalization : __DotNet__Object
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class StringBuilder : __DotNet__Object, ISerializable
 {
-    public wchar[] m_ChunkChars;
-    public StringBuilder m_ChunkPrevious;
-    public int m_ChunkLength;
-    public int m_ChunkOffset;
-    public int m_MaxCapacity/*todo: implement initializer*/ = int();
-    public enum int DefaultCapacity/*todo: implement initializer*/ = int();
+    package(mscorlib) wchar[] m_ChunkChars;
+    package(mscorlib) StringBuilder m_ChunkPrevious;
+    package(mscorlib) int m_ChunkLength;
+    package(mscorlib) int m_ChunkOffset;
+    package(mscorlib) int m_MaxCapacity/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DefaultCapacity/*todo: implement initializer*/ = int();
     private enum String CapacityField/*todo: implement initializer*/ = null;
     private enum String MaxCapacityField/*todo: implement initializer*/ = null;
     private enum String StringValueField/*todo: implement initializer*/ = null;
     private enum String ThreadIDField/*todo: implement initializer*/ = null;
-    public enum int MaxChunkSize/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxChunkSize/*todo: implement initializer*/ = int();
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1288,7 +1288,7 @@ public final class StringBuilder : __DotNet__Object, ISerializable
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Text\StringBuilderCache.cs'
 //
-public class StringBuilderCache : __DotNet__Object
+package(mscorlib) class StringBuilderCache : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private enum int MAX_BUILDER_SIZE/*todo: implement initializer*/ = int();
@@ -1307,7 +1307,7 @@ public class StringBuilderCache : __DotNet__Object
 // ** Appropriate Whidbey (V2.0) objects.
 // ==============================================================================
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class SurrogateEncoder : __DotNet__Object, IObjectReference, ISerializable
+package(mscorlib) final class SurrogateEncoder : __DotNet__Object, IObjectReference, ISerializable
 {
     // Might need this when GetRealObjecting
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
@@ -1324,12 +1324,12 @@ public final class SurrogateEncoder : __DotNet__Object, IObjectReference, ISeria
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class UnicodeEncoding : Encoding
 {
-    public static immutable UnicodeEncoding s_bigEndianDefault/*todo: implement initializer*/ = null;
-    public static immutable UnicodeEncoding s_littleEndianDefault/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable UnicodeEncoding s_bigEndianDefault/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable UnicodeEncoding s_littleEndianDefault/*todo: implement initializer*/ = null;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public bool isThrowException/*todo: implement initializer*/ = bool();
-    public bool bigEndian/*todo: implement initializer*/ = bool();
-    public bool byteOrderMark/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool isThrowException/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool bigEndian/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool byteOrderMark/*todo: implement initializer*/ = bool();
     public enum int CharSize/*todo: implement initializer*/ = int();
     //TODO: generate constructor
     //TODO: generate constructor
@@ -1361,8 +1361,8 @@ public class UnicodeEncoding : Encoding
     @__DotNet__Attribute!(SerializableAttribute.stringof)
     private static class Decoder : DecoderNLS, ISerializable
     {
-        public int lastByte/*todo: implement initializer*/ = int();
-        public wchar lastChar/*todo: implement initializer*/ = wchar();
+        package(mscorlib) int lastByte/*todo: implement initializer*/ = int();
+        package(mscorlib) wchar lastChar/*todo: implement initializer*/ = wchar();
         //TODO: generate constructor
         //TODO: generate constructor
         //TODO: generate method GetObjectData
@@ -1384,8 +1384,8 @@ public class UnicodeEncoding : Encoding
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class UTF32Encoding : Encoding
 {
-    public static immutable UTF32Encoding s_default/*todo: implement initializer*/ = null;
-    public static immutable UTF32Encoding s_bigEndianDefault/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable UTF32Encoding s_default/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable UTF32Encoding s_bigEndianDefault/*todo: implement initializer*/ = null;
     private bool emitUTF32ByteOrderMark/*todo: implement initializer*/ = bool();
     private bool isThrowException/*todo: implement initializer*/ = bool();
     private bool bigEndian/*todo: implement initializer*/ = bool();
@@ -1419,10 +1419,10 @@ public final class UTF32Encoding : Encoding
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static class UTF32Decoder : DecoderNLS
+    package(mscorlib) static class UTF32Decoder : DecoderNLS
     {
-        public int iChar/*todo: implement initializer*/ = int();
-        public int readByteCount/*todo: implement initializer*/ = int();
+        package(mscorlib) int iChar/*todo: implement initializer*/ = int();
+        package(mscorlib) int readByteCount/*todo: implement initializer*/ = int();
         //TODO: generate constructor
         //TODO: generate method Reset
         //TODO: generate property 'HasState'
@@ -1439,7 +1439,7 @@ public class UTF7Encoding : Encoding
     private enum String base64Chars/*todo: implement initializer*/ = null;
     private enum String directChars/*todo: implement initializer*/ = null;
     private enum String optionalChars/*todo: implement initializer*/ = null;
-    public static immutable UTF7Encoding s_default/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable UTF7Encoding s_default/*todo: implement initializer*/ = null;
     private ubyte[] base64Bytes;
     private byte[] base64Values;
     private bool[] directEncode;
@@ -1476,9 +1476,9 @@ public class UTF7Encoding : Encoding
     @__DotNet__Attribute!(SerializableAttribute.stringof)
     private static class Decoder : DecoderNLS, ISerializable
     {
-        public int bits;
-        public int bitCount;
-        public bool firstByte;
+        package(mscorlib) int bits;
+        package(mscorlib) int bitCount;
+        package(mscorlib) bool firstByte;
         //TODO: generate constructor
         //TODO: generate constructor
         //TODO: generate method GetObjectData
@@ -1488,8 +1488,8 @@ public class UTF7Encoding : Encoding
     @__DotNet__Attribute!(SerializableAttribute.stringof)
     private static class Encoder : EncoderNLS, ISerializable
     {
-        public int bits;
-        public int bitCount;
+        package(mscorlib) int bits;
+        package(mscorlib) int bitCount;
         //TODO: generate constructor
         //TODO: generate constructor
         //TODO: generate method GetObjectData
@@ -1499,7 +1499,7 @@ public class UTF7Encoding : Encoding
     // Preexisting UTF7 behavior for bad bytes was just to spit out the byte as the next char
     // and turn off base64 mode if it was in that mode.  We still exit the mode, but now we fallback.
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static final class DecoderUTF7Fallback : DecoderFallback
+    package(mscorlib) static final class DecoderUTF7Fallback : DecoderFallback
     {
         //TODO: generate constructor
         //TODO: generate method CreateFallbackBuffer
@@ -1507,7 +1507,7 @@ public class UTF7Encoding : Encoding
         //TODO: generate method Equals
         //TODO: generate method GetHashCode
     }
-    public static final class DecoderUTF7FallbackBuffer : DecoderFallbackBuffer
+    package(mscorlib) static final class DecoderUTF7FallbackBuffer : DecoderFallbackBuffer
     {
         private wchar cFallback/*todo: implement initializer*/ = wchar();
         private int iCount/*todo: implement initializer*/ = int();
@@ -1541,7 +1541,7 @@ public class UTF7Encoding : Encoding
 public class UTF8Encoding : Encoding
 {
     private enum int UTF8_CODEPAGE/*todo: implement initializer*/ = int();
-    public static immutable UTF8Encoding s_default/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable UTF8Encoding s_default/*todo: implement initializer*/ = null;
     private bool emitUTF8Identifier/*todo: implement initializer*/ = bool();
     private bool isThrowException/*todo: implement initializer*/ = bool();
     //TODO: generate constructor
@@ -1580,9 +1580,9 @@ public class UTF8Encoding : Encoding
     //TODO: generate method Equals
     //TODO: generate method GetHashCode
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static class UTF8Encoder : EncoderNLS, ISerializable
+    package(mscorlib) static class UTF8Encoder : EncoderNLS, ISerializable
     {
-        public int surrogateChar;
+        package(mscorlib) int surrogateChar;
         //TODO: generate constructor
         //TODO: generate constructor
         //TODO: generate method GetObjectData
@@ -1590,9 +1590,9 @@ public class UTF8Encoding : Encoding
         //TODO: generate property 'HasState'
     }
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static class UTF8Decoder : DecoderNLS, ISerializable
+    package(mscorlib) static class UTF8Decoder : DecoderNLS, ISerializable
     {
-        public int bits;
+        package(mscorlib) int bits;
         //TODO: generate constructor
         //TODO: generate constructor
         //TODO: generate method GetObjectData

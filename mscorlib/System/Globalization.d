@@ -17,6 +17,7 @@ import mscorlib.System :
     Nullable1,
     TokenType,
     TimeSpan,
+    StringComparer,
     IEquatable1,
     Guid;
 import mscorlib.System.Runtime.InteropServices :
@@ -44,7 +45,7 @@ import mscorlib.System.Resources :
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\BidiCategory.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum BidiCategory
+package(mscorlib) enum BidiCategory
 {
     LeftToRight = 0,
     LeftToRightEmbedding = 1,
@@ -97,45 +98,45 @@ public enum BidiCategory
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public abstract class Calendar : __DotNet__Object, ICloneable
 {
-    public enum long TicksPerMillisecond/*todo: implement initializer*/ = long();
-    public enum long TicksPerSecond/*todo: implement initializer*/ = long();
-    public enum long TicksPerMinute/*todo: implement initializer*/ = long();
-    public enum long TicksPerHour/*todo: implement initializer*/ = long();
-    public enum long TicksPerDay/*todo: implement initializer*/ = long();
-    public enum int MillisPerSecond/*todo: implement initializer*/ = int();
-    public enum int MillisPerMinute/*todo: implement initializer*/ = int();
-    public enum int MillisPerHour/*todo: implement initializer*/ = int();
-    public enum int MillisPerDay/*todo: implement initializer*/ = int();
-    public enum int DaysPerYear/*todo: implement initializer*/ = int();
-    public enum int DaysPer4Years/*todo: implement initializer*/ = int();
-    public enum int DaysPer100Years/*todo: implement initializer*/ = int();
-    public enum int DaysPer400Years/*todo: implement initializer*/ = int();
-    public enum int DaysTo10000/*todo: implement initializer*/ = int();
-    public enum long MaxMillis/*todo: implement initializer*/ = long();
-    public enum int CAL_GREGORIAN/*todo: implement initializer*/ = int();
-    public enum int CAL_GREGORIAN_US/*todo: implement initializer*/ = int();
-    public enum int CAL_JAPAN/*todo: implement initializer*/ = int();
-    public enum int CAL_TAIWAN/*todo: implement initializer*/ = int();
-    public enum int CAL_KOREA/*todo: implement initializer*/ = int();
-    public enum int CAL_HIJRI/*todo: implement initializer*/ = int();
-    public enum int CAL_THAI/*todo: implement initializer*/ = int();
-    public enum int CAL_HEBREW/*todo: implement initializer*/ = int();
-    public enum int CAL_GREGORIAN_ME_FRENCH/*todo: implement initializer*/ = int();
-    public enum int CAL_GREGORIAN_ARABIC/*todo: implement initializer*/ = int();
-    public enum int CAL_GREGORIAN_XLIT_ENGLISH/*todo: implement initializer*/ = int();
-    public enum int CAL_GREGORIAN_XLIT_FRENCH/*todo: implement initializer*/ = int();
-    public enum int CAL_JULIAN/*todo: implement initializer*/ = int();
-    public enum int CAL_JAPANESELUNISOLAR/*todo: implement initializer*/ = int();
-    public enum int CAL_CHINESELUNISOLAR/*todo: implement initializer*/ = int();
-    public enum int CAL_SAKA/*todo: implement initializer*/ = int();
-    public enum int CAL_LUNAR_ETO_CHN/*todo: implement initializer*/ = int();
-    public enum int CAL_LUNAR_ETO_KOR/*todo: implement initializer*/ = int();
-    public enum int CAL_LUNAR_ETO_ROKUYOU/*todo: implement initializer*/ = int();
-    public enum int CAL_KOREANLUNISOLAR/*todo: implement initializer*/ = int();
-    public enum int CAL_TAIWANLUNISOLAR/*todo: implement initializer*/ = int();
-    public enum int CAL_PERSIAN/*todo: implement initializer*/ = int();
-    public enum int CAL_UMALQURA/*todo: implement initializer*/ = int();
-    public int m_currentEraValue/*todo: implement initializer*/ = int();
+    package(mscorlib) enum long TicksPerMillisecond/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long TicksPerSecond/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long TicksPerMinute/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long TicksPerHour/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long TicksPerDay/*todo: implement initializer*/ = long();
+    package(mscorlib) enum int MillisPerSecond/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MillisPerMinute/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MillisPerHour/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MillisPerDay/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DaysPerYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DaysPer4Years/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DaysPer100Years/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DaysPer400Years/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DaysTo10000/*todo: implement initializer*/ = int();
+    package(mscorlib) enum long MaxMillis/*todo: implement initializer*/ = long();
+    package(mscorlib) enum int CAL_GREGORIAN/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_GREGORIAN_US/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_JAPAN/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_TAIWAN/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_KOREA/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_HIJRI/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_THAI/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_HEBREW/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_GREGORIAN_ME_FRENCH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_GREGORIAN_ARABIC/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_GREGORIAN_XLIT_ENGLISH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_GREGORIAN_XLIT_FRENCH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_JULIAN/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_JAPANESELUNISOLAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_CHINESELUNISOLAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_SAKA/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_LUNAR_ETO_CHN/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_LUNAR_ETO_KOR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_LUNAR_ETO_ROKUYOU/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_KOREANLUNISOLAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_TAIWANLUNISOLAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_PERSIAN/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CAL_UMALQURA/*todo: implement initializer*/ = int();
+    package(mscorlib) int m_currentEraValue/*todo: implement initializer*/ = int();
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_isReadOnly/*todo: implement initializer*/ = bool();
     //TODO: generate property 'MinSupportedDateTime'
@@ -151,7 +152,7 @@ public abstract class Calendar : __DotNet__Object, ICloneable
     //TODO: generate method SetReadOnlyState
     //TODO: generate property 'CurrentEraValue'
     public enum int CurrentEra/*todo: implement initializer*/ = int();
-    public int twoDigitYearMax/*todo: implement initializer*/ = int();
+    package(mscorlib) int twoDigitYearMax/*todo: implement initializer*/ = int();
     //TODO: generate method CheckAddResult
     //TODO: generate method Add
     //TODO: generate method AddMilliseconds
@@ -221,29 +222,29 @@ public enum CalendarAlgorithmType
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\CalendarData.cs'
 //
-public class CalendarData : __DotNet__Object
+package(mscorlib) class CalendarData : __DotNet__Object
 {
-    public enum int MAX_CALENDARS/*todo: implement initializer*/ = int();
-    public String sNativeName;
-    public String[] saShortDates;
-    public String[] saYearMonths;
-    public String[] saLongDates;
-    public String sMonthDay;
-    public String[] saEraNames;
-    public String[] saAbbrevEraNames;
-    public String[] saAbbrevEnglishEraNames;
-    public String[] saDayNames;
-    public String[] saAbbrevDayNames;
-    public String[] saSuperShortDayNames;
-    public String[] saMonthNames;
-    public String[] saAbbrevMonthNames;
-    public String[] saMonthGenitiveNames;
-    public String[] saAbbrevMonthGenitiveNames;
-    public String[] saLeapYearMonthNames;
-    public int iTwoDigitYearMax/*todo: implement initializer*/ = int();
-    public int iCurrentEra/*todo: implement initializer*/ = int();
-    public bool bUseUserOverrides;
-    public static CalendarData Invariant;
+    package(mscorlib) enum int MAX_CALENDARS/*todo: implement initializer*/ = int();
+    package(mscorlib) String sNativeName;
+    package(mscorlib) String[] saShortDates;
+    package(mscorlib) String[] saYearMonths;
+    package(mscorlib) String[] saLongDates;
+    package(mscorlib) String sMonthDay;
+    package(mscorlib) String[] saEraNames;
+    package(mscorlib) String[] saAbbrevEraNames;
+    package(mscorlib) String[] saAbbrevEnglishEraNames;
+    package(mscorlib) String[] saDayNames;
+    package(mscorlib) String[] saAbbrevDayNames;
+    package(mscorlib) String[] saSuperShortDayNames;
+    package(mscorlib) String[] saMonthNames;
+    package(mscorlib) String[] saAbbrevMonthNames;
+    package(mscorlib) String[] saMonthGenitiveNames;
+    package(mscorlib) String[] saAbbrevMonthGenitiveNames;
+    package(mscorlib) String[] saLeapYearMonthNames;
+    package(mscorlib) int iTwoDigitYearMax/*todo: implement initializer*/ = int();
+    package(mscorlib) int iCurrentEra/*todo: implement initializer*/ = int();
+    package(mscorlib) bool bUseUserOverrides;
+    package(mscorlib) static CalendarData Invariant;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -273,13 +274,13 @@ public enum CalendarWeekRule
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\CalendricalCalculationsHelper.cs'
 //
-public class CalendricalCalculationsHelper : __DotNet__Object
+package(mscorlib) class CalendricalCalculationsHelper : __DotNet__Object
 {
     private enum double FullCircleOfArc/*todo: implement initializer*/ = double();
     private enum int HalfCircleOfArc/*todo: implement initializer*/ = int();
     private enum double TwelveHours/*todo: implement initializer*/ = double();
     private enum double Noon2000Jan01/*todo: implement initializer*/ = double();
-    public enum double MeanTropicalYearInDays/*todo: implement initializer*/ = double();
+    package(mscorlib) enum double MeanTropicalYearInDays/*todo: implement initializer*/ = double();
     private enum double MeanSpeedOfSun/*todo: implement initializer*/ = double();
     private enum double LongitudeSpring/*todo: implement initializer*/ = double();
     private enum double TwoDegreesAfterSpring/*todo: implement initializer*/ = double();
@@ -319,8 +320,8 @@ public class CalendricalCalculationsHelper : __DotNet__Object
     private static struct EphemerisCorrectionAlgorithmMap
     {
         //TODO: generate constructor
-        public int _lowestYear;
-        public CorrectionAlgorithm _algorithm;
+        package(mscorlib) int _lowestYear;
+        package(mscorlib) CorrectionAlgorithm _algorithm;
     }
     private static EphemerisCorrectionAlgorithmMap[] EphemerisCorrectionTable/*todo: implement initializer*/ = null;
     //TODO: generate method Reminder
@@ -359,12 +360,12 @@ public class CalendricalCalculationsHelper : __DotNet__Object
 public class CharUnicodeInfo : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum wchar HIGH_SURROGATE_START/*todo: implement initializer*/ = wchar();
-    public enum wchar HIGH_SURROGATE_END/*todo: implement initializer*/ = wchar();
-    public enum wchar LOW_SURROGATE_START/*todo: implement initializer*/ = wchar();
-    public enum wchar LOW_SURROGATE_END/*todo: implement initializer*/ = wchar();
-    public enum int UNICODE_CATEGORY_OFFSET/*todo: implement initializer*/ = int();
-    public enum int BIDI_CATEGORY_OFFSET/*todo: implement initializer*/ = int();
+    package(mscorlib) enum wchar HIGH_SURROGATE_START/*todo: implement initializer*/ = wchar();
+    package(mscorlib) enum wchar HIGH_SURROGATE_END/*todo: implement initializer*/ = wchar();
+    package(mscorlib) enum wchar LOW_SURROGATE_START/*todo: implement initializer*/ = wchar();
+    package(mscorlib) enum wchar LOW_SURROGATE_END/*todo: implement initializer*/ = wchar();
+    package(mscorlib) enum int UNICODE_CATEGORY_OFFSET/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int BIDI_CATEGORY_OFFSET/*todo: implement initializer*/ = int();
     private static bool s_initialized/*todo: implement initializer*/ = bool();
     // The native pointer to the 12:4:4 index table of the Unicode cateogry data.
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
@@ -386,37 +387,37 @@ public class CharUnicodeInfo : __DotNet__Object
     // Every item contains the value for decimal digit/digit value.
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static DigitValues* s_pDigitValues;
-    public enum String UNICODE_INFO_FILE_NAME/*todo: implement initializer*/ = null;
-    public enum int UNICODE_PLANE01_START/*todo: implement initializer*/ = int();
+    package(mscorlib) enum String UNICODE_INFO_FILE_NAME/*todo: implement initializer*/ = null;
+    package(mscorlib) enum int UNICODE_PLANE01_START/*todo: implement initializer*/ = int();
     //
     // This is the header for the native data table that we load from UNICODE_INFO_FILE_NAME.
     //
     // Excplicit layout is used here since a syntax like char[16] can not be used in sequential layout.
     @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit*/)
-    public static struct UnicodeDataHeader
+    package(mscorlib) static struct UnicodeDataHeader
     {
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public wchar TableName;
+        package(mscorlib) wchar TableName;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0x20*/)
-        public ushort version_;
+        package(mscorlib) ushort version_;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0x28*/)
-        public uint OffsetToCategoriesIndex;
+        package(mscorlib) uint OffsetToCategoriesIndex;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0x2c*/)
-        public uint OffsetToCategoriesValue;
+        package(mscorlib) uint OffsetToCategoriesValue;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0x30*/)
-        public uint OffsetToNumbericIndex;
+        package(mscorlib) uint OffsetToNumbericIndex;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0x34*/)
-        public uint OffsetToDigitValue;
+        package(mscorlib) uint OffsetToDigitValue;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0x38*/)
-        public uint OffsetToNumbericValue;
+        package(mscorlib) uint OffsetToNumbericValue;
     }
     // NOTE: It's important to specify pack size here, since the size of the structure is 2 bytes.  Otherwise,
     // the default pack size will be 4.
     @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential, Pack=2*/)
-    public static struct DigitValues
+    package(mscorlib) static struct DigitValues
     {
-        public byte decimalDigit;
-        public byte digit;
+        package(mscorlib) byte decimalDigit;
+        package(mscorlib) byte digit;
     }
     //TODO: generate method InitTable
     //TODO: generate method InternalConvertToUtf32
@@ -462,16 +463,16 @@ public class CharUnicodeInfo : __DotNet__Object
 public class ChineseLunisolarCalendar : EastAsianLunisolarCalendar
 {
     public enum int ChineseEra/*todo: implement initializer*/ = int();
-    public enum int MIN_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
-    public enum int MAX_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
-    public enum int MIN_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
-    public enum int MIN_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
-    public enum int MIN_GREGORIAN_DAY/*todo: implement initializer*/ = int();
-    public enum int MAX_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
-    public enum int MAX_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
-    public enum int MAX_GREGORIAN_DAY/*todo: implement initializer*/ = int();
-    public static DateTime minDate/*todo: implement initializer*/ = DateTime();
-    public static DateTime maxDate/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) enum int MIN_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIN_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIN_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIN_GREGORIAN_DAY/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_GREGORIAN_DAY/*todo: implement initializer*/ = int();
+    package(mscorlib) static DateTime minDate/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) static DateTime maxDate/*todo: implement initializer*/ = DateTime();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'DaysInYearBeforeMinSupportedYear'
@@ -564,7 +565,7 @@ public class CompareInfo : __DotNet__Object, IDeserializationCallback
     private enum int NORM_IGNOREWIDTH/*todo: implement initializer*/ = int();
     private enum int SORT_STRINGSORT/*todo: implement initializer*/ = int();
     private enum int COMPARE_OPTIONS_ORDINAL/*todo: implement initializer*/ = int();
-    public enum int NORM_LINGUISTIC_CASING/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int NORM_LINGUISTIC_CASING/*todo: implement initializer*/ = int();
     private enum int RESERVED_FIND_ASCII_STRING/*todo: implement initializer*/ = int();
     //TODO: generate method GetNativeCompareFlags
     //TODO: generate method Compare
@@ -663,7 +664,7 @@ public class CompareInfo : __DotNet__Object, IDeserializationCallback
 // WARNING: must be manually structured to match the true loaded class layout
 //
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class CultureData : __DotNet__Object
+package(mscorlib) class CultureData : __DotNet__Object
 {
     private enum int undef/*todo: implement initializer*/ = int();
     private String sRealName;
@@ -758,10 +759,10 @@ public class CultureData : __DotNet__Object
     //TODO: generate method GetCultureData
     //TODO: generate method ClearCachedData
     //TODO: generate method GetCultures
-    public static /*todo: volatile*/ CultureInfo[] specificCultures;
+    package(mscorlib) static /*todo: volatile*/ CultureInfo[] specificCultures;
     //TODO: generate property 'SpecificCultures'
     //TODO: generate property 'IsReplacementCulture'
-    public static /*todo: volatile*/ String[] s_replacementCultureNames;
+    package(mscorlib) static /*todo: volatile*/ String[] s_replacementCultureNames;
     //TODO: generate method IsReplacementCultureName
     //TODO: generate property 'CultureName'
     //TODO: generate property 'UseUserOverride'
@@ -1018,7 +1019,7 @@ public class CultureData : __DotNet__Object
     private enum uint LOCALE_SSHORTTIME/*todo: implement initializer*/ = uint();
     private enum uint LOCALE_SOPENTYPELANGUAGETAG/*todo: implement initializer*/ = uint();
     private enum uint LOCALE_SSORTLOCALE/*todo: implement initializer*/ = uint();
-    public enum uint TIME_NOSECONDS/*todo: implement initializer*/ = uint();
+    package(mscorlib) enum uint TIME_NOSECONDS/*todo: implement initializer*/ = uint();
     //TODO: generate method nativeInitCultureData
     //TODO: generate method nativeGetNumberFormatInfoValues
     //TODO: generate method nativeEnumTimeFormats
@@ -1032,26 +1033,26 @@ public class CultureData : __DotNet__Object
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class CultureInfo : __DotNet__Object, ICloneable, IFormatProvider
 {
-    public bool m_isReadOnly;
-    public CompareInfo compareInfo;
-    public TextInfo textInfo;
-    public NumberFormatInfo numInfo;
-    public DateTimeFormatInfo dateTimeInfo;
-    public Calendar calendar;
+    package(mscorlib) bool m_isReadOnly;
+    package(mscorlib) CompareInfo compareInfo;
+    package(mscorlib) TextInfo textInfo;
+    package(mscorlib) NumberFormatInfo numInfo;
+    package(mscorlib) DateTimeFormatInfo dateTimeInfo;
+    package(mscorlib) Calendar calendar;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public int m_dataItem;
+    package(mscorlib) int m_dataItem;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public int cultureID/*todo: implement initializer*/ = int();
+    package(mscorlib) int cultureID/*todo: implement initializer*/ = int();
     //
     // The CultureData instance that we are going to read data from.
     // For supported culture, this will be the CultureData instance that read data from mscorlib assembly.
     // For customized culture, this will be the CultureData instance that read data from user customized culture binary file.
     //
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public CultureData m_cultureData;
+    package(mscorlib) CultureData m_cultureData;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public bool m_isInherited;
-    public String m_name;
+    package(mscorlib) bool m_isInherited;
+    package(mscorlib) String m_name;
     // This will hold the non sorting name to be returned from CultureInfo.Name property.
     // This has a de-DE style name even for de-DE_phoneb type cultures
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
@@ -1079,12 +1080,12 @@ public class CultureInfo : __DotNet__Object, ICloneable, IFormatProvider
     //The parent culture.
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private CultureInfo m_parent;
-    public enum int LOCALE_NEUTRAL/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int LOCALE_NEUTRAL/*todo: implement initializer*/ = int();
     private enum int LOCALE_USER_DEFAULT/*todo: implement initializer*/ = int();
     private enum int LOCALE_SYSTEM_DEFAULT/*todo: implement initializer*/ = int();
-    public enum int LOCALE_CUSTOM_DEFAULT/*todo: implement initializer*/ = int();
-    public enum int LOCALE_CUSTOM_UNSPECIFIED/*todo: implement initializer*/ = int();
-    public enum int LOCALE_INVARIANT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int LOCALE_CUSTOM_DEFAULT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int LOCALE_CUSTOM_UNSPECIFIED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int LOCALE_INVARIANT/*todo: implement initializer*/ = int();
     private enum int LOCALE_TRADITIONAL_SPANISH/*todo: implement initializer*/ = int();
     private static immutable bool init/*todo: implement initializer*/ = bool();
     //TODO: generate method Init
@@ -1224,7 +1225,7 @@ public enum CultureTypes
 // but would like to keep the option open).
 //
 @__DotNet__Attribute!(FlagsAttribute.stringof)
-public enum MonthNameStyles
+package(mscorlib) enum MonthNameStyles
 {
     Regular = 0x00000000,
     Genitive = 0x00000001,
@@ -1239,7 +1240,7 @@ public enum MonthNameStyles
 // can be expanded to accomodate parsing behaviors like CJK month names
 // or alternative month names, etc.
 @__DotNet__Attribute!(FlagsAttribute.stringof)
-public enum DateTimeFormatFlags
+package(mscorlib) enum DateTimeFormatFlags
 {
     None = 0x00000000,
     UseGenitiveMonth = 0x00000001,
@@ -1260,7 +1261,7 @@ public final class DateTimeFormatInfo : __DotNet__Object, ICloneable, IFormatPro
     private CultureData m_cultureData;
     // The culture name used to create this DTFI.
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public String m_name/*todo: implement initializer*/ = null;
+    package(mscorlib) String m_name/*todo: implement initializer*/ = null;
     // The language name of the culture used to create this DTFI.
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private String m_langName/*todo: implement initializer*/ = null;
@@ -1270,67 +1271,67 @@ public final class DateTimeFormatInfo : __DotNet__Object, ICloneable, IFormatPro
     // Culture matches current DTFI. mainly used for string comparisons during parsing.
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private CultureInfo m_cultureInfo/*todo: implement initializer*/ = null;
-    public String amDesignator/*todo: implement initializer*/ = null;
-    public String pmDesignator/*todo: implement initializer*/ = null;
+    package(mscorlib) String amDesignator/*todo: implement initializer*/ = null;
+    package(mscorlib) String pmDesignator/*todo: implement initializer*/ = null;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public String dateSeparator/*todo: implement initializer*/ = null;
+    package(mscorlib) String dateSeparator/*todo: implement initializer*/ = null;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public String generalShortTimePattern/*todo: implement initializer*/ = null;
+    package(mscorlib) String generalShortTimePattern/*todo: implement initializer*/ = null;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public String generalLongTimePattern/*todo: implement initializer*/ = null;
+    package(mscorlib) String generalLongTimePattern/*todo: implement initializer*/ = null;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public String timeSeparator/*todo: implement initializer*/ = null;
-    public String monthDayPattern/*todo: implement initializer*/ = null;
+    package(mscorlib) String timeSeparator/*todo: implement initializer*/ = null;
+    package(mscorlib) String monthDayPattern/*todo: implement initializer*/ = null;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public String dateTimeOffsetPattern/*todo: implement initializer*/ = null;
-    public enum String rfc1123Pattern/*todo: implement initializer*/ = null;
-    public enum String sortableDateTimePattern/*todo: implement initializer*/ = null;
-    public enum String universalSortableDateTimePattern/*todo: implement initializer*/ = null;
-    public Calendar calendar/*todo: implement initializer*/ = null;
-    public int firstDayOfWeek/*todo: implement initializer*/ = int();
-    public int calendarWeekRule/*todo: implement initializer*/ = int();
+    package(mscorlib) String dateTimeOffsetPattern/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String rfc1123Pattern/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String sortableDateTimePattern/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String universalSortableDateTimePattern/*todo: implement initializer*/ = null;
+    package(mscorlib) Calendar calendar/*todo: implement initializer*/ = null;
+    package(mscorlib) int firstDayOfWeek/*todo: implement initializer*/ = int();
+    package(mscorlib) int calendarWeekRule/*todo: implement initializer*/ = int();
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public String fullDateTimePattern/*todo: implement initializer*/ = null;
-    public String[] abbreviatedDayNames/*todo: implement initializer*/ = null;
+    package(mscorlib) String fullDateTimePattern/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] abbreviatedDayNames/*todo: implement initializer*/ = null;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public String[] m_superShortDayNames/*todo: implement initializer*/ = null;
-    public String[] dayNames/*todo: implement initializer*/ = null;
-    public String[] abbreviatedMonthNames/*todo: implement initializer*/ = null;
-    public String[] monthNames/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] m_superShortDayNames/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] dayNames/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] abbreviatedMonthNames/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] monthNames/*todo: implement initializer*/ = null;
     // Cache the genitive month names that we retrieve from the data table.
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public String[] genitiveMonthNames/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] genitiveMonthNames/*todo: implement initializer*/ = null;
     // Cache the abbreviated genitive month names that we retrieve from the data table.
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public String[] m_genitiveAbbreviatedMonthNames/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] m_genitiveAbbreviatedMonthNames/*todo: implement initializer*/ = null;
     // Cache the month names of a leap year that we retrieve from the data table.
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public String[] leapYearMonthNames/*todo: implement initializer*/ = null;
-    public String longDatePattern/*todo: implement initializer*/ = null;
-    public String shortDatePattern/*todo: implement initializer*/ = null;
-    public String yearMonthPattern/*todo: implement initializer*/ = null;
-    public String longTimePattern/*todo: implement initializer*/ = null;
-    public String shortTimePattern/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] leapYearMonthNames/*todo: implement initializer*/ = null;
+    package(mscorlib) String longDatePattern/*todo: implement initializer*/ = null;
+    package(mscorlib) String shortDatePattern/*todo: implement initializer*/ = null;
+    package(mscorlib) String yearMonthPattern/*todo: implement initializer*/ = null;
+    package(mscorlib) String longTimePattern/*todo: implement initializer*/ = null;
+    package(mscorlib) String shortTimePattern/*todo: implement initializer*/ = null;
     // These are Whidbey-serialization compatable arrays (eg: default not included)
     // "all" is a bit of a misnomer since the "default" pattern stored above isn't
     // necessarily a member of the list
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 3*/)
     private String[] allYearMonthPatterns/*todo: implement initializer*/ = null;
-    public String[] allShortDatePatterns/*todo: implement initializer*/ = null;
-    public String[] allLongDatePatterns/*todo: implement initializer*/ = null;
-    public String[] allShortTimePatterns/*todo: implement initializer*/ = null;
-    public String[] allLongTimePatterns/*todo: implement initializer*/ = null;
-    public String[] m_eraNames/*todo: implement initializer*/ = null;
-    public String[] m_abbrevEraNames/*todo: implement initializer*/ = null;
-    public String[] m_abbrevEnglishEraNames/*todo: implement initializer*/ = null;
-    public int[] optionalCalendars/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] allShortDatePatterns/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] allLongDatePatterns/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] allShortTimePatterns/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] allLongTimePatterns/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] m_eraNames/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] m_abbrevEraNames/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] m_abbrevEnglishEraNames/*todo: implement initializer*/ = null;
+    package(mscorlib) int[] optionalCalendars/*todo: implement initializer*/ = null;
     private enum int DEFAULT_ALL_DATETIMES_SIZE/*todo: implement initializer*/ = int();
-    public bool m_isReadOnly/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool m_isReadOnly/*todo: implement initializer*/ = bool();
     // This flag gives hints about if formatting/parsing should perform special code path for things like
     // genitive form or leap year month names.
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public DateTimeFormatFlags formatFlags/*todo: implement initializer*/ = (cast(DateTimeFormatFlags)0);
-    public static bool preferExistingTokens/*todo: implement initializer*/ = bool();
+    package(mscorlib) DateTimeFormatFlags formatFlags/*todo: implement initializer*/ = (cast(DateTimeFormatFlags)0);
+    package(mscorlib) static bool preferExistingTokens/*todo: implement initializer*/ = bool();
     //TODO: generate method InitPreferExistingTokens
     //TODO: generate property 'CultureName'
     //TODO: generate property 'Culture'
@@ -1354,13 +1355,13 @@ public final class DateTimeFormatInfo : __DotNet__Object, ICloneable, IFormatPro
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
     private int nDataItem;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public bool m_isDefaultCalendar;
+    package(mscorlib) bool m_isDefaultCalendar;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private static /*todo: volatile*/ Hashtable s_calendarNativeNames;
     // This was synthesized by Whidbey so we knew what words might appear in the middle of a date string
     // Now we always synthesize so its not helpful
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public String[] m_dateWords/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] m_dateWords/*todo: implement initializer*/ = null;
     //TODO: generate method OnDeserialized
     //TODO: generate method OnSerializing
     //TODO: generate property 'InvariantInfo'
@@ -1445,7 +1446,7 @@ public final class DateTimeFormatInfo : __DotNet__Object, ICloneable, IFormatPro
     private String m_fullTimeSpanNegativePattern;
     //TODO: generate property 'FullTimeSpanNegativePattern'
     //TODO: generate property 'CompareInfo'
-    public enum DateTimeStyles InvalidDateTimeStyles/*todo: implement initializer*/ = (cast(DateTimeStyles)0);
+    package(mscorlib) enum DateTimeStyles InvalidDateTimeStyles/*todo: implement initializer*/ = (cast(DateTimeStyles)0);
     //TODO: generate method ValidateStyles
     //TODO: generate property 'FormatFlags'
     //TODO: generate property 'HasForceTwoDigitYears'
@@ -1461,25 +1462,25 @@ public final class DateTimeFormatInfo : __DotNet__Object, ICloneable, IFormatPro
     private enum String dateSeparatorOrTimeZoneOffset/*todo: implement initializer*/ = null;
     private enum String invariantDateSeparator/*todo: implement initializer*/ = null;
     private enum String invariantTimeSeparator/*todo: implement initializer*/ = null;
-    public enum String IgnorablePeriod/*todo: implement initializer*/ = null;
-    public enum String IgnorableComma/*todo: implement initializer*/ = null;
-    public enum String CJKYearSuff/*todo: implement initializer*/ = null;
-    public enum String CJKMonthSuff/*todo: implement initializer*/ = null;
-    public enum String CJKDaySuff/*todo: implement initializer*/ = null;
-    public enum String KoreanYearSuff/*todo: implement initializer*/ = null;
-    public enum String KoreanMonthSuff/*todo: implement initializer*/ = null;
-    public enum String KoreanDaySuff/*todo: implement initializer*/ = null;
-    public enum String KoreanHourSuff/*todo: implement initializer*/ = null;
-    public enum String KoreanMinuteSuff/*todo: implement initializer*/ = null;
-    public enum String KoreanSecondSuff/*todo: implement initializer*/ = null;
-    public enum String CJKHourSuff/*todo: implement initializer*/ = null;
-    public enum String ChineseHourSuff/*todo: implement initializer*/ = null;
-    public enum String CJKMinuteSuff/*todo: implement initializer*/ = null;
-    public enum String CJKSecondSuff/*todo: implement initializer*/ = null;
-    public enum String LocalTimeMark/*todo: implement initializer*/ = null;
-    public enum String KoreanLangName/*todo: implement initializer*/ = null;
-    public enum String JapaneseLangName/*todo: implement initializer*/ = null;
-    public enum String EnglishLangName/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String IgnorablePeriod/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String IgnorableComma/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String CJKYearSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String CJKMonthSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String CJKDaySuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanYearSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanMonthSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanDaySuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanHourSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanMinuteSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanSecondSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String CJKHourSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String ChineseHourSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String CJKMinuteSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String CJKSecondSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String LocalTimeMark/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanLangName/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String JapaneseLangName/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String EnglishLangName/*todo: implement initializer*/ = null;
     private static /*todo: volatile*/ DateTimeFormatInfo s_jajpDTFI;
     private static /*todo: volatile*/ DateTimeFormatInfo s_zhtwDTFI;
     //TODO: generate method GetJapaneseCalendarDTFI
@@ -1493,18 +1494,18 @@ public final class DateTimeFormatInfo : __DotNet__Object, ICloneable, IFormatPro
     //TODO: generate method InsertAtCurrentHashNode
     //TODO: generate method InsertHash
 }
-public class TokenHashValue : __DotNet__Object
+package(mscorlib) class TokenHashValue : __DotNet__Object
 {
-    public String tokenString;
-    public TokenType tokenType;
-    public int tokenValue;
+    package(mscorlib) String tokenString;
+    package(mscorlib) TokenType tokenType;
+    package(mscorlib) int tokenValue;
     //TODO: generate constructor
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\DateTimeFormatInfoScanner.cs'
 //
-public enum FORMATFLAGS
+package(mscorlib) enum FORMATFLAGS
 {
     None = 0x00000000,
     UseGenitiveMonth = 0x00000001,
@@ -1514,7 +1515,7 @@ public enum FORMATFLAGS
     UseSpacesInDayNames = 0x00000010,
     UseDigitPrefixInTokens = 0x00000020,
 }
-public enum CalendarId : ushort
+package(mscorlib) enum CalendarId : ushort
 {
     GREGORIAN = 1,
     GREGORIAN_US = 2,
@@ -1543,24 +1544,24 @@ public enum CalendarId : ushort
     UMALQURA = 23,
     LAST_CALENDAR = 23,
 }
-public class DateTimeFormatInfoScanner : __DotNet__Object
+package(mscorlib) class DateTimeFormatInfoScanner : __DotNet__Object
 {
-    public enum wchar MonthPostfixChar/*todo: implement initializer*/ = wchar();
-    public enum wchar IgnorableSymbolChar/*todo: implement initializer*/ = wchar();
-    public enum String CJKYearSuff/*todo: implement initializer*/ = null;
-    public enum String CJKMonthSuff/*todo: implement initializer*/ = null;
-    public enum String CJKDaySuff/*todo: implement initializer*/ = null;
-    public enum String KoreanYearSuff/*todo: implement initializer*/ = null;
-    public enum String KoreanMonthSuff/*todo: implement initializer*/ = null;
-    public enum String KoreanDaySuff/*todo: implement initializer*/ = null;
-    public enum String KoreanHourSuff/*todo: implement initializer*/ = null;
-    public enum String KoreanMinuteSuff/*todo: implement initializer*/ = null;
-    public enum String KoreanSecondSuff/*todo: implement initializer*/ = null;
-    public enum String CJKHourSuff/*todo: implement initializer*/ = null;
-    public enum String ChineseHourSuff/*todo: implement initializer*/ = null;
-    public enum String CJKMinuteSuff/*todo: implement initializer*/ = null;
-    public enum String CJKSecondSuff/*todo: implement initializer*/ = null;
-    public List1!(String) m_dateWords/*todo: implement initializer*/ = null;
+    package(mscorlib) enum wchar MonthPostfixChar/*todo: implement initializer*/ = wchar();
+    package(mscorlib) enum wchar IgnorableSymbolChar/*todo: implement initializer*/ = wchar();
+    package(mscorlib) enum String CJKYearSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String CJKMonthSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String CJKDaySuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanYearSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanMonthSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanDaySuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanHourSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanMinuteSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String KoreanSecondSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String CJKHourSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String ChineseHourSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String CJKMinuteSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String CJKSecondSuff/*todo: implement initializer*/ = null;
+    package(mscorlib) List1!(String) m_dateWords/*todo: implement initializer*/ = null;
     private static /*todo: volatile*/ Dictionary2!(String,String) s_knownWords;
     //TODO: generate property 'KnownWords'
     //TODO: generate method SkipWhiteSpacesAndNonLetter
@@ -1624,9 +1625,9 @@ public enum DateTimeStyles
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class DaylightTime : __DotNet__Object
 {
-    public DateTime m_start;
-    public DateTime m_end;
-    public TimeSpan m_delta;
+    package(mscorlib) DateTime m_start;
+    package(mscorlib) DateTime m_end;
+    package(mscorlib) TimeSpan m_delta;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'Start'
@@ -1658,16 +1659,16 @@ public enum DigitShapes : int
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public abstract class EastAsianLunisolarCalendar : Calendar
 {
-    public enum int LeapMonth/*todo: implement initializer*/ = int();
-    public enum int Jan1Month/*todo: implement initializer*/ = int();
-    public enum int Jan1Date/*todo: implement initializer*/ = int();
-    public enum int nDaysPerMonth/*todo: implement initializer*/ = int();
-    public static immutable int[] DaysToMonth365/*todo: implement initializer*/ = null;
-    public static immutable int[] DaysToMonth366/*todo: implement initializer*/ = null;
-    public enum int DatePartYear/*todo: implement initializer*/ = int();
-    public enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
-    public enum int DatePartMonth/*todo: implement initializer*/ = int();
-    public enum int DatePartDay/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int LeapMonth/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int Jan1Month/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int Jan1Date/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int nDaysPerMonth/*todo: implement initializer*/ = int();
+    package(mscorlib) static immutable int[] DaysToMonth365/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable int[] DaysToMonth366/*todo: implement initializer*/ = null;
+    package(mscorlib) enum int DatePartYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartMonth/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDay/*todo: implement initializer*/ = int();
     //TODO: generate property 'AlgorithmType'
     //TODO: generate method GetSexagenaryYear
     //TODO: generate method GetCelestialStem
@@ -1680,8 +1681,8 @@ public abstract class EastAsianLunisolarCalendar : Calendar
     //TODO: generate property 'CalEraInfo'
     //TODO: generate property 'MinDate'
     //TODO: generate property 'MaxDate'
-    public enum int MaxCalendarMonth/*todo: implement initializer*/ = int();
-    public enum int MaxCalendarDay/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxCalendarMonth/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxCalendarDay/*todo: implement initializer*/ = int();
     //TODO: generate method MinEraCalendarYear
     //TODO: generate method MaxEraCalendarYear
     //TODO: generate constructor
@@ -1728,14 +1729,14 @@ public abstract class EastAsianLunisolarCalendar : Calendar
 // immediately because they don't require creating an object.  Creating any of the string
 // names is delayed until somebody actually asks for them and the names are then cached.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class CodePageDataItem : __DotNet__Object
+package(mscorlib) class CodePageDataItem : __DotNet__Object
 {
-    public int m_dataIndex;
-    public int m_uiFamilyCodePage;
-    public String m_webName;
-    public String m_headerName;
-    public String m_bodyName;
-    public uint m_flags;
+    package(mscorlib) int m_dataIndex;
+    package(mscorlib) int m_uiFamilyCodePage;
+    package(mscorlib) String m_webName;
+    package(mscorlib) String m_headerName;
+    package(mscorlib) String m_bodyName;
+    package(mscorlib) uint m_flags;
     //TODO: generate constructor
     //TODO: generate method CreateString
     //TODO: generate property 'WebName'
@@ -1748,7 +1749,7 @@ public class CodePageDataItem : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\EncodingTable.cs'
 //
-public class EncodingTable : __DotNet__Object
+package(mscorlib) class EncodingTable : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static int lastEncodingItem/*todo: implement initializer*/ = int();
@@ -1757,13 +1758,13 @@ public class EncodingTable : __DotNet__Object
     // This points to a native data table which maps an encoding name to the correct code page.        
     //
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public static InternalEncodingDataItem* encodingDataPtr/*todo: implement initializer*/ = null;
+    package(mscorlib) static InternalEncodingDataItem* encodingDataPtr/*todo: implement initializer*/ = null;
     //
     // This points to a native data table which stores the properties for the code page, and
     // the table is indexed by code page.
     //
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public static InternalCodePageDataItem* codePageDataPtr/*todo: implement initializer*/ = null;
+    package(mscorlib) static InternalCodePageDataItem* codePageDataPtr/*todo: implement initializer*/ = null;
     private static Hashtable hashByName/*todo: implement initializer*/ = null;
     private static Hashtable hashByCodePage/*todo: implement initializer*/ = null;
     //TODO: generate constructor
@@ -1783,30 +1784,30 @@ public class EncodingTable : __DotNet__Object
 // ** We use this structure to access native data exposed by the native side.
 // ============================================================================
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
-public struct InternalEncodingDataItem
+package(mscorlib) struct InternalEncodingDataItem
 {
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public byte* webName;
-    public ushort codePage;
+    package(mscorlib) byte* webName;
+    package(mscorlib) ushort codePage;
 }
 // =================================InternalCodePageDataItem==========================
 // **Action: This is used to access the properties related to a code page.
 // ** We use this structure to access native data exposed by the native side.
 // ============================================================================
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
-public struct InternalCodePageDataItem
+package(mscorlib) struct InternalCodePageDataItem
 {
-    public ushort codePage;
-    public ushort uiFamilyCodePage;
-    public uint flags;
+    package(mscorlib) ushort codePage;
+    package(mscorlib) ushort uiFamilyCodePage;
+    package(mscorlib) uint flags;
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public byte* Names;
+    package(mscorlib) byte* Names;
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\GlobalizationAssembly.cs'
 //
-public final class GlobalizationAssembly : __DotNet__Object
+package(mscorlib) final class GlobalizationAssembly : __DotNet__Object
 {
     //TODO: generate method GetGlobalizationResourceBytePtr
 }
@@ -1822,14 +1823,14 @@ public final class GlobalizationAssembly : __DotNet__Object
 public class GregorianCalendar : Calendar
 {
     public enum int ADEra/*todo: implement initializer*/ = int();
-    public enum int DatePartYear/*todo: implement initializer*/ = int();
-    public enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
-    public enum int DatePartMonth/*todo: implement initializer*/ = int();
-    public enum int DatePartDay/*todo: implement initializer*/ = int();
-    public enum int MaxYear/*todo: implement initializer*/ = int();
-    public GregorianCalendarTypes m_type;
-    public static immutable int[] DaysToMonth365/*todo: implement initializer*/ = null;
-    public static immutable int[] DaysToMonth366/*todo: implement initializer*/ = null;
+    package(mscorlib) enum int DatePartYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartMonth/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDay/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxYear/*todo: implement initializer*/ = int();
+    package(mscorlib) GregorianCalendarTypes m_type;
+    package(mscorlib) static immutable int[] DaysToMonth365/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable int[] DaysToMonth366/*todo: implement initializer*/ = null;
     private static /*todo: volatile*/ Calendar s_defaultInstance;
     //TODO: generate method OnDeserialized
     //TODO: generate property 'MinSupportedDateTime'
@@ -1873,19 +1874,19 @@ public class GregorianCalendar : Calendar
 // Note: We shouldn't have to serialize this since the info doesn't change, but we have been. 
 // (We really only need the calendar #, and maybe culture)
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class EraInfo : __DotNet__Object
+package(mscorlib) class EraInfo : __DotNet__Object
 {
-    public int era;
-    public long ticks;
-    public int yearOffset;
-    public int minEraYear;
-    public int maxEraYear;
+    package(mscorlib) int era;
+    package(mscorlib) long ticks;
+    package(mscorlib) int yearOffset;
+    package(mscorlib) int minEraYear;
+    package(mscorlib) int maxEraYear;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 4*/)
-    public String eraName;
+    package(mscorlib) String eraName;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 4*/)
-    public String abbrevEraName;
+    package(mscorlib) String abbrevEraName;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 4*/)
-    public String englishEraName;
+    package(mscorlib) String englishEraName;
     //TODO: generate constructor
     //TODO: generate constructor
 }
@@ -1893,45 +1894,45 @@ public class EraInfo : __DotNet__Object
 // 0 CurrentEra (AD) 
 // 1 BeforeCurrentEra (BC) 
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class GregorianCalendarHelper : __DotNet__Object
+package(mscorlib) class GregorianCalendarHelper : __DotNet__Object
 {
-    public enum long TicksPerMillisecond/*todo: implement initializer*/ = long();
-    public enum long TicksPerSecond/*todo: implement initializer*/ = long();
-    public enum long TicksPerMinute/*todo: implement initializer*/ = long();
-    public enum long TicksPerHour/*todo: implement initializer*/ = long();
-    public enum long TicksPerDay/*todo: implement initializer*/ = long();
-    public enum int MillisPerSecond/*todo: implement initializer*/ = int();
-    public enum int MillisPerMinute/*todo: implement initializer*/ = int();
-    public enum int MillisPerHour/*todo: implement initializer*/ = int();
-    public enum int MillisPerDay/*todo: implement initializer*/ = int();
-    public enum int DaysPerYear/*todo: implement initializer*/ = int();
-    public enum int DaysPer4Years/*todo: implement initializer*/ = int();
-    public enum int DaysPer100Years/*todo: implement initializer*/ = int();
-    public enum int DaysPer400Years/*todo: implement initializer*/ = int();
-    public enum int DaysTo10000/*todo: implement initializer*/ = int();
-    public enum long MaxMillis/*todo: implement initializer*/ = long();
-    public enum int DatePartYear/*todo: implement initializer*/ = int();
-    public enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
-    public enum int DatePartMonth/*todo: implement initializer*/ = int();
-    public enum int DatePartDay/*todo: implement initializer*/ = int();
+    package(mscorlib) enum long TicksPerMillisecond/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long TicksPerSecond/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long TicksPerMinute/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long TicksPerHour/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long TicksPerDay/*todo: implement initializer*/ = long();
+    package(mscorlib) enum int MillisPerSecond/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MillisPerMinute/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MillisPerHour/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MillisPerDay/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DaysPerYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DaysPer4Years/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DaysPer100Years/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DaysPer400Years/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DaysTo10000/*todo: implement initializer*/ = int();
+    package(mscorlib) enum long MaxMillis/*todo: implement initializer*/ = long();
+    package(mscorlib) enum int DatePartYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartMonth/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDay/*todo: implement initializer*/ = int();
     //TODO: generate property 'MaxYear'
-    public static immutable int[] DaysToMonth365/*todo: implement initializer*/ = null;
-    public static immutable int[] DaysToMonth366/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable int[] DaysToMonth365/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable int[] DaysToMonth366/*todo: implement initializer*/ = null;
     // Strictly these don't need serialized since they can be recreated from the calendar id
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public int m_maxYear/*todo: implement initializer*/ = int();
+    package(mscorlib) int m_maxYear/*todo: implement initializer*/ = int();
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public int m_minYear;
-    public Calendar m_Cal;
+    package(mscorlib) int m_minYear;
+    package(mscorlib) Calendar m_Cal;
     // Era information doesn't need serialized, its constant for the same calendars (ie: we can recreate it from the calendar id)
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public EraInfo[] m_EraInfo;
+    package(mscorlib) EraInfo[] m_EraInfo;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public int[] m_eras/*todo: implement initializer*/ = null;
+    package(mscorlib) int[] m_eras/*todo: implement initializer*/ = null;
     // m_minDate is existing here just to keep the serialization compatibility. 
     // it has nothing to do with the code anymore. 
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public DateTime m_minDate;
+    package(mscorlib) DateTime m_minDate;
     //TODO: generate constructor
     //TODO: generate method GetGregorianYear
     //TODO: generate method IsValidYear
@@ -2037,11 +2038,11 @@ public enum GregorianCalendarTypes
 public class HebrewCalendar : Calendar
 {
     public static immutable int HebrewEra/*todo: implement initializer*/ = int();
-    public enum int DatePartYear/*todo: implement initializer*/ = int();
-    public enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
-    public enum int DatePartMonth/*todo: implement initializer*/ = int();
-    public enum int DatePartDay/*todo: implement initializer*/ = int();
-    public enum int DatePartDayOfWeek/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartMonth/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDay/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDayOfWeek/*todo: implement initializer*/ = int();
     private enum int HebrewYearOf1AD/*todo: implement initializer*/ = int();
     private enum int FirstGregorianTableYear/*todo: implement initializer*/ = int();
     private enum int LastGregorianTableYear/*todo: implement initializer*/ = int();
@@ -2050,8 +2051,8 @@ public class HebrewCalendar : Calendar
     private enum int MaxHebrewYear/*todo: implement initializer*/ = int();
     private static immutable int[] HebrewTable/*todo: implement initializer*/ = null;
     private static immutable int[] LunarMonthLen/*todo: implement initializer*/ = null;
-    public static immutable DateTime calendarMinValue/*todo: implement initializer*/ = DateTime();
-    public static immutable DateTime calendarMaxValue/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) static immutable DateTime calendarMinValue/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) static immutable DateTime calendarMaxValue/*todo: implement initializer*/ = DateTime();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'AlgorithmType'
@@ -2088,31 +2089,31 @@ public class HebrewCalendar : Calendar
     private enum int DEFAULT_TWO_DIGIT_YEAR_MAX/*todo: implement initializer*/ = int();
     //TODO: generate property 'TwoDigitYearMax'
     //TODO: generate method ToFourDigitYear
-    public static class __DateBuffer : __DotNet__Object
+    package(mscorlib) static class __DateBuffer : __DotNet__Object
     {
-        public int year;
-        public int month;
-        public int day;
+        package(mscorlib) int year;
+        package(mscorlib) int month;
+        package(mscorlib) int day;
     }
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\HebrewNumber.cs'
 //
-public struct HebrewNumberParsingContext
+package(mscorlib) struct HebrewNumberParsingContext
 {
-    public HebrewNumber.HS state;
-    public int result;
+    package(mscorlib) HebrewNumber.HS state;
+    package(mscorlib) int result;
     //TODO: generate constructor
 }
-public enum HebrewNumberParsingState
+package(mscorlib) enum HebrewNumberParsingState
 {
     InvalidHebrewNumber,
     NotHebrewDigit,
     FoundEndOfHebrewNumber,
     ContinueParsing,
 }
-public class HebrewNumber : __DotNet__Object
+package(mscorlib) class HebrewNumber : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method ToString
@@ -2132,14 +2133,14 @@ public class HebrewNumber : __DotNet__Object
     }
     private static class HebrewValue : __DotNet__Object
     {
-        public HebrewToken token;
-        public int value;
+        package(mscorlib) HebrewToken token;
+        package(mscorlib) int value;
         //TODO: generate constructor
     }
     private static HebrewValue[] HebrewValues/*todo: implement initializer*/ = null;
     private enum int minHebrewNumberCh/*todo: implement initializer*/ = int();
     private static wchar maxHebrewNumberCh/*todo: implement initializer*/ = wchar();
-    public enum HS
+    package(mscorlib) enum HS
     {
         _err = -1,
         Start = 0,
@@ -2213,21 +2214,21 @@ public class HebrewNumber : __DotNet__Object
 public class HijriCalendar : Calendar
 {
     public static immutable int HijriEra/*todo: implement initializer*/ = int();
-    public enum int DatePartYear/*todo: implement initializer*/ = int();
-    public enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
-    public enum int DatePartMonth/*todo: implement initializer*/ = int();
-    public enum int DatePartDay/*todo: implement initializer*/ = int();
-    public enum int MinAdvancedHijri/*todo: implement initializer*/ = int();
-    public enum int MaxAdvancedHijri/*todo: implement initializer*/ = int();
-    public static immutable int[] HijriMonthDays/*todo: implement initializer*/ = null;
+    package(mscorlib) enum int DatePartYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartMonth/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDay/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MinAdvancedHijri/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxAdvancedHijri/*todo: implement initializer*/ = int();
+    package(mscorlib) static immutable int[] HijriMonthDays/*todo: implement initializer*/ = null;
     private enum String InternationalRegKey/*todo: implement initializer*/ = null;
     private enum String HijriAdvanceRegKeyEntry/*todo: implement initializer*/ = null;
     private int m_HijriAdvance/*todo: implement initializer*/ = int();
-    public enum int MaxCalendarYear/*todo: implement initializer*/ = int();
-    public enum int MaxCalendarMonth/*todo: implement initializer*/ = int();
-    public enum int MaxCalendarDay/*todo: implement initializer*/ = int();
-    public static immutable DateTime calendarMinValue/*todo: implement initializer*/ = DateTime();
-    public static immutable DateTime calendarMaxValue/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) enum int MaxCalendarYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxCalendarMonth/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxCalendarDay/*todo: implement initializer*/ = int();
+    package(mscorlib) static immutable DateTime calendarMinValue/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) static immutable DateTime calendarMaxValue/*todo: implement initializer*/ = DateTime();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'AlgorithmType'
@@ -2351,19 +2352,19 @@ public final class IdnMapping : __DotNet__Object
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class JapaneseCalendar : Calendar
 {
-    public static immutable DateTime calendarMinValue/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) static immutable DateTime calendarMinValue/*todo: implement initializer*/ = DateTime();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'AlgorithmType'
-    public static /*todo: volatile*/ EraInfo[] japaneseEraInfo;
+    package(mscorlib) static /*todo: volatile*/ EraInfo[] japaneseEraInfo;
     //TODO: generate method GetEraInfo
     private enum String c_japaneseErasHive/*todo: implement initializer*/ = null;
     private enum String c_japaneseErasHivePermissionList/*todo: implement initializer*/ = null;
     //TODO: generate method GetErasFromRegistry
     //TODO: generate method CompareEraRanges
     //TODO: generate method GetEraFromValue
-    public static /*todo: volatile*/ Calendar s_defaultInstance;
-    public GregorianCalendarHelper helper;
+    package(mscorlib) static /*todo: volatile*/ Calendar s_defaultInstance;
+    package(mscorlib) GregorianCalendarHelper helper;
     //TODO: generate method GetDefaultInstance
     //TODO: generate constructor
     //TODO: generate property 'ID'
@@ -2413,17 +2414,17 @@ public class JapaneseCalendar : Calendar
 public class JapaneseLunisolarCalendar : EastAsianLunisolarCalendar
 {
     public enum int JapaneseEra/*todo: implement initializer*/ = int();
-    public GregorianCalendarHelper helper;
-    public enum int MIN_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
-    public enum int MAX_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
-    public enum int MIN_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
-    public enum int MIN_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
-    public enum int MIN_GREGORIAN_DAY/*todo: implement initializer*/ = int();
-    public enum int MAX_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
-    public enum int MAX_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
-    public enum int MAX_GREGORIAN_DAY/*todo: implement initializer*/ = int();
-    public static DateTime minDate/*todo: implement initializer*/ = DateTime();
-    public static DateTime maxDate/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) GregorianCalendarHelper helper;
+    package(mscorlib) enum int MIN_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIN_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIN_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIN_GREGORIAN_DAY/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_GREGORIAN_DAY/*todo: implement initializer*/ = int();
+    package(mscorlib) static DateTime minDate/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) static DateTime maxDate/*todo: implement initializer*/ = DateTime();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'DaysInYearBeforeMinSupportedYear'
@@ -2470,7 +2471,7 @@ public class JulianCalendar : Calendar
     private enum int JulianDaysPer4Years/*todo: implement initializer*/ = int();
     private static immutable int[] DaysToMonth365/*todo: implement initializer*/ = null;
     private static immutable int[] DaysToMonth366/*todo: implement initializer*/ = null;
-    public int MaxYear/*todo: implement initializer*/ = int();
+    package(mscorlib) int MaxYear/*todo: implement initializer*/ = int();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'AlgorithmType'
@@ -2525,8 +2526,8 @@ public class JulianCalendar : Calendar
 public class KoreanCalendar : Calendar
 {
     public enum int KoreanEra/*todo: implement initializer*/ = int();
-    public static EraInfo[] koreanEraInfo/*todo: implement initializer*/ = null;
-    public GregorianCalendarHelper helper;
+    package(mscorlib) static EraInfo[] koreanEraInfo/*todo: implement initializer*/ = null;
+    package(mscorlib) GregorianCalendarHelper helper;
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'AlgorithmType'
@@ -2574,16 +2575,16 @@ public class KoreanCalendar : Calendar
 public class KoreanLunisolarCalendar : EastAsianLunisolarCalendar
 {
     public enum int GregorianEra/*todo: implement initializer*/ = int();
-    public enum int MIN_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
-    public enum int MAX_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
-    public enum int MIN_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
-    public enum int MIN_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
-    public enum int MIN_GREGORIAN_DAY/*todo: implement initializer*/ = int();
-    public enum int MAX_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
-    public enum int MAX_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
-    public enum int MAX_GREGORIAN_DAY/*todo: implement initializer*/ = int();
-    public static DateTime minDate/*todo: implement initializer*/ = DateTime();
-    public static DateTime maxDate/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) enum int MIN_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIN_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIN_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIN_GREGORIAN_DAY/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_GREGORIAN_DAY/*todo: implement initializer*/ = int();
+    package(mscorlib) static DateTime minDate/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) static DateTime maxDate/*todo: implement initializer*/ = DateTime();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'DaysInYearBeforeMinSupportedYear'
@@ -2642,58 +2643,58 @@ public class KoreanLunisolarCalendar : EastAsianLunisolarCalendar
 public final class NumberFormatInfo : __DotNet__Object, ICloneable, IFormatProvider
 {
     private static /*todo: volatile*/ NumberFormatInfo invariantInfo;
-    public int[] numberGroupSizes/*todo: implement initializer*/ = null;
-    public int[] currencyGroupSizes/*todo: implement initializer*/ = null;
-    public int[] percentGroupSizes/*todo: implement initializer*/ = null;
-    public String positiveSign/*todo: implement initializer*/ = null;
-    public String negativeSign/*todo: implement initializer*/ = null;
-    public String numberDecimalSeparator/*todo: implement initializer*/ = null;
-    public String numberGroupSeparator/*todo: implement initializer*/ = null;
-    public String currencyGroupSeparator/*todo: implement initializer*/ = null;
-    public String currencyDecimalSeparator/*todo: implement initializer*/ = null;
-    public String currencySymbol/*todo: implement initializer*/ = null;
-    public String ansiCurrencySymbol/*todo: implement initializer*/ = null;
-    public String nanSymbol/*todo: implement initializer*/ = null;
-    public String positiveInfinitySymbol/*todo: implement initializer*/ = null;
-    public String negativeInfinitySymbol/*todo: implement initializer*/ = null;
-    public String percentDecimalSeparator/*todo: implement initializer*/ = null;
-    public String percentGroupSeparator/*todo: implement initializer*/ = null;
-    public String percentSymbol/*todo: implement initializer*/ = null;
-    public String perMilleSymbol/*todo: implement initializer*/ = null;
+    package(mscorlib) int[] numberGroupSizes/*todo: implement initializer*/ = null;
+    package(mscorlib) int[] currencyGroupSizes/*todo: implement initializer*/ = null;
+    package(mscorlib) int[] percentGroupSizes/*todo: implement initializer*/ = null;
+    package(mscorlib) String positiveSign/*todo: implement initializer*/ = null;
+    package(mscorlib) String negativeSign/*todo: implement initializer*/ = null;
+    package(mscorlib) String numberDecimalSeparator/*todo: implement initializer*/ = null;
+    package(mscorlib) String numberGroupSeparator/*todo: implement initializer*/ = null;
+    package(mscorlib) String currencyGroupSeparator/*todo: implement initializer*/ = null;
+    package(mscorlib) String currencyDecimalSeparator/*todo: implement initializer*/ = null;
+    package(mscorlib) String currencySymbol/*todo: implement initializer*/ = null;
+    package(mscorlib) String ansiCurrencySymbol/*todo: implement initializer*/ = null;
+    package(mscorlib) String nanSymbol/*todo: implement initializer*/ = null;
+    package(mscorlib) String positiveInfinitySymbol/*todo: implement initializer*/ = null;
+    package(mscorlib) String negativeInfinitySymbol/*todo: implement initializer*/ = null;
+    package(mscorlib) String percentDecimalSeparator/*todo: implement initializer*/ = null;
+    package(mscorlib) String percentGroupSeparator/*todo: implement initializer*/ = null;
+    package(mscorlib) String percentSymbol/*todo: implement initializer*/ = null;
+    package(mscorlib) String perMilleSymbol/*todo: implement initializer*/ = null;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public String[] nativeDigits/*todo: implement initializer*/ = null;
+    package(mscorlib) String[] nativeDigits/*todo: implement initializer*/ = null;
     // an index which points to a record in Culture Data Table.
     // We shouldn't be persisting dataItem (since its useless & we weren't using it),
     // but since COMNumber.cpp uses it and since serialization isn't implimented, its stuck for now.
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public int m_dataItem/*todo: implement initializer*/ = int();
-    public int numberDecimalDigits/*todo: implement initializer*/ = int();
-    public int currencyDecimalDigits/*todo: implement initializer*/ = int();
-    public int currencyPositivePattern/*todo: implement initializer*/ = int();
-    public int currencyNegativePattern/*todo: implement initializer*/ = int();
-    public int numberNegativePattern/*todo: implement initializer*/ = int();
-    public int percentPositivePattern/*todo: implement initializer*/ = int();
-    public int percentNegativePattern/*todo: implement initializer*/ = int();
-    public int percentDecimalDigits/*todo: implement initializer*/ = int();
+    package(mscorlib) int m_dataItem/*todo: implement initializer*/ = int();
+    package(mscorlib) int numberDecimalDigits/*todo: implement initializer*/ = int();
+    package(mscorlib) int currencyDecimalDigits/*todo: implement initializer*/ = int();
+    package(mscorlib) int currencyPositivePattern/*todo: implement initializer*/ = int();
+    package(mscorlib) int currencyNegativePattern/*todo: implement initializer*/ = int();
+    package(mscorlib) int numberNegativePattern/*todo: implement initializer*/ = int();
+    package(mscorlib) int percentPositivePattern/*todo: implement initializer*/ = int();
+    package(mscorlib) int percentNegativePattern/*todo: implement initializer*/ = int();
+    package(mscorlib) int percentDecimalDigits/*todo: implement initializer*/ = int();
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public int digitSubstitution/*todo: implement initializer*/ = int();
-    public bool isReadOnly/*todo: implement initializer*/ = bool();
+    package(mscorlib) int digitSubstitution/*todo: implement initializer*/ = int();
+    package(mscorlib) bool isReadOnly/*todo: implement initializer*/ = bool();
     // We shouldn't be persisting m_useUserOverride (since its useless & we weren't using it),
     // but since COMNumber.cpp uses it and since serialization isn't implimented, its stuck for now.
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public bool m_useUserOverride/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool m_useUserOverride/*todo: implement initializer*/ = bool();
     // Is this NumberFormatInfo for invariant culture?
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public bool m_isInvariant/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool m_isInvariant/*todo: implement initializer*/ = bool();
     //TODO: generate constructor
     // #region Serialization
     // Check if NumberFormatInfo was not set up ambiguously for parsing as number and currency
     // eg. if the NumberDecimalSeparator and the NumberGroupSeparator were the same. This check
     // is solely for backwards compatibility / version tolerant serialization
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public bool validForParseAsNumber/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool validForParseAsNumber/*todo: implement initializer*/ = bool();
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public bool validForParseAsCurrency/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool validForParseAsCurrency/*todo: implement initializer*/ = bool();
     //TODO: generate method OnSerializing
     //TODO: generate method OnDeserializing
     //TODO: generate method OnDeserialized
@@ -2797,19 +2798,19 @@ public enum NumberStyles
 public class PersianCalendar : Calendar
 {
     public static immutable int PersianEra/*todo: implement initializer*/ = int();
-    public static long PersianEpoch/*todo: implement initializer*/ = long();
+    package(mscorlib) static long PersianEpoch/*todo: implement initializer*/ = long();
     private enum int ApproximateHalfYear/*todo: implement initializer*/ = int();
-    public enum int DatePartYear/*todo: implement initializer*/ = int();
-    public enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
-    public enum int DatePartMonth/*todo: implement initializer*/ = int();
-    public enum int DatePartDay/*todo: implement initializer*/ = int();
-    public enum int MonthsPerYear/*todo: implement initializer*/ = int();
-    public static int[] DaysToMonth/*todo: implement initializer*/ = null;
-    public enum int MaxCalendarYear/*todo: implement initializer*/ = int();
-    public enum int MaxCalendarMonth/*todo: implement initializer*/ = int();
-    public enum int MaxCalendarDay/*todo: implement initializer*/ = int();
-    public static DateTime minDate/*todo: implement initializer*/ = DateTime();
-    public static DateTime maxDate/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) enum int DatePartYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartMonth/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDay/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MonthsPerYear/*todo: implement initializer*/ = int();
+    package(mscorlib) static int[] DaysToMonth/*todo: implement initializer*/ = null;
+    package(mscorlib) enum int MaxCalendarYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxCalendarMonth/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxCalendarDay/*todo: implement initializer*/ = int();
+    package(mscorlib) static DateTime minDate/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) static DateTime maxDate/*todo: implement initializer*/ = DateTime();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'AlgorithmType'
@@ -2853,13 +2854,13 @@ public class PersianCalendar : Calendar
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class RegionInfo : __DotNet__Object
 {
-    public String m_name;
+    package(mscorlib) String m_name;
     //
     // The CultureData instance that we are going to read data from.
     //
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
-    public CultureData m_cultureData;
-    public static /*todo: volatile*/ RegionInfo s_currentRegionInfo;
+    package(mscorlib) CultureData m_cultureData;
+    package(mscorlib) static /*todo: volatile*/ RegionInfo s_currentRegionInfo;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -2874,7 +2875,7 @@ public class RegionInfo : __DotNet__Object
     // the following field is defined to keep the compatibility with Everett.
     // don't change/remove the names/types of these field.
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public int m_dataItem/*todo: implement initializer*/ = int();
+    package(mscorlib) int m_dataItem/*todo: implement initializer*/ = int();
     //TODO: generate method OnDeserialized
     //TODO: generate method OnSerializing
     //TODO: generate property 'CurrentRegion'
@@ -2910,12 +2911,12 @@ public class SortKey : __DotNet__Object
     //  Variables.
     //
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 3*/)
-    public String localeName;
+    package(mscorlib) String localeName;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public int win32LCID;
-    public CompareOptions options;
-    public String m_String;
-    public ubyte[] m_KeyData;
+    package(mscorlib) int win32LCID;
+    package(mscorlib) CompareOptions options;
+    package(mscorlib) String m_String;
+    package(mscorlib) ubyte[] m_KeyData;
     //TODO: generate constructor
     //TODO: generate method OnSerializing
     //TODO: generate method OnDeserialized
@@ -2999,11 +3000,11 @@ public class StringInfo : __DotNet__Object
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public class TaiwanCalendar : Calendar
 {
-    public static EraInfo[] taiwanEraInfo/*todo: implement initializer*/ = null;
-    public static /*todo: volatile*/ Calendar s_defaultInstance;
-    public GregorianCalendarHelper helper;
+    package(mscorlib) static EraInfo[] taiwanEraInfo/*todo: implement initializer*/ = null;
+    package(mscorlib) static /*todo: volatile*/ Calendar s_defaultInstance;
+    package(mscorlib) GregorianCalendarHelper helper;
     //TODO: generate method GetDefaultInstance
-    public static immutable DateTime calendarMinValue/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) static immutable DateTime calendarMinValue/*todo: implement initializer*/ = DateTime();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'AlgorithmType'
@@ -3050,18 +3051,18 @@ public class TaiwanCalendar : Calendar
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public class TaiwanLunisolarCalendar : EastAsianLunisolarCalendar
 {
-    public static EraInfo[] taiwanLunisolarEraInfo/*todo: implement initializer*/ = null;
-    public GregorianCalendarHelper helper;
-    public enum int MIN_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
-    public enum int MAX_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
-    public enum int MIN_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
-    public enum int MIN_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
-    public enum int MIN_GREGORIAN_DAY/*todo: implement initializer*/ = int();
-    public enum int MAX_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
-    public enum int MAX_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
-    public enum int MAX_GREGORIAN_DAY/*todo: implement initializer*/ = int();
-    public static DateTime minDate/*todo: implement initializer*/ = DateTime();
-    public static DateTime maxDate/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) static EraInfo[] taiwanLunisolarEraInfo/*todo: implement initializer*/ = null;
+    package(mscorlib) GregorianCalendarHelper helper;
+    package(mscorlib) enum int MIN_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_LUNISOLAR_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIN_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIN_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MIN_GREGORIAN_DAY/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_GREGORIAN_YEAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_GREGORIAN_MONTH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_GREGORIAN_DAY/*todo: implement initializer*/ = int();
+    package(mscorlib) static DateTime minDate/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) static DateTime maxDate/*todo: implement initializer*/ = DateTime();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'DaysInYearBeforeMinSupportedYear'
@@ -3167,7 +3168,7 @@ public class TextInfo : __DotNet__Object, ICloneable, IDeserializationCallback
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private Tristate m_IsAsciiCasingSameAsInvariant/*todo: implement initializer*/ = (cast(Tristate)0);
     //TODO: generate property 'Invariant'
-    public static /*todo: volatile*/ TextInfo s_Invariant;
+    package(mscorlib) static /*todo: volatile*/ TextInfo s_Invariant;
     //TODO: generate constructor
     ////////////////////////////////////////////////////////////////////////
     //
@@ -3184,11 +3185,11 @@ public class TextInfo : __DotNet__Object, ICloneable, IDeserializationCallback
     // the following fields are defined to keep compatibility with Everett.
     // don't change/remove the names/types of these fields.
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public int m_nDataItem;
+    package(mscorlib) int m_nDataItem;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public bool m_useUserOverride;
+    package(mscorlib) bool m_useUserOverride;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 1*/)
-    public int m_win32LangID;
+    package(mscorlib) int m_win32LangID;
     //TODO: generate method OnDeserializing
     //TODO: generate method OnDeserialized
     //TODO: generate method OnDeserialized
@@ -3258,9 +3259,9 @@ public class TextInfo : __DotNet__Object, ICloneable, IDeserializationCallback
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public class ThaiBuddhistCalendar : Calendar
 {
-    public static EraInfo[] thaiBuddhistEraInfo/*todo: implement initializer*/ = null;
+    package(mscorlib) static EraInfo[] thaiBuddhistEraInfo/*todo: implement initializer*/ = null;
     public enum int ThaiBuddhistEra/*todo: implement initializer*/ = int();
-    public GregorianCalendarHelper helper;
+    package(mscorlib) GregorianCalendarHelper helper;
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'AlgorithmType'
@@ -3292,13 +3293,13 @@ public class ThaiBuddhistCalendar : Calendar
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\TimeSpanFormat.cs'
 //
-public class TimeSpanFormat : __DotNet__Object
+package(mscorlib) class TimeSpanFormat : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method IntToString
-    public static immutable FormatLiterals PositiveInvariantFormatLiterals/*todo: implement initializer*/ = FormatLiterals();
-    public static immutable FormatLiterals NegativeInvariantFormatLiterals/*todo: implement initializer*/ = FormatLiterals();
-    public enum Pattern
+    package(mscorlib) static immutable FormatLiterals PositiveInvariantFormatLiterals/*todo: implement initializer*/ = FormatLiterals();
+    package(mscorlib) static immutable FormatLiterals NegativeInvariantFormatLiterals/*todo: implement initializer*/ = FormatLiterals();
+    package(mscorlib) enum Pattern
     {
         None = 0,
         Minimum = 1,
@@ -3307,7 +3308,7 @@ public class TimeSpanFormat : __DotNet__Object
     //TODO: generate method Format
     //TODO: generate method FormatStandard
     //TODO: generate method FormatCustomized
-    public static struct FormatLiterals
+    package(mscorlib) static struct FormatLiterals
     {
         //TODO: generate property 'Start'
         //TODO: generate property 'DayHourSep'
@@ -3315,12 +3316,12 @@ public class TimeSpanFormat : __DotNet__Object
         //TODO: generate property 'MinuteSecondSep'
         //TODO: generate property 'SecondFractionSep'
         //TODO: generate property 'End'
-        public String AppCompatLiteral;
-        public int dd;
-        public int hh;
-        public int mm;
-        public int ss;
-        public int ff;
+        package(mscorlib) String AppCompatLiteral;
+        package(mscorlib) int dd;
+        package(mscorlib) int hh;
+        package(mscorlib) int mm;
+        package(mscorlib) int ss;
+        package(mscorlib) int ff;
         private String[] literals;
         //TODO: generate method InitInvariant
         //TODO: generate method Init
@@ -3330,17 +3331,17 @@ public class TimeSpanFormat : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\TimeSpanParse.cs'
 //
-public class TimeSpanParse : __DotNet__Object
+package(mscorlib) class TimeSpanParse : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ValidateStyles
-    public enum int unlimitedDigits/*todo: implement initializer*/ = int();
-    public enum int maxFractionDigits/*todo: implement initializer*/ = int();
-    public enum int maxDays/*todo: implement initializer*/ = int();
-    public enum int maxHours/*todo: implement initializer*/ = int();
-    public enum int maxMinutes/*todo: implement initializer*/ = int();
-    public enum int maxSeconds/*todo: implement initializer*/ = int();
-    public enum int maxFraction/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int unlimitedDigits/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int maxFractionDigits/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int maxDays/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int maxHours/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int maxMinutes/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int maxSeconds/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int maxFraction/*todo: implement initializer*/ = int();
     private enum TimeSpanThrowStyle
     {
         None = 0,
@@ -3374,10 +3375,10 @@ public class TimeSpanParse : __DotNet__Object
     private static immutable TimeSpanToken zero/*todo: implement initializer*/ = TimeSpanToken();
     private static struct TimeSpanToken
     {
-        public TTT ttt;
-        public int num;
-        public int zeroes;
-        public String sep;
+        package(mscorlib) TTT ttt;
+        package(mscorlib) int num;
+        package(mscorlib) int zeroes;
+        package(mscorlib) String sep;
         //TODO: generate constructor
         //TODO: generate constructor
         //TODO: generate method IsInvalidNumber
@@ -3409,12 +3410,12 @@ public class TimeSpanParse : __DotNet__Object
         //TODO: generate method FullHMSMatch
         //TODO: generate method FullDHMSMatch
         //TODO: generate method FullHMSFMatch
-        public TTT lastSeenTTT;
-        public int tokenCount;
-        public int SepCount;
-        public int NumCount;
-        public String[] literals;
-        public TimeSpanToken[] numbers;
+        package(mscorlib) TTT lastSeenTTT;
+        package(mscorlib) int tokenCount;
+        package(mscorlib) int SepCount;
+        package(mscorlib) int NumCount;
+        package(mscorlib) String[] literals;
+        package(mscorlib) TimeSpanToken[] numbers;
         private TimeSpanFormat.FormatLiterals m_posLoc;
         private TimeSpanFormat.FormatLiterals m_negLoc;
         private bool m_posLocInit;
@@ -3431,12 +3432,12 @@ public class TimeSpanParse : __DotNet__Object
     }
     private static struct TimeSpanResult
     {
-        public TimeSpan parsedTimeSpan;
-        public TimeSpanThrowStyle throwStyle;
-        public ParseFailureKind m_failure;
-        public String m_failureMessageID;
-        public __DotNet__Object m_failureMessageFormatArgument;
-        public String m_failureArgumentName;
+        package(mscorlib) TimeSpan parsedTimeSpan;
+        package(mscorlib) TimeSpanThrowStyle throwStyle;
+        package(mscorlib) ParseFailureKind m_failure;
+        package(mscorlib) String m_failureMessageID;
+        package(mscorlib) __DotNet__Object m_failureMessageFormatArgument;
+        package(mscorlib) String m_failureArgumentName;
         //TODO: generate method Init
         //TODO: generate method SetFailure
         //TODO: generate method SetFailure
@@ -3507,24 +3508,24 @@ public enum TimeSpanStyles
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public class UmAlQuraCalendar : Calendar
 {
-    public enum int MinCalendarYear/*todo: implement initializer*/ = int();
-    public enum int MaxCalendarYear/*todo: implement initializer*/ = int();
-    public static struct DateMapping
+    package(mscorlib) enum int MinCalendarYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxCalendarYear/*todo: implement initializer*/ = int();
+    package(mscorlib) static struct DateMapping
     {
         //TODO: generate constructor
-        public int HijriMonthsLengthFlags;
-        public DateTime GregorianDate;
+        package(mscorlib) int HijriMonthsLengthFlags;
+        package(mscorlib) DateTime GregorianDate;
     }
     private static immutable DateMapping[] HijriYearInfo/*todo: implement initializer*/ = null;
     //TODO: generate method InitDateMapping
     public enum int UmAlQuraEra/*todo: implement initializer*/ = int();
-    public enum int DateCycle/*todo: implement initializer*/ = int();
-    public enum int DatePartYear/*todo: implement initializer*/ = int();
-    public enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
-    public enum int DatePartMonth/*todo: implement initializer*/ = int();
-    public enum int DatePartDay/*todo: implement initializer*/ = int();
-    public static DateTime minDate/*todo: implement initializer*/ = DateTime();
-    public static DateTime maxDate/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) enum int DateCycle/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDayOfYear/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartMonth/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DatePartDay/*todo: implement initializer*/ = int();
+    package(mscorlib) static DateTime minDate/*todo: implement initializer*/ = DateTime();
+    package(mscorlib) static DateTime maxDate/*todo: implement initializer*/ = DateTime();
     //TODO: generate property 'MinSupportedDateTime'
     //TODO: generate property 'MaxSupportedDateTime'
     //TODO: generate property 'AlgorithmType'

@@ -8,16 +8,22 @@ import mscorlib.System :
     ObsoleteAttribute,
     __DotNet__Object,
     String,
+    Environment,
     SerializableAttribute,
     NonSerializedAttribute,
     SystemException,
     FlagsAttribute,
+    CoreLib,
     Void;
 import mscorlib.System.Runtime.InteropServices :
     ComVisibleAttribute;
+import mscorlib :
+    AssemblyRef;
 import mscorlib.System.Security.Permissions :
     SecurityPermission,
     HostProtectionResource,
+    BuiltInPermissionIndex,
+    PermissionState,
     PermissionSetAttribute;
 import mscorlib.Microsoft.Win32.SafeHandles :
     SafeAccessTokenHandle;
@@ -44,7 +50,7 @@ import mscorlib.System.Globalization :
 //  object to be allocated on the callers stack. This attribute is only ever
 //  set on certain security methods defined within mscorlib.
 @__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Method, AllowMultiple = true, Inherited = false*/)
-public final class DynamicSecurityMethodAttribute : Attribute
+package(mscorlib) final class DynamicSecurityMethodAttribute : Attribute
 {
 }
 // SuppressUnmanagedCodeSecurityAttribute:
@@ -159,7 +165,7 @@ public final class SecurityTransparentAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\BuiltInPermissionSets.cs'
 //
-public class BuiltInPermissionSets : __DotNet__Object
+package(mscorlib) class BuiltInPermissionSets : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static immutable String s_everythingXml/*todo: implement initializer*/ = null;
@@ -226,7 +232,7 @@ public abstract class CodeAccessPermission : __DotNet__Object, IPermission, ISec
 // Used in DemandInternal, to remember the result of previous demands
 // KEEP IN SYNC WITH DEFINITIONS IN SECURITYPOLICY.H
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum PermissionType
+package(mscorlib) enum PermissionType
 {
     // special flags
     SecurityUnmngdCodeAccess = 0,
@@ -249,11 +255,11 @@ public enum PermissionType
     SecurityControlEvidence = 16,
     SecurityControlPrincipal = 17,
 }
-public class CodeAccessSecurityEngine : __DotNet__Object
+package(mscorlib) class CodeAccessSecurityEngine : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public static SecurityPermission AssertPermission;
-    public static PermissionToken AssertPermissionToken;
+    package(mscorlib) static SecurityPermission AssertPermission;
+    package(mscorlib) static PermissionToken AssertPermissionToken;
     //TODO: generate method SpecialDemand
     //TODO: generate method DEBUG_OUT
     private static bool debug_/*todo: implement initializer*/ = bool();
@@ -283,7 +289,7 @@ public class CodeAccessSecurityEngine : __DotNet__Object
 // DO NOT DOCUMENT
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class FrameSecurityDescriptor : __DotNet__Object
+package(mscorlib) class FrameSecurityDescriptor : __DotNet__Object
 {
     private PermissionSet m_assertions;
     private PermissionSet m_denials;
@@ -465,7 +471,7 @@ public final class NamedPermissionSet : PermissionSet
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\PermissionListSet.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class PermissionListSet : __DotNet__Object
+package(mscorlib) final class PermissionListSet : __DotNet__Object
 {
     private PermissionSetTriple m_firstPermSetTriple;
     private ArrayList m_permSetTriples;
@@ -494,7 +500,7 @@ public final class PermissionListSet : __DotNet__Object
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\PermissionSet.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum SpecialPermissionSetFlag
+package(mscorlib) enum SpecialPermissionSetFlag
 {
     // These also appear in clr/src/vm/permset.h
     Regular = 0,
@@ -511,7 +517,7 @@ public enum SpecialPermissionSetFlag
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class PermissionSet : __DotNet__Object, ISecurityEncodable, ICollection, IStackWalk
 {
-    public static immutable bool debug_;
+    package(mscorlib) static immutable bool debug_;
     //TODO: generate method DEBUG_WRITE
     //TODO: generate method DEBUG_COND_WRITE
     //TODO: generate method DEBUG_PRINTSTACK
@@ -519,7 +525,7 @@ public class PermissionSet : __DotNet__Object, ISecurityEncodable, ICollection, 
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_allPermissionsDecoded/*todo: implement initializer*/ = bool();
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
-    public TokenBasedSet m_permSet/*todo: implement initializer*/ = null;
+    package(mscorlib) TokenBasedSet m_permSet/*todo: implement initializer*/ = null;
     // This is a workaround so that SQL can operate under default policy without actually
     // granting permissions in assemblies that they disallow.
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
@@ -541,7 +547,7 @@ public class PermissionSet : __DotNet__Object, ISecurityEncodable, ICollection, 
     private TokenBasedSet m_normalPermSet;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
     private bool m_canUnrestrictedOverride;
-    public static immutable PermissionSet s_fullTrust/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable PermissionSet s_fullTrust/*todo: implement initializer*/ = null;
     //TODO: generate method OnSerialized
     //TODO: generate constructor
     //TODO: generate constructor
@@ -567,7 +573,7 @@ public class PermissionSet : __DotNet__Object, ISecurityEncodable, ICollection, 
     //TODO: generate method RemovePermission
     //TODO: generate method SetUnrestricted
     //TODO: generate method IsUnrestricted
-    public enum IsSubsetOfType
+    package(mscorlib) enum IsSubsetOfType
     {
         Normal,
         CheckDemand,
@@ -619,7 +625,7 @@ public class PermissionSet : __DotNet__Object, ISecurityEncodable, ICollection, 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\PermissionSetEnumerator.cs'
 //
-public class PermissionSetEnumerator : __DotNet__Object, IEnumerator
+package(mscorlib) class PermissionSetEnumerator : __DotNet__Object, IEnumerator
 {
     private PermissionSetEnumeratorInternal enm;
     //TODO: generate property 'Current'
@@ -627,7 +633,7 @@ public class PermissionSetEnumerator : __DotNet__Object, IEnumerator
     //TODO: generate method Reset
     //TODO: generate constructor
 }
-public struct PermissionSetEnumeratorInternal
+package(mscorlib) struct PermissionSetEnumeratorInternal
 {
     private PermissionSet m_permSet;
     private TokenBasedSetEnumerator enm;
@@ -642,13 +648,13 @@ public struct PermissionSetEnumeratorInternal
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\PermissionSetTriple.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class PermissionSetTriple : __DotNet__Object
+package(mscorlib) final class PermissionSetTriple : __DotNet__Object
 {
     private static /*todo: volatile*/ PermissionToken s_zoneToken;
     private static /*todo: volatile*/ PermissionToken s_urlToken;
-    public PermissionSet AssertSet;
-    public PermissionSet GrantSet;
-    public PermissionSet RefusedSet;
+    package(mscorlib) PermissionSet AssertSet;
+    package(mscorlib) PermissionSet GrantSet;
+    package(mscorlib) PermissionSet RefusedSet;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate method Reset
@@ -673,7 +679,7 @@ public final class PermissionSetTriple : __DotNet__Object
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\PermissionToken.cs'
 //
 @__DotNet__Attribute!(FlagsAttribute.stringof)
-public enum PermissionTokenType
+package(mscorlib) enum PermissionTokenType
 {
     Normal = 0x1,
     IUnrestricted = 0x2,
@@ -681,7 +687,7 @@ public enum PermissionTokenType
     BuiltIn = 0x8,
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class PermissionTokenKeyComparer : __DotNet__Object, IEqualityComparer
+package(mscorlib) final class PermissionTokenKeyComparer : __DotNet__Object, IEqualityComparer
 {
     private Comparer _caseSensitiveComparer;
     private TextInfo _info;
@@ -691,13 +697,13 @@ public final class PermissionTokenKeyComparer : __DotNet__Object, IEqualityCompa
     //TODO: generate method GetHashCode
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class PermissionToken : __DotNet__Object, ISecurityEncodable
+package(mscorlib) final class PermissionToken : __DotNet__Object, ISecurityEncodable
 {
     private static immutable PermissionTokenFactory s_theTokenFactory;
     private enum String c_mscorlibName/*todo: implement initializer*/ = null;
-    public int m_index;
-    public /*todo: volatile*/ PermissionTokenType m_type;
-    public static TokenBasedSet s_tokenSet/*todo: implement initializer*/ = null;
+    package(mscorlib) int m_index;
+    package(mscorlib) /*todo: volatile*/ PermissionTokenType m_type;
+    package(mscorlib) static TokenBasedSet s_tokenSet/*todo: implement initializer*/ = null;
     //TODO: generate method IsMscorlibClassName
     //TODO: generate constructor
     //TODO: generate constructor
@@ -707,7 +713,7 @@ public final class PermissionToken : __DotNet__Object, ISecurityEncodable
     //TODO: generate method FindTokenByIndex
     //TODO: generate method IsTokenProperlyAssigned
 }
-public class PermissionTokenFactory : __DotNet__Object
+package(mscorlib) class PermissionTokenFactory : __DotNet__Object
 {
     private /*todo: volatile*/ int m_size;
     private /*todo: volatile*/ int m_index;
@@ -731,7 +737,7 @@ public enum SecurityContextSource
     CurrentAppDomain = 0,
     CurrentAssembly,
 }
-public enum SecurityContextDisableFlow
+package(mscorlib) enum SecurityContextDisableFlow
 {
     Nothing = 0,
     WI = 0x1,
@@ -741,13 +747,13 @@ public enum SecurityContextDisableFlow
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\SecurityElement.cs'
 //
-public enum SecurityElementType
+package(mscorlib) enum SecurityElementType
 {
     Regular = 0,
     Format = 1,
     Comment = 2,
 }
-public interface ISecurityElementFactory
+package(mscorlib) interface ISecurityElementFactory
 {
     //TODO: generate method CreateSecurityElement
     //TODO: generate method Copy
@@ -758,11 +764,11 @@ public interface ISecurityElementFactory
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class SecurityElement : __DotNet__Object, ISecurityElementFactory
 {
-    public String m_strTag;
-    public String m_strText;
+    package(mscorlib) String m_strTag;
+    package(mscorlib) String m_strText;
     private ArrayList m_lChildren;
-    public ArrayList m_lAttributes;
-    public SecurityElementType m_type/*todo: implement initializer*/ = (cast(SecurityElementType)0);
+    package(mscorlib) ArrayList m_lAttributes;
+    package(mscorlib) SecurityElementType m_type/*todo: implement initializer*/ = (cast(SecurityElementType)0);
     private static immutable wchar[] s_tagIllegalCharacters/*todo: implement initializer*/ = null;
     private static immutable wchar[] s_textIllegalCharacters/*todo: implement initializer*/ = null;
     private static immutable wchar[] s_valueIllegalCharacters/*todo: implement initializer*/ = null;
@@ -872,12 +878,12 @@ public class SecurityManager : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\SecurityRuntime.cs'
 //
-public class SecurityRuntime : __DotNet__Object
+package(mscorlib) class SecurityRuntime : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method GetSecurityObjectForFrame
-    public enum bool StackContinue/*todo: implement initializer*/ = bool();
-    public enum bool StackHalt/*todo: implement initializer*/ = bool();
+    package(mscorlib) enum bool StackContinue/*todo: implement initializer*/ = bool();
+    package(mscorlib) enum bool StackHalt/*todo: implement initializer*/ = bool();
     //TODO: generate method GetMethodInfo
     //TODO: generate method FrameDescSetHelper
     //TODO: generate method FrameDescHelper

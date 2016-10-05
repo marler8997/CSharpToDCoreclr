@@ -339,8 +339,8 @@ public final class TypeIdentifierAttribute : Attribute
     //TODO: generate constructor
     //TODO: generate property 'Scope'
     //TODO: generate property 'Identifier'
-    public String Scope_;
-    public String Identifier_;
+    package(mscorlib) String Scope_;
+    package(mscorlib) String Identifier_;
 }
 // To be used on methods that sink reverse P/Invoke calls.
 // This attribute is a CoreCLR-only security measure, currently ignored by the desktop CLR.
@@ -353,7 +353,7 @@ public final class AllowReversePInvokeCallsAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DispIdAttribute : Attribute
 {
-    public int _val;
+    package(mscorlib) int _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
@@ -370,7 +370,7 @@ public enum ComInterfaceType
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class InterfaceTypeAttribute : Attribute
 {
-    public ComInterfaceType _val;
+    package(mscorlib) ComInterfaceType _val;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'Value'
@@ -379,7 +379,7 @@ public final class InterfaceTypeAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComDefaultInterfaceAttribute : Attribute
 {
-    public Type _val;
+    package(mscorlib) Type _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
@@ -395,7 +395,7 @@ public enum ClassInterfaceType
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ClassInterfaceAttribute : Attribute
 {
-    public ClassInterfaceType _val;
+    package(mscorlib) ClassInterfaceType _val;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'Value'
@@ -404,7 +404,7 @@ public final class ClassInterfaceAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComVisibleAttribute : Attribute
 {
-    public bool _val;
+    package(mscorlib) bool _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
@@ -412,7 +412,7 @@ public final class ComVisibleAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class TypeLibImportClassAttribute : Attribute
 {
-    public String _importClassName;
+    package(mscorlib) String _importClassName;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
@@ -420,7 +420,7 @@ public final class TypeLibImportClassAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class LCIDConversionAttribute : Attribute
 {
-    public int _val;
+    package(mscorlib) int _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
@@ -440,7 +440,7 @@ public final class ComUnregisterFunctionAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ProgIdAttribute : Attribute
 {
-    public String _val;
+    package(mscorlib) String _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
@@ -448,7 +448,7 @@ public final class ProgIdAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ImportedFromTypeLibAttribute : Attribute
 {
-    public String _val;
+    package(mscorlib) String _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
@@ -466,7 +466,7 @@ public enum IDispatchImplType
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class IDispatchImplAttribute : Attribute
 {
-    public IDispatchImplType _val;
+    package(mscorlib) IDispatchImplType _val;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'Value'
@@ -475,7 +475,7 @@ public final class IDispatchImplAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComSourceInterfacesAttribute : Attribute
 {
-    public String _val;
+    package(mscorlib) String _val;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -551,7 +551,7 @@ public enum TypeLibVarFlags
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class TypeLibTypeAttribute : Attribute
 {
-    public TypeLibTypeFlags _val;
+    package(mscorlib) TypeLibTypeFlags _val;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'Value'
@@ -560,7 +560,7 @@ public final class TypeLibTypeAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class TypeLibFuncAttribute : Attribute
 {
-    public TypeLibFuncFlags _val;
+    package(mscorlib) TypeLibFuncFlags _val;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'Value'
@@ -569,7 +569,7 @@ public final class TypeLibFuncAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class TypeLibVarAttribute : Attribute
 {
-    public TypeLibVarFlags _val;
+    package(mscorlib) TypeLibVarFlags _val;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'Value'
@@ -676,7 +676,7 @@ public final class MarshalAsAttribute : Attribute
     //TODO: generate method IsDefined
     //TODO: generate method GetCustomAttribute
     //TODO: generate constructor
-    public UnmanagedType _val;
+    package(mscorlib) UnmanagedType _val;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'Value'
@@ -705,7 +705,7 @@ public final class ComImportAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class GuidAttribute : Attribute
 {
-    public String _val;
+    package(mscorlib) String _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
@@ -756,7 +756,7 @@ public enum DllImportSearchPath
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
 public final class DefaultDllImportSearchPathsAttribute : Attribute
 {
-    public DllImportSearchPath _paths;
+    package(mscorlib) DllImportSearchPath _paths;
     //TODO: generate constructor
     //TODO: generate property 'Paths'
 }
@@ -767,7 +767,7 @@ public final class DllImportAttribute : Attribute
     //TODO: generate method GetCustomAttribute
     //TODO: generate method IsDefined
     //TODO: generate constructor
-    public String _val;
+    package(mscorlib) String _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
     public String EntryPoint;
@@ -786,7 +786,7 @@ public final class StructLayoutAttribute : Attribute
     private enum int DEFAULT_PACKING_SIZE/*todo: implement initializer*/ = int();
     //TODO: generate method GetCustomAttribute
     //TODO: generate method IsDefined
-    public LayoutKind _val;
+    package(mscorlib) LayoutKind _val;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -801,7 +801,7 @@ public final class FieldOffsetAttribute : Attribute
 {
     //TODO: generate method GetCustomAttribute
     //TODO: generate method IsDefined
-    public int _val;
+    package(mscorlib) int _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
@@ -809,7 +809,7 @@ public final class FieldOffsetAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComAliasNameAttribute : Attribute
 {
-    public String _val;
+    package(mscorlib) String _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
@@ -817,7 +817,7 @@ public final class ComAliasNameAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AutomationProxyAttribute : Attribute
 {
-    public bool _val;
+    package(mscorlib) bool _val;
     //TODO: generate constructor
     //TODO: generate property 'Value'
 }
@@ -825,8 +825,8 @@ public final class AutomationProxyAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class PrimaryInteropAssemblyAttribute : Attribute
 {
-    public int _major;
-    public int _minor;
+    package(mscorlib) int _major;
+    package(mscorlib) int _minor;
     //TODO: generate constructor
     //TODO: generate property 'MajorVersion'
     //TODO: generate property 'MinorVersion'
@@ -835,7 +835,7 @@ public final class PrimaryInteropAssemblyAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class CoClassAttribute : Attribute
 {
-    public Type _CoClass;
+    package(mscorlib) Type _CoClass;
     //TODO: generate constructor
     //TODO: generate property 'CoClass'
 }
@@ -843,8 +843,8 @@ public final class CoClassAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComEventInterfaceAttribute : Attribute
 {
-    public Type _SourceInterface;
-    public Type _EventProvider;
+    package(mscorlib) Type _SourceInterface;
+    package(mscorlib) Type _EventProvider;
     //TODO: generate constructor
     //TODO: generate property 'SourceInterface'
     //TODO: generate property 'EventProvider'
@@ -853,8 +853,8 @@ public final class ComEventInterfaceAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class TypeLibVersionAttribute : Attribute
 {
-    public int _major;
-    public int _minor;
+    package(mscorlib) int _major;
+    package(mscorlib) int _minor;
     //TODO: generate constructor
     //TODO: generate property 'MajorVersion'
     //TODO: generate property 'MinorVersion'
@@ -863,10 +863,10 @@ public final class TypeLibVersionAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class ComCompatibleVersionAttribute : Attribute
 {
-    public int _major;
-    public int _minor;
-    public int _build;
-    public int _revision;
+    package(mscorlib) int _major;
+    package(mscorlib) int _minor;
+    package(mscorlib) int _build;
+    package(mscorlib) int _revision;
     //TODO: generate constructor
     //TODO: generate property 'MajorVersion'
     //TODO: generate property 'MinorVersion'
@@ -877,7 +877,7 @@ public final class ComCompatibleVersionAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class BestFitMappingAttribute : Attribute
 {
-    public bool _bestFitMapping;
+    package(mscorlib) bool _bestFitMapping;
     //TODO: generate constructor
     //TODO: generate property 'BestFitMapping'
     public bool ThrowOnUnmappableChar;
@@ -886,7 +886,7 @@ public final class BestFitMappingAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class DefaultCharSetAttribute : Attribute
 {
-    public CharSet _CharSet;
+    package(mscorlib) CharSet _CharSet;
     //TODO: generate constructor
     //TODO: generate property 'CharSet'
 }
@@ -901,8 +901,8 @@ public final class SetWin32ContextInIDispatchAttribute : Attribute
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, false*/)
 public final class ManagedToNativeComInteropStubAttribute : Attribute
 {
-    public Type _classType;
-    public String _methodName;
+    package(mscorlib) Type _classType;
+    package(mscorlib) String _methodName;
     //TODO: generate constructor
     //TODO: generate property 'ClassType'
     //TODO: generate property 'MethodName'
@@ -971,7 +971,7 @@ public class ComEventsHelper : __DotNet__Object
 //
 // see code:ComEventsHelper#ComEventsArchitecture
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public class ComEventsInfo : __DotNet__Object
+package(mscorlib) class ComEventsInfo : __DotNet__Object
 {
     private ComEventsSink _sinks;
     private __DotNet__Object _rcw;
@@ -987,9 +987,9 @@ public class ComEventsInfo : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\ComEventsMethod.cs'
 //
-public class ComEventsMethod : __DotNet__Object
+package(mscorlib) class ComEventsMethod : __DotNet__Object
 {
-    public static class DelegateWrapper : __DotNet__Object
+    package(mscorlib) static class DelegateWrapper : __DotNet__Object
     {
         private Delegate _d;
         private bool _once/*todo: implement initializer*/ = bool();
@@ -1019,7 +1019,7 @@ public class ComEventsMethod : __DotNet__Object
 //
 // see code:ComEventsHelper#ComEventsArchitecture
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public class ComEventsSink : __DotNet__Object, NativeMethods.IDispatch, ICustomQueryInterface
+package(mscorlib) class ComEventsSink : __DotNet__Object, NativeMethods.IDispatch, ICustomQueryInterface
 {
     private Guid _iidSourceItf;
     private IConnectionPoint _connectionPoint;
@@ -1247,8 +1247,8 @@ public struct GCHandle
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct HandleRef
 {
-    public __DotNet__Object m_wrapper;
-    public IntPtr m_handle;
+    package(mscorlib) __DotNet__Object m_wrapper;
+    package(mscorlib) IntPtr m_handle;
     //TODO: generate constructor
     //TODO: generate property 'Wrapper'
     //TODO: generate property 'Handle'
@@ -1614,7 +1614,7 @@ public class Marshal : __DotNet__Object
     //TODO: generate method StringToHGlobalAuto
     //TODO: generate method GetHRForException
     //TODO: generate method GetHRForException_WinRT
-    public static immutable Guid ManagedNameGuid/*todo: implement initializer*/ = Guid();
+    package(mscorlib) static immutable Guid ManagedNameGuid/*todo: implement initializer*/ = Guid();
     //TODO: generate method GetTypeLibName
     //TODO: generate method GetTypeLibName
     //TODO: generate method GetTypeLibNameInternal
@@ -1747,7 +1747,7 @@ public class MarshalDirectiveException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\NativeBuffer.cs'
 //
-public class NativeBuffer : __DotNet__Object, IDisposable
+package(mscorlib) class NativeBuffer : __DotNet__Object, IDisposable
 {
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private static immutable SafeHandle s_emptyHandle;
@@ -1789,7 +1789,7 @@ public final class NativeCallableAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\NativeMethods.cs'
 //
-public class NativeMethods : __DotNet__Object
+package(mscorlib) class NativeMethods : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method VariantClear
@@ -1797,7 +1797,7 @@ public class NativeMethods : __DotNet__Object
     @__DotNet__Attribute!(ComImportAttribute.stringof)
     @__DotNet__Attribute!(InterfaceTypeAttribute.stringof/*, ComInterfaceType.InterfaceIsIUnknown*/)
     @__DotNet__Attribute!(GuidAttribute.stringof/*, "00020400-0000-0000-C000-000000000046"*/)
-    public static interface IDispatch
+    package(mscorlib) static interface IDispatch
     {
         //TODO: generate method GetTypeInfoCount
         //TODO: generate method GetTypeInfo
@@ -1821,7 +1821,7 @@ public alias ObjectCreationDelegate = IntPtr delegate(IntPtr aggregator);
 //
 // This Enum matchs the CorPinvokeMap defined in CorHdr.h
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum PInvokeMap
+package(mscorlib) enum PInvokeMap
 {
     NoMangle = 0x0001,
     CharSetMask = 0x0006,
@@ -2132,7 +2132,7 @@ public abstract class SafeHandle : CriticalFinalizerObject, IDisposable
 /// Handle for heap memory that allows tracking of capacity and reallocating.
 /// </summary>
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public final class SafeHeapHandle : SafeBuffer
+package(mscorlib) final class SafeHeapHandle : SafeBuffer
 {
     //TODO: generate constructor
     //TODO: generate property 'IsInvalid'
@@ -2160,7 +2160,7 @@ public class SEHException : ExternalException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Runtime\InteropServices\StringBuffer.cs'
 //
-public class StringBuffer : NativeBuffer
+package(mscorlib) class StringBuffer : NativeBuffer
 {
     private uint _length;
     //TODO: generate constructor
@@ -2288,7 +2288,7 @@ public interface UCOMIEnumConnections
 //
 @__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IEnumerable instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "496B0ABE-CDEE-11d3-88E8-00902754C43A"*/)
-public interface UCOMIEnumerable
+package(mscorlib) interface UCOMIEnumerable
 {
     //TODO: generate method GetEnumerator
 }
@@ -2298,7 +2298,7 @@ public interface UCOMIEnumerable
 //
 @__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IEnumerator instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "496B0ABF-CDEE-11d3-88E8-00902754C43A"*/)
-public interface UCOMIEnumerator
+package(mscorlib) interface UCOMIEnumerator
 {
     //TODO: generate method MoveNext
     //TODO: generate property 'Current'
@@ -2355,7 +2355,7 @@ public interface UCOMIEnumVARIANT
 //
 @__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IExpando instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "AFBF15E6-C37C-11d2-B88E-00A0C9B471B8"*/)
-public interface UCOMIExpando : UCOMIReflect
+package(mscorlib) interface UCOMIExpando : UCOMIReflect
 {
     //TODO: generate method AddField
     //TODO: generate method AddProperty
@@ -2423,7 +2423,7 @@ public interface UCOMIPersistFile
 //
 @__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Use System.Runtime.InteropServices.ComTypes.IReflect instead. http://go.microsoft.com/fwlink/?linkid=14202", false*/)
 @__DotNet__Attribute!(GuidAttribute.stringof/*, "AFBF15E5-C37C-11d2-B88E-00A0C9B471B8"*/)
-public interface UCOMIReflect
+package(mscorlib) interface UCOMIReflect
 {
     //TODO: generate method GetMethod
     //TODO: generate method GetMethod
@@ -2897,7 +2897,7 @@ public final class UnknownWrapper : __DotNet__Object
 /// </summary>
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Explicit*/)
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public struct Variant
+package(mscorlib) struct Variant
 {
     //TODO: generate constructor
     // #endif
@@ -2912,11 +2912,11 @@ public struct Variant
     @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     private static struct TypeUnion
     {
-        public ushort _vt;
-        public ushort _wReserved1;
-        public ushort _wReserved2;
-        public ushort _wReserved3;
-        public UnionTypes _unionTypes;
+        package(mscorlib) ushort _vt;
+        package(mscorlib) ushort _wReserved1;
+        package(mscorlib) ushort _wReserved2;
+        package(mscorlib) ushort _wReserved3;
+        package(mscorlib) UnionTypes _unionTypes;
     }
     @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
     private static struct Record
@@ -2932,54 +2932,54 @@ public struct Variant
         // *** BEGIN GENERATED CODE ***
         // generated by function: gen_UnionTypes from: generate_comdispatch.py
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public byte _i1;
+        package(mscorlib) byte _i1;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public short _i2;
+        package(mscorlib) short _i2;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public int _i4;
+        package(mscorlib) int _i4;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public long _i8;
+        package(mscorlib) long _i8;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public ubyte _ui1;
+        package(mscorlib) ubyte _ui1;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public ushort _ui2;
+        package(mscorlib) ushort _ui2;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public uint _ui4;
+        package(mscorlib) uint _ui4;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public ulong _ui8;
+        package(mscorlib) ulong _ui8;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public int _int;
+        package(mscorlib) int _int;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public uint _uint;
+        package(mscorlib) uint _uint;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public short _bool;
+        package(mscorlib) short _bool;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public int _error;
+        package(mscorlib) int _error;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public float _r4;
+        package(mscorlib) float _r4;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public double _r8;
+        package(mscorlib) double _r8;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public long _cy;
+        package(mscorlib) long _cy;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public double _date;
+        package(mscorlib) double _date;
         @__DotNet__Attribute!(SuppressMessageAttribute.stringof/*, "Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources"*/)
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public IntPtr _bstr;
+        package(mscorlib) IntPtr _bstr;
         @__DotNet__Attribute!(SuppressMessageAttribute.stringof/*, "Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources"*/)
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public IntPtr _unknown;
+        package(mscorlib) IntPtr _unknown;
         @__DotNet__Attribute!(SuppressMessageAttribute.stringof/*, "Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources"*/)
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public IntPtr _dispatch;
+        package(mscorlib) IntPtr _dispatch;
         // *** END GENERATED CODE ***
         // #endregion
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public IntPtr _pvarVal;
+        package(mscorlib) IntPtr _pvarVal;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public IntPtr _byref;
+        package(mscorlib) IntPtr _byref;
         @__DotNet__Attribute!(FieldOffsetAttribute.stringof/*, 0*/)
-        public Record _record;
+        package(mscorlib) Record _record;
     }
     //TODO: generate method IsPrimitiveType
     //TODO: generate method CopyFromIndirect

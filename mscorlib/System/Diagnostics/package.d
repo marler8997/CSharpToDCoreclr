@@ -32,10 +32,10 @@ import mscorlib.System.Threading :
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\Assert.cs'
 //
-public class Assert : __DotNet__Object
+package(mscorlib) class Assert : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum int COR_E_FAILFAST/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_FAILFAST/*todo: implement initializer*/ = int();
     private static AssertFilter Filter;
     //TODO: generate constructor
     //TODO: generate method Check
@@ -56,11 +56,11 @@ public class Assert : __DotNet__Object
 // 
 // The default filter brings up a simple Win32 dialog with 3 buttons.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public abstract class AssertFilter : __DotNet__Object
+package(mscorlib) abstract class AssertFilter : __DotNet__Object
 {
     //TODO: generate method AssertFailure
 }
-public class DefaultFilter : AssertFilter
+package(mscorlib) class DefaultFilter : AssertFilter
 {
     //TODO: generate constructor
     //TODO: generate method AssertFailure
@@ -70,7 +70,7 @@ public class DefaultFilter : AssertFilter
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\AssertFilters.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum AssertFilters
+package(mscorlib) enum AssertFilters
 {
     FailDebug = 0,
     FailIgnore = 1,
@@ -274,7 +274,7 @@ public final class DebuggerVisualizerAttribute : Attribute
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\EditAndContinueHelper.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class EditAndContinueHelper : __DotNet__Object
+package(mscorlib) final class EditAndContinueHelper : __DotNet__Object
 {
     private __DotNet__Object _objectReference;
 }
@@ -282,7 +282,7 @@ public final class EditAndContinueHelper : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\ICustomDebuggerNotification.cs'
 //
-public interface ICustomDebuggerNotification
+package(mscorlib) interface ICustomDebuggerNotification
 {
 }
 
@@ -298,17 +298,17 @@ public interface ICustomDebuggerNotification
 // variables.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(HostProtectionAttribute.stringof/*, Synchronization=true, ExternalThreading=true*/)
-public alias LogMessageEventHandler = void delegate(LoggingLevels level, LogSwitch category, String message, StackTrace location);
+package(mscorlib) alias LogMessageEventHandler = void delegate(LoggingLevels level, LogSwitch category, String message, StackTrace location);
 // LogSwitchLevelHandlers are triggered when the level of a LogSwitch is modified
 // NOTE: These are NOT triggered when the log switch setting is changed from the 
 // attached debugger.
 // 
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public alias LogSwitchLevelHandler = void delegate(LogSwitch ls, LoggingLevels newLevel);
-public class Log : __DotNet__Object
+package(mscorlib) alias LogSwitchLevelHandler = void delegate(LogSwitch ls, LoggingLevels newLevel);
+package(mscorlib) class Log : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public static Hashtable m_Hashtable;
+    package(mscorlib) static Hashtable m_Hashtable;
     private static /*todo: volatile*/ bool m_fConsoleDeviceEnabled;
     private static LogMessageEventHandler _LogMessageEventHandler;
     private static /*todo: volatile*/ LogSwitchLevelHandler _LogSwitchLevelHandler;
@@ -358,7 +358,7 @@ public class Log : __DotNet__Object
 // This level can be used to organize messages, and also to filter which
 // messages are displayed.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum LoggingLevels
+package(mscorlib) enum LoggingLevels
 {
     TraceLevel0 = 0,
     TraceLevel1 = 1,
@@ -379,13 +379,13 @@ public enum LoggingLevels
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Diagnostics\LogSwitch.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class LogSwitch : __DotNet__Object
+package(mscorlib) class LogSwitch : __DotNet__Object
 {
-    public String strName;
-    public String strDescription;
+    package(mscorlib) String strName;
+    package(mscorlib) String strDescription;
     private LogSwitch ParentSwitch;
-    public /*todo: volatile*/ LoggingLevels iLevel;
-    public /*todo: volatile*/ LoggingLevels iOldLevel;
+    package(mscorlib) /*todo: volatile*/ LoggingLevels iLevel;
+    package(mscorlib) /*todo: volatile*/ LoggingLevels iOldLevel;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -455,7 +455,7 @@ public class StackFrame : __DotNet__Object
 // to the unmanaged definition of the StackFrameHelper class, in 
 // VM\DebugDebugger.h. The binder will catch some of these layout problems.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class StackFrameHelper : __DotNet__Object, IDisposable
+package(mscorlib) class StackFrameHelper : __DotNet__Object, IDisposable
 {
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private Thread targetThread;
@@ -533,7 +533,7 @@ public class StackTrace : __DotNet__Object
     //TODO: generate method GetFrame
     //TODO: generate method GetFrames
     //TODO: generate method ToString
-    public enum TraceFormat
+    package(mscorlib) enum TraceFormat
     {
         Normal,
         TrailingNewLine,

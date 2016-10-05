@@ -93,7 +93,8 @@ import mscorlib.System.Reflection :
     RuntimeModule,
     MemberInfo,
     IReflect,
-    MemberFilter;
+    MemberFilter,
+    Missing;
 import mscorlib.System.Diagnostics :
     DebuggerDisplayAttribute,
     DebuggerTypeProxyAttribute;
@@ -111,6 +112,11 @@ import mscorlib.System.Runtime.Serialization :
     ISerializable,
     IDeserializationCallback,
     IObjectReference;
+import mscorlib.System.Globalization :
+    UnicodeCategory,
+    CompareInfo,
+    Calendar,
+    CultureInfo;
 import mscorlib.System.Runtime.CompilerServices :
     FriendAccessAllowedAttribute;
 import mscorlib.System.Runtime.Versioning :
@@ -119,13 +125,13 @@ import mscorlib.System.Resources :
     ResourceManager;
 import mscorlib.Microsoft.Win32 :
     Win32Native;
-import mscorlib.System.Globalization :
-    CompareInfo,
-    Calendar;
 import mscorlib.System.Security.Permissions :
     HostProtectionAttribute;
 import mscorlib.System.Runtime.ExceptionServices :
     ExceptionDispatchInfo;
+import mscorlib.System.Diagnostics.Contracts :
+    Contract,
+    PureAttribute;
 import mscorlib.Microsoft.Win32.SafeHandles :
     SafeFileHandle,
     SafeHandleZeroOrMinusOneIsInvalid;
@@ -133,13 +139,13 @@ import mscorlib.System.Threading :
     CancellationToken,
     SynchronizationContext,
     SendOrPostCallback;
-import mscorlib.System.Diagnostics.Contracts :
-    PureAttribute;
+import mscorlib :
+    EmptyArray1;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\Common\PinnableBufferCache.cs'
 //
-public final class PinnableBufferCache : __DotNet__Object
+package(mscorlib) final class PinnableBufferCache : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method AllocateBuffer
@@ -166,7 +172,7 @@ public final class PinnableBufferCache : __DotNet__Object
     private int m_minBufferCount;
     private int m_numAllocCalls;
 }
-public final class Gen2GcCallback : CriticalFinalizerObject
+package(mscorlib) final class Gen2GcCallback : CriticalFinalizerObject
 {
     //TODO: generate constructor
     //TODO: generate method Register
@@ -175,7 +181,7 @@ public final class Gen2GcCallback : CriticalFinalizerObject
     //TODO: generate method Setup
     //TODO: generate destructor
 }
-public final class PinnableBufferCacheEventSource : __DotNet__Object
+package(mscorlib) final class PinnableBufferCacheEventSource : __DotNet__Object
 {
     public static immutable PinnableBufferCacheEventSource Log/*todo: implement initializer*/ = null;
     //TODO: generate method IsEnabled
@@ -205,7 +211,7 @@ public final class PinnableBufferCacheEventSource : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\__ComObject.cs'
 //
-public class __ComObject : MarshalByRefObject
+package(mscorlib) class __ComObject : MarshalByRefObject
 {
     private Hashtable m_ObjectToDataMap;
     //TODO: generate constructor
@@ -224,9 +230,9 @@ public class __ComObject : MarshalByRefObject
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\__Filters.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class __Filters : __DotNet__Object
+package(mscorlib) class __Filters : __DotNet__Object
 {
-    public static immutable __Filters Instance/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable __Filters Instance/*todo: implement initializer*/ = null;
     //TODO: generate method FilterAttribute
     //TODO: generate method FilterName
     //TODO: generate method FilterIgnoreCase
@@ -235,119 +241,119 @@ public class __Filters : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\__HResults.cs'
 //
-public class __HResults : __DotNet__Object
+package(mscorlib) class __HResults : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum int RO_E_CLOSED/*todo: implement initializer*/ = int();
-    public enum int E_BOUNDS/*todo: implement initializer*/ = int();
-    public enum int E_CHANGED_STATE/*todo: implement initializer*/ = int();
-    public enum int E_FAIL/*todo: implement initializer*/ = int();
-    public enum int E_POINTER/*todo: implement initializer*/ = int();
-    public enum int E_NOTIMPL/*todo: implement initializer*/ = int();
-    public enum int REGDB_E_CLASSNOTREG/*todo: implement initializer*/ = int();
-    public enum int COR_E_AMBIGUOUSMATCH/*todo: implement initializer*/ = int();
-    public enum int COR_E_APPDOMAINUNLOADED/*todo: implement initializer*/ = int();
-    public enum int COR_E_APPLICATION/*todo: implement initializer*/ = int();
-    public enum int COR_E_ARGUMENT/*todo: implement initializer*/ = int();
-    public enum int COR_E_ARGUMENTOUTOFRANGE/*todo: implement initializer*/ = int();
-    public enum int COR_E_ARITHMETIC/*todo: implement initializer*/ = int();
-    public enum int COR_E_ARRAYTYPEMISMATCH/*todo: implement initializer*/ = int();
-    public enum int COR_E_BADIMAGEFORMAT/*todo: implement initializer*/ = int();
-    public enum int COR_E_TYPEUNLOADED/*todo: implement initializer*/ = int();
-    public enum int COR_E_CANNOTUNLOADAPPDOMAIN/*todo: implement initializer*/ = int();
-    public enum int COR_E_COMEMULATE/*todo: implement initializer*/ = int();
-    public enum int COR_E_CONTEXTMARSHAL/*todo: implement initializer*/ = int();
-    public enum int COR_E_DATAMISALIGNED/*todo: implement initializer*/ = int();
-    public enum int COR_E_TIMEOUT/*todo: implement initializer*/ = int();
-    public enum int COR_E_CUSTOMATTRIBUTEFORMAT/*todo: implement initializer*/ = int();
-    public enum int COR_E_DIVIDEBYZERO/*todo: implement initializer*/ = int();
-    public enum int COR_E_DUPLICATEWAITOBJECT/*todo: implement initializer*/ = int();
-    public enum int COR_E_EXCEPTION/*todo: implement initializer*/ = int();
-    public enum int COR_E_EXECUTIONENGINE/*todo: implement initializer*/ = int();
-    public enum int COR_E_FIELDACCESS/*todo: implement initializer*/ = int();
-    public enum int COR_E_FORMAT/*todo: implement initializer*/ = int();
-    public enum int COR_E_INDEXOUTOFRANGE/*todo: implement initializer*/ = int();
-    public enum int COR_E_INSUFFICIENTMEMORY/*todo: implement initializer*/ = int();
-    public enum int COR_E_INSUFFICIENTEXECUTIONSTACK/*todo: implement initializer*/ = int();
-    public enum int COR_E_INVALIDCAST/*todo: implement initializer*/ = int();
-    public enum int COR_E_INVALIDCOMOBJECT/*todo: implement initializer*/ = int();
-    public enum int COR_E_INVALIDFILTERCRITERIA/*todo: implement initializer*/ = int();
-    public enum int COR_E_INVALIDOLEVARIANTTYPE/*todo: implement initializer*/ = int();
-    public enum int COR_E_INVALIDOPERATION/*todo: implement initializer*/ = int();
-    public enum int COR_E_INVALIDPROGRAM/*todo: implement initializer*/ = int();
-    public enum int COR_E_KEYNOTFOUND/*todo: implement initializer*/ = int();
-    public enum int COR_E_MARSHALDIRECTIVE/*todo: implement initializer*/ = int();
-    public enum int COR_E_MEMBERACCESS/*todo: implement initializer*/ = int();
-    public enum int COR_E_METHODACCESS/*todo: implement initializer*/ = int();
-    public enum int COR_E_MISSINGFIELD/*todo: implement initializer*/ = int();
-    public enum int COR_E_MISSINGMANIFESTRESOURCE/*todo: implement initializer*/ = int();
-    public enum int COR_E_MISSINGMEMBER/*todo: implement initializer*/ = int();
-    public enum int COR_E_MISSINGMETHOD/*todo: implement initializer*/ = int();
-    public enum int COR_E_MISSINGSATELLITEASSEMBLY/*todo: implement initializer*/ = int();
-    public enum int COR_E_MULTICASTNOTSUPPORTED/*todo: implement initializer*/ = int();
-    public enum int COR_E_NOTFINITENUMBER/*todo: implement initializer*/ = int();
-    public enum int COR_E_PLATFORMNOTSUPPORTED/*todo: implement initializer*/ = int();
-    public enum int COR_E_NOTSUPPORTED/*todo: implement initializer*/ = int();
-    public enum int COR_E_NULLREFERENCE/*todo: implement initializer*/ = int();
-    public enum int COR_E_OBJECTDISPOSED/*todo: implement initializer*/ = int();
-    public enum int COR_E_OPERATIONCANCELED/*todo: implement initializer*/ = int();
-    public enum int COR_E_OUTOFMEMORY/*todo: implement initializer*/ = int();
-    public enum int COR_E_OVERFLOW/*todo: implement initializer*/ = int();
-    public enum int COR_E_RANK/*todo: implement initializer*/ = int();
-    public enum int COR_E_REFLECTIONTYPELOAD/*todo: implement initializer*/ = int();
-    public enum int COR_E_RUNTIMEWRAPPED/*todo: implement initializer*/ = int();
-    public enum int COR_E_SAFEARRAYRANKMISMATCH/*todo: implement initializer*/ = int();
-    public enum int COR_E_SAFEARRAYTYPEMISMATCH/*todo: implement initializer*/ = int();
-    public enum int COR_E_SAFEHANDLEMISSINGATTRIBUTE/*todo: implement initializer*/ = int();
-    public enum int COR_E_SECURITY/*todo: implement initializer*/ = int();
-    public enum int COR_E_SERIALIZATION/*todo: implement initializer*/ = int();
-    public enum int COR_E_SEMAPHOREFULL/*todo: implement initializer*/ = int();
-    public enum int COR_E_WAITHANDLECANNOTBEOPENED/*todo: implement initializer*/ = int();
-    public enum int COR_E_ABANDONEDMUTEX/*todo: implement initializer*/ = int();
-    public enum int COR_E_STACKOVERFLOW/*todo: implement initializer*/ = int();
-    public enum int COR_E_SYNCHRONIZATIONLOCK/*todo: implement initializer*/ = int();
-    public enum int COR_E_SYSTEM/*todo: implement initializer*/ = int();
-    public enum int COR_E_TARGET/*todo: implement initializer*/ = int();
-    public enum int COR_E_TARGETINVOCATION/*todo: implement initializer*/ = int();
-    public enum int COR_E_TARGETPARAMCOUNT/*todo: implement initializer*/ = int();
-    public enum int COR_E_THREADABORTED/*todo: implement initializer*/ = int();
-    public enum int COR_E_THREADINTERRUPTED/*todo: implement initializer*/ = int();
-    public enum int COR_E_THREADSTATE/*todo: implement initializer*/ = int();
-    public enum int COR_E_THREADSTOP/*todo: implement initializer*/ = int();
-    public enum int COR_E_THREADSTART/*todo: implement initializer*/ = int();
-    public enum int COR_E_TYPEACCESS/*todo: implement initializer*/ = int();
-    public enum int COR_E_TYPEINITIALIZATION/*todo: implement initializer*/ = int();
-    public enum int COR_E_TYPELOAD/*todo: implement initializer*/ = int();
-    public enum int COR_E_ENTRYPOINTNOTFOUND/*todo: implement initializer*/ = int();
-    public enum int COR_E_DLLNOTFOUND/*todo: implement initializer*/ = int();
-    public enum int COR_E_UNAUTHORIZEDACCESS/*todo: implement initializer*/ = int();
-    public enum int COR_E_UNSUPPORTEDFORMAT/*todo: implement initializer*/ = int();
-    public enum int COR_E_VERIFICATION/*todo: implement initializer*/ = int();
-    public enum int COR_E_HOSTPROTECTION/*todo: implement initializer*/ = int();
-    public enum int CORSEC_E_MIN_GRANT_FAIL/*todo: implement initializer*/ = int();
-    public enum int CORSEC_E_NO_EXEC_PERM/*todo: implement initializer*/ = int();
-    public enum int CORSEC_E_POLICY_EXCEPTION/*todo: implement initializer*/ = int();
-    public enum int CORSEC_E_XMLSYNTAX/*todo: implement initializer*/ = int();
-    public enum int NTE_FAIL/*todo: implement initializer*/ = int();
-    public enum int CORSEC_E_CRYPTO/*todo: implement initializer*/ = int();
-    public enum int CORSEC_E_CRYPTO_UNEX_OPER/*todo: implement initializer*/ = int();
-    public enum int DISP_E_OVERFLOW/*todo: implement initializer*/ = int();
-    public enum int FUSION_E_REF_DEF_MISMATCH/*todo: implement initializer*/ = int();
-    public enum int FUSION_E_INVALID_NAME/*todo: implement initializer*/ = int();
-    public enum int TYPE_E_TYPEMISMATCH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int RO_E_CLOSED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int E_BOUNDS/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int E_CHANGED_STATE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int E_FAIL/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int E_POINTER/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int E_NOTIMPL/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int REGDB_E_CLASSNOTREG/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_AMBIGUOUSMATCH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_APPDOMAINUNLOADED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_APPLICATION/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_ARGUMENT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_ARGUMENTOUTOFRANGE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_ARITHMETIC/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_ARRAYTYPEMISMATCH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_BADIMAGEFORMAT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_TYPEUNLOADED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_CANNOTUNLOADAPPDOMAIN/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_COMEMULATE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_CONTEXTMARSHAL/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_DATAMISALIGNED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_TIMEOUT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_CUSTOMATTRIBUTEFORMAT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_DIVIDEBYZERO/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_DUPLICATEWAITOBJECT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_EXCEPTION/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_EXECUTIONENGINE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_FIELDACCESS/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_FORMAT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_INDEXOUTOFRANGE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_INSUFFICIENTMEMORY/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_INSUFFICIENTEXECUTIONSTACK/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_INVALIDCAST/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_INVALIDCOMOBJECT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_INVALIDFILTERCRITERIA/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_INVALIDOLEVARIANTTYPE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_INVALIDOPERATION/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_INVALIDPROGRAM/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_KEYNOTFOUND/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_MARSHALDIRECTIVE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_MEMBERACCESS/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_METHODACCESS/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_MISSINGFIELD/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_MISSINGMANIFESTRESOURCE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_MISSINGMEMBER/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_MISSINGMETHOD/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_MISSINGSATELLITEASSEMBLY/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_MULTICASTNOTSUPPORTED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_NOTFINITENUMBER/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_PLATFORMNOTSUPPORTED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_NOTSUPPORTED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_NULLREFERENCE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_OBJECTDISPOSED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_OPERATIONCANCELED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_OUTOFMEMORY/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_OVERFLOW/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_RANK/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_REFLECTIONTYPELOAD/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_RUNTIMEWRAPPED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_SAFEARRAYRANKMISMATCH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_SAFEARRAYTYPEMISMATCH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_SAFEHANDLEMISSINGATTRIBUTE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_SECURITY/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_SERIALIZATION/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_SEMAPHOREFULL/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_WAITHANDLECANNOTBEOPENED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_ABANDONEDMUTEX/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_STACKOVERFLOW/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_SYNCHRONIZATIONLOCK/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_SYSTEM/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_TARGET/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_TARGETINVOCATION/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_TARGETPARAMCOUNT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_THREADABORTED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_THREADINTERRUPTED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_THREADSTATE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_THREADSTOP/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_THREADSTART/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_TYPEACCESS/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_TYPEINITIALIZATION/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_TYPELOAD/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_ENTRYPOINTNOTFOUND/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_DLLNOTFOUND/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_UNAUTHORIZEDACCESS/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_UNSUPPORTEDFORMAT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_VERIFICATION/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int COR_E_HOSTPROTECTION/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CORSEC_E_MIN_GRANT_FAIL/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CORSEC_E_NO_EXEC_PERM/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CORSEC_E_POLICY_EXCEPTION/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CORSEC_E_XMLSYNTAX/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int NTE_FAIL/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CORSEC_E_CRYPTO/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CORSEC_E_CRYPTO_UNEX_OPER/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DISP_E_OVERFLOW/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int FUSION_E_REF_DEF_MISMATCH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int FUSION_E_INVALID_NAME/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TYPE_E_TYPEMISMATCH/*todo: implement initializer*/ = int();
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\_LocalDataStore.cs'
 //
-public final class LocalDataStoreHolder : __DotNet__Object
+package(mscorlib) final class LocalDataStoreHolder : __DotNet__Object
 {
     private LocalDataStore m_Store;
     //TODO: generate constructor
     //TODO: generate destructor
     //TODO: generate property 'Store'
 }
-public final class LocalDataStoreElement : __DotNet__Object
+package(mscorlib) final class LocalDataStoreElement : __DotNet__Object
 {
     private __DotNet__Object m_value;
     private long m_cookie;
@@ -355,7 +361,7 @@ public final class LocalDataStoreElement : __DotNet__Object
     //TODO: generate property 'Value'
     //TODO: generate property 'Cookie'
 }
-public final class LocalDataStore : __DotNet__Object
+package(mscorlib) final class LocalDataStore : __DotNet__Object
 {
     private LocalDataStoreElement[] m_DataTable;
     private LocalDataStoreMgr m_Manager;
@@ -386,7 +392,7 @@ public final class LocalDataStoreSlot : __DotNet__Object
     //TODO: generate property 'Cookie'
     //TODO: generate destructor
 }
-public final class LocalDataStoreMgr : __DotNet__Object
+package(mscorlib) final class LocalDataStoreMgr : __DotNet__Object
 {
     private enum int InitialSlotTableSize/*todo: implement initializer*/ = int();
     private enum int SlotTableDoubleThreshold/*todo: implement initializer*/ = int();
@@ -517,9 +523,9 @@ public template Predicate1(T)
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class Activator : __DotNet__Object, _Activator
 {
-    public enum int LookupMask/*todo: implement initializer*/ = int();
-    public enum BindingFlags ConLookup/*todo: implement initializer*/ = (cast(BindingFlags)0);
-    public enum BindingFlags ConstructorDefault/*todo: implement initializer*/ = (cast(BindingFlags)0);
+    package(mscorlib) enum int LookupMask/*todo: implement initializer*/ = int();
+    package(mscorlib) enum BindingFlags ConLookup/*todo: implement initializer*/ = (cast(BindingFlags)0);
+    package(mscorlib) enum BindingFlags ConstructorDefault/*todo: implement initializer*/ = (cast(BindingFlags)0);
     //TODO: generate constructor
     //TODO: generate method CreateInstance
     //TODO: generate method CreateInstance
@@ -616,7 +622,7 @@ public class AppContext : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\AppContext\AppContextDefaultValues.CoreClrOverrides.cs'
 //
-public class AppContextDefaultValues : __DotNet__Object
+package(mscorlib) class AppContextDefaultValues : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method TryGetSwitchOverridePartial
@@ -648,7 +654,7 @@ public class AppContextDefaultValues : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\AppContext\AppContextSwitches.cs'
 //
-public class AppContextSwitches : __DotNet__Object
+package(mscorlib) class AppContextSwitches : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static int _noAsyncCurrentCulture;
@@ -698,15 +704,15 @@ public alias AssemblyLoadEventHandler = void delegate(__DotNet__Object sender, A
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public alias AppDomainInitializer = void delegate(String[] args);
-public class AppDomainInitializerInfo : __DotNet__Object
+package(mscorlib) class AppDomainInitializerInfo : __DotNet__Object
 {
-    public static class ItemInfo : __DotNet__Object
+    package(mscorlib) static class ItemInfo : __DotNet__Object
     {
         public String TargetTypeAssembly;
         public String TargetTypeName;
         public String MethodName;
     }
-    public ItemInfo[] Info;
+    package(mscorlib) ItemInfo[] Info;
     //TODO: generate constructor
     //TODO: generate method Unwrap
 }
@@ -748,7 +754,7 @@ public final class AppDomain : __DotNet__Object, _AppDomain, IEvidenceFactory
     private bool _HasSetPolicy;
     private bool _IsFastFullTrustDomain;
     private bool _compatFlagsInitialized;
-    public enum String TargetFrameworkNameAppCompatSetting/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String TargetFrameworkNameAppCompatSetting/*todo: implement initializer*/ = null;
     private static APPX_FLAGS s_flags;
     //
     // Keep in async with vm\appdomainnative.cpp
@@ -920,7 +926,7 @@ public final class AppDomain : __DotNet__Object, _AppDomain, IEvidenceFactory
     //TODO: generate method CreateInstanceFromAndUnwrap
     //TODO: generate property 'Id'
     //TODO: generate method GetId
-    public enum int DefaultADID/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DefaultADID/*todo: implement initializer*/ = int();
     //TODO: generate method IsDefaultAppDomain
     //TODO: generate method nEnableMonitoring
     //TODO: generate method nMonitoringIsEnabled
@@ -934,7 +940,7 @@ public final class AppDomain : __DotNet__Object, _AppDomain, IEvidenceFactory
     //TODO: generate property 'MonitoringSurvivedMemorySize'
     //TODO: generate property 'MonitoringSurvivedProcessMemorySize'
 }
-public struct AppDomainHandle
+package(mscorlib) struct AppDomainHandle
 {
     private IntPtr m_appDomainHandle;
     //TODO: generate constructor
@@ -958,7 +964,7 @@ public enum LoaderOptimization
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class LoaderOptimizationAttribute : Attribute
 {
-    public ubyte _val;
+    package(mscorlib) ubyte _val;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'Value'
@@ -997,7 +1003,7 @@ public class AppDomainManager : __DotNet__Object
 public final class AppDomainSetup : __DotNet__Object, IAppDomainSetup
 {
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public enum LoaderInformation
+    package(mscorlib) enum LoaderInformation
     {
         // If you add a new value, add the corresponding property
         // to AppDomain.GetData() and SetData()'s switch statements,
@@ -1196,7 +1202,7 @@ public final class ApplicationId : __DotNet__Object
     private Version m_version;
     private String m_processorArchitecture;
     private String m_culture;
-    public ubyte[] m_publicKeyToken;
+    package(mscorlib) ubyte[] m_publicKeyToken;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'PublicKeyToken'
@@ -1369,8 +1375,8 @@ public abstract class Array : __DotNet__Object, ICloneable, IList, IStructuralCo
     //TODO: generate method InternalSetValue
     //TODO: generate property 'Length'
     //TODO: generate method GetMedian
-    public enum int MaxArrayLength/*todo: implement initializer*/ = int();
-    public enum int MaxByteArrayLength/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxArrayLength/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxByteArrayLength/*todo: implement initializer*/ = int();
     //TODO: generate property 'LongLength'
     //TODO: generate method GetLength
     //TODO: generate method GetLongLength
@@ -1546,7 +1552,7 @@ private final class SZArrayHelper : __DotNet__Object
         private T[] _array;
         private int _index;
         private int _endIndex;
-        public static immutable SZGenericArrayEnumerator1!(T) Empty/*todo: implement initializer*/ = null;
+        package(mscorlib) static immutable SZGenericArrayEnumerator1!(T) Empty/*todo: implement initializer*/ = null;
         //TODO: generate constructor
         //TODO: generate method MoveNext
         //TODO: generate property 'Current'
@@ -1741,10 +1747,10 @@ public enum AttributeTargets
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public final class AttributeUsageAttribute : Attribute
 {
-    public AttributeTargets m_attributeTarget/*todo: implement initializer*/ = (cast(AttributeTargets)0);
-    public bool m_allowMultiple/*todo: implement initializer*/ = bool();
-    public bool m_inherited/*todo: implement initializer*/ = bool();
-    public static AttributeUsageAttribute Default/*todo: implement initializer*/ = null;
+    package(mscorlib) AttributeTargets m_attributeTarget/*todo: implement initializer*/ = (cast(AttributeTargets)0);
+    package(mscorlib) bool m_allowMultiple/*todo: implement initializer*/ = bool();
+    package(mscorlib) bool m_inherited/*todo: implement initializer*/ = bool();
+    package(mscorlib) static AttributeUsageAttribute Default/*todo: implement initializer*/ = null;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate property 'ValidOn'
@@ -1780,7 +1786,7 @@ public class BadImageFormatException : SystemException
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\BCLDebug.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum LogLevel
+package(mscorlib) enum LogLevel
 {
     Trace = 0,
     Status = 20,
@@ -1788,22 +1794,22 @@ public enum LogLevel
     Error = 50,
     Panic = 100,
 }
-public struct SwitchStructure
+package(mscorlib) struct SwitchStructure
 {
-    public String name;
-    public int value;
+    package(mscorlib) String name;
+    package(mscorlib) int value;
     //TODO: generate constructor
 }
-public class BCLDebug : __DotNet__Object
+package(mscorlib) class BCLDebug : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public static /*todo: volatile*/ bool m_registryChecked/*todo: implement initializer*/ = bool();
-    public static /*todo: volatile*/ bool m_loggingNotEnabled/*todo: implement initializer*/ = bool();
-    public static bool m_perfWarnings;
-    public static bool m_correctnessWarnings;
-    public static bool m_safeHandleStackTraces;
-    public static /*todo: volatile*/ bool m_domainUnloadAdded;
-    public static /*todo: volatile*/ PermissionSet m_MakeConsoleErrorLoggingWork;
+    package(mscorlib) static /*todo: volatile*/ bool m_registryChecked/*todo: implement initializer*/ = bool();
+    package(mscorlib) static /*todo: volatile*/ bool m_loggingNotEnabled/*todo: implement initializer*/ = bool();
+    package(mscorlib) static bool m_perfWarnings;
+    package(mscorlib) static bool m_correctnessWarnings;
+    package(mscorlib) static bool m_safeHandleStackTraces;
+    package(mscorlib) static /*todo: volatile*/ bool m_domainUnloadAdded;
+    package(mscorlib) static /*todo: volatile*/ PermissionSet m_MakeConsoleErrorLoggingWork;
     private static immutable SwitchStructure[] switches/*todo: implement initializer*/ = null;
     private static immutable LogLevel[] levelConversions/*todo: implement initializer*/ = null;
     //TODO: generate method WaitForFinalizers
@@ -1968,7 +1974,7 @@ public class CannotUnloadAppDomainException : SystemException
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\CfgParser.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum ConfigEvents
+package(mscorlib) enum ConfigEvents
 {
     StartDocument = 0,
     StartDTD = StartDocument + 1,
@@ -1983,7 +1989,7 @@ public enum ConfigEvents
     LastEvent = DataAvailable,
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum ConfigNodeType
+package(mscorlib) enum ConfigNodeType
 {
     Element = 1,
     Attribute = Element + 1,
@@ -2015,7 +2021,7 @@ public enum ConfigNodeType
     LastNodeType = DTDSubset + 1,
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum ConfigNodeSubType
+package(mscorlib) enum ConfigNodeSubType
 {
     Version = cast(int)/*MemberExpression:Type*/ConfigNodeType.LastNodeType,
     Encoding = Version + 1,
@@ -2049,7 +2055,7 @@ public enum ConfigNodeSubType
     Questionmark = Plus + 1,
     LastSubNodeType = Questionmark + 1,
 }
-public abstract class BaseConfigHandler : __DotNet__Object
+package(mscorlib) abstract class BaseConfigHandler : __DotNet__Object
 {
     protected Delegate[] eventCallbacks;
     //TODO: generate constructor
@@ -2068,7 +2074,7 @@ public abstract class BaseConfigHandler : __DotNet__Object
     //TODO: generate method CreateAttribute
     //TODO: generate method RunParser
 }
-public class ConfigTreeParser : BaseConfigHandler
+package(mscorlib) class ConfigTreeParser : BaseConfigHandler
 {
     private ConfigNode rootNode/*todo: implement initializer*/ = null;
     private ConfigNode currentNode/*todo: implement initializer*/ = null;
@@ -2094,7 +2100,7 @@ public class ConfigTreeParser : BaseConfigHandler
     //TODO: generate method Trace
     //TODO: generate method GetInvalidSyntaxMessage
 }
-public class ConfigNode : __DotNet__Object
+package(mscorlib) class ConfigNode : __DotNet__Object
 {
     private String m_name/*todo: implement initializer*/ = null;
     private String m_value/*todo: implement initializer*/ = null;
@@ -2121,7 +2127,7 @@ public class ConfigNode : __DotNet__Object
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
 public struct Char
 {
-    public wchar m_value;
+    package(mscorlib) wchar m_value;
     public enum wchar MaxValue/*todo: implement initializer*/ = wchar();
     public enum wchar MinValue/*todo: implement initializer*/ = wchar();
     private static immutable ubyte[] categoryForLatin1/*todo: implement initializer*/ = null;
@@ -2202,11 +2208,11 @@ public struct Char
     //TODO: generate method IsLowSurrogate
     //TODO: generate method IsSurrogatePair
     //TODO: generate method IsSurrogatePair
-    public enum int UNICODE_PLANE00_END/*todo: implement initializer*/ = int();
-    public enum int UNICODE_PLANE01_START/*todo: implement initializer*/ = int();
-    public enum int UNICODE_PLANE16_END/*todo: implement initializer*/ = int();
-    public enum int HIGH_SURROGATE_START/*todo: implement initializer*/ = int();
-    public enum int LOW_SURROGATE_END/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int UNICODE_PLANE00_END/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int UNICODE_PLANE01_START/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int UNICODE_PLANE16_END/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int HIGH_SURROGATE_START/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int LOW_SURROGATE_END/*todo: implement initializer*/ = int();
     //TODO: generate method ConvertFromUtf32
     //TODO: generate method ConvertToUtf32
     //TODO: generate method ConvertToUtf32
@@ -2246,7 +2252,7 @@ public final class CharEnumerator : __DotNet__Object, IEnumerator, ICloneable, I
 /// and refactor managed Fx code to access all compat switches through here.
 /// </summary>
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class CLRConfig : __DotNet__Object
+package(mscorlib) class CLRConfig : __DotNet__Object
 {
     //TODO: generate method CheckLegacyManagedDeflateStream
     //TODO: generate method CheckThrowUnobservedTaskExceptions
@@ -2269,7 +2275,7 @@ public final class CLSCompliantAttribute : Attribute
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\CompatibilitySwitches.cs'
 //
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class CompatibilitySwitches : __DotNet__Object
+package(mscorlib) class CompatibilitySwitches : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static bool s_AreSwitchesSet;
@@ -2330,9 +2336,9 @@ public enum Base64FormattingOptions
 public class Convert : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public static immutable RuntimeType[] ConvertTypes/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable RuntimeType[] ConvertTypes/*todo: implement initializer*/ = null;
     private static immutable RuntimeType EnumType/*todo: implement initializer*/ = null;
-    public static immutable wchar[] base64Table/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable wchar[] base64Table/*todo: implement initializer*/ = null;
     private enum int base64LineBreakPosition/*todo: implement initializer*/ = int();
     private static bool TriggerAsserts/*todo: implement initializer*/ = bool();
     //TODO: generate method DoAsserts
@@ -2668,9 +2674,9 @@ public class Convert : __DotNet__Object
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Currency.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public struct Currency
+package(mscorlib) struct Currency
 {
-    public long m_value;
+    package(mscorlib) long m_value;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate method FromOACurrency
@@ -2691,7 +2697,7 @@ public struct Currency
 @__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "System.CurrentSystemTimeZone has been deprecated.  Please investigate the use of System.TimeZoneInfo.Local instead."*/)
 // #endif
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class CurrentSystemTimeZone : TimeZone
+package(mscorlib) class CurrentSystemTimeZone : TimeZone
 {
     private enum long TicksPerMillisecond/*todo: implement initializer*/ = long();
     private enum long TicksPerSecond/*todo: implement initializer*/ = long();
@@ -2784,10 +2790,10 @@ public struct DateTime
     private enum int DaysPer400Years/*todo: implement initializer*/ = int();
     private enum int DaysTo1601/*todo: implement initializer*/ = int();
     private enum int DaysTo1899/*todo: implement initializer*/ = int();
-    public enum int DaysTo1970/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DaysTo1970/*todo: implement initializer*/ = int();
     private enum int DaysTo10000/*todo: implement initializer*/ = int();
-    public enum long MinTicks/*todo: implement initializer*/ = long();
-    public enum long MaxTicks/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long MinTicks/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long MaxTicks/*todo: implement initializer*/ = long();
     private enum long MaxMillis/*todo: implement initializer*/ = long();
     private enum long FileTimeOffset/*todo: implement initializer*/ = long();
     private enum long DoubleDateOffset/*todo: implement initializer*/ = long();
@@ -2984,13 +2990,13 @@ public enum DateTimeKind
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public struct DateTimeOffset
 {
-    public enum long MaxOffset/*todo: implement initializer*/ = long();
-    public enum long MinOffset/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long MaxOffset/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long MinOffset/*todo: implement initializer*/ = long();
     private enum long UnixEpochTicks/*todo: implement initializer*/ = long();
     private enum long UnixEpochSeconds/*todo: implement initializer*/ = long();
     private enum long UnixEpochMilliseconds/*todo: implement initializer*/ = long();
-    public enum long UnixMinSeconds/*todo: implement initializer*/ = long();
-    public enum long UnixMaxSeconds/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long UnixMinSeconds/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long UnixMaxSeconds/*todo: implement initializer*/ = long();
     public static immutable DateTimeOffset MinValue/*todo: implement initializer*/ = DateTimeOffset();
     public static immutable DateTimeOffset MaxValue/*todo: implement initializer*/ = DateTimeOffset();
     private DateTime m_dateTime;
@@ -3345,7 +3351,7 @@ public class __Boxed__Decimal : __DotNet__Object, IFormattable, IComparable, ICo
 //
 //Marked serializable even though it has no state.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class DefaultBinder : Binder
+package(mscorlib) class DefaultBinder : Binder
 {
     //TODO: generate method BindToMethod
     //TODO: generate method BindToField
@@ -3367,11 +3373,11 @@ public class DefaultBinder : Binder
     //TODO: generate method CanConvertPrimitiveObjectToType
     //TODO: generate method ReorderParams
     //TODO: generate method CreateParamOrder
-    public static class BinderState : __DotNet__Object
+    package(mscorlib) static class BinderState : __DotNet__Object
     {
-        public int[] m_argsMap;
-        public int m_originalSize;
-        public bool m_isParamArray;
+        package(mscorlib) int[] m_argsMap;
+        package(mscorlib) int m_originalSize;
+        package(mscorlib) bool m_isParamArray;
         //TODO: generate constructor
     }
 }
@@ -3386,21 +3392,21 @@ public abstract class Delegate : __DotNet__Object, ICloneable, ISerializable
 {
     // _target is the object we will invoke on
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public __DotNet__Object _target;
+    package(mscorlib) __DotNet__Object _target;
     // MethodBase, either cached after first request or assigned from a DynamicMethod
     // For open delegates to collectible types, this may be a LoaderAllocator object
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public __DotNet__Object _methodBase;
+    package(mscorlib) __DotNet__Object _methodBase;
     // _methodPtr is a pointer to the method we will invoke
     // It could be a small thunk if this is a static or UM call
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public IntPtr _methodPtr;
+    package(mscorlib) IntPtr _methodPtr;
     // In the case of a static method passed to a delegate, this field stores
     // whatever _methodPtr would have stored: and _methodPtr points to a
     // small thunk which removes the "this" pointer before going on
     // to _methodPtrAux.
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public IntPtr _methodPtrAux;
+    package(mscorlib) IntPtr _methodPtrAux;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -3451,7 +3457,7 @@ public abstract class Delegate : __DotNet__Object, ICloneable, ISerializable
     //TODO: generate method GetTarget
     //TODO: generate method CompareUnmanagedFunctionPtrs
 }
-public enum DelegateBindingFlags
+package(mscorlib) enum DelegateBindingFlags
 {
     StaticMethodOnly = 0x00000001,
     InstanceMethodOnly = 0x00000002,
@@ -3467,21 +3473,21 @@ public enum DelegateBindingFlags
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\DelegateSerializationHolder.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class DelegateSerializationHolder : __DotNet__Object, IObjectReference, ISerializable
+package(mscorlib) final class DelegateSerializationHolder : __DotNet__Object, IObjectReference, ISerializable
 {
     //TODO: generate method GetDelegateSerializationInfo
     // #endregion
     // #region Definitions
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static class DelegateEntry : __DotNet__Object
+    package(mscorlib) static class DelegateEntry : __DotNet__Object
     {
-        public String type;
-        public String assembly;
-        public __DotNet__Object target;
-        public String targetTypeAssembly;
-        public String targetTypeName;
-        public String methodName;
-        public DelegateEntry delegateEntry;
+        package(mscorlib) String type;
+        package(mscorlib) String assembly;
+        package(mscorlib) __DotNet__Object target;
+        package(mscorlib) String targetTypeAssembly;
+        package(mscorlib) String targetTypeName;
+        package(mscorlib) String methodName;
+        package(mscorlib) DelegateEntry delegateEntry;
         //TODO: generate constructor
         //TODO: generate property 'Entry'
     }
@@ -3529,14 +3535,14 @@ public class DllNotFoundException : TypeLoadException
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct Double
 {
-    public double m_value;
+    package(mscorlib) double m_value;
     public enum double MinValue/*todo: implement initializer*/ = double();
     public enum double MaxValue/*todo: implement initializer*/ = double();
     public enum double Epsilon/*todo: implement initializer*/ = double();
     public enum double NegativeInfinity/*todo: implement initializer*/ = double();
     public enum double PositiveInfinity/*todo: implement initializer*/ = double();
     public enum double NaN/*todo: implement initializer*/ = double();
-    public static double NegativeZero/*todo: implement initializer*/ = double();
+    package(mscorlib) static double NegativeZero/*todo: implement initializer*/ = double();
     //TODO: generate method IsInfinity
     //TODO: generate method IsPositiveInfinity
     //TODO: generate method IsNegativeInfinity
@@ -3611,7 +3617,7 @@ public class DuplicateWaitObjectException : ArgumentException
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Empty.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class Empty : __DotNet__Object, ISerializable
+package(mscorlib) final class Empty : __DotNet__Object, ISerializable
 {
     //TODO: generate constructor
     public static immutable Empty Value/*todo: implement initializer*/ = null;
@@ -3663,13 +3669,13 @@ public abstract class Enum : ValueType, IComparable, IFormattable, IConvertible
     }
     private static struct EnumResult
     {
-        public __DotNet__Object parsedEnum;
-        public bool canThrow;
-        public ParseFailureKind m_failure;
-        public String m_failureMessageID;
-        public String m_failureParameter;
-        public __DotNet__Object m_failureMessageFormatArgument;
-        public __DotNet__Exception m_innerException;
+        package(mscorlib) __DotNet__Object parsedEnum;
+        package(mscorlib) bool canThrow;
+        package(mscorlib) ParseFailureKind m_failure;
+        package(mscorlib) String m_failureMessageID;
+        package(mscorlib) String m_failureParameter;
+        package(mscorlib) __DotNet__Object m_failureMessageFormatArgument;
+        package(mscorlib) __DotNet__Exception m_innerException;
         //TODO: generate method SetFailure
         //TODO: generate method SetFailure
         //TODO: generate method SetFailure
@@ -3758,15 +3764,15 @@ public class Environment : __DotNet__Object
     private enum int MaxEnvVariableValueLength/*todo: implement initializer*/ = int();
     private enum int MaxSystemEnvVariableLength/*todo: implement initializer*/ = int();
     private enum int MaxUserEnvVariableLength/*todo: implement initializer*/ = int();
-    public static final class ResourceHelper : __DotNet__Object
+    package(mscorlib) static final class ResourceHelper : __DotNet__Object
     {
         //TODO: generate constructor
         private String m_name;
         private ResourceManager SystemResMgr;
         private List1!(String) currentlyLoading;
-        public bool resourceManagerInited/*todo: implement initializer*/ = bool();
+        package(mscorlib) bool resourceManagerInited/*todo: implement initializer*/ = bool();
         private int infinitelyRecursingCount;
-        public static class GetResourceStringUserData : __DotNet__Object
+        package(mscorlib) static class GetResourceStringUserData : __DotNet__Object
         {
             public ResourceHelper m_resourceHelper;
             public String m_key;
@@ -4013,7 +4019,7 @@ public class __DotNet__Exception : __DotNet__Object, ISerializable, _Exception
     // Once the exception is serialized to debugger, debugger only needs the error reference string
     //
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static class __RestrictedErrorObject : __DotNet__Object
+    package(mscorlib) static class __RestrictedErrorObject : __DotNet__Object
     {
         // Hold the error object instance but don't serialize/deserialize it
         @__DotNet__Attribute!(NonSerializedAttribute.stringof)
@@ -4067,7 +4073,7 @@ public class __DotNet__Exception : __DotNet__Object, ISerializable, _Exception
     private String _className;
     private MethodBase _exceptionMethod;
     private String _exceptionMethodString;
-    public String _message;
+    package(mscorlib) String _message;
     private IDictionary _data;
     private __DotNet__Exception _innerException;
     private String _helpURL;
@@ -4078,7 +4084,7 @@ public class __DotNet__Exception : __DotNet__Object, ISerializable, _Exception
     private String _remoteStackTraceString;
     private int _remoteStackIndex;
     private __DotNet__Object _dynamicMethods;
-    public int _HResult;
+    package(mscorlib) int _HResult;
     //TODO: generate property 'HResult'
     private String _source;
     private IntPtr _xptrs;
@@ -4091,7 +4097,7 @@ public class __DotNet__Exception : __DotNet__Object, ISerializable, _Exception
     //TODO: generate method GetType
     //TODO: generate property 'IsTransient'
     //TODO: generate method nIsTransient
-    public enum ExceptionMessageKind
+    package(mscorlib) enum ExceptionMessageKind
     {
         ThreadAbort = 1,
         ThreadInterrupted = 2,
@@ -4100,7 +4106,7 @@ public class __DotNet__Exception : __DotNet__Object, ISerializable, _Exception
     //TODO: generate method GetMessageFromNativeResources
     //TODO: generate method GetMessageFromNativeResources
 }
-public final class CrossAppDomainMarshaledException : SystemException
+package(mscorlib) final class CrossAppDomainMarshaledException : SystemException
 {
     //TODO: generate constructor
     //TODO: generate method InternalToString
@@ -4190,7 +4196,7 @@ public enum GCCollectionMode
 // make sure you change the def in vm\gc.h 
 // if you change this!
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public enum InternalGCCollectionMode
+package(mscorlib) enum InternalGCCollectionMode
 {
     NonBlocking = 0x00000001,
     Blocking = 0x00000002,
@@ -4284,16 +4290,16 @@ public class GC : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\DateTimeFormat.cs'
 //
-public class DateTimeFormat : __DotNet__Object
+package(mscorlib) class DateTimeFormat : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum int MaxSecondsFractionDigits/*todo: implement initializer*/ = int();
-    public static immutable TimeSpan NullOffset/*todo: implement initializer*/ = TimeSpan();
-    public static wchar[] allStandardFormats/*todo: implement initializer*/ = null;
-    public enum String RoundtripFormat/*todo: implement initializer*/ = null;
-    public enum String RoundtripDateTimeUnfixed/*todo: implement initializer*/ = null;
+    package(mscorlib) enum int MaxSecondsFractionDigits/*todo: implement initializer*/ = int();
+    package(mscorlib) static immutable TimeSpan NullOffset/*todo: implement initializer*/ = TimeSpan();
+    package(mscorlib) static wchar[] allStandardFormats/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String RoundtripFormat/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String RoundtripDateTimeUnfixed/*todo: implement initializer*/ = null;
     private enum int DEFAULT_ALL_DATETIMES_SIZE/*todo: implement initializer*/ = int();
-    public static String[] fixedNumberFormats/*todo: implement initializer*/ = null;
+    package(mscorlib) static String[] fixedNumberFormats/*todo: implement initializer*/ = null;
     //TODO: generate method FormatDigits
     //TODO: generate method FormatDigits
     //TODO: generate method HebrewFormatDigits
@@ -4320,12 +4326,12 @@ public class DateTimeFormat : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Globalization\DateTimeParse.cs'
 //
-public class DateTimeParse : __DotNet__Object
+package(mscorlib) class DateTimeParse : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum int MaxDateTimeNumberDigits/*todo: implement initializer*/ = int();
-    public alias MatchNumberDelegate = bool delegate(ref __DTString str, int digitLen, out int result);
-    public static MatchNumberDelegate m_hebrewNumberParser/*todo: implement initializer*/ = null;
+    package(mscorlib) enum int MaxDateTimeNumberDigits/*todo: implement initializer*/ = int();
+    package(mscorlib) alias MatchNumberDelegate = bool delegate(ref __DTString str, int digitLen, out int result);
+    package(mscorlib) static MatchNumberDelegate m_hebrewNumberParser/*todo: implement initializer*/ = null;
     //TODO: generate method ParseExact
     //TODO: generate method ParseExact
     //TODO: generate method TryParseExact
@@ -4336,7 +4342,7 @@ public class DateTimeParse : __DotNet__Object
     //TODO: generate method TryParseExactMultiple
     //TODO: generate method TryParseExactMultiple
     //TODO: generate method TryParseExactMultiple
-    public enum DTT : int
+    package(mscorlib) enum DTT : int
     {
         End = 0,
         NumEnd = 1,
@@ -4362,13 +4368,13 @@ public class DateTimeParse : __DotNet__Object
         NumLocalTimeMark = 19,
         Max = 20,
     }
-    public enum TM
+    package(mscorlib) enum TM
     {
         NotSet = -1,
         AM = 0,
         PM = 1,
     }
-    public enum DS
+    package(mscorlib) enum DS
     {
         BEGIN = 0,
         N = 1,
@@ -4415,8 +4421,8 @@ public class DateTimeParse : __DotNet__Object
         DX_NNY = 38,
     }
     private static DS[][] dateParsingStates/*todo: implement initializer*/ = null;
-    public enum String GMTName/*todo: implement initializer*/ = null;
-    public enum String ZuluName/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String GMTName/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String ZuluName/*todo: implement initializer*/ = null;
     //TODO: generate method MatchWord
     //TODO: generate method GetTimeZoneName
     //TODO: generate method IsDigit
@@ -4502,14 +4508,14 @@ public class DateTimeParse : __DotNet__Object
     //TODO: generate method Hex
     //TODO: generate method Hex
     //TODO: generate method Hex
-    public static bool _tracingEnabled/*todo: implement initializer*/ = bool();
+    package(mscorlib) static bool _tracingEnabled/*todo: implement initializer*/ = bool();
 }
-public struct __DTString
+package(mscorlib) struct __DTString
 {
-    public String Value;
-    public int Index;
-    public int len;
-    public wchar m_current;
+    package(mscorlib) String Value;
+    package(mscorlib) int Index;
+    package(mscorlib) int len;
+    package(mscorlib) wchar m_current;
     private CompareInfo m_info;
     private bool m_checkDigitToken;
     //TODO: generate constructor
@@ -4539,7 +4545,7 @@ public struct __DTString
     //TODO: generate method GetSubString
     //TODO: generate method ConsumeSubString
 }
-public enum DTSubStringType
+package(mscorlib) enum DTSubStringType
 {
     Unknown = 0,
     Invalid = 1,
@@ -4547,39 +4553,39 @@ public enum DTSubStringType
     End = 3,
     Other = 4,
 }
-public struct DTSubString
+package(mscorlib) struct DTSubString
 {
-    public String s;
-    public int index;
-    public int length;
-    public DTSubStringType type;
-    public int value;
+    package(mscorlib) String s;
+    package(mscorlib) int index;
+    package(mscorlib) int length;
+    package(mscorlib) DTSubStringType type;
+    package(mscorlib) int value;
     //TODO: generate indexer
 }
-public struct DateTimeToken
+package(mscorlib) struct DateTimeToken
 {
-    public DateTimeParse.DTT dtt;
-    public TokenType suffix;
-    public int num;
+    package(mscorlib) DateTimeParse.DTT dtt;
+    package(mscorlib) TokenType suffix;
+    package(mscorlib) int num;
 }
-public struct DateTimeRawInfo
+package(mscorlib) struct DateTimeRawInfo
 {
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private int* num;
-    public int numCount;
-    public int month;
-    public int year;
-    public int dayOfWeek;
-    public int era;
-    public DateTimeParse.TM timeMark;
-    public double fraction;
-    public bool hasSameDateAndTimeSeparators;
-    public bool timeZone;
+    package(mscorlib) int numCount;
+    package(mscorlib) int month;
+    package(mscorlib) int year;
+    package(mscorlib) int dayOfWeek;
+    package(mscorlib) int era;
+    package(mscorlib) DateTimeParse.TM timeMark;
+    package(mscorlib) double fraction;
+    package(mscorlib) bool hasSameDateAndTimeSeparators;
+    package(mscorlib) bool timeZone;
     //TODO: generate method Init
     //TODO: generate method AddNumber
     //TODO: generate method GetNumber
 }
-public enum ParseFailureKind
+package(mscorlib) enum ParseFailureKind
 {
     None = 0,
     ArgumentNull = 1,
@@ -4588,7 +4594,7 @@ public enum ParseFailureKind
     FormatBadDateTimeCalendar = 4,
 }
 @__DotNet__Attribute!(FlagsAttribute.stringof)
-public enum ParseFlags
+package(mscorlib) enum ParseFlags
 {
     HaveYear = 0x00000001,
     HaveMonth = 0x00000002,
@@ -4606,43 +4612,43 @@ public enum ParseFlags
     Rfc1123Pattern = 0x00002000,
     UtcSortPattern = 0x00004000,
 }
-public struct DateTimeResult
+package(mscorlib) struct DateTimeResult
 {
-    public int Year;
-    public int Month;
-    public int Day;
-    public int Hour;
-    public int Minute;
-    public int Second;
-    public double fraction;
-    public int era;
-    public ParseFlags flags;
-    public TimeSpan timeZoneOffset;
-    public Calendar calendar;
-    public DateTime parsedDate;
-    public mscorlib.System.ParseFailureKind failure;
-    public String failureMessageID;
-    public __DotNet__Object failureMessageFormatArgument;
-    public String failureArgumentName;
+    package(mscorlib) int Year;
+    package(mscorlib) int Month;
+    package(mscorlib) int Day;
+    package(mscorlib) int Hour;
+    package(mscorlib) int Minute;
+    package(mscorlib) int Second;
+    package(mscorlib) double fraction;
+    package(mscorlib) int era;
+    package(mscorlib) ParseFlags flags;
+    package(mscorlib) TimeSpan timeZoneOffset;
+    package(mscorlib) Calendar calendar;
+    package(mscorlib) DateTime parsedDate;
+    package(mscorlib) mscorlib.System.ParseFailureKind failure;
+    package(mscorlib) String failureMessageID;
+    package(mscorlib) __DotNet__Object failureMessageFormatArgument;
+    package(mscorlib) String failureArgumentName;
     //TODO: generate method Init
     //TODO: generate method SetDate
     //TODO: generate method SetFailure
     //TODO: generate method SetFailure
 }
-public struct ParsingInfo
+package(mscorlib) struct ParsingInfo
 {
-    public Calendar calendar;
-    public int dayOfWeek;
-    public DateTimeParse.TM timeMark;
-    public bool fUseHour12;
-    public bool fUseTwoDigitYear;
-    public bool fAllowInnerWhite;
-    public bool fAllowTrailingWhite;
-    public bool fCustomNumberParser;
-    public DateTimeParse.MatchNumberDelegate parseNumberDelegate;
+    package(mscorlib) Calendar calendar;
+    package(mscorlib) int dayOfWeek;
+    package(mscorlib) DateTimeParse.TM timeMark;
+    package(mscorlib) bool fUseHour12;
+    package(mscorlib) bool fUseTwoDigitYear;
+    package(mscorlib) bool fAllowInnerWhite;
+    package(mscorlib) bool fAllowTrailingWhite;
+    package(mscorlib) bool fCustomNumberParser;
+    package(mscorlib) DateTimeParse.MatchNumberDelegate parseNumberDelegate;
     //TODO: generate method Init
 }
-public enum TokenType
+package(mscorlib) enum TokenType
 {
     // The valid token should start from 1.
     // Regular tokens. The range is from 0x00 ~ 0xff.
@@ -4743,13 +4749,13 @@ public struct Guid
     }
     private static struct GuidResult
     {
-        public Guid parsedGuid;
-        public GuidParseThrowStyle throwStyle;
-        public ParseFailureKind m_failure;
-        public String m_failureMessageID;
-        public __DotNet__Object m_failureMessageFormatArgument;
-        public String m_failureArgumentName;
-        public __DotNet__Exception m_innerException;
+        package(mscorlib) Guid parsedGuid;
+        package(mscorlib) GuidParseThrowStyle throwStyle;
+        package(mscorlib) ParseFailureKind m_failure;
+        package(mscorlib) String m_failureMessageID;
+        package(mscorlib) __DotNet__Object m_failureMessageFormatArgument;
+        package(mscorlib) String m_failureArgumentName;
+        package(mscorlib) __DotNet__Exception m_innerException;
         //TODO: generate method Init
         //TODO: generate method SetFailure
         //TODO: generate method SetFailure
@@ -4815,7 +4821,7 @@ public interface _AppDomain
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IAppDomainPauseManager.cs'
 //
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public class AppDomainPauseManager : __DotNet__Object
+package(mscorlib) class AppDomainPauseManager : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -5062,7 +5068,7 @@ public final class InsufficientMemoryException : OutOfMemoryException
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
 public struct Int16
 {
-    public short m_value;
+    package(mscorlib) short m_value;
     public enum short MaxValue/*todo: implement initializer*/ = short();
     public enum short MinValue/*todo: implement initializer*/ = short();
     //TODO: generate method CompareTo
@@ -5114,7 +5120,7 @@ public class __Boxed__Int16 : __DotNet__Object, IComparable, IFormattable, IConv
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct Int32
 {
-    public int m_value;
+    package(mscorlib) int m_value;
     public enum int MaxValue/*todo: implement initializer*/ = int();
     public enum int MinValue/*todo: implement initializer*/ = int();
     //TODO: generate method CompareTo
@@ -5163,7 +5169,7 @@ public class __Boxed__Int32 : __DotNet__Object, IComparable, IFormattable, IConv
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct Int64
 {
-    public long m_value;
+    package(mscorlib) long m_value;
     public enum long MaxValue/*todo: implement initializer*/ = long();
     public enum long MinValue/*todo: implement initializer*/ = long();
     //TODO: generate method CompareTo
@@ -5360,10 +5366,10 @@ public interface IServiceProvider
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Lazy.cs'
 //
-public class LazyHelpers : __DotNet__Object
+package(mscorlib) class LazyHelpers : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public static immutable __DotNet__Object PUBLICATION_ONLY_SENTINEL/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable __DotNet__Object PUBLICATION_ONLY_SENTINEL/*todo: implement initializer*/ = null;
 }
 /// <summary>
 /// Provides support for lazy initialization.
@@ -5394,11 +5400,11 @@ public class Lazy1(T) : __DotNet__Object
     private static class Boxed : __DotNet__Object
     {
         //TODO: generate constructor
-        public T m_value;
+        package(mscorlib) T m_value;
     }
     private static class LazyInternalExceptionHolder : __DotNet__Object
     {
-        public ExceptionDispatchInfo m_edi;
+        package(mscorlib) ExceptionDispatchInfo m_edi;
         //TODO: generate constructor
     }
     private static immutable Func1!(T) ALREADY_INVOKED_SENTINEL/*todo: implement initializer*/ = null;
@@ -5430,7 +5436,7 @@ public class Lazy1(T) : __DotNet__Object
     //TODO: generate method LazyInitValue
     //TODO: generate method CreateValue
 }
-public final class System_LazyDebugView1(T) : __DotNet__Object
+package(mscorlib) final class System_LazyDebugView1(T) : __DotNet__Object
 {
     private immutable Lazy1!(T) m_lazy;
     //TODO: generate constructor
@@ -5785,7 +5791,7 @@ public class NotSupportedException : SystemException
 public struct Nullable1(T)
 {
     private bool hasValue;
-    public T value;
+    package(mscorlib) T value;
     //TODO: generate constructor
     //TODO: generate property 'HasValue'
     //TODO: generate property 'Value'
@@ -6093,7 +6099,7 @@ public class NullReferenceException : SystemException
 //
 //This class contains only static members and does not need to be serializable 
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class Number : __DotNet__Object
+package(mscorlib) class Number : __DotNet__Object
 {
     //TODO: generate constructor
     //TODO: generate method FormatDecimal
@@ -6125,7 +6131,7 @@ public class Number : __DotNet__Object
     // structure, except for the digits, and pack those values into the byte buffer
     // if called out to managed.
     @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-    public static struct NumberBuffer
+    package(mscorlib) static struct NumberBuffer
     {
         public static immutable int NumberBufferBytes/*todo: implement initializer*/ = int();
         @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
@@ -6206,10 +6212,10 @@ public class __DotNet__Object
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(ClassInterfaceAttribute.stringof/*, ClassInterfaceType.AutoDual*/)
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
-public class __Canon : __DotNet__Object
+package(mscorlib) class __Canon : __DotNet__Object
 {
 }
-public class CoreLib : __DotNet__Object
+package(mscorlib) class CoreLib : __DotNet__Object
 {
     public enum String Name/*todo: implement initializer*/ = null;
     //TODO: generate method FixupCoreLibName
@@ -6266,7 +6272,7 @@ public final class ObsoleteAttribute : Attribute
 //
 // Made serializable in anticipation of this class eventually having state.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class OleAutBinder : DefaultBinder
+package(mscorlib) class OleAutBinder : DefaultBinder
 {
     //TODO: generate method ChangeType
 }
@@ -6354,7 +6360,7 @@ public final class ParamArrayAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\ParamsArray.cs'
 //
-public struct ParamsArray
+package(mscorlib) struct ParamsArray
 {
     private static immutable __DotNet__Object[] oneArgArray/*todo: implement initializer*/ = null;
     private static immutable __DotNet__Object[] twoArgArray/*todo: implement initializer*/ = null;
@@ -6375,17 +6381,17 @@ public struct ParamsArray
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\ParseNumbers.cs'
 //
-public class ParseNumbers : __DotNet__Object
+package(mscorlib) class ParseNumbers : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum int PrintAsI1/*todo: implement initializer*/ = int();
-    public enum int PrintAsI2/*todo: implement initializer*/ = int();
-    public enum int PrintAsI4/*todo: implement initializer*/ = int();
-    public enum int TreatAsUnsigned/*todo: implement initializer*/ = int();
-    public enum int TreatAsI1/*todo: implement initializer*/ = int();
-    public enum int TreatAsI2/*todo: implement initializer*/ = int();
-    public enum int IsTight/*todo: implement initializer*/ = int();
-    public enum int NoSpace/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int PrintAsI1/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int PrintAsI2/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int PrintAsI4/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TreatAsUnsigned/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TreatAsI1/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TreatAsI2/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int IsTight/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int NoSpace/*todo: implement initializer*/ = int();
     //TODO: generate method StringToLong
     //TODO: generate method StringToLong
     //TODO: generate method StringToLong
@@ -6440,10 +6446,10 @@ public class Progress1(T) : __DotNet__Object, IProgress1!(T)
     //TODO: generate method Report
     //TODO: generate method InvokeHandlers
 }
-public class ProgressStatics : __DotNet__Object
+package(mscorlib) class ProgressStatics : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public static immutable SynchronizationContext DefaultContext/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable SynchronizationContext DefaultContext/*todo: implement initializer*/ = null;
 }
 
 //
@@ -6487,79 +6493,79 @@ public class RankException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\ResId.cs'
 //
-public class ResId : __DotNet__Object
+package(mscorlib) class ResId : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum String Arg_ArrayLengthsDiffer/*todo: implement initializer*/ = null;
-    public enum String Argument_InvalidNumberOfMembers/*todo: implement initializer*/ = null;
-    public enum String Argument_UnequalMembers/*todo: implement initializer*/ = null;
-    public enum String Argument_SpecifyValueSize/*todo: implement initializer*/ = null;
-    public enum String Argument_UnmatchingSymScope/*todo: implement initializer*/ = null;
-    public enum String Argument_NotInExceptionBlock/*todo: implement initializer*/ = null;
-    public enum String Argument_NotExceptionType/*todo: implement initializer*/ = null;
-    public enum String Argument_InvalidLabel/*todo: implement initializer*/ = null;
-    public enum String Argument_UnclosedExceptionBlock/*todo: implement initializer*/ = null;
-    public enum String Argument_MissingDefaultConstructor/*todo: implement initializer*/ = null;
-    public enum String Argument_TooManyFinallyClause/*todo: implement initializer*/ = null;
-    public enum String Argument_NotInTheSameModuleBuilder/*todo: implement initializer*/ = null;
-    public enum String Argument_BadCurrentLocalVariable/*todo: implement initializer*/ = null;
-    public enum String Argument_DuplicateModuleName/*todo: implement initializer*/ = null;
-    public enum String Argument_BadPersistableModuleInTransientAssembly/*todo: implement initializer*/ = null;
-    public enum String Argument_HasToBeArrayClass/*todo: implement initializer*/ = null;
-    public enum String Argument_InvalidDirectory/*todo: implement initializer*/ = null;
-    public enum String MissingType/*todo: implement initializer*/ = null;
-    public enum String MissingModule/*todo: implement initializer*/ = null;
-    public enum String ArgumentOutOfRange_Index/*todo: implement initializer*/ = null;
-    public enum String ArgumentOutOfRange_Range/*todo: implement initializer*/ = null;
-    public enum String ExecutionEngine_YoureHosed/*todo: implement initializer*/ = null;
-    public enum String Format_NeedSingleChar/*todo: implement initializer*/ = null;
-    public enum String Format_StringZeroLength/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_EnumEnded/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_EnumFailedVersion/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_EnumNotStarted/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_EnumOpCantHappen/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_InternalState/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_ModifyRONumFmtInfo/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_MethodBaked/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_NotADebugModule/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_MethodHasBody/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_OpenLocalVariableScope/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_TypeHasBeenCreated/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_RefedAssemblyNotSaved/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_AssemblyHasBeenSaved/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_ModuleHasBeenSaved/*todo: implement initializer*/ = null;
-    public enum String InvalidOperation_CannotAlterAssembly/*todo: implement initializer*/ = null;
-    public enum String NotSupported_CannotSaveModuleIndividually/*todo: implement initializer*/ = null;
-    public enum String NotSupported_Constructor/*todo: implement initializer*/ = null;
-    public enum String NotSupported_Method/*todo: implement initializer*/ = null;
-    public enum String NotSupported_NYI/*todo: implement initializer*/ = null;
-    public enum String NotSupported_DynamicModule/*todo: implement initializer*/ = null;
-    public enum String NotSupported_NotDynamicModule/*todo: implement initializer*/ = null;
-    public enum String NotSupported_NotAllTypesAreBaked/*todo: implement initializer*/ = null;
-    public enum String NotSupported_SortedListNestedWrite/*todo: implement initializer*/ = null;
-    public enum String Serialization_ArrayInvalidLength/*todo: implement initializer*/ = null;
-    public enum String Serialization_ArrayNoLength/*todo: implement initializer*/ = null;
-    public enum String Serialization_CannotGetType/*todo: implement initializer*/ = null;
-    public enum String Serialization_InsufficientState/*todo: implement initializer*/ = null;
-    public enum String Serialization_InvalidID/*todo: implement initializer*/ = null;
-    public enum String Serialization_MalformedArray/*todo: implement initializer*/ = null;
-    public enum String Serialization_MultipleMembers/*todo: implement initializer*/ = null;
-    public enum String Serialization_NoID/*todo: implement initializer*/ = null;
-    public enum String Serialization_NoType/*todo: implement initializer*/ = null;
-    public enum String Serialization_NoBaseType/*todo: implement initializer*/ = null;
-    public enum String Serialization_NullSignature/*todo: implement initializer*/ = null;
-    public enum String Serialization_UnknownMember/*todo: implement initializer*/ = null;
-    public enum String Serialization_BadParameterInfo/*todo: implement initializer*/ = null;
-    public enum String Serialization_NoParameterInfo/*todo: implement initializer*/ = null;
-    public enum String WeakReference_NoLongerValid/*todo: implement initializer*/ = null;
-    public enum String Loader_InvalidPath/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Arg_ArrayLengthsDiffer/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_InvalidNumberOfMembers/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_UnequalMembers/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_SpecifyValueSize/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_UnmatchingSymScope/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_NotInExceptionBlock/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_NotExceptionType/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_InvalidLabel/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_UnclosedExceptionBlock/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_MissingDefaultConstructor/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_TooManyFinallyClause/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_NotInTheSameModuleBuilder/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_BadCurrentLocalVariable/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_DuplicateModuleName/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_BadPersistableModuleInTransientAssembly/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_HasToBeArrayClass/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Argument_InvalidDirectory/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String MissingType/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String MissingModule/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String ArgumentOutOfRange_Index/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String ArgumentOutOfRange_Range/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String ExecutionEngine_YoureHosed/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Format_NeedSingleChar/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Format_StringZeroLength/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_EnumEnded/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_EnumFailedVersion/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_EnumNotStarted/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_EnumOpCantHappen/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_InternalState/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_ModifyRONumFmtInfo/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_MethodBaked/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_NotADebugModule/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_MethodHasBody/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_OpenLocalVariableScope/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_TypeHasBeenCreated/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_RefedAssemblyNotSaved/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_AssemblyHasBeenSaved/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_ModuleHasBeenSaved/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String InvalidOperation_CannotAlterAssembly/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String NotSupported_CannotSaveModuleIndividually/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String NotSupported_Constructor/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String NotSupported_Method/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String NotSupported_NYI/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String NotSupported_DynamicModule/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String NotSupported_NotDynamicModule/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String NotSupported_NotAllTypesAreBaked/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String NotSupported_SortedListNestedWrite/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_ArrayInvalidLength/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_ArrayNoLength/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_CannotGetType/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_InsufficientState/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_InvalidID/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_MalformedArray/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_MultipleMembers/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_NoID/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_NoType/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_NoBaseType/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_NullSignature/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_UnknownMember/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_BadParameterInfo/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Serialization_NoParameterInfo/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String WeakReference_NoLongerValid/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String Loader_InvalidPath/*todo: implement initializer*/ = null;
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\RtType.cs'
 //
-public alias CtorDelegate = void delegate(__DotNet__Object instance);
-public enum TypeNameFormatFlags
+package(mscorlib) alias CtorDelegate = void delegate(__DotNet__Object instance);
+package(mscorlib) enum TypeNameFormatFlags
 {
     FormatBasic = 0x00000000,
     FormatNamespace = 0x00000001,
@@ -6578,7 +6584,7 @@ public enum TypeNameFormatFlags
     // and including the assembly name will normally increase the size of the serialized data and also decrease the performance.
     FormatSerialization = FormatNamespace | FormatGenericParam | FormatFullInst,
 }
-public enum TypeNameKind
+package(mscorlib) enum TypeNameKind
 {
     Name,
     ToString,
@@ -6586,9 +6592,9 @@ public enum TypeNameKind
     FullName,
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class RuntimeType : __DotNet__TypeInfo, ISerializable, ICloneable
+package(mscorlib) class RuntimeType : __DotNet__TypeInfo, ISerializable, ICloneable
 {
-    public enum MemberListType
+    package(mscorlib) enum MemberListType
     {
         All,
         CaseSensitive,
@@ -6608,10 +6614,10 @@ public class RuntimeType : __DotNet__TypeInfo, ISerializable, ICloneable
         //TODO: generate property 'Count'
         //TODO: generate method Add
     }
-    public static class RuntimeTypeCache : __DotNet__Object
+    package(mscorlib) static class RuntimeTypeCache : __DotNet__Object
     {
         private enum int MAXNAMELEN/*todo: implement initializer*/ = int();
-        public enum CacheType
+        package(mscorlib) enum CacheType
         {
             Method,
             Constructor,
@@ -6735,13 +6741,13 @@ public class RuntimeType : __DotNet__TypeInfo, ISerializable, ICloneable
     //TODO: generate method FilterApplyMethodBase
     private __DotNet__Object m_keepalive;
     private IntPtr m_cache;
-    public IntPtr m_handle;
+    package(mscorlib) IntPtr m_handle;
     private INVOCATION_FLAGS m_invocationFlags;
     //TODO: generate method IsNonW8PFrameworkAPI
     //TODO: generate method IsSimpleTypeNonW8PFrameworkAPI
     //TODO: generate property 'InvocationFlags'
-    public static immutable RuntimeType ValueType/*todo: implement initializer*/ = null;
-    public static immutable RuntimeType EnumType/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable RuntimeType ValueType/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable RuntimeType EnumType/*todo: implement initializer*/ = null;
     private static immutable RuntimeType ObjectType/*todo: implement initializer*/ = null;
     private static immutable RuntimeType StringType/*todo: implement initializer*/ = null;
     private static immutable RuntimeType DelegateType/*todo: implement initializer*/ = null;
@@ -6874,12 +6880,12 @@ public class RuntimeType : __DotNet__TypeInfo, ISerializable, ICloneable
     //TODO: generate method CreateInstanceImpl
     private static class ActivatorCacheEntry : __DotNet__Object
     {
-        public immutable RuntimeType m_type;
-        public /*todo: volatile*/ CtorDelegate m_ctor;
-        public immutable RuntimeMethodHandleInternal m_hCtorMethodHandle;
-        public immutable MethodAttributes m_ctorAttributes;
-        public immutable bool m_bNeedSecurityCheck;
-        public /*todo: volatile*/ bool m_bFullyInitialized;
+        package(mscorlib) immutable RuntimeType m_type;
+        package(mscorlib) /*todo: volatile*/ CtorDelegate m_ctor;
+        package(mscorlib) immutable RuntimeMethodHandleInternal m_hCtorMethodHandle;
+        package(mscorlib) immutable MethodAttributes m_ctorAttributes;
+        package(mscorlib) immutable bool m_bNeedSecurityCheck;
+        package(mscorlib) /*todo: volatile*/ bool m_bFullyInitialized;
         //TODO: generate constructor
     }
     private static class ActivatorCache : __DotNet__Object
@@ -6915,12 +6921,12 @@ public class RuntimeType : __DotNet__TypeInfo, ISerializable, ICloneable
 // first place. However given RuntimeType is not public all its methods are protected and require full trust
 // to be accessed
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class ReflectionOnlyType : RuntimeType
+package(mscorlib) class ReflectionOnlyType : RuntimeType
 {
     //TODO: generate constructor
     //TODO: generate property 'TypeHandle'
 }
-public struct Utf8String
+package(mscorlib) struct Utf8String
 {
     //TODO: generate method EqualsCaseSensitive
     //TODO: generate method EqualsCaseInsensitive
@@ -7002,7 +7008,7 @@ public struct RuntimeTypeHandle
     //TODO: generate method GetArrayRank
     //TODO: generate method GetToken
     //TODO: generate method GetMethodAt
-    public static struct IntroducedMethodEnumerator
+    package(mscorlib) static struct IntroducedMethodEnumerator
     {
         private bool _firstCall;
         private RuntimeMethodHandleInternal _handle;
@@ -7090,15 +7096,15 @@ public class __Boxed__RuntimeTypeHandle : __DotNet__Object, ISerializable
     RuntimeTypeHandle value;
     alias value this;
 }
-public struct RuntimeMethodHandleInternal
+package(mscorlib) struct RuntimeMethodHandleInternal
 {
     //TODO: generate property 'EmptyHandle'
     //TODO: generate method IsNullHandle
     //TODO: generate property 'Value'
     //TODO: generate constructor
-    public IntPtr m_handle;
+    package(mscorlib) IntPtr m_handle;
 }
-public class RuntimeMethodInfoStub : __DotNet__Object, IRuntimeMethodInfo
+package(mscorlib) class RuntimeMethodInfoStub : __DotNet__Object, IRuntimeMethodInfo
 {
     //TODO: generate constructor
     //TODO: generate constructor
@@ -7113,7 +7119,7 @@ public class RuntimeMethodInfoStub : __DotNet__Object, IRuntimeMethodInfo
     public RuntimeMethodHandleInternal m_value;
     //TODO: generate property 'Value'
 }
-public interface IRuntimeMethodInfo
+package(mscorlib) interface IRuntimeMethodInfo
 {
     //TODO: generate property 'Value'
 }
@@ -7198,20 +7204,20 @@ public class __Boxed__RuntimeMethodHandle : __DotNet__Object, ISerializable
     RuntimeMethodHandle value;
     alias value this;
 }
-public struct RuntimeFieldHandleInternal
+package(mscorlib) struct RuntimeFieldHandleInternal
 {
     //TODO: generate property 'EmptyHandle'
     //TODO: generate method IsNullHandle
     //TODO: generate property 'Value'
     //TODO: generate constructor
-    public IntPtr m_handle;
+    package(mscorlib) IntPtr m_handle;
 }
-public interface IRuntimeFieldInfo
+package(mscorlib) interface IRuntimeFieldInfo
 {
     //TODO: generate property 'Value'
 }
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
-public class RuntimeFieldInfoStub : __DotNet__Object, IRuntimeFieldInfo
+package(mscorlib) class RuntimeFieldInfoStub : __DotNet__Object, IRuntimeFieldInfo
 {
     //TODO: generate constructor
     private __DotNet__Object m_keepalive;
@@ -7313,9 +7319,9 @@ public struct ModuleHandle
     //TODO: generate method _GetMetadataImport
     //TODO: generate method GetMetadataImport
 }
-public class Signature : __DotNet__Object
+package(mscorlib) class Signature : __DotNet__Object
 {
-    public enum MdSigCallingConvention : ubyte
+    package(mscorlib) enum MdSigCallingConvention : ubyte
     {
         Generics = 0x10,
         HasThis = 0x20,
@@ -7335,16 +7341,16 @@ public class Signature : __DotNet__Object
         Max = 0x0B,
     }
     //TODO: generate method GetSignature
-    public RuntimeType[] m_arguments;
-    public RuntimeType m_declaringType;
-    public RuntimeType m_returnTypeORfieldType;
-    public __DotNet__Object m_keepalive;
+    package(mscorlib) RuntimeType[] m_arguments;
+    package(mscorlib) RuntimeType m_declaringType;
+    package(mscorlib) RuntimeType m_returnTypeORfieldType;
+    package(mscorlib) __DotNet__Object m_keepalive;
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public Void* m_sig;
-    public int m_managedCallingConventionAndArgIteratorFlags;
-    public int m_nSizeOfArgStack;
-    public int m_csig;
-    public RuntimeMethodHandleInternal m_pMethod;
+    package(mscorlib) Void* m_sig;
+    package(mscorlib) int m_managedCallingConventionAndArgIteratorFlags;
+    package(mscorlib) int m_nSizeOfArgStack;
+    package(mscorlib) int m_csig;
+    package(mscorlib) RuntimeMethodHandleInternal m_pMethod;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -7356,16 +7362,16 @@ public class Signature : __DotNet__Object
     //TODO: generate method CompareSig
     //TODO: generate method GetCustomModifiers
 }
-public abstract class Resolver : __DotNet__Object
+package(mscorlib) abstract class Resolver : __DotNet__Object
 {
-    public static struct CORINFO_EH_CLAUSE
+    package(mscorlib) static struct CORINFO_EH_CLAUSE
     {
-        public int Flags;
-        public int TryOffset;
-        public int TryLength;
-        public int HandlerOffset;
-        public int HandlerLength;
-        public int ClassTokenOrFilterOffset;
+        package(mscorlib) int Flags;
+        package(mscorlib) int TryOffset;
+        package(mscorlib) int TryLength;
+        package(mscorlib) int HandlerOffset;
+        package(mscorlib) int HandlerLength;
+        package(mscorlib) int ClassTokenOrFilterOffset;
     }
     //TODO: generate method GetJitContext
     //TODO: generate method GetCodeInfo
@@ -7447,7 +7453,7 @@ public final class SerializableAttribute : Attribute
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\SharedStatics.cs'
 //
-public final class SharedStatics : __DotNet__Object
+package(mscorlib) final class SharedStatics : __DotNet__Object
 {
     private static SharedStatics _sharedStatics;
     //TODO: generate constructor
@@ -7468,7 +7474,7 @@ public final class SharedStatics : __DotNet__Object
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public struct Single
 {
-    public float m_value;
+    package(mscorlib) float m_value;
     public enum float MinValue/*todo: implement initializer*/ = float();
     public enum float Epsilon/*todo: implement initializer*/ = float();
     public enum float MaxValue/*todo: implement initializer*/ = float();
@@ -7810,7 +7816,7 @@ public abstract class StringComparer : __DotNet__Object, IComparer, IEqualityCom
     //TODO: generate method GetHashCode
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class CultureAwareComparer : StringComparer, IWellKnownStringEqualityComparer
+package(mscorlib) final class CultureAwareComparer : StringComparer, IWellKnownStringEqualityComparer
 {
     private CompareInfo _compareInfo;
     private bool _ignoreCase;
@@ -7824,7 +7830,7 @@ public final class CultureAwareComparer : StringComparer, IWellKnownStringEquali
     //TODO: generate method GetRandomizedEqualityComparer
     //TODO: generate method GetEqualityComparerForSerialization
 }
-public final class CultureAwareRandomizedComparer : StringComparer, IWellKnownStringEqualityComparer
+package(mscorlib) final class CultureAwareRandomizedComparer : StringComparer, IWellKnownStringEqualityComparer
 {
     private CompareInfo _compareInfo;
     private bool _ignoreCase;
@@ -7841,7 +7847,7 @@ public final class CultureAwareRandomizedComparer : StringComparer, IWellKnownSt
 // #endif
 // Provide x more optimal implementation of ordinal comparison.
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public final class OrdinalComparer : StringComparer, IWellKnownStringEqualityComparer
+package(mscorlib) final class OrdinalComparer : StringComparer, IWellKnownStringEqualityComparer
 {
     private bool _ignoreCase;
     //TODO: generate constructor
@@ -7853,7 +7859,7 @@ public final class OrdinalComparer : StringComparer, IWellKnownStringEqualityCom
     //TODO: generate method GetRandomizedEqualityComparer
     //TODO: generate method GetEqualityComparerForSerialization
 }
-public final class OrdinalRandomizedComparer : StringComparer, IWellKnownStringEqualityComparer
+package(mscorlib) final class OrdinalRandomizedComparer : StringComparer, IWellKnownStringEqualityComparer
 {
     private bool _ignoreCase;
     private long _entropy;
@@ -7866,7 +7872,7 @@ public final class OrdinalRandomizedComparer : StringComparer, IWellKnownStringE
     //TODO: generate method GetRandomizedEqualityComparer
     //TODO: generate method GetEqualityComparerForSerialization
 }
-public interface IWellKnownStringEqualityComparer
+package(mscorlib) interface IWellKnownStringEqualityComparer
 {
     //TODO: generate method GetRandomizedEqualityComparer
     //TODO: generate method GetEqualityComparerForSerialization
@@ -7942,7 +7948,7 @@ public class ThreadStaticAttribute : Attribute
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\ThrowHelper.cs'
 //
 @__DotNet__Attribute!(PureAttribute.stringof)
-public class ThrowHelper : __DotNet__Object
+package(mscorlib) class ThrowHelper : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method ThrowArgumentOutOfRange_IndexException
@@ -7973,7 +7979,7 @@ public class ThrowHelper : __DotNet__Object
     //TODO: generate method GetArgumentName
     //TODO: generate method GetResourceName
 }
-public enum ExceptionArgument
+package(mscorlib) enum ExceptionArgument
 {
     obj,
     dictionary,
@@ -8046,7 +8052,7 @@ public enum ExceptionArgument
     updateValueFactory,
     concurrencyLevel,
 }
-public enum ExceptionResource
+package(mscorlib) enum ExceptionResource
 {
     Argument_ImplementIComparable,
     Argument_InvalidType,
@@ -8197,15 +8203,15 @@ public struct TimeSpan
     private enum int MillisPerMinute/*todo: implement initializer*/ = int();
     private enum int MillisPerHour/*todo: implement initializer*/ = int();
     private enum int MillisPerDay/*todo: implement initializer*/ = int();
-    public enum long MaxSeconds/*todo: implement initializer*/ = long();
-    public enum long MinSeconds/*todo: implement initializer*/ = long();
-    public enum long MaxMilliSeconds/*todo: implement initializer*/ = long();
-    public enum long MinMilliSeconds/*todo: implement initializer*/ = long();
-    public enum long TicksPerTenthSecond/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long MaxSeconds/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long MinSeconds/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long MaxMilliSeconds/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long MinMilliSeconds/*todo: implement initializer*/ = long();
+    package(mscorlib) enum long TicksPerTenthSecond/*todo: implement initializer*/ = long();
     public static immutable TimeSpan Zero/*todo: implement initializer*/ = TimeSpan();
     public static immutable TimeSpan MaxValue/*todo: implement initializer*/ = TimeSpan();
     public static immutable TimeSpan MinValue/*todo: implement initializer*/ = TimeSpan();
-    public long _ticks;
+    package(mscorlib) long _ticks;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -8315,7 +8321,7 @@ public abstract class TimeZone : __DotNet__Object
 // demand for this alternate behavior.
 //
 @__DotNet__Attribute!(FlagsAttribute.stringof)
-public enum TimeZoneInfoOptions
+package(mscorlib) enum TimeZoneInfoOptions
 {
     None = 1,
     NoThrowOnInvalidTime = 2,
@@ -8639,7 +8645,7 @@ public class TimeZoneNotFoundException : __DotNet__Exception
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Tuple.cs'
 //
-public interface ITuple
+package(mscorlib) interface ITuple
 {
     //TODO: generate method ToString
     //TODO: generate method GetHashCode
@@ -9064,7 +9070,7 @@ public abstract class Type : MemberInfo, _Type, IReflect
     //TODO: generate method GetInterfaceMap
     //TODO: generate method GetType
     private enum BindingFlags DefaultLookup/*todo: implement initializer*/ = (cast(BindingFlags)0);
-    public enum BindingFlags DeclaredOnlyLookup/*todo: implement initializer*/ = (cast(BindingFlags)0);
+    package(mscorlib) enum BindingFlags DeclaredOnlyLookup/*todo: implement initializer*/ = (cast(BindingFlags)0);
 }
 
 //
@@ -9167,20 +9173,20 @@ public class TypeLoadException : SystemException, ISerializable
     private String ClassName;
     private String AssemblyName;
     private String MessageArg;
-    public int ResourceId;
+    package(mscorlib) int ResourceId;
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\TypeNameParser.cs'
 //
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-public class SafeTypeNameParserHandle : SafeHandleZeroOrMinusOneIsInvalid
+package(mscorlib) class SafeTypeNameParserHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     //TODO: generate method _ReleaseTypeNameParser
     //TODO: generate constructor
     //TODO: generate method ReleaseHandle
 }
-public final class TypeNameParser : __DotNet__Object, IDisposable
+package(mscorlib) final class TypeNameParser : __DotNet__Object, IDisposable
 {
     //TODO: generate method _CreateTypeNameParser
     //TODO: generate method _GetNames
@@ -9460,20 +9466,20 @@ public alias UnhandledExceptionEventHandler = void delegate(__DotNet__Object sen
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\UnitySerializationHolder.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class UnitySerializationHolder : __DotNet__Object, ISerializable, IObjectReference
+package(mscorlib) class UnitySerializationHolder : __DotNet__Object, ISerializable, IObjectReference
 {
-    public enum int EmptyUnity/*todo: implement initializer*/ = int();
-    public enum int NullUnity/*todo: implement initializer*/ = int();
-    public enum int MissingUnity/*todo: implement initializer*/ = int();
-    public enum int RuntimeTypeUnity/*todo: implement initializer*/ = int();
-    public enum int ModuleUnity/*todo: implement initializer*/ = int();
-    public enum int AssemblyUnity/*todo: implement initializer*/ = int();
-    public enum int GenericParameterTypeUnity/*todo: implement initializer*/ = int();
-    public enum int PartialInstantiationTypeUnity/*todo: implement initializer*/ = int();
-    public enum int Pointer/*todo: implement initializer*/ = int();
-    public enum int Array/*todo: implement initializer*/ = int();
-    public enum int SzArray/*todo: implement initializer*/ = int();
-    public enum int ByRef/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EmptyUnity/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int NullUnity/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MissingUnity/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int RuntimeTypeUnity/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ModuleUnity/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int AssemblyUnity/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int GenericParameterTypeUnity/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int PartialInstantiationTypeUnity/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int Pointer/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int Array/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int SzArray/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ByRef/*todo: implement initializer*/ = int();
     //TODO: generate method GetUnitySerializationInfo
     //TODO: generate method AddElementTypes
     //TODO: generate method MakeElementTypes
@@ -9496,7 +9502,7 @@ public class UnitySerializationHolder : __DotNet__Object, ISerializable, IObject
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\UnSafeCharBuffer.cs'
 //
-public struct UnSafeCharBuffer
+package(mscorlib) struct UnSafeCharBuffer
 {
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
     private wchar* m_buffer;
@@ -9527,53 +9533,53 @@ public abstract class ValueType : __DotNet__Object
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(StructLayoutAttribute.stringof/*, LayoutKind.Sequential*/)
-public struct Variant
+package(mscorlib) struct Variant
 {
     private __DotNet__Object m_objref;
     private int m_data1;
     private int m_data2;
     private int m_flags;
-    public enum int CV_EMPTY/*todo: implement initializer*/ = int();
-    public enum int CV_VOID/*todo: implement initializer*/ = int();
-    public enum int CV_BOOLEAN/*todo: implement initializer*/ = int();
-    public enum int CV_CHAR/*todo: implement initializer*/ = int();
-    public enum int CV_I1/*todo: implement initializer*/ = int();
-    public enum int CV_U1/*todo: implement initializer*/ = int();
-    public enum int CV_I2/*todo: implement initializer*/ = int();
-    public enum int CV_U2/*todo: implement initializer*/ = int();
-    public enum int CV_I4/*todo: implement initializer*/ = int();
-    public enum int CV_U4/*todo: implement initializer*/ = int();
-    public enum int CV_I8/*todo: implement initializer*/ = int();
-    public enum int CV_U8/*todo: implement initializer*/ = int();
-    public enum int CV_R4/*todo: implement initializer*/ = int();
-    public enum int CV_R8/*todo: implement initializer*/ = int();
-    public enum int CV_STRING/*todo: implement initializer*/ = int();
-    public enum int CV_PTR/*todo: implement initializer*/ = int();
-    public enum int CV_DATETIME/*todo: implement initializer*/ = int();
-    public enum int CV_TIMESPAN/*todo: implement initializer*/ = int();
-    public enum int CV_OBJECT/*todo: implement initializer*/ = int();
-    public enum int CV_DECIMAL/*todo: implement initializer*/ = int();
-    public enum int CV_ENUM/*todo: implement initializer*/ = int();
-    public enum int CV_MISSING/*todo: implement initializer*/ = int();
-    public enum int CV_NULL/*todo: implement initializer*/ = int();
-    public enum int CV_LAST/*todo: implement initializer*/ = int();
-    public enum int TypeCodeBitMask/*todo: implement initializer*/ = int();
-    public enum int VTBitMask/*todo: implement initializer*/ = int();
-    public enum int VTBitShift/*todo: implement initializer*/ = int();
-    public enum int ArrayBitMask/*todo: implement initializer*/ = int();
-    public enum int EnumI1/*todo: implement initializer*/ = int();
-    public enum int EnumU1/*todo: implement initializer*/ = int();
-    public enum int EnumI2/*todo: implement initializer*/ = int();
-    public enum int EnumU2/*todo: implement initializer*/ = int();
-    public enum int EnumI4/*todo: implement initializer*/ = int();
-    public enum int EnumU4/*todo: implement initializer*/ = int();
-    public enum int EnumI8/*todo: implement initializer*/ = int();
-    public enum int EnumU8/*todo: implement initializer*/ = int();
-    public enum int EnumMask/*todo: implement initializer*/ = int();
-    public static immutable Type[] ClassTypes/*todo: implement initializer*/ = null;
-    public static immutable Variant Empty/*todo: implement initializer*/ = Variant();
-    public static immutable Variant Missing/*todo: implement initializer*/ = Variant();
-    public static immutable Variant DBNull/*todo: implement initializer*/ = Variant();
+    package(mscorlib) enum int CV_EMPTY/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_VOID/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_BOOLEAN/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_CHAR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_I1/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_U1/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_I2/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_U2/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_I4/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_U4/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_I8/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_U8/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_R4/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_R8/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_STRING/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_PTR/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_DATETIME/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_TIMESPAN/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_OBJECT/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_DECIMAL/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_ENUM/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_MISSING/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_NULL/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int CV_LAST/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int TypeCodeBitMask/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int VTBitMask/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int VTBitShift/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ArrayBitMask/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EnumI1/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EnumU1/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EnumI2/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EnumU2/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EnumI4/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EnumU4/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EnumI8/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EnumU8/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int EnumMask/*todo: implement initializer*/ = int();
+    package(mscorlib) static immutable Type[] ClassTypes/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable Variant Empty/*todo: implement initializer*/ = Variant();
+    package(mscorlib) static immutable Variant Missing/*todo: implement initializer*/ = Variant();
+    package(mscorlib) static immutable Variant DBNull/*todo: implement initializer*/ = Variant();
     //TODO: generate method GetR8FromVar
     //TODO: generate method GetR4FromVar
     //TODO: generate method SetFieldsR4
@@ -9654,20 +9660,20 @@ public final class Version : __DotNet__Object, ICloneable, IComparable, ICompara
     //TODO: generate operator
     //TODO: generate operator
     //TODO: generate operator
-    public enum ParseFailureKind
+    package(mscorlib) enum ParseFailureKind
     {
         ArgumentNullException,
         ArgumentException,
         ArgumentOutOfRangeException,
         FormatException,
     }
-    public static struct VersionResult
+    package(mscorlib) static struct VersionResult
     {
-        public Version m_parsedVersion;
-        public ParseFailureKind m_failure;
-        public String m_exceptionArgument;
-        public String m_argumentName;
-        public bool m_canThrow;
+        package(mscorlib) Version m_parsedVersion;
+        package(mscorlib) ParseFailureKind m_failure;
+        package(mscorlib) String m_exceptionArgument;
+        package(mscorlib) String m_argumentName;
+        package(mscorlib) bool m_canThrow;
         //TODO: generate method Init
         //TODO: generate method SetFailure
         //TODO: generate method SetFailure
@@ -9694,7 +9700,7 @@ public struct Void
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public class WeakReference : __DotNet__Object, ISerializable
 {
-    public IntPtr m_handle;
+    package(mscorlib) IntPtr m_handle;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -9714,7 +9720,7 @@ public class WeakReference : __DotNet__Object, ISerializable
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 public final class WeakReference1(T) : __DotNet__Object, ISerializable/*where T : class*/
 {
-    public IntPtr m_handle;
+    package(mscorlib) IntPtr m_handle;
     //TODO: generate constructor
     //TODO: generate constructor
     //TODO: generate constructor
@@ -9731,6 +9737,6 @@ public final class WeakReference1(T) : __DotNet__Object, ISerializable/*where T 
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\XmlIgnoreMemberAttribute.cs'
 //
 @__DotNet__Attribute!(AttributeUsageAttribute.stringof/*, AttributeTargets.Property|AttributeTargets.Field*/)
-public final class XmlIgnoreMemberAttribute : Attribute
+package(mscorlib) final class XmlIgnoreMemberAttribute : Attribute
 {
 }

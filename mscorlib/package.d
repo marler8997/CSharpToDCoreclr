@@ -133,96 +133,96 @@ immutable __DotNet__AttributeStruct[] moduleAttributes = [
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\Common\Preprocessed\AssemblyRefs.g.cs'
 //
-public class FXAssembly : __DotNet__Object
+package class FXAssembly : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum String Version/*todo: implement initializer*/ = null;
+    package enum String Version/*todo: implement initializer*/ = null;
 }
-public class ThisAssembly : __DotNet__Object
+package class ThisAssembly : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum String Title/*todo: implement initializer*/ = null;
-    public enum String Description/*todo: implement initializer*/ = null;
-    public enum String DefaultAlias/*todo: implement initializer*/ = null;
-    public enum String Copyright/*todo: implement initializer*/ = null;
-    public enum String Version/*todo: implement initializer*/ = null;
-    public enum String InformationalVersion/*todo: implement initializer*/ = null;
-    public enum String DailyBuildNumberStr/*todo: implement initializer*/ = null;
-    public enum String BuildRevisionStr/*todo: implement initializer*/ = null;
-    public enum int DailyBuildNumber/*todo: implement initializer*/ = int();
+    package enum String Title/*todo: implement initializer*/ = null;
+    package enum String Description/*todo: implement initializer*/ = null;
+    package enum String DefaultAlias/*todo: implement initializer*/ = null;
+    package enum String Copyright/*todo: implement initializer*/ = null;
+    package enum String Version/*todo: implement initializer*/ = null;
+    package enum String InformationalVersion/*todo: implement initializer*/ = null;
+    package enum String DailyBuildNumberStr/*todo: implement initializer*/ = null;
+    package enum String BuildRevisionStr/*todo: implement initializer*/ = null;
+    package enum int DailyBuildNumber/*todo: implement initializer*/ = int();
 }
-public class AssemblyRef : __DotNet__Object
+package class AssemblyRef : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum String EcmaPublicKey/*todo: implement initializer*/ = null;
-    public enum String EcmaPublicKeyToken/*todo: implement initializer*/ = null;
-    public enum String EcmaPublicKeyFull/*todo: implement initializer*/ = null;
-    public enum String SilverlightPublicKey/*todo: implement initializer*/ = null;
-    public enum String SilverlightPublicKeyToken/*todo: implement initializer*/ = null;
-    public enum String SilverlightPublicKeyFull/*todo: implement initializer*/ = null;
-    public enum String SilverlightPlatformPublicKey/*todo: implement initializer*/ = null;
-    public enum String SilverlightPlatformPublicKeyToken/*todo: implement initializer*/ = null;
-    public enum String SilverlightPlatformPublicKeyFull/*todo: implement initializer*/ = null;
-    public enum String PlatformPublicKey/*todo: implement initializer*/ = null;
-    public enum String PlatformPublicKeyToken/*todo: implement initializer*/ = null;
-    public enum String PlatformPublicKeyFull/*todo: implement initializer*/ = null;
-    public enum String Mscorlib/*todo: implement initializer*/ = null;
-    public enum String SystemData/*todo: implement initializer*/ = null;
-    public enum String SystemDataOracleClient/*todo: implement initializer*/ = null;
-    public enum String System/*todo: implement initializer*/ = null;
-    public enum String SystemCore/*todo: implement initializer*/ = null;
-    public enum String SystemNumerics/*todo: implement initializer*/ = null;
-    public enum String SystemRuntimeRemoting/*todo: implement initializer*/ = null;
-    public enum String SystemThreadingTasksDataflow/*todo: implement initializer*/ = null;
-    public enum String SystemWindowsForms/*todo: implement initializer*/ = null;
-    public enum String SystemXml/*todo: implement initializer*/ = null;
-    public enum String MicrosoftPublicKey/*todo: implement initializer*/ = null;
-    public enum String MicrosoftPublicKeyToken/*todo: implement initializer*/ = null;
-    public enum String MicrosoftPublicKeyFull/*todo: implement initializer*/ = null;
-    public enum String SharedLibPublicKey/*todo: implement initializer*/ = null;
-    public enum String SharedLibPublicKeyToken/*todo: implement initializer*/ = null;
-    public enum String SharedLibPublicKeyFull/*todo: implement initializer*/ = null;
-    public enum String SystemComponentModelDataAnnotations/*todo: implement initializer*/ = null;
-    public enum String SystemConfiguration/*todo: implement initializer*/ = null;
-    public enum String SystemConfigurationInstall/*todo: implement initializer*/ = null;
-    public enum String SystemDeployment/*todo: implement initializer*/ = null;
-    public enum String SystemDesign/*todo: implement initializer*/ = null;
-    public enum String SystemDirectoryServices/*todo: implement initializer*/ = null;
-    public enum String SystemDrawingDesign/*todo: implement initializer*/ = null;
-    public enum String SystemDrawing/*todo: implement initializer*/ = null;
-    public enum String SystemEnterpriseServices/*todo: implement initializer*/ = null;
-    public enum String SystemManagement/*todo: implement initializer*/ = null;
-    public enum String SystemMessaging/*todo: implement initializer*/ = null;
-    public enum String SystemNetHttp/*todo: implement initializer*/ = null;
-    public enum String SystemNetHttpWebRequest/*todo: implement initializer*/ = null;
-    public enum String SystemRuntimeSerializationFormattersSoap/*todo: implement initializer*/ = null;
-    public enum String SystemRuntimeWindowsRuntime/*todo: implement initializer*/ = null;
-    public enum String SystemRuntimeWindowsRuntimeUIXaml/*todo: implement initializer*/ = null;
-    public enum String SystemSecurity/*todo: implement initializer*/ = null;
-    public enum String SystemServiceModelWeb/*todo: implement initializer*/ = null;
-    public enum String SystemServiceProcess/*todo: implement initializer*/ = null;
-    public enum String SystemWeb/*todo: implement initializer*/ = null;
-    public enum String SystemWebAbstractions/*todo: implement initializer*/ = null;
-    public enum String SystemWebDynamicData/*todo: implement initializer*/ = null;
-    public enum String SystemWebDynamicDataDesign/*todo: implement initializer*/ = null;
-    public enum String SystemWebEntityDesign/*todo: implement initializer*/ = null;
-    public enum String SystemWebExtensions/*todo: implement initializer*/ = null;
-    public enum String SystemWebExtensionsDesign/*todo: implement initializer*/ = null;
-    public enum String SystemWebMobile/*todo: implement initializer*/ = null;
-    public enum String SystemWebRegularExpressions/*todo: implement initializer*/ = null;
-    public enum String SystemWebRouting/*todo: implement initializer*/ = null;
-    public enum String SystemWebServices/*todo: implement initializer*/ = null;
-    public enum String WindowsBase/*todo: implement initializer*/ = null;
-    public enum String MicrosoftVisualStudio/*todo: implement initializer*/ = null;
-    public enum String MicrosoftVisualStudioWindowsForms/*todo: implement initializer*/ = null;
-    public enum String VJSharpCodeProvider/*todo: implement initializer*/ = null;
-    public enum String ASPBrowserCapsPublicKey/*todo: implement initializer*/ = null;
-    public enum String ASPBrowserCapsFactory/*todo: implement initializer*/ = null;
-    public enum String MicrosoftVSDesigner/*todo: implement initializer*/ = null;
-    public enum String MicrosoftVisualStudioWeb/*todo: implement initializer*/ = null;
-    public enum String MicrosoftWebDesign/*todo: implement initializer*/ = null;
-    public enum String MicrosoftVSDesignerMobile/*todo: implement initializer*/ = null;
-    public enum String MicrosoftJScript/*todo: implement initializer*/ = null;
+    package enum String EcmaPublicKey/*todo: implement initializer*/ = null;
+    package enum String EcmaPublicKeyToken/*todo: implement initializer*/ = null;
+    package enum String EcmaPublicKeyFull/*todo: implement initializer*/ = null;
+    package enum String SilverlightPublicKey/*todo: implement initializer*/ = null;
+    package enum String SilverlightPublicKeyToken/*todo: implement initializer*/ = null;
+    package enum String SilverlightPublicKeyFull/*todo: implement initializer*/ = null;
+    package enum String SilverlightPlatformPublicKey/*todo: implement initializer*/ = null;
+    package enum String SilverlightPlatformPublicKeyToken/*todo: implement initializer*/ = null;
+    package enum String SilverlightPlatformPublicKeyFull/*todo: implement initializer*/ = null;
+    package enum String PlatformPublicKey/*todo: implement initializer*/ = null;
+    package enum String PlatformPublicKeyToken/*todo: implement initializer*/ = null;
+    package enum String PlatformPublicKeyFull/*todo: implement initializer*/ = null;
+    package enum String Mscorlib/*todo: implement initializer*/ = null;
+    package enum String SystemData/*todo: implement initializer*/ = null;
+    package enum String SystemDataOracleClient/*todo: implement initializer*/ = null;
+    package enum String System/*todo: implement initializer*/ = null;
+    package enum String SystemCore/*todo: implement initializer*/ = null;
+    package enum String SystemNumerics/*todo: implement initializer*/ = null;
+    package enum String SystemRuntimeRemoting/*todo: implement initializer*/ = null;
+    package enum String SystemThreadingTasksDataflow/*todo: implement initializer*/ = null;
+    package enum String SystemWindowsForms/*todo: implement initializer*/ = null;
+    package enum String SystemXml/*todo: implement initializer*/ = null;
+    package enum String MicrosoftPublicKey/*todo: implement initializer*/ = null;
+    package enum String MicrosoftPublicKeyToken/*todo: implement initializer*/ = null;
+    package enum String MicrosoftPublicKeyFull/*todo: implement initializer*/ = null;
+    package enum String SharedLibPublicKey/*todo: implement initializer*/ = null;
+    package enum String SharedLibPublicKeyToken/*todo: implement initializer*/ = null;
+    package enum String SharedLibPublicKeyFull/*todo: implement initializer*/ = null;
+    package enum String SystemComponentModelDataAnnotations/*todo: implement initializer*/ = null;
+    package enum String SystemConfiguration/*todo: implement initializer*/ = null;
+    package enum String SystemConfigurationInstall/*todo: implement initializer*/ = null;
+    package enum String SystemDeployment/*todo: implement initializer*/ = null;
+    package enum String SystemDesign/*todo: implement initializer*/ = null;
+    package enum String SystemDirectoryServices/*todo: implement initializer*/ = null;
+    package enum String SystemDrawingDesign/*todo: implement initializer*/ = null;
+    package enum String SystemDrawing/*todo: implement initializer*/ = null;
+    package enum String SystemEnterpriseServices/*todo: implement initializer*/ = null;
+    package enum String SystemManagement/*todo: implement initializer*/ = null;
+    package enum String SystemMessaging/*todo: implement initializer*/ = null;
+    package enum String SystemNetHttp/*todo: implement initializer*/ = null;
+    package enum String SystemNetHttpWebRequest/*todo: implement initializer*/ = null;
+    package enum String SystemRuntimeSerializationFormattersSoap/*todo: implement initializer*/ = null;
+    package enum String SystemRuntimeWindowsRuntime/*todo: implement initializer*/ = null;
+    package enum String SystemRuntimeWindowsRuntimeUIXaml/*todo: implement initializer*/ = null;
+    package enum String SystemSecurity/*todo: implement initializer*/ = null;
+    package enum String SystemServiceModelWeb/*todo: implement initializer*/ = null;
+    package enum String SystemServiceProcess/*todo: implement initializer*/ = null;
+    package enum String SystemWeb/*todo: implement initializer*/ = null;
+    package enum String SystemWebAbstractions/*todo: implement initializer*/ = null;
+    package enum String SystemWebDynamicData/*todo: implement initializer*/ = null;
+    package enum String SystemWebDynamicDataDesign/*todo: implement initializer*/ = null;
+    package enum String SystemWebEntityDesign/*todo: implement initializer*/ = null;
+    package enum String SystemWebExtensions/*todo: implement initializer*/ = null;
+    package enum String SystemWebExtensionsDesign/*todo: implement initializer*/ = null;
+    package enum String SystemWebMobile/*todo: implement initializer*/ = null;
+    package enum String SystemWebRegularExpressions/*todo: implement initializer*/ = null;
+    package enum String SystemWebRouting/*todo: implement initializer*/ = null;
+    package enum String SystemWebServices/*todo: implement initializer*/ = null;
+    package enum String WindowsBase/*todo: implement initializer*/ = null;
+    package enum String MicrosoftVisualStudio/*todo: implement initializer*/ = null;
+    package enum String MicrosoftVisualStudioWindowsForms/*todo: implement initializer*/ = null;
+    package enum String VJSharpCodeProvider/*todo: implement initializer*/ = null;
+    package enum String ASPBrowserCapsPublicKey/*todo: implement initializer*/ = null;
+    package enum String ASPBrowserCapsFactory/*todo: implement initializer*/ = null;
+    package enum String MicrosoftVSDesigner/*todo: implement initializer*/ = null;
+    package enum String MicrosoftVisualStudioWeb/*todo: implement initializer*/ = null;
+    package enum String MicrosoftWebDesign/*todo: implement initializer*/ = null;
+    package enum String MicrosoftVSDesignerMobile/*todo: implement initializer*/ = null;
+    package enum String MicrosoftJScript/*todo: implement initializer*/ = null;
 }
 
 //
@@ -240,15 +240,15 @@ public class AssemblyRef : __DotNet__Object
 // #if FEATURE_CORESYSTEM
 // Depends on things like SuppressUnmanagedCodeAttribute and WindowsRuntimeImportAttribute
 // Depends on WindowsRuntimeImportAttribute
-public class _InternalsVisibleToKeys : __DotNet__Object
+package class _InternalsVisibleToKeys : __DotNet__Object
 {
-    public enum String EcmaPublicKeyFull/*todo: implement initializer*/ = null;
+    package enum String EcmaPublicKeyFull/*todo: implement initializer*/ = null;
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Array.cs'
 //
-public class EmptyArray1(T) : __DotNet__Object
+package class EmptyArray1(T) : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public static immutable T[] Value/*todo: implement initializer*/ = null;

@@ -20,7 +20,7 @@ import mscorlib.System.Runtime.Serialization :
 // Duplicated in vm\COMSecurityConfig.h
 @__DotNet__Attribute!(SerializableAttribute.stringof)
 @__DotNet__Attribute!(FlagsAttribute.stringof)
-public enum QuickCacheEntryType
+package(mscorlib) enum QuickCacheEntryType
 {
     FullTrustZoneMyComputer = 0x1000000,
     FullTrustZoneIntranet = 0x2000000,
@@ -29,7 +29,7 @@ public enum QuickCacheEntryType
     FullTrustZoneUntrusted = 0x10000000,
     FullTrustAll = 0x20000000,
 }
-public class Config : __DotNet__Object
+package(mscorlib) class Config : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private static /*todo: volatile*/ String m_machineConfig;
@@ -45,7 +45,7 @@ public class Config : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\Hex.cs'
 //
-public class Hex : __DotNet__Object
+package(mscorlib) class Hex : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method HexDigit
@@ -59,7 +59,7 @@ public class Hex : __DotNet__Object
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\sitestring.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class SiteString : __DotNet__Object
+package(mscorlib) class SiteString : __DotNet__Object
 {
     protected String m_site;
     protected ArrayList m_separatedSite;
@@ -86,7 +86,7 @@ public class SiteString : __DotNet__Object
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\StringExpressionSet.cs'
 //
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class StringExpressionSet : __DotNet__Object
+package(mscorlib) class StringExpressionSet : __DotNet__Object
 {
     // This field, as well as the expressions fields below are critical since they may contain
     // canonicalized full path data potentially built out of relative data passed as input to the
@@ -149,7 +149,7 @@ public class StringExpressionSet : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\TokenBasedSet.cs'
 //
-public class TokenBasedSet : __DotNet__Object
+package(mscorlib) class TokenBasedSet : __DotNet__Object
 {
     private int m_initSize/*todo: implement initializer*/ = int();
     private int m_increment/*todo: implement initializer*/ = int();
@@ -184,7 +184,7 @@ public class TokenBasedSet : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\TokenBasedSetEnumerator.cs'
 //
-public struct TokenBasedSetEnumerator
+package(mscorlib) struct TokenBasedSetEnumerator
 {
     public __DotNet__Object Current;
     public int Index;
@@ -197,7 +197,7 @@ public struct TokenBasedSetEnumerator
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\URLString.cs'
 //
-public final class URLString : SiteString
+package(mscorlib) final class URLString : SiteString
 {
     private String m_protocol;
     @__DotNet__Attribute!(OptionalFieldAttribute.stringof/*, VersionAdded = 2*/)
@@ -256,7 +256,7 @@ public final class URLString : SiteString
     //TODO: generate method GetDeviceName
 }
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class DirectoryString : SiteString
+package(mscorlib) class DirectoryString : SiteString
 {
     private bool m_checkForIllegalChars;
     private static /*todo: new modifier*/ wchar[] m_separators/*todo: implement initializer*/ = null;
@@ -269,7 +269,7 @@ public class DirectoryString : SiteString
 }
 // #if !PLATFORM_UNIX
 @__DotNet__Attribute!(SerializableAttribute.stringof)
-public class LocalSiteString : SiteString
+package(mscorlib) class LocalSiteString : SiteString
 {
     private static /*todo: new modifier*/ wchar[] m_separators/*todo: implement initializer*/ = null;
     //TODO: generate constructor
@@ -281,7 +281,7 @@ public class LocalSiteString : SiteString
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\Security\Util\XMLUtil.cs'
 //
-public class XMLUtil : __DotNet__Object
+package(mscorlib) class XMLUtil : __DotNet__Object
 {
     private this() {} // prevent instantiation
     private enum String BuiltInPermission/*todo: implement initializer*/ = null;

@@ -19,6 +19,8 @@ import mscorlib.System :
 import mscorlib.System.Diagnostics.Contracts :
     PureAttribute,
     ContractPublicPropertyNameAttribute;
+import mscorlib.Microsoft.Win32 :
+    Win32Native;
 import mscorlib.System.Runtime.InteropServices :
     ComVisibleAttribute,
     StringBuffer,
@@ -59,15 +61,13 @@ import mscorlib.System.Collections.Generic :
     IEnumerable1,
     IEnumerator1,
     List1;
-import mscorlib.Microsoft.Win32 :
-    Win32Native;
 import mscorlib.System.Runtime.ExceptionServices :
     ExceptionDispatchInfo;
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\__DebugOutputTextWriter.cs'
 //
-public class __DebugOutputTextWriter : TextWriter
+package(mscorlib) class __DebugOutputTextWriter : TextWriter
 {
     private immutable String _consoleType;
     //TODO: generate constructor
@@ -83,7 +83,7 @@ public class __DebugOutputTextWriter : TextWriter
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\__Error.cs'
 //
 @__DotNet__Attribute!(PureAttribute.stringof)
-public class __Error : __DotNet__Object
+package(mscorlib) class __Error : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method EndOfFile
@@ -103,16 +103,16 @@ public class __Error : __DotNet__Object
     //TODO: generate method WinIODriveError
     //TODO: generate method WriteNotSupported
     //TODO: generate method WriterClosed
-    public enum int ERROR_FILE_NOT_FOUND/*todo: implement initializer*/ = int();
-    public enum int ERROR_PATH_NOT_FOUND/*todo: implement initializer*/ = int();
-    public enum int ERROR_ACCESS_DENIED/*todo: implement initializer*/ = int();
-    public enum int ERROR_INVALID_PARAMETER/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ERROR_FILE_NOT_FOUND/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ERROR_PATH_NOT_FOUND/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ERROR_ACCESS_DENIED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ERROR_INVALID_PARAMETER/*todo: implement initializer*/ = int();
 }
 
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\__HResults.cs'
 //
-public class __HResults : __DotNet__Object
+package(mscorlib) class __HResults : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public enum int COR_E_ENDOFSTREAM/*todo: implement initializer*/ = int();
@@ -373,7 +373,7 @@ public class Directory : __DotNet__Object
     //TODO: generate method GetFileSystemEntries
     //TODO: generate method GetFileSystemEntries
     //TODO: generate method InternalGetFileSystemEntries
-    public static final class SearchData : __DotNet__Object
+    package(mscorlib) static final class SearchData : __DotNet__Object
     {
         //TODO: generate constructor
         public immutable String fullPath;
@@ -861,7 +861,7 @@ public enum FileOptions
 //
 @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
 @__DotNet__Attribute!(FriendAccessAllowedAttribute.stringof)
-public class FileSecurityState : SecurityState
+package(mscorlib) class FileSecurityState : SecurityState
 {
     private static immutable wchar[] m_illegalCharacters/*todo: implement initializer*/ = null;
     private FileSecurityStateAccess m_access;
@@ -882,7 +882,7 @@ public class FileSecurityState : SecurityState
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileSecurityStateAccess.cs'
 //
 @__DotNet__Attribute!(FlagsAttribute.stringof)
-public enum FileSecurityStateAccess
+package(mscorlib) enum FileSecurityStateAccess
 {
     NoAccess = 0,
     Read = 1,
@@ -932,7 +932,7 @@ public enum FileShare
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileStream.cs'
 //
-public final class FileStreamAsyncResult : __DotNet__Object, IAsyncResult
+package(mscorlib) final class FileStreamAsyncResult : __DotNet__Object, IAsyncResult
 {
     private AsyncCallback _userCallback;
     private __DotNet__Object _userStateObject;
@@ -943,7 +943,7 @@ public final class FileStreamAsyncResult : __DotNet__Object, IAsyncResult
     private NativeOverlapped* _overlapped;
     //TODO: generate property 'OverLapped'
     //TODO: generate property 'IsAsync'
-    public int _EndXxxCalled;
+    package(mscorlib) int _EndXxxCalled;
     private int _numBytes;
     //TODO: generate property 'NumBytes'
     private int _errorCode;
@@ -979,7 +979,7 @@ public final class FileStreamAsyncResult : __DotNet__Object, IAsyncResult
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class FileStream : Stream
 {
-    public enum int DefaultBufferSize/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DefaultBufferSize/*todo: implement initializer*/ = int();
     private ubyte[] _buffer;
     private String _fileName;
     private bool _isAsync;
@@ -1062,13 +1062,13 @@ public class FileStream : Stream
     private enum int FILE_ATTRIBUTE_NORMAL/*todo: implement initializer*/ = int();
     private enum int FILE_ATTRIBUTE_ENCRYPTED/*todo: implement initializer*/ = int();
     private enum int FILE_FLAG_OVERLAPPED/*todo: implement initializer*/ = int();
-    public enum int GENERIC_READ/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int GENERIC_READ/*todo: implement initializer*/ = int();
     private enum int GENERIC_WRITE/*todo: implement initializer*/ = int();
     private enum int FILE_BEGIN/*todo: implement initializer*/ = int();
     private enum int FILE_CURRENT/*todo: implement initializer*/ = int();
     private enum int FILE_END/*todo: implement initializer*/ = int();
-    public enum int ERROR_BROKEN_PIPE/*todo: implement initializer*/ = int();
-    public enum int ERROR_NO_DATA/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ERROR_BROKEN_PIPE/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ERROR_NO_DATA/*todo: implement initializer*/ = int();
     private enum int ERROR_HANDLE_EOF/*todo: implement initializer*/ = int();
     private enum int ERROR_INVALID_PARAMETER/*todo: implement initializer*/ = int();
     private enum int ERROR_IO_PENDING/*todo: implement initializer*/ = int();
@@ -1078,9 +1078,9 @@ public class FileStream : Stream
     //TODO: generate method WriteAsync
     private static final class FileStreamReadWriteTask1(T) : Task1!(T)
     {
-        public CancellationToken _cancellationToken;
-        public CancellationTokenRegistration _registration;
-        public FileStreamAsyncResult _asyncResult;
+        package(mscorlib) CancellationToken _cancellationToken;
+        package(mscorlib) CancellationTokenRegistration _registration;
+        package(mscorlib) FileStreamAsyncResult _asyncResult;
         //TODO: generate constructor
     }
     //TODO: generate method CancelTask
@@ -1092,7 +1092,7 @@ public class FileStream : Stream
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\FileSystemEnumerable.cs'
 //
-public class FileSystemEnumerableFactory : __DotNet__Object
+package(mscorlib) class FileSystemEnumerableFactory : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method CreateFileNameIterator
@@ -1100,11 +1100,11 @@ public class FileSystemEnumerableFactory : __DotNet__Object
     //TODO: generate method CreateDirectoryInfoIterator
     //TODO: generate method CreateFileSystemInfoIterator
 }
-public abstract class Iterator1(TSource) : __DotNet__Object, IEnumerable1!(TSource), IEnumerator1!(TSource)
+package(mscorlib) abstract class Iterator1(TSource) : __DotNet__Object, IEnumerable1!(TSource), IEnumerator1!(TSource)
 {
     private int threadId;
-    public int state;
-    public TSource current;
+    package(mscorlib) int state;
+    package(mscorlib) TSource current;
     //TODO: generate constructor
     //TODO: generate property 'Current'
     //TODO: generate method Clone
@@ -1116,7 +1116,7 @@ public abstract class Iterator1(TSource) : __DotNet__Object, IEnumerable1!(TSour
     //TODO: generate method GetEnumerator
     //TODO: generate method Reset
 }
-public class FileSystemEnumerableIterator1(TSource) : Iterator1!(TSource)
+package(mscorlib) class FileSystemEnumerableIterator1(TSource) : Iterator1!(TSource)
 {
     private enum int STATE_INIT/*todo: implement initializer*/ = int();
     private enum int STATE_SEARCH_NEXT_DIR/*todo: implement initializer*/ = int();
@@ -1150,12 +1150,12 @@ public class FileSystemEnumerableIterator1(TSource) : Iterator1!(TSource)
     //TODO: generate method GetNormalizedSearchCriteria
     //TODO: generate method GetFullSearchString
 }
-public abstract class SearchResultHandler1(TSource) : __DotNet__Object
+package(mscorlib) abstract class SearchResultHandler1(TSource) : __DotNet__Object
 {
     //TODO: generate method IsResultIncluded
     //TODO: generate method CreateObject
 }
-public class StringResultHandler : SearchResultHandler1!(String)
+package(mscorlib) class StringResultHandler : SearchResultHandler1!(String)
 {
     private bool _includeFiles;
     private bool _includeDirs;
@@ -1163,22 +1163,22 @@ public class StringResultHandler : SearchResultHandler1!(String)
     //TODO: generate method IsResultIncluded
     //TODO: generate method CreateObject
 }
-public class FileInfoResultHandler : SearchResultHandler1!(FileInfo)
+package(mscorlib) class FileInfoResultHandler : SearchResultHandler1!(FileInfo)
 {
     //TODO: generate method IsResultIncluded
     //TODO: generate method CreateObject
 }
-public class DirectoryInfoResultHandler : SearchResultHandler1!(DirectoryInfo)
+package(mscorlib) class DirectoryInfoResultHandler : SearchResultHandler1!(DirectoryInfo)
 {
     //TODO: generate method IsResultIncluded
     //TODO: generate method CreateObject
 }
-public class FileSystemInfoResultHandler : SearchResultHandler1!(FileSystemInfo)
+package(mscorlib) class FileSystemInfoResultHandler : SearchResultHandler1!(FileSystemInfo)
 {
     //TODO: generate method IsResultIncluded
     //TODO: generate method CreateObject
 }
-public final class SearchResult : __DotNet__Object
+package(mscorlib) final class SearchResult : __DotNet__Object
 {
     private String fullPath;
     private String userPath;
@@ -1189,7 +1189,7 @@ public final class SearchResult : __DotNet__Object
     //TODO: generate property 'UserPath'
     //TODO: generate property 'FindData'
 }
-public class FileSystemEnumerableHelpers : __DotNet__Object
+package(mscorlib) class FileSystemEnumerableHelpers : __DotNet__Object
 {
     private this() {} // prevent instantiation
     //TODO: generate method IsDir
@@ -1210,10 +1210,10 @@ public abstract class FileSystemInfo : __DotNet__Object, ISerializable
 {
     // #endif  //FEATURE_REMOTING      
     @__DotNet__Attribute!(SecurityCriticalAttribute.stringof)
-    public Win32Native.WIN32_FILE_ATTRIBUTE_DATA _data;
-    public int _dataInitialised/*todo: implement initializer*/ = int();
+    package(mscorlib) Win32Native.WIN32_FILE_ATTRIBUTE_DATA _data;
+    package(mscorlib) int _dataInitialised/*todo: implement initializer*/ = int();
     private enum int ERROR_INVALID_PARAMETER/*todo: implement initializer*/ = int();
-    public enum int ERROR_ACCESS_DENIED/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int ERROR_ACCESS_DENIED/*todo: implement initializer*/ = int();
     protected String FullPath;
     protected String OriginalPath;
     private String _displayPath/*todo: implement initializer*/ = null;
@@ -1266,7 +1266,7 @@ public class IOException : SystemException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\LongPathHelper.cs'
 //
-public class LongPathHelper : __DotNet__Object
+package(mscorlib) class LongPathHelper : __DotNet__Object
 {
     private enum int MaxShortName/*todo: implement initializer*/ = int();
     private enum wchar LastAnsi/*todo: implement initializer*/ = wchar();
@@ -1361,7 +1361,7 @@ public class Path : __DotNet__Object
 {
     private this() {} // prevent instantiation
     public static immutable wchar DirectorySeparatorChar/*todo: implement initializer*/ = wchar();
-    public enum String DirectorySeparatorCharAsString/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String DirectorySeparatorCharAsString/*todo: implement initializer*/ = null;
     public static immutable wchar AltDirectorySeparatorChar/*todo: implement initializer*/ = wchar();
     public static immutable wchar VolumeSeparatorChar/*todo: implement initializer*/ = wchar();
     // #else
@@ -1374,14 +1374,14 @@ public class Path : __DotNet__Object
     // Note: This list is duplicated in CheckInvalidPathChars
     @__DotNet__Attribute!(ObsoleteAttribute.stringof/*, "Please use GetInvalidPathChars or GetInvalidFileNameChars instead."*/)
     public static immutable wchar[] InvalidPathChars/*todo: implement initializer*/ = null;
-    public static immutable wchar[] TrimEndChars/*todo: implement initializer*/ = null;
+    package(mscorlib) static immutable wchar[] TrimEndChars/*todo: implement initializer*/ = null;
     private static immutable wchar[] RealInvalidPathChars/*todo: implement initializer*/ = null;
     private static immutable wchar[] InvalidFileNameChars/*todo: implement initializer*/ = null;
     public static immutable wchar PathSeparator/*todo: implement initializer*/ = wchar();
-    public static immutable int MaxPath/*todo: implement initializer*/ = int();
-    public static immutable int MaxPathComponentLength/*todo: implement initializer*/ = int();
-    public enum int MAX_PATH/*todo: implement initializer*/ = int();
-    public enum int MAX_DIRECTORY_PATH/*todo: implement initializer*/ = int();
+    package(mscorlib) static immutable int MaxPath/*todo: implement initializer*/ = int();
+    package(mscorlib) static immutable int MaxPathComponentLength/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_PATH/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MAX_DIRECTORY_PATH/*todo: implement initializer*/ = int();
     //TODO: generate method ChangeExtension
     //TODO: generate method GetDirectoryName
     //TODO: generate method GetDirectoryNameInternal
@@ -1399,7 +1399,7 @@ public class Path : __DotNet__Object
     //TODO: generate method NormalizePath
     //TODO: generate method NewNormalizePathLimitedChecks
     //TODO: generate method NewNormalizePath
-    public enum int MaxLongPath/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxLongPath/*todo: implement initializer*/ = int();
     private enum String LongPathPrefix/*todo: implement initializer*/ = null;
     private enum String UNCPathPrefix/*todo: implement initializer*/ = null;
     private enum String UNCLongPathPrefixToInsert/*todo: implement initializer*/ = null;
@@ -1434,22 +1434,22 @@ public class Path : __DotNet__Object
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\PathInternal.cs'
 //
-public class PathInternal : __DotNet__Object
+package(mscorlib) class PathInternal : __DotNet__Object
 {
     private this() {} // prevent instantiation
-    public enum String ExtendedPathPrefix/*todo: implement initializer*/ = null;
-    public enum String UncPathPrefix/*todo: implement initializer*/ = null;
-    public enum String UncExtendedPrefixToInsert/*todo: implement initializer*/ = null;
-    public enum String UncExtendedPathPrefix/*todo: implement initializer*/ = null;
-    public enum String DevicePathPrefix/*todo: implement initializer*/ = null;
-    public enum int DevicePrefixLength/*todo: implement initializer*/ = int();
-    public enum int UncPrefixLength/*todo: implement initializer*/ = int();
-    public enum int UncExtendedPrefixLength/*todo: implement initializer*/ = int();
-    public enum int MaxShortPath/*todo: implement initializer*/ = int();
-    public enum int MaxShortDirectoryPath/*todo: implement initializer*/ = int();
-    public enum int MaxLongPath/*todo: implement initializer*/ = int();
-    public static immutable int MaxComponentLength/*todo: implement initializer*/ = int();
-    public static immutable wchar[] InvalidPathChars/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String ExtendedPathPrefix/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String UncPathPrefix/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String UncExtendedPrefixToInsert/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String UncExtendedPathPrefix/*todo: implement initializer*/ = null;
+    package(mscorlib) enum String DevicePathPrefix/*todo: implement initializer*/ = null;
+    package(mscorlib) enum int DevicePrefixLength/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int UncPrefixLength/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int UncExtendedPrefixLength/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxShortPath/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxShortDirectoryPath/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int MaxLongPath/*todo: implement initializer*/ = int();
+    package(mscorlib) static immutable int MaxComponentLength/*todo: implement initializer*/ = int();
+    package(mscorlib) static immutable wchar[] InvalidPathChars/*todo: implement initializer*/ = null;
     //TODO: generate method HasInvalidVolumeSeparator
     //TODO: generate method StartsWithOrdinal
     //TODO: generate method IsValidDriveChar
@@ -1497,7 +1497,7 @@ public class PathTooLongException : IOException
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\PinnedBufferMemoryStream.cs'
 //
-public final class PinnedBufferMemoryStream : UnmanagedMemoryStream
+package(mscorlib) final class PinnedBufferMemoryStream : UnmanagedMemoryStream
 {
     private ubyte[] _array;
     private GCHandle _pinningHandle;
@@ -1510,7 +1510,7 @@ public final class PinnedBufferMemoryStream : UnmanagedMemoryStream
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\ReadLinesIterator.cs'
 //
-public class ReadLinesIterator : Iterator1!(String)
+package(mscorlib) class ReadLinesIterator : Iterator1!(String)
 {
     private immutable String _path;
     private immutable Encoding _encoding;
@@ -1600,9 +1600,9 @@ public abstract class Stream : __DotNet__Object, IDisposable
     //TODO: generate method BeginEndReadAsync
     private static struct ReadWriteParameters
     {
-        public ubyte[] Buffer;
-        public int Offset;
-        public int Count;
+        package(mscorlib) ubyte[] Buffer;
+        package(mscorlib) int Offset;
+        package(mscorlib) int Count;
     }
     //TODO: generate method BeginWrite
     //TODO: generate method BeginWriteInternal
@@ -1612,12 +1612,12 @@ public abstract class Stream : __DotNet__Object, IDisposable
     //TODO: generate method EndWrite
     private static final class ReadWriteTask : Task1!(int), ITaskCompletionAction
     {
-        public immutable bool _isRead;
-        public immutable bool _apm;
-        public Stream _stream;
-        public ubyte[] _buffer;
-        public immutable int _offset;
-        public immutable int _count;
+        package(mscorlib) immutable bool _isRead;
+        package(mscorlib) immutable bool _apm;
+        package(mscorlib) Stream _stream;
+        package(mscorlib) ubyte[] _buffer;
+        package(mscorlib) immutable int _offset;
+        package(mscorlib) immutable int _count;
         private AsyncCallback _callback;
         private ExecutionContext _context;
         //TODO: generate method ClearBeginState
@@ -1672,7 +1672,7 @@ public abstract class Stream : __DotNet__Object, IDisposable
         //TODO: generate method Seek
         //TODO: generate method SetLength
     }
-    public static final class SynchronousAsyncResult : __DotNet__Object, IAsyncResult
+    package(mscorlib) static final class SynchronousAsyncResult : __DotNet__Object, IAsyncResult
     {
         private immutable __DotNet__Object _stateObject;
         private immutable bool _isWrite;
@@ -1694,7 +1694,7 @@ public abstract class Stream : __DotNet__Object, IDisposable
     // SyncStream is a wrapper around a stream that takes 
     // a lock for every operation making it thread safe.
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static final class SyncStream : Stream, IDisposable
+    package(mscorlib) static final class SyncStream : Stream, IDisposable
     {
         private Stream _stream;
         //TODO: generate constructor
@@ -1844,7 +1844,7 @@ public class StreamReader : TextReader
 @__DotNet__Attribute!(ComVisibleAttribute.stringof/*, true*/)
 public class StreamWriter : TextWriter
 {
-    public enum int DefaultBufferSize/*todo: implement initializer*/ = int();
+    package(mscorlib) enum int DefaultBufferSize/*todo: implement initializer*/ = int();
     private enum int DefaultFileStreamBufferSize/*todo: implement initializer*/ = int();
     private enum int MinBufferSize/*todo: implement initializer*/ = int();
     private enum int DontCopyOnWriteLineThreshold/*todo: implement initializer*/ = int();
@@ -2014,9 +2014,9 @@ public abstract class TextReader : __DotNet__Object, IDisposable
         //TODO: generate method ReadLine
     }
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static final class SyncTextReader : TextReader
+    package(mscorlib) static final class SyncTextReader : TextReader
     {
-        public TextReader _in;
+        package(mscorlib) TextReader _in;
         //TODO: generate constructor
         //TODO: generate method Close
         //TODO: generate method Dispose
@@ -2118,7 +2118,7 @@ public abstract class TextWriter : __DotNet__Object, IDisposable
         //TODO: generate method WriteLine
     }
     @__DotNet__Attribute!(SerializableAttribute.stringof)
-    public static final class SyncTextWriter : TextWriter, IDisposable
+    package(mscorlib) static final class SyncTextWriter : TextWriter, IDisposable
     {
         private TextWriter _out;
         //TODO: generate constructor
@@ -2248,7 +2248,7 @@ public class UnmanagedMemoryStream : Stream
     private long _position;
     private long _offset;
     private FileAccess _access;
-    public bool _isOpen;
+    package(mscorlib) bool _isOpen;
     @__DotNet__Attribute!(NonSerializedAttribute.stringof)
     private Task1!(int) _lastReadTask;
     //TODO: generate constructor
@@ -2286,7 +2286,7 @@ public class UnmanagedMemoryStream : Stream
 //
 // Source Generated From 'D:\git\coreclr\src\mscorlib\src\System\IO\UnmanagedMemoryStreamWrapper.cs'
 //
-public final class UnmanagedMemoryStreamWrapper : MemoryStream
+package(mscorlib) final class UnmanagedMemoryStreamWrapper : MemoryStream
 {
     private UnmanagedMemoryStream _unmanagedStream;
     //TODO: generate constructor
